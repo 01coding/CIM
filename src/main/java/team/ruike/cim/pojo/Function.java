@@ -3,58 +3,79 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 
+/**
+ * 功能名称
+ *
+ * @author 甄立
+ * @version 1.0
+ */
 public class Function implements Serializable {
 
-  private static final long serialVersionUID = 372370922270141132L;
-  private Integer functionId;
-  private String functionName;
-  private String functionUrl;
-  private Integer jurisdictionId;
-  private Integer status;
+    private static final long serialVersionUID = 372370922270141132L;
+    /**
+     * 功能名称id
+     */
+    private Integer functionId;
+    /**
+     * 功能名称
+     */
+    private String functionName;
+    /**
+     * 功能url
+     */
+    private String functionUrl;
+    /**
+     * 权限id
+     */
+    private Integer jurisdictionId;
+    /**
+     * 删除状态
+     */
+    private Integer status;
 
 
-  public Integer getFunctionId() {
-    return functionId;
-  }
+    public Integer getFunctionId() {
+        return functionId;
+    }
 
-  public void setFunctionId(Integer functionId) {
-    this.functionId = functionId;
-  }
-
-
-  public String getFunctionName() {
-    return functionName;
-  }
-
-  public void setFunctionName(String functionName) {
-    this.functionName = functionName;
-  }
+    public void setFunctionId(Integer functionId) {
+        this.functionId = functionId;
+    }
 
 
-  public String getFunctionUrl() {
-    return functionUrl;
-  }
+    public String getFunctionName() {
+        return functionName;
+    }
 
-  public void setFunctionUrl(String functionUrl) {
-    this.functionUrl = functionUrl;
-  }
-
-
-  public Integer getJurisdictionId() {
-    return jurisdictionId;
-  }
-
-  public void setJurisdictionId(Integer jurisdictionId) {
-    this.jurisdictionId = jurisdictionId;
-  }
+    public void setFunctionName(String functionName) {
+        this.functionName = functionName;
+    }
 
 
-  public Integer getStatus() {
-    return status;
-  }
+    public String getFunctionUrl() {
+        return functionUrl;
+    }
 
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
+    public void setFunctionUrl(String functionUrl) {
+        this.functionUrl = functionUrl;
+    }
+
+
+    public Integer getJurisdictionId() {
+        return jurisdictionId;
+    }
+
+    public void setJurisdictionId(Integer jurisdictionId) {
+        this.jurisdictionId = jurisdictionId;
+    }
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
 }
