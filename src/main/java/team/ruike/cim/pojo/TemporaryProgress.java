@@ -4,68 +4,92 @@ package team.ruike.cim.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ * 临时订单任务进度记录
+ *
+ * @author 孙天奇
+ * @version 1.0
+ */
 public class TemporaryProgress implements Serializable {
 
-  private static final long serialVersionUID = -7849773436851293569L;
-  private Integer temporaryProgressId;
-  private Integer temporaryProductionDistributionId;
-  private String remarks;
-  private Date startDate;
-  private Date endDate;
-  private Integer status;
+    private static final long serialVersionUID = -7849773436851293569L;
+    /**
+     * 临时订单任务进度记录id
+     */
+    private Integer temporaryProgressId;
+    /**
+     * 临时订单生产任务分配id
+     */
+    private Integer temporaryProductionDistributionId;
+    /**
+     * 备注(必填)
+     */
+    private String remarks;
+    /**
+     * 实际生产开始时间
+     */
+    private Date startDate;
+    /**
+     * 实际结束时间
+     */
+    private Date endDate;
+    /**
+     * 状态
+     */
+    private Integer status;
 
 
-  public Integer getTemporaryProgressId() {
-    return temporaryProgressId;
-  }
+    public Integer getTemporaryProgressId() {
+        return temporaryProgressId;
+    }
 
-  public void setTemporaryProgressId(Integer temporaryProgressId) {
-    this.temporaryProgressId = temporaryProgressId;
-  }
-
-
-  public Integer getTemporaryProductionDistributionId() {
-    return temporaryProductionDistributionId;
-  }
-
-  public void setTemporaryProductionDistributionId(Integer temporaryProductionDistributionId) {
-    this.temporaryProductionDistributionId = temporaryProductionDistributionId;
-  }
+    public void setTemporaryProgressId(Integer temporaryProgressId) {
+        this.temporaryProgressId = temporaryProgressId;
+    }
 
 
-  public String getRemarks() {
-    return remarks;
-  }
+    public Integer getTemporaryProductionDistributionId() {
+        return temporaryProductionDistributionId;
+    }
 
-  public void setRemarks(String remarks) {
-    this.remarks = remarks;
-  }
-
-
-  public Date getStartDate() {
-    return startDate;
-  }
-
-  public void setStartDate(Date startDate) {
-    this.startDate = startDate;
-  }
+    public void setTemporaryProductionDistributionId(Integer temporaryProductionDistributionId) {
+        this.temporaryProductionDistributionId = temporaryProductionDistributionId;
+    }
 
 
-  public Date getEndDate() {
-    return endDate;
-  }
+    public String getRemarks() {
+        return remarks;
+    }
 
-  public void setEndDate(Date endDate) {
-    this.endDate = endDate;
-  }
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
 
-  public Integer getStatus() {
-    return status;
-  }
+    public Date getStartDate() {
+        return startDate;
+    }
 
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
 }
