@@ -2,12 +2,25 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ *用户角色类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class Role implements Serializable {
 
   private static final long serialVersionUID = 9025386170720563666L;
+  /**
+   * 用户角色ID
+   */
   private Integer roleId;
+  /**
+   *用户名称
+   */
   private String roleName;
+  /**
+   * 删除状态
+   */
   private Integer status;
 
 

@@ -3,15 +3,37 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
-
+/**
+ *采购类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class Purchase implements Serializable {
 
   private static final long serialVersionUID = -5046439097768407830L;
+  /**
+   * 采购ID
+   */
   private Integer purchaseId;
+  /**
+   * 每日采购计划ID
+   */
   private Integer everydayPurchasingPlanId;
+  /**
+   * 备注
+   */
   private String remarks;
+  /**
+   * 删除状态
+   */
   private Integer status;
+  /**
+   * 采购时间
+   */
   private Date purchaseDate;
+  /**
+   * 用户表id外键(采购人)
+   */
   private Integer userId;
 
 

@@ -4,48 +4,65 @@ package team.ruike.cim.pojo;
 import java.io.Serializable;
 import java.util.Date;
 
+/**
+ *每日采购计划
+ * @author 张振国
+ * @version 1.0
+ */
 public class EverydayPurchasingPlan implements Serializable {
 
-  private static final long serialVersionUID = -5022604544780534725L;
-  private Integer everydayPurchasingPlanId;
-  private Integer everydayPurchasingPlanNo;
-  private Date everydayPurchasingPlanDate;
-  private Integer status;
+    private static final long serialVersionUID = -5022604544780534725L;
+    /**
+     * id主键自增
+     */
+    private Integer everydayPurchasingPlanId;
+    /**
+     * 采购批次
+     */
+    private Integer everydayPurchasingPlanNo;
+    /**
+     * 采购时间
+     */
+    private Date everydayPurchasingPlanDate;
+    /**
+     * 删除状态
+     */
+    private Integer status;
 
 
-  public Integer getEverydayPurchasingPlanId() {
-    return everydayPurchasingPlanId;
-  }
+    public Integer getEverydayPurchasingPlanId() {
+        return everydayPurchasingPlanId;
+    }
 
-  public void setEverydayPurchasingPlanId(Integer everydayPurchasingPlanId) {
-    this.everydayPurchasingPlanId = everydayPurchasingPlanId;
-  }
-
-
-  public Integer getEverydayPurchasingPlanNo() {
-    return everydayPurchasingPlanNo;
-  }
-
-  public void setEverydayPurchasingPlanNo(Integer everydayPurchasingPlanNo) {
-    this.everydayPurchasingPlanNo = everydayPurchasingPlanNo;
-  }
+    public void setEverydayPurchasingPlanId(Integer everydayPurchasingPlanId) {
+        this.everydayPurchasingPlanId = everydayPurchasingPlanId;
+    }
 
 
-  public Date getEverydayPurchasingPlanDate() {
-    return everydayPurchasingPlanDate;
-  }
+    public Integer getEverydayPurchasingPlanNo() {
+        return everydayPurchasingPlanNo;
+    }
 
-  public void setEverydayPurchasingPlanDate(Date everydayPurchasingPlanDate) {
-    this.everydayPurchasingPlanDate = everydayPurchasingPlanDate;
-  }
+    public void setEverydayPurchasingPlanNo(Integer everydayPurchasingPlanNo) {
+        this.everydayPurchasingPlanNo = everydayPurchasingPlanNo;
+    }
 
 
-  public Integer getStatus() {
-    return status;
-  }
+    public Date getEverydayPurchasingPlanDate() {
+        return everydayPurchasingPlanDate;
+    }
 
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
+    public void setEverydayPurchasingPlanDate(Date everydayPurchasingPlanDate) {
+        this.everydayPurchasingPlanDate = everydayPurchasingPlanDate;
+    }
+
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
 }
