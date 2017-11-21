@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class EquipmentReport {
+public class EquipmentReport implements Serializable {
 
+  private static final long serialVersionUID = -1819529800130114106L;
   private Integer equipmentReportId;
   private Integer equipmentReportReason;
   private String maintenancePlan;

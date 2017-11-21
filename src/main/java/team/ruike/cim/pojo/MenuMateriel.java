@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class MenuMateriel {
+import java.io.Serializable;
 
+public class MenuMateriel implements Serializable {
+
+  private static final long serialVersionUID = -977872690889448044L;
   private Integer menuMaterielId;
   private Integer menuId;
   private Integer materielId;

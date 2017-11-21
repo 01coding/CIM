@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class ProductionLine {
+import java.io.Serializable;
 
+public class ProductionLine implements Serializable {
+
+  private static final long serialVersionUID = -4399658117392350475L;
   private Integer productionLineId;
   private Integer productionLineNo;
   private Integer productionLineState;

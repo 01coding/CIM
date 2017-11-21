@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class TemporaryProductionPlanItem {
+import java.io.Serializable;
 
+public class TemporaryProductionPlanItem implements Serializable {
+
+  private static final long serialVersionUID = -3478873343512159563L;
   private Integer temporaryProductionPlanItemId;
   private Integer menuId;
   private Integer menuNumber;

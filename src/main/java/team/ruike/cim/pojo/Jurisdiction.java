@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class Jurisdiction {
+import java.io.Serializable;
 
+public class Jurisdiction implements Serializable {
+
+  private static final long serialVersionUID = 4347802888183585718L;
   private Integer jurisdictionId;
   private String jurisdictionName;
   private String jurisdictionUrl;

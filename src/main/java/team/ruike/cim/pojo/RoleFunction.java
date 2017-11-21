@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class RoleFunction {
+import java.io.Serializable;
 
+public class RoleFunction implements Serializable {
+
+  private static final long serialVersionUID = 2387468227803471501L;
   private Integer roleFunctionId;
   private Integer roleId;
   private Integer functionId;

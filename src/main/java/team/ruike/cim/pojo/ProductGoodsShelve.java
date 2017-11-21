@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductGoodsShelve {
+public class ProductGoodsShelve implements Serializable {
 
+  private static final long serialVersionUID = -5419830913202750841L;
   private Integer productGoodsShelveId;
   private String productGoodsShelveNo;
   private Integer menuId;

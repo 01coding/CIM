@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class EquipmentType {
+import java.io.Serializable;
 
+public class EquipmentType implements Serializable {
+
+  private static final long serialVersionUID = -8738298441032302623L;
   private Integer equipmentTypeId;
   private String equipmentTypeName;
   private Integer status;

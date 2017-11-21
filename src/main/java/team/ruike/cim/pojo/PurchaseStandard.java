@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class PurchaseStandard {
+import java.io.Serializable;
 
+public class PurchaseStandard implements Serializable {
+
+  private static final long serialVersionUID = -5209798754460400772L;
   private Integer purchaseStandardId;
   private Integer purchaseId;
   private Integer standardAType;

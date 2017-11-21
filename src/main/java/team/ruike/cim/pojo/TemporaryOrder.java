@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TemporaryOrder {
+public class TemporaryOrder implements Serializable {
 
+  private static final long serialVersionUID = 2570650295657728928L;
   private Integer temporaryOrderId;
   private String temporaryOrderNo;
   private Date temporaryOrderEndDate;

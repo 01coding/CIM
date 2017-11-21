@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class MenuState {
+import java.io.Serializable;
 
+public class MenuState implements Serializable {
+
+  private static final long serialVersionUID = 3179068846309159854L;
   private Integer menuStateId;
   private Integer menuStateName;
   private Integer status;

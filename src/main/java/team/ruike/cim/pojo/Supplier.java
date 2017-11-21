@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Supplier {
+public class Supplier implements Serializable {
 
+  private static final long serialVersionUID = -5528870825436579325L;
   private Integer supplierId;
   private String supplierName;
   private String supplierNo;

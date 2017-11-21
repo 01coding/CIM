@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class StagePurchasingPlanTerm {
+import java.io.Serializable;
 
+public class StagePurchasingPlanTerm implements Serializable {
+
+  private static final long serialVersionUID = 2929154474959515565L;
   private Integer stagePurchasingPlanTermId;
   private Integer materielId;
   private Integer materielNumber;

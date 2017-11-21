@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Menu {
+public class Menu implements Serializable {
 
+  private static final long serialVersionUID = -4447100772306943624L;
   private Integer menuId;
   private String menuName;
   private Integer menuNo;

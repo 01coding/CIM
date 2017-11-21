@@ -1,10 +1,11 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ContractProgress {
-
+public class ContractProgress implements Serializable {
+  private static final long serialVersionUID = -3202788285496916399L;
   private Integer contractProgressId;
   private Integer contractProductionDistributionId;
   private String remarks;

@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class ProductionStandard {
+import java.io.Serializable;
 
+public class ProductionStandard implements Serializable {
+
+  private static final long serialVersionUID = -5472308480089470038L;
   private Integer productionStandardId;
   private String productionBatch;
   private Integer standardAType;

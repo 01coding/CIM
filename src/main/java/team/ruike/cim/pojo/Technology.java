@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class Technology {
+import java.io.Serializable;
 
+public class Technology implements Serializable {
+
+  private static final long serialVersionUID = 1121809937090228362L;
   private Integer technologyId;
   private String technologyName;
   private Integer workingId;

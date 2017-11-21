@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductWarehouseOutRegister {
+public class ProductWarehouseOutRegister implements Serializable {
 
+  private static final long serialVersionUID = -8539739381224598056L;
   private Integer productWarehouseOutRegisterId;
   private Date productWarehouseOutRegisterEndDate;
   private Integer userId;

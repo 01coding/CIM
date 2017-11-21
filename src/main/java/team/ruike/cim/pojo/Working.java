@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class Working {
+import java.io.Serializable;
 
+public class Working implements Serializable {
+
+  private static final long serialVersionUID = 6073877080532606188L;
   private Integer workingId;
   private String workingName;
   private Integer status;

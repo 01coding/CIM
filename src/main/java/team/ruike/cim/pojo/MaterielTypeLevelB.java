@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class MaterielTypeLevelB {
+import java.io.Serializable;
 
+public class MaterielTypeLevelB implements Serializable {
+
+  private static final long serialVersionUID = -3632127145415491654L;
   private Integer materielTypeLevelBId;
   private String materielTypeLevelBName;
   private Integer materielTypeLevelAId;

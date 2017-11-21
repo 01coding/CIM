@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class MaterielUnit {
+import java.io.Serializable;
 
+public class MaterielUnit implements Serializable {
+
+  private static final long serialVersionUID = -5578289551297900321L;
   private Integer materielUnitId;
   private String materielUnitName;
   private Integer status;

@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class WarehouseRegion {
+import java.io.Serializable;
 
+public class WarehouseRegion implements Serializable {
+
+  private static final long serialVersionUID = -413071175503456395L;
   private Integer warehouseRegionId;
   private String warehouseRegionNo;
   private Integer materielTypeLevelBId;

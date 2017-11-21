@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class User {
+import java.io.Serializable;
 
+public class User implements Serializable {
+
+  private static final long serialVersionUID = 8683068068593924459L;
   private Integer userId;
   private String userName;
   private String password;

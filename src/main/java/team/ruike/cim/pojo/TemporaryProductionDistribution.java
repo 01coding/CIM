@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TemporaryProductionDistribution {
+public class TemporaryProductionDistribution implements Serializable {
 
+  private static final long serialVersionUID = -7121600245271357479L;
   private Integer temporaryProductionDistributionId;
   private Integer temporaryProductionPlanItemId;
   private Integer workingId;

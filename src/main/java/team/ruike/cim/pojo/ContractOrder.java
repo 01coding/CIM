@@ -1,10 +1,16 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class ContractOrder {
-
+/**
+ * 合同订单类
+ * @author 张振国
+ * @version 1.0
+ */
+public class ContractOrder implements Serializable{
+  private static final long serialVersionUID = 7490050891725847244L;
   private Integer contractOrderId;
   private String contractOrderNo;
   private Date contractOrderEndDate;

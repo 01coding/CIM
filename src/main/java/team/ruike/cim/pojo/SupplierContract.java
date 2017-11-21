@@ -1,10 +1,12 @@
 package team.ruike.cim.pojo;
 
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class SupplierContract {
+public class SupplierContract implements Serializable {
 
+  private static final long serialVersionUID = -3915708383686678545L;
   private Integer supplierContractId;
   private String supplierContractName;
   private Date supplierContractDate;

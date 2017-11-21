@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class EverydayPurchasingPlanTerm {
+import java.io.Serializable;
 
+public class EverydayPurchasingPlanTerm implements Serializable {
+
+  private static final long serialVersionUID = -4849845624266046037L;
   private Integer everydayPurchasingPlanTermId;
   private Integer materielId;
   private Integer materielNumber;

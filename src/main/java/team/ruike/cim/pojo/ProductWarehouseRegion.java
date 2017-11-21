@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class ProductWarehouseRegion {
+import java.io.Serializable;
 
+public class ProductWarehouseRegion implements Serializable {
+
+  private static final long serialVersionUID = -7504917268504276428L;
   private Integer productWarehouseRegionId;
   private String productWarehouseRegionNo;
   private Integer menuTypeId;

@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class Function {
+import java.io.Serializable;
 
+public class Function implements Serializable {
+
+  private static final long serialVersionUID = 372370922270141132L;
   private Integer functionId;
   private String functionName;
   private String functionUrl;

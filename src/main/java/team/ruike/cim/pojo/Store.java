@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class Store {
+import java.io.Serializable;
 
+public class Store implements Serializable {
+
+  private static final long serialVersionUID = -7009722609581777683L;
   private Integer storeId;
   private String storeName;
   private Integer storeType;

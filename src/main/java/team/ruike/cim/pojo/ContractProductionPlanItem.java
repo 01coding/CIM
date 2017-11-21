@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class ContractProductionPlanItem {
+import java.io.Serializable;
 
+public class ContractProductionPlanItem implements Serializable {
+
+  private static final long serialVersionUID = 2705376220563549480L;
   private Integer contractProductionPlanItemId;
   private Integer menuId;
   private Integer menuNumber;

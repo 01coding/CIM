@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class MenuFlow {
+import java.io.Serializable;
 
+public class MenuFlow implements Serializable {
+
+  private static final long serialVersionUID = 8303793683156656287L;
   private Integer menuFlowId;
   private Integer menuMaterielId;
   private Integer workingId;

@@ -1,8 +1,11 @@
 package team.ruike.cim.pojo;
 
 
-public class ProductWarehouseOutRegisterItem {
+import java.io.Serializable;
 
+public class ProductWarehouseOutRegisterItem implements Serializable {
+
+  private static final long serialVersionUID = -6274426992693661592L;
   private Integer productWarehouseOutRegisterItemId;
   private Integer menuId;
   private Integer productGoodsShelveId;
