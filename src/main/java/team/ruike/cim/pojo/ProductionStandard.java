@@ -2,19 +2,53 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ * 生产品控标准类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class ProductionStandard implements Serializable {
 
   private static final long serialVersionUID = -5472308480089470038L;
+  /**
+   * 生产品控标准ID
+   */
   private Integer productionStandardId;
+  /**
+   * 生产批次
+   */
   private String productionBatch;
+  /**
+   * 标准a类型
+   */
   private Integer standardAType;
+  /**
+   * 标准a名称
+   */
   private String standardAName;
+  /**
+   * 标准b类型
+   */
   private Integer standardBType;
+  /**
+   * 标准b名称
+   */
   private String standardBName;
+  /**
+   *  标准c类型
+   */
   private Integer standardCType;
+  /**
+   *  标准c名称
+   */
   private String standardCName;
+  /**
+   * 删除状态
+   */
   private String remarks;
+  /**
+   * 备注
+   */
   private Integer status;
 
 

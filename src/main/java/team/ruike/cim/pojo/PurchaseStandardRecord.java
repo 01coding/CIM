@@ -2,16 +2,41 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ *采购品控评估记录类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class PurchaseStandardRecord implements Serializable {
 
   private static final long serialVersionUID = -668236938594625481L;
+  /**
+   * 采购品控评估记录ID
+   */
   private Integer purchaseStandardRecordId;
+  /**
+   * 标准id
+    */
   private Integer purchaseStandardId;
+  /**
+   * 标准a评分
+   */
   private Integer standardAScore;
+  /**
+   * 标准b评分
+   */
   private Integer standardBScore;
+  /**
+   *标准c评分
+   */
   private Integer standardCScore;
+  /**
+   *结论
+   */
   private String conclusion;
+  /**
+   *删除状态
+   */
   private Integer status;
 
 

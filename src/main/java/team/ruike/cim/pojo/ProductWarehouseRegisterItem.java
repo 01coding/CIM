@@ -2,15 +2,37 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ *成品库入库登记记录项类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class ProductWarehouseRegisterItem implements Serializable {
 
   private static final long serialVersionUID = -6715749602097496720L;
+  /**
+   * 成品库入库登记记录项ID
+   */
   private Integer productWarehouseRegisterItemId;
+  /**
+   * 菜品ID
+   */
   private Integer menuId;
+  /**
+   * 成品货架ID
+   */
   private Integer productGoodsShelveId;
+  /**
+   * 入库数量
+   */
   private Integer menuNumber;
+  /**
+   * 成品入库记录ID
+   */
   private Integer productWarehouseRegisterId;
+  /**
+   * 删除状态
+   */
   private Integer status;
 
 
