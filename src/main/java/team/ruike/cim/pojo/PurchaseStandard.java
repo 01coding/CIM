@@ -2,19 +2,53 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ *采购品控标准类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class PurchaseStandard implements Serializable {
 
   private static final long serialVersionUID = -5209798754460400772L;
+  /**
+   *采购品控标准ID
+   */
   private Integer purchaseStandardId;
+  /**
+   *采购表id外键
+   */
   private Integer purchaseId;
+  /**
+   *标准a类型
+   */
   private Integer standardAType;
+  /**
+   *标准a名称
+   */
   private String standardAName;
+  /**
+   *标准b类型
+   */
   private Integer standardBType;
+  /**
+   *标准b名称
+   */
   private String standardBName;
+  /**
+   *标准c类型
+   */
   private Integer standardCType;
+  /**
+   *标准c名称
+   */
   private String standardCName;
+  /**
+   *备注
+   */
   private String remarks;
+  /**
+   *删除状态
+   */
   private Integer status;
 
 
