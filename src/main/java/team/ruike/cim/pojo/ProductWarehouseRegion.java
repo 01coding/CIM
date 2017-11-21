@@ -2,15 +2,37 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
-
+/**
+ *成品仓库区域表类
+ * @author 王傲祥
+ * @version 1.0
+ */
 public class ProductWarehouseRegion implements Serializable {
 
   private static final long serialVersionUID = -7504917268504276428L;
+  /**
+   * 成品仓库区域表ID
+   */
   private Integer productWarehouseRegionId;
+  /**
+   * 区域编号
+   */
   private String productWarehouseRegionNo;
+  /**
+   * 菜品类型id(规定)
+   */
   private Integer menuTypeId;
+  /**
+   * 备注
+   */
   private String remarks;
+  /**
+   * 删除状态
+   */
   private Integer status;
+  /**
+   * 成品仓库ID
+   */
   private Integer productWarehouseId;
 
 
