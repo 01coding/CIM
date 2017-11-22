@@ -17,25 +17,25 @@ public class Equipment implements Serializable {
      */
     private Integer equipmentId;
     /**
-     * 所属生产线id外键
+     * 所属生产线
      */
-    private Integer productionLineId;
+    private ProductionLine productionLine;
     /**
-     * 所属工序id外键
+     * 所属工序
      */
-    private Integer workingId;
+    private Working working;
     /**
-     * 设备负责人id
+     * 负责人
      */
-    private Integer userId;
+    private User user;
     /**
      * 启用时间
      */
     private Date startDate;
     /**
-     * 设备状态id外键
+     * 设备状态
      */
-    private Integer equipmentTypeId;
+    private EquipmentType equipmentType;
     /**
      *保养周期(天)
      */
@@ -62,33 +62,29 @@ public class Equipment implements Serializable {
         this.equipmentId = equipmentId;
     }
 
-
-    public Integer getProductionLineId() {
-        return productionLineId;
+    public ProductionLine getProductionLine() {
+        return productionLine;
     }
 
-    public void setProductionLineId(Integer productionLineId) {
-        this.productionLineId = productionLineId;
+    public void setProductionLine(ProductionLine productionLine) {
+        this.productionLine = productionLine;
     }
 
-
-    public Integer getWorkingId() {
-        return workingId;
+    public Working getWorking() {
+        return working;
     }
 
-    public void setWorkingId(Integer workingId) {
-        this.workingId = workingId;
+    public void setWorking(Working working) {
+        this.working = working;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public Date getStartDate() {
         return startDate;
@@ -98,15 +94,13 @@ public class Equipment implements Serializable {
         this.startDate = startDate;
     }
 
-
-    public Integer getEquipmentTypeId() {
-        return equipmentTypeId;
+    public EquipmentType getEquipmentType() {
+        return equipmentType;
     }
 
-    public void setEquipmentTypeId(Integer equipmentTypeId) {
-        this.equipmentTypeId = equipmentTypeId;
+    public void setEquipmentType(EquipmentType equipmentType) {
+        this.equipmentType = equipmentType;
     }
-
 
     public Integer getMaintenanceCycle() {
         return maintenanceCycle;

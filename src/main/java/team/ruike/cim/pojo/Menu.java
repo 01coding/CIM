@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 菜谱
@@ -26,9 +27,9 @@ public class Menu implements Serializable {
      */
     private Integer menuNo;
     /**
-     * 菜谱类别id外键
+     * 菜谱类别
      */
-    private Integer menuTypeId;
+    private MenuType menuType;
     /**
      * 净重
      */
@@ -58,9 +59,9 @@ public class Menu implements Serializable {
      */
     private Date menuCreateDate;
     /**
-     * 状态id外键
+     * 菜谱状态
      */
-    private Integer menuStateId;
+    private MenuState menuState;
     /**
      * 发布时间
      */
@@ -73,7 +74,18 @@ public class Menu implements Serializable {
      * 备注
      */
     private String menuRemarks;
+    /**
+     * 菜品物料关系类集合
+     */
+    private List<MenuMateriel> menuMaterielList;
 
+    public List<MenuMateriel> getMenuMaterielList() {
+        return menuMaterielList;
+    }
+
+    public void setMenuMaterielList(List<MenuMateriel> menuMaterielList) {
+        this.menuMaterielList = menuMaterielList;
+    }
 
     public Integer getMenuId() {
         return menuId;
@@ -100,16 +112,6 @@ public class Menu implements Serializable {
     public void setMenuNo(Integer menuNo) {
         this.menuNo = menuNo;
     }
-
-
-    public Integer getMenuTypeId() {
-        return menuTypeId;
-    }
-
-    public void setMenuTypeId(Integer menuTypeId) {
-        this.menuTypeId = menuTypeId;
-    }
-
 
     public Double getMenuWeight() {
         return menuWeight;
@@ -173,16 +175,6 @@ public class Menu implements Serializable {
         this.menuCreateDate = menuCreateDate;
     }
 
-
-    public Integer getMenuStateId() {
-        return menuStateId;
-    }
-
-    public void setMenuStateId(Integer menuStateId) {
-        this.menuStateId = menuStateId;
-    }
-
-
     public Date getMenuReleaseDate() {
         return menuReleaseDate;
     }
@@ -209,4 +201,19 @@ public class Menu implements Serializable {
         this.menuRemarks = menuRemarks;
     }
 
+    public MenuType getMenuType() {
+        return menuType;
+    }
+
+    public void setMenuType(MenuType menuType) {
+        this.menuType = menuType;
+    }
+
+    public MenuState getMenuState() {
+        return menuState;
+    }
+
+    public void setMenuState(MenuState menuState) {
+        this.menuState = menuState;
+    }
 }

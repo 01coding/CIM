@@ -15,9 +15,9 @@ public class PurchaseStandard implements Serializable {
    */
   private Integer purchaseStandardId;
   /**
-   *采购表id外键
+   *采购表外键
    */
-  private Integer purchaseId;
+  private Purchase purchaseId;
   /**
    *标准a类型
    */
@@ -60,15 +60,13 @@ public class PurchaseStandard implements Serializable {
     this.purchaseStandardId = purchaseStandardId;
   }
 
-
-  public Integer getPurchaseId() {
+  public Purchase getPurchaseId() {
     return purchaseId;
   }
 
-  public void setPurchaseId(Integer purchaseId) {
+  public void setPurchaseId(Purchase purchaseId) {
     this.purchaseId = purchaseId;
   }
-
 
   public Integer getStandardAType() {
     return standardAType;

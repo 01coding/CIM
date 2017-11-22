@@ -2,6 +2,8 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
+
 /**
  * 成品仓库类
  * @author 王傲祥
@@ -26,7 +28,10 @@ public class ProductWarehouse implements Serializable {
    * 删除状态
    */
   private Integer status;
-
+  /**
+   * 成品仓库区域类集合
+   */
+  private List<ProductGoodsShelve> productGoodsShelveList;
 
   public Integer getProductWarehouseId() {
     return productWarehouseId;
@@ -63,4 +68,11 @@ public class ProductWarehouse implements Serializable {
     this.status = status;
   }
 
+  public List<ProductGoodsShelve> getProductGoodsShelveList() {
+    return productGoodsShelveList;
+  }
+
+  public void setProductGoodsShelveList(List<ProductGoodsShelve> productGoodsShelveList) {
+    this.productGoodsShelveList = productGoodsShelveList;
+  }
 }

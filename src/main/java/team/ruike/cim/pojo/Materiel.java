@@ -20,13 +20,13 @@ public class Materiel implements Serializable {
      */
     private String materielName;
     /**
-     * 类别二级分类id外键
+     * 类别二级分类
      */
-    private Integer materielTypeLevelBId;
+    private MaterielTypeLevelB materielTypeLevelB;
     /**
-     * 单位id外键
+     * 单位
      */
-    private Integer materielUnitId;
+    private MaterielUnit materielUnit;
     /**
      * 出成率(0-1)
      */
@@ -66,24 +66,21 @@ public class Materiel implements Serializable {
         this.materielName = materielName;
     }
 
-
-    public Integer getMaterielTypeLevelBId() {
-        return materielTypeLevelBId;
+    public MaterielTypeLevelB getMaterielTypeLevelB() {
+        return materielTypeLevelB;
     }
 
-    public void setMaterielTypeLevelBId(Integer materielTypeLevelBId) {
-        this.materielTypeLevelBId = materielTypeLevelBId;
+    public void setMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        this.materielTypeLevelB = materielTypeLevelB;
     }
 
-
-    public Integer getMaterielUnitId() {
-        return materielUnitId;
+    public MaterielUnit getMaterielUnit() {
+        return materielUnit;
     }
 
-    public void setMaterielUnitId(Integer materielUnitId) {
-        this.materielUnitId = materielUnitId;
+    public void setMaterielUnit(MaterielUnit materielUnit) {
+        this.materielUnit = materielUnit;
     }
-
 
     public Double getMaterielYield() {
         return materielYield;

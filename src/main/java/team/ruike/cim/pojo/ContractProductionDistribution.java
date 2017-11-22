@@ -17,17 +17,17 @@ public class ContractProductionDistribution implements Serializable {
      */
     private Integer contractProductionDistributionId;
     /**
-     * 计划订单项id
+     * 合同计划订单项类
      */
-    private Integer contractProductionPlanItemId;
+    private ContractProductionPlanItem contractProductionPlanItem;
     /**
-     * 工序表id
+     * 工序实体类
      */
-    private Integer workingId;
+    private Working working;
     /**
-     * 用户表id(工序负责人)
+     * 用户类
      */
-    private Integer userId;
+    private User user;
     /**
      * 预计生产开始时间
      */
@@ -43,7 +43,7 @@ public class ContractProductionDistribution implements Serializable {
     /**
      * 生产线id外键
      */
-    private Integer productionLineId;
+    private ProductionLine productionLine;
     /**
      * 备注
      */
@@ -57,7 +57,6 @@ public class ContractProductionDistribution implements Serializable {
      */
     private Integer nextWorkingNumber;
 
-
     public Integer getContractProductionDistributionId() {
         return contractProductionDistributionId;
     }
@@ -66,33 +65,29 @@ public class ContractProductionDistribution implements Serializable {
         this.contractProductionDistributionId = contractProductionDistributionId;
     }
 
-
-    public Integer getContractProductionPlanItemId() {
-        return contractProductionPlanItemId;
+    public ContractProductionPlanItem getContractProductionPlanItem() {
+        return contractProductionPlanItem;
     }
 
-    public void setContractProductionPlanItemId(Integer contractProductionPlanItemId) {
-        this.contractProductionPlanItemId = contractProductionPlanItemId;
+    public void setContractProductionPlanItem(ContractProductionPlanItem contractProductionPlanItem) {
+        this.contractProductionPlanItem = contractProductionPlanItem;
     }
 
-
-    public Integer getWorkingId() {
-        return workingId;
+    public Working getWorking() {
+        return working;
     }
 
-    public void setWorkingId(Integer workingId) {
-        this.workingId = workingId;
+    public void setWorking(Working working) {
+        this.working = working;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public Date getStartDate() {
         return startDate;
@@ -102,7 +97,6 @@ public class ContractProductionDistribution implements Serializable {
         this.startDate = startDate;
     }
 
-
     public Date getEndDate() {
         return endDate;
     }
@@ -110,7 +104,6 @@ public class ContractProductionDistribution implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
 
     public Integer getPeopleNumber() {
         return peopleNumber;
@@ -120,15 +113,13 @@ public class ContractProductionDistribution implements Serializable {
         this.peopleNumber = peopleNumber;
     }
 
-
-    public Integer getProductionLineId() {
-        return productionLineId;
+    public ProductionLine getProductionLine() {
+        return productionLine;
     }
 
-    public void setProductionLineId(Integer productionLineId) {
-        this.productionLineId = productionLineId;
+    public void setProductionLine(ProductionLine productionLine) {
+        this.productionLine = productionLine;
     }
-
 
     public String getRemarks() {
         return remarks;
@@ -138,7 +129,6 @@ public class ContractProductionDistribution implements Serializable {
         this.remarks = remarks;
     }
 
-
     public Integer getStatus() {
         return status;
     }
@@ -147,7 +137,6 @@ public class ContractProductionDistribution implements Serializable {
         this.status = status;
     }
 
-
     public Integer getNextWorkingNumber() {
         return nextWorkingNumber;
     }
@@ -155,5 +144,4 @@ public class ContractProductionDistribution implements Serializable {
     public void setNextWorkingNumber(Integer nextWorkingNumber) {
         this.nextWorkingNumber = nextWorkingNumber;
     }
-
 }

@@ -21,13 +21,13 @@ public class MenuFlow implements Serializable {
      */
     private Integer menuMaterielId;
     /**
-     * 工序表id外键
+     * 工序
      */
-    private Integer workingId;
+    private Working working;
     /**
-     * 工艺表id外键
+     * 工艺表
      */
-    private Integer technologyId;
+    private Technology technology;
     /**
      * 描述
      */
@@ -63,24 +63,21 @@ public class MenuFlow implements Serializable {
         this.menuMaterielId = menuMaterielId;
     }
 
-
-    public Integer getWorkingId() {
-        return workingId;
+    public Working getWorking() {
+        return working;
     }
 
-    public void setWorkingId(Integer workingId) {
-        this.workingId = workingId;
+    public void setWorking(Working working) {
+        this.working = working;
     }
 
-
-    public Integer getTechnologyId() {
-        return technologyId;
+    public Technology getTechnology() {
+        return technology;
     }
 
-    public void setTechnologyId(Integer technologyId) {
-        this.technologyId = technologyId;
+    public void setTechnology(Technology technology) {
+        this.technology = technology;
     }
-
 
     public String getMenuFlowDescribe() {
         return menuFlowDescribe;

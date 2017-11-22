@@ -22,9 +22,9 @@ public class GoodsShelve implements Serializable {
      */
     private String goodsShelveNo;
     /**
-     * 当前所放物料外键
+     * 当前所放物料
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
      * 当前数量
      */
@@ -38,9 +38,9 @@ public class GoodsShelve implements Serializable {
      */
     private Integer status;
     /**
-     * 仓库区域表外键
+     * 所属仓库区域
      */
-    private Integer warehouseRegionId;
+    private WarehouseRegion warehouseRegion;
 
 
     public Integer getGoodsShelveId() {
@@ -58,15 +58,6 @@ public class GoodsShelve implements Serializable {
 
     public void setGoodsShelveNo(String goodsShelveNo) {
         this.goodsShelveNo = goodsShelveNo;
-    }
-
-
-    public Integer getMaterielId() {
-        return materielId;
-    }
-
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
     }
 
 
@@ -96,13 +87,19 @@ public class GoodsShelve implements Serializable {
         this.status = status;
     }
 
-
-    public Integer getWarehouseRegionId() {
-        return warehouseRegionId;
+    public Materiel getMateriel() {
+        return materiel;
     }
 
-    public void setWarehouseRegionId(Integer warehouseRegionId) {
-        this.warehouseRegionId = warehouseRegionId;
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
 
+    public WarehouseRegion getWarehouseRegion() {
+        return warehouseRegion;
+    }
+
+    public void setWarehouseRegion(WarehouseRegion warehouseRegion) {
+        this.warehouseRegion = warehouseRegion;
+    }
 }

@@ -2,6 +2,8 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
+
 /**
  *成品仓库区域表类
  * @author 王傲祥
@@ -19,9 +21,9 @@ public class ProductWarehouseRegion implements Serializable {
    */
   private String productWarehouseRegionNo;
   /**
-   * 菜品类型id(规定)
+   * 菜品类型
    */
-  private Integer menuTypeId;
+  private MenuType menuType;
   /**
    * 备注
    */
@@ -31,9 +33,13 @@ public class ProductWarehouseRegion implements Serializable {
    */
   private Integer status;
   /**
-   * 成品仓库ID
+   * 成品仓库
    */
-  private Integer productWarehouseId;
+  private ProductWarehouse productWarehouse;
+  /**
+   * 成品仓库货架类集合
+   */
+  private List<ProductGoodsShelve> productGoodsShelveList;
 
 
   public Integer getProductWarehouseRegionId() {
@@ -53,16 +59,6 @@ public class ProductWarehouseRegion implements Serializable {
     this.productWarehouseRegionNo = productWarehouseRegionNo;
   }
 
-
-  public Integer getMenuTypeId() {
-    return menuTypeId;
-  }
-
-  public void setMenuTypeId(Integer menuTypeId) {
-    this.menuTypeId = menuTypeId;
-  }
-
-
   public String getRemarks() {
     return remarks;
   }
@@ -80,13 +76,27 @@ public class ProductWarehouseRegion implements Serializable {
     this.status = status;
   }
 
-
-  public Integer getProductWarehouseId() {
-    return productWarehouseId;
+  public MenuType getMenuType() {
+    return menuType;
   }
 
-  public void setProductWarehouseId(Integer productWarehouseId) {
-    this.productWarehouseId = productWarehouseId;
+  public void setMenuType(MenuType menuType) {
+    this.menuType = menuType;
   }
 
+  public ProductWarehouse getProductWarehouse() {
+    return productWarehouse;
+  }
+
+  public void setProductWarehouse(ProductWarehouse productWarehouse) {
+    this.productWarehouse = productWarehouse;
+  }
+
+  public List<ProductGoodsShelve> getProductGoodsShelveList() {
+    return productGoodsShelveList;
+  }
+
+  public void setProductGoodsShelveList(List<ProductGoodsShelve> productGoodsShelveList) {
+    this.productGoodsShelveList = productGoodsShelveList;
+  }
 }
