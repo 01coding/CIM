@@ -5,6 +5,8 @@ import java.io.Serializable;
 
 
 /**
+ * 工序表
+ *
  * @author 孙天奇
  * @version 1.0
  */

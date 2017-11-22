@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="team.ruike.cim.dao.WarehouseOutRegisterItemDao">
+    <insert id="add" parameterType="warehouseOutRegisterItem">
+
+    </insert>
+    <update id="update" parameterType="warehouseOutRegisterItem">
+        
+    </update>
+    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
+    <select id="select" resultMap="">
+
+    </select>
+    <select id="selectCount" resultType="int" parameterType="warehouseOutRegisterItem">
+
+    </select>
+    <select id="selectById" parameterType="int" resultMap="">
+
+    </select>
+</mapper>

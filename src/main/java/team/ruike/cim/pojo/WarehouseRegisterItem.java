@@ -4,6 +4,8 @@ package team.ruike.cim.pojo;
 import java.io.Serializable;
 
 /**
+ * 入库登记记录项
+ *
  * @author 孙天奇
  * @version 1.0
  */

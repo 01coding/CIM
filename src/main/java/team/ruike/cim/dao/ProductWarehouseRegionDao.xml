@@ -2,18 +2,17 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ruike.cim.dao.ContractOrderDao">
-    <insert id="add" parameterType="contractOrder">
+<mapper namespace="team.ruike.cim.dao.ProductWarehouseRegionDao">
+    <insert id="add" parameterType="productWarehouseRegion">
 
     </insert>
-    <update id="update" parameterType="contractOrder">
+    <update id="update" parameterType="productWarehouseRegion">
         
     </update>
-
     <select id="select" resultMap="">
 
     </select>
-    <select id="selectCount" resultType="int" parameterType="contractOrder">
+    <select id="selectCount" resultType="int" parameterType="productWarehouseRegion">
 
     </select>
     <select id="selectById" parameterType="int" resultMap="">
