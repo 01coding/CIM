@@ -23,7 +23,7 @@ public class Technology implements Serializable {
     /**
      * 预设工序
      */
-    private Integer workingId;
+    private Working working;
     /**
      * 状态
      */
@@ -47,15 +47,13 @@ public class Technology implements Serializable {
         this.technologyName = technologyName;
     }
 
-
-    public Integer getWorkingId() {
-        return workingId;
+    public Working getWorking() {
+        return working;
     }
 
-    public void setWorkingId(Integer workingId) {
-        this.workingId = workingId;
+    public void setWorking(Working working) {
+        this.working = working;
     }
-
 
     public Integer getStatus() {
         return status;

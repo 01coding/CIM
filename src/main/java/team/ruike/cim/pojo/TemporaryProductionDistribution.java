@@ -18,17 +18,17 @@ public class TemporaryProductionDistribution implements Serializable {
      */
     private Integer temporaryProductionDistributionId;
     /**
-     * 临时订单项id
+     * 临时生产订单项
      */
-    private Integer temporaryProductionPlanItemId;
+    private TemporaryProductionPlanItem temporaryProductionPlanItem;
     /**
-     * 工序表id
+     * 工序表
      */
-    private Integer workingId;
+    private Working working;
     /**
      * 工序负责人
      */
-    private Integer userId;
+    private User user;
     /**
      * 配置人数
      */
@@ -36,7 +36,7 @@ public class TemporaryProductionDistribution implements Serializable {
     /**
      * 生产线id外键
      */
-    private Integer productionLineId;
+    private ProductionLine productionLine;
     /**
      * 备注
      */
@@ -67,33 +67,29 @@ public class TemporaryProductionDistribution implements Serializable {
         this.temporaryProductionDistributionId = temporaryProductionDistributionId;
     }
 
-
-    public Integer getTemporaryProductionPlanItemId() {
-        return temporaryProductionPlanItemId;
+    public TemporaryProductionPlanItem getTemporaryProductionPlanItem() {
+        return temporaryProductionPlanItem;
     }
 
-    public void setTemporaryProductionPlanItemId(Integer temporaryProductionPlanItemId) {
-        this.temporaryProductionPlanItemId = temporaryProductionPlanItemId;
+    public void setTemporaryProductionPlanItem(TemporaryProductionPlanItem temporaryProductionPlanItem) {
+        this.temporaryProductionPlanItem = temporaryProductionPlanItem;
     }
 
-
-    public Integer getWorkingId() {
-        return workingId;
+    public Working getWorking() {
+        return working;
     }
 
-    public void setWorkingId(Integer workingId) {
-        this.workingId = workingId;
+    public void setWorking(Working working) {
+        this.working = working;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public Integer getPeopleNumber() {
         return peopleNumber;
@@ -103,15 +99,13 @@ public class TemporaryProductionDistribution implements Serializable {
         this.peopleNumber = peopleNumber;
     }
 
-
-    public Integer getProductionLineId() {
-        return productionLineId;
+    public ProductionLine getProductionLine() {
+        return productionLine;
     }
 
-    public void setProductionLineId(Integer productionLineId) {
-        this.productionLineId = productionLineId;
+    public void setProductionLine(ProductionLine productionLine) {
+        this.productionLine = productionLine;
     }
-
 
     public String getRemarks() {
         return remarks;
@@ -121,7 +115,6 @@ public class TemporaryProductionDistribution implements Serializable {
         this.remarks = remarks;
     }
 
-
     public Integer getStatus() {
         return status;
     }
@@ -129,7 +122,6 @@ public class TemporaryProductionDistribution implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
 
     public Integer getNextWorkingNumber() {
         return nextWorkingNumber;
@@ -139,7 +131,6 @@ public class TemporaryProductionDistribution implements Serializable {
         this.nextWorkingNumber = nextWorkingNumber;
     }
 
-
     public Date getStartDate() {
         return startDate;
     }
@@ -148,7 +139,6 @@ public class TemporaryProductionDistribution implements Serializable {
         this.startDate = startDate;
     }
 
-
     public Date getEndDate() {
         return endDate;
     }
@@ -156,5 +146,4 @@ public class TemporaryProductionDistribution implements Serializable {
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
-
 }

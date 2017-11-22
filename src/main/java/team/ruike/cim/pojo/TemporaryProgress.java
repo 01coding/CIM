@@ -18,9 +18,9 @@ public class TemporaryProgress implements Serializable {
      */
     private Integer temporaryProgressId;
     /**
-     * 临时订单生产任务分配id
+     * 临时订单生产任务分配
      */
-    private Integer temporaryProductionDistributionId;
+    private TemporaryProductionDistribution temporaryProductionDistribution;
     /**
      * 备注(必填)
      */
@@ -46,16 +46,6 @@ public class TemporaryProgress implements Serializable {
     public void setTemporaryProgressId(Integer temporaryProgressId) {
         this.temporaryProgressId = temporaryProgressId;
     }
-
-
-    public Integer getTemporaryProductionDistributionId() {
-        return temporaryProductionDistributionId;
-    }
-
-    public void setTemporaryProductionDistributionId(Integer temporaryProductionDistributionId) {
-        this.temporaryProductionDistributionId = temporaryProductionDistributionId;
-    }
-
 
     public String getRemarks() {
         return remarks;
@@ -92,4 +82,11 @@ public class TemporaryProgress implements Serializable {
         this.status = status;
     }
 
+    public TemporaryProductionDistribution getTemporaryProductionDistribution() {
+        return temporaryProductionDistribution;
+    }
+
+    public void setTemporaryProductionDistribution(TemporaryProductionDistribution temporaryProductionDistribution) {
+        this.temporaryProductionDistribution = temporaryProductionDistribution;
+    }
 }

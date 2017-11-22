@@ -17,13 +17,13 @@ public class WarehouseRegisterItem implements Serializable {
      */
     private Integer warehouseRegisterItemId;
     /**
-     * 物料id外键
+     * 物料外键
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
      * 货架id
      */
-    private Integer goodsShelveId;
+    private GoodsShelve goodsShelve;
     /**
      * 入库数量
      */
@@ -31,7 +31,7 @@ public class WarehouseRegisterItem implements Serializable {
     /**
      * 入库记录id外键
      */
-    private Integer warehouseRegisterId;
+    private WarehouseRegister warehouseRegister;
     /**
      * 入库登记记录项状态
      */
@@ -46,24 +46,20 @@ public class WarehouseRegisterItem implements Serializable {
         this.warehouseRegisterItemId = warehouseRegisterItemId;
     }
 
-
-    public Integer getMaterielId() {
-        return materielId;
+    public Materiel getMateriel() {
+        return materiel;
+    }
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
 
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
+    public GoodsShelve getGoodsShelve() {
+        return goodsShelve;
     }
 
-
-    public Integer getGoodsShelveId() {
-        return goodsShelveId;
+    public void setGoodsShelve(GoodsShelve goodsShelve) {
+        this.goodsShelve = goodsShelve;
     }
-
-    public void setGoodsShelveId(Integer goodsShelveId) {
-        this.goodsShelveId = goodsShelveId;
-    }
-
 
     public Integer getMaterielNumber() {
         return materielNumber;
@@ -73,15 +69,13 @@ public class WarehouseRegisterItem implements Serializable {
         this.materielNumber = materielNumber;
     }
 
-
-    public Integer getWarehouseRegisterId() {
-        return warehouseRegisterId;
+    public WarehouseRegister getWarehouseRegister() {
+        return warehouseRegister;
     }
 
-    public void setWarehouseRegisterId(Integer warehouseRegisterId) {
-        this.warehouseRegisterId = warehouseRegisterId;
+    public void setWarehouseRegister(WarehouseRegister warehouseRegister) {
+        this.warehouseRegister = warehouseRegister;
     }
-
 
     public Integer getStatus() {
         return status;
@@ -90,5 +84,4 @@ public class WarehouseRegisterItem implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
 }

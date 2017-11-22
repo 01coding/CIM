@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 出库登记表
@@ -22,14 +23,17 @@ public class WarehouseOutRegister implements Serializable {
      */
     private Date warehouseOutRegisterEndDate;
     /**
-     * 用户表id外键领料人
+     * 用户表外键领料人
      */
-    private Integer userId;
+    private User user;
     /**
-     * 状态
+     * 删除状态
      */
     private Integer status;
-
+    /**
+     * 出库领料项集合
+     */
+    private List<WarehouseOutRegisterItem> warehouseOutRegisterItemList;
 
     public Integer getWarehouseOutRegisterId() {
         return warehouseOutRegisterId;
@@ -48,15 +52,13 @@ public class WarehouseOutRegister implements Serializable {
         this.warehouseOutRegisterEndDate = warehouseOutRegisterEndDate;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public Integer getStatus() {
         return status;
@@ -66,4 +68,11 @@ public class WarehouseOutRegister implements Serializable {
         this.status = status;
     }
 
+    public List<WarehouseOutRegisterItem> getWarehouseOutRegisterItemList() {
+        return warehouseOutRegisterItemList;
+    }
+
+    public void setWarehouseOutRegisterItemList(List<WarehouseOutRegisterItem> warehouseOutRegisterItemList) {
+        this.warehouseOutRegisterItemList = warehouseOutRegisterItemList;
+    }
 }

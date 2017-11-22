@@ -2,6 +2,7 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 用户表
@@ -32,7 +33,10 @@ public class User implements Serializable {
      * 状态
      */
     private Integer status;
-
+    /**
+     * 用户所拥有的角色
+     */
+    private List<Role> roles;
 
     public Integer getUserId() {
         return userId;
@@ -78,4 +82,10 @@ public class User implements Serializable {
         this.status = status;
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

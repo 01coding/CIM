@@ -23,7 +23,7 @@ public class WarehouseRegion implements Serializable {
     /**
      * 物料二级分类(规定)外键
      */
-    private Integer materielTypeLevelBId;
+    private MaterielTypeLevelB materielTypeLevelB;
     /**
      * 备注
      */
@@ -33,9 +33,9 @@ public class WarehouseRegion implements Serializable {
      */
     private String status;
     /**
-     * 仓库id外键
+     * 仓库外键
      */
-    private Integer warehouseId;
+    private Warehouse warehouse;
 
 
     public Integer getWarehouseRegionId() {
@@ -55,15 +55,21 @@ public class WarehouseRegion implements Serializable {
         this.warehouseRegionNo = warehouseRegionNo;
     }
 
-
-    public Integer getMaterielTypeLevelBId() {
-        return materielTypeLevelBId;
+    public MaterielTypeLevelB getMaterielTypeLevelB() {
+        return materielTypeLevelB;
     }
 
-    public void setMaterielTypeLevelBId(Integer materielTypeLevelBId) {
-        this.materielTypeLevelBId = materielTypeLevelBId;
+    public void setMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        this.materielTypeLevelB = materielTypeLevelB;
     }
 
+    public Warehouse getWarehouse() {
+        return warehouse;
+    }
+
+    public void setWarehouse(Warehouse warehouse) {
+        this.warehouse = warehouse;
+    }
 
     public String getRemarks() {
         return remarks;
@@ -81,14 +87,5 @@ public class WarehouseRegion implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-
-
-    public Integer getWarehouseId() {
-        return warehouseId;
-    }
-
-    public void setWarehouseId(Integer warehouseId) {
-        this.warehouseId = warehouseId;
-    }
-
+    
 }

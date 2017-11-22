@@ -34,9 +34,9 @@ public class Supplier implements Serializable {
      */
     private String supplierCharterImage;
     /**
-     * 物料二级类型id(供货类型)
+     * 物料二级类型(供货类型)
      */
-    private Integer materielTypeLevelBId;
+    private MaterielTypeLevelB materielTypeLevelB;
     /**
      * 地址
      */
@@ -107,15 +107,13 @@ public class Supplier implements Serializable {
         this.supplierCharterImage = supplierCharterImage;
     }
 
-
-    public Integer getMaterielTypeLevelBId() {
-        return materielTypeLevelBId;
+    public MaterielTypeLevelB getMaterielTypeLevelB() {
+        return materielTypeLevelB;
     }
 
-    public void setMaterielTypeLevelBId(Integer materielTypeLevelBId) {
-        this.materielTypeLevelBId = materielTypeLevelBId;
+    public void setMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        this.materielTypeLevelB = materielTypeLevelB;
     }
-
 
     public String getSupplierAddress() {
         return supplierAddress;

@@ -2,6 +2,7 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 仓库表
@@ -32,7 +33,10 @@ public class Warehouse implements Serializable {
      * 仓库管理员用户表外键
      */
     private Integer userId;
-
+    /**
+     * 仓库所拥有的区域集合
+     */
+    private List<WarehouseRegion> warehouseRegionList;
 
     public Integer getWarehouseId() {
         return warehouseId;
@@ -78,4 +82,11 @@ public class Warehouse implements Serializable {
         this.userId = userId;
     }
 
+    public List<WarehouseRegion> getWarehouseRegionList() {
+        return warehouseRegionList;
+    }
+
+    public void setWarehouseRegionList(List<WarehouseRegion> warehouseRegionList) {
+        this.warehouseRegionList = warehouseRegionList;
+    }
 }

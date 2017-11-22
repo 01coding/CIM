@@ -19,7 +19,7 @@ public class TemporaryProductionPlanItem implements Serializable {
     /**
      * 菜品id外键
      */
-    private Integer menuId;
+    private Menu menu;
     /**
      * 菜品数量
      */
@@ -41,16 +41,6 @@ public class TemporaryProductionPlanItem implements Serializable {
     public void setTemporaryProductionPlanItemId(Integer temporaryProductionPlanItemId) {
         this.temporaryProductionPlanItemId = temporaryProductionPlanItemId;
     }
-
-
-    public Integer getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
-    }
-
 
     public Integer getMenuNumber() {
         return menuNumber;
@@ -78,4 +68,11 @@ public class TemporaryProductionPlanItem implements Serializable {
         this.status = status;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
 }

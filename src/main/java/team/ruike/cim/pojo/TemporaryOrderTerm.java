@@ -13,13 +13,13 @@ public class TemporaryOrderTerm implements Serializable {
 
     private static final long serialVersionUID = 2774828252848847150L;
     /**
-     * 临时订单项id
+     * 临时订单项
      */
     private Integer temporaryOrderTermId;
     /**
-     * 菜品id外键
+     * 菜品外键
      */
-    private Integer menuId;
+    private Menu menu;
     /**
      * 菜品数量
      */
@@ -37,9 +37,9 @@ public class TemporaryOrderTerm implements Serializable {
      */
     private String productBatch;
     /**
-     * 临时订单Id外键
+     * 临时订单外键
      */
-    private Integer temporaryOrderId;
+    private TemporaryOrder temporaryOrder;
     /**
      * 状态
      */
@@ -53,16 +53,6 @@ public class TemporaryOrderTerm implements Serializable {
     public void setTemporaryOrderTermId(Integer temporaryOrderTermId) {
         this.temporaryOrderTermId = temporaryOrderTermId;
     }
-
-
-    public Integer getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
-    }
-
 
     public Integer getMenuNumber() {
         return menuNumber;
@@ -99,16 +89,6 @@ public class TemporaryOrderTerm implements Serializable {
         this.productBatch = productBatch;
     }
 
-
-    public Integer getTemporaryOrderId() {
-        return temporaryOrderId;
-    }
-
-    public void setTemporaryOrderId(Integer temporaryOrderId) {
-        this.temporaryOrderId = temporaryOrderId;
-    }
-
-
     public Integer getStatus() {
         return status;
     }
@@ -117,4 +97,19 @@ public class TemporaryOrderTerm implements Serializable {
         this.status = status;
     }
 
+    public Menu getMenu() {
+        return menu;
+    }
+
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+
+    public TemporaryOrder getTemporaryOrder() {
+        return temporaryOrder;
+    }
+
+    public void setTemporaryOrder(TemporaryOrder temporaryOrder) {
+        this.temporaryOrder = temporaryOrder;
+    }
 }

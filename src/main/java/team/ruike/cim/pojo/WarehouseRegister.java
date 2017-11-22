@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 入库登记表
@@ -18,9 +19,9 @@ public class WarehouseRegister implements Serializable {
      */
     private Integer warehouseRegisterId;
     /**
-     * 每日采购计划id外键
+     * 每日采购计划外键
      */
-    private Integer everydayPurchasingPlanId;
+    private EverydayPurchasingPlan everydayPurchasingPlan;
     /**
      * 入库时间
      */
@@ -28,12 +29,15 @@ public class WarehouseRegister implements Serializable {
     /**
      * 入库人用户表外键
      */
-    private Integer userId;
+    private User user;
     /**
      * 状态
      */
     private Integer status;
-
+    /**
+     * 入库记录项集合
+     */
+    private List<WarehouseRegisterItem> warehouseRegisterItemList;
 
     public Integer getWarehouseRegisterId() {
         return warehouseRegisterId;
@@ -43,16 +47,6 @@ public class WarehouseRegister implements Serializable {
         this.warehouseRegisterId = warehouseRegisterId;
     }
 
-
-    public Integer getEverydayPurchasingPlanId() {
-        return everydayPurchasingPlanId;
-    }
-
-    public void setEverydayPurchasingPlanId(Integer everydayPurchasingPlanId) {
-        this.everydayPurchasingPlanId = everydayPurchasingPlanId;
-    }
-
-
     public Date getWarehouseRegisterDate() {
         return warehouseRegisterDate;
     }
@@ -60,17 +54,6 @@ public class WarehouseRegister implements Serializable {
     public void setWarehouseRegisterDate(Date warehouseRegisterDate) {
         this.warehouseRegisterDate = warehouseRegisterDate;
     }
-
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-
     public Integer getStatus() {
         return status;
     }
@@ -79,4 +62,27 @@ public class WarehouseRegister implements Serializable {
         this.status = status;
     }
 
+    public EverydayPurchasingPlan getEverydayPurchasingPlan() {
+        return everydayPurchasingPlan;
+    }
+
+    public void setEverydayPurchasingPlan(EverydayPurchasingPlan everydayPurchasingPlan) {
+        this.everydayPurchasingPlan = everydayPurchasingPlan;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<WarehouseRegisterItem> getWarehouseRegisterItemList() {
+        return warehouseRegisterItemList;
+    }
+
+    public void setWarehouseRegisterItemList(List<WarehouseRegisterItem> warehouseRegisterItemList) {
+        this.warehouseRegisterItemList = warehouseRegisterItemList;
+    }
 }

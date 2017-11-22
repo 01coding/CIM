@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 临时订单
@@ -26,9 +27,9 @@ public class TemporaryOrder implements Serializable {
      */
     private Date temporaryOrderEndDate;
     /**
-     * 状态id外键
+     * 状态外键
      */
-    private Integer temporaryOrderStateId;
+    private TemporaryOrderState temporaryOrderState;
     /**
      * 下单时间
      */
@@ -42,14 +43,17 @@ public class TemporaryOrder implements Serializable {
      */
     private Integer storeId;
     /**
-     * 用户表id(确认人)
+     * 用户表(确认人)
      */
-    private Integer userId;
+    private User user;
     /**
-     * 状态
+     * 删除状态
      */
     private Integer status;
-
+    /**
+     * 临时订单项集合
+     */
+    private List<TemporaryOrderTerm> temporaryOrderTerms;
 
     public Integer getTemporaryOrderId() {
         return temporaryOrderId;
@@ -77,16 +81,6 @@ public class TemporaryOrder implements Serializable {
         this.temporaryOrderEndDate = temporaryOrderEndDate;
     }
 
-
-    public Integer getTemporaryOrderStateId() {
-        return temporaryOrderStateId;
-    }
-
-    public void setTemporaryOrderStateId(Integer temporaryOrderStateId) {
-        this.temporaryOrderStateId = temporaryOrderStateId;
-    }
-
-
     public Date getTemporaryOrderStartDate() {
         return temporaryOrderStartDate;
     }
@@ -113,22 +107,36 @@ public class TemporaryOrder implements Serializable {
         this.storeId = storeId;
     }
 
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-
     public Integer getStatus() {
         return status;
     }
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public TemporaryOrderState getTemporaryOrderState() {
+        return temporaryOrderState;
+    }
+
+    public void setTemporaryOrderState(TemporaryOrderState temporaryOrderState) {
+        this.temporaryOrderState = temporaryOrderState;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public List<TemporaryOrderTerm> getTemporaryOrderTerms() {
+        return temporaryOrderTerms;
+    }
+
+    public void setTemporaryOrderTerms(List<TemporaryOrderTerm> temporaryOrderTerms) {
+        this.temporaryOrderTerms = temporaryOrderTerms;
     }
 
 }

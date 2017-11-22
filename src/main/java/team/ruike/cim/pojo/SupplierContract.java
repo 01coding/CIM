@@ -36,7 +36,7 @@ public class SupplierContract implements Serializable {
     /**
      * 供应商外键
      */
-    private Integer supplierId;
+    private Supplier supplier;
 
 
     public Integer getSupplierContractId() {
@@ -83,13 +83,11 @@ public class SupplierContract implements Serializable {
         this.status = status;
     }
 
-
-    public Integer getSupplierId() {
-        return supplierId;
+    public Supplier getSupplier() {
+        return supplier;
     }
 
-    public void setSupplierId(Integer supplierId) {
-        this.supplierId = supplierId;
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
     }
-
 }

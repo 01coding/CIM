@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 临时订单生产计划表
@@ -20,7 +21,7 @@ public class TemporaryProductionPlan implements Serializable {
     /**
      * 临时订单id外键
      */
-    private Integer temporaryOrderId;
+    private TemporaryOrder temporaryOrderId;
     /**
      * 生产批次
      */
@@ -33,7 +34,10 @@ public class TemporaryProductionPlan implements Serializable {
      * 日期
      */
     private Date date;
-
+    /**
+     * 临时订单生产计划项集合
+     */
+    private List<TemporaryProductionPlanItem> temporaryProductionPlanItems;
 
     public Integer getTemporaryProductionPlanId() {
         return temporaryProductionPlanId;
@@ -42,16 +46,6 @@ public class TemporaryProductionPlan implements Serializable {
     public void setTemporaryProductionPlanId(Integer temporaryProductionPlanId) {
         this.temporaryProductionPlanId = temporaryProductionPlanId;
     }
-
-
-    public Integer getTemporaryOrderId() {
-        return temporaryOrderId;
-    }
-
-    public void setTemporaryOrderId(Integer temporaryOrderId) {
-        this.temporaryOrderId = temporaryOrderId;
-    }
-
 
     public String getProductionBatch() {
         return productionBatch;
@@ -79,4 +73,19 @@ public class TemporaryProductionPlan implements Serializable {
         this.date = date;
     }
 
+    public TemporaryOrder getTemporaryOrderId() {
+        return temporaryOrderId;
+    }
+
+    public void setTemporaryOrderId(TemporaryOrder temporaryOrderId) {
+        this.temporaryOrderId = temporaryOrderId;
+    }
+
+    public List<TemporaryProductionPlanItem> getTemporaryProductionPlanItems() {
+        return temporaryProductionPlanItems;
+    }
+
+    public void setTemporaryProductionPlanItems(List<TemporaryProductionPlanItem> temporaryProductionPlanItems) {
+        this.temporaryProductionPlanItems = temporaryProductionPlanItems;
+    }
 }

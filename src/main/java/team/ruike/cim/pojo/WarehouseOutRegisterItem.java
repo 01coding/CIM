@@ -17,13 +17,13 @@ public class WarehouseOutRegisterItem implements Serializable {
      */
     private Integer warehouseOutRegisterItemId;
     /**
-     * 物料id外键
+     * 物料外键
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
-     * 货架id
+     * 货架
      */
-    private Integer goodsShelveId;
+    private GoodsShelve goodsShelve;
     /**
      * 出库数量
      */
@@ -45,25 +45,6 @@ public class WarehouseOutRegisterItem implements Serializable {
     public void setWarehouseOutRegisterItemId(Integer warehouseOutRegisterItemId) {
         this.warehouseOutRegisterItemId = warehouseOutRegisterItemId;
     }
-
-
-    public Integer getMaterielId() {
-        return materielId;
-    }
-
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
-    }
-
-
-    public Integer getGoodsShelveId() {
-        return goodsShelveId;
-    }
-
-    public void setGoodsShelveId(Integer goodsShelveId) {
-        this.goodsShelveId = goodsShelveId;
-    }
-
 
     public Integer getMaterielNumber() {
         return materielNumber;
@@ -91,4 +72,19 @@ public class WarehouseOutRegisterItem implements Serializable {
         this.status = status;
     }
 
+    public Materiel getMateriel() {
+        return materiel;
+    }
+
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
+    }
+
+    public GoodsShelve getGoodsShelve() {
+        return goodsShelve;
+    }
+
+    public void setGoodsShelve(GoodsShelve goodsShelve) {
+        this.goodsShelve = goodsShelve;
+    }
 }

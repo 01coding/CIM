@@ -22,7 +22,7 @@ public class Working implements Serializable {
      */
     private String workingName;
     /**
-     * 工序状态
+     * 删除状态
      */
     private Integer status;
 
