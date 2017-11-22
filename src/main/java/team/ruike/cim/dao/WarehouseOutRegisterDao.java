@@ -30,7 +30,7 @@ public interface WarehouseOutRegisterDao {
      * @param pageSize      页面数据大小
      * @return 出库登记表对象集合
      */
-    List<WarehouseOutRegister> select(@Param("contractOrder") WarehouseOutRegister warehouseOutRegister, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+    List<WarehouseOutRegister> select(@Param("warehouseOutRegister") WarehouseOutRegister warehouseOutRegister, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
     /**
      * 查询数据总条数

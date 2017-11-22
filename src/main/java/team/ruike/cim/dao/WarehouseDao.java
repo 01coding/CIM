@@ -36,7 +36,7 @@ public interface WarehouseDao {
      * @param pageSize      页面数据大小
      * @return 仓库表对象集合
      */
-    List<Warehouse> select(@Param("contractOrder") Warehouse warehouse, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+    List<Warehouse> select(@Param("warehouse") Warehouse warehouse, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
     /**
      * 查询数据总条数
