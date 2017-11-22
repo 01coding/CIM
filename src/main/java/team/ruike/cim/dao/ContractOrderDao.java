@@ -14,6 +14,7 @@ import java.util.List;
  * @see #update(ContractOrder)
  * @see #select(ContractOrder, int, int)
  * @see #selectCount(ContractOrder)
+ * @see #selectById(Integer)
  */
 public interface ContractOrderDao {
     /**
@@ -49,4 +50,11 @@ public interface ContractOrderDao {
      * @return 总条数
      */
     int selectCount(ContractOrder contractOrder);
+
+    /**
+     * 根据ID查询单个合同订单数据
+     * @param contractOrderId 合同订单id
+     * @return 合同订单对象
+     */
+    ContractOrder selectById(Integer contractOrderId);
 }
