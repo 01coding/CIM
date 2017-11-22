@@ -3,91 +3,99 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 /**
- *采购类
+ * 采购类
+ *
  * @author 王傲祥
  * @version 1.0
  */
 public class Purchase implements Serializable {
+    private static final long serialVersionUID = -5046439097768407830L;
+    /**
+     * 采购ID
+     */
+    private Integer purchaseId;
+    /**
+     * 每日采购计划
+     */
+    private EverydayPurchasingPlan everydayPurchasingPlan;
+    /**
+     * 备注
+     */
+    private String remarks;
+    /**
+     * 删除状态
+     */
+    private Integer status;
+    /**
+     * 采购时间
+     */
+    private Date purchaseDate;
+    /**
+     * 用户表外键(采购人)
+     */
+    private User user;
+    /**
+     * 采购项集合
+     */
+    private List<PurchaseItem> purchaseItems;
 
-  private static final long serialVersionUID = -5046439097768407830L;
-  /**
-   * 采购ID
-   */
-  private Integer purchaseId;
-  /**
-   * 每日采购计划ID
-   */
-  private Integer everydayPurchasingPlanId;
-  /**
-   * 备注
-   */
-  private String remarks;
-  /**
-   * 删除状态
-   */
-  private Integer status;
-  /**
-   * 采购时间
-   */
-  private Date purchaseDate;
-  /**
-   * 用户表id外键(采购人)
-   */
-  private Integer userId;
+    public Integer getPurchaseId() {
+        return purchaseId;
+    }
 
+    public void setPurchaseId(Integer purchaseId) {
+        this.purchaseId = purchaseId;
+    }
 
-  public Integer getPurchaseId() {
-    return purchaseId;
-  }
+    public String getRemarks() {
+        return remarks;
+    }
 
-  public void setPurchaseId(Integer purchaseId) {
-    this.purchaseId = purchaseId;
-  }
-
-
-  public Integer getEverydayPurchasingPlanId() {
-    return everydayPurchasingPlanId;
-  }
-
-  public void setEverydayPurchasingPlanId(Integer everydayPurchasingPlanId) {
-    this.everydayPurchasingPlanId = everydayPurchasingPlanId;
-  }
-
-
-  public String getRemarks() {
-    return remarks;
-  }
-
-  public void setRemarks(String remarks) {
-    this.remarks = remarks;
-  }
+    public void setRemarks(String remarks) {
+        this.remarks = remarks;
+    }
 
 
-  public Integer getStatus() {
-    return status;
-  }
+    public Integer getStatus() {
+        return status;
+    }
 
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
 
+    public Date getPurchaseDate() {
+        return purchaseDate;
+    }
 
-  public Date getPurchaseDate() {
-    return purchaseDate;
-  }
+    public void setPurchaseDate(Date purchaseDate) {
+        this.purchaseDate = purchaseDate;
+    }
 
-  public void setPurchaseDate(Date purchaseDate) {
-    this.purchaseDate = purchaseDate;
-  }
+    public EverydayPurchasingPlan getEverydayPurchasingPlan() {
+        return everydayPurchasingPlan;
+    }
 
+    public void setEverydayPurchasingPlan(EverydayPurchasingPlan everydayPurchasingPlan) {
+        this.everydayPurchasingPlan = everydayPurchasingPlan;
+    }
 
-  public Integer getUserId() {
-    return userId;
-  }
+    public User getUser() {
+        return user;
+    }
 
-  public void setUserId(Integer userId) {
-    this.userId = userId;
-  }
+    public void setUser(User user) {
+        this.user = user;
+    }
 
+    public List<PurchaseItem> getPurchaseItems() {
+        return purchaseItems;
+    }
+
+    public void setPurchaseItems(List<PurchaseItem> purchaseItems) {
+        this.purchaseItems = purchaseItems;
+    }
 }

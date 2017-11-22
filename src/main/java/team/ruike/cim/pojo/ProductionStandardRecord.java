@@ -3,7 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 /**
- * 物料品控评估记录类
+ * 生产品控评估记录类
  * @author 王傲祥
  * @version 1.0
  */
@@ -11,13 +11,13 @@ public class ProductionStandardRecord implements Serializable {
 
     private static final long serialVersionUID = 8878793559446967394L;
     /**
-     * 物料品控评估记录ID
+     * 生产品控评估记录ID
      */
     private Integer productionStandardRecordId;
     /**
-     * 标准id
+     * 标准类
      */
-    private Integer productionStandardId;
+    private ProductionStandard productionStandard;
     /**
      *   标准a评分
      */
@@ -47,12 +47,12 @@ public class ProductionStandardRecord implements Serializable {
         this.productionStandardRecordId = productionStandardRecordId;
     }
 
-    public Integer getProductionStandardId() {
-        return productionStandardId;
+    public ProductionStandard getProductionStandard() {
+        return productionStandard;
     }
 
-    public void setProductionStandardId(Integer productionStandardId) {
-        this.productionStandardId = productionStandardId;
+    public void setProductionStandard(ProductionStandard productionStandard) {
+        this.productionStandard = productionStandard;
     }
 
     public Integer getStandardAScore() {

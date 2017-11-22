@@ -35,9 +35,9 @@ public class OrderContract implements Serializable {
      */
     private Date orderContractDate;
     /**
-     * 所属用户id外键
+     * 所属门店用户
      */
-    private Integer storeId;
+    private Store store;
     /**
      * 删除状态
      */
@@ -88,16 +88,6 @@ public class OrderContract implements Serializable {
         this.orderContractDate = orderContractDate;
     }
 
-
-    public Integer getStoreId() {
-        return storeId;
-    }
-
-    public void setStoreId(Integer storeId) {
-        this.storeId = storeId;
-    }
-
-
     public Integer getStatus() {
         return status;
     }
@@ -106,4 +96,11 @@ public class OrderContract implements Serializable {
         this.status = status;
     }
 
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 }

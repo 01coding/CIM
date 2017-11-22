@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * 合同订单类
@@ -34,13 +35,13 @@ public class ContractOrder implements Serializable {
      */
     private Date contractOrderStartDate;
     /**
-     * 合同订单所属合同表id
+     * 合同订单所属合同
      */
-    private Integer orderContractId;
+    private OrderContract orderContract;
     /**
      * 添加次订单的用户id
      */
-    private Integer userId;
+    private User user;
     /**
      * 合同订单备注
      */
@@ -49,7 +50,18 @@ public class ContractOrder implements Serializable {
      * 删除状态
      */
     private Integer status;
+    /**
+     * 合同订单项集合
+     */
+    private List<ContractOrderTerm> contractOrderTerms;
 
+    public List<ContractOrderTerm> getContractOrderTerms() {
+        return contractOrderTerms;
+    }
+
+    public void setContractOrderTerms(List<ContractOrderTerm> contractOrderTerms) {
+        this.contractOrderTerms = contractOrderTerms;
+    }
 
     public Integer getContractOrderId() {
         return contractOrderId;
@@ -95,24 +107,21 @@ public class ContractOrder implements Serializable {
         this.contractOrderStartDate = contractOrderStartDate;
     }
 
-
-    public Integer getOrderContractId() {
-        return orderContractId;
+    public OrderContract getOrderContract() {
+        return orderContract;
     }
 
-    public void setOrderContractId(Integer orderContractId) {
-        this.orderContractId = orderContractId;
+    public void setOrderContract(OrderContract orderContract) {
+        this.orderContract = orderContract;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
-
 
     public String getContractOrderRemarks() {
         return contractOrderRemarks;

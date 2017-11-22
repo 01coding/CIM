@@ -15,13 +15,13 @@ public class ProductWarehouseOutRegisterItem implements Serializable {
    */
   private Integer productWarehouseOutRegisterItemId;
   /**
-   * 菜品ID外键
+   * 菜品外键
    */
-  private Integer menuId;
+  private Menu menu;
   /**
-   * 货架ID
+   * 成品货架
    */
-  private Integer productGoodsShelveId;
+  private ProductGoodsShelve productGoodsShelve;
   /**
    * 出库数量
    */
@@ -29,12 +29,11 @@ public class ProductWarehouseOutRegisterItem implements Serializable {
   /**
    * 成品出口登记表外键
    */
-  private Integer productWarehouseOutRegisterId;
+  private ProductWarehouseOutRegister productWarehouseOutRegister;
   /**
    * 删除状态
    */
   private Integer status;
-
 
   public Integer getProductWarehouseOutRegisterItemId() {
     return productWarehouseOutRegisterItemId;
@@ -44,24 +43,21 @@ public class ProductWarehouseOutRegisterItem implements Serializable {
     this.productWarehouseOutRegisterItemId = productWarehouseOutRegisterItemId;
   }
 
-
-  public Integer getMenuId() {
-    return menuId;
+  public Menu getMenu() {
+    return menu;
   }
 
-  public void setMenuId(Integer menuId) {
-    this.menuId = menuId;
+  public void setMenu(Menu menu) {
+    this.menu = menu;
   }
 
-
-  public Integer getProductGoodsShelveId() {
-    return productGoodsShelveId;
+  public ProductGoodsShelve getProductGoodsShelve() {
+    return productGoodsShelve;
   }
 
-  public void setProductGoodsShelveId(Integer productGoodsShelveId) {
-    this.productGoodsShelveId = productGoodsShelveId;
+  public void setProductGoodsShelve(ProductGoodsShelve productGoodsShelve) {
+    this.productGoodsShelve = productGoodsShelve;
   }
-
 
   public Integer getMenuNumber() {
     return menuNumber;
@@ -71,15 +67,13 @@ public class ProductWarehouseOutRegisterItem implements Serializable {
     this.menuNumber = menuNumber;
   }
 
-
-  public Integer getProductWarehouseOutRegisterId() {
-    return productWarehouseOutRegisterId;
+  public ProductWarehouseOutRegister getProductWarehouseOutRegister() {
+    return productWarehouseOutRegister;
   }
 
-  public void setProductWarehouseOutRegisterId(Integer productWarehouseOutRegisterId) {
-    this.productWarehouseOutRegisterId = productWarehouseOutRegisterId;
+  public void setProductWarehouseOutRegister(ProductWarehouseOutRegister productWarehouseOutRegister) {
+    this.productWarehouseOutRegister = productWarehouseOutRegister;
   }
-
 
   public Integer getStatus() {
     return status;
@@ -88,5 +82,4 @@ public class ProductWarehouseOutRegisterItem implements Serializable {
   public void setStatus(Integer status) {
     this.status = status;
   }
-
 }

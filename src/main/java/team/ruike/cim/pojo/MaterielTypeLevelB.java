@@ -21,9 +21,9 @@ public class MaterielTypeLevelB implements Serializable {
      */
     private String materielTypeLevelBName;
     /**
-     * 一级分类id
+     * 所属一级分类
      */
-    private Integer materielTypeLevelAId;
+    private MaterielTypeLevelA materielTypeLevelA;
     private Integer status;
 
 
@@ -44,15 +44,13 @@ public class MaterielTypeLevelB implements Serializable {
         this.materielTypeLevelBName = materielTypeLevelBName;
     }
 
-
-    public Integer getMaterielTypeLevelAId() {
-        return materielTypeLevelAId;
+    public MaterielTypeLevelA getMaterielTypeLevelA() {
+        return materielTypeLevelA;
     }
 
-    public void setMaterielTypeLevelAId(Integer materielTypeLevelAId) {
-        this.materielTypeLevelAId = materielTypeLevelAId;
+    public void setMaterielTypeLevelA(MaterielTypeLevelA materielTypeLevelA) {
+        this.materielTypeLevelA = materielTypeLevelA;
     }
-
 
     public Integer getStatus() {
         return status;

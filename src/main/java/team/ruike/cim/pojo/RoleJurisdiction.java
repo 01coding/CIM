@@ -11,7 +11,6 @@ public class RoleJurisdiction implements Serializable {
   private Integer jurisdictionId;
   private Integer status;
 
-
   public Integer getRoleJurisdictionId() {
     return roleJurisdictionId;
   }

@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *每日采购计划
@@ -28,7 +29,18 @@ public class EverydayPurchasingPlan implements Serializable {
      * 删除状态
      */
     private Integer status;
+    /**
+     * 每日采购计划项类集合
+     */
+    private List<EverydayPurchasingPlanTerm> everydayPurchasingPlanTerms;
 
+    public List<EverydayPurchasingPlanTerm> getEverydayPurchasingPlanTerms() {
+        return everydayPurchasingPlanTerms;
+    }
+
+    public void setEverydayPurchasingPlanTerms(List<EverydayPurchasingPlanTerm> everydayPurchasingPlanTerms) {
+        this.everydayPurchasingPlanTerms = everydayPurchasingPlanTerms;
+    }
 
     public Integer getEverydayPurchasingPlanId() {
         return everydayPurchasingPlanId;

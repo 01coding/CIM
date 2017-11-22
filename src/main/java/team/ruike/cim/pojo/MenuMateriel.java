@@ -2,6 +2,7 @@ package team.ruike.cim.pojo;
 
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 菜谱物料关系
@@ -23,7 +24,7 @@ public class MenuMateriel implements Serializable {
     /**
      * 物料id
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
      * 类别(0-3)主,辅,配,耗材
      */
@@ -32,7 +33,10 @@ public class MenuMateriel implements Serializable {
      * 删除状态
      */
     private Integer status;
-
+    /**
+     * 菜品制作流程类
+     */
+    private List<MenuFlow> menuFlow;
 
     public Integer getMenuMaterielId() {
         return menuMaterielId;
@@ -51,16 +55,6 @@ public class MenuMateriel implements Serializable {
         this.menuId = menuId;
     }
 
-
-    public Integer getMaterielId() {
-        return materielId;
-    }
-
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
-    }
-
-
     public Integer getMenuMaterielType() {
         return menuMaterielType;
     }
@@ -78,4 +72,19 @@ public class MenuMateriel implements Serializable {
         this.status = status;
     }
 
+    public Materiel getMateriel() {
+        return materiel;
+    }
+
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
+    }
+
+    public List<MenuFlow> getMenuFlow() {
+        return menuFlow;
+    }
+
+    public void setMenuFlow(List<MenuFlow> menuFlow) {
+        this.menuFlow = menuFlow;
+    }
 }

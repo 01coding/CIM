@@ -3,6 +3,7 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *合同订单生产计划
@@ -16,9 +17,9 @@ public class ContractProductionPlan implements Serializable {
      */
     private Integer contractProductionPlanId;
     /**
-     * 合同订单id外键
+     * 合同订单类
      */
-    private Integer contractOrderId;
+    private ContractOrder contractOrder;
     /**
      * 生产批次
      */
@@ -31,7 +32,18 @@ public class ContractProductionPlan implements Serializable {
      * 日期
      */
     private Date date;
+    /**
+     * 合同生产计划项集合
+     */
+    private List<ContractProductionPlanItem> contractProductionPlanItems;
 
+    public List<ContractProductionPlanItem> getContractProductionPlanItems() {
+        return contractProductionPlanItems;
+    }
+
+    public void setContractProductionPlanItems(List<ContractProductionPlanItem> contractProductionPlanItems) {
+        this.contractProductionPlanItems = contractProductionPlanItems;
+    }
 
     public Integer getContractProductionPlanId() {
         return contractProductionPlanId;
@@ -41,15 +53,13 @@ public class ContractProductionPlan implements Serializable {
         this.contractProductionPlanId = contractProductionPlanId;
     }
 
-
-    public Integer getContractOrderId() {
-        return contractOrderId;
+    public ContractOrder getContractOrder() {
+        return contractOrder;
     }
 
-    public void setContractOrderId(Integer contractOrderId) {
-        this.contractOrderId = contractOrderId;
+    public void setContractOrder(ContractOrder contractOrder) {
+        this.contractOrder = contractOrder;
     }
-
 
     public String getProductionBatch() {
         return productionBatch;

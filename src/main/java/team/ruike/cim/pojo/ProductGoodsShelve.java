@@ -22,9 +22,9 @@ public class ProductGoodsShelve implements Serializable {
      */
     private String productGoodsShelveNo;
     /**
-     * 当前所放菜品外键
+     * 当前所放菜品
      */
-    private Integer menuId;
+    private Menu menu;
     /**
      * 当前数量
      */
@@ -38,9 +38,9 @@ public class ProductGoodsShelve implements Serializable {
      */
     private Integer status;
     /**
-     * 成品仓库区域表外键
+     * 成品仓库区域
      */
-    private Integer productWarehouseRegionId;
+    private ProductWarehouseRegion productWarehouseRegion;
 
 
     public Integer getProductGoodsShelveId() {
@@ -61,15 +61,6 @@ public class ProductGoodsShelve implements Serializable {
     }
 
 
-    public Integer getMenuId() {
-        return menuId;
-    }
-
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
-    }
-
-
     public Integer getMenuNumber() {
         return menuNumber;
     }
@@ -87,7 +78,6 @@ public class ProductGoodsShelve implements Serializable {
         this.materielShelfLifeEndDate = materielShelfLifeEndDate;
     }
 
-
     public Integer getStatus() {
         return status;
     }
@@ -96,13 +86,19 @@ public class ProductGoodsShelve implements Serializable {
         this.status = status;
     }
 
-
-    public Integer getProductWarehouseRegionId() {
-        return productWarehouseRegionId;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setProductWarehouseRegionId(Integer productWarehouseRegionId) {
-        this.productWarehouseRegionId = productWarehouseRegionId;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
+    public ProductWarehouseRegion getProductWarehouseRegion() {
+        return productWarehouseRegion;
+    }
+
+    public void setProductWarehouseRegion(ProductWarehouseRegion productWarehouseRegion) {
+        this.productWarehouseRegion = productWarehouseRegion;
+    }
 }

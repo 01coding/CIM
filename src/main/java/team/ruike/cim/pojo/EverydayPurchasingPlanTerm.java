@@ -19,7 +19,7 @@ public class EverydayPurchasingPlanTerm implements Serializable {
     /**
      * 物料id外键
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
      * 数量
      */
@@ -54,15 +54,13 @@ public class EverydayPurchasingPlanTerm implements Serializable {
         this.everydayPurchasingPlanTermId = everydayPurchasingPlanTermId;
     }
 
-
-    public Integer getMaterielId() {
-        return materielId;
+    public Materiel getMateriel() {
+        return materiel;
     }
 
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
-
 
     public Integer getMaterielNumber() {
         return materielNumber;

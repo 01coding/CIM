@@ -16,9 +16,9 @@ public class ContractOrderTerm implements Serializable {
      */
     private Integer contractOrderTermId;
     /**
-     * 菜品id
+     * 菜品类
      */
-    private Integer menuId;
+    private Menu menu;
     /**
      * 菜品数量
      */
@@ -53,15 +53,13 @@ public class ContractOrderTerm implements Serializable {
         this.contractOrderTermId = contractOrderTermId;
     }
 
-
-    public Integer getMenuId() {
-        return menuId;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setMenuId(Integer menuId) {
-        this.menuId = menuId;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
-
 
     public Integer getMenuNumber() {
         return menuNumber;

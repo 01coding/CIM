@@ -31,15 +31,15 @@ public class EquipmentReport implements Serializable {
     /**
      * 登记人
      */
-    private Integer userId;
+    private User user;
     /**
      * 删除状态
      */
     private Integer status;
     /**
-     * 设备外键
+     * 所属设备
      */
-    private Integer equipmentId;
+    private Equipment equipment;
 
 
     public Integer getEquipmentReportId() {
@@ -77,16 +77,6 @@ public class EquipmentReport implements Serializable {
         this.endDate = endDate;
     }
 
-
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
-
     public Integer getStatus() {
         return status;
     }
@@ -95,13 +85,19 @@ public class EquipmentReport implements Serializable {
         this.status = status;
     }
 
-
-    public Integer getEquipmentId() {
-        return equipmentId;
+    public User getUser() {
+        return user;
     }
 
-    public void setEquipmentId(Integer equipmentId) {
-        this.equipmentId = equipmentId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
+    }
 }

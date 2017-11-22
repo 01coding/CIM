@@ -19,7 +19,7 @@ public class ContractProgress implements Serializable {
     /**
      * 合同订单生产任务分配id
      */
-    private Integer contractProductionDistributionId;
+    private ContractProductionDistribution contractProductionDistribution;
     /**
      * 备注(必填)
      */
@@ -46,15 +46,13 @@ public class ContractProgress implements Serializable {
         this.contractProgressId = contractProgressId;
     }
 
-
-    public Integer getContractProductionDistributionId() {
-        return contractProductionDistributionId;
+    public ContractProductionDistribution getContractProductionDistribution() {
+        return contractProductionDistribution;
     }
 
-    public void setContractProductionDistributionId(Integer contractProductionDistributionId) {
-        this.contractProductionDistributionId = contractProductionDistributionId;
+    public void setContractProductionDistribution(ContractProductionDistribution contractProductionDistribution) {
+        this.contractProductionDistribution = contractProductionDistribution;
     }
-
 
     public String getRemarks() {
         return remarks;

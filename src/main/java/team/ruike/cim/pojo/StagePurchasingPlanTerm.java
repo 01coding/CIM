@@ -17,9 +17,9 @@ public class StagePurchasingPlanTerm implements Serializable {
      */
     private Integer stagePurchasingPlanTermId;
     /**
-     * 物料id外键
+     * 物料
      */
-    private Integer materielId;
+    private Materiel materiel;
     /**
      * 数量
      */
@@ -31,7 +31,7 @@ public class StagePurchasingPlanTerm implements Serializable {
     /**
      * 供应商id外键
      */
-    private Integer supplierId;
+    private Supplier supplier;
     /**
      * 价格允许浮动范围
      */
@@ -58,16 +58,6 @@ public class StagePurchasingPlanTerm implements Serializable {
         this.stagePurchasingPlanTermId = stagePurchasingPlanTermId;
     }
 
-
-    public Integer getMaterielId() {
-        return materielId;
-    }
-
-    public void setMaterielId(Integer materielId) {
-        this.materielId = materielId;
-    }
-
-
     public Integer getMaterielNumber() {
         return materielNumber;
     }
@@ -85,15 +75,21 @@ public class StagePurchasingPlanTerm implements Serializable {
         this.unitPrice = unitPrice;
     }
 
-
-    public Integer getSupplierId() {
-        return supplierId;
+    public Materiel getMateriel() {
+        return materiel;
     }
 
-    public void setSupplierId(Integer supplierId) {
-        this.supplierId = supplierId;
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
 
+    public Supplier getSupplier() {
+        return supplier;
+    }
+
+    public void setSupplier(Supplier supplier) {
+        this.supplier = supplier;
+    }
 
     public Double getPriceFloat() {
         return priceFloat;

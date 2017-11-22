@@ -3,8 +3,11 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
 /**
- *成品库入库登记类
+ * 成品库入库登记类
+ *
  * @author 王傲祥
  * @version 1.0
  */
@@ -25,11 +28,15 @@ public class ProductWarehouseRegister implements Serializable {
     /**
      * 入库人用户表
      */
-    private Integer userId;
+    private User user;
     /**
      * 删除状态
      */
     private Integer status;
+    /**
+     * 成品库入库登记记录项集合
+     */
+    private List<ProductWarehouseRegisterItem> productWarehouseRegisterItemList;
 
 
     public Integer getProductWarehouseRegisterId() {
@@ -58,15 +65,21 @@ public class ProductWarehouseRegister implements Serializable {
         this.productWarehouseRegisterDate = productWarehouseRegisterDate;
     }
 
-
-    public Integer getUserId() {
-        return userId;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setUser(User user) {
+        this.user = user;
     }
 
+    public List<ProductWarehouseRegisterItem> getProductWarehouseRegisterItemList() {
+        return productWarehouseRegisterItemList;
+    }
+
+    public void setProductWarehouseRegisterItemList(List<ProductWarehouseRegisterItem> productWarehouseRegisterItemList) {
+        this.productWarehouseRegisterItemList = productWarehouseRegisterItemList;
+    }
 
     public Integer getStatus() {
         return status;
