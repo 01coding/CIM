@@ -7,10 +7,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     </insert>
     <update id="update" parameterType="warehouse">
-        
+
     </update>
-    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
-    <select id="select" resultMap="">
+    <resultMap id="warhouseMap" type="warehouse">
+        <result column="warehouse_id" property="warehouseId"/>
+    </resultMap>
+    <select id="select" resultMap="warhouseMap">
 
     </select>
     <select id="selectCount" resultType="int" parameterType="warehouse">

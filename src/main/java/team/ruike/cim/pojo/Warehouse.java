@@ -32,11 +32,12 @@ public class Warehouse implements Serializable {
     /**
      * 仓库管理员用户表外键
      */
-    private Integer userId;
+    private User user;
     /**
      * 仓库所拥有的区域集合
      */
     private List<WarehouseRegion> warehouseRegionList;
+
 
     public Integer getWarehouseId() {
         return warehouseId;
@@ -74,19 +75,19 @@ public class Warehouse implements Serializable {
     }
 
 
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
-
     public List<WarehouseRegion> getWarehouseRegionList() {
         return warehouseRegionList;
     }
 
     public void setWarehouseRegionList(List<WarehouseRegion> warehouseRegionList) {
         this.warehouseRegionList = warehouseRegionList;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
