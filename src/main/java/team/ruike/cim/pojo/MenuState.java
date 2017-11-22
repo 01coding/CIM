@@ -19,7 +19,7 @@ public class MenuState implements Serializable {
     /**
      * 状态名称
      */
-    private Integer menuStateName;
+    private String menuStateName;
     /**
      * 删除状态
      */
@@ -35,11 +35,11 @@ public class MenuState implements Serializable {
     }
 
 
-    public Integer getMenuStateName() {
+    public String getMenuStateName() {
         return menuStateName;
     }
 
-    public void setMenuStateName(Integer menuStateName) {
+    public void setMenuStateName(String menuStateName) {
         this.menuStateName = menuStateName;
     }
 

@@ -19,7 +19,7 @@ public class EquipmentReport implements Serializable {
     /**
      * 停用原因
      */
-    private Integer equipmentReportReason;
+    private String equipmentReportReason;
     /**
      * 维修计划
      */
@@ -51,11 +51,11 @@ public class EquipmentReport implements Serializable {
     }
 
 
-    public Integer getEquipmentReportReason() {
+    public String getEquipmentReportReason() {
         return equipmentReportReason;
     }
 
-    public void setEquipmentReportReason(Integer equipmentReportReason) {
+    public void setEquipmentReportReason(String equipmentReportReason) {
         this.equipmentReportReason = equipmentReportReason;
     }
 

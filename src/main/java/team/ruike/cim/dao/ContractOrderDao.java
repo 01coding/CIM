@@ -2,6 +2,7 @@ package team.ruike.cim.dao;
 
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.ContractOrder;
+import team.ruike.cim.pojo.User;
 
 import java.util.List;
 
@@ -57,4 +58,5 @@ public interface ContractOrderDao {
      * @return 合同订单对象
      */
     ContractOrder selectById(Integer contractOrderId);
+
 }

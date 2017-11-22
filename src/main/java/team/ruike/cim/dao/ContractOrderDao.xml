@@ -7,9 +7,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     </insert>
     <update id="update" parameterType="contractOrder">
-        
+
     </update>
-    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
+
     <select id="select" resultMap="">
 
     </select>
