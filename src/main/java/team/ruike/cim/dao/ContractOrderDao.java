@@ -1,0 +1,52 @@
+package team.ruike.cim.dao;
+
+import org.apache.ibatis.annotations.Param;
+import team.ruike.cim.pojo.ContractOrder;
+
+import java.util.List;
+
+/**
+ * 合同订单表数据访问接口
+ *
+ * @author 张振国
+ * @version 1.0
+ * @see #add(ContractOrder)
+ * @see #update(ContractOrder)
+ * @see #select(ContractOrder, int, int)
+ * @see #selectCount(ContractOrder)
+ */
+public interface ContractOrderDao {
+    /**
+     * 新增合同订单
+     *
+     * @param contractOrder 合同订单实体类对象
+     * @return 受影响的行数
+     */
+    int add(ContractOrder contractOrder);
+
+    /**
+     * 修改合同订单
+     *
+     * @param contractOrder 合同订单实体类对象
+     * @return 受影响的行数
+     */
+    int update(ContractOrder contractOrder);
+
+    /**
+     * 查询订单列表
+     *
+     * @param contractOrder 订单对象(作为查询条件)
+     * @param pageNo        要查询的页码
+     * @param pageSize      页面数据大小
+     * @return 订单对象集合
+     */
+    List<ContractOrder> select(@Param("contractOrder") ContractOrder contractOrder, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+
+    /**
+     * 查询数据总条数
+     *
+     * @param contractOrder 合同订单对象(作为查询条件)
+     * @return 总条数
+     */
+    int selectCount(ContractOrder contractOrder);
+}
