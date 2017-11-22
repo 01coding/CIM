@@ -35,7 +35,7 @@ public class MenuFlow implements Serializable {
     /**
      * 耗时(H)
      */
-    private Integer menuFlowHour;
+    private Double menuFlowHour;
     /**
      * 图片路径
      */
@@ -91,11 +91,11 @@ public class MenuFlow implements Serializable {
     }
 
 
-    public Integer getMenuFlowHour() {
+    public Double getMenuFlowHour() {
         return menuFlowHour;
     }
 
-    public void setMenuFlowHour(Integer menuFlowHour) {
+    public void setMenuFlowHour(Double menuFlowHour) {
         this.menuFlowHour = menuFlowHour;
     }
 
