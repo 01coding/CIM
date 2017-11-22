@@ -2,17 +2,17 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ruike.cim.dao.MenuStateDao">
-    <insert id="add" parameterType="menuState ">
+<mapper namespace="team.ruike.cim.dao.StagePurchasingPlanDao">
+    <insert id="add" parameterType="stagePurchasingPlan">
 
     </insert>
-    <update id="update" parameterType="menuState">
+    <update id="update" parameterType="stagePurchasingPlan">
         
     </update>
     <select id="select" resultMap="">
 
     </select>
-    <select id="selectCount" resultType="int" parameterType="menuState">
+    <select id="selectCount" resultType="int" parameterType="stagePurchasingPlan">
 
     </select>
     <select id="selectById" parameterType="int" resultMap="">

@@ -24,7 +24,7 @@ public interface MenuStateDao {
      * @param menuState 菜谱状态实体类对象
      * @return 受影响的行数
      */
-    int add(MenuState menuState);
+    int add(MenuState menuState );
 
     /**
      * 修改菜谱状态
