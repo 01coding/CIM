@@ -3,19 +3,92 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MaterielDao">
-    <insert id="add" parameterType="materiel">
 
+    <resultMap id="materielMap" type="materiel">
+        <result column="materiel_id" property="materielId"/>
+        <result column="materiel_name" property="materielName"/>
+        <result column="materiel_yield" property="materielYield"/>
+        <result column="materiel__shelf_life" property="materielShelfLife"/>
+        <result column="materiel_min_warning" property="materielMinWarning"/>
+        <result column="materiel_remarks" property="materielRemarks"/>
+        <result column="status" property="status"/>
+        <association property="materielTypeLevelB" column="materiel_type_level_b_id" select="team.ruike.cim.dao.MaterielTypeLevelBDao"/>
+        <association property="materielUnit" column="materiel_unit_id" select="team.ruike.cim.dao.MaterielUnitDao"/>
+    </resultMap>
+    <insert id="add" parameterType="materiel">
+        INSERT  INTO materiel VALUES (DEFAULT ,#{materielName},,#{materielTypeLevelB},#{materielUnit},#{materielYield},#{materielShelfLife},#{materielMinWarning},#{materielRemarks},#{status})
     </insert>
     <update id="update" parameterType="materiel">
-        
+            UPDATE materiel SET
+                materiel_id=#{materielId},
+                materiel_name=#{materielName},
+                materiel_type_level_b_id=#{materielTypeLevelB},
+                materiel_unit_id=#{materielUnit},
+                materiel_yield=#{materielYield},
+                materiel__shelf_life=#{materielShelfLife},
+                materiel_min_warning=#{materielMinWarning},
+                materiel_remarks=#{materielRemarks},
+                status=#{status}
+                WHERE materielId=#{materielId}
     </update>
-    <select id="select" resultMap="">
-
+    <sql id="sql">
+        SELECT * from materiel WHERE status=0
+        <if test="materiel.materielId!=null and materiel.materielId>0">
+            AND materielId=#{materiel.materielId}
+        </if>
+        <if test="materiel.materielName!=null and materiel.materielName!=''">
+            AND materielName LIKE '%materiel.materielName%'
+        </if>
+        <if test="materiel.materielTypeLevelB!=null and materiel.materielTypeLevelB.materielTypeLevelBId>0">
+            AND materielTypeLevelB=#{materiel.materielTypeLevelB.materielTypeLevelBId}
+        </if>
+        <if test="materiel.materielUnit!=null and materiel.materielUnit.materielUnitId">
+            AND materielUnit =#{materiel.materielUnit.materielUnitId}
+        </if>
+        <if test="materiel.materielYield!=null and materiel.materielYield>0">
+            AND materielYield=#{materiel.materielYield}
+        </if>
+        <if test="materiel.materielShelfLife!=null and materiel.materielShelfLife>0">
+            AND materielShelfLife=#{materiel.materielShelfLife}
+        </if>
+        <if test="materiel.materielMinWarning！=null and materiel.materielMinWarning>0">
+            AND materielMinWarning=#{materiel.materielMinWarning}
+        </if>
+        <if test="materiel.materielRemarks!=null and materiel.materielRemarks!=''">
+            AND materielRemarks=#{materiel.materielRemarks}
+        </if>
+    </sql>
+    <select id="select" resultMap="materielMap">
+        select * from (<include refid="sql"/>) f
+        limit #{begin},#{pagesize}
     </select>
     <select id="selectCount" resultType="int" parameterType="materiel">
-
+        <if test="materielId!=null and materielId>0">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielName!=null and materielName!=''">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielTypeLevelB!=null and materielTypeLevelB.materielTypeLevelBId>0">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielUnit!=null and materielUnit.materielUnitId">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielYield!=null and materielYield>0">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielShelfLife!=null and materielShelfLife>0">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielMinWarning！=null and materielMinWarning>0">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
+        <if test="materielRemarks!=null and materielRemarks!=''">
+            select COUNT(1) from (<include refid="sql"/>) f
+        </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
-
+    <select id="selectById" parameterType="int" resultMap="materielMap">
+            select * from materiel WHERE materielId=#{materielId}
     </select>
 </mapper>

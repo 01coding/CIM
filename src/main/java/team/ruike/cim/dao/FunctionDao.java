@@ -45,7 +45,6 @@ public interface FunctionDao {
      */
     List<Function> select(@Param("function") Function function, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
-
     /**
      * 查询数据总条数
      *
