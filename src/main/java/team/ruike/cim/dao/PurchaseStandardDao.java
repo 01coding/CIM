@@ -49,7 +49,7 @@ public interface PurchaseStandardDao {
      * @param purchaseStandard 采购品控标准对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(PurchaseStandard purchaseStandard);
+    int selectCount(@Param("purchaseStandard")PurchaseStandard purchaseStandard);
 
     /**
      * 根据ID查询单个采购品控标准数据

@@ -9,6 +9,7 @@ import java.util.List;
  * 供应商合同表表数据访问接口
  *
  * @author 孙天奇
+ * @author 王傲祥
  * @version 1.0
  */
 public interface SupplierContractDao {

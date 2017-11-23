@@ -9,6 +9,7 @@ import java.util.List;
  * 每日采购计划项接口
  *
  * @author 甄立
+ * @author 王傲祥
  * @version 1.0
  * @see #select(EverydayPurchasingPlanTerm, int, int)
  * @see #selectById(Integer)
