@@ -3,21 +3,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MaterielUnitDao">
+    <resultMap id="MaterielUnits" type="MaterielUnit">
+        <result column="materiel_unit_id" property="materielUnitId"></result>
+        <result column="materiel_unit_name" property="materielUnitName"></result>
+        <result column="status" property="status"></result>
+    </resultMap>
+    <sql id="sql">
+        SELECT * FROM materiel_unit WHERE status=0
+        <if test="materielUnit.materiel_unit_id!=null and materielUnit.materiel_unit_id>0">
+            AND materiel_unit_id=#{materielUnit.materiel_unit_id}
+        </if>
+        <if test="materielUnit.materiel_unit_name!=null and materielUnit.materiel_unit_name!=''">
+            AND materiel_unit_name=#{materielUnit.materiel_unit_name}
+        </if>
+    </sql>
     <insert id="add" parameterType="materielUnit">
-
+      INSERT materiel_unit INTO VALUES (#{materielUnitName},0)
     </insert>
     <update id="update" parameterType="materielUnit">
-
+      UPDATE materiel_unit SET materiel_unit_name=#{materielUnitName},status=#{status}
+      WHERE materiel_unit_id=#{materielUnitId}
     </update>
-    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
-    <select id="select" resultMap="">
-
+    <select id="select" resultMap="MaterielUnits">
+        SELECT * FROM (<include refid="sql"></include> ) f
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="materielUnit">
-
+        SELECT COUNT(1) FROM materiel_unit WHERE status=0
+        <if test="materiel_unit_id!=null and materiel_unit_id>0">
+            AND materiel_unit_id=#{materiel_unit_id}
+        </if>
+        <if test="materiel_unit_name!=null and materiel_unit_name!=''">
+            AND materiel_unit_name=#{materiel_unit_name}
+        </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
-
+    <select id="selectById" parameterType="int" resultMap="MaterielUnits">
+        SELECT * from materiel_unit WHERE status=0
+        <if test="materiel_unit_id!=null and materiel_unit_id>0">
+            AND materiel_unit_id=#{materiel_unit_id}
+        </if>
     </select>
-
 </mapper>

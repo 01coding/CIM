@@ -24,6 +24,9 @@ public class MaterielTypeLevelB implements Serializable {
      * 所属一级分类
      */
     private MaterielTypeLevelA materielTypeLevelA;
+    /**
+     * 状态
+     */
     private Integer status;
 
 
