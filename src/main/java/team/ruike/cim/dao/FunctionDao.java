@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * 功能接口
- *
  * @author 甄立
+ * @author 王傲祥
  * @version 1.0
  * @see #selectById(Integer)
  * @see #select(Function, int, int)
@@ -44,7 +44,6 @@ public interface FunctionDao {
      * @return 功能对象集合
      */
     List<Function> select(@Param("function") Function function, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
-
 
     /**
      * 查询数据总条数

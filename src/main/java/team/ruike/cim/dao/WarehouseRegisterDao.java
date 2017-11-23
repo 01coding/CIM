@@ -9,6 +9,7 @@ import java.util.List;
  * 入库登记表数据接口
  *
  * @author 孙天奇
+ * @author 孙天奇
  * @version 1.0
  */
 public interface WarehouseRegisterDao {

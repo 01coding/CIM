@@ -49,7 +49,7 @@ public interface OrderContractDao {
      * @param orderContract 订单合同对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(OrderContract orderContract);
+    int selectCount(@Param("orderContract")OrderContract orderContract);
 
     /**
      * 根据ID查询单个订单合同数据

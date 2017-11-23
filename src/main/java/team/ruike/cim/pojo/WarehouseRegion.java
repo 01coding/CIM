@@ -7,6 +7,7 @@ import java.io.Serializable;
  * 仓库区域表
  *
  * @author 孙天奇
+ * @author 孙天奇
  * @version 1.0
  */
 public class WarehouseRegion implements Serializable {
@@ -87,5 +88,5 @@ public class WarehouseRegion implements Serializable {
     public void setStatus(String status) {
         this.status = status;
     }
-    
+
 }
