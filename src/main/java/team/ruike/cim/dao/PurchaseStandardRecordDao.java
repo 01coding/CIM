@@ -9,6 +9,7 @@ import java.util.List;
  * 采购品控评估记表数据访问接口
  *
  * @author 华中昊
+ * @author 华中昊
  * @version 1.0
  * @see #add(PurchaseStandardRecord)
  * @see #update(PurchaseStandardRecord)

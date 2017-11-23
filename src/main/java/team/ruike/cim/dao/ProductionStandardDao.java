@@ -9,6 +9,7 @@ import java.util.List;
  * 生产品控标准表数据访问接口
  *
  * @author 华中昊
+ * @author 华中昊
  * @version 1.0
  * @see #add(ProductionStandard)
  * @see #update(ProductionStandard)

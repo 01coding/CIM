@@ -10,7 +10,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class StagePurchasingPlanTerm implements Serializable {
-
     private static final long serialVersionUID = 2929154474959515565L;
     /**
      * 阶段采购计划项id

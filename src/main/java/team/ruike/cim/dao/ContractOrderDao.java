@@ -10,6 +10,7 @@ import java.util.List;
  * 合同订单表数据访问接口
  *
  * @author 张振国
+ * @author 华中昊
  * @version 1.0
  * @see #add(ContractOrder)
  * @see #update(ContractOrder)

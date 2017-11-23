@@ -9,6 +9,7 @@ import java.util.List;
  * 合同订单生产计划订单项表数据访问接口
  *
  * @author 甄立
+ * @author 华中昊
  * @version 1.0
  * @see #select(team.ruike.cim.pojo.ContractProductionPlanItem, int, int)
  * @see #selectById(Integer)

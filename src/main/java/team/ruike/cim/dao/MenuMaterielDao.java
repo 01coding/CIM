@@ -9,6 +9,7 @@ import java.util.List;
  * 菜谱物料关系接口
  *
  * @author 甄立
+ * @author 华中昊
  * @version 1.0
  * @see #select(MenuMateriel, int, int)
  * @see #selectById(Integer)
