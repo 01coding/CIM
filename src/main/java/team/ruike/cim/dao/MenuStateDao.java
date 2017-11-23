@@ -8,7 +8,7 @@ import java.util.List;
 
 /**
  * 菜谱状态表数据访问接口
- *
+ *@author 张振国
  * @author 华中昊
  * @version 1.0
  * @see #add(MenuState)
@@ -50,7 +50,7 @@ public interface MenuStateDao {
      * @param menuState 菜谱状态对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(MenuState menuState);
+    int selectCount(@Param("menuState")MenuState menuState);
 
     /**
      * 根据ID查询单个菜谱状态数据

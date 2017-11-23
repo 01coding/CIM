@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 成品仓库区域表数据访问接口
- *
+ *@author 张振国
  * @author 华中昊
  * @version 1.0
  * @see #add(ProductWarehouseRegion)
@@ -49,7 +49,7 @@ public interface ProductWarehouseRegionDao {
      * @param productWarehouseRegion 成品仓库区域对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(ProductWarehouseRegion productWarehouseRegion);
+    int selectCount(@Param("productWarehouseRegion")ProductWarehouseRegion productWarehouseRegion);
 
     /**
      * 根据ID查询单个成品仓库区域数据
