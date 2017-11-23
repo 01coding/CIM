@@ -16,7 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="materielUnit" column="materiel_unit_id" select="team.ruike.cim.dao.MaterielUnitDao"/>
     </resultMap>
     <insert id="add" parameterType="materiel">
-        INSERT  INTO materiel VALUES (DEFAULT ,#{materielName},,#{materielTypeLevelB},#{materielUnit},#{materielYield},#{materielShelfLife},#{materielMinWarning},#{materielRemarks},#{status})
+        INSERT  INTO materiel VALUES (DEFAULT ,#{materielName},,#{materielTypeLevelB},#{materielUnit},#{materielYield},
+        #{materielShelfLife},#{materielMinWarning},#{materielRemarks},0)
     </insert>
     <update id="update" parameterType="materiel">
             UPDATE materiel SET

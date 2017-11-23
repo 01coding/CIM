@@ -10,7 +10,7 @@
         <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="jurisdiction">
-      INSERT INTO jurisdiction VALUES (DEFAULT ,#{jurisdictionName},#{jurisdictionUrl},#{status});
+      INSERT INTO jurisdiction VALUES (DEFAULT ,#{jurisdictionName},#{jurisdictionUrl},0);
     </insert>
     <update id="update" parameterType="jurisdiction">
         UPDATE jurisdiction SET

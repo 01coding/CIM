@@ -19,6 +19,9 @@ public class TemporaryOrderState implements Serializable {
      * 状态名
      */
     private String temporaryOrderStateName;
+    /**
+     * 删除状态
+     */
     private Integer status;
 
 
