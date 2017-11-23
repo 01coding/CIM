@@ -9,6 +9,7 @@ import java.util.List;
  * 货架接口
  *
  * @author 甄立
+ * @author 王傲祥
  * @version 1.0
  * @see #select(GoodsShelve, int, int)
  * @see #selectById(Integer)

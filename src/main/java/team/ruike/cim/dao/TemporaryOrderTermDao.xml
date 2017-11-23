@@ -9,12 +9,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="update" parameterType="temporaryOrderTerm">
         
     </update>
-    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
     <select id="select" resultMap="">
 
     </select>
     <select id="selectCount" resultType="int" parameterType="temporaryOrderTerm">
 
+temporary_order_term_id
+menu_id
+menu_number
+complete_number
+temporary_order_term_state
+product_batch
+temporary_order_id
+status
+
+   /**
+     * 临时订单项
+     */
+    private Integer temporaryOrderTermId;
+    /**
+     * 菜品外键
+     */
+    private Menu menu;
+    private Integer menuNumber;
+    private Integer completeNumber;
+    private Integer temporaryOrderTermState;
+    private String productBatch;
+    private TemporaryOrder temporaryOrder;
+    private Integer status;
     </select>
     <select id="selectById" parameterType="int" resultMap="">
 

@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND materielId=#{materiel.materielId}
         </if>
         <if test="materiel.materielName!=null and materiel.materielName!=''">
-            AND materielName LIKE '%materiel.materielName%'
+            AND materielName LIKE  CONCAT('%',#{materiel.materielName},'%')
         </if>
         <if test="materiel.materielTypeLevelB!=null and materiel.materielTypeLevelB.materielTypeLevelBId>0">
             AND materielTypeLevelB=#{materiel.materielTypeLevelB.materielTypeLevelBId}
@@ -63,32 +63,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         limit #{begin},#{pagesize}
     </select>
     <select id="selectCount" resultType="int" parameterType="materiel">
+        SELECT COUNT(1) from materiel WHERE status=0
         <if test="materielId!=null and materielId>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielId=#{materielId}
         </if>
         <if test="materielName!=null and materielName!=''">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielName LIKE  CONCAT('%',#{materielName},'%')
         </if>
         <if test="materielTypeLevelB!=null and materielTypeLevelB.materielTypeLevelBId>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielTypeLevelB=#{materielTypeLevelB.materielTypeLevelBId}
         </if>
         <if test="materielUnit!=null and materielUnit.materielUnitId">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielUnit =#{materielUnit.materielUnitId}
         </if>
         <if test="materielYield!=null and materielYield>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielYield=#{materielYield}
         </if>
         <if test="materielShelfLife!=null and materielShelfLife>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielShelfLife=#{materielShelfLife}
         </if>
         <if test="materielMinWarning！=null and materielMinWarning>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielMinWarning=#{materielMinWarning}
         </if>
         <if test="materielRemarks!=null and materielRemarks!=''">
-            select COUNT(1) from (<include refid="sql"/>) f
+            AND materielRemarks=#{materielRemarks}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="materielMap">
-            select * from materiel WHERE materielId=#{materielId}
+        SELECT * from materiel WHERE status=0
+        <if test="materielId!=null and materielId>0">
+            AND materielId=#{materielId}
+        </if>
     </select>
 </mapper>

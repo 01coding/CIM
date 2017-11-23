@@ -53,7 +53,7 @@
                 and remarks=#{everydayPurchasingPlanTerm.remarks}
             </if>
             <if test="everydayPurchasingPlanTerm.everydayPurchasingPlanId!=null and everydayPurchasingPlanTerm.everydayPurchasingPlanId>0">
-                and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
+                and everyday_purchasing_plan_id=#{everydayPurchasingPlanTerm.everydayPurchasingPlanId}
             </if>
     </sql>
 
@@ -63,31 +63,36 @@
     </select>
 
     <select id="selectCount" resultType="int" parameterType="everydayPurchasingPlanTerm">
+        SELECT COUNT(1) from everyday_purchasing_plan_term WHERE status=0
         <if test="everydayPurchasingPlanTermId!=null and everydayPurchasingPlanTermId>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
         </if>
         <if test="materiel!=null and materiel.materielId>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and materiel_id=#{materiel.materielId}
         </if>
         <if test="materielNumber!=null and materielNumber>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and materiel_number#{materielNumber}
         </if>
         <if test="unitPrice!=null and unitPrice>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and unit_price#{unitPrice}
         </if>
         <if test="priceFloat!=null and priceFloat>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and price_float=#{priceFloat}
         </if>
         <if test="remarks!=null and remarks=''">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and remarks=#{remarks}
         </if>
         <if test="everydayPurchasingPlanId!=null and everydayPurchasingPlanId>0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
         </if>
     </select>
 
     <select id="selectById" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
-        select * from everyday_purchasing_plan_term WHERE everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
+        SELECT * from everyday_purchasing_plan_term WHERE status=0
+  <if test="everydayPurchasingPlanTermId!=null and everydayPurchasingPlanTermId>0">
+      and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTerm.everydayPurchasingPlanTermId}
+  </if>
+
     </select>
 
 </mapper>

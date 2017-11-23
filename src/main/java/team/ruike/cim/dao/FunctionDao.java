@@ -7,8 +7,8 @@ import java.util.List;
 
 /**
  * 功能接口
- *
  * @author 甄立
+ * @author 王傲祥
  * @version 1.0
  * @see #selectById(Integer)
  * @see #select(Function, int, int)

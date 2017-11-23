@@ -16,7 +16,7 @@
                 AND function_id=#{function.functionId}
             </if>
             <if test="function.functionName!=null and function.functionName!=''">
-                  AND function_name LIKE '%function.functionName%'
+                  AND function_name LIKE  CONCAT('%',#{function.functionName},'%')
             </if>
             <if test="function.functionUrl!=null and function.functionUrl!=''">
                 AND function_url=#{function.functionUrl}
@@ -42,22 +42,25 @@
         limit #{begin},#{pagesize}
     </select>
     <select id="selectCount" resultType="int" parameterType="function">
+        SELECT  COUNT(1) from function WHERE status=0
         <if test="functionId!=null and functionId>0">
-            select count(1) from (<include refid="sql"/>) f
+            AND function_id=#{functionId}
         </if>
         <if test="functionName!=null and functionName!=''">
-            select count(1) from (<include refid="sql"/>) f
+            AND function_name  LIKE  CONCAT('%',#{functionName},'%')
         </if>
         <if test="functionUrl!=null and functionUrl!=''">
-            select count(1) from (<include refid="sql"/>) f
+            AND function_url=#{functionUrl}
         </if>
         <if test="jurisdictionId!=null and jurisdictionId>0">
-            select count(1) from (<include refid="sql"/>) f
+            AND jurisdiction_id=#{jurisdictionId}
         </if>
-
     </select>
     <select id="selectById" parameterType="int" resultMap="functionMap">
-        select * from function WHERE function_id=#{functionId}
+        SELECT  * from function WHERE status=0
+    <if test="functionId!=null and functionId>0">
+        AND function_id=#{function.functionId}
+    </if>
     </select>
 
 </mapper>

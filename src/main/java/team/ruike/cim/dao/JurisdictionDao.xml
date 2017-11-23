@@ -25,7 +25,7 @@
         jurisdiction_id=#{jurisdiction.jurisdictionId}
     </if>
     <if test="jurisdiction.jurisdictionName !=null and jurisdiction.jurisdictionName !=''">
-        jurisdiction_name=#{jurisdiction.jurisdictionName}
+        jurisdiction_name LIKE  CONCAT('%',#{jurisdiction.jurisdictionName},'%')
     </if>
     <if test="jurisdiction.jurisdictionUrl !=null and jurisdiction.jurisdictionUrl !=''">
         jurisdiction_url=#{jurisdiction.jurisdictionUrl}
@@ -38,21 +38,24 @@
         select * from (<include refid="sql"/>) f
         limit #{begin},#{pagesize}
     </select>
-    <select id="selectCount" resultType="int" parameterType="jurisdiction">\
+    <select id="selectCount" resultType="int" parameterType="jurisdiction">
+        SELECT COUNT(1)FROM jurisdiction status=0
         <if test="jurisdictionId!=null and jurisdictionId >0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            jurisdiction_id=#{jurisdictionId}
         </if>
         <if test="jurisdictionName !=null and jurisdictionName !=''">
-            select COUNT(1) from (<include refid="sql"/>) f
+            jurisdiction_name LIKE  CONCAT('%',#{jurisdictionName},'%')
         </if>
         <if test="jurisdictionUrl !=null and jurisdictionUrl !=''">
-            select COUNT(1) from (<include refid="sql"/>) f
+            jurisdiction_url=#{jurisdictionUrl}
         </if>
         <if test="status !=null and status >0">
-            select COUNT(1) from (<include refid="sql"/>) f
+            status=#{status}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="jurisdictionMap">
-           select * from jurisdiction WHERE jurisdiction_id=#{jurisdictionId}
+        <if test="jurisdictionId!=null and jurisdictionId>0">
+            select * from jurisdiction WHERE jurisdiction_id=#{jurisdictionId}
+        </if>
     </select>
 </mapper>
