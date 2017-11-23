@@ -9,6 +9,7 @@ import java.util.List;
  * 临时订单任务进度记录表数据访问接口
  *
  * @author 张振国
+ * @author 孙天奇
  * @version 1.0
  */
 public interface TemporaryProgressDao {

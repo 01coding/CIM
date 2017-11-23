@@ -9,6 +9,7 @@ import java.util.List;
  * 用户表表数据访问接口
  *
  * @author 孙天奇
+ * @author 孙天奇
  * @version 1.0
  */
 public interface UserDao {
@@ -31,9 +32,9 @@ public interface UserDao {
     /**
      * 查询订单列表
      *
-     * @param user 用户表对象(作为查询条件)
-     * @param pageNo        要查询的页码
-     * @param pageSize      页面数据大小
+     * @param user     用户表对象(作为查询条件)
+     * @param pageNo   要查询的页码
+     * @param pageSize 页面数据大小
      * @return 用户表对象集合
      */
     List<User> select(@Param("user") User user, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
@@ -48,6 +49,7 @@ public interface UserDao {
 
     /**
      * 根据ID查询单个合同订单数据
+     *
      * @param userId 合同订单id
      * @return 用户表对象
      */

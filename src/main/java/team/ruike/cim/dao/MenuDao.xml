@@ -4,23 +4,23 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MenuDao">
     <resultMap id="menus" type="menu">
-        <result column="menu_id" property="menuId"></result>
-        <result column="menu_name" property="menuName"></result>
-        <result column="menu_no" property="menuNo"></result>
-        <result column="menu_weight" property="menuWeight"></result>
-        <result column="menu_cost" property="menuCost"></result>
-        <result column="menu_image" property="menuImage"></result>
-        <result column="menu_store_max" property="menuStoreMax"></result>
-        <result column="menu_store_min" property="menuStoreMin"></result>
-        <result column="menu_shelf_life" property="menuShelfLife"></result>
-        <result column="menu_create_date" property="menuCreateDate"></result>
-        <result column="menu_release_date" property="menuReleaseDate"></result>
-        <result column="status" property="status"></result>
-        <result column="menu_remarks" property="menuRemarks"></result>
+        <result column="menu_id" property="menuId"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="menu_no" property="menuNo"/>
+        <result column="menu_weight" property="menuWeight"/>
+        <result column="menu_cost" property="menuCost"/>
+        <result column="menu_image" property="menuImage"/>
+        <result column="menu_store_max" property="menuStoreMax"/>
+        <result column="menu_store_min" property="menuStoreMin"/>
+        <result column="menu_shelf_life" property="menuShelfLife"/>
+        <result column="menu_create_date" property="menuCreateDate"/>
+        <result column="menu_release_date" property="menuReleaseDate"/>
+        <result column="status" property="status"/>
+        <result column="menu_remarks" property="menuRemarks"/>
         <association column="menu_state_id" property="menuState.menuStateId"
-                     select="team.ruike.cim.dao.MenuStateDao"></association>
+                     select="team.ruike.cim.dao.MenuStateDao"/>
         <association property="menuType.menuTypeId" column="menu_type_id"
-                     select="team.ruike.cim.dao.MenuTypeDao.selectById."></association>
+                     select="team.ruike.cim.dao.MenuTypeDao.selectById."/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM menu WHERE status=0
@@ -28,7 +28,7 @@
             AND  menu_id=#{menu.menuId}
         </if>
         <if test="menu.menuName!=null and menu.menuName!=''">
-            AND  menu_name=#{menuName}
+            AND  menu_name LIKE CONCAT('%',#{menu.menuName},'%')
         </if>
         <if test="menu.menuNo!=null and menu.menuNo>0">
             AND menu_no=#{menu.menuNo}
@@ -71,7 +71,7 @@
         </if>
     </sql>
     <insert id="add" parameterType="menu">
-        INSERT  INTO menu VALUES (#{menuName},#{menuNo},#{menuType.menuTypeId},#{menuWeight},#{menuCost},#{menuImage},#{menuStoreMax},#{menuStoreMin},#{menuShelfLife},#{menuCreateDate},#{menuState.menuStateId},#{menuReleaseDate},#{status},#{menuRemarks})
+        INSERT  INTO menu VALUES (DEFAULT ,#{menuName},#{menuNo},#{menuType.menuTypeId},#{menuWeight},#{menuCost},#{menuImage},#{menuStoreMax},#{menuStoreMin},#{menuShelfLife},#{menuCreateDate},#{menuState.menuStateId},#{menuReleaseDate},#{status},#{menuRemarks})
     </insert>
     <update id="update" parameterType="menu">
         UPDATE menu SET menu_id=#{menuName},menu_name=#{menuNo},menu_no=#{menuType.menuTypeId},menu_weight=#{menuWeight},menu_cost=#{menuCost},
@@ -79,7 +79,7 @@
         menu_type_id=#{menuType.menuTypeId}
     </update>
     <select id="select" resultMap="menus">
-        SELECT * FROM (<include refid="sql"></include> )f
+        SELECT * FROM (<include refid="sql"/> )f
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="menu">
@@ -88,7 +88,7 @@
             AND  menu_id=#{menu.menuId}
         </if>
         <if test="menuName!=null and menuName!=''">
-            AND  menu_name=#{menuName}
+            AND  menu_name LIKE CONCAT('%',#{menuName},'%')
         </if>
         <if test="menuNo!=null and menuNo>0">
             AND menu_no=#{menu.menuNo}

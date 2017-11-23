@@ -5,10 +5,14 @@ import team.ruike.cim.pojo.WarehouseRegisterItem;
 
 import java.util.List;
 
+/**
+ * 入库登记记录项数据接口
+ *@author 孙天奇
+ * @author 孙天奇
+ * @version 1.0
+ */
 public interface WarehouseRegisterItemDao {
     /**
-     * 入库登记记录项数据接口
-     *
      * @param warehouseRegisterItem 入库登记记录项实体类对象
      * @return 受影响的行数
      */

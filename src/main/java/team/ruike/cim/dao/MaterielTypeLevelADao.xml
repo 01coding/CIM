@@ -4,35 +4,38 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MaterielTypeLevelADao">
     <resultMap id="materielTypeLevelAs" type="materielTypeLevelA">
-        <result column="materiel_type_level_a_id" property="materielTypeLevelAId"></result>
-        <result column="materiel_type_level_a_name" property="materielTypeLevelAName"></result>
-        <result column="status" property="status"></result>
+        <result column="materiel_type_level_a_id" property="materielTypeLevelAId"/>
+        <result column="materiel_type_level_a_name" property="materielTypeLevelAName"/>
+        <result column="status" property="status"/>
     </resultMap>
     <sql id="sql">
         select * from materiel_type_level_a where status=0
         <if test=" materielTypeLevelA.materielTypeLevelAId!='' and materielTypeLevelA.materielTypeLevelAId>0">
-            and ateriel_type_level_a_id=#{materielTypeLevelA.materielTypeLevelAId}
+            and materiel_type_level_a_id=#{materielTypeLevelA.materielTypeLevelAId}
         </if>
         <if test="materielTypeLevelA.materielTypeLevelAName!=null and materielTypeLevelA.materielTypeLevelAName!=''">
             and materiel_type_level_a_name like CONCAT('%',#{materielTypeLevelA.materielTypeLevelAName},'%')
         </if>
     </sql>
     <insert id="add" parameterType="materielTypeLevelA">
-          INSERT INTO  materiel_type_level_a VALUES (#{materielTypeLevelAName},0)
+        INSERT INTO materiel_type_level_a VALUES (DEFAULT ,#{materielTypeLevelAName}, 0)
     </insert>
     <update id="update" parameterType="materielTypeLevelA">
-          UPDATE materiel_type_level_a SET materiel_type_level_a_name=#{materielTypeLevelAName},status=#{status}
-          WHERE materiel_type_level_a_id=#{materielTypeLevelAId}
-   </update>
+        UPDATE materiel_type_level_a
+        SET materiel_type_level_a_name = #{materielTypeLevelAName}, status = #{status}
+        WHERE materiel_type_level_a_id = #{materielTypeLevelAId}
+    </update>
 
     <select id="select" resultMap="materielTypeLevelAs">
-        select * from (<include refid="sql"></include> ) f
+        select * from (
+        <include refid="sql"/>
+        ) f
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="materielTypeLevelA">
         SELECT count(1) from materiel_type_level_a where status=0
         <if test="materielTypeLevelAId!='' and materielTypeLevelAId>0">
-            and ateriel_type_level_a_id=#{materielTypeLevelAId}
+            and materiel_type_level_a_id=#{materielTypeLevelAId}
         </if>
         <if test="materielTypeLevelAName!=null and materielTypeLevelAName!=''">
             and materiel_type_level_a_name like CONCAT('%',#{materielTypeLevelAName},'%')
@@ -41,7 +44,7 @@
     <select id="selectById" parameterType="int" resultMap="materielTypeLevelA">
         SELECT * from materiel_type_level_a WHERE status=0
         <if test="materielTypeLevelAId!='' and materielTypeLevelAId>0">
-            AND ateriel_type_level_a_id=#{materielTypeLevelAId}
+            AND materiel_type_level_a_id=#{materielTypeLevelAId}
         </if>
     </select>
 </mapper>
