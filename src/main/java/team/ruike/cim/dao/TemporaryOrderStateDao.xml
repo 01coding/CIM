@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="temporaryOrderState">
-        INSERT INTO temporary_order_state VALUES (DEFAULT ,#{temporaryOrderStateName},#{status})
+        INSERT INTO temporary_order_state VALUES (DEFAULT ,#{temporaryOrderStateName},0)
     </insert>
     <update id="update" parameterType="temporaryOrderState">
          UPDATE temporary_order_state SET

@@ -10,7 +10,7 @@
         <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="jurisdiction">
-      INSERT INTO jurisdiction VALUES (DEFAULT ,#{jurisdictionName},#{jurisdictionUrl},#{status});
+      INSERT INTO jurisdiction VALUES (DEFAULT ,#{jurisdictionName},#{jurisdictionUrl},0);
     </insert>
     <update id="update" parameterType="jurisdiction">
         UPDATE jurisdiction SET
@@ -20,7 +20,7 @@
         WHERE jurisdiction_id=#{jurisdictionId}
     </update>
 <sql id="sql">
-    SELECT * FROM jurisdiction status=0
+    SELECT * FROM jurisdiction WHERE status=0
     <if test="jurisdiction.jurisdictionId!=null and jurisdiction.jurisdictionId >0">
         jurisdiction_id=#{jurisdiction.jurisdictionId}
     </if>
@@ -39,7 +39,7 @@
         limit #{begin},#{pagesize}
     </select>
     <select id="selectCount" resultType="int" parameterType="jurisdiction">
-        SELECT COUNT(1)FROM jurisdiction status=0
+        SELECT COUNT(1)FROM jurisdiction WHERE status=0
         <if test="jurisdictionId!=null and jurisdictionId >0">
             jurisdiction_id=#{jurisdictionId}
         </if>

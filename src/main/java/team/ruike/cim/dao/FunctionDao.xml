@@ -27,7 +27,7 @@
 
     </sql>
     <insert id="add" parameterType="function">
-      INSERT  INTO function VALUES (DEFAULT ,#{functionName},#{functionUrl},#{jurisdictionId},#{status})
+      INSERT  INTO function VALUES (DEFAULT ,#{functionName},#{functionUrl},#{jurisdictionId},0)
     </insert>
     <update id="update" parameterType="function">
           UPDATE function SET

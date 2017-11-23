@@ -27,7 +27,7 @@
             <if test="goodsShelve.materielNumber!=null and goodsShelve.materielNumber>0">
                 AND materiel_number+#{goodsShelve.materielNumber}
             </if>
-            <if test="goodsShelve.materielShelfLifeEndDate!=null and goodsShelve.materielShelfLifeEndDate!=''">
+            <if test="goodsShelve.materielShelfLifeEndDate!=null">
                 AND materiel_shelf_life_end_date=#{goodsShelve.materielShelfLifeEndDate}
             </if>
             <if test="goodsShelve.materiel!=null and goodsShelve.materiel.materielId>0">
@@ -39,7 +39,8 @@
 
     </sql>
     <insert id="add" parameterType="goodsShelve">
-        INSERT INTO goods_shelve VALUES (DEFAULT ,#{goodsShelveNo},#{materiel.materielId},#{materielNumber},#{materielShelfLifeEndDate},#{status},#{warehouseRegion.warehouseRegionid})
+        INSERT INTO goods_shelve VALUES (DEFAULT ,#{goodsShelveNo},#{materiel.materielId},#{materielNumber},
+        #{materielShelfLifeEndDate},0,#{warehouseRegion.warehouseRegionid})
     </insert>
     <update id="update" parameterType="goodsShelve">
         UPDATE goods_shelve SET
@@ -70,7 +71,7 @@
         <if test="materielNumber!=null and materielNumber>0">
             AND materiel_number+#{materielNumber}
         </if>
-        <if test="materielShelfLifeEndDate!=null and materielShelfLifeEndDate!=''">
+        <if test="materielShelfLifeEndDate!=null">
             AND materiel_shelf_life_end_date=#{materielShelfLifeEndDate}
         </if>
         <if test="materiel!=null and materiel.materielId>0">

@@ -10,7 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="working" column="working_id" select="team.ruike.cim.dao.TechnologyDao"/>
     </resultMap>
     <insert id="add" parameterType="technology">
-          INSERT INTO technology VALUES (DEFAULT ,#{technologyName},#{working.workingId},#{status},)
+          INSERT INTO technology VALUES (DEFAULT ,#{technologyName},#{working.workingId},0,)
     </insert>
     <update id="update" parameterType="technology">
         UPDATE technology SET
