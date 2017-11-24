@@ -68,4 +68,7 @@
         SELECT * FROM product_warehouse_region
         WHERE status=0 AND product_warehouse_region_id=#{productWarehouseRegionId}
     </select>
+    <select id="selectByproductWarehouseId" parameterType="int" resultMap="productWarehouseRegionMap">
+        SELECT * FROM product_warehouse_region WHERE `status`=0 AND product_warehouse_id=#{productWarehouse.productWarehouseId}
+    </select>
 </mapper>

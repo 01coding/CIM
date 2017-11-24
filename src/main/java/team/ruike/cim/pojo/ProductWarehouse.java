@@ -31,7 +31,16 @@ public class ProductWarehouse implements Serializable {
   /**
    * 成品仓库区域类集合
    */
-  private List<ProductGoodsShelve> productGoodsShelveList;
+
+  private List<ProductWarehouseRegion> productWarehouseRegionList;
+
+  public List<ProductWarehouseRegion> getProductWarehouseRegionList() {
+    return productWarehouseRegionList;
+  }
+
+  public void setProductWarehouseRegionList(List<ProductWarehouseRegion> productWarehouseRegionList) {
+    this.productWarehouseRegionList = productWarehouseRegionList;
+  }
 
   public Integer getProductWarehouseId() {
     return productWarehouseId;
@@ -68,11 +77,5 @@ public class ProductWarehouse implements Serializable {
     this.status = status;
   }
 
-  public List<ProductGoodsShelve> getProductGoodsShelveList() {
-    return productGoodsShelveList;
-  }
 
-  public void setProductGoodsShelveList(List<ProductGoodsShelve> productGoodsShelveList) {
-    this.productGoodsShelveList = productGoodsShelveList;
-  }
 }

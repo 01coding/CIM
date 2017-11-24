@@ -3,9 +3,6 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.EverydayPurchasingPlanDao">
-
-
-
     <sql id="modelCondition">
         <if test="everydayPurchasingPlanId!=null and everydayPurchasingPlanId>0">
             and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
@@ -37,6 +34,7 @@
         <result property="everydayPurchasingPlanNo" column="everyday_purchasing_plan_no"/>
         <result property="everydayPurchasingPlanDate" column="everyday_purchasing_plan_date"/>
         <result property="status" column="status"/>
+        <collection property="everydayPurchasingPlanTerms" column="everyday_purchasing_plan_id" select="team.ruike.cim.dao.EverydayPurchasingPlanTermDao.selectByeverydayPurchasingPlanId"/>
     </resultMap>
 
 

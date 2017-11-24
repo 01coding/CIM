@@ -57,4 +57,11 @@ public interface ProductWarehouseRegionDao {
      * @return 成品仓库区域对象
      */
     ProductWarehouseRegion selectById(Integer productWarehouseRegionId);
+
+    /**
+     * 根据productWarehouseId查询成品仓库区域数据
+     * @param productWarehouseId   成品仓库id
+     * @return      成品仓库区域集合
+     */
+    List<ProductWarehouseRegion> selectByproductWarehouseId(Integer productWarehouseId);
 }

@@ -83,7 +83,10 @@
     <select id="selectById" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
         SELECT * from everyday_purchasing_plan_term WHERE status=0
   <if test="everydayPurchasingPlanTermId!=null and everydayPurchasingPlanTermId>0">
-      and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTerm.everydayPurchasingPlanTermId}
+      and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
   </if>
+    </select>
+    <select id="selectByeverydayPurchasingPlanId" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
+          select * from everyday_purchasing_plan_term where `status`=0 and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
     </select>
 </mapper>

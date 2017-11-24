@@ -53,4 +53,11 @@ public interface StagePurchasingPlanTermDao {
      * @return 阶段采购计划项对象
      */
     StagePurchasingPlanTerm selectById(Integer stagePurchasingPlanTermId);
+
+    /**
+     * 根据阶段采购计划表ID查询阶段采购计划项数据
+     * @param stagePurchasingPlanId  阶段采购计划表ID
+     * @return 阶段采购计划项对象集合
+     */
+    List<StagePurchasingPlanTerm> selectBystagePurchasingPlanId(Integer stagePurchasingPlanId);
 }
