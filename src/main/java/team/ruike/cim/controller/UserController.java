@@ -9,7 +9,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 用户前端控制器
+ * 用户业务控制器
  *
  * @author 张振国
  * @version 1.0
