@@ -33,8 +33,8 @@ public interface TemporaryOrderTermDao {
      * 查询订单列表
      *
      * @param temporaryOrderTerm 临时订单项对象(作为查询条件)
-     * @param pageNo        要查询的页码
-     * @param pageSize      页面数据大小
+     * @param pageNo             要查询的页码
+     * @param pageSize           页面数据大小
      * @return 临时订单项对象集合
      */
     List<TemporaryOrderTerm> select(@Param("temporaryOrderTerm") TemporaryOrderTerm temporaryOrderTerm, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
@@ -49,8 +49,18 @@ public interface TemporaryOrderTermDao {
 
     /**
      * 根据ID查询单个临时订单项
+     *
      * @param temporaryOrderTermId 临时订单项id
      * @return 临时订单项对象
      */
     TemporaryOrderTerm selectById(Integer temporaryOrderTermId);
+
+
+    /**
+     * 根据临时订单Id查询临时订单项
+     *
+     * @param temporaryOrderId 临时订单Id
+     * @return 临时订单项集合
+     */
+    List<TemporaryOrderTerm> selectByTemporaryOrderId(Integer temporaryOrderId);
 }
