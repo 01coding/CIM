@@ -8,8 +8,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="menu_number" property="menuNumber"/>
         <result column="product_warehouse_register_id" property="productWarehouseRegisterId"/>
         <result column="status" property="status"/>
-        <association property="menu" column="menu_id" select="team.ruike.cim.dao.MenuDao"/>
-        <association property="productGoodsShelve" column="product_goods_shelve_id" select="team.ruike.cim.dao.ProductGoodsShelveDao"/>
+        <association property="menu" column="menu_id" select="team.ruike.cim.dao.MenuDao.selectById"/>
+        <association property="productGoodsShelve" column="product_goods_shelve_id" select="team.ruike.cim.dao.ProductGoodsShelveDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="productWarehouseRegisterItem">
           INSERT INTO product_warehouse_register_item VALUES (DEFAULT ,#{menu.menuId},#{productGoodsShelve.productGoodsShelveId},#{menuNumber},#{productWarehouseRegisterId},0)

@@ -9,8 +9,8 @@
         <result column="materiel_number" property="materielNumber"/>
         <result column="materiel_shelf_life_end_date" property="materielShelfLifeEndDate"/>
         <result column="status" property="status"/>
-        <association property="materiel" column="materiel_id" select="team.ruike.cim.dao.MaterielDao"/>
-        <association property="warehouseRegion" select="team.ruike.cim.dao.WarehouseRegionDao" column="warehouse_region_id"/>
+        <association property="materiel" column="materiel_id" select="team.ruike.cim.dao.MaterielDao.selectById"/>
+        <association property="warehouseRegion" select="team.ruike.cim.dao.WarehouseRegionDao.selectById" column="warehouse_region_id"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM  goods_shelve WHERE status=0
