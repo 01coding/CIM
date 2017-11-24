@@ -2,7 +2,7 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ruike.cim.dao.Supplier">
+<mapper namespace="team.ruike.cim.dao.SupplierDao">
     <resultMap id="supplierMap" type="supplier">
         <result column="supplier_id" property="supplierId"/>
         <result column="supplier_name" property="supplierName"/>
@@ -33,7 +33,7 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
               supplier_phone=#{supplierPhone},
               cooperation_start_date=#{cooperationStartDate},
               supplier_remarks=#{supplierRemarks},
-              supplier_state=#{supplierState},
+              supplier_state=#{supplierState}
               WHERE supplier_id=#{supplierId}
     </update>
     <sql id="sql">
