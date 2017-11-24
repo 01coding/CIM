@@ -87,5 +87,7 @@
     <select id="selectById" parameterType="int" resultMap="contractOrderTermMap">
         SELECT * FROM contract_order_term WHERE `status`=0 and contract_order_term_id=#{contractOrderTermId}
     </select>
-
+   <select id="selectBYContractOrderId" resultMap="contractOrderTermMap">
+        SELECT * FROM  contract_order_term WHERE  `status` =0 AND  contract_order_id=#{contractOrderId}
+   </select>
 </mapper>

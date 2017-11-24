@@ -66,4 +66,10 @@ public interface ContractProductionPlanItemDao {
      */
     ContractProductionPlanItem selectById(Integer contractProductionPlanItemId);
 
+    /**
+     * 根据合同订单生产计划id 查询 合同订单生产计划订单项
+     * @param contractProductionPlanId 合同订单生产计划id
+     * @return 合同订单生产计划订单项对象集合
+     */
+    List<ContractProductionPlanItem> selectBYContractProductionPlanId(Integer contractProductionPlanId);
 }

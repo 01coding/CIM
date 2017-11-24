@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
         <association property="order_contract_id" column="orderContract" select="team.ruike.cim.dao.OrderContractDao.selectById"/>
         <association property="user_id" column="user" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <collection property="contractOrderTerms" column="contract_order_id" select="team.ruike.cim.dao.ContractOrderTermDao.selectBYContractOrderId"/>
     </resultMap>
 
     <sql id="sqlh">
