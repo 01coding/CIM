@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
         <result column="supplier_remarks" property="supplierRemarks"/>
         <result column="supplier_state" property="supplierState"/>
-        <association property="materielTypeLevelB" column="materiel_type_level_b_id" select="team.ruike.cim.dao.MaterielTypeLevelBDao"/>
+        <association property="materielTypeLevelB" column="materiel_type_level_b_id" select="team.ruike.cim.dao.MaterielTypeLevelBDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="supplier">
 INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierImage},#{supplierCharterImage},#{materielTypeLevelB.materielTypeLevelBId},#{supplierAddress},

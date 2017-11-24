@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="next_working_number" property="nextWorkingNumber"/>
         <result column="start_date" property="startDate"/>
         <result column="end_date" property="endDate"/>
-        <association property="temporaryProductionPlanItem" column="temporary_production_plan_item_id" select="team.ruike.cim.dao.TemporaryProductionPlanItemDao"/>
-        <association property="working" column="working_id" select="team.ruike.cim.dao.WorkingDao"/>
-        <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao"/>
-        <association property="productionLine" column="production_line_id" select=""/>
+        <association property="temporaryProductionPlanItem" column="temporary_production_plan_item_id" select="team.ruike.cim.dao.TemporaryProductionPlanItemDao.selectById"/>
+        <association property="working" column="working_id" select="team.ruike.cim.dao.WorkingDao.selectById"/>
+        <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <association property="productionLine" column="production_line_id" select="team.ruike.cim.dao.ProductionLineDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="temporaryProductionDistribution">
           INSERT INTO temporary_production_distribution VALUES (DEFAULT ,#{temporaryProductionPlanItem.temporaryProductionPlanItemId},

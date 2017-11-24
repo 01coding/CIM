@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="temporary_order_term_state" property="temporaryOrderTermState"/>
         <result column="product_batch" property="productBatch"/>
         <result column="status" property="status"/>
-        <association property="menu" column="" select="menu_number"/>
-        <association property="temporaryOrder" column="temporary_order_id" select=""/>
+        <association property="menu" column="menu_number" select="team.ruike.cim.dao.MenuDao.selectById"/>
+        <association property="temporaryOrder" column="temporary_order_id" select="team.ruike.cim.dao.TemporaryOrderDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="temporaryOrderTerm">
         INSERT INTO  temporary_order_term VALUES (DEFAULT ,#{menu.temporaryOrderTermId},#{menuNumber},#{completeNumber},

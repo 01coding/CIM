@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="production_batch" property="productionBatch"/>
         <result column="status" property="status"/>
         <result column="date" property="date"/>
-        <association property="temporary_order_id" column="temporaryOrderId.temporaryOrderId" select="team.ruike.cim.dao.TemporaryOrderDao"/>
+        <association property="temporary_order_id" column="temporaryOrderId.temporaryOrderId" select="team.ruike.cim.dao.TemporaryOrderDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="temporaryProductionPlan">
         INSERT INTO temporary_production_plan VALUES (DEFAULT ,#{temporaryOrderId.temporaryOrderId},#{production_batch},0,#{date})
