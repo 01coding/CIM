@@ -51,7 +51,7 @@
             AND materiel_type_level_a_id=#{materielTypeLevelA.materielTypeLevelAId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
+    <select id="selectById" parameterType="int" resultMap="materielTypeLevelBs">
         SELECT * FROM materiel_type_level_b WHERE status=0
         <if test="materielTypeLevelBId!=null and materielTypeLevelBId>0">
             AND materiel_type_level_b_id=#{materielTypeLevelBId}

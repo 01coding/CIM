@@ -63,7 +63,7 @@
             AND warehouse_id=#{warehouse.warehouse_id}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="warehouseRegion">
+    <select id="selectById" parameterType="int" resultMap="warehouseRegions">
         SELECT * FROM warehouse_region WHERE status=0
         <if test="warehouseRegionId!=null and warehouseRegionId>0">
             AND warehouse_region_id=#{warehouseRegionId}

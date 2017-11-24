@@ -67,7 +67,7 @@
             AND goods_shelve_id=#{goodsShelve.goodsShelveId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="warehouseOutRegisterItem">
+    <select id="selectById" parameterType="int" resultMap="warehouseOutRegisterItems">
         select * from warehouse_out_register_item WHERE status=0
         <if test="warehouseOutRegisterItemId!=null and warehouseOutRegisterItemId>0">
             AND warehouse_out_register_item_id=#{warehouseOutRegisterItemId}

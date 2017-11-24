@@ -68,7 +68,7 @@
             AND temporary_production_distribution_id=#{temporaryProductionDistribution.temporaryProductionDistributionId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="temporaryProgress">
+    <select id="selectById" parameterType="int" resultMap="temporaryProgresss">
         SELECT  * FROM  temporary_progress WHERE status=0
         AND temporary_progress_id=#{temporaryProgressId}
     </select>

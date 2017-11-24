@@ -52,7 +52,7 @@
             AND status=#{status}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
+    <select id="selectById" parameterType="int" resultMap="roleFunctions">
              SELECT * FROM role_function WHERE status=0
              AND role_function_id=#{roleFunctionId}
     </select>

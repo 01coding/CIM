@@ -36,7 +36,7 @@
             AND  working_name LIKE CONCAT('%',#{workingName},'%')
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="working">
+    <select id="selectById" parameterType="int" resultMap="workings">
         SELECT * FROM working WHERE status=0
         <if test="workingId!=null and workingId!=>0">
             AND working_id=#{working.workingId}

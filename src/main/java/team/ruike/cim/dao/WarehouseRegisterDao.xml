@@ -54,7 +54,7 @@
             AND user_id=#{user.userId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="warehouseRegister">
+    <select id="selectById" parameterType="int" resultMap="warehouseRegisters">
         SELECT * FROM warehouse_register WHERE status=0
         <if test="warehouseRegisterId!=null and warehouseRegisterId>0">
             AND warehouse_register_id=#{warehouseRegisterId}

@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         UPDATE warehouse_out_register SET  warehouse_out_register_end_date=#{warehouseOutRegisterEndDate},
         status=#{status},user_id=#{user.userId} WHERE warehouse_out_register_id=#{warehouseOutRegisterId}
     </update>
-    <select id="select" resultMap="warehouseOutRegisters">
+    <select id="select" resultMap="warehouseOutRegister">
         SELECT * from (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  user_id=#{user.userId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="warehouseOutRegister">
+    <select id="selectById" parameterType="int" resultMap="warehouseOutRegisters">
         select * from  warehouse_out_register_item WHERE status=0
             AND  warehouse_out_register_id=#{warehouseOutRegisterId}
     </select>

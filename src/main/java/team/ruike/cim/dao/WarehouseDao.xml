@@ -53,7 +53,7 @@
             AND user_id=#{user.userId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="warehouse">
+    <select id="selectById" parameterType="int" resultMap="warehouses">
         SELECT  * FROM warehouse WHERE status= 0 AND  warehouse_id=#{warehouse.warehouseId}
     </select>
 </mapper>
