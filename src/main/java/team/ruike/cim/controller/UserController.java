@@ -43,7 +43,7 @@ public class UserController {
             return "login";
         }
         request.getSession().setAttribute("u",u);
-        return "index";
+        return "redirect:/index.do";
     }
 
 }
