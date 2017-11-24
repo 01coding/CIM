@@ -2,7 +2,7 @@
 <!DOCTYPE mapper 
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="team.ruike.cim.dao.StagePurchasingPlanTerm">
+<mapper namespace="team.ruike.cim.dao.StagePurchasingPlanTermDao">
     <resultMap id="stagePurchasingPlanTermMap" type="stagePurchasingPlanTerm">
         <result column="stage_purchasing_plan_term_id" property="stagePurchasingPlanTermId"/>
         <result column="materiel_number" property="materielNumber"/>

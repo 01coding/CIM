@@ -3,14 +3,14 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.TechnologyDao">
-    <resultMap id="" type="">
+    <resultMap id="technologyMap" type="technology">
         <result column="technology_id" property="technologyId"/>
         <result column="technology_name" property="technologyName"/>
         <result column="status" property="status"/>
         <association property="working" column="working_id" select="team.ruike.cim.dao.TechnologyDao"/>
     </resultMap>
     <insert id="add" parameterType="technology">
-          INSERT INTO technology VALUES (DEFAULT ,#{technologyName},#{working.workingId},0,)
+          INSERT INTO technology VALUES (DEFAULT ,#{technologyName},#{working.workingId},0)
     </insert>
     <update id="update" parameterType="technology">
         UPDATE technology SET
@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND working_id=#{technology.working.workingId}
         </if>
     </sql>
-    <select id="select" resultMap="">
+    <select id="select" resultMap="technologyMap">
         select * from (<include refid="sql"/>) f
         limit #{begin},#{pagesize}
     </select>
@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND working_id=#{working.workingId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
+    <select id="selectById" parameterType="int" resultMap="technologyMap">
         SELECT * FROM technology WHERE status=0
         <if test="technologyId!=null and technologyId>0">
             AND technology_id=#{technologyId}

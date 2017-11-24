@@ -9,7 +9,7 @@ import java.util.List;
  * 门店用户表表数据访问接口
  *
  * @author 孙天奇
- * 王傲祥
+ * @author 王傲祥
  * @version 1.0
  */
 public interface StoreDao {

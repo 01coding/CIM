@@ -39,17 +39,17 @@
             AND technology_id=#{menuFlow.technology.technologyId}
         </if>
     </sql>
-    <insert id="add" parameterType="menuFlowDao">
+    <insert id="add" parameterType="menuFlow">
         INSERT INTO menu_flow VALUES
             (DEFAULT, #{menuMaterielId}, #{working.workingId}, #{technology.technologyId}, #{menuFlowDescribe},
              #{menuFlowHour}, #{menuFlowImage}, 0)
     </insert>
-    <update id="update" parameterType="menuFlowDao">
+    <update id="update" parameterType="menuFlow">
         UPDATE menu_flow
-        SET menu_flow_id       = #{menuFlowId}, menu_materiel_id = #{menuMaterielId},
+        SET menu_flow_id= #{menuFlowId}, menu_materiel_id = #{menuMaterielId},
             menu_flow_describe = #{menuFlowDescribe}, menu_flow_hour = #{menuFlowHour},
-            menu_flow_image    = #{menuFlowImage}, status = #{status},
-            technology_id      = #{working.workingId}, technology_id = #{technology.technologyId}
+            menu_flow_image= #{menuFlowImage}, status = #{status},
+            technology_id= #{working.workingId}, technology_id = #{technology.technologyId}
         WHERE menu_flow_id = #{menuMateriel}
     </update>
     <select id="select" resultMap="menuMateriels">
@@ -58,7 +58,7 @@
         ) f
         limit #{pageNo},#{pageSize}
     </select>
-    <select id="selectCount" resultType="int" parameterType="menuFlowDao">
+    <select id="selectCount" resultType="int" parameterType="menuFlow">
         SELECT count(1) FROM menu_flow WHERE status=0
         <if test="menuMaterielId!=null and menuMaterielId>0">
             AND menu_flow_id=#{menuFlowId}
@@ -82,7 +82,7 @@
             AND technology_id=#{technology.technologyId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="menuFlowDao">
+    <select id="selectById" parameterType="int" resultMap="menuMateriels">
         SELECT * FROM menu_flow WHERE status=0
         <if test="menuMaterielId!=null and menuMaterielId>0">
             AND menu_flow_id=#{menuFlowId}
