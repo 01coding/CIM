@@ -86,4 +86,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             purchase_item_id=#{purchaseItemId}
         </if>
     </select>
+
+    <select id="selectByPurchaseId" parameterType="int" resultMap="purchaseItemMap">
+        SELECT * FROM purchase_item WHERE status=0 AND purchase_id=#{purchaseId}
+    </select>
+
 </mapper>
