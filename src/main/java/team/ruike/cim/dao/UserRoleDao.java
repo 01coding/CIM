@@ -1,6 +1,7 @@
 package team.ruike.cim.dao;
 
 import org.apache.ibatis.annotations.Param;
+import team.ruike.cim.pojo.Role;
 import team.ruike.cim.pojo.UserRole;
 
 import java.util.List;
@@ -52,4 +53,12 @@ public interface UserRoleDao {
      * @return 用户角色关系表对象
      */
     UserRole selectById(Integer userRoleId);
+
+
+    /**
+     * 根据ID查询用户角色
+     * @param userId 用户ID
+     * @return 用户角色对象
+     */
+    Role selectByUserId(Integer userId);
 }

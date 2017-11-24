@@ -58,4 +58,11 @@ public interface PurchaseItemDao {
      * @return 采购项对象
      */
     PurchaseItem selectById(Integer purchaseItemId);
+
+    /**
+     *根据采购id 查询采购项数据
+     * @param purchaseId 采购id
+     * @return 采购项对象
+     */
+    PurchaseItem selectByPurchaseId(Integer purchaseId);
 }
