@@ -8,10 +8,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="warehouseOutRegisterEndDate" column="warehouse_out_register_end_date"/>
         <result property="status" column="status"/>
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
-        <collection property="warehouseOutRegisterItemList" column="warehouseOutRegisterId" select="team.ruike.cim.dao.WarehouseOutRegisterItemDao.selectBywarehouseOutRegisterId"
+        <collection property="warehouseOutRegisterItemList" column="warehouseOutRegisterId" select="team.ruike.cim.dao.WarehouseOutRegisterItemDao.selectBywarehouseOutRegisterId"/>
     </resultMap>
     <sql id="sql">
-        select * from warehouse_out_register_item WHERE status=0
+        select * from warehouse_out_register WHERE status=0
         <if test="warehouseOutRegister.warehouseOutRegister.warehouseOutRegisterId!=null and warehouseOutRegister.warehouseOutRegister.warehouseOutRegisterId>0">
            AND warehouse_out_register_id=#{warehouseOutRegister.warehouseOutRegisterId}
         </if>
@@ -34,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="warehouseOutRegister">
-        select count(1) from  warehouse_out_register_item WHERE status=0
+        select count(1) from  warehouse_out_register WHERE status=0
         <if test="warehouseOutRegisterId!=null and warehouseOutRegisterId>0">
             AND  warehouse_out_register_id=#{warehouseOutRegisterId}
         </if>
@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="warehouseOutRegisters">
-        select * from  warehouse_out_register_item WHERE status=0
+        select * from  warehouse_out_register WHERE status=0
             AND  warehouse_out_register_id=#{warehouseOutRegisterId}
     </select>
 </mapper>
