@@ -61,4 +61,10 @@ public interface MenuMaterielDao {
      */
     MenuMateriel selectById(Integer menuMaterielId);
 
+    /**
+     * 根据菜品id查询菜谱物料关系
+     * @param menuId 菜品的id
+     * @return 菜谱物料关系对象集合
+     */
+    List<MenuMateriel> selectByMenuId(Integer menuId);
 }

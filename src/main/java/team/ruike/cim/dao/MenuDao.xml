@@ -21,6 +21,7 @@
                      select="team.ruike.cim.dao.MenuStateDao"/>
         <association property="menuType.menuTypeId" column="menu_type_id"
                      select="team.ruike.cim.dao.MenuTypeDao.selectById."/>
+        <collection property="menuMaterielList" column="menu_id" select="team.ruike.cim.dao.MenuMaterielDao.selectByMenuId"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM menu WHERE status=0

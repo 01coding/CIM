@@ -63,4 +63,8 @@
     <select id="selectById" parameterType="int" resultMap="menuMaterielMap">
       SELECT * FROM menu_materiel WHERE `status`=0 and  menu_materiel_id=#{menuMaterielId}
     </select>
+    <select id="selectByMenuId" parameterType="int" resultMap="menuMaterielMap">
+        SELECT * FROM menu_materiel WHERE status=0
+        AND menu_id=#{menuId}
+    </select>
 </mapper>
