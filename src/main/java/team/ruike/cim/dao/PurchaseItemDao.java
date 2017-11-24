@@ -62,7 +62,7 @@ public interface PurchaseItemDao {
     /**
      *根据采购id 查询采购项数据
      * @param purchaseId 采购id
-     * @return 采购项对象
+     * @return 采购项集合
      */
-    PurchaseItem selectByPurchaseId(Integer purchaseId);
+    List<PurchaseItem> selectByPurchaseId(Integer purchaseId);
 }

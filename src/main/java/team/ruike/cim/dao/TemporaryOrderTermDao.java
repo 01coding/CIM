@@ -60,7 +60,7 @@ public interface TemporaryOrderTermDao {
      * 根据临时订单Id查询临时订单项
      *
      * @param temporaryOrderId 临时订单Id
-     * @return 临时订单项对象
+     * @return 临时订单项集合
      */
-    TemporaryOrderTerm selectByTemporaryOrderId(Integer temporaryOrderId);
+    List<TemporaryOrderTerm> selectByTemporaryOrderId(Integer temporaryOrderId);
 }
