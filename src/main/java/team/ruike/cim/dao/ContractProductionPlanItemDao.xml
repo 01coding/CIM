@@ -64,5 +64,7 @@
     <select id="selectById" parameterType="int" resultMap="contractProductionPlanItemMap">
             SELECT * FROM contract_production_plan_item WHERE `status`=0 and  contract_production_plan_item_id=#{contractProductionPlanItemId}
     </select>
-
+    <select id="selectBYContractProductionPlanId" resultMap="contractProductionPlanItemMap">
+            SELECT  * FROM  contract_production_plan_item WHERE `status`=0 AND  contract_production_plan_id=#{contractProductionPlanId}
+    </select>
 </mapper>
