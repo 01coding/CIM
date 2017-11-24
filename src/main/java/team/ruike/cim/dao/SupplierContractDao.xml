@@ -9,7 +9,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="supplier_contract_date" property="supplierContractDate"/>
         <result column="supplier_contract_image" property="supplierContractImage"/>
         <result column="status" property="status"/>
-        <association property="supplier" column="supplier_id" select="team.ruike.cim.dao.SupplierContractDao"/>
+        <association property="supplier" column="supplier_id" select="team.ruike.cim.dao.SupplierContractDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="supplierContract">
         INSERT  INTO supplier_contract VALUES (DEFAULT,#{supplierContractName},#{supplierContractDate},#{supplierContractImage},#{status},#{supplierId})

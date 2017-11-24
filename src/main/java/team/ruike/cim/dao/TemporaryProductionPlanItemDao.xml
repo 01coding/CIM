@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="menu_number" property="menuNumber"/>
         <result column="temporary_production_plan_id" property="temporaryProductionPlanId"/>
         <result column="status" property="status"/>
-        <association property="menu.menuId" column="menu_id" select="team.ruike.cim.dao.MenuDao"/>
+        <association property="menu.menuId" column="menu_id" select="team.ruike.cim.dao.MenuDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="temporaryProductionPlanItem">
         INSERT INTO temporary_production_plan_item VALUES (DEFAULT ,#{menu.menuId},#{menuNumber},#{temporaryProductionPlanId},0)
