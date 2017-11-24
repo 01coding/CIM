@@ -134,7 +134,7 @@
     <select id="selectById" parameterType="int" resultMap="menus">
         SELECT * FROM  menu WHERE   status=0
         <if test="menuId!=null and menuId!>0">
-            AND  menu_id=#{menu.menuId}
+            AND  menu_id=#{menuId}
         </if>
     </select>
 
