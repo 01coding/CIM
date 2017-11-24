@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * @author 孙天奇
+ * @author 孙天奇
  * @version 1.0
  */
 public interface WorkingDao {

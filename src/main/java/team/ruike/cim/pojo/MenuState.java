@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 /**
  * 菜谱状态
- *
+ *@author 张振国
  * @author 甄立
  * @version 1.0
  */

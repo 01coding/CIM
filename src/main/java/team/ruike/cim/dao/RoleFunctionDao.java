@@ -9,6 +9,7 @@ import java.util.List;
  * 用户功能表数据访问接口
  *
  * @author 华中昊
+ * @author 孙天奇
  * @version 1.0
  * @see #add(RoleFunction)
  * @see #update(RoleFunction)

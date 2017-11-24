@@ -10,6 +10,7 @@ import java.util.List;
  * 物料品控评估记录表数据访问接口
  *
  * @author 华中昊
+ * @author 华中昊
  * @version 1.0
  * @see #add(ProductionStandardRecord)
  * @see #update(ProductionStandardRecord)

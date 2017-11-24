@@ -9,6 +9,7 @@ import java.util.List;
  * 成品货架表数据访问接口
  *
  * @author 华中昊
+ * @author 华中昊
  * @version 1.0
  * @see #add(ProductGoodsShelve)
  * @see #update(ProductGoodsShelve)

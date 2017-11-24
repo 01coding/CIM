@@ -9,6 +9,7 @@ import java.util.List;
  * 仓库表表数据访问接口
  *
  * @author 孙天奇
+ * @author 孙天奇
  * @version 1.0
  */
 public interface WarehouseDao {

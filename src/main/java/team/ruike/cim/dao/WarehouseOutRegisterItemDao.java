@@ -6,10 +6,14 @@ import team.ruike.cim.pojo.WarehouseOutRegisterItem;
 
 import java.util.List;
 
+/**
+ * 出库登记表项数据接口
+ * @author 孙天奇
+ * @author 孙天奇
+ * @version 1.0
+ */
 public interface WarehouseOutRegisterItemDao {
     /**
-     * 出库登记表项数据接口
-     *
      * @param warehouseOutRegisterItem 出库登记表项实体类对象
      * @return 受影响的行数
      */

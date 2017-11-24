@@ -10,7 +10,7 @@ public interface JurisdictionDao {
 
     /**
      * 新增权限
-     *
+     *@author 王傲祥
      * @param jurisdiction 权限实体类对象
      * @return 受影响的行数
      */

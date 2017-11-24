@@ -3,12 +3,30 @@ package team.ruike.cim.pojo;
 
 import java.io.Serializable;
 
+/**
+ *用户权限表
+ * @author  孙天奇
+ * @author  孙天奇
+ * @version  1.0
+ */
 public class RoleJurisdiction implements Serializable {
 
   private static final long serialVersionUID = 3994098330391599594L;
+  /**
+   *用户权限id自增
+   */
   private Integer roleJurisdictionId;
+  /**
+   *用户id
+   */
   private Integer roleId;
+  /**
+   *权限id
+   */
   private Integer jurisdictionId;
+  /**
+   *状态
+   */
   private Integer status;
 
   public Integer getRoleJurisdictionId() {

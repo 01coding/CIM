@@ -49,7 +49,7 @@ public interface MenuTypeDao {
      * @param menuType 菜谱类别对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(MenuType menuType);
+    int selectCount(@Param("menuType")MenuType menuType);
 
     /**
      * 根据ID查询单个菜谱类别数据

@@ -7,7 +7,7 @@ import java.util.List;
 
 /**
  * 成品库入库登记表数据访问接口
- *
+ *@author 张振国
  * @author 华中昊
  * @version 1.0
  * @see #add(ProductWarehouseRegister)
@@ -49,7 +49,7 @@ public interface ProductWarehouseRegisterDao {
      * @param productWarehouseRegister 成品库入库登记对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(ProductWarehouseRegister productWarehouseRegister);
+    int selectCount(@Param("productWarehouseRegister")ProductWarehouseRegister productWarehouseRegister);
 
     /**
      * 根据ID查询单个成品库入库登记数据

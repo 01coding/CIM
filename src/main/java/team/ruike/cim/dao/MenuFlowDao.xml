@@ -3,21 +3,90 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MenuFlowDao">
+    <resultMap id="menuMateriels" type="menuMateriel">
+        <result column="menu_flow_id" property="menuFlowId"/>
+        <result column="menu_materiel_id" property="menuMaterielId"/>
+        <result column="menu_flow_describe" property="menuFlowDescribe"/>
+        <result column="menu_flow_hour" property="menuFlowHour"/>
+        <result column="menu_flow_image" property="menuFlowImage"/>
+        <result column="status" property="status"/>
+        <association property="working.workingId" column="technology_id"
+                     select="team.ruike.cim.dao.WorkingDao.selectById"/>
+        <association property="technology.technologyId" column="technology_id"
+                     select="team.ruike.cim.dao.TechnologyDao.selectById"/>
+    </resultMap>
+    <sql id="sql">
+        SELECT * FROM menu_flow WHERE status=0
+        <if test="menuFlow.menuMaterielId!=null and menuFlow.menuMaterielId>0">
+            AND menu_flow_id=#{menuFlow.menuFlowId}
+        </if>
+        <if test="menuFlow.menuMaterielId!=null and menuFlow.menuMaterielId>0">
+            AND menu_materiel_id=#{menuFlow.menuMaterielId}
+        </if>
+        <if test="menuFlow.menuFlowDescribe!=null and menuFlow.menuFlowDescribe!=''">
+            AND menu_flow_describe=#{menuFlow.menuFlowDescribe}
+        </if>
+        <if test="menuFlow.menuFlowHour!=null and menuFlow.menuFlowHour>0">
+            AND menu_flow_hour=#{menuFlow.menuFlowHour}
+        </if>
+        <if test="menuFlow.menuFlowImage!=null and menuFlow.menuFlowImage!=''">
+            AND menu_flow_image=#{menuFlow.menuFlowImage}
+        </if>
+        <if test="menuFlow.working!=null and menuFlow.working.workingId>0">
+            AND technology_id=#{menuFlow.working.workingId}
+        </if>
+        <if test="menuFlow.technology!=null and menuFlow.technology.technologyId>0">
+            AND technology_id=#{menuFlow.technology.technologyId}
+        </if>
+    </sql>
     <insert id="add" parameterType="menuFlowDao">
-
+        INSERT INTO menu_flow VALUES
+            (DEFAULT, #{menuMaterielId}, #{working.workingId}, #{technology.technologyId}, #{menuFlowDescribe},
+             #{menuFlowHour}, #{menuFlowImage}, 0)
     </insert>
     <update id="update" parameterType="menuFlowDao">
-
+        UPDATE menu_flow
+        SET menu_flow_id       = #{menuFlowId}, menu_materiel_id = #{menuMaterielId},
+            menu_flow_describe = #{menuFlowDescribe}, menu_flow_hour = #{menuFlowHour},
+            menu_flow_image    = #{menuFlowImage}, status = #{status},
+            technology_id      = #{working.workingId}, technology_id = #{technology.technologyId}
+        WHERE menu_flow_id = #{menuMateriel}
     </update>
-    <!--注,因为参数我3个,所以此处不需要添加parameterType属性-->
-    <select id="select" resultMap="">
-
+    <select id="select" resultMap="menuMateriels">
+        SELECT * FROM (
+        <include refid="sql"/>
+        ) f
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="menuFlowDao">
-
+        SELECT count(1) FROM menu_flow WHERE status=0
+        <if test="menuMaterielId!=null and menuMaterielId>0">
+            AND menu_flow_id=#{menuFlowId}
+        </if>
+        <if test="menuMaterielId!=null and menuMaterielId>0">
+            AND menu_materiel_id=#{menuMaterielId}
+        </if>
+        <if test="menuFlowDescribe!=null and menuFlowDescribe!=''">
+            AND menu_flow_describe=#{menuFlowDescribe}
+        </if>
+        <if test="menuFlowHour!=null and menuFlowHour>0">
+            AND menu_flow_hour=#{menuFlowHour}
+        </if>
+        <if test="menuFlowImage!=null and menuFlowImage!=''">
+            AND menu_flow_image=#{menuFlowImage}
+        </if>
+        <if test="working!=null and working.workingId>0">
+            AND technology_id=#{working.workingId}
+        </if>
+        <if test="technology!=null and technology.technologyId>0">
+            AND technology_id=#{technology.technologyId}
+        </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
-
+    <select id="selectById" parameterType="int" resultMap="menuFlowDao">
+        SELECT * FROM menu_flow WHERE status=0
+        <if test="menuMaterielId!=null and menuMaterielId>0">
+            AND menu_flow_id=#{menuFlowId}
+        </if>
     </select>
 
 </mapper>

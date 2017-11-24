@@ -9,6 +9,7 @@ import java.util.List;
  * 成品库入库登记记录项表数据访问接口
  *
  * @author 华中昊
+ * @author 王傲祥
  * @version 1.0
  * @see #add(ProductWarehouseRegisterItem)
  * @see #update(ProductWarehouseRegisterItem)

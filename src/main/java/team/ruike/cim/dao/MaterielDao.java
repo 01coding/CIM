@@ -9,6 +9,7 @@ import java.util.List;
  * 物料表数据访问接口
  *
  * @author 华中昊
+ * @author 王傲祥
  * @version 1.0
  * @see #add(Materiel)
  * @see #update(Materiel)

@@ -5,10 +5,14 @@ import team.ruike.cim.pojo.WarehouseRegion;
 
 import java.util.List;
 
+/**
+ * 仓库区域表数据接口
+ * @author 孙天奇
+ * @author 孙天奇
+ * @version 1.0
+ */
 public interface WarehouseRegionDao {
     /**
-     * 仓库区域表数据接口
-     *
      * @param warehouseRegion 合同订单实体类对象
      * @return warehouseRegion
      */
