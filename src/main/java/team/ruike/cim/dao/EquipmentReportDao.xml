@@ -4,21 +4,126 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.EquipmentReportDao">
 
-    <insert id="add" parameterType="equipmentReport">
+    <sql id="columns">
+        #{equipmentReportId},
+        #{equipmentReportReason},
+        #{maintenancePlan},
+        #{endDate},
+        #{userId},
+        #{status},
+        #{equipmentId}
+    </sql>
 
+
+
+    <sql id="modelCondition">
+        <if test="equipmentReportId!=null">
+            and equipment_report_id=#{equipmentReportId}
+        </if>
+        <if test="equipmentReportReason!=null">
+            and equipment_report_reason=#{equipmentReportReason}
+        </if>
+        <if test="maintenancePlan!=null">
+            and maintenance_plan=#{maintenancePlan}
+        </if>
+        <if test="endDate!=null">
+            and end_date=#{endDate}
+        </if>
+        <if test="userId!=null">
+            and user_id=#{userId}
+        </if>
+        <if test="status!=null">
+            and status=#{status}
+        </if>
+        <if test="equipment!=null and equipment.equipmentId!=null and equipment.equipmentId>0">
+            and equipment_id=#{equipment.equipmentId}
+        </if>
+    </sql>
+
+
+    <sql id="modelConditionP">
+        <if test="equipmentReport.equipmentReportId!=null">
+            and equipment_report_id=#{equipmentReport.equipmentReportId}
+        </if>
+        <if test="equipmentReport.equipmentReportReason!=null">
+            and equipment_report_reason=#{equipmentReport.equipmentReportReason}
+        </if>
+        <if test="equipmentReport.maintenancePlan!=null">
+            and maintenance_plan=#{equipmentReport.maintenancePlan}
+        </if>
+        <if test="equipmentReport.endDate!=null">
+            and end_date=#{equipmentReport.endDate}
+        </if>
+        <if test="equipmentReport.userId!=null">
+            and user_id=#{equipmentReport.userId}
+        </if>
+        <if test="equipmentReport.status!=null">
+            and status=#{equipmentReport.status}
+        </if>
+        <if test="equipmentReport.equipment!=null and equipmentReport.equipment.equipmentId!=null and equipmentReport.equipment.equipmentId>0">
+            and equipment_id=#{equipmentReport.equipment.equipmentId}
+        </if>
+    </sql>
+
+
+    <resultMap id="selectMap" type="EquipmentReport">
+        <result property="equipmentReportId" column="equipment_report_id"/>
+        <result property="equipmentReportReason" column="equipment_report_reason"/>
+        <result property="maintenancePlan" column="maintenance_plan"/>
+        <result property="endDate" column="end_date"/>
+        <result property="userId" column="user_id"/>
+        <result property="status" column="status"/>
+        <association property="equipment" column="equipment_id" select=""/>
+    </resultMap>
+
+
+
+    <insert id="add" parameterType="equipmentReport">
+        insert into equipment_report(<include refid="columns"/>)
+        values(
+        <trim suffixOverrides=",">
+            #{equipmentReportId},
+            #{equipmentReportReason},
+            #{maintenancePlan},
+            #{endDate},
+            #{userId},
+            #{status},
+            #{equipmentId},
+        </trim>
+        )
     </insert>
     <update id="update" parameterType="equipmentReport">
-
+        update equipment_report
+        <set>
+            equipment_report_id=#{equipmentReportId},
+            equipment_report_reason=#{equipmentReportReason},
+            maintenance_plan=#{maintenancePlan},
+            end_date=#{endDate},
+            user_id=#{userId},
+            status=#{status},
+            equipment_id=#{equipmentId},
+        </set>
+        where status=0
+        and equipment_report_id=#{equipmentReportId}
     </update>
 
-    <select id="select" resultMap="">
-
+    <select id="select" resultMap="selectMap">
+        select * from equipment_report
+        where status=0
+        <include refid="modelConditionP"/>
     </select>
+
+
     <select id="selectCount" resultType="int" parameterType="equipmentReport">
-
+        select count(1) from equipment_report
+        where status=0
+        <include refid="modelCondition"/>
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
 
+    <select id="selectById" parameterType="int" resultMap="selectMap">
+        select * from equipment_report
+        where status=0
+		and equipment_report_id=#{equipmentReportId}
     </select>
 
 </mapper>
