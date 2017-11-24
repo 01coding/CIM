@@ -50,4 +50,10 @@ public interface JurisdictionDao {
      */
     Jurisdiction selectById(Integer jurisdictionId);
 
+    /**
+     * 根据roleId查询所有权限集合
+     * @param roleId 用户角色id
+     * @return  所有用户对应权限集合
+     */
+    List<Jurisdiction> selectByroleId(Integer roleId);
 }

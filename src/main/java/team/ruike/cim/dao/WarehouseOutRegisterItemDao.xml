@@ -73,4 +73,7 @@
             AND warehouse_out_register_item_id=#{warehouseOutRegisterItemId}
         </if>
     </select>
+    <select id="selectBywarehouseOutRegisterId" parameterType="int" resultMap="warehouseOutRegisterItems">
+        SELECT * FROM warehouse_out_register_item WHERE `status`=0 and warehouse_out_register_id=#{warehouseOutRegisterId}
+    </select>
 </mapper>

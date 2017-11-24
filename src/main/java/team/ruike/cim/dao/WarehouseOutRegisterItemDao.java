@@ -52,4 +52,11 @@ public interface WarehouseOutRegisterItemDao {
      * @return 出库登记表项
      */
     WarehouseOutRegisterItem selectById(Integer warehouseOutRegisterItemId);
+
+    /**
+     * 根据warehouseOutRegisterId查询所属出库登记表
+     * @param warehouseOutRegisterId 出库登记表id
+     * @return  出库登记表项集合
+     */
+    List<WarehouseOutRegisterItem> selectBywarehouseOutRegisterId(Integer warehouseOutRegisterId);
 }

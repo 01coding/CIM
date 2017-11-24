@@ -8,6 +8,8 @@
         <result column="role_id" property="roleId"/>
         <result column="role_name" property="roleName"/>
         <result column="status" property="status"/>
+        <collection property="functions" column="role_id" select="team.ruike.cim.dao.FunctionDao.selectByroleId"/>
+        <collection property="jurisdictions" column="role_id" select="team.ruike.cim.dao.JurisdictionDao.selectByroleId"/>
     </resultMap>
     <insert id="add" parameterType="role">
         INSERT INTO role VALUES (DEFAULT ,#{roleName},0)

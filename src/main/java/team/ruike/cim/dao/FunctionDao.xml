@@ -62,5 +62,7 @@
         AND function_id=#{function.functionId}
     </if>
     </select>
-
+    <select id="selectByroleId" parameterType="int" resultMap="functionMap">
+        select * from function where function_id in (SELECT function_id from role_function WHERE role_id=#{roleId})
+    </select>
 </mapper>

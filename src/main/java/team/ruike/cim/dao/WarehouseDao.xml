@@ -9,6 +9,7 @@
         <result column="remarks" property="remarks"/>
         <result column="status" property="status"/>
         <association column="user_id" property="user" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <collection property="warehouseRegionList" column="warehouse_id" select="team.ruike.cim.dao.WarehouseRegionDao.selectBywarehouseId"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM warehouse WHERE status=0

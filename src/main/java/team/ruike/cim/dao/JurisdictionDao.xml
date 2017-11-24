@@ -58,4 +58,7 @@
             select * from jurisdiction WHERE jurisdiction_id=#{jurisdictionId}
         </if>
     </select>
+    <select id="selectByroleId" parameterType="int" resultMap="jurisdictionMap">
+           SELECT * FROM jurisdiction WHERE jurisdiction_id in (SELECT jurisdiction_id FROM role_jurisdiction WHERE role_id=#{roleId})
+    </select>
 </mapper>

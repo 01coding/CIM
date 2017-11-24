@@ -61,4 +61,10 @@ public interface FunctionDao {
      */
     Function selectById(Integer functionId);
 
+    /**
+     * 根据roleId获取所有用户功能
+     * @param roleId    用户主键
+     * @return  用户功能集合
+     */
+    List<Function> selectByroleId(Integer roleId);
 }

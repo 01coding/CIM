@@ -1,6 +1,7 @@
 package team.ruike.cim.dao;
 
 import org.apache.ibatis.annotations.Param;
+import team.ruike.cim.pojo.Warehouse;
 import team.ruike.cim.pojo.WarehouseRegion;
 
 import java.util.List;
@@ -51,4 +52,11 @@ public interface WarehouseRegionDao {
      * @return 仓库区域表
      */
     WarehouseRegion selectById(Integer warehouseRegionId);
+
+    /**
+     * 根据warehouseId查询所属仓库
+     * @param warehouseId 仓库的id
+     * @return  仓库区域集合
+     */
+    List<WarehouseRegion> selectBywarehouseId(Integer warehouseId);
 }

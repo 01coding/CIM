@@ -69,4 +69,7 @@
             AND warehouse_region_id=#{warehouseRegionId}
         </if>
     </select>
+    <select id="selectBywarehouseId" parameterType="int" resultMap="warehouseRegions">
+        SELECT * FROM Warehouse_Region WHERE `status`=0 and warehouse_id=#{warehouse.warehouseId}
+    </select>
 </mapper>
