@@ -72,13 +72,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             `status`=#{status}
         WHERE purchase_standard_record_id=#{purchaseStandardRecordId}
     </update>
-    <select id="select" resultMap="">
+    <select id="select" resultMap="purchaseStandardRecordMap">
         SELECT * FROM (<include refid="sqlh"/>) f limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="purchaseStandardRecord">
         SELECT COUNT(1) FROM (<include refid="sqlz"/>) f
     </select>
-    <select id="selectById" parameterType="int" resultMap="">
+    <select id="selectById" parameterType="int" resultMap="purchaseStandardRecordMap">
         SELECT * FROM purchase_standard_record WHERE `status`=0 and purchase_standard_record_id=#{purchaseStandardRecordId}
     </select>
 </mapper>

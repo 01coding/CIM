@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="warehouseOutRegisterEndDate" column="warehouse_out_register_end_date"/>
         <result property="status" column="status"/>
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
-        <collection property="warehouseOutRegisterItemList" column="warehouseOutRegisterId" select="team.ruike.cim.dao.WarehouseOutRegisterItemDao.selectBywarehouseOutRegisterId"/>
+        <collection property="warehouseOutRegisterItemList" column="warehouse_out_register_id" select="team.ruike.cim.dao.WarehouseOutRegisterItemDao.selectBywarehouseOutRegisterId"/>
     </resultMap>
     <sql id="sql">
         select * from warehouse_out_register WHERE status=0
@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         UPDATE warehouse_out_register SET  warehouse_out_register_end_date=#{warehouseOutRegisterEndDate},
         status=#{status},user_id=#{user.userId} WHERE warehouse_out_register_id=#{warehouseOutRegisterId}
     </update>
-    <select id="select" resultMap="warehouseOutRegister">
+    <select id="select" resultMap="warehouseOutRegisters">
         SELECT * from (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>

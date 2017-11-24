@@ -1,7 +1,6 @@
 /*Dashboard Init*/
  
-"use strict"; 
-
+"use strict";
 /*****Ready function start*****/
 $(document).ready(function(){
 	$('#statement').DataTable({
@@ -298,12 +297,12 @@ $(document).ready(function(){
 $(window).load(function(){
 	window.setTimeout(function(){
 		$.toast({
-			heading: 'Welcome to Hound',
-			text: 'Use the predefined ones, or specify a custom position object.',
+            heading:'尊敬的:'+zzgms+'-- 欢迎您登陆!',
+            text: '祝您工作愉快!ヾ(◍°∇°◍)ﾉﾞ(～￣▽￣)～ ',
 			position: 'top-right',
 			loaderBg:'#fec107',
 			icon: 'success',
-			hideAfter: 3500, 
+			hideAfter: 35000,
 			stack: 6
 		});
 	}, 3000);

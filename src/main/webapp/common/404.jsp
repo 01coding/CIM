@@ -33,13 +33,13 @@
 <div class="wrapper error-page pa-0">
     <header class="sp-header">
         <div class="sp-logo-wrap pull-left">
-            <a href="/index.jsp">
+            <a href="/WEB-INF/jsp/index.jsp">
                 <img class="brand-img mr-10" src="../dist/img/logo.png" alt="brand"/>
                 <span class="brand-text">主页</span>
             </a>
         </div>
         <div class="form-group mb-0 pull-right">
-            <a class="inline-block btn btn-info btn-rounded btn-outline nonecase-font" href="/index.jsp">回到主页</a>
+            <a class="inline-block btn btn-info btn-rounded btn-outline nonecase-font" href="/WEB-INF/jsp/index.jsp">回到主页</a>
         </div>
         <div class="clearfix"></div>
     </header>
