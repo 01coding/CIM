@@ -71,4 +71,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND   product_warehouse_register_item_id=#{productWarehouseRegisterItemId}
         </if>
     </select>
+
+    <select id="selectByProductWarehouseRegisterId" parameterType="int" resultMap="productWarehouseRegisterItemMap">
+        SELECT * FROM product_warehouse_register_item WHERE status=0 and product_warehouse_register_id=#{productWarehouseRegisterId}
+    </select>
 </mapper>

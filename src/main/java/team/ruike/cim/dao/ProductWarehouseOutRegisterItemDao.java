@@ -58,4 +58,11 @@ public interface ProductWarehouseOutRegisterItemDao {
      * @return 成品库出库登记表项对象
      */
     ProductWarehouseOutRegisterItem selectById(Integer productWarehouseOutRegisterItemId);
+
+    /**
+     * 根据成品库出库id 查询 成品库出库登记表项
+     * @param productWarehouseOutRegisterId 成品库出库id
+     * @return 成品库出库登记表项对象集合
+     */
+    List<ProductWarehouseOutRegisterItem> selectBYProductWarehouseOutRegisterId(Integer productWarehouseOutRegisterId);
 }

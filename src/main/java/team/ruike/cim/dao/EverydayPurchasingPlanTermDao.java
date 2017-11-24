@@ -61,4 +61,10 @@ public interface EverydayPurchasingPlanTermDao {
      */
     EverydayPurchasingPlanTerm selectById(Integer everydayPurchasingPlanTermId);
 
+    /**
+     * 根据每日采购计划ID查询每日采购计划项
+     * @param everydayPurchasingPlanId 每日采购计划ID
+     * @return 每日采购计划项对象集合
+     */
+    List<EverydayPurchasingPlanTerm> selectByeverydayPurchasingPlanId(Integer everydayPurchasingPlanId);
 }

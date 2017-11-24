@@ -50,4 +50,8 @@
         SELECT * FROM  user_role WHERE status=0 AND
             user_role_id=#{roleId}
     </select>
+
+    <select id="selectByUserId" parameterType="int" resultMap="userRoles">
+        SELECT * FROM user_role WHERE status=0 AND user_id=#{userId}
+    </select>
 </mapper>

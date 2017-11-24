@@ -8,6 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="product_warehouse_name" property="productWarehouseName"/>
         <result column="remarks" property="remarks"/>
         <result column="status" property="status"/>
+        <collection property="productWarehouseRegionList" column="product_warehouse_id" select="team.ruike.cim.dao.ProductWarehouseRegionDao.selectByproductWarehouseId"/>
     </resultMap>
     <sql id="sqlh">
         SELECT * FROM product_warehouse WHERE `status`=0

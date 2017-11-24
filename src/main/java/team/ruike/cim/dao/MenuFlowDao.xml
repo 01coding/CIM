@@ -16,7 +16,7 @@
                      select="team.ruike.cim.dao.TechnologyDao.selectById"/>
     </resultMap>
     <sql id="sql">
-        SELECT * FROM menu_flow WHERE status=0
+        SELECT * FROM menu_flow WHERE `status`=0
         <if test="menuFlow.menuMaterielId!=null and menuFlow.menuMaterielId>0">
             AND menu_flow_id=#{menuFlow.menuFlowId}
         </if>
@@ -48,7 +48,7 @@
         UPDATE menu_flow
         SET menu_flow_id= #{menuFlowId}, menu_materiel_id = #{menuMaterielId},
             menu_flow_describe = #{menuFlowDescribe}, menu_flow_hour = #{menuFlowHour},
-            menu_flow_image= #{menuFlowImage}, status = #{status},
+            menu_flow_image= #{menuFlowImage}, `status` = #{status},
             technology_id= #{working.workingId}, technology_id = #{technology.technologyId}
         WHERE menu_flow_id = #{menuMateriel}
     </update>
@@ -59,7 +59,7 @@
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="menuFlow">
-        SELECT count(1) FROM menu_flow WHERE status=0
+        SELECT count(1) FROM menu_flow WHERE `status`=0
         <if test="menuMaterielId!=null and menuMaterielId>0">
             AND menu_flow_id=#{menuFlowId}
         </if>
@@ -83,10 +83,13 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="menuMateriels">
-        SELECT * FROM menu_flow WHERE status=0
+        SELECT * FROM menu_flow WHERE `status`=0
         <if test="menuMaterielId!=null and menuMaterielId>0">
             AND menu_flow_id=#{menuFlowId}
         </if>
     </select>
-
+    <select id="selectBYMenuMaterielId" resultMap="menuMateriels">
+        SELECT  * FROM  menu_flow WHERE  `status`=0
+          AND  menu_materiel_id=#{menuMaterielId}
+    </select>
 </mapper>

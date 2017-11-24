@@ -60,4 +60,12 @@ public interface MenuFlowDao {
      * @return 菜品制作流程对象
      */
     MenuFlow selectById(Integer menuFlowId);
+
+    /**
+     * 根据菜谱物料关系id 查询 菜品制作流
+     * @param menuMaterielId 菜谱物料关系id
+     * @return 菜品制作流对象集合
+     */
+    List<MenuFlow> selectBYMenuMaterielId(Integer menuMaterielId);
+
 }

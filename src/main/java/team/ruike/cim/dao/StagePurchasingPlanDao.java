@@ -53,4 +53,5 @@ public interface StagePurchasingPlanDao {
      * @return 阶段采购计划对象
      */
     StagePurchasingPlan selectById(Integer stagePurchasingPlanId);
+
 }

@@ -9,6 +9,7 @@
         <result column="menu_materiel_type" property="menuMaterielType"/>
         <result column="status" property="status"/>
         <association column="materiel_id" property="materiel" select="team.ruike.cim.dao.MaterielDao.selectById"/>
+        <collection property="menuFlow" column="menu_materiel_id" select="team.ruike.cim.dao.MenuFlowDao.selectBYMenuMaterielId"/>
     </resultMap>
     <sql id="sqlh">
         SELECT * FROM menu_materiel WHERE `status`=0
