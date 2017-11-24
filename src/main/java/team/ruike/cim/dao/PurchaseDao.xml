@@ -10,6 +10,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="purchase_date" property="purchaseDate"/>
         <association property="everydayPurchasingPlan" column="everyday_purchasing_plan_id" select="team.ruike.cim.dao.EverydayPurchasingPlanDao.selectById"/>
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <collection property="purchaseItems" column="purchase_id" select="team.ruike.cim.dao.PurchaseItemDao.selectByPurchaseId"/>
     </resultMap>
     <insert id="add" parameterType="purchase">
           INSERT INTO purchase VALUES (DEFAULT ,#{everydayPurchasingPlan.everydayPurchasingPlanId},#{remarks},0,#{purchaseDate},#{user.userId})

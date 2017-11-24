@@ -23,6 +23,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="product_warehouse_register_date" property="productWarehouseRegisterDate"/>
         <result column="status" property="status"/>
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <collection property="productWarehouseRegisterItemList" column="product_warehouse_register_id" select="team.ruike.cim.dao.ProductWarehouseRegisterItemDao.selectByProductWarehouseRegisterId"/>
     </resultMap>
     <select id="select" resultMap="productWarehouseRegisterMap">
         SELECT * FROM product_warehouse_register

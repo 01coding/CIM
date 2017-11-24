@@ -13,6 +13,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
         <association property="temporaryOrderState" column="temporary_order_state_id" select="team.ruike.cim.dao.TemporaryOrderStateDao.selectById"/>
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <collection property="temporaryOrderTerms" column="temporary_order_id" select="team.ruike.cim.dao.TemporaryOrderTermDao.selectByTemporaryOrderId"/>
     </resultMap>
     <insert id="add" parameterType="temporaryOrder">
         INSERT  INTO temporary_order VALUES (DEFAULT ,#{temporaryOrderNo},#{temporaryOrderEndDate},#{temporaryOrderState.temporaryOrderStateId},
