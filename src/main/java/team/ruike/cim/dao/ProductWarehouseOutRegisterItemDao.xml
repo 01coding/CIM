@@ -1,55 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper 
-PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
-"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.ProductWarehouseOutRegisterItemDao">
     <insert id="add" parameterType="productWarehouseOutRegisterItem">
         INSERT INTO product_warehouse_out_register_item
-        VALUES (DEFAULT,#{menu.menuId},#{productGoodsShelve.productGoodsShelveId},
-        #{menuNumber},#{productWarehouseOutRegister.productWarehouseOutRegisterId},0
+        VALUES (DEFAULT, #{menu.menuId}, #{productGoodsShelve.productGoodsShelveId},
+                #{menuNumber}, #{productWarehouseOutRegister.productWarehouseOutRegisterId}, 0
         )
     </insert>
     <update id="update" parameterType="productWarehouseOutRegisterItem">
         UPDATE product_warehouse_out_register_item
-        SET menu_id=#{menu.menuId},
-        product_goods_shelve_id=#{productGoodsShelve.productGoodsShelveId},
-        menu_Number=#{menuNumber},
-        product_warehouse_out_register_id=#{productWarehouseOutRegister.productWarehouseOutRegisterId},
-        status=#{status} WHERE product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItemId}
+        SET menu_id                           = #{menu.menuId},
+            product_goods_shelve_id           = #{productGoodsShelve.productGoodsShelveId},
+            menu_Number                       = #{menuNumber},
+            product_warehouse_out_register_id = #{productWarehouseOutRegister.productWarehouseOutRegisterId},
+            status                            = #{status}
+        WHERE product_warehouse_out_register_item_id = #{productWarehouseOutRegisterItemId}
     </update>
     <resultMap id="productWarehouseOutRegisterItemMap" type="productWarehouseOutRegisterItem">
         <result column="product_warehouse_out_register_item_id" property="productWarehouseOutRegisterItemId"/>
         <result column="menu_Number" property="menuNumber"/>
         <result column="status" property="status"/>
         <association property="menu" column="menu_id" select="team.ruike.cim.dao.MenuDao.selectById"/>
-        <association property="productGoodsShelve" column="product_goods_shelve" select="team.ruike.cim.dao.ProductGoodsShelveDao.selectById"/>
-        <association property="productWarehouseOutRegister" column="product_warehouse_out_register" select="team.ruike.cim.dao.ProductWarehouseOutRegisterDao.selectById"/>
+        <association property="productGoodsShelve" column="product_goods_shelve"
+                     select="team.ruike.cim.dao.ProductGoodsShelveDao.selectById"/>
+        <association property="productWarehouseOutRegister" column="product_warehouse_out_register"
+                     select="team.ruike.cim.dao.ProductWarehouseOutRegisterDao.selectById"/>
     </resultMap>
     <select id="select" resultMap="productWarehouseOutRegisterItemMap">
         SELECT * FROM product_warehouse_out_register_item
         WHERE status=0
         <if test="productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId>0">
-             AND product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId}
-        </if>
-        <if test="productWarehouseOutRegisterItem.menu!=null and productWarehouseOutRegisterItem.memu.menuId!=null and productWarehouseOutRegisterItem.menu.menuId>0">
-             AND menu_id=#{productWarehouseOutRegisterItem.memu.menuId}
-        </if>
-        <if test="productWarehouseOutRegisterItem.productGoodsShelve!=null and productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId!=null and productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId>0">
-             AND product_goods_shelve_id=#{productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId}
-        </if>
-        <if test="productWarehouseOutRegisterItem.menuNumber!=null and productWarehouseOutRegisterItem.menuNumber>0">
-            AND menu_number=#{productWarehouseOutRegisterItem.menuNumber}
-        </if>
-        <if test="productWarehouseOutRegisterItem.productWarehouseOutRegister!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId>0">
-            AND product_warehouse_out_register_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId}
-        </if>
-          limit(#{pageNo},#{pageSize})
-    </select>
-    <select id="selectCount" resultType="int">
-        SELECT count(1) FROM product_warehouse_out_register_item
-        WHERE status=0
-        <if test="productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId>0">
-            AND product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId}
+            AND
+            product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId}
         </if>
         <if test="productWarehouseOutRegisterItem.menu!=null and productWarehouseOutRegisterItem.memu.menuId!=null and productWarehouseOutRegisterItem.menu.menuId>0">
             AND menu_id=#{productWarehouseOutRegisterItem.memu.menuId}
@@ -61,12 +45,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND menu_number=#{productWarehouseOutRegisterItem.menuNumber}
         </if>
         <if test="productWarehouseOutRegisterItem.productWarehouseOutRegister!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId>0">
-            AND product_warehouse_out_register_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId}
+            AND
+            product_warehouse_out_register_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId}
+        </if>
+        limit(#{pageNo},#{pageSize})
+    </select>
+    <select id="selectCount" resultType="int">
+        SELECT count(1) FROM product_warehouse_out_register_item
+        WHERE `status`=0
+        <if test="productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId>0">
+            AND
+            product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegisterItemId}
+        </if>
+        <if test="productWarehouseOutRegisterItem.menu!=null and productWarehouseOutRegisterItem.memu.menuId!=null and productWarehouseOutRegisterItem.menu.menuId>0">
+            AND menu_id=#{productWarehouseOutRegisterItem.memu.menuId}
+        </if>
+        <if test="productWarehouseOutRegisterItem.productGoodsShelve!=null and productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId!=null and productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId>0">
+            AND product_goods_shelve_id=#{productWarehouseOutRegisterItem.productGoodsShelve.productGoodsShelveId}
+        </if>
+        <if test="productWarehouseOutRegisterItem.menuNumber!=null and productWarehouseOutRegisterItem.menuNumber>0">
+            AND menu_number=#{productWarehouseOutRegisterItem.menuNumber}
+        </if>
+        <if test="productWarehouseOutRegisterItem.productWarehouseOutRegister!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId!=null and productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId>0">
+            AND
+            product_warehouse_out_register_id=#{productWarehouseOutRegisterItem.productWarehouseOutRegister.productWarehouseOutRegisterId}
         </if>
         limit(#{pageNo},#{pageSize})
     </select>
     <select id="selectById" parameterType="int" resultMap="productWarehouseOutRegisterItemMap">
-        SELECT * FROM product_warehouse_out_register_item
-        WHERE status=0  AND product_warehouse_out_register_item_id=#{productWarehouseOutRegisterItemId}
+        SELECT *
+        FROM product_warehouse_out_register_item
+        WHERE `status` = 0 AND product_warehouse_out_register_item_id = #{productWarehouseOutRegisterItemId}
+    </select>
+    <select id="selectBYProductWarehouseOutRegisterId" resultMap="productWarehouseOutRegisterItemMap">
+        SELECT *
+        FROM product_warehouse_out_register_item
+        WHERE `status` = 0
+              AND product_warehouse_out_register_id = #{productWarehouseOutRegisterId}
     </select>
 </mapper>
