@@ -4,14 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.ContractProgressDao">
 
-    <sql id="columns">
-        #{contractProgressId},
-        #{contractProductionDistributionId},
-        #{remarks},
-        #{startDate},
-        #{endDate},
-        #{status}
-    </sql>
+
 
     <sql id="modelCondition">
         <if test="contractProgressId!=null and contractProgressId>0">
@@ -20,7 +13,7 @@
         <if test="contractProductionDistribution!=null and contractProductionDistribution.contractProductionDistributionId!=null and contractProductionDistribution.contractProductionDistributionId>0">
             and contract_production_distribution_id=#{contractProductionDistribution.contractProductionDistributionId}
         </if>
-        <if test="remarks!=null">
+        <if test="remarks!=null and remarks!=''">
             and remarks=#{remarks}
         </if>
         <if test="startDate!=null">
@@ -28,9 +21,6 @@
         </if>
         <if test="endDate!=null">
             and end_date=#{endDate}
-        </if>
-        <if test="status!=null and status!=''">
-            and status=#{status}
         </if>
     </sql>
 
@@ -51,9 +41,6 @@
         <if test="contractProgress.endDate!=null">
             and end_date=#{contractProgress.endDate}
         </if>
-        <if test="contractProgress.status!=null">
-            and status=#{contractProgress.status}
-        </if>
     </sql>
 
 
@@ -64,7 +51,7 @@
         <result property="startDate" column="start_date"/>
         <result property="endDate" column="end_date"/>
         <result property="status" column="status"/>
-        <association property="contractProductionDistribution" column="contract_production_distribution_id" select=""/>
+        <association property="contractProductionDistribution" column="contract_production_distribution_id" select="team.ruike.cim.dao.ContractProductionDistributionDao.selectById"/>
     </resultMap>
     
 
@@ -91,7 +78,7 @@
 
 
     <insert id="add" parameterType="contractProgress">
-        insert into contract_progress(<include refid="columns"/>)
+        insert into contract_progress
         values(
         <trim suffixOverrides=",">
             default,

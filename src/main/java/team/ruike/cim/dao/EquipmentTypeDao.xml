@@ -5,11 +5,7 @@
 <mapper namespace="team.ruike.cim.dao.EquipmentTypeDao">
 
 
-    <sql id="columns">
-        #{equipmentTypeId},
-        #{equipmentTypeName},
-        #{status}
-    </sql>
+
 
     <sql id="modelCondition">
         <if test="equipmentTypeId!=null and equipmentTypeId>0">
@@ -17,9 +13,6 @@
         </if>
         <if test="equipmentTypeName!=null and equipmentTypeName!=''">
             and equipment_type_name=#{equipmentTypeName}
-        </if>
-        <if test="status!=null and status>0">
-            and status=#{status}
         </if>
     </sql>
 
@@ -30,9 +23,6 @@
         </if>
         <if test="equipmentType.equipmentTypeName!=null and equipmentType.equipmentTypeName!=''">
             and equipment_type_name=#{equipmentType.equipmentTypeName}
-        </if>
-        <if test="equipmentType.status!=null and equipmentType.status>0">
-            and status=#{equipmentType.status}
         </if>
     </sql>
 
@@ -45,7 +35,7 @@
 
 
     <insert id="add" parameterType="equipmentType">
-        insert into equipment_type(<include refid="columns"/>)
+        insert into equipment_type
         values(
         <trim suffixOverrides=",">
             #{equipmentTypeId},

@@ -4,12 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.EverydayPurchasingPlanDao">
 
-    <sql id="columns">
-        #{everydayPurchasingPlanId},
-        #{everydayPurchasingPlanNo},
-        #{everydayPurchasingPlanDate},
-        #{status}
-    </sql>
+
 
     <sql id="modelCondition">
         <if test="everydayPurchasingPlanId!=null and everydayPurchasingPlanId>0">
@@ -20,9 +15,6 @@
         </if>
         <if test="everydayPurchasingPlanDate!=null">
             and everyday_purchasing_plan_date=#{everydayPurchasingPlanDate}
-        </if>
-        <if test="status!=null and status>0">
-            and status=#{status}
         </if>
     </sql>
 
@@ -37,9 +29,6 @@
         <if test="everydayPurchasingPlan.everydayPurchasingPlanDate!=null">
             and everyday_purchasing_plan_date=#{everydayPurchasingPlan.everydayPurchasingPlanDate}
         </if>
-        <if test="everydayPurchasingPlan.status!=null and everydayPurchasingPlan.status>0">
-            and status=#{everydayPurchasingPlan.status}
-        </if>
     </sql>
 
 
@@ -52,7 +41,7 @@
 
 
     <insert id="add" parameterType="everydayPurchasingPlan">
-        insert into everyday_purchasing_plan(<include refid="columns"/>)
+        insert into everyday_purchasing_plan
         values(
         <trim suffixOverrides=",">
             #{everydayPurchasingPlanId},

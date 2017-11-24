@@ -4,18 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.EquipmentDao">
 
-    <sql id="columns">
-        #{equipmentId},
-        #{productionLineId},
-        #{workingId},
-        #{userId},
-        #{startDate},
-        #{equipmentTypeId},
-        #{maintenanceCycle},
-        #{inspectionCycle},
-        #{equipmentName},
-        #{status}
-    </sql>
+
 
     <sql id="modelCondition">
         <if test="equipmentId!=null">
@@ -33,20 +22,17 @@
         <if test="startDate!=null">
             and start_date=#{startDate}
         </if>
-        <if test="equipmentTypeId!=null">
-            and equipment_type_id=#{equipmentTypeId}
+        <if test="equipmentType!=null and equipmentType.equipmentTypeId!=null and equipmentType.equipmentTypeId>0">
+            and equipment_type_id=#{equipmentType.equipmentTypeId}
         </if>
-        <if test="maintenanceCycle!=null">
+        <if test="maintenanceCycle!=null and maintenanceCycle>0">
             and maintenance_cycle=#{maintenanceCycle}
         </if>
-        <if test="inspectionCycle!=null">
+        <if test="inspectionCycle!=null and inspectionCycle>0">
             and inspection_cycle=#{inspectionCycle}
         </if>
-        <if test="equipmentName!=null">
+        <if test="equipmentName!=null and equipmentName!=''">
             and equipment_name=#{equipmentName}
-        </if>
-        <if test="status!=null">
-            and status=#{status}
         </if>
     </sql>
 
@@ -67,20 +53,17 @@
         <if test="equipment.startDate!=null">
             and start_date=#{equipment.startDate}
         </if>
-        <if test="equipment.equipmentTypeId!=null">
-            and equipment_type_id=#{equipment.equipmentTypeId}
+        <if test="equipment.equipmentType!=null and equipment.equipmentType.equipmentTypeId!=null and equipment.equipmentType.equipmentTypeId>0">
+            and equipment_type_id=#{equipment.equipmentType.equipmentTypeId}
         </if>
         <if test="equipment.maintenanceCycle!=null">
             and maintenance_cycle=#{equipment.maintenanceCycle}
         </if>
-        <if test="equipment.inspectionCycle!=null">
+        <if test="equipment.inspectionCycle!=null and equipment.inspectionCycle>0">
             and inspection_cycle=#{equipment.inspectionCycle}
         </if>
-        <if test="equipment.equipmentName!=null">
+        <if test="equipment.equipmentName!=null and equipment.equipmentName!=''">
             and equipment_name=#{equipment.equipmentName}
-        </if>
-        <if test="equipment.status!=null">
-            and status=#{equipment.status}
         </if>
     </sql>
 
@@ -89,19 +72,19 @@
     <resultMap id="selectMap" type="Equipment">
         <result property="equipmentId" column="equipment_id"/>
         <result property="startDate" column="start_date"/>
-        <result property="equipmentTypeId" column="equipment_type_id"/>
         <result property="maintenanceCycle" column="maintenance_cycle"/>
         <result property="inspectionCycle" column="inspection_cycle"/>
         <result property="equipmentName" column="equipment_name"/>
         <result property="status" column="status"/>
-        <association property="productionLine" column="production_line_id" select=""/>
-        <association property="working" column="working_id" select=""/>
-        <association property="user" column="user_id" select=""/>
+        <association property="productionLine" column="production_line_id" select="team.ruike.cim.dao.ProductionLineDao.selectById"/>
+        <association property="working" column="working_id" select="team.ruike.cim.dao.WorkingDao.selectById"/>
+        <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <association property="equipmentType" column="equipment_type_id" select="team.ruike.cim.dao.EquipmentTypeDao.selectById"/>
     </resultMap>
 
 
     <insert id="add" parameterType="equipment">
-        insert into equipment(<include refid="columns"/>)
+        insert into equipment
         values(
         <trim suffixOverrides=",">
             default,
