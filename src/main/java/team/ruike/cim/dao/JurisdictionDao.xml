@@ -8,6 +8,7 @@
        <result column="jurisdiction_name" property="jurisdictionName"/>
         <result column="jurisdiction_url" property="jurisdictionUrl"/>
         <result column="status" property="status"/>
+        <result column="icon" property="icon"/>
     </resultMap>
     <insert id="add" parameterType="jurisdiction">
       INSERT INTO jurisdiction VALUES (DEFAULT ,#{jurisdictionName},#{jurisdictionUrl},0);

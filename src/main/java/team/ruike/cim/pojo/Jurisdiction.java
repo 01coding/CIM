@@ -28,7 +28,18 @@ public class Jurisdiction implements Serializable {
      * 删除状态
      */
     private Integer status;
+    /**
+     * 权限菜单图标
+     */
+    private String icon;
 
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
+    }
 
     public Integer getJurisdictionId() {
         return jurisdictionId;

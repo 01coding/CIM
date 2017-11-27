@@ -32,7 +32,18 @@ public class Function implements Serializable {
      * 删除状态
      */
     private Integer status;
+    /**
+     * 功能类型
+     */
+    private Integer type;
 
+    public Integer getType() {
+        return type;
+    }
+
+    public void setType(Integer type) {
+        this.type = type;
+    }
 
     public Integer getFunctionId() {
         return functionId;

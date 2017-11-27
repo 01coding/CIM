@@ -9,6 +9,7 @@
         <result column="function_url" property="functionUrl"/>
         <result column="jurisdiction_id" property="jurisdictionId"/>
         <result column="status" property="status"/>
+        <result column="type" property="type"/>
     </resultMap>
     <sql id="sql">
         SELECT  * from function WHERE status=0

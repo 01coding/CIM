@@ -51,4 +51,7 @@
             AND role_id=#{roleId}
         </if>
     </select>
+    <select id="selectByUserId" parameterType="int" resultMap="roleMap">
+        SELECT * FROM role WHERE status=0 AND role_id in(SELECT role_id FROM user_role WHERE user_id=#{userId})
+    </select>
 </mapper>

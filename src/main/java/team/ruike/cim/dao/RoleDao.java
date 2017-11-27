@@ -58,4 +58,11 @@ public interface RoleDao {
      * @return 用户角色对象
      */
     Role selectById(Integer roleId);
+
+    /**
+     * 根据userID查询用户角色
+     * @param userId 用户ID
+     * @return 用户角色集合
+     */
+    List<Role> selectByUserId(Integer userId);
 }

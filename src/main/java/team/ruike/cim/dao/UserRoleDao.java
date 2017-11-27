@@ -53,12 +53,4 @@ public interface UserRoleDao {
      * @return 用户角色关系表对象
      */
     UserRole selectById(Integer userRoleId);
-
-
-    /**
-     * 根据ID查询用户角色
-     * @param userId 用户ID
-     * @return 用户角色集合
-     */
-    List<Role> selectByUserId(Integer userId);
 }

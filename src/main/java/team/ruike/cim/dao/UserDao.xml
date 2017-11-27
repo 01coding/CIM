@@ -9,7 +9,7 @@
         <result column="password" property="password"/>
         <result column="user_phone" property="userPhone"/>
         <result column="status" property="status"/>
-        <collection property="roles" column="user_id" select="team.ruike.cim.dao.UserRoleDao.selectByUserId"/>
+        <collection property="roles" column="user_id" select="team.ruike.cim.dao.RoleDao.selectByUserId"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM `user` WHERE status=0

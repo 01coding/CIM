@@ -34,6 +34,22 @@ public class Role implements Serializable {
      */
     private List<Jurisdiction> jurisdictions;
 
+    public List<Function> getFunctions() {
+        return functions;
+    }
+
+    public void setFunctions(List<Function> functions) {
+        this.functions = functions;
+    }
+
+    public List<Jurisdiction> getJurisdictions() {
+        return jurisdictions;
+    }
+
+    public void setJurisdictions(List<Jurisdiction> jurisdictions) {
+        this.jurisdictions = jurisdictions;
+    }
+
     public Integer getRoleId() {
         return roleId;
     }
