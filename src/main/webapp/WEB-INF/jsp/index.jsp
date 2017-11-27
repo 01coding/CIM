@@ -410,7 +410,7 @@
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
-                                    class="right-nav-text">${j.jurisdictionName}</span>
+                                    class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
                             </div>
                             <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                             <div class="clearfix"></div>
