@@ -141,14 +141,14 @@
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);">
+                                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#xx">
                                         <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
                                                 class="right-nav-text">研发管理</span></div>
                                         <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                                         <div class="clearfix"></div>
                                     </a>
                                     <hr class="light-grey-hr ma-0"/>
-                                    <ul>
+                                    <ul id="xx" class="collapse in collapse-level-1">
                                         <li>
                                             <a href="index.do">Analytical</a>
                                         </li>
