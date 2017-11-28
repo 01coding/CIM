@@ -6,11 +6,8 @@
     <resultMap id="materielTypeLevelBs" type="materielTypeLevelB">
         <result column="materiel_type_level_b_id" property="materielTypeLevelBId"/>
         <result column="materiel_type_level_b_name" property="materielTypeLevelBName"/>
-        <association property="materielTypeLevelA.materielTypeLevelAId" column="materiel_type_level_a_id"
-                     select="team.ruike.cim.dao.MaterielTypeLevelBDao.selectById">
-            <result column="materiel_type_level_a_id" property="materielTypeLevelAId"/>
-            <result column="materiel_type_level_a_name" property="materielTypeLevelAName"/>
-            <result column="status" property="status"/>
+        <association property="materielTypeLevelA" column="materiel_type_level_a_id"
+                     select="team.ruike.cim.dao.MaterielTypeLevelADao.selectById">
         </association>
     </resultMap>
     <sql id="sql">
@@ -52,10 +49,7 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="materielTypeLevelBs">
-        SELECT * FROM materiel_type_level_b WHERE status=0
-        <if test="materielTypeLevelBId!=null and materielTypeLevelBId>0">
-            AND materiel_type_level_b_id=#{materielTypeLevelBId}
-        </if>
+        SELECT * FROM materiel_type_level_b WHERE status=0 AND materiel_type_level_b_id=#{materielTypeLevelBId}
     </select>
 
 </mapper>

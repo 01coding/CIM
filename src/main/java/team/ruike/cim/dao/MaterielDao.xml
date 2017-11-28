@@ -91,9 +91,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="materielMap">
-        SELECT * from materiel WHERE status=0
-        <if test="materielId!=null and materielId>0">
-            AND materiel_id=#{materielId}
-        </if>
+        SELECT * from materiel WHERE status=0 AND materiel_id=#{materielId}
     </select>
 </mapper>

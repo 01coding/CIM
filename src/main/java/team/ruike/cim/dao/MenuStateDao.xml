@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="menuState.menuStateName!=null and menuState.menuStateName!=''">
             AND menu_state_name like CONCAT('%',#{menuState.menuStateName},'%')
         </if>
-        limit(#{pageNo},#{pageSize})
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int">
         SELECT COUNT(1) FROM menu_state
@@ -37,7 +37,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="menuStateMap">
-        SELECT * FROM menu_state
-        WHERE status=0 AND menu_state_id=#{menuStateId}
+        SELECT * FROM menu_state WHERE status=0 AND menu_state_id=#{menuStateId}
     </select>
 </mapper>

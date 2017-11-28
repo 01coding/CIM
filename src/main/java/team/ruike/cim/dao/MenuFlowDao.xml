@@ -3,21 +3,21 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.MenuFlowDao">
-    <resultMap id="menuMateriels" type="menuMateriel">
+    <resultMap id="menuMateriels" type="menuFlow">
         <result column="menu_flow_id" property="menuFlowId"/>
         <result column="menu_materiel_id" property="menuMaterielId"/>
         <result column="menu_flow_describe" property="menuFlowDescribe"/>
         <result column="menu_flow_hour" property="menuFlowHour"/>
         <result column="menu_flow_image" property="menuFlowImage"/>
         <result column="status" property="status"/>
-        <association property="working.workingId" column="technology_id"
+        <association property="working" column="working_id"
                      select="team.ruike.cim.dao.WorkingDao.selectById"/>
-        <association property="technology.technologyId" column="technology_id"
+        <association property="technology" column="technology_id"
                      select="team.ruike.cim.dao.TechnologyDao.selectById"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM menu_flow WHERE `status`=0
-        <if test="menuFlow.menuMaterielId!=null and menuFlow.menuMaterielId>0">
+        <if test="menuFlow.menuFlowId!=null and menuFlow.menuFlowId>0">
             AND menu_flow_id=#{menuFlow.menuFlowId}
         </if>
         <if test="menuFlow.menuMaterielId!=null and menuFlow.menuMaterielId>0">
@@ -83,12 +83,9 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="menuMateriels">
-        SELECT * FROM menu_flow WHERE `status`=0
-        <if test="menuMaterielId!=null and menuMaterielId>0">
-            AND menu_flow_id=#{menuFlowId}
-        </if>
+        SELECT * FROM menu_flow WHERE `status`=0 AND menu_flow_id=#{menuFlowId}
     </select>
-    <select id="selectBYMenuMaterielId" resultMap="menuMateriels">
+    <select id="selectBYMenuMaterielId" parameterType="int" resultMap="menuMateriels">
         SELECT  * FROM  menu_flow WHERE  `status`=0
           AND  menu_materiel_id=#{menuMaterielId}
     </select>

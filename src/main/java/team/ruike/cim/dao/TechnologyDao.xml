@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="technology_id" property="technologyId"/>
         <result column="technology_name" property="technologyName"/>
         <result column="status" property="status"/>
-        <association property="working" column="working_id" select="team.ruike.cim.dao.TechnologyDao.selectById"/>
+        <association property="working" column="working_id" select="team.ruike.cim.dao.WorkingDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="technology">
           INSERT INTO technology VALUES (DEFAULT ,#{technologyName},#{working.workingId},0)
@@ -49,8 +49,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <select id="selectById" parameterType="int" resultMap="technologyMap">
         SELECT * FROM technology WHERE status=0
-        <if test="technologyId!=null and technologyId>0">
             AND technology_id=#{technologyId}
-        </if>
     </select>
 </mapper>

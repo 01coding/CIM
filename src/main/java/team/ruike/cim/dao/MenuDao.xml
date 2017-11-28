@@ -17,21 +17,21 @@
         <result column="menu_release_date" property="menuReleaseDate"/>
         <result column="status" property="status"/>
         <result column="menu_remarks" property="menuRemarks"/>
-        <association column="menu_state_id" property="menuState.menuStateId"
-                     select="team.ruike.cim.dao.MenuStateDao"/>
-        <association property="menuType.menuTypeId" column="menu_type_id"
-                     select="team.ruike.cim.dao.MenuTypeDao.selectById."/>
+        <association column="menu_state_id" property="menuState"
+                     select="team.ruike.cim.dao.MenuStateDao.selectById"/>
+        <association property="menuType" column="menu_type_id"
+                     select="team.ruike.cim.dao.MenuTypeDao.selectById"/>
         <collection property="menuMaterielList" column="menu_id" select="team.ruike.cim.dao.MenuMaterielDao.selectByMenuId"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM menu WHERE status=0
-        <if test="menu.menuId!=null and menu.menuId!>0">
+        <if test="menu.menuId!=null and menu.menuId>0">
             AND  menu_id=#{menu.menuId}
         </if>
         <if test="menu.menuName!=null and menu.menuName!=''">
             AND  menu_name LIKE CONCAT('%',#{menu.menuName},'%')
         </if>
-        <if test="menu.menuNo!=null and menu.menuNo>0">
+        <if test="menu.menuNo!=null and menu.menuNo!=''">
             AND menu_no=#{menu.menuNo}
         </if>
         <if test="menu.menuWeight!=null and menu.menuWeight>0">
@@ -52,22 +52,19 @@
         <if test="menu.menuShelfLife!=null and menu.menuShelfLife>0">
             AND menu_shelf_life=#{menu.menuShelfLife}
         </if>
-        <if test="menu.menuCreateDate!=null and menu.menuCreateDate!=''">
+        <if test="menu.menuCreateDate!=null">
             AND menu_create_date=#{menu.menuCreateDate}
         </if>
-        <if test="menu.menuReleaseDate!=null and menu.menuReleaseDate!=''">
+        <if test="menu.menuReleaseDate!=null">
             AND menu_release_date=#{menu.menuReleaseDate}
         </if>
         <if test="menu.menuRemarks!=null and menu.menuRemarks!=''">
-            AND status=#{menu.menuRemarks}
+            AND menu_remarks=#{menu.menuRemarks}
         </if>
-        <if test="menu.menuState!=null and menu.menuState.menuStateId>0">
-            AND menu_remarks=#{menu.menuState.menuStateId}
+        <if test="menu.menuState!=null and menu.menuState.menuStateId!=null and menu.menuState.menuStateId>0">
+            AND menu_state_id=#{menu.menuState.menuStateId}
         </if>
-        <if test="menu.menuType and  menu.menuType.menuTypeId>0">
-            AND menu_state_id=#{menu.menuType.menuTypeId}
-        </if>
-        <if test="menu.menuType.menuTypeId!=null and menu.menuType.menuTypeId>0">
+        <if test="menu.menuType!=null and menu.menuType.menuTypeId!=null and menu.menuType.menuTypeId>0">
             AND  menu_type_id=#{menu.menuType.menuTypeId}
         </if>
     </sql>
@@ -80,7 +77,7 @@
         menu_type_id=#{menuType.menuTypeId}
     </update>
     <select id="select" resultMap="menus">
-        SELECT * FROM (<include refid="sql"/> )f
+        SELECT * FROM (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="menu">
@@ -121,7 +118,7 @@
         <if test="menuRemarks!=null and menuRemarks!=''">
             AND status=#{menu.menuRemarks}
         </if>
-        <if test="menuState!=null andmenuState.menuStateId>0">
+        <if test="menuState!=null and menuState.menuStateId>0">
             AND menu_remarks=#{menu.menuState.menuStateId}
         </if>
         <if test="menuType and menuType.menuTypeId>0">

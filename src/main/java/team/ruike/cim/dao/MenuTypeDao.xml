@@ -11,10 +11,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         menu_type_no=#{menuTypeNo},status=#{status}  WHERE menu_type_id=#{menuTypeId}
     </update>
     <resultMap id="menuTypeMap" type="menuType">
-        <result property="menu_type_id" column="menuTypeId"/>
-        <result property="menu_type_no" column="menuTypeNo"/>
-        <result property="menu_type_name" column="menuTypeName"/>
-        <result property="status" column="status"/>
+        <result column="menu_type_id" property="menuTypeId"/>
+        <result column="menu_type_no" property="menuTypeNo"/>
+        <result column="menu_type_name" property="menuTypeName"/>
+        <result column="status" property="status"/>
     </resultMap>
     <select id="select" resultMap="menuTypeMap">
         SELECT * FROM menu_type WHERE status=0
@@ -27,7 +27,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="menuType.menuTypeNo!=null and menuType.menuTypeNo!=''">
             AND menu_type.menu_type_no like CONCAT('%',#{menuType.menuTypeNo},'%')
         </if>
-        limit(#{pageNo},#{pageSize})
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int">
         SELECT count(1) FROM menu_type WHERE status=0

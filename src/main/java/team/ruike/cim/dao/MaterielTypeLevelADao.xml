@@ -43,8 +43,6 @@
     </select>
     <select id="selectById" parameterType="int" resultMap="materielTypeLevelAs">
         SELECT * from materiel_type_level_a WHERE status=0
-        <if test="materielTypeLevelAId!='' and materielTypeLevelAId>0">
             AND materiel_type_level_a_id=#{materielTypeLevelAId}
-        </if>
     </select>
 </mapper>

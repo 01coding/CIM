@@ -38,9 +38,6 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="materielUnits">
-        SELECT * from materiel_unit WHERE status=0
-        <if test="materielUnitId!=null and materielUnitId>0">
-            AND materiel_unit_id=#{materielUnitId}
-        </if>
+        SELECT * from materiel_unit WHERE status=0 AND materiel_unit_id=#{materielUnitId}
     </select>
 </mapper>

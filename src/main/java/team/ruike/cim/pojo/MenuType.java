@@ -29,7 +29,6 @@ public class MenuType implements Serializable {
      */
     private Integer status;
 
-
     public Integer getMenuTypeId() {
         return menuTypeId;
     }

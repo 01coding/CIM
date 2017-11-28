@@ -25,7 +25,7 @@ public class Menu implements Serializable {
     /**
      * 菜谱编码
      */
-    private Integer menuNo;
+    private String menuNo;
     /**
      * 菜谱类别
      */
@@ -104,12 +104,11 @@ public class Menu implements Serializable {
         this.menuName = menuName;
     }
 
-
-    public Integer getMenuNo() {
+    public String getMenuNo() {
         return menuNo;
     }
 
-    public void setMenuNo(Integer menuNo) {
+    public void setMenuNo(String menuNo) {
         this.menuNo = menuNo;
     }
 
