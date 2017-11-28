@@ -36,3 +36,6 @@
 
 ## 数据库结构图
 ![数据库结构图](images/cimdb.png)
+## 页面展示
+![主页](images/index.png)
+![菜谱](images/menu.png)
