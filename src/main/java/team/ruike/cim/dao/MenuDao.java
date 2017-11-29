@@ -50,7 +50,7 @@ public interface MenuDao {
      * @param menu 菜单对象(作为查询条件)
      * @return 总条数
      */
-    int selectCount(Menu menu);
+    int selectCount(@Param("menu")Menu menu);
 
     /**
      * 根据ID查询单个菜单数据

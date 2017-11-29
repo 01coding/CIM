@@ -80,51 +80,48 @@
         SELECT * FROM (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>
-    <select id="selectCount" resultType="int" parameterType="menu">
+    <select id="selectCount" resultType="int">
         SELECT COUNT(1) FROM menu WHERE   status=0
-        <if test="menuId!=null and menuId!>0">
+        <if test="menu.menuId!=null and menu.menuId>0">
             AND  menu_id=#{menu.menuId}
         </if>
-        <if test="menuName!=null and menuName!=''">
-            AND  menu_name LIKE CONCAT('%',#{menuName},'%')
+        <if test="menu.menuName!=null and menu.menuName!=''">
+            AND  menu_name LIKE CONCAT('%',#{menu.menuName},'%')
         </if>
-        <if test="menuNo!=null and menuNo>0">
+        <if test="menu.menuNo!=null and menu.menuNo!=''">
             AND menu_no=#{menu.menuNo}
         </if>
-        <if test="menuWeight!=null and menuWeight>0">
+        <if test="menu.menuWeight!=null and menu.menuWeight>0">
             AND menu_weight=#{menu.menuWeight}
         </if>
-        <if test="menuCost!=null and menuCost!=''">
+        <if test="menu.menuCost!=null and menu.menuCost!=''">
             AND menu_cost=#{menu.menuCost}
         </if>
-        <if test="menuImage!=null and menuImage!=''">
+        <if test="menu.menuImage!=null and menu.menuImage!=''">
             AND menu_image=#{menu.menuImage}
         </if>
-        <if test="menuStoreMax!=null and menuStoreMax>0">
+        <if test="menu.menuStoreMax!=null and menu.menuStoreMax>0">
             AND menu_store_max=#{menu.menuStoreMax}
         </if>
-        <if test="menuStoreMin!=null and menuStoreMin>0">
+        <if test="menu.menuStoreMin!=null and menu.menuStoreMin>0">
             AND menu_store_min=#{menu.menuStoreMin}
         </if>
-        <if test="menuShelfLife!=null and menuShelfLife>0">
+        <if test="menu.menuShelfLife!=null and menu.menuShelfLife>0">
             AND menu_shelf_life=#{menu.menuShelfLife}
         </if>
-        <if test="menuCreateDate!=null and menuCreateDate!=''">
+        <if test="menu.menuCreateDate!=null">
             AND menu_create_date=#{menu.menuCreateDate}
         </if>
-        <if test="menuReleaseDate!=null and menuReleaseDate!=''">
+        <if test="menu.menuReleaseDate!=null">
             AND menu_release_date=#{menu.menuReleaseDate}
         </if>
-        <if test="menuRemarks!=null and menuRemarks!=''">
-            AND status=#{menu.menuRemarks}
+        <if test="menu.menuRemarks!=null and menu.menuRemarks!=''">
+            AND menu_remarks=#{menu.menuRemarks}
         </if>
-        <if test="menuState!=null and menuState.menuStateId>0">
-            AND menu_remarks=#{menu.menuState.menuStateId}
+        <if test="menu.menuState!=null and menu.menuState.menuStateId!=null and menu.menuState.menuStateId>0">
+            AND menu_state_id=#{menu.menuState.menuStateId}
         </if>
-        <if test="menuType and menuType.menuTypeId>0">
-            AND menu_state_id=#{menu.menuType.menuTypeId}
-        </if>
-        <if test="menuType.menuTypeId!=null and menuType.menuTypeId>0">
+        <if test="menu.menuType!=null and menu.menuType.menuTypeId!=null and menu.menuType.menuTypeId>0">
             AND  menu_type_id=#{menu.menuType.menuTypeId}
         </if>
     </select>

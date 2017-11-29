@@ -11,12 +11,12 @@ import java.util.List;
  */
 public class Pager<T> implements Serializable {
     private static final long serialVersionUID = 5578378970620062224L;
-    private final static int PAGE_ITEM_COUNT = 10;  //显示页码条目数，即页码数量顶多是10个
+    private final static int PAGE_ITEM_COUNT = 7;  //显示页码条目数，即页码数量顶多是10个
     private List<T> list;         //保存查询的结果集合
     private int totalRecord;        //总记录数
-    private int pageSize;       //页面显示的数目
+    private int pageSize=8;       //页面显示的数目
     private Integer totalPage;          //总页码数
-    private int currentPage;    //当前页码
+    private int currentPage=1;    //当前页码
     private int previousPage;       //前一页
     private int nextPage;           //后一页
     private int[] pageBar;          //条目数
@@ -115,7 +115,7 @@ public class Pager<T> implements Serializable {
             endPage = this.totalPage;
         } else {                  //当总页码大于既定页面大小时
             pageBar = new int[PAGE_ITEM_COUNT];
-            startPage = this.currentPage - (PAGE_ITEM_COUNT / 2 - 1);    //为了保证当前页在中间
+            startPage = this.currentPage - (PAGE_ITEM_COUNT / 2-1)-1;    //为了保证当前页在中间
             endPage = this.currentPage + PAGE_ITEM_COUNT / 2;
 
             if (startPage < 1) {

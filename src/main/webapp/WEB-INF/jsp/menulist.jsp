@@ -1,3 +1,4 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -7,6 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -490,30 +492,29 @@
                                                         <!--</div>-->
                                                     </div>
                                                     <div class="pl-15 mb-30">
-                                                        <a href="#" class="file-control active">全部</a>
-                                                        <a href="#" class="file-control">已发布</a>
-                                                        <a href="#" class="file-control">未发布</a>
-                                                        <a href="#" class="file-control">已停售</a>
+                                                        <a href="${pageContext.request.contextPath}/menulist.do?menuState.menuStateId=0" class="file-control <c:if test="${requestScope.menu.menuState.menuStateId==0||requestScope.menu.menuState.menuStateId==null}"> active </c:if>">全部</a>
+                                                        <c:forEach items="${requestScope.stateList}" var="state">
+                                                            <a href="${pageContext.request.contextPath}/menulist.do?menuState.menuStateId=${state.menuStateId}" class="file-control <c:if test="${requestScope.menu.menuState.menuStateId==state.menuStateId}"> active </c:if>">${state.menuStateName}</a>
+                                                        </c:forEach>
                                                     </div>
 
                                                     <h6 class="mb-10 pl-15">类别</h6>
                                                     <ul class="folder-list mb-30">
-                                                        <li class="active"><a href=""><i
+                                                        <li class="<c:if test="${requestScope.menu.menuType.menuTypeId==0||requestScope.menu.menuType.menuTypeId==null}"> active </c:if>"><a href="${pageContext.request.contextPath}/menulist.do?menuType.menuTypeId=0"><i
                                                                 class="fa fa-lemon-o"></i>所有</a></li>
-                                                        <li><a href=""><i class="fa fa-lemon-o"></i>素菜</a></li>
-                                                        <li><a href=""><i class="fa fa-lemon-o"></i>生鲜净菜</a></li>
-                                                        <li><a href=""><i class="fa fa-lemon-o"></i>大荤</a></li>
-                                                        <li><a href=""><i class="fa fa-lemon-o"></i>配料</a></li>
+                                                        <c:forEach var="type" items="${requestScope.typeList}">
+                                                            <li class="<c:if test="${requestScope.menu.menuType.menuTypeId==type.menuTypeId}">active </c:if>"><a href="${pageContext.request.contextPath}/menulist.do?menuType.menuTypeId=${type.menuTypeId}"><i class="fa fa-lemon-o"></i>${type.menuTypeName}</a></li>
+                                                        </c:forEach>
                                                     </ul>
                                                     <h6 class="pl-15 mb-10">条件检索</h6>
                                                     <div class="input-group">
                                                         <div class="input-group-addon"><i class="ti-agenda"></i></div>
-                                                        <input type="text" class="form-control" name="Username"
-                                                               placeholder="菜谱名称">
+                                                        <input id="se" type="text" class="form-control" name="Username"
+                                                               placeholder="关键字检索" value="${requestScope.menu.menuName}">
                                                     </div>
                                                     <br/>
                                                     <div style="margin:0 auto;text-align:center;">
-                                                        <button class="btn btn-primary btn-rounded btn-icon left-icon">
+                                                        <button id="seb" class="btn btn-primary btn-rounded btn-icon left-icon">
                                                             <i class="fa fa-search"></i> <span>检索</span></button>
                                                     </div>
                                                     <div class="clearfix"></div>
@@ -526,9 +527,9 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="row">
-                                                    <c:forEach items="${requestScope.menuList}" var="menu">
+                                                    <c:forEach items="${requestScope.pager.list}" var="menu">
                                                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
-                                                            <div class="file">
+                                                            <div class="file menu-z">
                                                                 <a href="#">
                                                                     <div class="image"
                                                                          style="background-image:url(../../images/menuimg/${menu.menuImage})">
@@ -536,7 +537,7 @@
                                                                     <div class="file-name">
                                                                             ${menu.menuName}
                                                                         <br>
-                                                                        <span>${menu.menuCreateDate}</span>
+                                                                        <span>创建时间:<fmt:formatDate value="${menu.menuCreateDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></span>
                                                                     </div>
                                                                 </a>
                                                             </div>
@@ -550,13 +551,37 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <ul class="pagination pagination-split">
-                                                            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                            <li class="disabled"><a href="#">1</a></li>
-                                                            <li class="active"><a href="#">2</a></li>
-                                                            <li><a href="#">3</a></li>
-                                                            <li><a href="#">4</a></li>
-                                                            <li><a href="#">5</a></li>
-                                                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                            <li <c:if
+                                                                    test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    Pager pager = (Pager) request.getAttribute("pager");
+                                                                    if(pager.getCurrentPage()!=1){%>
+                                                                    href="${pageContext.request.contextPath}/menulist.do?currentPage=${requestScope.pager.previousPage}&menuState.menuStateId=${requestScope.menu.menuState.menuStateId}&menuType.menuTypeId=${requestScope.menu.menuType.menuTypeId}&menuName=${requestScope.menu.menuName}"
+                                                                    <%
+                                                                        }else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%}
+                                                                    %>>
+                                                                    <i class="fa fa-angle-left"></i></a></li>
+                                                            <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/menulist.do?currentPage=${bar}&menuState.menuStateId=${requestScope.menu.menuState.menuStateId}&menuType.menuTypeId=${requestScope.menu.menuType.menuTypeId}&menuName=${requestScope.menu.menuName}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                        href="${pageContext.request.contextPath}/menulist.do?currentPage=${requestScope.pager.nextPage}&menuState.menuStateId=${requestScope.menu.menuState.menuStateId}&menuType.menuTypeId=${requestScope.menu.menuType.menuTypeId}&menuName=${requestScope.menu.menuName}"
+                                                                        <%
+                                                                        }else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%}
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -609,6 +634,18 @@
 
 <!-- Init JavaScript -->
 <script src="../../dist/js/init.js"></script>
-
+<script>
+    $(function () {
+        $("#seb").click(function () {
+            location.href="${pageContext.request.contextPath}/menulist.do?menuName="+$("#se").val();
+        });
+        $(".menu-z").mouseover(function () {
+            $(this).css("border","1px solid orange");
+        });
+        $(".menu-z").mouseout(function () {
+            $(this).css("border","1px solid #F8FEFF");
+        });
+    });
+</script>
 </body>
 </html>

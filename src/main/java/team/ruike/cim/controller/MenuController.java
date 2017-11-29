@@ -4,6 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import team.ruike.cim.pojo.Menu;
 import team.ruike.cim.service.MenuService;
+import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -22,8 +23,11 @@ public class MenuController {
      * @return 菜谱jsp
      */
     @RequestMapping("menulist.do")
-    public String menuList(Menu menu, HttpServletRequest request){
-        request.setAttribute("menuList",menuService.getMenuList(menu));
+    public String menuList(Menu menu, Pager<Menu> pager, HttpServletRequest request){
+        menuService.getMenuList(menu,pager);
+        request.setAttribute("pager",pager.getList());//返回菜谱数据
+        request.setAttribute("stateList",menuService.getMenuStateList());//返回菜谱状态集合
+        request.setAttribute("typeList",menuService.getMenuTypeList());//返回菜谱类型集合
         return "menulist";
     }
 }
