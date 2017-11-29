@@ -521,6 +521,7 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="col-lg-9 col-md-8 file-sec pt-20">
                                         <div class="row">
                                             <div class="col-lg-12">
@@ -541,24 +542,28 @@
                                                             </div>
                                                         </div>
                                                     </c:forEach>
-                                                    <%--<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">--%>
-                                                    <%--<div class="file">--%>
-                                                    <%--<a href="#">--%>
-                                                    <%--<div class="image"--%>
-                                                    <%--style="background-image:url(../../dist/img/gallery/mock2.jpg)">--%>
-                                                    <%--</div>--%>
-                                                    <%--<div class="file-name">--%>
-                                                    <%--My feel.png--%>
-                                                    <%--<br>--%>
-                                                    <%--<span>Added: Jan 7, 2016</span>--%>
-                                                    <%--</div>--%>
-                                                    <%--</a>--%>
-                                                    <%--</div>--%>
-                                                    <%--</div>--%>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                            <li class="disabled"><a href="#">1</a></li>
+                                                            <li class="active"><a href="#">2</a></li>
+                                                            <li><a href="#">3</a></li>
+                                                            <li><a href="#">4</a></li>
+                                                            <li><a href="#">5</a></li>
+                                                            <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

@@ -17,4 +17,5 @@ public interface MenuService {
      * @return 菜谱集合
      */
     List<Menu> getMenuList(Menu menu);
+
 }
