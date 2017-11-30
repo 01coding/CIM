@@ -952,11 +952,13 @@
                                         <div class="timeline-body">
                                             <h6 class="mb-15">所需子工序：</h6>
                                             <c:forEach items="${requestScope.list[0]}" var="ls">
-                                                <p class="lead head-font mb-20">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName} 耗时：${ls.menuFlowHour}</p>
+                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
+                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
+                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
                                             </c:forEach>
-                                            <h4 class="mb-5">最长耗时子工序为：${maps["0"].menuMateriel.materiel.materielName}----${maps["0"].technology.technologyName}，耗时：${maps["0"].menuFlowHour} H</h4>
-                                            <p class="lead head-font mb-20">${maps["0"].menuFlowDescribe}</p>
-                                            <p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>
+                                            <%--<h4 class="mb-5">最长耗时子工序为：${maps["0"].menuMateriel.materiel.materielName}----${maps["0"].technology.technologyName}，耗时：${maps["0"].menuFlowHour} H</h4>--%>
+                                            <%--<p class="lead head-font mb-20">${maps["0"].menuFlowDescribe}</p>--%>
+                                            <%--<p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>--%>
                                         </div>
                                     </div>
                                 </li>
@@ -967,16 +969,15 @@
                                     </div>
                                     <div class="timeline-panel pa-30">
                                         <div class="timeline-heading">
-                                            <h6 class="mb-15">精加工</h6>
+                                            <h4 class="mb-15">精加工</h4>
                                         </div>
                                         <div class="timeline-body">
-                                            <h4 class="mb-15">所需子工序：</h4>
+                                            <h6 class="mb-15">所需子工序：</h6>
                                             <c:forEach items="${requestScope.list[1]}" var="ls">
-                                                <p class="lead head-font mb-20">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName} 耗时：${ls.menuFlowHour}</p>
+                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
+                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
+                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
                                             </c:forEach>
-                                            <h4 class="mb-5">最长耗时子工序为：${maps["1"].menuMateriel.materiel.materielName}----${maps["1"].technology.technologyName}，耗时：${maps["1"].menuFlowHour} H</h4>
-                                            <p class="lead head-font mb-20">${maps["1"].menuFlowDescribe}</p>
-                                            <p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -992,11 +993,10 @@
                                         <div class="timeline-body">
                                             <h6 class="mb-15">所需子工序：</h6>
                                             <c:forEach items="${requestScope.list[2]}" var="ls">
-                                                <p class="lead head-font mb-20">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName} 耗时：${ls.menuFlowHour}</p>
+                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
+                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
+                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
                                             </c:forEach>
-                                            <h4 class="mb-5">最长耗时子工序为：${maps["2"].menuMateriel.materiel.materielName}----${maps["2"].technology.technologyName}，耗时：${maps["2"].menuFlowHour} H</h4>
-                                            <p class="lead head-font mb-20">${maps["2"].menuFlowDescribe}</p>
-                                            <p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -1012,11 +1012,10 @@
                                         <div class="timeline-body">
                                             <h6 class="mb-15">所需子工序：</h6>
                                             <c:forEach items="${requestScope.list[3]}" var="ls">
-                                                <p class="lead head-font mb-20">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName} 耗时：${ls.menuFlowHour}</p>
+                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
+                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
+                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
                                             </c:forEach>
-                                            <h4 class="mb-5">最长耗时子工序为：${maps["3"].menuMateriel.materiel.materielName}----${maps["3"].technology.technologyName}，耗时：${maps["3"].menuFlowHour} H</h4>
-                                            <p class="lead head-font mb-20">${maps["3"].menuFlowDescribe}</p>
-                                            <p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>
                                         </div>
                                     </div>
                                 </li>
@@ -1032,11 +1031,10 @@
                                         <div class="timeline-body">
                                             <h6 class="mb-15">所需子工序：</h6>
                                             <c:forEach items="${requestScope.list[4]}" var="ls">
-                                                <p class="lead head-font mb-20">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName} 耗时：${ls.menuFlowHour}</p>
+                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
+                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
+                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
                                             </c:forEach>
-                                            <h4 class="mb-5">最长耗时子工序为：${maps["4"].menuMateriel.materiel.materielName}----${maps["4"].technology.technologyName}，耗时：${maps["4"].menuFlowHour} H</h4>
-                                            <p class="lead head-font mb-20">${maps["4"].menuFlowDescribe}</p>
-                                            <p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>
                                         </div>
                                     </div>
                                 </li>

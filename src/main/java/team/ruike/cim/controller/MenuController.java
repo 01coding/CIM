@@ -39,8 +39,6 @@ public class MenuController {
      */
     @RequestMapping("/menuflow.do")
     public String menuFlow(Integer menuId,HttpServletRequest request){
-        Map<String, MenuFlow> stringDoubleMap = menuService.flowMaxHour(menuId);
-        request.setAttribute("maps",stringDoubleMap);
         request.setAttribute("list",menuService.getMenuFlows(menuId));
         return "menuflow";
     }
