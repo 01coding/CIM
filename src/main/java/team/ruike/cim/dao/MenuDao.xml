@@ -126,10 +126,7 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="menus">
-        SELECT * FROM  menu WHERE   status=0
-        <if test="menuId!=null and menuId!>0">
-            AND  menu_id=#{menuId}
-        </if>
+        SELECT * FROM  menu WHERE   status=0 AND  menu_id=#{menuId}
     </select>
 
 </mapper>

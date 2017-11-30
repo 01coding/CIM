@@ -5,7 +5,6 @@
 <mapper namespace="team.ruike.cim.dao.MenuFlowDao">
     <resultMap id="menuMateriels" type="menuFlow">
         <result column="menu_flow_id" property="menuFlowId"/>
-        <result column="menu_materiel_id" property="menuMaterielId"/>
         <result column="menu_flow_describe" property="menuFlowDescribe"/>
         <result column="menu_flow_hour" property="menuFlowHour"/>
         <result column="menu_flow_image" property="menuFlowImage"/>
@@ -14,6 +13,7 @@
                      select="team.ruike.cim.dao.WorkingDao.selectById"/>
         <association property="technology" column="technology_id"
                      select="team.ruike.cim.dao.TechnologyDao.selectById"/>
+        <association property="menuMateriel" column="menu_materiel_id" select="team.ruike.cim.dao.MenuMaterielDao.selectById"/>
     </resultMap>
     <sql id="sql">
         SELECT * FROM menu_flow WHERE `status`=0

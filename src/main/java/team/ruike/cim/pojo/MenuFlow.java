@@ -19,7 +19,7 @@ public class MenuFlow implements Serializable {
     /**
      * 菜物关系表id外键
      */
-    private Integer menuMaterielId;
+    private MenuMateriel menuMateriel;
     /**
      * 工序
      */
@@ -54,13 +54,12 @@ public class MenuFlow implements Serializable {
         this.menuFlowId = menuFlowId;
     }
 
-
-    public Integer getMenuMaterielId() {
-        return menuMaterielId;
+    public MenuMateriel getMenuMateriel() {
+        return menuMateriel;
     }
 
-    public void setMenuMaterielId(Integer menuMaterielId) {
-        this.menuMaterielId = menuMaterielId;
+    public void setMenuMateriel(MenuMateriel menuMateriel) {
+        this.menuMateriel = menuMateriel;
     }
 
     public Working getWorking() {

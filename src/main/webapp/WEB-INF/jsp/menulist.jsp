@@ -530,7 +530,7 @@
                                                     <c:forEach items="${requestScope.pager.list}" var="menu">
                                                         <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12  file-box">
                                                             <div class="file menu-z">
-                                                                <a href="#">
+                                                                <a href="${pageContext.request.contextPath}/menuflow.do?menuId=${menu.menuId}">
                                                                     <div class="image"
                                                                          style="background-image:url(../../images/menuimg/${menu.menuImage})">
                                                                     </div>
