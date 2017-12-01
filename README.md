@@ -39,3 +39,6 @@
 ## 页面展示
 ![主页](images/index.png)
 ![菜谱](images/menu.png)
+![流程](images/gongxu.png)
+![流程2](images/gongxu2.png)
+![质检](images/zhijian.png)
