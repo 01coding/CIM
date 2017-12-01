@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 28/11/2017 08:39:42
+ Date: 01/12/2017 08:47:33
 */
 
 SET NAMES utf8mb4;
@@ -248,7 +248,7 @@ CREATE TABLE `function`  (
 -- ----------------------------
 -- Records of function
 -- ----------------------------
-INSERT INTO `function` VALUES (1, '菜谱列表', '###', 1, 0, 0);
+INSERT INTO `function` VALUES (1, '菜谱列表', 'menulist.do', 1, 0, 0);
 INSERT INTO `function` VALUES (4, '新增菜谱', '###', 1, 0, 1);
 
 -- ----------------------------
@@ -330,7 +330,7 @@ CREATE TABLE `materiel`  (
   INDEX `Fk_materiel_unit`(`materiel_unit_id`) USING BTREE,
   CONSTRAINT `Fk_materiel_type_level_b` FOREIGN KEY (`materiel_type_level_b_id`) REFERENCES `materiel_type_level_b` (`materiel_type_level_b_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_materiel_unit` FOREIGN KEY (`materiel_unit_id`) REFERENCES `materiel_unit` (`materiel_unit_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of materiel
@@ -345,6 +345,10 @@ INSERT INTO `materiel` VALUES (7, '后脚', 1, 1, 0.5, 9, 50, '快用', 0);
 INSERT INTO `materiel` VALUES (8, '猪尾巴', 1, 1, 0.22, 1, 60, '快用', 0);
 INSERT INTO `materiel` VALUES (9, '正宝肋', 1, 1, 0.5, 52, 70, '快用', 0);
 INSERT INTO `materiel` VALUES (10, '奶脯肉', 1, 1, 0.5, 32, 90, '快用', 0);
+INSERT INTO `materiel` VALUES (11, '青椒', 7, 1, 0.5, 20, 100, NULL, 0);
+INSERT INTO `materiel` VALUES (12, '腌制调料', 1, 1, 0.5, 20, 100, NULL, 0);
+INSERT INTO `materiel` VALUES (13, '保鲜膜', 11, 7, 1, 999, 100, NULL, 0);
+INSERT INTO `materiel` VALUES (14, '冷却器具', 12, 7, 1, 999, 100, '', 0);
 
 -- ----------------------------
 -- Table structure for materiel_type_level_a
@@ -383,7 +387,7 @@ CREATE TABLE `materiel_type_level_b`  (
   PRIMARY KEY (`materiel_type_level_b_id`) USING BTREE,
   INDEX `Fk_b_type_a`(`materiel_type_level_a_id`) USING BTREE,
   CONSTRAINT `Fk_b_type_a` FOREIGN KEY (`materiel_type_level_a_id`) REFERENCES `materiel_type_level_a` (`materiel_type_level_a_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of materiel_type_level_b
@@ -398,6 +402,8 @@ INSERT INTO `materiel_type_level_b` VALUES (7, '绿叶菜', 2, 0);
 INSERT INTO `materiel_type_level_b` VALUES (8, '根茎类', 2, 0);
 INSERT INTO `materiel_type_level_b` VALUES (9, '瓜果类', 2, 0);
 INSERT INTO `materiel_type_level_b` VALUES (10, '河生鲜', 3, 0);
+INSERT INTO `materiel_type_level_b` VALUES (11, '保鲜膜', 5, 0);
+INSERT INTO `materiel_type_level_b` VALUES (12, '冷却工具', 6, 0);
 
 -- ----------------------------
 -- Table structure for materiel_unit
@@ -431,7 +437,7 @@ DROP TABLE IF EXISTS `menu`;
 CREATE TABLE `menu`  (
   `menu_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '菜谱表id主键,自增',
   `menu_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜谱名称',
-  `menu_no` int(50) NOT NULL COMMENT '菜谱编码',
+  `menu_no` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '菜谱编码',
   `menu_type_id` int(11) NOT NULL COMMENT '菜谱类别id外键',
   `menu_weight` double NOT NULL COMMENT '净重',
   `menu_cost` double NOT NULL COMMENT '成本',
@@ -454,16 +460,16 @@ CREATE TABLE `menu`  (
 -- ----------------------------
 -- Records of menu
 -- ----------------------------
-INSERT INTO `menu` VALUES (1, '青椒肉丝', 5, 1, 20.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (2, '蒸羊羔', 51711001, 1, 21.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 2, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (3, '烧雏鸡儿', 517112001, 1, 22.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (4, '烧花鸭', 517111001, 1, 22.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 4, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (5, '罐儿野鸡', 517112101, 1, 23.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (6, '炝虾仁儿', 517112102, 1, 24.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 2, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (7, '什锦苏盘', 517112103, 2, 25.1, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (8, '麻酥油卷儿', 517112104, 5, 26.1, 5, '...', 20, -10, 20, '2017-10-21 00:00:00', 4, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (9, '糖熘饹炸儿', 517112105, 5, 27.1, 5, '...', 20, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
-INSERT INTO `menu` VALUES (10, '烩鳗鱼', 517112106, 1, 30, 5, '...', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (1, '青椒肉丝', '12345678911', 1, 20.1, 5, 'qingjiaorousi.jpg', 0, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (2, '蒸羊羔', '51711001', 1, 21.1, 5, 'zhengyanggao.jpg', 0, -10, 20, '2017-10-21 00:00:00', 2, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (3, '烧雏鸡儿', '517112001', 1, 22.1, 5, 'shaochuji.jpg', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (4, '烧花鸭', '517111001', 1, 22.1, 5, 'shaohuaya.jpg', 0, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (5, '罐儿野鸡', '517112101', 1, 23.1, 5, 'shaochuji.jpg', 0, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (6, '炝虾仁儿', '517112102', 1, 24.1, 5, 'qiangxiaren.jpg', 0, -10, 20, '2017-10-21 00:00:00', 2, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (7, '什锦苏盘', '517112103', 2, 25.1, 5, 'shenjin.jpg', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (8, '麻酥油卷儿', '517112104', 5, 26.1, 5, 'su.jpg', 20, -10, 20, '2017-10-21 00:00:00', 1, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (9, '糖熘饹炸儿', '517112105', 5, 27.1, 5, '20171128151183181253810588875.jpg', 20, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
+INSERT INTO `menu` VALUES (10, '烩鳗鱼', '517112106', 1, 30, 5, 'yu.jpg', 0, -10, 20, '2017-10-21 00:00:00', 3, '2017-11-21 00:00:00', 0, '储存时间较短');
 
 -- ----------------------------
 -- Table structure for menu_flow
@@ -485,21 +491,22 @@ CREATE TABLE `menu_flow`  (
   CONSTRAINT `Fk_flow_menu_materiel` FOREIGN KEY (`menu_materiel_id`) REFERENCES `menu_materiel` (`menu_materiel_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_flow_technology` FOREIGN KEY (`technology_id`) REFERENCES `technology` (`technology_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_flow_working` FOREIGN KEY (`working_id`) REFERENCES `working` (`working_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu_flow
 -- ----------------------------
-INSERT INTO `menu_flow` VALUES (1, 1, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (2, 2, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (3, 3, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (4, 4, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (5, 5, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (6, 6, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (7, 7, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (8, 8, 1, 1, '洗干净', 0.22, '...', 0);
-INSERT INTO `menu_flow` VALUES (9, 9, 1, 1, '洗干净', 1.00, '...', 0);
-INSERT INTO `menu_flow` VALUES (10, 10, 1, 1, '洗干净', 1.00, '...', 0);
+INSERT INTO `menu_flow` VALUES (1, 1, 1, 6, '解冻温度6℃-10℃ 1小时', 1.00, '...', 0);
+INSERT INTO `menu_flow` VALUES (2, 2, 1, 1, '浸泡清洗,水温控制在5℃-7℃', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (3, 3, 1, 11, '将调料搅拌均匀', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (4, 1, 2, 3, '将五花肉切成丝 3cm-4cm', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (5, 2, 2, 2, '将青椒切片', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (7, 1, 3, 13, '将肉爆炒', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (8, 2, 3, 13, '出现肉香后倒入辣椒混合烹饪', 0.22, '...', 0);
+INSERT INTO `menu_flow` VALUES (9, 3, 3, 13, '与辣椒一起倒入', 0.22, '...', 0);
+INSERT INTO `menu_flow` VALUES (12, 5, 4, 14, '使用冷却器具冷却半小时', 0.50, '...', 0);
+INSERT INTO `menu_flow` VALUES (13, 4, 5, 9, '保鲜膜包装', 0.10, '...', 0);
+INSERT INTO `menu_flow` VALUES (14, 1, 1, 10, '将水控干净包证肉质', 0.50, '...', 0);
 
 -- ----------------------------
 -- Table structure for menu_materiel
@@ -516,21 +523,16 @@ CREATE TABLE `menu_materiel`  (
   INDEX `Fk_materiel_id`(`materiel_id`) USING BTREE,
   CONSTRAINT `Fk_materiel_id` FOREIGN KEY (`materiel_id`) REFERENCES `materiel` (`materiel_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_materiel_menu_id` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu_materiel
 -- ----------------------------
 INSERT INTO `menu_materiel` VALUES (1, 1, 1, 0, 0);
-INSERT INTO `menu_materiel` VALUES (2, 2, 2, 0, 0);
-INSERT INTO `menu_materiel` VALUES (3, 3, 3, 0, 0);
-INSERT INTO `menu_materiel` VALUES (4, 4, 4, 0, 0);
-INSERT INTO `menu_materiel` VALUES (5, 5, 5, 0, 0);
-INSERT INTO `menu_materiel` VALUES (6, 6, 6, 0, 0);
-INSERT INTO `menu_materiel` VALUES (7, 7, 7, 0, 0);
-INSERT INTO `menu_materiel` VALUES (8, 8, 8, 0, 0);
-INSERT INTO `menu_materiel` VALUES (9, 9, 9, 0, 0);
-INSERT INTO `menu_materiel` VALUES (10, 10, 10, 0, 0);
+INSERT INTO `menu_materiel` VALUES (2, 1, 11, 1, 0);
+INSERT INTO `menu_materiel` VALUES (3, 1, 12, 2, 0);
+INSERT INTO `menu_materiel` VALUES (4, 1, 13, 3, 0);
+INSERT INTO `menu_materiel` VALUES (5, 1, 14, 3, 0);
 
 -- ----------------------------
 -- Table structure for menu_state
@@ -541,15 +543,14 @@ CREATE TABLE `menu_state`  (
   `menu_state_name` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态名称',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`menu_state_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of menu_state
 -- ----------------------------
 INSERT INTO `menu_state` VALUES (1, '研发中', 0);
-INSERT INTO `menu_state` VALUES (2, '测试中', 0);
-INSERT INTO `menu_state` VALUES (3, '已发布', 0);
-INSERT INTO `menu_state` VALUES (4, '暂时封存', 0);
+INSERT INTO `menu_state` VALUES (2, '已发布', 0);
+INSERT INTO `menu_state` VALUES (3, '暂时停售', 0);
 
 -- ----------------------------
 -- Table structure for menu_type
@@ -1072,7 +1073,7 @@ CREATE TABLE `technology`  (
   `working_id` int(11) NOT NULL COMMENT '预设工序',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`technology_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of technology
@@ -1085,7 +1086,12 @@ INSERT INTO `technology` VALUES (5, '摘叶', 1, 0);
 INSERT INTO `technology` VALUES (6, '解冻', 1, 0);
 INSERT INTO `technology` VALUES (7, '浸泡', 1, 0);
 INSERT INTO `technology` VALUES (8, '磨粉', 1, 0);
-INSERT INTO `technology` VALUES (9, '拆装', 1, 0);
+INSERT INTO `technology` VALUES (9, '包装', 5, 0);
+INSERT INTO `technology` VALUES (10, '沥干水', 1, 0);
+INSERT INTO `technology` VALUES (11, '搅匀', 1, 0);
+INSERT INTO `technology` VALUES (12, '切丝', 2, 0);
+INSERT INTO `technology` VALUES (13, '混合烹饪', 3, 0);
+INSERT INTO `technology` VALUES (14, '冷却', 4, 0);
 
 -- ----------------------------
 -- Table structure for temporary_order
