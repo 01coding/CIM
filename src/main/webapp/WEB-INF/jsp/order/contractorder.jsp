@@ -1390,18 +1390,15 @@
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-
-
-
                                             <div>
                                                 <form class="form-inline">
-
                                                     <div class="form-group">
 
-                                                        <div class="input-group"  style="width: 300px;float: right">
+                                                        <div class="input-group" style="width: 300px;float: right;">
+                                                            <label class="control-label mb-10">合同名称:</label>
                                                             <input type="text" class="form-control"
-                                                                   placeholder="合同名称">
-                                                            <div class="input-group-btn">
+                                                                   placeholder="名称">
+                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
@@ -1410,13 +1407,25 @@
                                                         </div>
 
                                                         <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                            <label class="control-label mb-10">签订时间:</label>
                                                             <div class='input-group date' id='datetimepicker1'>
-                                                                <input type='text' class="form-control" placeholder="签订时间"/>
+                                                                <input type='text' class="form-control" placeholder="时间"/>
                                                                 <span class="input-group-addon">
                                                                     <span class="fa fa-calendar"></span>
                                                                 </span>
                                                             </div>
                                                         </div>
+
+                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
+                                                            <label class="control-label mb-10">订单状态:</label>
+                                                            <select class="form-control">
+                                                                <option selected>请选择</option>
+                                                                <option>10</option>
+                                                                <option>20</option>
+                                                            </select>
+                                                        </div>
+
+
 
 
                                                     </div>
