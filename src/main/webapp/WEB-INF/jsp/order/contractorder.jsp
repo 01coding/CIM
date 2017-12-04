@@ -34,6 +34,15 @@
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+
     <style>
         /*** guide ***/
         .guide {
@@ -49,6 +58,7 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+
     </style>
 
 </head>
@@ -1380,13 +1390,17 @@
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
+
+
+
+                                            <div>
                                                 <form class="form-inline">
+
                                                     <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
+
+                                                        <div class="input-group"  style="width: 300px;float: right">
                                                             <input type="text" class="form-control"
-                                                                   placeholder="Search">
+                                                                   placeholder="合同名称">
                                                             <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
@@ -1394,6 +1408,17 @@
                                                                 </button>
                                                             </div>
                                                         </div>
+
+                                                        <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                            <div class='input-group date' id='datetimepicker1'>
+                                                                <input type='text' class="form-control" placeholder="签订时间"/>
+                                                                <span class="input-group-addon">
+                                                                    <span class="fa fa-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+
                                                     </div>
                                                 </form>
                                             </div>
@@ -2134,6 +2159,18 @@
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="../../../dist/js/sweetalert-data.js"></script>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+
+
+<%--date--%>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
+
 
 <script>
     function sc() {
