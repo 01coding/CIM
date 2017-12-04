@@ -47,14 +47,18 @@ public class StoreServiceImpl implements StoreService {
         if (store == null) {
             new NullPointerException("store not is null");
         }
-        if (store.getStoreId() == null || store.getStoreId() < 0) {
+        if (store.getStoreId() == null | store.getStoreId() < 0) {
             new NullPointerException("storeId not is null");
         }
         storeDao.update(store);
     }
 
     public void deleteStoreById(Integer storeId) {
-        //TODO
+        if (storeId!=null && storeId>0){
+            //todo
+        }else{
+
+        }
     }
 
     /*随机数*/
