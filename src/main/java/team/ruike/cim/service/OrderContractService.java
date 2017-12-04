@@ -42,7 +42,7 @@ public interface OrderContractService {
     /**
      * 修改订单合同
      *
-     * @param orderContractId 订单合同ID
+     * @param orderContract 订单合同信息
      */
-    public void updateOrderContractById(Integer orderContractId);
+    public void updateOrderContractById(OrderContract orderContract);
 }
