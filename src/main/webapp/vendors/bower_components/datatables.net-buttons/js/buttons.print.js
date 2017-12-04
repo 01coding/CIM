@@ -71,7 +71,7 @@ DataTable.ext.buttons.print = {
 	className: 'buttons-print',
 
 	text: function ( dt ) {
-		return dt.i18n( 'buttons.print', 'Print' );
+		return dt.i18n( 'buttons.print', '打印' );
 	},
 
 	action: function ( e, dt, button, config ) {
