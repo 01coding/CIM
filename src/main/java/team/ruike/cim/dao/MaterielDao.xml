@@ -16,15 +16,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="materielUnit" column="materiel_unit_id" select="team.ruike.cim.dao.MaterielUnitDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="materiel">
-        INSERT  INTO materiel VALUES (DEFAULT ,#{materielName},#{materielTypeLevelB},#{materielUnit},#{materielYield},
+        INSERT  INTO materiel VALUES (DEFAULT ,#{materielName},#{materielTypeLevelB.materielTypeLevelBId},#{materielUnit.materielUnitId},#{materielYield},
         #{materielShelfLife},#{materielMinWarning},#{materielRemarks},0)
     </insert>
     <update id="update" parameterType="materiel">
             UPDATE materiel SET
-                materiel_id=#{materielId},
                 materiel_name=#{materielName},
-                materiel_type_level_b_id=#{materielTypeLevelB},
-                materiel_unit_id=#{materielUnit},
+                materiel_type_level_b_id=#{materielTypeLevelB.materielTypeLevelBId},
+                materiel_unit_id=#{materielUnit.materielUnitId},
                 materiel_yield=#{materielYield},
                 materiel__shelf_life=#{materielShelfLife},
                 materiel_min_warning=#{materielMinWarning},
@@ -52,7 +51,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="materiel.materielShelfLife!=null and materiel.materielShelfLife>0">
             AND materiel__shelf_life=#{materiel.materielShelfLife}
         </if>
-        <if test="materiel.materielMinWarning！=null and materiel.materielMinWarning>0">
+        <if test="materiel.materielMinWarning!=null and materiel.materielMinWarning>0">
             AND materiel_min_warning=#{materiel.materielMinWarning}
         </if>
         <if test="materiel.materielRemarks!=null and materiel.materielRemarks!=''">
@@ -61,7 +60,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
     <select id="select" resultMap="materielMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="materiel">
         SELECT COUNT(1) from materiel WHERE status=0
@@ -83,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="materielShelfLife!=null and materielShelfLife>0">
             AND materiel__shelf_life=#{materielShelfLife}
         </if>
-        <if test="materielMinWarning！=null and materielMinWarning>0">
+        <if test="materielMinWarning!=null and materielMinWarning>0">
             AND materiel_min_warning=#{materielMinWarning}
         </if>
         <if test="materielRemarks!=null and materielRemarks!=''">
