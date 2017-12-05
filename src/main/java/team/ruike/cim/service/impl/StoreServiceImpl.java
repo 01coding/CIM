@@ -13,6 +13,12 @@ import javax.annotation.Resource;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 门店业务类
+ *
+ * @author 甄立
+ * @version 1.0
+ */
 @Service("storeService")
 public class StoreServiceImpl implements StoreService {
 
@@ -42,6 +48,7 @@ public class StoreServiceImpl implements StoreService {
         store.setStoreNo(GenerateNumber.getGenerateNumber().getUUID());
         storeDao.add(store);
     }
+
     @Transactional
     public void updateStoreById(Store store) {
 
@@ -53,16 +60,18 @@ public class StoreServiceImpl implements StoreService {
         }
         storeDao.update(store);
     }
+
     @Transactional
     public void deleteStoreById(Integer storeId) {
-        if (storeId!=null && storeId>0){
-            storeDao.update(new Store(){
-                {setStoreId(storeId);}
+        if (storeId != null && storeId > 0) {
+            storeDao.update(new Store() {
+                {
+                    setStoreId(storeId);
+                }
             });
         }
         new NullPointerException("storeId not is null");
     }
-
 
 
 }

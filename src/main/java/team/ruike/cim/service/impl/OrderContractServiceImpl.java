@@ -1,5 +1,6 @@
 package team.ruike.cim.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.OrderContractDao;
 import team.ruike.cim.pojo.OrderContract;
@@ -8,9 +9,15 @@ import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
-import java.util.GregorianCalendar;
 import java.util.List;
 
+/**
+ * 订单合同业务类
+ *
+ * @author 甄立
+ * @version 1.0
+ */
+@Service("orderContractService")
 public class OrderContractServiceImpl implements OrderContractService {
     @Resource
     public OrderContractDao orderContractDao;

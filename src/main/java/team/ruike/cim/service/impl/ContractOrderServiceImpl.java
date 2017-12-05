@@ -1,5 +1,6 @@
 package team.ruike.cim.service.impl;
 
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.ContractOrderDao;
 import team.ruike.cim.dao.ContractOrderTermDao;
@@ -13,6 +14,13 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 合同订单业务类
+ *
+ * @author 甄立
+ * @version 1.0
+ */
+@Service("contractOrderService")
 public class ContractOrderServiceImpl implements ContractOrderService {
 
     @Resource
@@ -44,6 +52,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
         //添加合同订单
         if (orderContract != null && contractOrder != null && contractOrderTerms != null && contractOrderTerms.size() > 0) {
             contractOrder.setOrderContract(orderContract);
+            //订单号
             contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getUUID().toString());
             Integer orderId = contractOrderDao.add(contractOrder);
             //添加合同订单项
@@ -54,12 +63,9 @@ public class ContractOrderServiceImpl implements ContractOrderService {
                 contractOrderTerm.setProductBatch(GenerateNumber.getGenerateNumber().getRandomFileName());
                 contractOrderTermDao.add(contractOrderTerm);
             }
-
-
         } else {
             new NullPointerException("添加合同订单失败 数据错误");
         }
-
 
     }
 
