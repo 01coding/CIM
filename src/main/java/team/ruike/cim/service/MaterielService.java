@@ -17,6 +17,7 @@ import java.util.List;
  * @see #getMaterielTypeLevelA()
  * @see #getMaterielTypeLevelB()
  * @see #getMaterielUnit()
+ * @see #getMaterielTypeLevelB(MaterielTypeLevelB)
  */
 public interface MaterielService{
     /**
@@ -48,4 +49,11 @@ public interface MaterielService{
      * @return 所有物料单位集合
      */
     List<MaterielUnit> getMaterielUnit();
+
+    /**
+     * 根据查询条件获取物料二级分类
+     * @param materielTypeLevelB 条件
+     * @return 物料二级分类集合
+     */
+    List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB);
 }
