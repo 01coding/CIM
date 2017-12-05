@@ -29,6 +29,19 @@ public class ProductWarehouse implements Serializable {
    */
   private Integer status;
   /**
+   * 仓库管理员用户表外键
+   */
+  private User user;
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  /**
    * 成品仓库区域类集合
    */
 
