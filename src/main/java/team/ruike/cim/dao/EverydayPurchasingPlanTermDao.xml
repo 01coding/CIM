@@ -10,7 +10,7 @@
         <result column="price_float" property="priceFloat"/>
         <result column="remarks" property="remarks"/>
         <result column="status" property="status"/>
-        <result column="everyday_purchasing_plan_id" property="everyday_purchasing_plan_id"/>
+        <result column="everyday_purchasing_plan_id" property="everydayPurchasingPlanId"/>
         <association property="materiel" column="materiel_id" select="team.ruike.cim.dao.MaterielDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="everydayPurchasingPlanTerm">
@@ -19,13 +19,13 @@
     </insert>
     <update id="update" parameterType="everydayPurchasingPlanTerm">
         UPDATE everyday_purchasing_plan_term SET
-        materiel_id=#{EverydayPurchasingPlanTerm.materiel.materielId},
+        materiel_id=#{everydayPurchasingPlanTerm.materiel.materielId},
         materiel_number=#{materielNumber},
         unit_price=#{unitPrice},
         price_float=#{priceFloat},
         remarks=#{remarks},
         status=#{status},
-        everyday_purchasing_plan_id={everydayPurchasingPlanId}
+        everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
         WHERE everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
     </update>
     <sql id="sql">
@@ -81,10 +81,7 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
-        SELECT * from everyday_purchasing_plan_term WHERE status=0
-  <if test="everydayPurchasingPlanTermId!=null and everydayPurchasingPlanTermId>0">
-      and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
-  </if>
+        SELECT * from everyday_purchasing_plan_term WHERE status=0 and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
     </select>
     <select id="selectByeverydayPurchasingPlanId" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
           select * from everyday_purchasing_plan_term where `status`=0 and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}

@@ -113,9 +113,6 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="supplierMap">
-        SELECT  * FROM  supplier WHERE  status=0
-        <if test="supplierId!=null and supplierId>0">
-            AND supplier_id=#{supplierId}
-        </if>
+        SELECT  * FROM  supplier WHERE  status=0 AND supplier_id=#{supplierId}
     </select>
 </mapper>

@@ -4,6 +4,8 @@ import team.ruike.cim.pojo.TemporaryOrder;
 import team.ruike.cim.pojo.TemporaryOrderTerm;
 import team.ruike.cim.util.Pager;
 
+import java.util.List;
+
 /**
  * 临时订单业务接口
  *
@@ -34,7 +36,7 @@ public interface TemporaryOrderService {
      * 添加临时订单
      *
      * @param temporaryOrder     临时订单
-     * @param temporaryOrderTerm 临时订单项
+     * @param temporaryOrderTerms 临时订单项
      */
-    public void addTemporaryOrder(TemporaryOrder temporaryOrder, TemporaryOrderTerm temporaryOrderTerm);
+    public void addTemporaryOrder(TemporaryOrder temporaryOrder, List<TemporaryOrderTerm> temporaryOrderTerms);
 }
