@@ -22,6 +22,7 @@ import java.util.List;
  * @see #getMaterielTypeLevelB()
  * @see #getMaterielTypeLevelA()
  * @see #getMaterielUnit()
+ * @see #getMaterielTypeLevelB(MaterielTypeLevelB)
  */
 @Service("materielService")
 public class MaterielServiceImpl implements MaterielService {
@@ -77,5 +78,14 @@ public class MaterielServiceImpl implements MaterielService {
      */
     public List<MaterielUnit> getMaterielUnit() {
         return materielUnitDao.select(new MaterielUnit(), 0, 99);
+    }
+
+    /**
+     * 根据查询条件获取物料二级分类
+     * @param materielTypeLevelB 条件
+     * @return 物料二级分类集合
+     */
+    public List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        return materielTypeLevelBDao.select(materielTypeLevelB,0,99);
     }
 }

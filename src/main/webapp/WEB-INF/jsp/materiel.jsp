@@ -1463,14 +1463,15 @@
                                                 <hr/>
                                                 <br/>
                                                 <select class="form-control" id="mtypea">
-                                                    <option>肉类</option>
-                                                    <option>海鲜类</option>
+                                                    <option value="0">请选择</option>
+                                                    <c:forEach items="${requestScope.typea}" var="ta">
+                                                        <option value="${ta.materielTypeLevelAId}">${ta.materielTypeLevelAName}</option>
+                                                    </c:forEach>
                                                 </select>
                                                 <hr/>
                                                 <br/>
                                                 <select class="form-control" id="mtypeb">
-                                                    <option>猪肉</option>
-                                                    <option>鸡肉</option>
+                                                    <option value="0">请选择</option>
                                                 </select>
                                             </div>
                                             <br/>
@@ -1663,9 +1664,26 @@
 <script src="../../dist/js/init.js"></script>
 <script>
     $(function () {
+        $("#mtypea").change(function () {
+            var selectValue = $("#mtypea").val();
+            $("#mtypeb").empty();
+            $("#mtypeb").append("<option value='0'>请选择</option>");
+            $.ajax({
+                url: "${pageContext.request.contextPath}/gettypeblist.do?materielTypeLevelA.materielTypeLevelAId=" + selectValue,
+                dataType: 'json',
+                success: function (data) {
+                    for (var i = 0, l = data.length; i < l; i++) {
+                        $("#mtypeb").append("<option value='"+data[i].materielTypeLevelBId+"'>"+data[i].materielTypeLevelBName+"</option>");
+                    }
+                }
+            });
+
+        });
+
         $("#seb").click(function () {
             var mname = $("#mname").val();
-            location.href = "${pageContext.request.contextPath}/materiellist.do?materielName=" + mname;
+            var typebId=$("#mtypeb").val();
+            location.href = "${pageContext.request.contextPath}/materiellist.do?materielName=" + mname+"&materielTypeLevelB.materielTypeLevelBId="+typebId;
         });
         $("#addmate").click(function () {
             var data = $("#materiel").serialize();
@@ -1675,14 +1693,14 @@
                 url: '${pageContext.request.contextPath}/addMateriel.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if(data=='true'){
+                    if (data == 'true') {
                         swal({
                             title: "新增成功！！!",
                             type: "success",
                             text: "您现在可以在其他系统中使用它！",
                             confirmButtonColor: "#01c853",
                         });
-                    }else{
+                    } else {
                         swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
                     }
                 }
