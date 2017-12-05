@@ -2,7 +2,9 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import team.ruike.cim.pojo.ProductWarehouse;
 import team.ruike.cim.pojo.Warehouse;
+import team.ruike.cim.service.PwarehouseService;
 import team.ruike.cim.service.WarehouseService;
 import team.ruike.cim.util.Pager;
 
@@ -37,14 +39,10 @@ public class WarehouseController {
             return "warehouses/warehouse";
         }
     }
-    @RequestMapping("/materiel.do")
-    public String selectWarehouse(Warehouse warehouse,Pager<Warehouse>pager, HttpServletRequest request) {
-        pager.setTotalRecord(warehouseService.count(warehouse));
-        pager.setCurrentPage(0);
-        pager.setPageSize(99);
-        List<Warehouse> lists = warehouseService.getwarehouses(warehouse,pager);
-        pager.setList(lists);
+    @RequestMapping("/warehouse.do")
+    public String selectWarehouse(Warehouse warehouse, Pager<Warehouse>pager, HttpServletRequest request) {
+        warehouseService.getwarehouses(warehouse,pager);
         request.setAttribute("lsitwar", pager.getList());
-        return "warehouses/warehouse";
+        return "forward:/productWarehouse.do";
     }
 }

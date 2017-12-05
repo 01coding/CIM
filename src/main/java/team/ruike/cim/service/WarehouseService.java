@@ -10,7 +10,7 @@ public interface WarehouseService {
      * 查询所有物料仓库
      * @return
      */
-    public List<Warehouse> getwarehouses(Warehouse warehouse,Pager<Warehouse>pager);
+    public void getwarehouses(Warehouse warehouse,Pager<Warehouse>pager);
 
     /**
      * 添加物料仓库
@@ -26,10 +26,4 @@ public interface WarehouseService {
      */
     public int updwarehouse(Warehouse warehouse);
 
-    /**
-     * 查询总数
-     * @param warehouse
-     * @return
-     */
-    public int count(Warehouse warehouse);
 }
