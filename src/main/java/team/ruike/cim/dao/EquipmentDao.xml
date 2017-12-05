@@ -10,19 +10,19 @@
         <if test="equipmentId!=null">
             and equipment_id=#{equipmentId}
         </if>
-        <if test="productionLine!=null and productionLine.productionLineId!=null and productionLine.productionLineId!>0">
+        <if test="productionLine!=null  and productionLine.productionLineId>0">
             and production_line_id=#{productionLine.productionLineId}
         </if>
-        <if test="working!=null and working.workingId!=null and working.workingId>0">
+        <if test="working!=null  and working.workingId>0">
             and working_id=#{working.workingId}
         </if>
-        <if test="user!=null and user.userId!=null and user.userId>0">
+        <if test="user!=null  and user.userId>0">
             and user_id=#{user.userId}
         </if>
         <if test="startDate!=null">
             and start_date=#{startDate}
         </if>
-        <if test="equipmentType!=null and equipmentType.equipmentTypeId!=null and equipmentType.equipmentTypeId>0">
+        <if test="equipmentType!=null  and equipmentType.equipmentTypeId>0">
             and equipment_type_id=#{equipmentType.equipmentTypeId}
         </if>
         <if test="maintenanceCycle!=null and maintenanceCycle>0">
@@ -41,19 +41,19 @@
         <if test="equipment.equipmentId!=null">
             and equipment_id=#{equipment.equipmentId}
         </if>
-        <if test="equipment.productionLine!=null and equipment.productionLine.productionLineId!=null and equipment.productionLine.productionLineId!>0">
+        <if test="equipment.productionLine!=null  and equipment.productionLine.productionLineId>0">
             and production_line_id=#{equipment.productionLine.productionLineId}
         </if>
-        <if test="equipment.working!=null and equipment.working.workingId!=null and equipment.working.workingId>0">
+        <if test="equipment.working!=null  and equipment.working.workingId>0">
             and working_id=#{equipment.working.workingId}
         </if>
-        <if test="equipment.user!=null and equipment.user.userId!=null and equipment.user.userId>0">
+        <if test="equipment.user!=null and equipment.user.userId>0">
             and user_id=#{equipment.user.userId}
         </if>
         <if test="equipment.startDate!=null">
             and start_date=#{equipment.startDate}
         </if>
-        <if test="equipment.equipmentType!=null and equipment.equipmentType.equipmentTypeId!=null and equipment.equipmentType.equipmentTypeId>0">
+        <if test="equipment.equipmentType!=null  and equipment.equipmentType.equipmentTypeId>0">
             and equipment_type_id=#{equipment.equipmentType.equipmentTypeId}
         </if>
         <if test="equipment.maintenanceCycle!=null">

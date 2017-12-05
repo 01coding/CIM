@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1400,7 +1401,6 @@
 
                                             <thead>
                                             <tr>
-                                                <th>设备编号</th>
                                                 <th>所属生产线</th>
                                                 <th>所属工序</th>
                                                 <th>设备负责人</th>
@@ -1413,7 +1413,6 @@
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>设备编号</th>
                                                 <th>所属生产线</th>
                                                 <th>所属工序</th>
                                                 <th>设备负责人</th>
@@ -1425,457 +1424,32 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
+                                            <c:forEach items="${requestScope.equipments}" var="e">
+                                                <tr>
+                                                    <td>${e.productionLine.productionLineNo}</td>
+                                                    <td>${e.working.workingName}</td>
+                                                    <td>${e.user.userName}</td>
+                                                    <td>${e.startDate}</td>
+                                                    <td>${e.equipmentType.equipmentTypeName}</td>
+                                                    <td>${e.maintenanceCycle}</td>
+                                                    <td>${e.inspectionCycle}</td>
+                                                    <td>${e.equipmentName}</td>
+                                                    <td class="footable-editing" style="display: table-cell;">
+                                                        <div class="btn-group btn-group-xs" role="group">
+                                                            <button type="button" class="btn btn-default footable-edit"
+                                                                    data-toggle="modal" data-target="#exampleModal">
                                                             <span class="fooicon fooicon-pencil"
                                                                   aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            </button>
+                                                            <button type="button" class="btn btn-default footable-delete"
+                                                                    data-toggle="modal" data-target=".bs-example-modal-lg">
                                                             <span class="fooicon fooicon-trash"
                                                                   aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>2017/12/1</td>
-                                                <td>正常</td>
-                                                <td>30天</td>
-                                                <td>每月1号</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 
@@ -1884,7 +1458,7 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <a href="222.html">
+                                                <a href="/addequipement.do">
                                                     <button class="btn btn-info btn-icon-anim btn-circle">
                                                         <i class="fa ti-plus"></i>
                                                     </button>

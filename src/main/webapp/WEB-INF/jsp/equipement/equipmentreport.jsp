@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -1248,159 +1249,34 @@
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-                                            <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr> <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr >
-                                                <td>111</td>
-                                                <td>机器缺油</td>
-                                                <td>去仓库拿油</td>
-                                                <td>30分钟</td>
-                                                <td>李四</td>
-                                                <td>111111</td>
-                                                <td>1号线</td>
-                                                <td>初加工</td>
-                                                <td>张三</td>
-                                                <td>停用</td>
-                                                <td>包装机</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <c:forEach var="e" items="${requestScope.equipmentReports}">
+                                                <tr >
+                                                    <td>${e.equipmentReportId}</td>
+                                                    <td>${e.equipmentReportReason}</td>
+                                                    <td>${e.maintenancePlan}</td>
+                                                    <td>${e.endDate}</td>
+                                                    <td>${e.user.userName}</td>
+                                                    <td>${e.equipment.equipmentId}</td>
+                                                    <td>${e.equipment.productionLine.productionLineNo}</td>
+                                                    <td>${e.equipment.working.workingName}</td>
+                                                    <td>${e.equipment.user.userName}</td>
+                                                    <td>${e.equipment.equipmentType.equipmentTypeName}</td>
+                                                    <td>${e.equipment.equipmentName}</td>
+                                                </tr>
+                                            </c:forEach>
 
                                             </tbody>
                                         </table>
-
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <a href="444.html">
+                                                <a href="/addequipmentreport.do">
                                                     <button  class="btn btn-info btn-icon-anim btn-circle">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
                                                 </a>
-
                                             </div>
                                         </div>
                                     </div>
