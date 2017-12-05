@@ -1396,7 +1396,7 @@
                                                        data-target="#editor-modal3"><i
                                                             class="fa fa-plus-square" title="添加仓库"></i></a>
                                                 </div>
-                                                <a href="warehouse_region.html"> <img
+                                                <a href="warehouse_region.jsp"> <img
                                                         src="../../../images/menuimg/timg.jpg" class="img-responsive"
                                                         alt="Product Image" title="查看"/> </a>
                                                 <div class="info">
@@ -1418,8 +1418,9 @@
                 </c:forEach>
                 </div>
             <div class="row">
+                <h5 class="txt-dark">成品仓库</h5>
+                <c:forEach var="prs" items="${productWarehouses}">
                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <h5 class="txt-dark">成品仓库</h5>
                     <div class="panel panel-default card-view pa-0">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body pa-0">
@@ -1441,12 +1442,12 @@
                                                                                   alt="Product Image" title="查看"/> </a>
                                             <div class="info">
                                                 <h6>
-                                                    1号成品仓库
+                                                   ${prs.productWarehouseName}
                                                 </h6>
                                                 <div class="product-rating inline-block">
-                                                    库存总量：1100
+                                                   ${prs.remarks}
                                                 </div>
-                                                <span class="head-font block text-warning font-16">可用库存数量：500</span>
+                                                <span class="head-font block text-warning font-16">管理员:【${prs.user.userName}】</span>
                                             </div>
                                         </div>
                                     </form>
@@ -1455,7 +1456,9 @@
                         </div>
                     </div>
                 </div>
+                </c:forEach>
             </div>
+
             <!-- /Product Row Four -->
         </div>
         <div class="modal fade" id="editor-modal2" tabindex="-1" role="dialog" aria-labelledby="editor-title">
