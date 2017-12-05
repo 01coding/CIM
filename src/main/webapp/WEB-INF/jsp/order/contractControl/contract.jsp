@@ -1,31 +1,33 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/4
-  Time: 10:02
+  Time: 8:52
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>设备异常报告</title>
-    <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework." />
-    <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>合同管理</title>
+    <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
+    <meta name="keywords"
+          content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
-    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
     <!-- vector map CSS -->
     <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
     <!-- Footable CSS -->
-    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
 
     <!--alerts CSS -->
     <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
@@ -34,8 +36,19 @@
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
         /*** guide ***/
-        .guide{ position: fixed;bottom: 20px;right: 20px;z-index: 1000}
-        .guide .btn-circle{width: 55px; height: 55px;margin-left: 12px;box-shadow: 1px 1px 1px  #888888;}
+        .guide {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000
+        }
+
+        .guide .btn-circle {
+            width: 55px;
+            height: 55px;
+            margin-left: 12px;
+            box-shadow: 1px 1px 1px #888888;
+        }
     </style>
 
 </head>
@@ -59,14 +72,17 @@
                     </a>
                 </div>
             </div>
-            <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left" href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
-            <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
+            <a id="toggle_nav_btn" class="toggle-left-nav-btn inline-block ml-20 pull-left"
+               href="javascript:void(0);"><i class="zmdi zmdi-menu"></i></a>
+            <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view"
+               href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
             <form id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group">
                     <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
                     <span class="input-group-btn">
-						<button type="button" class="btn  btn-default"  data-target="#search_form" data-toggle="collapse" aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
+						<button type="button" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
+                                aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
 						</span>
                 </div>
             </form>
@@ -77,7 +93,8 @@
                     <a id="open_right_sidebar" href="#"><i class="zmdi zmdi-settings top-nav-icon"></i></a>
                 </li>
                 <li class="dropdown app-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-apps top-nav-icon"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="zmdi zmdi-apps top-nav-icon"></i></a>
                     <ul class="dropdown-menu app-dropdown" data-dropdown-in="slideInRight" data-dropdown-out="flipOutX">
                         <li>
                             <div class="app-nicescroll-bar">
@@ -130,19 +147,25 @@
                     </ul>
                 </li>
                 <li class="dropdown full-width-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-more-vert top-nav-icon"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="zmdi zmdi-more-vert top-nav-icon"></i></a>
                     <ul class="dropdown-menu mega-menu pa-0" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
+                                                class="right-nav-text">Dashboard</span></div>
+                                        <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                                        <div class="clearfix"></div>
+                                    </a>
                                     <hr class="light-grey-hr ma-0"/>
                                     <ul>
                                         <li>
                                             <a href="index.html">Analytical</a>
                                         </li>
                                         <li>
-                                            <a  href="index2.html">Demographic</a>
+                                            <a href="index2.html">Demographic</a>
                                         </li>
                                         <li>
                                             <a href="index3.html">Project</a>
@@ -151,9 +174,18 @@
                                             <a href="profile.html">profile</a>
                                         </li>
                                     </ul>
-                                    <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                                    <a href="widgets.html">
+                                        <div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span
+                                                class="right-nav-text">widgets</span></div>
+                                        <div class="pull-right"><span class="label label-warning">8</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
                                     <hr class="light-grey-hr ma-0"/>
-                                    <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span></div><div class="clearfix"></div></a>
+                                    <a href="documentation.html">
+                                        <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span
+                                                class="right-nav-text">documentation</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
                                     <hr class="light-grey-hr ma-0"/>
                                 </li>
                                 <li class="col-md-3 col-xs-6 col-menu-list">
@@ -191,7 +223,10 @@
                                     </ul>
                                 </li>
                                 <li class="col-md-6 col-xs-12 preview-carousel">
-                                    <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text">latest products</span></div><div class="clearfix"></div></a>
+                                    <a href="javascript:void(0);">
+                                        <div class="pull-left"><span class="right-nav-text">latest products</span></div>
+                                        <div class="clearfix"></div>
+                                    </a>
                                     <hr class="light-grey-hr ma-0"/>
                                     <div class="product-carousel owl-carousel owl-theme text-center">
                                         <a href="#">
@@ -221,12 +256,15 @@
                     </ul>
                 </li>
                 <li class="dropdown alert-drp">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="zmdi zmdi-notifications top-nav-icon"></i><span class="top-nav-icon-badge">5</span></a>
-                    <ul  class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                            class="zmdi zmdi-notifications top-nav-icon"></i><span
+                            class="top-nav-icon-badge">5</span></a>
+                    <ul class="dropdown-menu alert-dropdown" data-dropdown-in="bounceIn" data-dropdown-out="bounceOut">
                         <li>
                             <div class="notification-box-head-wrap">
                                 <span class="notification-box-head pull-left inline-block">notifications</span>
-                                <a class="txt-danger pull-right clear-notifications inline-block" href="javascript:void(0)"> clear all </a>
+                                <a class="txt-danger pull-right clear-notifications inline-block"
+                                   href="javascript:void(0)"> clear all </a>
                                 <div class="clearfix"></div>
                                 <hr class="light-grey-hr ma-0"/>
                             </div>
@@ -243,7 +281,8 @@
 												New subscription created</span>
                                             <span class="inline-block font-11  pull-right notifications-time">2pm</span>
                                             <div class="clearfix"></div>
-                                            <p class="truncate">Your customer subscribed for the basic plan. The customer will pay $25 per month.</p>
+                                            <p class="truncate">Your customer subscribed for the basic plan. The
+                                                customer will pay $25 per month.</p>
                                         </div>
                                     </a>
                                 </div>
@@ -271,7 +310,8 @@
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">2 new messages</span>
                                             <span class="inline-block font-11  pull-right notifications-time">4pm</span>
                                             <div class="clearfix"></div>
-                                            <p class="truncate"> The last payment for your G Suite Basic subscription failed.</p>
+                                            <p class="truncate"> The last payment for your G Suite Basic subscription
+                                                failed.</p>
                                         </div>
                                     </a>
                                 </div>
@@ -285,7 +325,8 @@
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
                                             <span class="inline-block font-11  pull-right notifications-time">1pm</span>
                                             <div class="clearfix"></div>
-                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                            <p class="truncate">Neque porro quisquam est qui dolorem ipsum quia dolor
+                                                sit amet, consectetur, adipisci velit</p>
                                         </div>
                                     </a>
                                 </div>
@@ -315,8 +356,12 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png" alt="user_auth" class="user-auth-img img-circle"/><span class="user-online-status"></span></a>
-                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX" data-dropdown-out="flipOutX">
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                                                                                         alt="user_auth"
+                                                                                         class="user-auth-img img-circle"/><span
+                            class="user-online-status"></span></a>
+                    <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
+                        data-dropdown-out="flipOutX">
                         <li>
                             <a href="profile.html"><i class="zmdi zmdi-account"></i><span>Profile</span></a>
                         </li>
@@ -331,7 +376,8 @@
                         </li>
                         <li class="divider"></li>
                         <li class="sub-menu show-on-hover">
-                            <a href="#" class="dropdown-toggle pr-0 level-2-drp"><i class="zmdi zmdi-check text-success"></i> available</a>
+                            <a href="#" class="dropdown-toggle pr-0 level-2-drp"><i
+                                    class="zmdi zmdi-check text-success"></i> available</a>
                             <ul class="dropdown-menu open-left-side">
                                 <li>
                                     <a href="#"><i class="zmdi zmdi-check text-success"></i><span>available</span></a>
@@ -340,7 +386,8 @@
                                     <a href="#"><i class="zmdi zmdi-circle-o text-warning"></i><span>busy</span></a>
                                 </li>
                                 <li>
-                                    <a href="#"><i class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
+                                    <a href="#"><i
+                                            class="zmdi zmdi-minus-circle-outline text-danger"></i><span>offline</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -363,13 +410,18 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr"><div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="dashboard_dr" class="collapse collapse-level-1">
                     <li>
-                        <a  href="index.html">Analytical</a>
+                        <a href="index.html">Analytical</a>
                     </li>
                     <li>
-                        <a  href="index2.html">Demographic</a>
+                        <a href="index2.html">Demographic</a>
                     </li>
                     <li>
                         <a href="index3.html">Project</a>
@@ -380,7 +432,12 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr"><div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span></div><div class="pull-right"><span class="label label-success">hot</span></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
+                    </div>
+                    <div class="pull-right"><span class="label label-success">hot</span></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="ecom_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="e-commerce.html">Dashboard</a>
@@ -406,7 +463,12 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr"><div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="app_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="chats.html">chats</a>
@@ -418,7 +480,10 @@
                         <a href="weather.html">weather</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="email_dr" class="collapse collapse-level-2">
                             <li>
                                 <a href="inbox.html">inbox</a>
@@ -429,10 +494,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="contact-list.html">list</a>
+                                <a href="添加合同订单.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -448,15 +516,27 @@
                 </ul>
             </li>
             <li>
-                <a href="widgets.html"><div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span class="right-nav-text">widgets</span></div><div class="pull-right"><span class="label label-warning">8</span></div><div class="clearfix"></div></a>
+                <a href="widgets.html">
+                    <div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span
+                            class="right-nav-text">widgets</span></div>
+                    <div class="pull-right"><span class="label label-warning">8</span></div>
+                    <div class="clearfix"></div>
+                </a>
             </li>
-            <li><hr class="light-grey-hr mb-10"/></li>
+            <li>
+                <hr class="light-grey-hr mb-10"/>
+            </li>
             <li class="navigation-header">
                 <span>component</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr"><div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
                         <a href="panels-wells.html">Panels & Wells</a>
@@ -515,7 +595,12 @@
                 </ul>
             </li>
             <li>
-                <a  href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr"><div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="form_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
                         <a href="form-element.html">Basic Forms</a>
@@ -565,7 +650,12 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr"><div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="chart_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
                         <a href="flot-chart.html">Flot Chart</a>
@@ -591,7 +681,12 @@
                 </ul>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr"><div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
                         <a href="basic-table.html">Basic Table</a>
@@ -603,10 +698,12 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a  class="active-page" href="export-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export Table</a>
+                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                                class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
-                        <a  href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV DataTable</a>
+                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
+                            DataTable</a>
                     </li>
                     <li>
                         <a href="responsive-table.html">Responsive Table</a>
@@ -623,7 +720,12 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr"><div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span class="right-nav-text">Icons</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span
+                            class="right-nav-text">Icons</span></div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="icon_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="fontawesome.html">Fontawesome</a>
@@ -646,7 +748,12 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr"><div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="maps_dr" class="collapse collapse-level-1">
                     <li>
                         <a href="vector-map.html">Vector Map</a>
@@ -656,19 +763,29 @@
                     </li>
                 </ul>
             </li>
-            <li><hr class="light-grey-hr mb-10"/></li>
+            <li>
+                <hr class="light-grey-hr mb-10"/>
+            </li>
             <li class="navigation-header">
                 <span>featured</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr"><div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr">
+                    <div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
                         <a href="blank.html">Blank Page</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="auth_dr" class="collapse collapse-level-2">
                             <li>
                                 <a href="login.html">Login</a>
@@ -688,7 +805,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice_dr">Invoice<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice_dr">Invoice
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="invoice_dr" class="collapse collapse-level-2">
                             <li>
                                 <a href="invoice.html">Invoice</a>
@@ -699,7 +819,10 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#error_dr">error pages<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#error_dr">error pages
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="error_dr" class="collapse collapse-level-2">
                             <li>
                                 <a href="404.html">Error 404</a>
@@ -721,16 +844,29 @@
                 </ul>
             </li>
             <li>
-                <a href="documentation.html"><div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span></div><div class="clearfix"></div></a>
+                <a href="documentation.html">
+                    <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span>
+                    </div>
+                    <div class="clearfix"></div>
+                </a>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1"><div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span></div><div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1">
+                    <div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span>
+                    </div>
+                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                    <div class="clearfix"></div>
+                </a>
                 <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
                     <li>
                         <a href="#">Item level 1</a>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">Dropdown level 2<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div><div class="clearfix"></div></a>
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">Dropdown
+                            level 2
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
                         <ul id="dropdown_dr_lv2" class="collapse collapse-level-2">
                             <li>
                                 <a href="#">Item level 2</a>
@@ -750,14 +886,17 @@
     <div class="fixed-sidebar-right">
         <ul class="right-sidebar">
             <li>
-                <div  class="tab-struct custom-tab-1">
+                <div class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
-                        <li class="active" role="presentation"><a aria-expanded="true"  data-toggle="tab" role="tab" id="chat_tab_btn" href="#chat_tab">chat</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="messages_tab_btn" role="tab" href="#messages_tab" aria-expanded="false">messages</a></li>
-                        <li role="presentation" class=""><a  data-toggle="tab" id="todo_tab_btn" role="tab" href="#todo_tab" aria-expanded="false">todo</a></li>
+                        <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab"
+                                                                  id="chat_tab_btn" href="#chat_tab">chat</a></li>
+                        <li role="presentation" class=""><a data-toggle="tab" id="messages_tab_btn" role="tab"
+                                                            href="#messages_tab" aria-expanded="false">messages</a></li>
+                        <li role="presentation" class=""><a data-toggle="tab" id="todo_tab_btn" role="tab"
+                                                            href="#todo_tab" aria-expanded="false">todo</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
-                        <div  id="chat_tab" class="tab-pane fade active in" role="tabpanel">
+                        <div id="chat_tab" class="tab-pane fade active in" role="tabpanel">
                             <div class="chat-cmplt-wrap">
                                 <div class="chat-box-wrap">
                                     <div class="add-friend">
@@ -765,14 +904,17 @@
                                             <i class="zmdi zmdi-more"></i>
                                         </a>
                                         <span class="inline-block txt-dark">users</span>
-                                        <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
+                                        <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
+                                                class="zmdi zmdi-plus"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
                                     <form role="search" class="chat-search pl-15 pr-15 pb-15">
                                         <div class="input-group">
-                                            <input type="text" id="example-input1-group2" name="example-input1-group2" class="form-control" placeholder="Search">
+                                            <input type="text" id="example-input1-group2" name="example-input1-group2"
+                                                   class="form-control" placeholder="Search">
                                             <span class="input-group-btn">
-												<button type="button" class="btn  btn-default"><i class="zmdi zmdi-search"></i></button>
+												<button type="button" class="btn  btn-default"><i
+                                                        class="zmdi zmdi-search"></i></button>
 												</span>
                                         </div>
                                     </form>
@@ -781,9 +923,10 @@
                                             <ul class="chat-list-wrap">
                                                 <li class="chat-list">
                                                     <div class="chat-body">
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png" alt="user"/>
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                     alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
                                                                     <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
@@ -792,9 +935,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user1.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Evie Ono</span>
                                                                     <span class="time block truncate txt-grey">Unity is strength</span>
@@ -803,9 +947,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user2.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Madalyn Rascon</span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
@@ -814,9 +959,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user3.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Mitsuko Heid</span>
                                                                     <span class="time block truncate txt-grey">I’m thankful.</span>
@@ -825,9 +971,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png" alt="user"/>
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                     alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
                                                                     <span class="time block truncate txt-grey">Patience is bitter.</span>
@@ -836,9 +983,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user1.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Jonnie Metoyer</span>
                                                                     <span class="time block truncate txt-grey">Genius is eternal patience.</span>
@@ -847,9 +995,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user2.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Angelic Lauver</span>
                                                                     <span class="time block truncate txt-grey">Every burden is a blessing.</span>
@@ -858,9 +1007,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user3.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Priscila Shy</span>
                                                                     <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
@@ -869,9 +1019,10 @@
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a  href="javascript:void(0)">
+                                                        <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user4.png" alt="user"/>
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user4.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Linda Stack</span>
                                                                     <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
@@ -890,11 +1041,13 @@
                                     <div class="recent-chat-wrap">
                                         <div class="panel-heading ma-0">
                                             <div class="goto-back">
-                                                <a  id="goto_back" href="javascript:void(0)" class="inline-block txt-grey">
+                                                <a id="goto_back" href="javascript:void(0)"
+                                                   class="inline-block txt-grey">
                                                     <i class="zmdi zmdi-chevron-left"></i>
                                                 </a>
                                                 <span class="inline-block txt-dark">ryan</span>
-                                                <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
+                                                <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
+                                                        class="zmdi zmdi-more"></i></a>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -904,9 +1057,11 @@
                                                     <ul class="nicescroll-bar pt-20">
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left" src="../../../dist/img/user.png" alt="user"/>
+                                                                <img class="user-img img-circle block pull-left"
+                                                                     src="../../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
-                                                                    <p>Hello Jason, how are you, it's been a long time since we last met?</p>
+                                                                    <p>Hello Jason, how are you, it's been a long time
+                                                                        since we last met?</p>
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:30 PM</span>
                                                                     </div>
@@ -916,7 +1071,8 @@
                                                         </li>
                                                         <li class="self mb-10">
                                                             <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have got a new job now and is going great.
+                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have
+                                                                    got a new job now and is going great.
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:31 pm</span>
                                                                     </div>
@@ -926,7 +1082,7 @@
                                                         </li>
                                                         <li class="self">
                                                             <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right">  How about you?
+                                                                <div class="msg block pull-right"> How about you?
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:31 pm</span>
                                                                     </div>
@@ -936,7 +1092,8 @@
                                                         </li>
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left" src="../../../dist/img/user.png" alt="user"/>
+                                                                <img class="user-img img-circle block pull-left"
+                                                                     src="../../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Not too bad.</p>
                                                                     <div class="msg-per-detail  text-right">
@@ -949,10 +1106,15 @@
                                                     </ul>
                                                 </div>
                                                 <div class="input-group">
-                                                    <input type="text" id="input_msg_send" name="send-msg" class="input-msg-send form-control" placeholder="Type something">
+                                                    <input type="text" id="input_msg_send" name="send-msg"
+                                                           class="input-msg-send form-control"
+                                                           placeholder="Type something">
                                                     <div class="input-group-btn emojis">
                                                         <div class="dropup">
-                                                            <button type="button" class="btn  btn-default  dropdown-toggle" data-toggle="dropdown" ><i class="zmdi zmdi-mood"></i></button>
+                                                            <button type="button"
+                                                                    class="btn  btn-default  dropdown-toggle"
+                                                                    data-toggle="dropdown"><i
+                                                                    class="zmdi zmdi-mood"></i></button>
                                                             <ul class="dropdown-menu dropdown-menu-right">
                                                                 <li><a href="javascript:void(0)">Action</a></li>
                                                                 <li><a href="javascript:void(0)">Another action</a></li>
@@ -962,7 +1124,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="input-group-btn attachment">
-                                                        <div class="fileupload btn  btn-default"><i class="zmdi zmdi-attachment-alt"></i>
+                                                        <div class="fileupload btn  btn-default"><i
+                                                                class="zmdi zmdi-attachment-alt"></i>
                                                             <input type="file" class="upload">
                                                         </div>
                                                     </div>
@@ -981,7 +1144,8 @@
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
                                     <span class="inline-block txt-dark">messages</span>
-                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-search"></i></a>
+                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
+                                            class="zmdi zmdi-search"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
@@ -989,98 +1153,112 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Clay Masse</span>
                                                     <span class="inline-block font-11  pull-right message-time">12:28 AM</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Themeforest message sent via your envato market profile</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsu messm quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsu messm quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Evie Ono</span>
                                                     <span class="inline-block font-11  pull-right message-time">1 Feb</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Pogody theme support</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Madalyn Rascon</span>
                                                     <span class="inline-block font-11  pull-right message-time">31 Jan</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Congratulations from design nominees</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Ezequiel Merideth</span>
                                                     <span class="inline-block font-11  pull-right message-time">29 Jan</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Themeforest item support message</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Jonnie Metoyer</span>
                                                     <span class="inline-block font-11  pull-right message-time">27 Jan</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Help with beavis contact form</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Priscila Shy</span>
                                                     <span class="inline-block font-11  pull-right message-time">19 Jan</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject">Your uploaded theme is been selected</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png" alt="avatar"/>
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                         alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
                                                     <span class="inline-block capitalize-font   pull-left message-per">Linda Stack</span>
                                                     <span class="inline-block font-11  pull-right message-time">13 Jan</span>
                                                     <div class="clearfix"></div>
                                                     <span class=" truncate message-subject"> A new rating has been received</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
+                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
                                                 </div>
                                             </div>
                                         </a>
@@ -1088,14 +1266,15 @@
                                 </div>
                             </div>
                         </div>
-                        <div  id="todo_tab" class="tab-pane fade" role="tabpanel">
+                        <div id="todo_tab" class="tab-pane fade" role="tabpanel">
                             <div class="todo-box-wrap">
                                 <div class="add-todo">
                                     <a href="javascript:void(0)" class="inline-block txt-grey">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
                                     <span class="inline-block txt-dark">todo list</span>
-                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-plus"></i></a>
+                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
+                                            class="zmdi zmdi-plus"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
@@ -1168,7 +1347,6 @@
     <!-- /Right Sidebar Menu -->
 
 
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
@@ -1200,87 +1378,132 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
 
-                                        <table id="example" class="table table-hover display  pb-30" >
+                                        <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
+                                            <div >
                                                 <form class="form-inline">
                                                     <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary" style="height:42px;">
+
+                                                        <div class="input-group" style="width: 300px;float: right;">
+                                                            <label class="control-label mb-10">合同名称:</label>
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="名称">
+                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                                <button type="button" class="btn btn-primary"
+                                                                        style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
                                                                 </button>
                                                             </div>
                                                         </div>
+
+                                                        <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                            <label class="control-label mb-10">签订时间:</label>
+                                                            <div class='input-group date' id='datetimepicker1'>
+                                                                <input type='text' class="form-control" placeholder="时间"/>
+                                                                <span class="input-group-addon">
+                                                                    <span class="fa fa-calendar"></span>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
+                                                            <label class="control-label mb-10">合同状态:</label>
+                                                            <select class="form-control">
+                                                                <option selected>请选择</option>
+                                                                <option>10</option>
+                                                                <option>20</option>
+                                                            </select>
+                                                        </div>
+
+
+
+
                                                     </div>
                                                 </form>
                                             </div>
 
                                             <thead>
                                             <tr>
-                                                <th>异常编号</th>
-                                                <th>停用原因</th>
-                                                <th>维修计划</th>
-                                                <th>预计恢复时间</th>
-                                                <th>登记人</th>
-                                                <th>设备编号</th>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>设备状态</th>
-                                                <th>设备名称</th>
+                                                <th>合同号</th>
+                                                <th>合同名称</th>
+                                                <th>合同图片路径</th>
+                                                <th>合同签订时间</th>
+                                                <th>签订人</th>
+                                                <th>状态</th>
+                                                <th>ACTIONS</th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>异常编号</th>
-                                                <th>停用原因</th>
-                                                <th>维修计划</th>
-                                                <th>预计恢复时间</th>
-                                                <th>登记人</th>
-                                                <th>设备编号</th>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>设备状态</th>
-                                                <th>设备名称</th>
+                                                <th>合同号</th>
+                                                <th>合同名称</th>
+                                                <th>合同图片路径</th>
+                                                <th>合同签订时间</th>
+                                                <th>签订人</th>
+                                                <th>状态</th>
+                                                <th>ACTIONS</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <c:forEach var="e" items="${requestScope.equipmentReports}">
-                                                <tr >
-                                                    <td>${e.equipmentReportId}</td>
-                                                    <td>${e.equipmentReportReason}</td>
-                                                    <td>${e.maintenancePlan}</td>
-                                                    <td>${e.endDate}</td>
-                                                    <td>${e.user.userName}</td>
-                                                    <td>${e.equipment.equipmentId}</td>
-                                                    <td>${e.equipment.productionLine.productionLineNo}</td>
-                                                    <td>${e.equipment.working.workingName}</td>
-                                                    <td>${e.equipment.user.userName}</td>
-                                                    <td>${e.equipment.equipmentType.equipmentTypeName}</td>
-                                                    <td>${e.equipment.equipmentName}</td>
-                                                </tr>
-                                            </c:forEach>
+                                            <tr>
+                                                <td>9001 0000001</td>
+                                                <td>三号店</td>
+                                                <td>C:\Program Files\Ecap\ico.jgp</td>
+                                                <td>2017/12/2</td>
+                                                <td>张三</td>
+                                                <th>未完成</th>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
 
+                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate">
+                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModalSelect">
+                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
+
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <a href="/addequipmentreport.do">
-                                                    <button  class="btn btn-info btn-icon-anim btn-circle">
-                                                        <i class="fa ti-plus"></i>
-                                                    </button>
-                                                </a>
+                                                <button class="btn btn-info btn-icon-anim btn-circle"
+                                                        data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa ti-plus"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="pagination pagination-split">
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="disabled"><a href="#">1</a></li>
+                                                    <li class="active"><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -1290,186 +1513,451 @@
         </div>
 
 
-
         <div class="row">
+
             <!--提示框-->
             <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;"><div class="sa-icon sa-error" style="display: none;">
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
+                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
+                        <div class="sa-icon sa-error" style="display: none;">
 						  <span class="sa-x-mark">
 							<span class="sa-line sa-left"></span>
 							<span class="sa-line sa-right"></span>
 						  </span>
-                    </div><div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                        <span class="sa-body pulseWarningIns"></span>
-                        <span class="sa-dot pulseWarningIns"></span>
-                    </div><div class="sa-icon sa-info" style="display: none;"></div><div class="sa-icon sa-success" style="display: none;">
-                        <span class="sa-line sa-tip"></span>
-                        <span class="sa-line sa-long"></span>
+                        </div>
+                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                            <span class="sa-body pulseWarningIns"></span>
+                            <span class="sa-dot pulseWarningIns"></span>
+                        </div>
+                        <div class="sa-icon sa-info" style="display: none;"></div>
+                        <div class="sa-icon sa-success" style="display: none;">
+                            <span class="sa-line sa-tip"></span>
+                            <span class="sa-line sa-long"></span>
 
-                        <div class="sa-placeholder"></div>
-                        <div class="sa-fix"></div>
-                    </div><div class="sa-icon sa-custom" style="display: none;"></div><h2>你确定？</h2>
+                            <div class="sa-placeholder"></div>
+                            <div class="sa-fix"></div>
+                        </div>
+                        <div class="sa-icon sa-custom" style="display: none;"></div>
+                        <h2>你确定？</h2>
                         <p style="display: block;">你将无法恢复这个的数据！</p>
                         <fieldset>
                             <input type="text" tabindex="3" placeholder="">
                             <div class="sa-input-error"></div>
-                        </fieldset><div class="sa-error-container">
+                        </fieldset>
+                        <div class="sa-error-container">
                             <div class="icon">!</div>
                             <p>Not valid!</p>
-                        </div><div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;" data-dismiss="modal" aria-label="Close">不，取消！</button>
+                        </div>
+                        <div class="sa-button-container">
+                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                                    data-dismiss="modal" aria-label="Close">不，取消！
+                            </button>
                             <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1" style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">是的，删除它！</button><div class="la-ball-fall">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                            </div>
-                        </div></div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-            <!--输入框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">修改异常信息</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="异常编号">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="停用原因">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="维修计划">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="control-label mb-10 text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></label>
-                                                <div class="input-group date" id="datetimepicker">
-                                                    <input type="text" class="form-control" placeholder="预计维修时间">
-                                                    <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="登记人">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                        <option value="Category 1">请选择设备名称</option>
-                                                        <option value="Category 1">设备名称1</option>
-                                                        <option value="Category 2">设备名称2</option>
-                                                        <option value="Category 3">设备名称3</option>
-                                                        <option value="Category 4">设备名称4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="设备负责人" >
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                        <option value="Category 1">请选择设备所在工序</option>
-                                                        <option value="Category 1">设备所在工序1</option>
-                                                        <option value="Category 2">设备所在工序2</option>
-                                                        <option value="Category 3">设备所在工序3</option>
-                                                        <option value="Category 4">设备所在工序4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                    <option value="Category 1">请选择所属生产线</option>
-                                                    <option value="Category 1">所属生产线1</option>
-                                                    <option value="Category 2">所属生产线2</option>
-                                                    <option value="Category 3">所属生产线3</option>
-                                                    <option value="Category 4">所属生产线4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                    <option value="Category 1">请选择设备状态</option>
-                                                    <option value="Category 1">设备状态1</option>
-                                                    <option value="Category 2">设备状态2</option>
-                                                    <option value="Category 3">设备状态3</option>
-                                                    <option value="Category 4">设备状态4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">确认修改</button>
+                                <button class="confirm" tabindex="1"
+                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                    是的，删除它！
+                                </button>
+                                <div class="la-ball-fall">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /.modal-dialog -->
                 </div>
             </div>
-        </div>
 
+            <!--添加输入框-->
+            <div class="col-md-6">
+                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModal" class="modal fade" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">添加合同</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <div class="col-md-12 mb-20">
+                                            <input type="text" class="form-control" placeholder="合同名称">
+                                        </div>
 
-
-        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="pagination pagination-split">
-                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                            <li class="disabled"><a href="#">1</a>
-                            <li class="active"><a href="#">2</a>
-                            <li><a href="#">3</a>
-                            <li><a href="#">4</a>
-                            <li><a href="#">5</a>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
-                        </ul>
+                                        <div class="col-md-12 mb-20">
+                                            <input type="text" class="form-control" placeholder="合同签订时间">
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <select class="form-control">
+                                                <option selected>请选择签订人</option>
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>40</option>
+                                                <option>Custom</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-12 mb-20">
+                                            <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
+                                                <input type="file" class="upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
                     </div>
+                    <!-- /.modal-dialog -->
                 </div>
             </div>
+
+
+            <!--修改输入框-->
+            <div class="col-md-6">
+                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">修改合同</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form-horizontal form-material">
+                                    <div class="form-group">
+                                        <div class="col-md-12 mb-20">
+                                            <input type="text" class="form-control" placeholder="合同名称">
+                                        </div>
+
+                                        <div class="col-md-12 mb-20">
+                                            <input type="text" class="form-control" placeholder="合同签订时间">
+                                        </div>
+
+                                        <div class="col-md-12 mb-20">
+                                            <select class="form-control">
+                                                <option selected>请选择签订人</option>
+                                                <option>10</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>40</option>
+                                                <option>Custom</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-12 mb-20">
+                                            <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
+                                                <input type="file" class="upload">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
+                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+
+
+            <!--查看显示框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+                    <!-- Row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default card-view">
+                                <div class="panel-heading">
+                                    <div class="pull-left">
+                                        <h6 class="panel-title txt-dark">合同订单</h6>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-wrapper collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-wrap">
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-body">
+                                                            <hr class="light-grey-hr"/>
+
+                                                            <div class="row">
+                                                                <!--订单-->
+                                                                <div class="col-md-4">
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">订单号:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">交付时间:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">是否交付:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Male </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!--/span-->
+                                                                    <div  >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">下单时间:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    24/05/1990 </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+                                                                </div>
+
+
+                                                                <!--订单-->
+                                                                <div class="col-md-3">
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">备注:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">确认人:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <!--订单合同-->
+                                                                <div class="col-md-5">
+
+                                                                    <!--/span-->
+                                                                    <div  >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">合同号:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Free </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+
+                                                                    <!--/span-->
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">合同名称:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Free </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+
+                                                                    <!--/span-->
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">合同签订时间:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Free </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!--/span-->
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">签订人:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Free </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+                                                                </div>
+
+                                                            </div>
+
+                                                            <hr class="light-grey-hr"/>
+                                                            <div class="row">
+                                                                <!--订单项-->
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+
+                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
+                                                                        <div class="col-md-8">
+                                                                            <p class="form-control-static">John</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-4" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">菜品数量:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                John </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-4" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">完成数量:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                Male </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">完成状态:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">产品批次:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row">
+                                                                <!--订单项-->
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+
+                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
+                                                                        <div class="col-md-8">
+                                                                            <p class="form-control-static">John</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-4" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">菜品数量:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                John </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-4" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">完成数量:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                Male </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">完成状态:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">产品批次:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+
+
+
+
+                                                        </div>
+
+                                                        <div class="form-actions mt-10">
+                                                            <div class="row">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-2">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">Cancel
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Row -->
+                </div>
+            </div>
+
         </div>
 
 
@@ -1506,10 +1994,10 @@
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
 
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
 
 
 <!-- Slimscroll JavaScript -->
@@ -1535,8 +2023,7 @@
 
 <script>
     function sc() {
-        /* window.location.href="javascript:window.scrollTo(0,0)";*/
-        location.href="222.html";
+        window.location.href = "javascript:window.scrollTo(0,0)";
     }
 </script>
 </body>

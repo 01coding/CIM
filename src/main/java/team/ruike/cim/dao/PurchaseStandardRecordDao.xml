@@ -29,7 +29,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchaseStandardRecord.standardCScore!=null and purchaseStandardRecord.standardCScore>0">
             AND  standard_c_score=#{purchaseStandardRecord.standardCScore}
         </if>
-        <if test="purchaseStandardRecord.conclusion!=mull and purchaseStandardRecord.conclusion!=''">
+        <if test="purchaseStandardRecord.conclusion!=null and purchaseStandardRecord.conclusion!=''">
             AND conclusion=#{purchaseStandardRecord.conclusion}
         </if>
     </sql>
@@ -50,7 +50,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="standardCScore!=null and standardCScore>0">
             AND  standard_c_score=#{standardCScore}
         </if>
-        <if test="conclusion!=mull and conclusion!=''">
+        <if test="conclusion!=null and conclusion!=''">
             AND conclusion=#{conclusion}
         </if>
     </sql>

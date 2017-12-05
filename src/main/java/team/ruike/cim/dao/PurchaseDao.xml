@@ -26,7 +26,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
     <sql id="sql">
         SELECT * FROM purchase WHERE status=0
-        <if test="purchase.purchaseId!=null and purchase.purchaseId>">
+        <if test="purchase.purchaseId!=null and purchase.purchaseId>0">
             AND   purchase_id=#{purchase.purchaseId}
         </if>
         <if test="purchase.everydayPurchasingPlan!=null and purchase.everydayPurchasingPlan.everydayPurchasingPlanId>0">
@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchase.purchaseDate!=null">
             AND  purchase_date=#{purchase.purchaseDate}
         </if>
-        <if test="purchase.user!=null and purchase.user.userId>0}">
+        <if test="purchase.user!=null and purchase.user.userId>0">
             AND user_id=#{purchase.user.userID}
         </if>
     </sql>
@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <select id="selectCount" resultType="int" parameterType="purchase">
         SELECT COUNT (1)FROM purchase WHERE status=0
-          <if test="purchaseId!=null and purchaseId>">
+          <if test="purchaseId!=null and purchaseId>0">
               AND   purchase_id=#{purchaseId}
           </if>
         <if test="everydayPurchasingPlan!=null and everydayPurchasingPlan.everydayPurchasingPlanId>0">
@@ -60,14 +60,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchaseDate!=null">
             AND  purchase_date=#{purchaseDate}
         </if>
-        <if test="user!=null and #{user.userId>0}">
+        <if test="user!=null and user.userId>0">
            AND user_id=#{user.userID}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="purchaseMap">
-        SELECT * FROM purchase WHERE status=0
-        <if test="purchaseId!=null and purchaseId>">
-            AND   purchase_id=#{purchaseId}
-        </if>
+        SELECT * FROM purchase WHERE status=0 AND   purchase_id=#{purchaseId}
     </select>
 </mapper>

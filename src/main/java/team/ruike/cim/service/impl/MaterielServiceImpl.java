@@ -22,6 +22,10 @@ import java.util.List;
  * @see #getMaterielTypeLevelB()
  * @see #getMaterielTypeLevelA()
  * @see #getMaterielUnit()
+ * @see #getMaterielTypeLevelB(MaterielTypeLevelB)
+ * @see #delMateriel(Materiel)
+ * @see #updateMateriel(Materiel)
+ * @see #getMaterielById(Integer)
  */
 @Service("materielService")
 public class MaterielServiceImpl implements MaterielService {
@@ -77,5 +81,43 @@ public class MaterielServiceImpl implements MaterielService {
      */
     public List<MaterielUnit> getMaterielUnit() {
         return materielUnitDao.select(new MaterielUnit(), 0, 99);
+    }
+
+    /**
+     * 根据查询条件获取物料二级分类
+     * @param materielTypeLevelB 条件
+     * @return 物料二级分类集合
+     */
+    public List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        return materielTypeLevelBDao.select(materielTypeLevelB,0,99);
+    }
+
+    /**
+     * 删除物料
+     * @param materiel 物料
+     * @return 是否成功
+     */
+    public boolean delMateriel(Materiel materiel) {
+        Materiel materiel1 = this.getMaterielById(materiel.getMaterielId());
+        materiel1.setStatus(1);
+        return materielDao.update(materiel1)==1;
+    }
+
+    /**
+     * 修改物料信息
+     * @param materiel 物料对象
+     * @return 是否成功
+     */
+    public boolean updateMateriel(Materiel materiel) {
+        return false;
+    }
+
+    /**
+     * 根据id查询物理信息
+     * @param materielId 物料id
+     * @return 物料对象
+     */
+    public Materiel getMaterielById(Integer materielId) {
+        return materielDao.selectById(materielId);
     }
 }

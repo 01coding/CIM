@@ -17,6 +17,10 @@ import java.util.List;
  * @see #getMaterielTypeLevelA()
  * @see #getMaterielTypeLevelB()
  * @see #getMaterielUnit()
+ * @see #getMaterielTypeLevelB(MaterielTypeLevelB)
+ * @see #delMateriel(Materiel)
+ * @see #updateMateriel(Materiel)
+ * @see #getMaterielById(Integer)
  */
 public interface MaterielService{
     /**
@@ -48,4 +52,32 @@ public interface MaterielService{
      * @return 所有物料单位集合
      */
     List<MaterielUnit> getMaterielUnit();
+
+    /**
+     * 根据查询条件获取物料二级分类
+     * @param materielTypeLevelB 条件
+     * @return 物料二级分类集合
+     */
+    List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB);
+
+    /**
+     * 删除物料
+     * @param materiel 物料
+     * @return 是否成功
+     */
+    boolean delMateriel(Materiel materiel);
+
+    /**
+     * 修改物料信息
+     * @param materiel 物料对象
+     * @return 是否成功
+     */
+    boolean updateMateriel(Materiel materiel);
+
+    /**
+     * 根据id查询物料
+     * @param materielId 物料id
+     * @return 物料对象
+     */
+    Materiel getMaterielById(Integer materielId);
 }

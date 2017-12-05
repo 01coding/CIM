@@ -996,14 +996,12 @@
                     <div class="panel panel-default card-view">
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">Default square pills</h6>
+                                <h6 class="panel-title txt-dark">质量监控系统</h6>
                             </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-                                <p class="text-muted">Default version of tab add only <code>pills-struct</code> class
-                                    and add <code>nav-pills</code> class with nav class.</p>
                                 <div class="pills-struct mt-40">
                                     <ul role="tablist" class="nav nav-pills" id="myTabs_6">
                                         <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab"
@@ -1061,18 +1059,20 @@
                                                                             </tr>
                                                                             </tfoot>
                                                                             <tbody>
-                                                                            <tr>
-                                                                                <td>物料</td>
-                                                                                <td>4</td>
-                                                                                <td>里脊肉</td>
-                                                                                <td>物料批次</td>
-                                                                                <td><a data-toggle="modal"
-                                                                                       data-target=".bs-example-modal-lg"><span
-                                                                                        class="glyphicon glyphicon-th-large"
-                                                                                        aria-hidden="true"></span>详情</a>
-                                                                                </td>
-                                                                                <td>结论：合格</td>
-                                                                            </tr>
+                                                                            <c:forEach items="${requesrScore.page1.list}" var="par">
+                                                                                <tr>
+                                                                                    <td>物料</td>
+                                                                                    <td>${par.purchaseStandardRecordId}</td>
+                                                                                    <td>里脊肉</td>
+                                                                                    <td>物料批次</td>
+                                                                                    <td><a data-toggle="modal"
+                                                                                           data-target=".bs-example-modal-lg"><span
+                                                                                            class="glyphicon glyphicon-th-large"
+                                                                                            aria-hidden="true"></span>详情</a>
+                                                                                    </td>
+                                                                                    <td>结论：合格</td>
+                                                                                </tr>
+                                                                            </c:forEach>
                                                                             </tbody>
                                                                         </table>
                                                                         <button class="btn  btn-primary btn-rounded"><a
@@ -1183,7 +1183,7 @@
                                                                                                name="id"
                                                                                                class="hidden"/>
                                                                                         <div class="form-group required">
-                                                                                            <label for="firstName"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">工序名称</label>
                                                                                             <div class="form-group mb-0 col-sm-9"
                                                                                                  style="margin-left: 1px">
@@ -1205,7 +1205,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group required">
-                                                                                            <label for="lastName"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">生产批次</label>
                                                                                             <div class="col-sm-9">
                                                                                                 <input type="text"
@@ -1217,7 +1217,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="jobTitle"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">标准一评估</label>
                                                                                             <div class="col-sm-9">
                                                                                                 <input type="text"
@@ -1228,7 +1228,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group required">
-                                                                                            <label for="startedOn"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">标准二评估</label>
                                                                                             <div class="col-sm-9">
                                                                                                 <input type="text"
@@ -1240,7 +1240,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="dob"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">标准三评估</label>
                                                                                             <div class="col-sm-9">
                                                                                                 <input type="text"
@@ -1251,7 +1251,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="dob"
+                                                                                            <label
                                                                                                    class="col-sm-3 control-label">结论</label>
                                                                                             <div class="col-sm-9">
                                                                                                 <input type="text"

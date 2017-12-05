@@ -65,7 +65,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </sql>
 
-    <insert id="add" parameterType="contractOrder">
+    <insert id="add"  useGeneratedKeys="true" keyProperty="contract_order_id" parameterType="contractOrder">
       INSERT into contract_order VALUES(DEFAULT,#{contractOrderNo},#{contractOrderEndDate},0,#{contractOrderStartDate},#{orderContract.orderContractId},#{user.userId},#{contractOrderRemarks},0);
     </insert>
     <update id="update" parameterType="contractOrder">

@@ -1,14 +1,19 @@
 package team.ruike.cim.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.pojo.Materiel;
+import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.service.MaterielService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *物料业务控制器
@@ -44,5 +49,30 @@ public class MaterielController {
     @RequestMapping("/addMateriel.do")
     public String addMateriel(Materiel materiel,HttpServletRequest request){
         return materielService.addMaterielList(materiel)+"";
+    }
+
+    /**
+     * 获取物品二级分类集合
+     * @param materielTypeLevelB 参数
+     * @return 集合
+     */
+    @ResponseBody
+    @RequestMapping("/gettypeblist.do")
+    public String getMaterielTypeBList(MaterielTypeLevelB materielTypeLevelB){
+        List<MaterielTypeLevelB> typeLevelB=new ArrayList<MaterielTypeLevelB>();
+        if (materielTypeLevelB.getMaterielTypeLevelA().getMaterielTypeLevelAId()!=0){
+            typeLevelB = materielService.getMaterielTypeLevelB(materielTypeLevelB);
+        }
+        return JSONArray.toJSONString(typeLevelB);
+    }
+
+    /**
+     * 删除物料
+     * @return 结果标识
+     */
+    @ResponseBody
+    @RequestMapping("/delmateriel.do")
+    public String delMateriel(Materiel materiel){
+       return materielService.delMateriel(materiel)+"";
     }
 }
