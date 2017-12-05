@@ -18,8 +18,10 @@ public class WarehouseServiceImpl implements WarehouseService {
      *
      * @return
      */
-    public List<Warehouse> getwarehouses(Warehouse warehouse,Pager<Warehouse> pager) {
-        return warehouseDao.select(warehouse,pager.getCurrentPage(),pager.getPageSize());
+    public void getwarehouses(Warehouse warehouse,Pager<Warehouse> pager) {
+        pager.setTotalRecord(warehouseDao.selectCount(warehouse));
+        List<Warehouse> aa=warehouseDao.select(warehouse,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize());
+        pager.setList(aa);
     }
 
     /**
@@ -46,15 +48,5 @@ public class WarehouseServiceImpl implements WarehouseService {
             return warehouseDao.update(warehouse);
         }
         return 0;
-    }
-
-    /**
-     * 查询总数
-     *
-     * @param warehouse
-     * @return
-     */
-    public int count(Warehouse warehouse) {
-        return warehouseDao.selectCount(warehouse);
     }
 }
