@@ -12,6 +12,7 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -49,10 +50,29 @@ public class MaterielController {
     public String addMateriel(Materiel materiel,HttpServletRequest request){
         return materielService.addMaterielList(materiel)+"";
     }
+
+    /**
+     * 获取物品二级分类集合
+     * @param materielTypeLevelB 参数
+     * @return 集合
+     */
     @ResponseBody
     @RequestMapping("/gettypeblist.do")
     public String getMaterielTypeBList(MaterielTypeLevelB materielTypeLevelB){
-        List<MaterielTypeLevelB> typeLevelB = materielService.getMaterielTypeLevelB(materielTypeLevelB);
+        List<MaterielTypeLevelB> typeLevelB=new ArrayList<MaterielTypeLevelB>();
+        if (materielTypeLevelB.getMaterielTypeLevelA().getMaterielTypeLevelAId()!=0){
+            typeLevelB = materielService.getMaterielTypeLevelB(materielTypeLevelB);
+        }
         return JSONArray.toJSONString(typeLevelB);
+    }
+
+    /**
+     * 删除物料
+     * @return 结果标识
+     */
+    @ResponseBody
+    @RequestMapping("/delmateriel.do")
+    public String delMateriel(Materiel materiel){
+       return materielService.delMateriel(materiel)+"";
     }
 }

@@ -1519,7 +1519,7 @@
                                                                                data-toggle="tooltip"><i
                                                                                     class="fa fa-pencil-square txt-danger"></i></a>
                                                                             <a href="javascript:void(0)"
-                                                                               class="text-inverse" title="删除"
+                                                                               class="text-inverse del" flagname="${ls.materielName}" flagid="${ls.materielId}" title="删除"
                                                                                data-toggle="tooltip"><i
                                                                                     class="ti-trash txt-danger"></i></a>
                                                                         </td>
@@ -1664,12 +1664,46 @@
 <script src="../../dist/js/init.js"></script>
 <script>
     $(function () {
+        $(".del").click(function(){
+            var mid=$(this).attr("flagid");
+            var mname=$(this).attr("flagname");
+            var $tr=$(this).parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/delmateriel.do?materielId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == true){
+                                swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+
         $("#mtypea").change(function () {
             var selectValue = $("#mtypea").val();
             $("#mtypeb").empty();
             $("#mtypeb").append("<option value='0'>请选择</option>");
             $.ajax({
                 url: "${pageContext.request.contextPath}/gettypeblist.do?materielTypeLevelA.materielTypeLevelAId=" + selectValue,
+                cache: false,
                 dataType: 'json',
                 success: function (data) {
                     for (var i = 0, l = data.length; i < l; i++) {
