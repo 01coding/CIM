@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/4
-  Time: 8:55
+  Time: 9:58
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>门店管理</title>
+    <title>设备列表</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -500,7 +500,7 @@
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="添加合同订单.html">list</a>
+                                <a href="contact-list.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -698,7 +698,7 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                        <a class="active-page" href="export-table.html"><span class="pull-right"><span
                                 class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
@@ -1380,65 +1380,61 @@
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div >
+                                            <div style="width: 300px;float: right">
                                                 <form class="form-inline">
                                                     <div class="form-group">
-
-                                                        <div class="input-group" style="width: 300px;float: right;">
-                                                            <label class="control-label mb-10">用户/门店名称:</label>
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control"
-                                                                   placeholder="名称">
-                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
                                                                 </button>
                                                             </div>
                                                         </div>
-
-
-                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
-                                                            <label class="control-label mb-10">门店/用户类别:</label>
-                                                            <select class="form-control">
-                                                                <option selected>请选择</option>
-                                                                <option>10</option>
-                                                                <option>20</option>
-                                                            </select>
-                                                        </div>
-
-
-
                                                     </div>
                                                 </form>
                                             </div>
 
                                             <thead>
                                             <tr>
-                                                <th>用户/门店名称</th>
-                                                <th>门店/用户类别</th>
-                                                <th>地址</th>
-                                                <th>电话</th>
-                                                <th>门店编号</th>
-                                                <th>ACTIONS</th>
+                                                <th>设备编号</th>
+                                                <th>所属生产线</th>
+                                                <th>所属工序</th>
+                                                <th>设备负责人</th>
+                                                <th>启用时间</th>
+                                                <th>设备状态</th>
+                                                <th>保养周期</th>
+                                                <th>检查周期</th>
+                                                <th>设备名称</th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>用户/门店名称</th>
-                                                <th>门店/用户类别</th>
-                                                <th>地址</th>
-                                                <th>电话</th>
-                                                <th>门店编号</th>
-                                                <th>ACTIONS</th>
+                                                <th>设备编号</th>
+                                                <th>所属生产线</th>
+                                                <th>所属工序</th>
+                                                <th>设备负责人</th>
+                                                <th>启用时间</th>
+                                                <th>设备状态</th>
+                                                <th>保养周期</th>
+                                                <th>检查周期</th>
+                                                <th>设备名称</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr>
-                                                <td>三号店</td>
-                                                <td>旗舰店</td>
-                                                <td>江苏省</td>
-                                                <td>12401701225</td>
-                                                <td>03 170625 001</td>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
                                                         <button type="button" class="btn btn-default footable-edit"
@@ -1446,9 +1442,430 @@
                                                             <span class="fooicon fooicon-pencil"
                                                                   aria-hidden="true"></span>
                                                         </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
                                                         <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>111111</td>
+                                                <td>1号线</td>
+                                                <td>初加工</td>
+                                                <td>张三</td>
+                                                <td>2017/12/1</td>
+                                                <td>正常</td>
+                                                <td>30天</td>
+                                                <td>每月1号</td>
+                                                <td>包装机</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
                                                         </button>
                                                         <button type="button" class="btn btn-default footable-delete"
                                                                 data-toggle="modal" data-target=".bs-example-modal-lg">
@@ -1459,7 +1876,6 @@
                                                 </td>
                                             </tr>
 
-
                                             </tbody>
                                         </table>
 
@@ -1468,36 +1884,15 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        data-toggle="modal" data-target="#exampleModal">
-                                                    <i class="fa ti-plus"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
+                                                <a href="222.html">
+                                                    <button class="btn btn-info btn-icon-anim btn-circle">
+                                                        <i class="fa ti-plus"></i>
+                                                    </button>
+                                                </a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1508,8 +1903,7 @@
 
 
         <div class="row">
-
-            <!--删除提示框-->
+            <!--提示框-->
             <div class="col-md-6">
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
                      aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -1565,8 +1959,7 @@
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
-            <!--添加输入框-->
+            <!--输入框-->
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
@@ -1575,183 +1968,138 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">门店</h5>
+                                <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
                             </div>
                             <div class="modal-body">
                                 <form>
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">用户/门店名称:</label>
-                                        <input type="text" class="form-control">
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="设备编号">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control" data-placeholder="Choose a Category"
+                                                            tabindex="1">
+                                                        <option value="Category 1">请选择设备名称</option>
+                                                        <option value="Category 1">设备名称1</option>
+                                                        <option value="Category 2">设备名称2</option>
+                                                        <option value="Category 3">设备名称3</option>
+                                                        <option value="Category 4">设备名称4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="设备负责人">
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control" data-placeholder="Choose a Category"
+                                                            tabindex="1">
+                                                        <option value="Category 1">请选择设备所在工序</option>
+                                                        <option value="Category 1">设备所在工序1</option>
+                                                        <option value="Category 2">设备所在工序2</option>
+                                                        <option value="Category 3">设备所在工序3</option>
+                                                        <option value="Category 4">设备所在工序4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label class="control-label mb-10 text-left"><font
+                                                        style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;"></font></font></label>
+                                                <div class="input-group date" id="datetimepicker1">
+                                                    <input type="text" class="form-control" placeholder="日期时间选择">
+                                                    <span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <select class="form-control" data-placeholder="Choose a Category"
+                                                            tabindex="1">
+                                                        <option value="Category 1">请选择所属生产线</option>
+                                                        <option value="Category 1">所属生产线1</option>
+                                                        <option value="Category 2">所属生产线2</option>
+                                                        <option value="Category 3">所属生产线3</option>
+                                                        <option value="Category 4">所属生产线4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="检查周期">
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="保养周期">
+                                            </div>
+                                        </div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">门店/用户类别:</label>
-                                        <select class="form-control">
-                                            <option>All Contacts</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>Custom</option>
-                                        </select>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <select class="form-control" data-placeholder="Choose a Category"
+                                                        tabindex="1">
+                                                    <option value="Category 1">请选择设备状态</option>
+                                                    <option value="Category 1">设备状态1</option>
+                                                    <option value="Category 2">设备状态2</option>
+                                                    <option value="Category 3">设备状态3</option>
+                                                    <option value="Category 4">设备状态4</option>
+                                                </select>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">地址</label>
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-
 
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">保存</button>
+                                <button type="button" class="btn btn-primary">确认修改</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">门店信息</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
-                                                            <div class="row">
-                                                                <!--门店-->
-                                                                <div class="col-md-6">
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">地址:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">电话:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-                                                                <div class="col-md-6">
+        </div>
 
 
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单项数量:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店编号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">状态:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <ul class="pagination pagination-split">
+                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
+                            <li class="disabled"><a href="#">1</a>
+                            <li class="active"><a href="#">2</a>
+                            <li><a href="#">3</a>
+                            <li><a href="#">4</a>
+                            <li><a href="#">5</a>
+                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
+                        </ul>
                     </div>
-                    <!-- /Row -->
                 </div>
             </div>
-
         </div>
 
 
@@ -1788,8 +2136,6 @@
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
 
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
 
@@ -1818,10 +2164,6 @@
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
-    }
-
-    function addContractOrderUrl() {
-        window.location.href = "添加合同订单.html";
     }
 </script>
 </body>

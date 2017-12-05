@@ -24,7 +24,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             store_address=#{storeAddress},
             store_phone=#{storePhone},
             store_order_number=#{storeOrderNumber},
-            store_no=#{storeNo},
             password=#{password},
             status=#{status}
             WHERE store_id=#{storeId}

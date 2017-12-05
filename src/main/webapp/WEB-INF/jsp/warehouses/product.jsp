@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: Administrator
+  User: lenovo
   Date: 2017/12/4
-  Time: 8:55
+  Time: 11:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>门店管理</title>
+    <title>Hound I Fast build Admin dashboard for any platform</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -203,7 +203,7 @@
                                             <a href="e-commerce.html">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="product.html">Products</a>
+                                            <a href="warehouse.html">Products</a>
                                         </li>
                                         <li>
                                             <a href="product-detail.html">Product Detail</a>
@@ -443,7 +443,7 @@
                         <a href="e-commerce.html">Dashboard</a>
                     </li>
                     <li>
-                        <a href="product.html">Products</a>
+                        <a href="warehouse.html">Products</a>
                     </li>
                     <li>
                         <a href="product-detail.html">Product Detail</a>
@@ -500,7 +500,7 @@
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="添加合同订单.html">list</a>
+                                <a href="contact-list.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -539,7 +539,7 @@
                 </a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="panels-wells.html">Panels & Wells</a>
+                        <a href="warehouse_region.html">Panels & Wells</a>
                     </li>
                     <li>
                         <a href="modals.html">Modals</a>
@@ -698,7 +698,7 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                        <a class="active-page" href="materiel.html"><span class="pull-right"><span
                                 class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
@@ -1354,7 +1354,6 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -1367,88 +1366,86 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
-                                    <div class="table-responsive">
-
+                                    <!--区域选择框-->
+                                    <div class="table-responsive ">
+                                        <div class="form-group col-sm-3">
+                                            <select class="form-control select2 select2-hidden-accessible"
+                                                    tabindex="-1" aria-hidden="true">
+                                                <option><font style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">请选择菜品</font></font>
+                                                </option>
+                                                <option value="AK"><font
+                                                        style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
+                                                </option>
+                                                <option value="HI"><font
+                                                        style="vertical-align: inherit;"><font
+                                                        style="vertical-align: inherit;">夏威夷</font></font>
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <!--区域选择框-->
                                         <table id="example" class="table table-hover display  pb-30">
-
-                                            <div >
+                                            <div style="width: 300px;float: right">
                                                 <form class="form-inline">
                                                     <div class="form-group">
-
-                                                        <div class="input-group" style="width: 300px;float: right;">
-                                                            <label class="control-label mb-10">用户/门店名称:</label>
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control"
-                                                                   placeholder="名称">
-                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
                                                                 </button>
                                                             </div>
                                                         </div>
-
-
-                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
-                                                            <label class="control-label mb-10">门店/用户类别:</label>
-                                                            <select class="form-control">
-                                                                <option selected>请选择</option>
-                                                                <option>10</option>
-                                                                <option>20</option>
-                                                            </select>
-                                                        </div>
-
-
-
                                                     </div>
                                                 </form>
                                             </div>
 
                                             <thead>
                                             <tr>
-                                                <th>用户/门店名称</th>
-                                                <th>门店/用户类别</th>
-                                                <th>地址</th>
-                                                <th>电话</th>
-                                                <th>门店编号</th>
-                                                <th>ACTIONS</th>
+                                                <th>菜品名称</th>
+                                                <th>当前数量</th>
+                                                <th>到期时间</th>
+                                                <th>所在区域</th>
+                                                <th>货架编号</th>
+                                                <th id="action" onclick="action()">ACTIONS</th>
+
+
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>用户/门店名称</th>
-                                                <th>门店/用户类别</th>
-                                                <th>地址</th>
-                                                <th>电话</th>
-                                                <th>门店编号</th>
+                                                <th>Name</th>
+                                                <th>Position</th>
+                                                <th>Office</th>
+                                                <th>Age</th>
+                                                <th>Start date</th>
                                                 <th>ACTIONS</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
                                             <tr>
-                                                <td>三号店</td>
-                                                <td>旗舰店</td>
-                                                <td>江苏省</td>
-                                                <td>12401701225</td>
-                                                <td>03 170625 001</td>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
                                                         <button type="button" class="btn btn-default footable-edit"
                                                                 data-toggle="modal" data-target="#exampleModal">
                                                             <span class="fooicon fooicon-pencil"
                                                                   aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
                                                         </button>
                                                         <button type="button" class="btn btn-default footable-delete"
                                                                 data-toggle="modal" data-target=".bs-example-modal-lg">
@@ -1458,8 +1455,195 @@
                                                     </div>
                                                 </td>
                                             </tr>
-
-
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tiger Nixonasasasasa</td>
+                                                <td>System Architect</td>
+                                                <td>Edinburgh</td>
+                                                <td>61</td>
+                                                <td>2011/04/25</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModal">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-delete"
+                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                            <span class="fooicon fooicon-trash"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                    </div>
+                                                </td>
+                                            </tr>
                                             </tbody>
                                         </table>
 
@@ -1469,17 +1653,17 @@
                                                     <i class="icon-rocket"></i>
                                                 </button>
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        data-toggle="modal" data-target="#exampleModal">
-                                                    <i class="fa ti-plus"></i>
+                                                        onclick="window.location.href='product_warehouse_register_item.html'">
+                                                    <i class="fa ti-plus" title="入库"></i>
+                                                </button>
+                                                <button class="btn btn-info btn-icon-anim btn-circle"
+                                                        onclick="window.location.href='product_warehouse_out_register_item.html'">
+                                                    <i class="fa fa-minus" title="出库"></i>
                                                 </button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
@@ -1497,7 +1681,6 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1508,8 +1691,7 @@
 
 
         <div class="row">
-
-            <!--删除提示框-->
+            <!--提示框-->
             <div class="col-md-6">
                 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
                      aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
@@ -1565,8 +1747,7 @@
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
-            <!--添加输入框-->
+            <!--输入框-->
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
@@ -1575,183 +1756,51 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">门店</h5>
+                                <h5 class="modal-title" id="exampleModalLabel1">成品编辑</h5>
                             </div>
                             <div class="modal-body">
                                 <form>
                                     <div class="form-group">
-                                        <label class="control-label mb-10">用户/门店名称:</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-
+                                        <select class="form-control select2 select2-hidden-accessible"
+                                                tabindex="-1" aria-hidden="true">
+                                            <option><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">请选择菜品</font></font>
+                                            </option>
+                                            <option value="AK"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
+                                            </option>
+                                            <option value="HI"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">夏威夷</font></font>
+                                            </option>
+                                        </select></div>
                                     <div class="form-group">
-                                        <label class="control-label mb-10">门店/用户类别:</label>
-                                        <select class="form-control">
-                                            <option>All Contacts</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>Custom</option>
+                                        <select class="form-control select2 select2-hidden-accessible"
+                                                tabindex="-1" aria-hidden="true">
+                                            <option><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">请选择货架</font></font>
+                                            </option>
+                                            <option value="AK"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
+                                            </option>
+                                            <option value="HI"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">夏威夷</font></font>
+                                            </option>
                                         </select>
                                     </div>
-
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control">
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label mb-10">地址</label>
-                                        <textarea class="form-control"></textarea>
-                                    </div>
-
-
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">保存</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">门店信息</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
-                                                            <div class="row">
-                                                                <!--门店-->
-                                                                <div class="col-md-6">
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">地址:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">电话:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-                                                                <div class="col-md-6">
-
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单项数量:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店编号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">状态:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
-                </div>
-            </div>
-
         </div>
 
 
@@ -1786,14 +1835,8 @@
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
 
@@ -1819,12 +1862,7 @@
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
-
-    function addContractOrderUrl() {
-        window.location.href = "添加合同订单.html";
-    }
 </script>
 </body>
 
 </html>
-
