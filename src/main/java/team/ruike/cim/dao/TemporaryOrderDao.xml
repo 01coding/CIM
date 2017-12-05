@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
         <collection property="temporaryOrderTerms" column="temporary_order_id" select="team.ruike.cim.dao.TemporaryOrderTermDao.selectByTemporaryOrderId"/>
     </resultMap>
-    <insert id="add" parameterType="temporaryOrder">
+    <insert id="add" useGeneratedKeys="true" keyProperty="temporary_order_id" parameterType="temporaryOrder">
         INSERT  INTO temporary_order VALUES (DEFAULT ,#{temporaryOrderNo},#{temporaryOrderEndDate},#{temporaryOrderState.temporaryOrderStateId},
         #{temporaryOrderStartDate},#{temporaryOrderRemarks},#{storeId},#{user.userId},0)
     </insert>

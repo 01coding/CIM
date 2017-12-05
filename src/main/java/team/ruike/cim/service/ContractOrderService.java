@@ -5,6 +5,8 @@ import team.ruike.cim.pojo.ContractOrderTerm;
 import team.ruike.cim.pojo.OrderContract;
 import team.ruike.cim.util.Pager;
 
+import java.util.List;
+
 /**
  * 合同订单业务接口
  *
@@ -36,9 +38,9 @@ public interface ContractOrderService {
      *
      * @param orderContract     订单合同
      * @param contractOrder     合同订单
-     * @param contractOrderTerm 合同订单项
+     * @param contractOrderTerms 合同订单项集合
      */
-    public void addContractOrder(OrderContract orderContract, ContractOrder contractOrder, ContractOrderTerm contractOrderTerm);
+    public void addContractOrder(OrderContract orderContract, ContractOrder contractOrder, List<ContractOrderTerm> contractOrderTerms);
 
 
 }
