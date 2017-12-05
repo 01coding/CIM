@@ -7,6 +7,7 @@ import team.ruike.cim.service.QualityService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 质量管理控制器
@@ -22,8 +23,9 @@ public class QualityController {
      * @return 记录页面jsp
      */
     @RequestMapping("/record.do")
-    public String record(PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager){
-
+    public String record(PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
+        qualityService.getRecordList(purchaseStandardRecord,pager);
+        request.setAttribute("page1",pager);
         return "quality/record";
     }
 }
