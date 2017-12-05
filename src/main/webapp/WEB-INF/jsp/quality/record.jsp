@@ -1059,19 +1059,21 @@
                                                                             </tr>
                                                                             </tfoot>
                                                                             <tbody>
-                                                                            <c:forEach items="${requesrScore.page1.list}" var="par">
-                                                                                <tr>
-                                                                                    <td>物料</td>
-                                                                                    <td>${par.purchaseStandardRecordId}</td>
-                                                                                    <td>里脊肉</td>
-                                                                                    <td>物料批次</td>
-                                                                                    <td><a data-toggle="modal"
-                                                                                           data-target=".bs-example-modal-lg"><span
-                                                                                            class="glyphicon glyphicon-th-large"
-                                                                                            aria-hidden="true"></span>详情</a>
-                                                                                    </td>
-                                                                                    <td>结论：合格</td>
-                                                                                </tr>
+                                                                            <c:forEach items="${requestScope.page1}" var="par">
+                                                                                <c:forEach items="${par.purchaseStandard.purchase.purchaseItems}" var="pg">
+                                                                                    <tr>
+                                                                                        <td>物料</td>
+                                                                                        <td>4</td>
+                                                                                        <td>里脊肉</td>
+                                                                                        <td>物料批次</td>
+                                                                                        <td><a data-toggle="modal"
+                                                                                               data-target="#a"><span
+                                                                                                class="glyphicon glyphicon-th-large"
+                                                                                                aria-hidden="true"></span>详情</a>
+                                                                                        </td>
+                                                                                        <td>结论：合格</td>
+                                                                                    </tr>
+                                                                                </c:forEach>
                                                                             </c:forEach>
                                                                             </tbody>
                                                                         </table>
@@ -1148,7 +1150,7 @@
                                                                                 <td>初加工</td>
                                                                                 <td>生产批次</td>
                                                                                 <td><a data-toggle="modal"
-                                                                                       data-target=".bs-example-modal-lg"><span
+                                                                                       data-target="#b"><span
                                                                                         class="glyphicon glyphicon-th-large"
                                                                                         aria-hidden="true"></span>详情</a>
                                                                                 </td>
@@ -1323,7 +1325,7 @@
             <div class="row">
                 <!--提示框-->
                 <div class="col-md-6">
-                    <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                    <div class="modal fade bs-example-modal-lg" id="a" tabindex="-1" role="dialog"
                          aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -1377,7 +1379,62 @@
                 </div>
             </div>
 
-
+            <div class="row">
+                <!--提示框-->
+                <div class="col-md-6">
+                    <div class="modal fade bs-example-modal-lg" id="b" tabindex="-1" role="dialog"
+                         aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
+                                    </button>
+                                    <h5 class="modal-title" id="myLargeModalLabel1">Large modal</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <h5 class="mb-15">物料品控信息</h5>
+                                    <div class="panel panel-default card-view">
+                                        <div class="panel-wrapper collapse in">
+                                            <div class="panel-body row pa-0">
+                                                <table class="table table-hover mb-0">
+                                                    <thead>
+                                                    <tr>
+                                                        <th><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">品控标准</font></font></th>
+                                                        <th><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">评级</font></font></th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">是否新鲜</font></font></td>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">是</font></font></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">质感评分</font></font></td>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;">6</font></font></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- /.modal-content -->
+                        </div>
+                        <!-- /.modal-dialog -->
+                    </div>
+                </div>
+            </div>
             <!-- Footer -->
             <footer class="footer container-fluid pl-30 pr-30">
                 <div class="row">
