@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="store_order_number" property="storeOrderNumber"/>
         <result column="store_no" property="storeNo"/>
         <result column="password" property="password"/>
-        <result column="" property="status"/>
+        <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="store">
         INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},#{storeOrderNumber},#{storeNo},#{password},#{status})
@@ -48,7 +48,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <if test="store.storeOrderNumber!=null and store.storeOrderNumber>0">
           AND store_order_number=#{store.storeOrderNumber}
       </if>
-      <if test="store.storeNo!=null store.and storeNo>0">
+      <if test="store.storeNo!=null and store.storeNo>0">
           AND store_no=#{store.storeNo}
       </if>
       <if test="store.password!=null and store.password!=''">
@@ -59,6 +59,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         select * from (<include refid="sql"/>) f
         limit #{begin},#{pagesize}
     </select>
+
     <select id="selectCount" resultType="int" parameterType="store">
         SELECT COUNT(1)FROM store WHERE status=0
         <if test="storeId!=null and storeId>0">

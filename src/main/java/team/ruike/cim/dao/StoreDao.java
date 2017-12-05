@@ -37,7 +37,7 @@ public interface StoreDao {
      * @param pageSize      页面数据大小
      * @return 门店用户表对象集合
      */
-    List<Store> select(@Param("store") Store store, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+    List<Store> select(@Param("store") Store store, @Param("begin") int pageNo, @Param("pagesize") int pageSize);
 
     /**
      * 查询数据总条数
