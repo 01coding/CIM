@@ -2,7 +2,7 @@
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/4
-  Time: 8:56
+  Time: 8:55
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,25 +11,45 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>添加合同订单</title>
+    <title>门店管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
-
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
-
-    <!-- Bootstrap Wysihtml5 css -->
-    <link rel="stylesheet" href="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
-
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
+    <!-- vector map CSS -->
+    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Footable CSS -->
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+
+    <!--alerts CSS -->
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <style>
+        /*** guide ***/
+        .guide {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000
+        }
+
+        .guide .btn-circle {
+            width: 55px;
+            height: 55px;
+            margin-left: 12px;
+            box-shadow: 1px 1px 1px #888888;
+        }
+    </style>
 
 </head>
 
@@ -443,7 +463,7 @@
                 </ul>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
                     <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -474,14 +494,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a class="active-page" href="javascript:void(0);" data-toggle="collapse"
-                           data-target="#contact_dr">Contacts
+                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts
                             <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a class="active-page" href="添加合同订单.html">list</a>
+                                <a href="添加合同订单.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -662,7 +681,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
                     <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -679,8 +698,8 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a href="合同订单.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
-                            Table</a>
+                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                                class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
                         <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
@@ -760,7 +779,7 @@
                 </a>
                 <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a class="active" href="blank.html">Blank Page</a>
+                        <a href="blank.html">Blank Page</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages
@@ -1331,17 +1350,18 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">Export</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>apps</span></a></li>
-                        <li class="active"><span>contact list</span></li>
+                        <li><a href="#"><span>table</span></a></li>
+                        <li class="active"><span>Export</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1350,184 +1370,82 @@
 
             <!-- Row -->
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="panel panel-default card-view pa-0">
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <div class="contact-list">
-                                    <div class="row">
+                            <div class="panel-body">
 
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
 
-                                        <aside class="col-lg-2 col-md-4 pr-0">
-                                            <!--选择合同 div-->
-                                            <div class="mt-20 mb-20 ml-15 mr-15">
-                                                <a href="#myModal" data-toggle="modal" title="Compose"
-                                                   class="btn btn-danger btn-block">选择合同</a>
-                                                <!-- Modal -->
-                                                <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
-                                                     class="modal fade" style="display: none;">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <button type="button" class="close" data-dismiss="modal"
-                                                                        aria-hidden="true">×
-                                                                </button>
-                                                                <h4 class="modal-title">选择合同</h4>
-                                                            </div>
-                                                            <div class="modal-body">
-                                                                <form class="form-horizontal form-material">
-                                                                    <div class="form-group">
-                                                                        <div class="col-md-12 mb-20">
+                                        <div style="float: right;" >
+                                            <form class="form-inline">
+                                                <div class="form-group">
 
-                                                                            <label class="control-label mb-10">合同</label>
-                                                                            <select class="form-control">
-                                                                                <option>All Contacts</option>
-                                                                                <option>10</option>
-                                                                                <option>20</option>
-                                                                            </select>
-
-                                                                        </div>
-
-                                                                    </div>
-                                                                </form>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-info waves-effect"
-                                                                        data-dismiss="modal">保存
-                                                                </button>
-                                                                <button type="button"
-                                                                        class="btn btn-default waves-effect"
-                                                                        data-dismiss="modal">取消
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                        <!-- /.modal-content -->
-                                                    </div>
-                                                    <!-- /.modal-dialog -->
-                                                </div>
-                                                <!-- /.modal -->
-                                            </div>
-
-                                            <a class="txt-success create-label  pa-15" href="javascript:void(0)"
-                                               data-toggle="modal" data-target="#myModal_1">+ 添加菜品</a>
-                                            <div id="myModal_1" class="modal fade in" tabindex="-1" role="dialog"
-                                                 aria-labelledby="myModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <button type="button" class="close" data-dismiss="modal"
-                                                                    aria-hidden="true">×
-                                                            </button>
-                                                            <h5 class="modal-title" id="myModalLabel">添加菜品</h5>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <form>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">菜品类型</label>
-                                                                    <select class="form-control">
-                                                                        <option>All Contacts</option>
-                                                                        <option>10</option>
-                                                                        <option>20</option>
-                                                                        <option>30</option>
-                                                                        <option>40</option>
-                                                                        <option>Custom</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">菜品</label>
-                                                                    <select class="form-control">
-                                                                        <option>All Contacts</option>
-                                                                        <option>10</option>
-                                                                        <option>20</option>
-                                                                        <option>30</option>
-                                                                        <option>40</option>
-                                                                        <option>Custom</option>
-                                                                    </select>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                    <label class="control-label mb-10">菜品数量</label>
-                                                                    <input type="text" class="form-control"
-                                                                           placeholder="数量">
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-success waves-effect"
-                                                                    data-dismiss="modal">保存
-                                                            </button>
-                                                            <button type="button" class="btn btn-default waves-effect"
-                                                                    data-dismiss="modal">取消
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">用户/门店名称:</label>
+                                                        <input type="text" class="form-control"
+                                                               placeholder="名称">
+                                                        <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                            <button type="button" class="btn btn-primary"
+                                                                    style="height:42px;">
+                                                                <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
                                                     </div>
-                                                    <!-- /.modal-content -->
-                                                </div>
-                                                <!-- /.modal-dialog -->
-                                            </div>
 
-                                        </aside>
 
-                                        <aside class="col-lg-10 col-md-8 pl-0">
-                                            <div class="panel pa-0">
-                                                <div class="panel-wrapper collapse in">
-                                                    <div class="panel-body  pa-0">
-                                                        <div class="table-responsive mb-30">
-                                                            <table id="datable_1"
-                                                                   class="table  display table-hover mb-30"
-                                                                   data-page-size="10">
-                                                                <thead>
-                                                                <tr>
-
-                                                                    <th>ID</th>
-                                                                    <th>菜品编号</th>
-                                                                    <th>名称</th>
-                                                                    <th>数量</th>
-                                                                    <th>Action</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>1</td>
-                                                                    <td>13878234y89203</td>
-                                                                    <td><a href="#">Jens Brincker</a></td>
-                                                                    <td contentEditable="true">789</td>
-                                                                    <td>
-                                                                        <a href="javascript:void(0)"
-                                                                           class="text-inverse" title="Delete"
-                                                                           data-toggle="tooltip"><i
-                                                                                class="zmdi zmdi-delete txt-danger"></i></a>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>13</td>
-                                                                    <td>13878234y89203</td>
-                                                                    <td><a href="#">Tom Armitage</a></td>
-                                                                    <td contentEditable="true">12</td>
-                                                                    <td>
-                                                                        <a href="javascript:void(0)"
-                                                                           class="text-inverse" title="Delete"
-                                                                           data-toggle="tooltip"><i
-                                                                                class="zmdi zmdi-delete txt-danger"></i></a>
-                                                                    </td>
-                                                                </tr>
-
-                                                                </tbody>
-                                                            </table>
-
-                                                        </div>
-                                                        <button class="btn btn-danger" type="submit"
-                                                                style="float: right">保存
-                                                        </button>
+                                                    <div class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                        <label class="control-label mb-10">门店/用户类别:</label>
+                                                        <select class="form-control">
+                                                            <option selected>请选择</option>
+                                                            <option>10</option>
+                                                            <option>20</option>
+                                                        </select>
                                                     </div>
+
+
+
                                                 </div>
+                                            </form>
+                                        </div>
+
+                                       <%--table--%>
+
+                                        <div class="guide">
+                                            <div class="guide-wrap">
+                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
+                                                    <i class="icon-rocket"></i>
+                                                </button>
+                                                <button class="btn btn-info btn-icon-anim btn-circle"
+                                                        data-toggle="modal" data-target="#exampleModal">
+                                                    <i class="fa ti-plus"></i>
+                                                </button>
                                             </div>
-                                        </aside>
+                                        </div>
+
                                     </div>
                                 </div>
+
+
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="pagination pagination-split">
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="disabled"><a href="#">1</a></li>
+                                                    <li class="active"><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1535,6 +1453,255 @@
             </div>
             <!-- /Row -->
         </div>
+
+
+        <div class="row">
+
+            <!--删除提示框-->
+            <div class="col-md-6">
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
+                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
+                        <div class="sa-icon sa-error" style="display: none;">
+						  <span class="sa-x-mark">
+							<span class="sa-line sa-left"></span>
+							<span class="sa-line sa-right"></span>
+						  </span>
+                        </div>
+                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                            <span class="sa-body pulseWarningIns"></span>
+                            <span class="sa-dot pulseWarningIns"></span>
+                        </div>
+                        <div class="sa-icon sa-info" style="display: none;"></div>
+                        <div class="sa-icon sa-success" style="display: none;">
+                            <span class="sa-line sa-tip"></span>
+                            <span class="sa-line sa-long"></span>
+
+                            <div class="sa-placeholder"></div>
+                            <div class="sa-fix"></div>
+                        </div>
+                        <div class="sa-icon sa-custom" style="display: none;"></div>
+                        <h2>你确定？</h2>
+                        <p style="display: block;">你将无法恢复这个的数据！</p>
+                        <fieldset>
+                            <input type="text" tabindex="3" placeholder="">
+                            <div class="sa-input-error"></div>
+                        </fieldset>
+                        <div class="sa-error-container">
+                            <div class="icon">!</div>
+                            <p>Not valid!</p>
+                        </div>
+                        <div class="sa-button-container">
+                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                                    data-dismiss="modal" aria-label="Close">不，取消！
+                            </button>
+                            <div class="sa-confirm-button-container">
+                                <button class="confirm" tabindex="1"
+                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                    是的，删除它！
+                                </button>
+                                <div class="la-ball-fall">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </div>
+
+            <!--添加输入框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title" id="exampleModalLabel1">门店</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">用户/门店名称:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">门店/用户类别:</label>
+                                        <select class="form-control">
+                                            <option>All Contacts</option>
+                                            <option>10</option>
+                                            <option>20</option>
+                                            <option>30</option>
+                                            <option>40</option>
+                                            <option>Custom</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">电话:</label>
+                                        <input type="text" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">地址</label>
+                                        <textarea class="form-control"></textarea>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">保存</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--查看显示框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+                    <!-- Row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default card-view">
+                                <div class="panel-heading">
+                                    <div class="pull-left">
+                                        <h6 class="panel-title txt-dark">门店信息</h6>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-wrapper collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-wrap">
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-body">
+                                                            <hr class="light-grey-hr"/>
+                                                            <div class="row">
+                                                                <!--门店-->
+                                                                <div class="col-md-6">
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">地址:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Male </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!--/span-->
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">电话:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    24/05/1990 </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--/span-->
+                                                                </div>
+                                                                <div class="col-md-6">
+
+
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">下单项数量:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">门店编号:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    Male </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div>
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">状态:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static">
+                                                                                    John </p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+
+                                                        <div class="form-actions mt-10">
+                                                            <div class="row">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-2">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">Cancel
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Row -->
+                </div>
+            </div>
+
+        </div>
+
 
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
@@ -1560,20 +1727,20 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- wysuhtml5 Plugin JavaScript -->
-<script src="../../../vendors/bower_components/wysihtml5x/dist/wysihtml5x.min.js"></script>
-
-<script src="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
-<!-- Bootstrap Wysuhtml5 Init JavaScript -->
-<script src="../../../dist/js/bootstrap-wysuhtml5-data.js"></script>
-
 <!-- Data table JavaScript -->
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
+
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
+
 
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
@@ -1584,9 +1751,49 @@
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Fancy Dropdown JS -->
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
 
+
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="../../../dist/js/sweetalert-data.js"></script>
+
+<script>
+    function sc() {
+        window.location.href = "javascript:window.scrollTo(0,0)";
+    };
+
+    function addContractOrderUrl() {
+        window.location.href = "添加合同订单.html";
+    };
+
+    $(function () {
+        list();
+    });
+
+    function list() {
+
+    }
+    function load(url,data,container){
+        $.ajax({
+            url: url,
+            type: 'post',
+            data: data,  // post时请求体
+            dataType: 'html',
+            success:function (html) {
+
+            },error:function() {
+                alert(1)
+            }
+
+        });
+    };
+</script>
 </body>
 
 </html>

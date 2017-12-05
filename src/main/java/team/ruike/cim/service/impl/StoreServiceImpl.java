@@ -62,7 +62,7 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @Transactional
-    public void deleteStoreById(Integer storeId) {
+    public void deleteStoreById(final Integer storeId) {
         if (storeId != null && storeId > 0) {
             storeDao.update(new Store() {
                 {

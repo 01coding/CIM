@@ -49,6 +49,6 @@ public class GenerateNumber {
     }
 
     public static void main(String[] args) {
-        System.out.println(getRandomFileName());
+
     }
 }
