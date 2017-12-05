@@ -1,10 +1,12 @@
 package team.ruike.cim.service.impl;
 
+import javafx.collections.SetChangeListener;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.StoreDao;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.service.StoreService;
+import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -28,9 +30,8 @@ public class StoreServiceImpl implements StoreService {
         Store store = null;
         if (storeId != null && storeId > 0) {
             store = storeDao.selectById(storeId);
-            return store;
         }
-        return null;
+        return store;
     }
 
     @Transactional
@@ -38,10 +39,10 @@ public class StoreServiceImpl implements StoreService {
         if (store == null) {
             new NullPointerException("not is null");
         }
-        store.setStoreNo(getUUID());
+        store.setStoreNo(GenerateNumber.getGenerateNumber().getUUID());
         storeDao.add(store);
     }
-
+    @Transactional
     public void updateStoreById(Store store) {
 
         if (store == null) {
@@ -52,21 +53,16 @@ public class StoreServiceImpl implements StoreService {
         }
         storeDao.update(store);
     }
-
+    @Transactional
     public void deleteStoreById(Integer storeId) {
         if (storeId!=null && storeId>0){
-            //todo
-        }else{
-
+            storeDao.update(new Store(){
+                {setStoreId(storeId);}
+            });
         }
+        new NullPointerException("storeId not is null");
     }
 
-    /*随机数*/
-    public static Integer getUUID() {
-        String uuid = String.valueOf(UUID.randomUUID().getMostSignificantBits());
-        uuid.substring(0).toString();
-        uuid = uuid.substring(0, 11);
-        return Integer.valueOf(uuid);
-    }
+
 
 }
