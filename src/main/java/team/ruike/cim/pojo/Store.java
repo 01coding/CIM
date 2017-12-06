@@ -21,7 +21,7 @@ public class Store implements Serializable {
      */
     private String storeName;
     /**
-     * 门店/用户类别(1合同用户0散户)
+     * 门店/用户类别(1合同用户2散户)
      */
     private Integer storeType;
     /**
@@ -39,7 +39,7 @@ public class Store implements Serializable {
     /**
      * 门店编号
      */
-    private Integer storeNo;
+    private String storeNo;
     /**
      * 密码
      */
@@ -104,11 +104,11 @@ public class Store implements Serializable {
     }
 
 
-    public Integer getStoreNo() {
+    public String getStoreNo() {
         return storeNo;
     }
 
-    public void setStoreNo(Integer storeNo) {
+    public void setStoreNo(String storeNo) {
         this.storeNo = storeNo;
     }
 

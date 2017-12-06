@@ -53,7 +53,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
         if (orderContract != null && contractOrder != null && contractOrderTerms != null && contractOrderTerms.size() > 0) {
             contractOrder.setOrderContract(orderContract);
             //订单号
-            contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getUUID().toString());
+            contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
             Integer orderId = contractOrderDao.add(contractOrder);
             //添加合同订单项
             for (ContractOrderTerm contractOrderTerm : contractOrderTerms) {
