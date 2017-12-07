@@ -31,19 +31,19 @@
         <if test="productWarehouseRegion.productWarehouseRegionId!=null and productWarehouseRegion.productWarehouseRegionId>0">
             AND product_warehouse_region_id=#{productWarehouseRegion.productWarehouseRegionId}
         </if>
-        <if test="productWarehouseRegion.productWarehouseRegionNo!=null and productWarehouseRegion.productWarehouseRegionNo!=''">
+        <if test="productWarehouseRegion.productWarehouseRegionNo!=null and productWarehouseRegion.productWarehouseRegionNo>0">
             AND product_warehouse_region_no like CONCAT('%',#{productWarehouseRegion.productWarehouseRegionNo},'%')
         </if>
         <if test="productWarehouseRegion.remarks!=null and productWarehouseRegion.remarks!=''">
             AND remarks like CONCAT('%',#{productWarehouseRegion.remarks},'%')
         </if>
-        <if test="productWarehouseRegion.menuType!=null and productWarehouseRegion.menuType.menuTypeId!=null and productWarehouseRegion.menuType.menuTypeId>0">
+        <if test="productWarehouseRegion.menuType!=null  and productWarehouseRegion.menuType.menuTypeId>0">
             AND menu_type_id=#{productWarehouseRegion.menuType.menuTypeId}
         </if>
-        <if test="productWarehouseRegion.productWarehouse!=null and productWarehouseRegion.productWarehouse.productWarehouseId!=null productWarehouseRegion.productWarehouse.productWarehouseId>0">
+        <if test="productWarehouseRegion.productWarehouse!=null and  productWarehouseRegion.productWarehouse.productWarehouseId>0">
             AND product_warehouse_id=#{productWarehouseRegion.productWarehouse.productWarehouseId}
         </if>
-         limit(#{pageNo},#{pageSize})
+         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int">
         SELECT COUNT(1) FROM product_warehouse_region
@@ -51,16 +51,16 @@
         <if test="productWarehouseRegion.productWarehouseRegionId!=null and productWarehouseRegion.productWarehouseRegionId>0">
             AND product_warehouse_region_id=#{productWarehouseRegion.productWarehouseRegionId}
         </if>
-        <if test="productWarehouseRegion.productWarehouseRegionNo!=null and productWarehouseRegion.productWarehouseRegionNo!=''">
+        <if test="productWarehouseRegion.productWarehouseRegionNo!=null and productWarehouseRegion.productWarehouseRegionNo>0">
             AND product_warehouse_region_no like CONCAT('%',#{productWarehouseRegion.productWarehouseRegionNo},'%')
         </if>
         <if test="productWarehouseRegion.remarks!=null and productWarehouseRegion.remarks!=''">
             AND remarks like CONCAT('%',#{productWarehouseRegion.remarks},'%')
         </if>
-        <if test="productWarehouseRegion.menuType!=null and productWarehouseRegion.menuType.menuTypeId!=null and productWarehouseRegion.menuType.menuTypeId>0">
+        <if test="productWarehouseRegion.menuType!=null and productWarehouseRegion.menuType.menuTypeId>0">
             AND menu_type_id=#{productWarehouseRegion.menuType.menuTypeId}
         </if>
-        <if test="productWarehouseRegion.productWarehouse!=null and productWarehouseRegion.productWarehouse.productWarehouseId!=null productWarehouseRegion.productWarehouse.productWarehouseId>0">
+        <if test="productWarehouseRegion.productWarehouse!=null and productWarehouseRegion.productWarehouse.productWarehouseId>0">
             AND product_warehouse_id=#{productWarehouseRegion.productWarehouse.productWarehouseId}
         </if>
     </select>

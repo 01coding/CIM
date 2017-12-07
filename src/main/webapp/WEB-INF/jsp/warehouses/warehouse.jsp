@@ -1396,9 +1396,9 @@
                                                        data-target="#editor-modal3"><i
                                                             class="fa fa-plus-square" title="添加仓库"></i></a>
                                                 </div>
-                                                <a href="warehouse_region.jsp"> <img
+                                                <a href="/getwarehouseregion.do"> <img
                                                         src="../../../images/menuimg/timg.jpg" class="img-responsive"
-                                                        alt="Product Image" title="查看"/> </a>
+                                                        alt="Product Image" title="查看区域"/> </a>
                                                 <div class="info">
                                                     <h6>
                                                             ${warh.warehouseName}
@@ -1437,9 +1437,9 @@
                                                    data-target="#editor-modal4"><i
                                                         class="fa fa-plus-square" title="添加仓库"></i></a>
                                             </div>
-                                            <a href="warehouse_region.html"> <img src="../../../images/menuimg/timg.jpg"
+                                            <a href="/getProductwarehouseregion.do"> <img src="../../../images/menuimg/timg.jpg"
                                                                                   class="img-responsive"
-                                                                                  alt="Product Image" title="查看"/> </a>
+                                                                                  alt="Product Image" title="查看区域"/> </a>
                                             <div class="info">
                                                 <h6>
                                                    ${prs.productWarehouseName}
