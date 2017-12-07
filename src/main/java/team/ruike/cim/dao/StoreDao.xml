@@ -15,8 +15,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="store">
-        INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},#{storeOrderNumber},#{storeNo},#{password},#{status})
+        INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},0,#{storeNo},'123456',0)
     </insert>
+    
     <update id="update" parameterType="store">
         UPDATE store SET
             store_name=#{storeName},
@@ -28,6 +29,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             status=#{status}
             WHERE store_id=#{storeId}
     </update>
+    
+    <update id="hiddenById">
+        update store set `status`=1 WHERE store_id=#{storeId}
+    </update>
+    
   <sql id="sql">
       SELECT * FROM store WHERE status=0
       <if test="store.storeId!=null and store.storeId>0">
@@ -57,6 +63,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </sql>
     <select id="select" resultMap="storeMap">
         select * from (<include refid="sql"/>) f
+        ORDER BY  store_id desc
         limit #{begin},#{pagesize}
     </select>
 
@@ -90,7 +97,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectById" parameterType="int" resultMap="storeMap">
           select * from store WHERE  status=0
         <if test="storeId!=null and storeId>0">
-            store_id=#{storeId}
+           and store_id=#{storeId}
         </if>
     </select>
 </mapper>

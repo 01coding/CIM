@@ -52,5 +52,12 @@ public interface StoreDao {
      * @param storeId 门店用户表id
      * @return 门店用户表对象
      */
-    Store selectById(Integer storeId);
+    Store selectById(@Param("storeId")Integer storeId);
+
+
+    /**
+     * 根据id 隐藏删除
+     * @param storeId
+     */
+    void hiddenById(@Param("storeId")Integer storeId);
 }

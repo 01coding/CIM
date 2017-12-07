@@ -10274,7 +10274,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bFilter": true,
+		"bFilter": false,
 	
 	
 		/**

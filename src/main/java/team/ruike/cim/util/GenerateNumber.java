@@ -1,6 +1,8 @@
 package team.ruike.cim.util;
 
-import java.text.SimpleDateFormat;
+import java.security.SecureRandom;
+import java.text.*;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -22,13 +24,8 @@ public class GenerateNumber {
         return generateNumber;
     }
 
-    /*随机数11位*/
-    public Integer getUUID() {
-        String uuid = String.valueOf(UUID.randomUUID().getMostSignificantBits());
-        uuid.substring(0).toString();
-        uuid = uuid.substring(0, 11);
-        return Integer.valueOf(uuid);
-    }
+
+
 
     //生产批次 11
     public  String getRandomFileName() {
@@ -51,4 +48,6 @@ public class GenerateNumber {
     public static void main(String[] args) {
 
     }
+
+
 }
