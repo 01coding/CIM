@@ -40,37 +40,36 @@ public class StoreServiceImpl implements StoreService {
         return store;
     }
 
-    @Transactional
+
     public void addStore(Store store) {
-        if (store == null) {
-            new NullPointerException("not is null");
+        if (store == null | store.getStoreName() == "") {
+            throw new RuntimeException("not is null");
         }
-        store.setStoreNo(GenerateNumber.getGenerateNumber().getUUID());
+        String storeNo = GenerateNumber.getGenerateNumber().getRandomFileName();
+        store.setStoreNo(storeNo);
         storeDao.add(store);
     }
 
-    @Transactional
+
     public void updateStoreById(Store store) {
 
         if (store == null) {
-            new NullPointerException("store not is null");
+            throw new NullPointerException("store not is null");
         }
         if (store.getStoreId() == null | store.getStoreId() < 0) {
-            new NullPointerException("storeId not is null");
+            throw new NullPointerException("storeId not is null");
         }
         storeDao.update(store);
     }
 
-    @Transactional
+
     public void deleteStoreById(final Integer storeId) {
         if (storeId != null && storeId > 0) {
-            storeDao.update(new Store() {
-                {
-                    setStoreId(storeId);
-                }
-            });
+            storeDao.hiddenById(storeId);
+        }else{
+            throw new NullPointerException("storeId not is null");
         }
-        new NullPointerException("storeId not is null");
+
     }
 
 

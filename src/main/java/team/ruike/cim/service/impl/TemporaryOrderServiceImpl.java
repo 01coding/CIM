@@ -29,7 +29,6 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
     @Resource
     private TemporaryOrderTermDao temporaryOrderTermDao;
 
-    @Override
     public void queryTemporaryOrder(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager) {
         Integer count = temporaryOrderDao.selectCount(temporaryOrder);
         pager.setTotalRecord(count);
@@ -50,7 +49,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
     public void addTemporaryOrder(TemporaryOrder temporaryOrder, List<TemporaryOrderTerm> temporaryOrderTerms) {
         if (temporaryOrder != null && temporaryOrderTerms != null && temporaryOrderTerms.size() > 0) {
             //订单号
-            temporaryOrder.setTemporaryOrderNo(GenerateNumber.getGenerateNumber().getUUID().toString());
+            temporaryOrder.setTemporaryOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
             //临时订单状态
             temporaryOrder.setTemporaryOrderState(new TemporaryOrderState() {{
                 setStatus(1);

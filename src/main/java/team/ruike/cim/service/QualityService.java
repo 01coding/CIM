@@ -39,4 +39,6 @@ public interface QualityService {
      * @param pager     分页辅助类
      */
     void getPurchaseStandard(PurchaseStandard purchaseStandard,Pager<PurchaseStandard> pager);
+
+
 }

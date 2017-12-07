@@ -10274,7 +10274,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bFilter": true,
+		"bFilter": false,
 	
 	
 		/**
@@ -10475,7 +10475,7 @@
 		 *      } );
 		 *    } );
 		 */
-		"bSort": true,
+		"bSort": false,
 	
 	
 		/**

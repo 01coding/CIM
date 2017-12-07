@@ -21,7 +21,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="productionLine.productionLineState!=null and productionLine.productionLineState>0">
             AND production_line_state=#{productionLine.productionLineState}
         </if>
-        <if test="rproductionLine.emarks!=null and productionLine.remarks!=''">
+        <if test="productionLine.remarks!=null and productionLine.remarks!=''">
             AND remarks=#{productionLine.remarks}
         </if>
     </sql>

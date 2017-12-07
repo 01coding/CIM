@@ -25,7 +25,7 @@ public class QualityController {
     @RequestMapping("/record.do")
     public String record(PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
         qualityService.getRecordList(purchaseStandardRecord,pager);
-        request.setAttribute("page1",pager);
+        request.setAttribute("page1",pager.getList());
         return "quality/record";
     }
 }
