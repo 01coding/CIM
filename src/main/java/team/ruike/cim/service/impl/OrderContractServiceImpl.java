@@ -23,7 +23,6 @@ public class OrderContractServiceImpl implements OrderContractService {
     public OrderContractDao orderContractDao;
 
 
-    @Override
     public void queryOrderContract(OrderContract orderContract, Pager<OrderContract> pager) {
         Integer count = orderContractDao.selectCount(orderContract);
         pager.setTotalRecord(count);
@@ -31,7 +30,6 @@ public class OrderContractServiceImpl implements OrderContractService {
         pager.setList(orderContractList);
     }
 
-    @Override
     public OrderContract queryOrderContractById(Integer orderContractId) {
         OrderContract orderContract = null;
         if (orderContractId != null && orderContractId > 0) {

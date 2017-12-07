@@ -80,4 +80,7 @@ public interface MaterielService{
      * @return 物料对象
      */
     Materiel getMaterielById(Integer materielId);
+
+
+
 }

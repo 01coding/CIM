@@ -1320,18 +1320,13 @@
                                                     <input type="text" class="form-control" placeholder="维修计划">
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                        <option value="Category 1">请选择设备状态</option>
-                                                        <option value="Category 1">设备状态1</option>
-                                                        <option value="Category 2">设备状态2</option>
-                                                        <option value="Category 3">设备状态3</option>
-                                                        <option value="Category 4">设备状态4</option>
-                                                    </select>
-                                                </div>
+                                                <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" class="form-control" disabled="disabled"   placeholder="设备状态默认正常">
+                                                        </div>
+                                                    </div>
                                             </div>
-                                        </div>
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">

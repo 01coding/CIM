@@ -1137,7 +1137,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="messages_tab" class="tab-pane fade" role="tabpanel">
                             <div class="message-box-wrap">
                                 <div class="msg-search">
@@ -1346,12 +1345,9 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
-
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -1368,19 +1364,15 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-
                                         <table id="example" class="table table-hover display  pb-30">
-
                                             <div style="width: 300px;float: right">
                                                 <form class="form-inline">
                                                     <div class="form-group">
@@ -1398,7 +1390,6 @@
                                                     </div>
                                                 </form>
                                             </div>
-
                                             <thead>
                                             <tr>
                                                 <th>所属生产线</th>
@@ -1428,18 +1419,20 @@
                                                 <tr>
                                                     <td>${e.productionLine.productionLineNo}</td>
                                                     <td>${e.working.workingName}</td>
-                                                    <td>${e.user.userName}</td>
+                                                    <td>${e.user.userId}-${e.user.userName}</td>
                                                     <td>${e.startDate}</td>
                                                     <td>${e.equipmentType.equipmentTypeName}</td>
                                                     <td>${e.maintenanceCycle}</td>
                                                     <td>${e.inspectionCycle}</td>
                                                     <td>${e.equipmentName}</td>
+                                                    <td name="equipment" hidden>${e.equipmentId}</td>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
                                                             <button type="button" class="btn btn-default footable-edit"
-                                                                    data-toggle="modal" data-target="#exampleModal">
+                                                                    data-toggle="modal" data-target="#exampleModal${e.equipmentId}" >
                                                             <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
+                                                                  aria-hidden="true">
+                                                            </span>
                                                             </button>
                                                             <button type="button" class="btn btn-default footable-delete"
                                                                     data-toggle="modal" data-target=".bs-example-modal-lg">
@@ -1449,10 +1442,137 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+                                                <div class="col-md-6">
+                                                    <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
+                                                         aria-labelledby="exampleModalLabel1">
+                                                        <div class="modal-dialog" role="document">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                                                            aria-hidden="true">&times;</span></button>
+                                                                    <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <form action="/updateMateriel.do">
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <input type="text" class="form-control" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}" >
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <input type="text" class="form-control" id="inspectionCycle" placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <input type="text" class="form-control" id="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <input type="text" class="form-control" id="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                            <div class="form-group">
+                                                                                <select id="workingName" style="width: 270px;height: 40px">
+                                                                                    <c:forEach items="${requestScope.workings}" var="w">
+                                                                                        <c:choose>
+                                                                                            <c:when test="${w.workingId!=e.working.workingId}">
+                                                                                                <option value="${w.workingId}">${w.workingName}</option>
+                                                                                            </c:when>
+                                                                                            <c:when test="${w.workingId==e.working.workingId}">
+                                                                                                <option value="${e.working.workingId}"selected="selected">${e.working.workingName}</option>
+                                                                                            </c:when>
+                                                                                        </c:choose>
+                                                                                    </c:forEach>
+                                                                                </select>
+                                                                            </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <select id="userName" style="width: 270px;height: 40px">
+                                                                                        <c:forEach items="${requestScope.users}" var="us">
+                                                                                            <c:choose>
+                                                                                                <c:when test="${us.userId!=e.user.userId}">
+                                                                                                    <option value="${us.userId}">${us.userName}-${us.userId}-${e.user.userId}</option>
+                                                                                                </c:when>
+                                                                                                <c:when test="${us.userId==e.user.userId}">
+                                                                                                    <option value="${e.user.userId}"selected="selected">${e.user.userName}-${us.userId}-${e.user.userId}</option>
+                                                                                                </c:when>
+                                                                                            </c:choose>
+                                                                                        </c:forEach>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <select id="equipmentTypeName" style="width: 270px;height: 40px">
+                                                                                        <c:forEach items="${requestScope.equipmentTypes}" var="equ">
+                                                                                            <c:choose>
+                                                                                                <c:when test="${e.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
+                                                                                                    <option value="${equ.equipmentTypeId}">${equ.equipmentTypeName}</option>
+                                                                                                </c:when>
+                                                                                                <c:when test="${e.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
+                                                                                                    <option value="${e.equipmentType.equipmentTypeId}" selected="selected" >${e.equipmentType.equipmentTypeName}</option>
+                                                                                                </c:when>
+                                                                                            </c:choose>
+                                                                                        </c:forEach>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div class="form-group">
+                                                                                    <select id="productionLineNo" style="width: 270px;height: 40px">
+                                                                                        <c:forEach items="${requestScope.productionLines}" var="ps">
+                                                                                            <c:choose>
+                                                                                                <c:when test="${ps.productionLineId!=e.productionLine.productionLineId}">
+                                                                                                    <option value="${ps.productionLineId}">${ps.productionLineNo}</option>
+                                                                                                </c:when>
+                                                                                                <c:when test="${ps.productionLineId==e.productionLine.productionLineId}">
+                                                                                                    <option value="${e.productionLine.productionLineId}" selected="selected">${e.productionLine.productionLineNo}</option>
+                                                                                                </c:when>
+                                                                                            </c:choose>
+                                                                                        </c:forEach>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div class="col-sm-6">
+                                                                                <div class="form-group">
+                                                                                    <label class="control-label mb-10 text-left"><font
+                                                                                            style="vertical-align: inherit;"><font
+                                                                                            style="vertical-align: inherit;"></font></font></label>
+                                                                                    <div class="input-group date" id="datetimepicker1">
+                                                                                        <input type="text" class="form-control" placeholder="日期时间选择" value="${e.startDate}">
+                                                                                        <span class="input-group-addon">
+                                                                                    <span class="fa fa-calendar"></span>
+                                                                                </span>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                                                            <button type="submit" class="btn btn-primary">确认修改</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                             </c:forEach>
                                             </tbody>
                                         </table>
-
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
@@ -1472,10 +1592,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /Row -->
         </div>
-
-
         <div class="row">
             <!--提示框-->
             <div class="col-md-6">
@@ -1513,151 +1630,23 @@
                             <div class="icon">!</div>
                             <p>Not valid!</p>
                         </div>
-                        <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-            <!--输入框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="设备编号">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category"
-                                                            tabindex="1">
-                                                        <option value="Category 1">请选择设备名称</option>
-                                                        <option value="Category 1">设备名称1</option>
-                                                        <option value="Category 2">设备名称2</option>
-                                                        <option value="Category 3">设备名称3</option>
-                                                        <option value="Category 4">设备名称4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="设备负责人">
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category"
-                                                            tabindex="1">
-                                                        <option value="Category 1">请选择设备所在工序</option>
-                                                        <option value="Category 1">设备所在工序1</option>
-                                                        <option value="Category 2">设备所在工序2</option>
-                                                        <option value="Category 3">设备所在工序3</option>
-                                                        <option value="Category 4">设备所在工序4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="control-label mb-10 text-left"><font
-                                                        style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;"></font></font></label>
-                                                <div class="input-group date" id="datetimepicker1">
-                                                    <input type="text" class="form-control" placeholder="日期时间选择">
-                                                    <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category"
-                                                            tabindex="1">
-                                                        <option value="Category 1">请选择所属生产线</option>
-                                                        <option value="Category 1">所属生产线1</option>
-                                                        <option value="Category 2">所属生产线2</option>
-                                                        <option value="Category 3">所属生产线3</option>
-                                                        <option value="Category 4">所属生产线4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="检查周期">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="保养周期">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control" data-placeholder="Choose a Category"
-                                                        tabindex="1">
-                                                    <option value="Category 1">请选择设备状态</option>
-                                                    <option value="Category 1">设备状态1</option>
-                                                    <option value="Category 2">设备状态2</option>
-                                                    <option value="Category 3">设备状态3</option>
-                                                    <option value="Category 4">设备状态4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">确认修改</button>
-                            </div>
-                        </div>
+                       <form action="/delMateriel.do">
+                           <div class="sa-button-container">
+                               <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                                       data-dismiss="modal" aria-label="Close">不，取消！
+                               </button>
+                               <div class="sa-confirm-button-container">
+                                   <button class="confirm" tabindex="1"
+                                           style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                       是的，删除它！
+                                   </button>
+                               </div>
+                           </div>
+                       </form>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
             <div class="panel-body">
                 <div class="row">
@@ -1675,8 +1664,6 @@
                 </div>
             </div>
         </div>
-
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1685,22 +1672,13 @@
                 </div>
             </div>
         </footer>
-        <!-- /Footer -->
-
     </div>
-    <!-- /Main Content -->
-
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -1708,39 +1686,46 @@
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-
-
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
 <script src="../../../dist/js/sweetalert-data.js"></script>
-
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
+    function fu(id) {
+//        $.ajax({
+//            type: "post",
+//            url: "/equipmentReportByID.do",
+//            data: {'equipmentId':id},
+//            success: function(data){
+//                $("#equipmentId").val(data.equipmentId);
+//                $("#equipmentName").val(data.equipmentName);
+//                $("#userName").val(data.user.userName);
+//                $("#workingName").val(data.working.workingName);
+//                $("#startDate").val(data.startDate);
+//                $("#productionLineNo").val(data.productionLine.productionLineNo);
+//                $("#inspectionCycle").val(data.inspectionCycle);
+//                $("#maintenanceCycle").val(data.maintenanceCycle);
+//                $("#equipmentTypeName").val(data.equipmentType.equipmentTypeName);
+//            },error:function () {
+//                alert('error')
+//            }
+//        });
+    }
 </script>
 </body>
-
 </html>
 
