@@ -1417,15 +1417,14 @@
                                             <tbody>
                                             <c:forEach items="${requestScope.equipments}" var="e">
                                                 <tr>
-                                                    <td>${e.productionLine.productionLineNo}</td>
+                                                    <td >${e.productionLine.productionLineNo}</td>
                                                     <td>${e.working.workingName}</td>
-                                                    <td>${e.user.userId}-${e.user.userName}</td>
+                                                    <td>${e.user.userName}</td>
                                                     <td>${e.startDate}</td>
                                                     <td>${e.equipmentType.equipmentTypeName}</td>
                                                     <td>${e.maintenanceCycle}</td>
                                                     <td>${e.inspectionCycle}</td>
                                                     <td>${e.equipmentName}</td>
-                                                    <td name="equipment" hidden>${e.equipmentId}</td>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
                                                             <button type="button" class="btn btn-default footable-edit"
@@ -1436,7 +1435,7 @@
                                                             </button>
                                                             <button type="button" class="btn btn-default footable-delete"
                                                                     data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
+                                                            <span class="fooicon fooicon-trash" title="修改"
                                                                   aria-hidden="true"></span>
                                                             </button>
                                                         </div>
@@ -1457,31 +1456,38 @@
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <input type="text" class="form-control" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}" >
+                                                                                    <input type="hidden"name="equipmentId" value="${e.equipmentId}"/></inpu>
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                        设备编号:
+                                                                                    </div>
+                                                                                    <div class="col-sm-7">
+                                                                                        <%--<input type="text" class="form-control" id="equipmentId" name="equipmentId" disabled="disabled" placeholder="设备编号" value="${e.equipmentId}">--%>
+                                                                                    </div>
+
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <input type="text" class="form-control" id="inspectionCycle" placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="text" class="form-control" name="inspectionCycle" id="inspectionCycle" placeholder="检查周期" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <input type="text" class="form-control" id="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
+                                                                                    <input type="text" class="form-control" name="equipmentName" id="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <input type="text" class="form-control" id="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="text" class="form-control" name="maintenanceCycle" id="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                             <div class="form-group">
-                                                                                <select id="workingName" style="width: 270px;height: 40px">
+                                                                                <select name="working.workingId" style="width: 270px;height: 40px">
                                                                                     <c:forEach items="${requestScope.workings}" var="w">
                                                                                         <c:choose>
                                                                                             <c:when test="${w.workingId!=e.working.workingId}">
@@ -1497,14 +1503,14 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <select id="userName" style="width: 270px;height: 40px">
+                                                                                    <select  name="user.userId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.users}" var="us">
                                                                                             <c:choose>
                                                                                                 <c:when test="${us.userId!=e.user.userId}">
-                                                                                                    <option value="${us.userId}">${us.userName}-${us.userId}-${e.user.userId}</option>
+                                                                                                    <option  value="${us.userId}">${us.userName}</option>
                                                                                                 </c:when>
                                                                                                 <c:when test="${us.userId==e.user.userId}">
-                                                                                                    <option value="${e.user.userId}"selected="selected">${e.user.userName}-${us.userId}-${e.user.userId}</option>
+                                                                                                    <option value="${e.user.userId}"selected="selected">${e.user.userName}</option>
                                                                                                 </c:when>
                                                                                             </c:choose>
                                                                                         </c:forEach>
@@ -1515,7 +1521,7 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <select id="equipmentTypeName" style="width: 270px;height: 40px">
+                                                                                    <select  name="equipmentType.equipmentTypeId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.equipmentTypes}" var="equ">
                                                                                             <c:choose>
                                                                                                 <c:when test="${e.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
@@ -1531,11 +1537,11 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <select id="productionLineNo" style="width: 270px;height: 40px">
+                                                                                    <select name="productionLine.productionLineId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.productionLines}" var="ps">
                                                                                             <c:choose>
-                                                                                                <c:when test="${ps.productionLineId!=e.productionLine.productionLineId}">
-                                                                                                    <option value="${ps.productionLineId}">${ps.productionLineNo}</option>
+                                                                                                <c:when  test="${ps.productionLineId!=e.productionLine.productionLineId}">
+                                                                                                    <option  value="${ps.productionLineId}">${ps.productionLineNo}</option>
                                                                                                 </c:when>
                                                                                                 <c:when test="${ps.productionLineId==e.productionLine.productionLineId}">
                                                                                                     <option value="${e.productionLine.productionLineId}" selected="selected">${e.productionLine.productionLineNo}</option>
@@ -1553,7 +1559,7 @@
                                                                                             style="vertical-align: inherit;"><font
                                                                                             style="vertical-align: inherit;"></font></font></label>
                                                                                     <div class="input-group date" id="datetimepicker1">
-                                                                                        <input type="text" class="form-control" placeholder="日期时间选择" value="${e.startDate}">
+                                                                                        <input name="startDate" type="text" class="form-control" placeholder="日期时间选择" value="${e.startDate}">
                                                                                         <span class="input-group-addon">
                                                                                     <span class="fa fa-calendar"></span>
                                                                                 </span>
@@ -1561,9 +1567,10 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button type="submit" class="btn btn-primary">确认修改</button>
+                                                                            <button type="submit" class="btn btn-primary">确认修改</button>>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1701,31 +1708,6 @@
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../../dist/js/sweetalert-data.js"></script>
-<script>
-    function sc() {
-        window.location.href = "javascript:window.scrollTo(0,0)";
-    }
-    function fu(id) {
-//        $.ajax({
-//            type: "post",
-//            url: "/equipmentReportByID.do",
-//            data: {'equipmentId':id},
-//            success: function(data){
-//                $("#equipmentId").val(data.equipmentId);
-//                $("#equipmentName").val(data.equipmentName);
-//                $("#userName").val(data.user.userName);
-//                $("#workingName").val(data.working.workingName);
-//                $("#startDate").val(data.startDate);
-//                $("#productionLineNo").val(data.productionLine.productionLineNo);
-//                $("#inspectionCycle").val(data.inspectionCycle);
-//                $("#maintenanceCycle").val(data.maintenanceCycle);
-//                $("#equipmentTypeName").val(data.equipmentType.equipmentTypeName);
-//            },error:function () {
-//                alert('error')
-//            }
-//        });
-    }
-</script>
 </body>
 </html>
 
