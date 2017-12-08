@@ -29,7 +29,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
     @Resource
     private ContractOrderTermDao contractOrderTermDao;
 
-    @Override
+
     public void queryContractOrder(ContractOrder contractOrder, Pager<ContractOrder> pager) {
         Integer count = contractOrderDao.selectCount(contractOrder);
         pager.setTotalRecord(count);
@@ -37,7 +37,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
         pager.setList(contractOrderList);
     }
 
-    @Override
+
     public ContractOrder queryContractOrderById(Integer contractOrderId) {
         ContractOrder contractOrder = null;
         if (contractOrderId != null && contractOrderId > 0) {
@@ -53,7 +53,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
         if (orderContract != null && contractOrder != null && contractOrderTerms != null && contractOrderTerms.size() > 0) {
             contractOrder.setOrderContract(orderContract);
             //订单号
-            contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
+            contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName());
             Integer orderId = contractOrderDao.add(contractOrder);
             //添加合同订单项
             for (ContractOrderTerm contractOrderTerm : contractOrderTerms) {
@@ -64,7 +64,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
                 contractOrderTermDao.add(contractOrderTerm);
             }
         } else {
-            new NullPointerException("添加合同订单失败 数据错误");
+            throw  new NullPointerException("添加合同订单失败 数据错误");
         }
 
     }
