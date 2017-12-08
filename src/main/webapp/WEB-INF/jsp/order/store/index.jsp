@@ -1391,17 +1391,17 @@
                                     <div class="table-responsive">
 
                                         <div style="float: right;" id="storePa">
-                                            <form class="form-inline">
+                                            <form class="form-inline" id="conditionStore">
                                                 <div class="form-group">
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">用户/门店名称:</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control" name="store.storeName"
                                                                placeholder="名称">
                                                         <div class="input-group-btn"
                                                              style=" position: relative; top: 16px;">
                                                             <button type="button" class="btn btn-primary"
-                                                                    style="height:42px;">
+                                                                    style="height:42px;" onclick="storeModule.list()">
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
@@ -1411,10 +1411,10 @@
                                                     <div class="input-group"
                                                          style="width: 300px;float: right;position: relative;right: 20px;">
                                                         <label class="control-label mb-10">门店/用户类别:</label>
-                                                        <select class="form-control">
-                                                            <option selected>请选择</option>
-                                                            <option>10</option>
-                                                            <option>20</option>
+                                                        <select class="form-control" name="store.storeType">
+                                                            <option value="0" selected>请选择</option>
+                                                            <option value="1">合同用户</option>
+                                                            <option value="2">散户</option>
                                                         </select>
                                                     </div>
 
@@ -1494,12 +1494,12 @@
                             <p>Not valid!</p>
                         </div>
                         <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                            <button id="cancel1" class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
                                     data-dismiss="modal" aria-label="Close">不，取消！
                             </button>
                             <div class="sa-confirm-button-container">
                                 <button class="confirm" tabindex="1" id="storeDel" onclick="storeList.del(this)"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                        data-dismiss="modal"  style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
                                     是的，删除它！
                                 </button>
                                 <div class="la-ball-fall">
@@ -1655,27 +1655,31 @@
 
     var storeModule = (function () {
         $(function () {
-            list();
+            toList();
         });
 
         function list() {
-            var data = $("#storePa").serializeArray();
+            var data = $("#conditionStore").serializeArray();
             appModule.load('/store/list.do', data, 'exampleTable');
         }
 
+        function toList() {
+            appModule.load('/store/list.do', null, 'exampleTable');
+        }
         function add() {
             var addStore = $("#addStore").serializeArray();
             appModule.post('/store/add.do', addStore, function (data) {
-                appModule.alert(data)
-                list();
+                appModule.alert("成功")
+                document.getElementById("addStore").reset();
+                toList();
             });
         }
 
         function edit() {
             var addStore = $("#updateStore").serializeArray();
             appModule.post('/store/edit.do',addStore,function (data) {
-                appModule.alert(data)
-                list();
+                appModule.alert("成功")
+                toList();
             });
         };
 
@@ -1683,7 +1687,8 @@
         return {
             add: add,
             edit:edit,
-            list:list
+            list:list,
+            toList:toList
         }
     })();
 </script>

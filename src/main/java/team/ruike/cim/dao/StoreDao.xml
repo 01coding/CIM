@@ -37,7 +37,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
           AND store_id=#{store.storeId}
       </if>
       <if test="store.storeName!=null and store.storeName!=''">
-          AND  store_name LIKE '%store.storeName%'
+          AND  store_name LIKE CONCAT('%',#{store.storeName},'%')
       </if>
       <if test="store.storeType!=null and store.storeType>0">
           AND  store_type=#{store.storeType}

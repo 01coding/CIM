@@ -2,8 +2,8 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.service.StoreService;
 import team.ruike.cim.util.Pager;
@@ -26,9 +26,18 @@ public class StoreController {
         return "order/store/index";
     }
 
+    @InitBinder("pager")
+    public void initBinder1(WebDataBinder binder) {
+        binder.setFieldDefaultPrefix("pager.");
+    }
+
+    @InitBinder("store")
+    public void initBinder2(WebDataBinder binder) {
+        binder.setFieldDefaultPrefix("store.");
+    }
+
     @RequestMapping("list.do")
     public String list(Store store, Pager<Store> pager, Model model) {
-        pager.setPageSize(5);
         storeService.queryStore(store, pager);
         model.addAttribute("pager", pager);
         return "order/store/list";
@@ -50,7 +59,7 @@ public class StoreController {
 
     @RequestMapping("edit.do")
     @ResponseBody
-    public String edit(Store store, Model model) {
+    public String edit(Store store) {
         storeService.updateStoreById(store);
         return "1";
     }
