@@ -30,7 +30,6 @@ public class OrderContractServiceImpl implements OrderContractService {
         pager.setList(orderContractList);
     }
 
-
     public OrderContract queryOrderContractById(Integer orderContractId) {
         OrderContract orderContract = null;
         if (orderContractId != null && orderContractId > 0) {
@@ -39,16 +38,16 @@ public class OrderContractServiceImpl implements OrderContractService {
         return orderContract;
     }
 
-
+    @Transactional
     public void addOrderContract(OrderContract orderContract) {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
-            orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
+            orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getUUID().toString());
             orderContractDao.add(orderContract);
         }
         new NullPointerException("orderContract is null");
     }
 
-
+    @Transactional
     public void updateOrderContractById(OrderContract orderContract) {
         if (orderContract != null && orderContract.getOrderContractId() != null && orderContract.getOrderContractId() > 0) {
             orderContractDao.update(orderContract);

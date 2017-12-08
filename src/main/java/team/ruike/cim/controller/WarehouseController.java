@@ -39,9 +39,10 @@ public class WarehouseController {
             return "warehouses/warehouse";
         }
     }
+
     @RequestMapping("/warehouse.do")
-    public String selectWarehouse(Warehouse warehouse, Pager<Warehouse>pager, HttpServletRequest request) {
-        warehouseService.getwarehouses(warehouse,pager);
+    public String selectWarehouse(Warehouse warehouse, Pager<Warehouse> pager, HttpServletRequest request) {
+        warehouseService.getwarehouses(warehouse, pager);
         request.setAttribute("lsitwar", pager.getList());
         return "forward:/productWarehouse.do";
     }

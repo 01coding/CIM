@@ -29,7 +29,6 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
     @Resource
     private TemporaryOrderTermDao temporaryOrderTermDao;
 
-    @Override
     public void queryTemporaryOrder(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager) {
         Integer count = temporaryOrderDao.selectCount(temporaryOrder);
         pager.setTotalRecord(count);
