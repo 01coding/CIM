@@ -14,10 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </insert>
     <update id="update" parameterType="technology">
         UPDATE technology SET
-         technology_id=#{technologyId},
         technology_name=#{technologyName},
         working_id=#{working.workingId},
         status=#{status}
+        WHERE technology_id=#{technologyId}
     </update>
     <sql id="sql">
         SELECT * FROM technology WHERE status=0
@@ -27,13 +27,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="technology.technologyName!=null and technology.technologyName!=''">
             AND technology_name LIKE  CONCAT('%',#{technology.technologyName},'%')
         </if>
-        <if test="technology.working!=null and technology.working.workingId>0">
+        <if test="technology.working!=null and technology.working.workingId!=null and technology.working.workingId>0">
             AND working_id=#{technology.working.workingId}
         </if>
     </sql>
     <select id="select" resultMap="technologyMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="technology">
         SELECT COUNT(1) FROM technology WHERE status=0
