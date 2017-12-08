@@ -28,6 +28,7 @@ public class StoreController {
 
     @RequestMapping("list.do")
     public String list(Store store, Pager<Store> pager, Model model) {
+        pager.setPageSize(5);
         storeService.queryStore(store, pager);
         model.addAttribute("pager", pager);
         return "order/store/list";

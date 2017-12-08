@@ -23,11 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             store_name=#{storeName},
             store_type=#{storeType},
             store_address=#{storeAddress},
-            store_phone=#{storePhone},
-            store_order_number=#{storeOrderNumber},
-            password=#{password},
-            status=#{status}
-            WHERE store_id=#{storeId}
+            store_phone=#{storePhone}
+            WHERE store_id=#{storeId} and status=0
     </update>
     
     <update id="hiddenById">

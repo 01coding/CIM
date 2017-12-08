@@ -24,11 +24,20 @@
                 storeModule.list();
             });
         }
+        function nextPage(ts) {
+            var fd = {"pager.nextPage":$(ts).data("nextid")};
+            debugger;
+            appModule.post('/store/list.do',fd,function (data) {
+                storeModule.list();
+            });
+        }
+
         return{
             toEdit:toEdit,
             toView:toView,
             toDel:toDel,
-            del:del
+            del:del,
+            nextPage:nextPage
         };
 
     })();
@@ -76,7 +85,7 @@
             <td>${store.storeNo}</td>
             <td class="footable-editing" style="display: table-cell;width: 100px">
                 <div class="btn-group btn-group-xs" role="group">
-                    <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModal" onclick="storeList.toEdit(${store.storeId})">
+                    <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate" onclick="storeList.toEdit(${store.storeId})">
                         <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                     </button>
                     <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect" onclick="storeList.toView(${store.storeId})">
@@ -93,3 +102,23 @@
     </tbody>
 
 </table>
+
+
+<div style="float: right">
+<ul class="pagination pagination-split">
+
+    <li
+            <c:if test="${pager.currentPage-1==pager.startIndex}" >class="disabled"</c:if>
+    ><a href="${pager.previousPage}"><i class="fa fa-angle-left"></i></a></li>
+
+    <c:forEach items="${pager.pageBar}" var="pb">
+        <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
+        ><a href="#">${pb}</a></li>
+    </c:forEach>
+
+    <li
+            <c:if test="${pager.currentPage==pager.endIndex}" >class="disabled"</c:if>
+    ><a data-nextid="${pager.nextPage}" onclick="storeList.nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
+
+</ul>
+</div>

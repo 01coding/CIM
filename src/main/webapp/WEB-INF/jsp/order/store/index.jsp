@@ -1444,23 +1444,7 @@
 
                                 </div>
 
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
 
                             </div>
                         </div>
@@ -1657,7 +1641,7 @@
 <!-- Sweet-Alert  -->
 <script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="../../../../dist/js/sweetalert-data.js"></script>
+
 <script src="../../../../vendors/app.js"></script>
 
 <script>
@@ -1687,9 +1671,18 @@
             });
         }
 
+        function edit() {
+            var addStore = $("#updateStore").serializeArray();
+            appModule.post('/store/edit.do',addStore,function (data) {
+                appModule.alert(data)
+                list();
+            });
+        };
+
 
         return {
             add: add,
+            edit:edit,
             list:list
         }
     })();

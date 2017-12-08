@@ -8,12 +8,12 @@
             <h5 class="modal-title" id="exampleModalLabel1">门店</h5>
         </div>
         <div class="modal-body">
-            <form id="addStore">
+            <form id="updateStore">
                 <div class="form-group">
                     <label class="control-label mb-10">用户/门店名称:</label>
                     <input type="text" class="form-control" name="storeName" value="${store.storeName}">
                 </div>
-
+                <input type="hidden" value="${store.storeId}" name="storeId">
                 <div class="form-group">
                     <label class="control-label mb-10">门店/用户类别:</label>
                     <select class="form-control" name="storeType">
@@ -22,7 +22,7 @@
                         <c:if test="${store.storeType==1}">
                             selected
                         </c:if>
-                          >合同用户</option
+                          >合同用户</option>
                         <option value="2"
                         <c:if test="${store.storeType==2}">
                             selected
@@ -46,7 +46,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" onclick="storeModule.add">保存</button>
+            <button type="button" class="btn btn-primary" onclick="storeModule.edit()">保存</button>
         </div>
     </div>
 </div>
