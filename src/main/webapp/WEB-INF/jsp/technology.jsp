@@ -1,8 +1,8 @@
 <%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/12/4
-  Time: 11:24
+  Date: 2017/12/8
+  Time: 9:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>物料管理</title>
+    <title>工艺管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -23,12 +23,11 @@
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap Wysihtml5 css -->
-    <link rel="stylesheet"
-          href="../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
+    <link rel="stylesheet" href="../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
 
     <!-- Data table CSS -->
     <link href="../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
-          type="../../text/css"/>
+          type="text/css"/>
     <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
@@ -908,8 +907,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -957,8 +955,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1154,8 +1151,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1171,8 +1167,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1188,8 +1183,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1205,8 +1199,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1238,8 +1231,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1343,14 +1335,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">物料管理</h5>
+                    <h5 class="txt-dark">工艺管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">主页</a></li>
+                        <li><a href="index.do">主页</a></li>
                         <li><a href="#"><span>研发管理</span></a></li>
-                        <li class="active"><span>物料管理</span></li>
+                        <li class="active"><span>工艺管理</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1371,7 +1363,7 @@
                                             <!--选择门店 div-->
                                             <div class="mt-20 mb-20 ml-15 mr-15">
                                                 <a href="#myModal" data-toggle="modal" title="Compose"
-                                                   class="btn btn-danger btn-block">新增物料</a>
+                                                   class="btn btn-danger btn-block">新增工艺</a>
                                                 <!-- Modal -->
                                                 <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
                                                      class="modal fade" style="display: none;">
@@ -1381,64 +1373,28 @@
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-hidden="true">×
                                                                 </button>
-                                                                <h4 class="modal-title">新增物料</h4>
+                                                                <h4 class="modal-title">新增工艺</h4>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form class="form-horizontal form-material"
-                                                                      id="materiel">
+                                                                <form class="form-horizontal form-material" id="technology">
                                                                     <div class="form-group">
                                                                         <div class="col-md-12 mb-20">
-                                                                            <label class="control-label mb-10">物料名称</label>
-                                                                            <input type="text" class="form-control"
-                                                                                   name="materielName"
-                                                                                   placeholder="请输入物料名称"/>
-                                                                            <label class="control-label mb-10">一级分类</label>
-                                                                            <select class="form-control">
-                                                                                <c:forEach var="ta"
-                                                                                           items="${requestScope.typea}">
-                                                                                    <option value="${ta.materielTypeLevelAId}">${ta.materielTypeLevelAName}</option>
-                                                                                </c:forEach>
-                                                                            </select>
-                                                                            <label class="control-label mb-10">二级分类</label>
-                                                                            <select class="form-control"
-                                                                                    name="materielTypeLevelB.materielTypeLevelBId">
-                                                                                <c:forEach var="ta"
-                                                                                           items="${requestScope.typeb}">
-                                                                                    <option value="${ta.materielTypeLevelBId}">${ta.materielTypeLevelBName}</option>
-                                                                                </c:forEach>
-                                                                            </select>
-                                                                            <label class="control-label mb-10">单位</label>
-                                                                            <select class="form-control"
-                                                                                    name="materielUnit.materielUnitId">
-                                                                                <c:forEach var="ta"
-                                                                                           items="${requestScope.utils}">
-                                                                                    <option value="${ta.materielUnitId}">${ta.materielUnitName}</option>
-                                                                                </c:forEach>
-                                                                            </select>
-                                                                            <label class="control-label mb-10">出成率</label>
-                                                                            <input type="number" name="materielYield"
-                                                                                   class="form-control"
-                                                                                   placeholder="请输入出成率（0-1）"/>
-                                                                            <label class="control-label mb-10">商业保质期（天）</label>
-                                                                            <input type="number"
-                                                                                   name="materielShelfLife"
-                                                                                   class="form-control"
-                                                                                   placeholder="请输入商业保质期"/>
-                                                                            <label class="control-label mb-10">最低库存预警</label>
-                                                                            <input type="number"
-                                                                                   name="materielMinWarning"
-                                                                                   class="form-control"
-                                                                                   placeholder="最低库存预警"/>
-                                                                            <label class="control-label mb-10">备注</label>
-                                                                            <textarea name="materielRemarks"
-                                                                                      class="form-control"></textarea>
+                                                                                <label class="control-label mb-10">工艺名称</label>
+                                                                                <input type="text" class="form-control"
+                                                                                       placeholder="请输入工艺名称" name="technologyName"/>
+                                                                                <label class="control-label mb-10">预设工序</label>
+                                                                                <select class="form-control" name="working.workingId">
+                                                                                    <c:forEach items="${requestScope.workings}" var="wk">
+                                                                                    <option value="${wk.workingId}">${wk.workingName}</option>
+                                                                                    </c:forEach>
+                                                                                </select>
                                                                         </div>
+
                                                                     </div>
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
-                                                                <button type="button" id="addmate"
-                                                                        class="btn btn-info waves-effect"
+                                                                <button type="button" id="addtechnology" class="btn btn-info waves-effect"
                                                                         data-dismiss="modal">保存
                                                                 </button>
                                                                 <button type="button"
@@ -1453,32 +1409,6 @@
                                                 </div>
                                                 <!-- /.modal -->
                                             </div>
-                                            <br/>
-                                            <hr/>
-                                            <h6 class="pl-15 mb-10">条件检索</h6>
-                                            <div class="input-group" style="margin:0 auto;text-align:center;">
-                                                <input type="text" class="form-control" id="mname"
-                                                       placeholder="请输入物料名称"
-                                                       value="${requestScope.materiel.materielName}"/>
-                                                <hr/>
-                                                <br/>
-                                                <select class="form-control" id="mtypea">
-                                                    <option value="0">请选择</option>
-                                                    <c:forEach items="${requestScope.typea}" var="ta">
-                                                        <option value="${ta.materielTypeLevelAId}">${ta.materielTypeLevelAName}</option>
-                                                    </c:forEach>
-                                                </select>
-                                                <hr/>
-                                                <br/>
-                                                <select class="form-control" id="mtypeb">
-                                                    <option value="0">请选择</option>
-                                                </select>
-                                            </div>
-                                            <br/>
-                                            <div style="margin:0 auto;text-align:center;">
-                                                <button id="seb" class="btn btn-primary btn-rounded btn-icon left-icon">
-                                                    <i class="fa fa-search"></i> <span>检索</span></button>
-                                            </div>
                                         </aside>
 
                                         <aside class="col-lg-10 col-md-8 pl-0">
@@ -1491,67 +1421,47 @@
                                                                    data-page-size="10">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>物料编号</th>
-                                                                    <th>名称</th>
-                                                                    <th>类别</th>
-                                                                    <th>单位</th>
-                                                                    <th>出成率</th>
-                                                                    <th>商业保质期（天）</th>
-                                                                    <th>最低库存预警</th>
-                                                                    <th>备注</th>
+                                                                    <th>工艺名称</th>
+                                                                    <th>预设工序</th>
                                                                     <th>操作</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <c:forEach items="${requestScope.pager.list}" var="ls">
                                                                     <tr>
-                                                                        <td>13878234y89203</td>
-                                                                        <td>${ls.materielName}</td>
-                                                                        <td>${ls.materielTypeLevelB.materielTypeLevelBName}</td>
-                                                                        <td>${ls.materielUnit.materielUnitName}</td>
-                                                                        <td>${ls.materielYield}</td>
-                                                                        <td>${ls.materielShelfLife}</td>
-                                                                        <td>${ls.materielMinWarning}</td>
-                                                                        <td>${ls.materielRemarks}</td>
+                                                                        <td>${ls.technologyName}</td>
+                                                                        <td>${ls.working.workingName}</td>
                                                                         <td>
                                                                             <a href="javascript:void(0)"
                                                                                class="text-inverse" title="修改"
                                                                                data-toggle="tooltip"><i
                                                                                     class="fa fa-pencil-square txt-danger"></i></a>
                                                                             <a href="javascript:void(0)"
-                                                                               class="text-inverse del" flagname="${ls.materielName}" flagid="${ls.materielId}" title="删除"
+                                                                               class="text-inverse del" title="删除" flagid="${ls.technologyId}" flagname="${ls.technologyName}"
                                                                                data-toggle="tooltip"><i
                                                                                     class="ti-trash txt-danger"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
-
                                                                 <%--<tr>--%>
-                                                                <%--<td>13878234y89203</td>--%>
-                                                                <%--<td>五花肉</td>--%>
-                                                                <%--<td>猪肉</td>--%>
-                                                                <%--<td>千克</td>--%>
-                                                                <%--<td>5</td>--%>
-                                                                <%--<td>10</td>--%>
-                                                                <%--<td>200</td>--%>
-                                                                <%--<td>sd14525se4r1sdf4r</td>--%>
-                                                                <%--<td>--%>
-                                                                <%--<a href="javascript:void(0)"--%>
-                                                                <%--class="text-inverse" title="修改"--%>
-                                                                <%--data-toggle="tooltip"><i--%>
-                                                                <%--class="fa fa-pencil-square txt-danger"></i></a>--%>
-                                                                <%--<a href="javascript:void(0)"--%>
-                                                                <%--class="text-inverse" title="删除"--%>
-                                                                <%--data-toggle="tooltip"><i--%>
-                                                                <%--class="ti-trash txt-danger"></i></a>--%>
-                                                                <%--</td>--%>
+                                                                    <%--<td>炒</td>--%>
+                                                                    <%--<td>烹饪</td>--%>
+                                                                    <%--<td>--%>
+                                                                        <%--<a href="javascript:void(0)"--%>
+                                                                           <%--class="text-inverse" title="修改"--%>
+                                                                           <%--data-toggle="tooltip"><i--%>
+                                                                                <%--class="fa fa-pencil-square txt-danger"></i></a>--%>
+                                                                        <%--<a href="javascript:void(0)"--%>
+                                                                           <%--class="text-inverse" title="删除"--%>
+                                                                           <%--data-toggle="tooltip"><i--%>
+                                                                                <%--class="ti-trash txt-danger"></i></a>--%>
+                                                                    <%--</td>--%>
                                                                 <%--</tr>--%>
                                                                 </tbody>
                                                             </table>
 
                                                         </div>
-                                                        <div class="panel-wrapper collapse in"
-                                                             style="margin:0 auto;text-align:center;">
+                                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                                             <div class="panel-body">
                                                                 <div class="row">
                                                                     <div class="col-md-12">
@@ -1560,21 +1470,18 @@
                                                                                     test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
                                                                                 <a <%
                                                                                     Pager pager = (Pager) request.getAttribute("pager");
-                                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                                        href="${pageContext.request.contextPath}/materiellist.do?currentPage=${requestScope.pager.previousPage}&materielTypeLevelB.materielTypeLevelBId=${requestScope.materiel.materielTypeLevelB.materielTypeLevelBId}&materielName=${requestScope.materiel.materielName}"
+                                                                                    if(pager.getCurrentPage()!=1){%>
+                                                                                        href="${pageContext.request.contextPath}/technology.do?currentPage=${requestScope.pager.previousPage}"
                                                                                         <%
-                                                                                        } else {%>
+                                                                                        }else {%>
                                                                                         href="javascript:void(0);"
-                                                                                        <%
-                                                                                            }
+                                                                                        <%}
                                                                                         %>>
-                                                                                    <i class="fa fa-angle-left"></i></a>
-                                                                            </li>
-                                                                            <c:forEach var="bar"
-                                                                                       items="${requestScope.pager.pageBar}">
+                                                                                    <i class="fa fa-angle-left"></i></a></li>
+                                                                            <c:forEach var="bar" items="${requestScope.pager.pageBar}">
                                                                                 <li <c:if
                                                                                         test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
-                                                                                    <a href="${pageContext.request.contextPath}/materiellist.do?currentPage=${bar}&materielTypeLevelB.materielTypeLevelBId=${requestScope.materiel.materielTypeLevelB.materielTypeLevelBId}&materielName=${requestScope.materiel.materielName}">${bar}</a>
+                                                                                    <a href="${pageContext.request.contextPath}/technology.do?currentPage=${bar}">${bar}</a>
                                                                                 </li>
                                                                             </c:forEach>
                                                                             <%--<li class="disabled"><a href="#">1</a></li>--%>
@@ -1582,16 +1489,14 @@
                                                                             <li <c:if
                                                                                     test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
                                                                                 <a <%
-                                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                                        href="${pageContext.request.contextPath}/materiellist.do?currentPage=${requestScope.pager.nextPage}&materielTypeLevelB.materielTypeLevelBId=${requestScope.materiel.materielTypeLevelB.materielTypeLevelBId}&materielName=${requestScope.materiel.materielName}"
+                                                                                    if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                                        href="${pageContext.request.contextPath}/technology.do?currentPage=${requestScope.pager.nextPage}"
                                                                                         <%
-                                                                                        } else {%>
+                                                                                        }else {%>
                                                                                         href="javascript:void(0);"
-                                                                                        <%
-                                                                                            }
+                                                                                        <%}
                                                                                         %>>
-                                                                                    <i class="fa fa-angle-right"></i></a>
-                                                                            </li>
+                                                                                    <i class="fa fa-angle-right"></i></a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -1631,6 +1536,7 @@
 
 <!-- jQuery -->
 <script src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -1681,11 +1587,11 @@
             }, function(isConfirm){
                 if (isConfirm) {
                     $.ajax({
-                        url:"${pageContext.request.contextPath}/delmateriel.do?materielId="+mid,
+                        url:"${pageContext.request.contextPath}/delTechnology.do?technologyId="+mid,
                         cache: false,
                         success:function(data){
                             if(data == true){
-                                swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
+                                swal("删除成功", "删除成功，如需要恢复请再次添加！", "success");
                                 $($tr).remove();
                             }else{
                                 swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
@@ -1695,36 +1601,12 @@
                 }
             });
         });
-
-
-        $("#mtypea").change(function () {
-            var selectValue = $("#mtypea").val();
-            $("#mtypeb").empty();
-            $("#mtypeb").append("<option value='0'>请选择</option>");
-            $.ajax({
-                url: "${pageContext.request.contextPath}/gettypeblist.do?materielTypeLevelA.materielTypeLevelAId=" + selectValue,
-                cache: false,
-                dataType: 'json',
-                success: function (data) {
-                    for (var i = 0, l = data.length; i < l; i++) {
-                        $("#mtypeb").append("<option value='"+data[i].materielTypeLevelBId+"'>"+data[i].materielTypeLevelBName+"</option>");
-                    }
-                }
-            });
-
-        });
-
-        $("#seb").click(function () {
-            var mname = $("#mname").val();
-            var typebId=$("#mtypeb").val();
-            location.href = "${pageContext.request.contextPath}/materiellist.do?materielName=" + mname+"&materielTypeLevelB.materielTypeLevelBId="+typebId;
-        });
-        $("#addmate").click(function () {
-            var data = $("#materiel").serialize();
+        $("#addtechnology").click(function () {
+            var data = $("#technology").serialize();
             var submitData = decodeURIComponent(data, true);
             $.ajax({
                 type: 'post',
-                url: '${pageContext.request.contextPath}/addMateriel.do?' + submitData,
+                url: '${pageContext.request.contextPath}/addTechnology.do?' + submitData,
                 cache: false,
                 success: function (data) {
                     if (data ==true) {
