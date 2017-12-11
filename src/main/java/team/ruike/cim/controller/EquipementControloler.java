@@ -45,10 +45,9 @@ public class EquipementControloler {
         request.setAttribute("workings",equipementService.getWorking(working));
         request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
         request.setAttribute("users",equipementService.getUser(user));
+
         return "equipement/equipment";
     }
-
-
     /**
      * 根据ID查询设备信息并绑定修改弹框
      * @param equipmentId  设备ID
@@ -76,27 +75,50 @@ public class EquipementControloler {
     }
 
     /**
+     * 新增设备信息
+     * @param equipment 设备表
+     * @return 是否成功
+     */
+    @RequestMapping("/insertEquipment.do")
+    public  String insertEquipment(Equipment equipment){
+        int num=equipementService.insertEquipment(equipment);
+        if (num==0){
+            return "redirect:addequipement.do";
+        }else {
+            return "redirect:equipment.do";
+        }
+    }
+    /**
      * 修改设备信息
-     * @param equipment 谁被对象
+     * @param
      * @return 是否成功
      */
     @RequestMapping("/updateMateriel.do")
-    public String updateMateriels(Equipment equipment){
-        int num = equipementService.updateEquipment(equipment);
+    public String updateMateriels(Equipment equipments,HttpServletRequest request){
+        int num = equipementService.updateEquipment(equipments);
         if (num==0){
             return"redirect:/equipment.do?ms=1";
         }else {
-            return "redirect:/equipment.do";
+            if (equipments.getEquipmentType().getEquipmentTypeId()!=1) {
+
+                request.setAttribute("et",equipments);
+                System.out.println(equipments.getWorking().getWorkingName());
+                return "equipement/addequipmentreport";
+            } else {
+                return "redirect:/equipment.do";
+            }
         }
     }
     /**
      * 删除设备
-     * @param equipment
+     * @param equipmentId
      * @return
      */
-    @RequestMapping("/delMateriel.do")
-    public String delMateriel(Equipment equipment ){
-        return equipementService.deleteEquipment(equipment)+"";
+    @RequestMapping("/delequipment.do")
+    @ResponseBody
+    public String delMateriel(Integer equipmentId ){
+        int num=equipementService.deleteEquipment(equipmentId);
+        return (num==1)+"";
     }
     /**
      * 查询所有异常信息
@@ -130,16 +152,19 @@ public class EquipementControloler {
      * @return
      */
     @RequestMapping("/addequipement.do")
-    public String addequipement(){
+    public String addequipement(HttpServletRequest request,Working working,ProductionLine productionLine,User user){
+        request.setAttribute("workings",equipementService.getWorking(working));
+        request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
+        request.setAttribute("users",equipementService.getUser(user));
         return "equipement/addequipement";
     }
-
-    /**
-     * 跳转新增设备异常页面
-     * @return
-     */
-    @RequestMapping("/addequipmentreport.do")
-    public String addequipmentreport(){
-        return "equipement/addequipmentreport";
+    @RequestMapping("/addequipmentType.do")
+    public String addequipmentType(EquipmentType equipmentType){
+        int num=equipementService.insertEquipmentType(equipmentType);
+        if (num==1) {
+            return "redirect:/equipment.do";
+        }else {
+            return "equipement/addequipmentreport";
+        }
     }
 }

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en" class="translated-ltr"><head>
@@ -20,7 +21,6 @@
 </div>
 <!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-red">
-
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -167,11 +167,6 @@
                                     <a href="javascript:void(0);"><div class="pull-left"><span class="right-nav-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">最新产品</font></font></span></div><div class="clearfix"></div></a>
                                     <hr class="light-grey-hr ma-0">
                                     <div class="product-carousel owl-carousel owl-theme text-center owl-loaded owl-drag">
-
-
-
-
-
                                         <div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-967px, 0px, 0px); transition: 0.25s; width: 2129px;"><div class="owl-item cloned" style="width: 178.5px; margin-right: 15px;"><div class="owl-dots disabled"></div></div><div class="owl-item cloned" style="width: 178.5px; margin-right: 15px;"><div class="owl-stage-outer"><div class="owl-stage" style="transform: translate3d(-1376px, 0px, 0px); transition: 0.25s; width: 2236px;"><div class="owl-item cloned" style="width: 157px; margin-right: 15px;"><a href="#">
                                             <img src="dist/img/chair2.jpg" alt="椅子">
                                             <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">方形椅子</font></font></span>
@@ -468,7 +463,6 @@
         </div>
     </nav>
     <!-- /Top Menu Items -->
-
     <!-- Left Sidebar Menu -->
     <div class="fixed-sidebar-left">
         <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><ul class="nav navbar-nav side-nav nicescroll-bar" style="overflow: hidden; width: auto; height: 100%;">
@@ -1087,7 +1081,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="messages_tab" class="tab-pane fade" role="tabpanel">
                             <div class="message-box-wrap">
                                 <div class="msg-search">
@@ -1281,14 +1274,9 @@
     </div>
     <!-- /Right Sidebar Menu -->
 
-
     <!-- Main Content -->
     <div class="page-wrapper" style="min-height: 1218px;">
         <div class="container-fluid">
-            <!-- Title -->
-
-            <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
@@ -1296,101 +1284,101 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <form action="/insertEquipment.do">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加设备信息</font></font></h6>
                                         <hr class="light-grey-hr">
-
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="设备编号">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        &nbsp;检&nbsp;查&nbsp;周&nbsp;期:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" style="width: 400px;height: 40px" name="inspectionCycle" class="form-control" placeholder="检查周期" >
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        &nbsp;保&nbsp;养&nbsp;周&nbsp;期:
+                                                    </div>
+
+                                                    <div class="col-sm-7">
+                                                        <input type="text" style="width:400px;height: 40px" class="form-control" name="maintenanceCycle" placeholder="保养周期" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                            &nbsp;设&nbsp;备&nbsp;名&nbsp;称:
+                                                        </div>
+                                                        <div class="col-sm-7">
+                                                        <input type="text" style="width:400px;height: 40px"  class="form-control" name="equipmentName" placeholder="设备名称">
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                        <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                            <option value="Category 1">请选择设备名称</option>
-                                                            <option value="Category 1">设备名称1</option>
-                                                            <option value="Category 2">设备名称2</option>
-                                                            <option value="Category 3">设备名称3</option>
-                                                            <option value="Category 4">设备名称4</option>
-                                                        </select>
+                                                        <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                            &nbsp; 所&nbsp;属&nbsp;工&nbsp;序:
+                                                        </div>
+                                                        <div class="col-sm-7">
+                                                            <select name="working.workingId" style="width: 400px;height: 40px">
+                                                             <c:forEach items="${requestScope.workings}" var="w">
+                                                                 <option   value="${w.workingId}">${w.workingName}</option>
+                                                             </c:forEach>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="设备负责人">
-                                                </div>
-                                            </div>
-
+                                        </div>
                                             <div class="row">
                                                 <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                                所属负责人:
+                                                            </div>
+                                                            <div class="col-sm-7">
+                                                            <select name="user.userId" style="width: 400px;height: 40px">
+                                                                <c:forEach items="${requestScope.users}" var="u">
+                                                                    <option   value="${u.userId}">${u.userName}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                            </div>
+                                                        </div>
+                                                </div>
+                                                <div class="col-md-6" >
                                                     <div class="form-group">
-                                                        <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                            <option value="Category 1">请选择设备所在工序</option>
-                                                            <option value="Category 1">设备所在工序1</option>
-                                                            <option value="Category 2">设备所在工序2</option>
-                                                            <option value="Category 3">设备所在工序3</option>
-                                                            <option value="Category 4">设备所在工序4</option>
-                                                        </select>
+                                                        <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                            所属生产线:
+                                                        </div>
+                                                        <div class="col-sm-7">
+                                                            <select name="productionLine.productionLineId" style="width: 400px;height: 40px">
+                                                                <c:forEach items="${requestScope.productionLines}" var="p">
+                                                                    <option  value="${p.productionLineId}">${p.productionLineNo}</option>
+                                                                </c:forEach>
+                                                            </select>
+                                                     </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="设备状态（默认）" >
-                                                </div>
-                                            </div>
-
-                                            <div class="row">
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                        <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                            <option value="Category 1">请选择所属生产线</option>
-                                                            <option value="Category 1">所属生产线1</option>
-                                                            <option value="Category 2">所属生产线2</option>
-                                                            <option value="Category 3">所属生产线3</option>
-                                                            <option value="Category 4">所属生产线4</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="检查周期" >
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="保养周期" >
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10 text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></label>
-                                                    <div class="input-group date" id="datetimepicker1">
-                                                        <input type="text" class="form-control" placeholder="日期时间选择">
-                                                        <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></span></button>
+                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
+                                                <i class="fa fa-check"></i>
+                                                <span>
+                                                    <font style="vertical-align: inherit;">
+                                                        <font style="vertical-align: inherit;">
+                                                            保存
+                                                        </font>
+                                                    </font>
+                                                </span>
+                                            </button>
                                             <button type="button" class="btn btn-warning pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
                                             <div class="clearfix"></div>
                                         </div>
