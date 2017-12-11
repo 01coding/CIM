@@ -16,6 +16,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="menu_type_name" property="menuTypeName"/>
         <result column="status" property="status"/>
     </resultMap>
+
+    <select id="selectAll" resultMap="menuTypeMap">
+        SELECT * FROM menu_type WHERE status=0
+    </select>
+
     <select id="select" resultMap="menuTypeMap">
         SELECT * FROM menu_type WHERE status=0
         <if test="menuType.menuTypeId!=null and menuType.menuTypeId>0">

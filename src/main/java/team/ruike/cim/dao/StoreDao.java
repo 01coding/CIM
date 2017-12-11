@@ -60,4 +60,10 @@ public interface StoreDao {
      * @param storeId
      */
     void hiddenById(@Param("storeId")Integer storeId);
+
+    /**
+     * 查询所有门店
+     * @return 门店集合
+     */
+    List<Store> selectAll();
 }

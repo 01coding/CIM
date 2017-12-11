@@ -49,6 +49,19 @@ var appModule = (function () {
             }
         });
     }
+    
+    function jump(url,param) {
+        $.ajax({
+            url: url,
+            method: "post",
+            data: param,
+            success: function (data) {
+                alert("success")
+            }, error: function () {
+                alert("error");
+            }
+        });
+    }
 
     function alert(message) {
         window.alert(message);

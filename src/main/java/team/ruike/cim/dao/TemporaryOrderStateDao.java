@@ -53,4 +53,11 @@ public interface TemporaryOrderStateDao {
      * @return 合同订单对象
      */
     TemporaryOrderState selectById(Integer temporaryOrderStateId);
+
+
+    /**
+     * 查询所有临时订单状态
+     * @return 临时订单状态集合
+     */
+    List<TemporaryOrderState> selectAll();
 }
