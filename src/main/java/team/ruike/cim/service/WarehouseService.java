@@ -10,20 +10,20 @@ public interface WarehouseService {
      * 查询所有物料仓库
      * @return
      */
-    public void getwarehouses(Warehouse warehouse,Pager<Warehouse>pager);
+    public void getWareHouses(Warehouse warehouse,Pager<Warehouse>pager);
 
     /**
      * 添加物料仓库
      * @param warehouse
      * @return
      */
-    public int addwarehouse(Warehouse warehouse);
+    public int addWareHouse(Warehouse warehouse);
 
     /**
      * 修改物料仓库
      * @param warehouse
      * @return
      */
-    public int updwarehouse(Warehouse warehouse);
+    public int updWareHouse(Warehouse warehouse);
 
 }

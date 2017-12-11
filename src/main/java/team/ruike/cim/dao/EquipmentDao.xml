@@ -88,11 +88,11 @@
         values(
         <trim suffixOverrides=",">
             default,
-            #{productionLineId},
-            #{workingId},
-            #{userId},
+            #{productionLine.productionLineId},
+            #{working.workingId},
+            #{user.userId},
             #{startDate},
-            #{equipmentTypeId},
+            #{equipmentType.equipmentTypeId},
             #{maintenanceCycle},
             #{inspectionCycle},
             #{equipmentName},
@@ -105,19 +105,17 @@
     <update id="update" parameterType="equipment">
         update equipment
         <set>
-            equipment_id=#{equipmentId},
-            production_line_id=#{productionLineId},
-            working_id=#{workingId},
-            user_id=#{userId},
+            production_line_id=#{productionLine.productionLineId},
+            working_id=#{working.workingId},
+            user_id=#{user.userId},
             start_date=#{startDate},
-            equipment_type_id=#{equipmentTypeId},
+            equipment_type_id=#{equipmentType.equipmentTypeId},
             maintenance_cycle=#{maintenanceCycle},
             inspection_cycle=#{inspectionCycle},
             equipment_name=#{equipmentName},
-            status=#{status},
+            status=#{status}
         </set>
-        where status=0
-        and equipment_id=#{equipmentId}
+        where equipment_id=#{equipmentId}
     </update>
 
     <select id="select" resultMap="selectMap">

@@ -18,7 +18,7 @@ public class WarehouseServiceImpl implements WarehouseService {
      *
      * @return
      */
-    public void getwarehouses(Warehouse warehouse,Pager<Warehouse> pager) {
+    public void getWareHouses(Warehouse warehouse,Pager<Warehouse> pager) {
         pager.setTotalRecord(warehouseDao.selectCount(warehouse));
         List<Warehouse> aa=warehouseDao.select(warehouse,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize());
         pager.setList(aa);
@@ -30,7 +30,7 @@ public class WarehouseServiceImpl implements WarehouseService {
      * @param warehouse
      * @return
      */
-    public int addwarehouse(Warehouse warehouse) {
+    public int addWareHouse(Warehouse warehouse) {
         if (warehouse != null && warehouse.getUser() != null && warehouse.getUser().getUserId() > 0 && warehouse.getWarehouseName() != "") {
             return warehouseDao.add(warehouse);
         }
@@ -43,7 +43,7 @@ public class WarehouseServiceImpl implements WarehouseService {
      * @param warehouse
      * @return
      */
-    public int updwarehouse(Warehouse warehouse) {
+    public int updWareHouse(Warehouse warehouse) {
         if (warehouse != null && warehouse.getUser() != null && warehouse.getUser().getUserId() > 0 && warehouse.getWarehouseName() != "") {
             return warehouseDao.update(warehouse);
         }
