@@ -40,7 +40,7 @@
 
     <select id="select" resultMap="functionMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="function">
         SELECT  COUNT(1) from function WHERE status=0
@@ -59,9 +59,7 @@
     </select>
     <select id="selectById" parameterType="int" resultMap="functionMap">
         SELECT  * from function WHERE status=0
-    <if test="functionId!=null and functionId>0">
-        AND function_id=#{function.functionId}
-    </if>
+        AND function_id=#{functionId}
     </select>
     <select id="selectByroleId" parameterType="int" resultMap="functionMap">
         select * from function where function_id in (SELECT function_id from role_function WHERE role_id=#{roleId})

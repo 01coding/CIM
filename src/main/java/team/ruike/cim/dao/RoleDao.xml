@@ -23,16 +23,16 @@
     </update>
     <sql id="sql">
         SELECT * FROM role WHERE status=0
-        <if test="roleId!=null and roleId>0">
-            AND role_id=#{roleId}
+        <if test="role.roleId!=null and role.roleId>0">
+            AND role_id=#{role.roleId}
         </if>
-        <if test="roleName!=null and roleName!=''">
-            AND role_name LIKE  CONCAT('%',#{function.functionName},'%')
+        <if test="role.roleName!=null and role.roleName!=''">
+            AND role_name LIKE  CONCAT('%',#{role.roleName},'%')
         </if>
     </sql>
     <select id="select" resultMap="roleMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="role">
 
@@ -47,9 +47,7 @@
     </select>
     <select id="selectById" parameterType="int" resultMap="roleMap">
         SELECT * FROM role WHERE status=0
-        <if test="roleId!=null and roleId>0">
             AND role_id=#{roleId}
-        </if>
     </select>
     <select id="selectByUserId" parameterType="int" resultMap="roleMap">
         SELECT * FROM role WHERE status=0 AND role_id in(SELECT role_id FROM user_role WHERE user_id=#{userId})
