@@ -3,6 +3,7 @@ package team.ruike.cim.controller;
 import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.EquipementService;
@@ -34,7 +35,10 @@ public class EquipementControloler {
      * @return
      */
     @RequestMapping("/equipment.do")
-    public String  equipment(Equipment equipment, Pager<Equipment> pager, HttpServletRequest request,EquipmentType equipmentType, Working working, ProductionLine productionLine,User user){
+    public String  equipment(@RequestParam(value = "ms",required = false)Integer ms, Equipment equipment, Pager<Equipment> pager, HttpServletRequest request, EquipmentType equipmentType, Working working, ProductionLine productionLine, User user){
+        if (ms!=null&&ms==1){
+            System.out.print(ms);
+        }
         equipementService.getEquipment(equipment, pager);
         request.setAttribute("equipments",pager.getList());
         request.setAttribute("equipmentTypes",equipementService.getEquipmentType(equipmentType));
@@ -74,19 +78,22 @@ public class EquipementControloler {
     /**
      * 修改设备信息
      * @param equipment 谁被对象
-     * @param request 转发
      * @return 是否成功
      */
     @RequestMapping("/updateMateriel.do")
-    public String updateMateriels(Equipment equipment,HttpServletRequest request){
-        int num= equipementService.updateEquipment(equipment);
+    public String updateMateriels(Equipment equipment){
+        int num = equipementService.updateEquipment(equipment);
         if (num==0){
-            request.setAttribute("mes","修改失败");
-            return "equipement/addequipement";
+            return"redirect:/equipment.do?ms=1";
         }else {
-            return "equipement/equipment";
+            return "redirect:/equipment.do";
         }
     }
+    /**
+     * 删除设备
+     * @param equipment
+     * @return
+     */
     @RequestMapping("/delMateriel.do")
     public String delMateriel(Equipment equipment ){
         return equipementService.deleteEquipment(equipment)+"";
@@ -105,16 +112,32 @@ public class EquipementControloler {
         return "equipement/equipmentreport";
     }
 
+    /**
+     * 查询所有状态
+     * @param equipmentType 状态
+     * @param pager 分页辅助类
+     * @param request 转发
+     * @return 状态集合
+     */
     @RequestMapping("/equipmentType.do")
     public String equipmentType(EquipmentType equipmentType,Pager<EquipmentType> pager,HttpServletRequest request){
 
         return "equipement/equipment";
     }
+
+    /**
+     * 跳转新增设备页面
+     * @return
+     */
     @RequestMapping("/addequipement.do")
     public String addequipement(){
         return "equipement/addequipement";
     }
 
+    /**
+     * 跳转新增设备异常页面
+     * @return
+     */
     @RequestMapping("/addequipmentreport.do")
     public String addequipmentreport(){
         return "equipement/addequipmentreport";

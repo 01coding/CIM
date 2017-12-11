@@ -20,7 +20,7 @@ import java.util.List;
 @Service("orderContractService")
 public class OrderContractServiceImpl implements OrderContractService {
     @Resource
-    public OrderContractDao orderContractDao;
+    private OrderContractDao orderContractDao;
 
 
     public void queryOrderContract(OrderContract orderContract, Pager<OrderContract> pager) {

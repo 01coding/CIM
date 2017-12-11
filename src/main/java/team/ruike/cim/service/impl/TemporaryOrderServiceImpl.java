@@ -36,7 +36,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
         pager.setList(temporaryOrderList);
     }
 
-    @Override
+
     public TemporaryOrder queryTemporaryOrderById(Integer temporaryOrderId) {
         TemporaryOrder temporaryOrder = null;
         if (temporaryOrderId != null && temporaryOrderId > 0) {
@@ -65,7 +65,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
             }
 
         } else {
-            new NullPointerException("添加临时订单失败 数据错误");
+            throw  new NullPointerException("添加临时订单失败 数据错误");
         }
 
 

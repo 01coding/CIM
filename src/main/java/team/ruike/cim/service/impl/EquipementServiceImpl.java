@@ -98,17 +98,18 @@ public class EquipementServiceImpl implements EquipementService {
      * @return 是否成功
      */
     public int updateEquipment(Equipment equipment) {
-        /*if (equipment!=null && equipment.getEquipmentId()>0
+        equipment.setStatus(0);
+        if (equipment!=null && equipment.getEquipmentId()>0
                 &&equipment.getEquipmentName()!=""
                 && equipment.getEquipmentType().getEquipmentTypeId()>0
                 && equipment.getInspectionCycle()>0
                 &&equipment.getMaintenanceCycle()>0
                 &&equipment.getProductionLine().getProductionLineId()>0
                 &&equipment.getUser().getUserId()>0
-                && equipment.getWorking().getWorkingId()>0){*/
+                && equipment.getWorking().getWorkingId()>0){
             return equipmentDao.update(equipment);
-       /* }*/
-       /* return 0;*/
+        }
+        return 0;
     }
 
     /**

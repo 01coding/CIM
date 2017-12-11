@@ -1,8 +1,6 @@
 package team.ruike.cim.service.impl;
 
-import javafx.collections.SetChangeListener;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.StoreDao;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.service.StoreService;
@@ -11,7 +9,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * 门店业务类
@@ -42,9 +39,6 @@ public class StoreServiceImpl implements StoreService {
 
 
     public void addStore(Store store) {
-        if (store == null | store.getStoreName() == "") {
-            throw new RuntimeException("not is null");
-        }
         String storeNo = GenerateNumber.getGenerateNumber().getRandomFileName();
         store.setStoreNo(storeNo);
         storeDao.add(store);
@@ -52,11 +46,10 @@ public class StoreServiceImpl implements StoreService {
 
 
     public void updateStoreById(Store store) {
-
         if (store == null) {
             throw new NullPointerException("store not is null");
         }
-        if (store.getStoreId() == null | store.getStoreId() < 0) {
+        if (store.getStoreId() == null | store.getStoreId() <= 0) {
             throw new NullPointerException("storeId not is null");
         }
         storeDao.update(store);
@@ -66,7 +59,7 @@ public class StoreServiceImpl implements StoreService {
     public void deleteStoreById(final Integer storeId) {
         if (storeId != null && storeId > 0) {
             storeDao.hiddenById(storeId);
-        }else{
+        } else {
             throw new NullPointerException("storeId not is null");
         }
 

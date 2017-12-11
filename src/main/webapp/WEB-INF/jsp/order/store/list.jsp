@@ -18,18 +18,29 @@
         }
 
         function del(ts) {
-            var fd = {storeId:$(ts).data("delid")};
+                     var fd = {storeId:$(ts).data("delid")};
             appModule.post('/store/delete.do',fd,function (data) {
-                appModule.alert(data);
-                storeModule.list();
+                appModule.alert("成功");
+                storeModule.toList();
             });
         }
         function nextPage(ts) {
-            var fd = {"pager.nextPage":$(ts).data("nextid")};
-            debugger;
-            appModule.post('/store/list.do',fd,function (data) {
-                storeModule.list();
-            });
+            var addStore = $("#conditionStore").serializeArray();
+            var fd = {name: "pager.currentPage", value: $(ts).data("nextid")};
+            addStore.push(fd)
+            appModule.load('/store/list.do',addStore,"exampleTable");
+        }
+        function previousPage(ts) {
+            var addStore = $("#conditionStore").serializeArray();
+            var fd = {name: "pager.currentPage", value: $(ts).data("previouspage")};
+            addStore.push(fd)
+            appModule.load('/store/list.do',addStore,"exampleTable");
+        }
+        function currentPage(ts) {
+            var addStore = $("#conditionStore").serializeArray();
+            var fd = {name: "pager.currentPage", value: $(ts).data("currentpage")};
+            addStore.push(fd)
+            appModule.load('/store/list.do',addStore,"exampleTable");
         }
 
         return{
@@ -37,7 +48,9 @@
             toView:toView,
             toDel:toDel,
             del:del,
-            nextPage:nextPage
+            previousPage:previousPage,
+            nextPage:nextPage,
+            currentPage:currentPage
         };
 
     })();
@@ -108,16 +121,16 @@
 <ul class="pagination pagination-split">
 
     <li
-            <c:if test="${pager.currentPage-1==pager.startIndex}" >class="disabled"</c:if>
-    ><a href="${pager.previousPage}"><i class="fa fa-angle-left"></i></a></li>
+            <c:if test="${pager.currentPage==pager.startIndex}" > class="disabled"</c:if>
+    ><a data-previouspage="${pager.previousPage}" onclick="storeList.previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
 
     <c:forEach items="${pager.pageBar}" var="pb">
         <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
-        ><a href="#">${pb}</a></li>
+        ><a data-currentpage="${pb}" onclick="storeList.currentPage(this)">${pb}</a></li>
     </c:forEach>
 
     <li
-            <c:if test="${pager.currentPage==pager.endIndex}" >class="disabled"</c:if>
+            <c:if test="${pager.currentPage==pager.endIndex}" > class="disabled"</c:if>
     ><a data-nextid="${pager.nextPage}" onclick="storeList.nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
 
 </ul>

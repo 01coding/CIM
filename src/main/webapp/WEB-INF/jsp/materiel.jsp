@@ -29,7 +29,7 @@
     <!-- Data table CSS -->
     <link href="../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="../../text/css"/>
-    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 
@@ -1727,7 +1727,7 @@
                 url: '${pageContext.request.contextPath}/addMateriel.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if (data == 'true') {
+                    if (data ==true) {
                         swal({
                             title: "新增成功！！!",
                             type: "success",

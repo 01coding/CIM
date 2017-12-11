@@ -1,8 +1,8 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/12/4
-  Time: 9:58
+  Date: 2017/12/8
+  Time: 9:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,45 +12,25 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>设备列表</title>
+    <title>工艺管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
+
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../../favicon.ico">
-    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
-    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap Wysihtml5 css -->
+    <link rel="stylesheet" href="../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
+
     <!-- Data table CSS -->
-    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+    <link href="../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
-    <!-- vector map CSS -->
-    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
-    <!-- Footable CSS -->
-    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
-          type="text/css"/>
-
-    <!--alerts CSS -->
-    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
+    <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
-    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
-    <style>
-        /*** guide ***/
-        .guide {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000
-        }
-
-        .guide .btn-circle {
-            width: 55px;
-            height: 55px;
-            margin-left: 12px;
-            box-shadow: 1px 1px 1px #888888;
-        }
-    </style>
+    <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -68,7 +48,7 @@
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
                     <a href="index.html">
-                        <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
+                        <img class="brand-img" src="../../dist/img/logo.png" alt="brand"/>
                         <span class="brand-text">Hound</span>
                     </a>
                 </div>
@@ -231,23 +211,23 @@
                                     <hr class="light-grey-hr ma-0"/>
                                     <div class="product-carousel owl-carousel owl-theme text-center">
                                         <a href="#">
-                                            <img src="../../../dist/img/chair.jpg" alt="chair">
+                                            <img src="../../dist/img/chair.jpg" alt="chair">
                                             <span>Circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="../../dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair3.jpg" alt="chair">
+                                            <img src="../../dist/img/chair3.jpg" alt="chair">
                                             <span>semi circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair4.jpg" alt="chair">
+                                            <img src="../../dist/img/chair4.jpg" alt="chair">
                                             <span>wooden chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="../../dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                     </div>
@@ -320,7 +300,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -357,7 +337,7 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../dist/img/user1.png"
                                                                                          alt="user_auth"
                                                                                          class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
@@ -464,7 +444,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
                     <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -495,13 +475,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts
+                        <a class="active-page" href="javascript:void(0);" data-toggle="collapse"
+                           data-target="#contact_dr">Contacts
                             <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="contact-list.html">list</a>
+                                <a class="active-page" href="添加合同订单.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -682,7 +663,7 @@
                 </ul>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
                     <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -699,8 +680,8 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a class="active-page" href="export-table.html"><span class="pull-right"><span
-                                class="label label-danger">New</span></span>Export Table</a>
+                        <a href="合同订单.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
+                            Table</a>
                     </li>
                     <li>
                         <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
@@ -780,7 +761,7 @@
                 </a>
                 <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="blank.html">Blank Page</a>
+                        <a class="active" href="blank.html">Blank Page</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages
@@ -926,7 +907,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -939,7 +920,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user1.png" alt="user"/>
+                                                                     src="../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Evie Ono</span>
                                                                     <span class="time block truncate txt-grey">Unity is strength</span>
@@ -951,7 +932,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user2.png" alt="user"/>
+                                                                     src="../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Madalyn Rascon</span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
@@ -963,7 +944,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user3.png" alt="user"/>
+                                                                     src="../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Mitsuko Heid</span>
                                                                     <span class="time block truncate txt-grey">I’m thankful.</span>
@@ -974,7 +955,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -987,7 +968,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user1.png" alt="user"/>
+                                                                     src="../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Jonnie Metoyer</span>
                                                                     <span class="time block truncate txt-grey">Genius is eternal patience.</span>
@@ -999,7 +980,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user2.png" alt="user"/>
+                                                                     src="../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Angelic Lauver</span>
                                                                     <span class="time block truncate txt-grey">Every burden is a blessing.</span>
@@ -1011,7 +992,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user3.png" alt="user"/>
+                                                                     src="../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Priscila Shy</span>
                                                                     <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
@@ -1023,7 +1004,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user4.png" alt="user"/>
+                                                                     src="../../dist/img/user4.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Linda Stack</span>
                                                                     <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
@@ -1059,7 +1040,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../../dist/img/user.png" alt="user"/>
+                                                                     src="../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Hello Jason, how are you, it's been a long time
                                                                         since we last met?</p>
@@ -1094,7 +1075,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../../dist/img/user.png" alt="user"/>
+                                                                     src="../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Not too bad.</p>
                                                                     <div class="msg-per-detail  text-right">
@@ -1137,6 +1118,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div id="messages_tab" class="tab-pane fade" role="tabpanel">
                             <div class="message-box-wrap">
                                 <div class="msg-search">
@@ -1153,7 +1135,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1169,7 +1151,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1185,7 +1167,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1201,7 +1183,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1217,7 +1199,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1233,7 +1215,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1249,7 +1231,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1345,253 +1327,185 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
+
+
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">工艺管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.do">主页</a></li>
+                        <li><a href="#"><span>研发管理</span></a></li>
+                        <li class="active"><span>工艺管理</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
+
             <!-- Row -->
             <div class="row">
-                <div class="col-sm-12">
-                    <div class="panel panel-default card-view">
+                <div class="col-lg-12">
+                    <div class="panel panel-default card-view pa-0">
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body">
-                                <div class="table-wrap">
-                                    <div class="table-responsive">
-                                        <table id="example" class="table table-hover display  pb-30">
-                                            <div style="width: 300px;float: right">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
+                            <div class="panel-body pa-0">
+                                <div class="contact-list">
+                                    <div class="row">
+
+
+                                        <aside class="col-lg-2 col-md-4 pr-0">
+                                            <!--选择门店 div-->
+                                            <div class="mt-20 mb-20 ml-15 mr-15">
+                                                <a href="#myModal" data-toggle="modal" title="Compose"
+                                                   class="btn btn-danger btn-block">新增工艺</a>
+                                                <!-- Modal -->
+                                                <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
+                                                     class="modal fade" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">×
+                                                                </button>
+                                                                <h4 class="modal-title">新增工艺</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="form-horizontal form-material" id="technology">
+                                                                    <div class="form-group">
+                                                                        <div class="col-md-12 mb-20">
+                                                                                <label class="control-label mb-10">工艺名称</label>
+                                                                                <input type="text" class="form-control"
+                                                                                       placeholder="请输入工艺名称" name="technologyName"/>
+                                                                                <label class="control-label mb-10">预设工序</label>
+                                                                                <select class="form-control" name="working.workingId">
+                                                                                    <c:forEach items="${requestScope.workings}" var="wk">
+                                                                                    <option value="${wk.workingId}">${wk.workingName}</option>
+                                                                                    </c:forEach>
+                                                                                </select>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" id="addtechnology" class="btn btn-info waves-effect"
+                                                                        data-dismiss="modal">保存
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="btn btn-default waves-effect"
+                                                                        data-dismiss="modal">取消
                                                                 </button>
                                                             </div>
                                                         </div>
+                                                        <!-- /.modal-content -->
                                                     </div>
-                                                </form>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                                <!-- /.modal -->
                                             </div>
-                                            <thead>
-                                            <tr>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>启用时间</th>
-                                                <th>设备状态</th>
-                                                <th>保养周期</th>
-                                                <th>检查周期</th>
-                                                <th>设备名称</th>
-                                            </tr>
-                                            </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>启用时间</th>
-                                                <th>设备状态</th>
-                                                <th>保养周期</th>
-                                                <th>检查周期</th>
-                                                <th>设备名称</th>
-                                            </tr>
-                                            </tfoot>
-                                            <tbody>
-                                            <c:forEach items="${requestScope.equipments}" var="e">
-                                                <tr>
-                                                    <td >${e.productionLine.productionLineNo}</td>
-                                                    <td>${e.working.workingName}</td>
-                                                    <td>${e.user.userName}</td>
-                                                    <td>${e.startDate}</td>
-                                                    <td>${e.equipmentType.equipmentTypeName}</td>
-                                                    <td>${e.maintenanceCycle}</td>
-                                                    <td>${e.inspectionCycle}</td>
-                                                    <td>${e.equipmentName}</td>
-                                                    <td class="footable-editing" style="display: table-cell;">
-                                                        <div class="btn-group btn-group-xs" role="group">
-                                                            <button type="button" class="btn btn-default footable-edit"
-                                                                    data-toggle="modal" data-target="#exampleModal${e.equipmentId}" >
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true">
-                                                            </span>
-                                                            </button>
-                                                            <button type="button" class="btn btn-default footable-delete"
-                                                                    data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" title="修改"
-                                                                  aria-hidden="true"></span>
-                                                            </button>
+                                        </aside>
+
+                                        <aside class="col-lg-10 col-md-8 pl-0">
+                                            <div class="panel pa-0">
+                                                <div class="panel-wrapper collapse in">
+                                                    <div class="panel-body  pa-0">
+                                                        <div class="table-responsive mb-30">
+                                                            <table id="datable_1"
+                                                                   class="table  display table-hover mb-30"
+                                                                   data-page-size="10">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>工艺名称</th>
+                                                                    <th>预设工序</th>
+                                                                    <th>操作</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <c:forEach items="${requestScope.pager.list}" var="ls">
+                                                                    <tr>
+                                                                        <td>${ls.technologyName}</td>
+                                                                        <td>${ls.working.workingName}</td>
+                                                                        <td>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="text-inverse" title="修改"
+                                                                               data-toggle="tooltip"><i
+                                                                                    class="fa fa-pencil-square txt-danger"></i></a>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="text-inverse del" title="删除" flagid="${ls.technologyId}" flagname="${ls.technologyName}"
+                                                                               data-toggle="tooltip"><i
+                                                                                    class="ti-trash txt-danger"></i></a>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:forEach>
+                                                                <%--<tr>--%>
+                                                                    <%--<td>炒</td>--%>
+                                                                    <%--<td>烹饪</td>--%>
+                                                                    <%--<td>--%>
+                                                                        <%--<a href="javascript:void(0)"--%>
+                                                                           <%--class="text-inverse" title="修改"--%>
+                                                                           <%--data-toggle="tooltip"><i--%>
+                                                                                <%--class="fa fa-pencil-square txt-danger"></i></a>--%>
+                                                                        <%--<a href="javascript:void(0)"--%>
+                                                                           <%--class="text-inverse" title="删除"--%>
+                                                                           <%--data-toggle="tooltip"><i--%>
+                                                                                <%--class="ti-trash txt-danger"></i></a>--%>
+                                                                    <%--</td>--%>
+                                                                <%--</tr>--%>
+                                                                </tbody>
+                                                            </table>
+
                                                         </div>
-                                                    </td>
-                                                </tr>
-                                                <div class="col-md-6">
-                                                    <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
-                                                         aria-labelledby="exampleModalLabel1">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                                            aria-hidden="true">&times;</span></button>
-                                                                    <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="/updateMateriel.do">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <input type="hidden"name="equipmentId" value="${e.equipmentId}"/></inpu>
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
-                                                                                        设备编号:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <%--<input type="text" class="form-control" id="equipmentId" name="equipmentId" disabled="disabled" placeholder="设备编号" value="${e.equipmentId}">--%>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <input type="text" class="form-control" name="inspectionCycle" id="inspectionCycle" placeholder="检查周期" value="${e.inspectionCycle}">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <input type="text" class="form-control" name="equipmentName" id="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <input type="text" class="form-control" name="maintenanceCycle" id="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                            <div class="form-group">
-                                                                                <select name="working.workingId" style="width: 270px;height: 40px">
-                                                                                    <c:forEach items="${requestScope.workings}" var="w">
-                                                                                        <c:choose>
-                                                                                            <c:when test="${w.workingId!=e.working.workingId}">
-                                                                                                <option value="${w.workingId}">${w.workingName}</option>
-                                                                                            </c:when>
-                                                                                            <c:when test="${w.workingId==e.working.workingId}">
-                                                                                                <option value="${e.working.workingId}"selected="selected">${e.working.workingName}</option>
-                                                                                            </c:when>
-                                                                                        </c:choose>
-                                                                                    </c:forEach>
-                                                                                </select>
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <select  name="user.userId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.users}" var="us">
-                                                                                            <c:choose>
-                                                                                                <c:when test="${us.userId!=e.user.userId}">
-                                                                                                    <option  value="${us.userId}">${us.userName}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${us.userId==e.user.userId}">
-                                                                                                    <option value="${e.user.userId}"selected="selected">${e.user.userName}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <select  name="equipmentType.equipmentTypeId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.equipmentTypes}" var="equ">
-                                                                                            <c:choose>
-                                                                                                <c:when test="${e.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
-                                                                                                    <option value="${equ.equipmentTypeId}">${equ.equipmentTypeName}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${e.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
-                                                                                                    <option value="${e.equipmentType.equipmentTypeId}" selected="selected" >${e.equipmentType.equipmentTypeName}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <select name="productionLine.productionLineId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.productionLines}" var="ps">
-                                                                                            <c:choose>
-                                                                                                <c:when  test="${ps.productionLineId!=e.productionLine.productionLineId}">
-                                                                                                    <option  value="${ps.productionLineId}">${ps.productionLineNo}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${ps.productionLineId==e.productionLine.productionLineId}">
-                                                                                                    <option value="${e.productionLine.productionLineId}" selected="selected">${e.productionLine.productionLineNo}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="control-label mb-10 text-left"><font
-                                                                                            style="vertical-align: inherit;"><font
-                                                                                            style="vertical-align: inherit;"></font></font></label>
-                                                                                    <div class="input-group date" id="datetimepicker1">
-                                                                                        <input name="startDate" type="text" class="form-control" placeholder="日期时间选择" value="${e.startDate}">
-                                                                                        <span class="input-group-addon">
-                                                                                    <span class="fa fa-calendar"></span>
-                                                                                </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button type="submit" class="btn btn-primary">确认修改</button>>
-                                                                        </div>
-                                                                    </form>
+                                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <ul class="pagination pagination-split">
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    Pager pager = (Pager) request.getAttribute("pager");
+                                                                                    if(pager.getCurrentPage()!=1){%>
+                                                                                        href="${pageContext.request.contextPath}/technology.do?currentPage=${requestScope.pager.previousPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-left"></i></a></li>
+                                                                            <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                                                <li <c:if
+                                                                                        test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                                                    <a href="${pageContext.request.contextPath}/technology.do?currentPage=${bar}">${bar}</a>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                                        href="${pageContext.request.contextPath}/technology.do?currentPage=${requestScope.pager.nextPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-right"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                            </c:forEach>
-                                            </tbody>
-                                        </table>
-                                        <div class="guide">
-                                            <div class="guide-wrap">
-                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
-                                                    <i class="icon-rocket"></i>
-                                                </button>
-                                                <a href="/addequipement.do">
-                                                    <button class="btn btn-info btn-icon-anim btn-circle">
-                                                        <i class="fa ti-plus"></i>
-                                                    </button>
-                                                </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </aside>
                                     </div>
                                 </div>
                             </div>
@@ -1599,78 +1513,9 @@
                     </div>
                 </div>
             </div>
+            <!-- /Row -->
         </div>
-        <div class="row">
-            <!--提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
 
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                       <form action="/delMateriel.do">
-                           <div class="sa-button-container">
-                               <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                       data-dismiss="modal" aria-label="Close">不，取消！
-                               </button>
-                               <div class="sa-confirm-button-container">
-                                   <button class="confirm" tabindex="1"
-                                           style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                       是的，删除它！
-                                   </button>
-                               </div>
-                           </div>
-                       </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="pagination pagination-split">
-                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                            <li class="disabled"><a href="#">1</a>
-                            <li class="active"><a href="#">2</a>
-                            <li><a href="#">3</a>
-                            <li><a href="#">4</a>
-                            <li><a href="#">5</a>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1679,35 +1524,107 @@
                 </div>
             </div>
         </footer>
+        <!-- /Footer -->
+
     </div>
+    <!-- /Main Content -->
+
 </div>
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-<script src="../../../dist/js/export-table-data.js"></script>
-<script src="../../../dist/js/dataTables-data.js"></script>
-<!-- Slimscroll JavaScript -->
-<script src="../../../dist/js/jquery.slimscroll.js"></script>
-<!-- Owl JavaScript -->
-<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-<!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="../../vendors/bower_components/wysihtml5x/dist/wysihtml5x.min.js"></script>
+
+<script src="../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.js"></script>
+
 <!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Bootstrap Wysuhtml5 Init JavaScript -->
+<script src="../../dist/js/bootstrap-wysuhtml5-data.js"></script>
+
+<!-- Data table JavaScript -->
+
+<%--<script src="../../dist/js/dataTables-data.js"></script>--%>
+
+<!-- Slimscroll JavaScript -->
+<script src="../../dist/js/jquery.slimscroll.js"></script>
+
+<!-- Owl JavaScript -->
+<script src="../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+<!-- Switchery JavaScript -->
+<script src="../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
 <!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script>
-<!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../../../dist/js/sweetalert-data.js"></script>
+<script src="../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../dist/js/init.js"></script>
+<script>
+    $(function () {
+        $(".del").click(function(){
+            var mid=$(this).attr("flagid");
+            var mname=$(this).attr("flagname");
+            var $tr=$(this).parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/delTechnology.do?technologyId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == true){
+                                swal("删除成功", "删除成功，如需要恢复请再次添加！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+        $("#addtechnology").click(function () {
+            var data = $("#technology").serialize();
+            var submitData = decodeURIComponent(data, true);
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/addTechnology.do?' + submitData,
+                cache: false,
+                success: function (data) {
+                    if (data ==true) {
+                        swal({
+                            title: "新增成功！！!",
+                            type: "success",
+                            text: "您现在可以在其他系统中使用它！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    } else {
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
+
 </html>
 
