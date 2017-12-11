@@ -3,6 +3,8 @@ package team.ruike.cim.service;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.util.Pager;
 
+import java.util.List;
+
 /**
  * 门店业务接口
  *
@@ -49,6 +51,14 @@ public interface StoreService {
      * @param storeId 门店ID
      */
     public void deleteStoreById(Integer storeId);
+
+
+    /**
+     * 查询所有门店
+     *
+     * @return 门店集合
+     */
+    public List<Store> queryAllStore();
 
 
 }

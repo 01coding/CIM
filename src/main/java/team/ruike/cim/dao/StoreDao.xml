@@ -17,6 +17,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="add" parameterType="store">
         INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},0,#{storeNo},'123456',0)
     </insert>
+
+    <select id="selectAll" resultMap="storeMap">
+        SELECT * FROM store WHERE status=0
+    </select>
     
     <update id="update" parameterType="store">
         UPDATE store SET
@@ -70,7 +74,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
            AND store_id=#{storeId}
         </if>
         <if test="storeName!=null and storeName!=''">
-            AND  store_name LIKE '%storeName%'
+            AND  store_name LIKE CONCAT('%',#{storeName},'%')
         </if>
         <if test="storeType!=null and storeType>0">
             AND  store_type=#{storeType}
@@ -93,8 +97,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <select id="selectById" parameterType="int" resultMap="storeMap">
           select * from store WHERE  status=0
-        <if test="storeId!=null and storeId>0">
            and store_id=#{storeId}
-        </if>
     </select>
 </mapper>

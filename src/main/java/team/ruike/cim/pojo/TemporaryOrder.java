@@ -1,6 +1,8 @@
 package team.ruike.cim.pojo;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -25,6 +27,7 @@ public class TemporaryOrder implements Serializable {
     /**
      * 交付时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date temporaryOrderEndDate;
     /**
      * 状态外键
@@ -33,6 +36,7 @@ public class TemporaryOrder implements Serializable {
     /**
      * 下单时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date temporaryOrderStartDate;
     /**
      * 备注
@@ -54,6 +58,19 @@ public class TemporaryOrder implements Serializable {
      * 临时订单项集合
      */
     private List<TemporaryOrderTerm> temporaryOrderTerms;
+
+    /**
+     * 门店对象
+     */
+    private Store store;
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
+    }
 
     public Integer getTemporaryOrderId() {
         return temporaryOrderId;
