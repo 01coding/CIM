@@ -1388,76 +1388,85 @@
                                 <div class="table-wrap">
                                     <div class="row">
                                         <c:forEach var="was" items="${warehouseRegions}">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="panel panel-default card-view">
-                                                <div class="panel-heading">
-                                                    <div class="pull-left">
-                                                        <h6 class="panel-title txt-dark">${was.warehouseRegionNo}
-                                                            <div class="btn-group btn-group-xs " role="group">
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#exampleModal">
-                                                                    <i class="fooicon fooicon-pencil"
-                                                                       aria-hidden="true" title="编辑区域"></i>
-                                                                </button>
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#exampleModal1">
-                                                                    <i class="fa fa-plus-square" title="添加区域"></i>
-                                                                </button>
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="panel panel-default card-view">
+                                                    <div class="panel-heading">
+                                                        <div class="pull-left">
+                                                            <h6 class="panel-title txt-dark">${was.materielTypeLevelB.materielTypeLevelBName}【区域】
+                                                                <div class="btn-group btn-group-xs "
+                                                                     role="group">
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal">
+                                                                        <i class="fooicon fooicon-pencil"
+                                                                           aria-hidden="true" title="编辑区域"></i>
+                                                                    </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal1">
+                                                                        <i class="fa fa-plus-square"
+                                                                           title="添加区域"></i>
+                                                                    </button>
 
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#exampleModal"
-                                                                        onclick="window.location.href='materiel.html'">
-                                                                    <i class="fa ti-search" style="color: #2879ff;"
-                                                                       title="查看物料"></i>
-                                                                </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal"
+                                                                            onclick="window.location.href='materiel.html'">
+                                                                        <i class="fa ti-search"
+                                                                           style="color: #2879ff;"
+                                                                           title="查看物料"></i>
+                                                                    </button>
 
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-delete"
-                                                                        data-toggle="modal"
-                                                                        data-target=".bs-example-modal-lg">
-                                                                    <i class="fooicon fooicon-trash"
-                                                                       aria-hidden="true" title="删除区域"></i>
-                                                                </button>
-                                                            </div>
-                                                        </h6>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-delete"
+                                                                            data-toggle="modal"
+                                                                            data-target=".bs-example-modal-lg">
+                                                                        <i class="fooicon fooicon-trash"
+                                                                           aria-hidden="true" title="删除区域"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </h6>
+                                                        </div>
+
+                                                        <div class="clearfix"></div>
                                                     </div>
-
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <div class="panel-wrapper collapse in">
-                                                    <div class="panel-body row pa-0">
-                                                        <table class="table table-hover mb-0">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>货架编号</th>
-                                                                <th>存储数量</th>
-                                                                <th>备注</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Mark</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
+                                                    <div class="panel-wrapper collapse in">
+                                                        <div class="panel-body row pa-0">
+                                                            <table class="table table-hover mb-0">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>货架编号</th>
+                                                                    <th>数量</th>
+                                                                    <th>物料</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <c:forEach items="${goodsShelves}" var="gos">
+                                                                <tbody>
+                                                                    <c:if test="${was.warehouseRegionId==gos.warehouseRegion.warehouseRegionId}">
+                                                                        <tr>
+                                                                            <td>${gos.goodsShelveNo} </td>
+                                                                            <td>${gos.materielNumber}</td>
+                                                                            <td>${gos.materiel.materielName}</td>
+                                                                        </tr>
+                                                                    </c:if>
+                                                                </tbody>
+                                                                </c:forEach>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+
                                         </c:forEach>
                                         <c:forEach var="waa" items="${productWarehouseRegions}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
-                                                            <h6 class="panel-title txt-dark">${waa.productWarehouseRegionNo}
+                                                            <h6 class="panel-title txt-dark">${waa.menuType.menuTypeName}【区域】
                                                                 <div class="btn-group btn-group-xs " role="group">
                                                                     <button type="button"
                                                                             class="btn btn-default footable-edit"
@@ -1501,16 +1510,21 @@
                                                                 <thead>
                                                                 <tr>
                                                                     <th>货架编号</th>
-                                                                    <th>存储数量</th>
-                                                                    <th>备注</th>
+                                                                    <th>数量</th>
+                                                                    <th>菜品</th>
                                                                 </tr>
                                                                 </thead>
+                                                                <c:forEach var="pgs" items="${productGoodsShelves}">
                                                                 <tbody>
+                                                                <c:if test="${pgs.productWarehouseRegion.productWarehouseRegionId==waa.productWarehouseRegionId}">
                                                                 <tr>
-                                                                    <td>1</td>
-                                                                    <td>Mark</td>
+                                                                    <td>${pgs.productGoodsShelveNo}</td>
+                                                                    <td>${pgs.menuNumber}</td>
+                                                                    <td>${pgs.menu.menuName}</td>
                                                                 </tr>
+                                                                </c:if>
                                                                 </tbody>
+                                                                </c:forEach>
                                                             </table>
                                                         </div>
                                                     </div>

@@ -1396,7 +1396,7 @@
                                                        data-target="#editor-modal3"><i
                                                             class="fa fa-plus-square" title="添加仓库"></i></a>
                                                 </div>
-                                                <a href="/getwarehouseregion.do"> <img
+                                                <a href="/getwarehouseregion.cl?warehouse.warehouseId=${warh.warehouseId}"> <img
                                                         src="../../../images/menuimg/timg.jpg" class="img-responsive"
                                                         alt="Product Image" title="查看区域"/> </a>
                                                 <div class="info">
@@ -1437,7 +1437,7 @@
                                                    data-target="#editor-modal4"><i
                                                         class="fa fa-plus-square" title="添加仓库"></i></a>
                                             </div>
-                                            <a href="/getProductwarehouseregion.do"> <img src="../../../images/menuimg/timg.jpg"
+                                            <a href="/getProductwarehouseregion.cl?productWarehouse.productWarehouseId=${prs.productWarehouseId}"> <img src="../../../images/menuimg/timg.jpg"
                                                                                   class="img-responsive"
                                                                                   alt="Product Image" title="查看区域"/> </a>
                                             <div class="info">
