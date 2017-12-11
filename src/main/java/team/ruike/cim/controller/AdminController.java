@@ -2,6 +2,7 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.pojo.Role;
 import team.ruike.cim.service.AdminService;
 import team.ruike.cim.util.Pager;
@@ -28,4 +29,10 @@ public class AdminController {
         request.setAttribute("fun",adminService.getFunctions());
         return "admin/role";
     }
+    @ResponseBody
+    @RequestMapping("addRole.do")
+    public String addRole(Role role){
+        return adminService.addRole(role)+"";
+    }
+
 }

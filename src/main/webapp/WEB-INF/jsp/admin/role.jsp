@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/11
@@ -29,7 +29,7 @@
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
-
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
@@ -1385,24 +1385,22 @@
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-hidden="true">×
                                                                 </button>
-                                                                <h4 class="modal-title">新增工艺</h4>
+                                                                <h4 class="modal-title">新增角色</h4>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form class="form-horizontal form-material">
+                                                                <form class="form-horizontal form-material" id="role">
                                                                     <div class="form-group">
                                                                         <div class="col-md-12 mb-20">
-                                                                            <form action="menu.html" method="get">
                                                                                 <label class="control-label mb-10">角色名称</label>
-                                                                                <input type="text" class="form-control"
-                                                                                       placeholder="请输入工艺名称"/>
-                                                                            </form>
+                                                                                <input type="text" name="roleName" class="form-control"
+                                                                                       placeholder="请输入角色名称"/>
                                                                         </div>
                                                                     </div>
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-info waves-effect"
-                                                                        data-dismiss="modal">保存
+                                                                        data-dismiss="modal" id="addrole">保存
                                                                 </button>
                                                                 <button type="button"
                                                                         class="btn btn-default waves-effect"
@@ -1531,17 +1529,37 @@
                                                                 <div class="row">
                                                                     <div class="col-md-12">
                                                                         <ul class="pagination pagination-split">
-                                                                            <li><a href="#"><i
-                                                                                    class="fa fa-angle-left"></i></a>
-                                                                            </li>
-                                                                            <li class="disabled"><a href="#">1</a></li>
-                                                                            <li class="active"><a href="#">2</a></li>
-                                                                            <li><a href="#">3</a></li>
-                                                                            <li><a href="#">4</a></li>
-                                                                            <li><a href="#">5</a></li>
-                                                                            <li><a href="#"><i
-                                                                                    class="fa fa-angle-right"></i></a>
-                                                                            </li>
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    Pager pager = (Pager) request.getAttribute("pager");
+                                                                                    if(pager.getCurrentPage()!=1){%>
+                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.previousPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-left"></i></a></li>
+                                                                            <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                                                <li <c:if
+                                                                                        test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                                                    <a href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${bar}">${bar}</a>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.nextPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-right"></i></a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>
@@ -1598,7 +1616,7 @@
 
 <!-- Data table JavaScript -->
 
-<script src="../../../dist/js/dataTables-data.js"></script>
+<%--<script src="../../../dist/js/dataTables-data.js"></script>--%>
 
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
@@ -1610,9 +1628,34 @@
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Init JavaScript -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../../dist/js/init.js"></script>
 <script src="../../../dist/js/modal-data.js"></script>
-
+<script>
+    $(function () {
+        $("#addrole").click(function () {
+            var data = $("#role").serialize();
+            var submitData = decodeURIComponent(data, true);
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/admin/addRole.do?' + submitData,
+                cache: false,
+                success: function (data) {
+                    if (data ==true) {
+                        swal({
+                            title: "新增成功！！!",
+                            type: "success",
+                            text: "您现在可以为用户分配此角色了！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    } else {
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

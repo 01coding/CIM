@@ -33,6 +33,7 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public void getRole(Role role, Pager<Role> pager) {
+        pager.setTotalRecord(roleDao.selectCount(role));
         List<Role> roles = roleDao.select(role, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize());
         pager.setList(roles);
     }
@@ -52,5 +53,15 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<Function> getFunctions() {
         return functionDao.select(new Function(),0,99);
+    }
+
+    /**
+     * 新增角色
+     * @param role 角色对象
+     * @return 是否成功
+     */
+    @Override
+    public boolean addRole(Role role) {
+        return roleDao.add(role)==1;
     }
 }

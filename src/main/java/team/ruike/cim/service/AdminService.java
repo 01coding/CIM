@@ -31,4 +31,11 @@ public interface AdminService {
      * @return 功能集合
      */
     List<Function> getFunctions();
+
+    /**
+     * 新增角色
+     * @param role 角色对象
+     * @return 是否成功
+     */
+    boolean addRole(Role role);
 }

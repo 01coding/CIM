@@ -36,12 +36,12 @@
     </select>
     <select id="selectCount" resultType="int" parameterType="role">
 
-        SELECT COUNT (1)FROM role WHERE status=0
+        SELECT COUNT(1) FROM role WHERE status=0
         <if test="roleId!=null and roleId>0">
             AND role_id=#{roleId}
         </if>
         <if test="roleName!=null and roleName!=''">
-            AND role_name LIKE  CONCAT('%',#{function.functionName},'%')
+            AND role_name LIKE  CONCAT('%',#{roleName},'%')
         </if>
 
     </select>
