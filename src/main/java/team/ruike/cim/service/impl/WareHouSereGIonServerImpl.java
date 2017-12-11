@@ -4,13 +4,13 @@ package team.ruike.cim.service.impl;
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.WarehouseRegionDao;
 import team.ruike.cim.pojo.WarehouseRegion;
-import team.ruike.cim.service.WarehouseregionServer;
+import team.ruike.cim.service.WareHouSereGIonServer;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 
 @Service("warehouseregionServer")
-public class WarehouseregionServerImpl implements WarehouseregionServer {
+public class WareHouSereGIonServerImpl implements WareHouSereGIonServer {
     @Resource
     private WarehouseRegionDao warehouseRegionDao;
 
@@ -20,7 +20,7 @@ public class WarehouseregionServerImpl implements WarehouseregionServer {
      * @param warehouseRegion
      * @param pager
      */
-    public void getWarehouseregionServer(WarehouseRegion warehouseRegion, Pager<WarehouseRegion> pager) {
+    public void getWareHouSereGIonServer(WarehouseRegion warehouseRegion, Pager<WarehouseRegion> pager) {
         pager.setTotalRecord(warehouseRegionDao.selectCount(warehouseRegion));
         pager.setList(warehouseRegionDao.select(warehouseRegion, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
@@ -31,7 +31,7 @@ public class WarehouseregionServerImpl implements WarehouseregionServer {
      * @param warehouseRegion
      * @return
      */
-    public int addWarehouseregionServer(WarehouseRegion warehouseRegion) {
+    public int addWareHouSereGIonServer(WarehouseRegion warehouseRegion) {
         if (warehouseRegion != null && warehouseRegion.getMaterielTypeLevelB().getMaterielTypeLevelBId() > 0) {
             return warehouseRegionDao.add(warehouseRegion);
         }
@@ -44,7 +44,7 @@ public class WarehouseregionServerImpl implements WarehouseregionServer {
      * @param warehouseRegion
      * @return
      */
-    public int updWarehouseregionServer(WarehouseRegion warehouseRegion) {
+    public int updWareHouSereGIonServer(WarehouseRegion warehouseRegion) {
         if (warehouseRegion != null && warehouseRegion.getMaterielTypeLevelB().getMaterielTypeLevelBId() > 0) {
             return warehouseRegionDao.update(warehouseRegion);
         }

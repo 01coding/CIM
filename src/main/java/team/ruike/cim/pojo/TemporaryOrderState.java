@@ -33,7 +33,6 @@ public class TemporaryOrderState implements Serializable {
         this.temporaryOrderStateId = temporaryOrderStateId;
     }
 
-
     public String getTemporaryOrderStateName() {
         return temporaryOrderStateName;
     }
@@ -42,7 +41,6 @@ public class TemporaryOrderState implements Serializable {
         this.temporaryOrderStateName = temporaryOrderStateName;
     }
 
-
     public Integer getStatus() {
         return status;
     }
@@ -50,5 +48,4 @@ public class TemporaryOrderState implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
 }

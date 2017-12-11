@@ -1,8 +1,8 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
-  User: lenovo
-  Date: 2017/12/4
-  Time: 11:22
+  User: Administrator
+  Date: 2017/12/11
+  Time: 15:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>角色管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -22,15 +22,14 @@
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
 
-    <!--alerts CSS -->
+    <!-- Bootstrap Wysihtml5 css -->
+    <link rel="stylesheet"
+          href="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
+
+    <!-- Data table CSS -->
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
     <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href="../../../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Calendar CSS -->
-    <link href="../../../vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
-
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
@@ -186,7 +185,7 @@
                                             <a href="e-commerce.html">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="warehouse.html">Products</a>
+                                            <a href="product.html">Products</a>
                                         </li>
                                         <li>
                                             <a href="product-detail.html">Product Detail</a>
@@ -417,7 +416,7 @@
                 </ul>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
                     <div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
                     </div>
                     <div class="pull-right"><span class="label label-success">hot</span></div>
@@ -428,7 +427,7 @@
                         <a href="e-commerce.html">Dashboard</a>
                     </li>
                     <li>
-                        <a class="active-page" href="warehouse.html">Products</a>
+                        <a href="product.html">Products</a>
                     </li>
                     <li>
                         <a href="product-detail.html">Product Detail</a>
@@ -448,7 +447,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
                     <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -479,13 +478,14 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#contact_dr">Contacts
+                        <a class="active-page" href="javascript:void(0);" data-toggle="collapse"
+                           data-target="#contact_dr">Contacts
                             <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                             <div class="clearfix"></div>
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="contact-list.html">list</a>
+                                <a class="active-page" href="添加合同订单.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -524,7 +524,7 @@
                 </a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="warehouse_region.html">Panels & Wells</a>
+                        <a href="panels-wells.html">Panels & Wells</a>
                     </li>
                     <li>
                         <a href="modals.html">Modals</a>
@@ -683,8 +683,7 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a href="materiel.html"><span class="pull-right"><span
-                                class="label label-danger">New</span></span>Export
+                        <a href="合同订单.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
                             Table</a>
                     </li>
                     <li>
@@ -1348,327 +1347,238 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">仓库</h5>
+                    <h5 class="txt-dark">角色管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>products</span></li>
+                        <li><a href="index.html">主页</a></li>
+                        <li><a href="#"><span>管理员管理</span></a></li>
+                        <li class="active"><span>角色管理</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
+
+            <!-- Row -->
             <div class="row">
-                <div class=" info ">
-                    <div class="col-md-0">
+                <div class="col-lg-12">
+                    <div class="panel panel-default card-view pa-0">
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body pa-0">
+                                <div class="contact-list">
+                                    <div class="row">
 
-                    </div>
 
-                </div>
-            </div>
-            <div class="form-group">
-
-            </div>
-            <!-- Product Row One -->
-            <div class="row">
-                <h5 class="txt-dark">物料仓库</h5>
-                <c:forEach var="warh" items="${lsitwar}">
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                        <div class="panel panel-default card-view pa-0">
-                            <div class="panel-wrapper collapse in">
-                                <div class="panel-body pa-0">
-                                    <article class="col-item">
-                                        <form action="">
-                                            <div class="photo">
-                                                <div class="options">
-                                                    <a href="materiel_register.html"
-                                                       class="font-18 txt-grey mr-10 pull-left"><i
-                                                            class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
-                                                       data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                        title="编辑"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
-                                                       data-target="#editor-modal3"><i
-                                                            class="fa fa-plus-square" title="添加仓库"></i></a>
-                                                </div>
-                                                <a href="/getwarehouseregion.cl?warehouse.warehouseId=${warh.warehouseId}"> <img
-                                                        src="../../../images/menuimg/timg.jpg" class="img-responsive"
-                                                        alt="Product Image" title="查看区域"/> </a>
-                                                <div class="info">
-                                                    <h6>
-                                                            ${warh.warehouseName}
-                                                    </h6>
-                                                    <div class="product-rating inline-block">
-                                                            ${warh.remarks}
+                                        <aside class="col-lg-2 col-md-4 pr-0">
+                                            <!--选择门店 div-->
+                                            <div class="mt-20 mb-20 ml-15 mr-15">
+                                                <a href="#myModal" data-toggle="modal" title="Compose"
+                                                   class="btn btn-danger btn-block">新增角色</a>
+                                                <!-- Modal -->
+                                                <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
+                                                     class="modal fade" style="display: none;">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button type="button" class="close" data-dismiss="modal"
+                                                                        aria-hidden="true">×
+                                                                </button>
+                                                                <h4 class="modal-title">新增角色</h4>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <form class="form-horizontal form-material" id="role">
+                                                                    <div class="form-group">
+                                                                        <div class="col-md-12 mb-20">
+                                                                                <label class="control-label mb-10">角色名称</label>
+                                                                                <input type="text" name="roleName" class="form-control"
+                                                                                       placeholder="请输入角色名称"/>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-info waves-effect"
+                                                                        data-dismiss="modal" id="addrole">保存
+                                                                </button>
+                                                                <button type="button"
+                                                                        class="btn btn-default waves-effect"
+                                                                        data-dismiss="modal">取消
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <!-- /.modal-content -->
                                                     </div>
-                                                    <span class="head-font block text-warning font-16">管理人:【${warh.user.userName}】</span>
+                                                    <!-- /.modal-dialog -->
+                                                </div>
+                                                <!-- /.modal -->
+                                            </div>
+                                        </aside>
+
+                                        <aside class="col-lg-10 col-md-8 pl-0">
+                                            <div class="panel pa-0">
+                                                <div class="panel-wrapper collapse in">
+                                                    <div class="panel-body  pa-0">
+                                                        <div class="table-responsive mb-30">
+                                                            <table id="datable_1"
+                                                                   class="table  display table-hover mb-30"
+                                                                   data-page-size="10">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>角色名称</th>
+                                                                    <th>操作</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                <c:forEach items="${requestScope.pager.list}" var="ls">
+                                                                    <tr>
+                                                                        <div id="myModal${ls.roleId}" class="modal fade"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="myModalLabel"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button"
+                                                                                                class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-hidden="true">×
+                                                                                        </button>
+                                                                                        <h5 class="modal-title"
+                                                                                            id="myModalLabel">权限控制</h5>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form class="form-horizontal form-material">
+                                                                                            <c:forEach
+                                                                                                    items="${requestScope.jur}"
+                                                                                                    var="j">
+                                                                                                <div>
+                                                                                                    <div class="checkbox checkbox-primary">
+                                                                                                        <input id="checkbox1${j.jurisdictionId}"
+                                                                                                               type="checkbox"
+                                                                                                        <c:forEach
+                                                                                                                items="${ls.jurisdictions}"
+                                                                                                                var="lj">
+                                                                                                        <c:if test="${j.jurisdictionId==lj.jurisdictionId}">
+                                                                                                               checked='checked' </c:if>
+                                                                                                        </c:forEach>>
+                                                                                                        <label for="checkbox1${j.jurisdictionId}">
+                                                                                                            <h6>${j.jurisdictionName}</h6>
+                                                                                                        </label>
+                                                                                                    </div>
+                                                                                                    <c:forEach
+                                                                                                            items="${requestScope.fun}"
+                                                                                                            var="f">
+                                                                                                        <c:if test="${f.jurisdictionId==j.jurisdictionId}">
+                                                                                                            <div class="checkbox checkbox-primary"
+                                                                                                                 style="margin-top: 10px;margin-left: 10px;float: left">
+                                                                                                                <input id="checkbox2${f.functionId}"
+                                                                                                                       type="checkbox"
+                                                                                                                <c:forEach items="${ls.functions}" var="lf">
+                                                                                                                    <c:if test="${f.functionId==lf.functionId}"> checked='checked' </c:if>
+                                                                                                                </c:forEach>>
+                                                                                                                <label for="checkbox2${f.functionId}">
+                                                                                                                        ${f.functionName}
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </c:if>
+                                                                                                    </c:forEach>
+                                                                                                    <div style="clear: left"></div>
+                                                                                                    <hr style='background-color:#D7D7EA;height:1px;border:none;'/>
+                                                                                                </div>
+                                                                                            </c:forEach>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-info save"
+                                                                                                data-dismiss="modal">
+                                                                                            保存关闭
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <!-- /.modal-content -->
+                                                                            </div>
+                                                                        </div>
+                                                                        <td>${ls.roleName}</td>
+                                                                        <td>
+                                                                            <button title="修改"
+                                                                                    class="btn btn-default btn-icon-anim btn-circle"
+                                                                                    style="width: 30px;height: 30px">
+                                                                                <i class="fa fa-pencil"></i></button>
+                                                                            <button title="权限设置" data-toggle="modal"
+                                                                                    data-target="#myModal${ls.roleId}"
+                                                                                    class="btn btn-danger btn-icon-anim btn-circle"
+                                                                                    style="width: 30px;height: 30px">
+                                                                                <i class="icon-settings"></i></button>
+                                                                            <button title="删除"
+                                                                                    class="btn btn-info btn-icon-anim btn-circle"
+                                                                                    style="width: 30px;height: 30px">
+                                                                                <i class="icon-trash"></i></button>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:forEach>
+                                                                </tbody>
+                                                            </table>
+
+                                                        </div>
+                                                        <div class="panel-wrapper collapse in"
+                                                             style="margin:0 auto;text-align:center;">
+                                                            <div class="panel-body">
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <ul class="pagination pagination-split">
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    Pager pager = (Pager) request.getAttribute("pager");
+                                                                                    if(pager.getCurrentPage()!=1){%>
+                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.previousPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-left"></i></a></li>
+                                                                            <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                                                <li <c:if
+                                                                                        test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                                                    <a href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${bar}">${bar}</a>
+                                                                                </li>
+                                                                            </c:forEach>
+                                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                            <li <c:if
+                                                                                    test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                                                <a <%
+                                                                                    if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.nextPage}"
+                                                                                        <%
+                                                                                        }else {%>
+                                                                                        href="javascript:void(0);"
+                                                                                        <%}
+                                                                                        %>>
+                                                                                    <i class="fa fa-angle-right"></i></a></li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </article>
+                                        </aside>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </c:forEach>
                 </div>
-            <div class="row">
-                <h5 class="txt-dark">成品仓库</h5>
-                <c:forEach var="prs" items="${productWarehouses}">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <div class="panel panel-default card-view pa-0">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <article class="col-item">
-                                    <form>
-                                        <div class="photo">
-                                            <div class="options">
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left"><i
-                                                        class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                    title="编辑"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal4"><i
-                                                        class="fa fa-plus-square" title="添加仓库"></i></a>
-                                            </div>
-                                            <a href="/getProductwarehouseregion.cl?productWarehouse.productWarehouseId=${prs.productWarehouseId}"> <img src="../../../images/menuimg/timg.jpg"
-                                                                                  class="img-responsive"
-                                                                                  alt="Product Image" title="查看区域"/> </a>
-                                            <div class="info">
-                                                <h6>
-                                                   ${prs.productWarehouseName}
-                                                </h6>
-                                                <div class="product-rating inline-block">
-                                                   ${prs.remarks}
-                                                </div>
-                                                <span class="head-font block text-warning font-16">管理员:【${prs.user.userName}】</span>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </article>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                </c:forEach>
             </div>
+            <!-- /Row -->
+        </div>
 
-            <!-- /Product Row Four -->
-        </div>
-        <div class="modal fade" id="editor-modal2" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加货架 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor2">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title2">修改物料仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id2" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal3" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor3">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title3">添加物料仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id3" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal4" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor4">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title4">添加成品仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id4" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal5" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor5">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title5">添加成品仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id5" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1678,8 +1588,10 @@
             </div>
         </footer>
         <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
+
 </div>
 <!-- /#wrapper -->
 
@@ -1691,29 +1603,59 @@
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="../../../vendors/bower_components/wysihtml5x/dist/wysihtml5x.min.js"></script>
+
+<script src="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.js"></script>
+
+<!-- Fancy Dropdown JS -->
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+
+<!-- Bootstrap Wysuhtml5 Init JavaScript -->
+<script src="../../../dist/js/bootstrap-wysuhtml5-data.js"></script>
+
+<!-- Data table JavaScript -->
+
+<%--<script src="../../../dist/js/dataTables-data.js"></script>--%>
+
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
-<!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../../../dist/js/sweetalert-data.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
-<!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-<!-- Treeview JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
-<!-- Treeview Init JavaScript -->
-<script src="../../../dist/js/treeview-data.js"></script>
 <!-- Init JavaScript -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../../dist/js/init.js"></script>
-
+<script src="../../../dist/js/modal-data.js"></script>
+<script>
+    $(function () {
+        $("#addrole").click(function () {
+            var data = $("#role").serialize();
+            var submitData = decodeURIComponent(data, true);
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/admin/addRole.do?' + submitData,
+                cache: false,
+                success: function (data) {
+                    if (data ==true) {
+                        swal({
+                            title: "新增成功！！!",
+                            type: "success",
+                            text: "您现在可以为用户分配此角色了！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    } else {
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                }
+            });
+        });
+    });
+</script>
 </body>
 
 </html>
-

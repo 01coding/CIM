@@ -17,7 +17,7 @@
         <if test="warehouseRegion.warehouseRegionId!=null and warehouseRegion.warehouseRegionId>0">
             AND warehouse_region_id=#{warehouseRegion.warehouseRegionId}
         </if>
-        <if test="warehouseRegion.warehouseRegionNo!=null and warehouseRegion.warehouseRegionNo>0">
+        <if test="warehouseRegion.warehouseRegionNo!=null and warehouseRegion.warehouseRegionNo!=''">
             AND warehouse_region_no=#{warehouseRegion.warehouseRegionNo}
         </if>
         <if test="warehouseRegion.remarks!=null and warehouseRegion.remarks!=''">
@@ -26,8 +26,8 @@
         <if test="warehouseRegion.materielTypeLevelB!=null and warehouseRegion.materielTypeLevelB.materielTypeLevelBId>0">
             AND materiel_type_level_b_id=#{warehouseRegion.materielTypeLevelB.materielTypeLevelBId}
         </if>
-        <if test="warehouseRegion.warehouse!=null and warehouseRegion.warehouse.warehouse_id>0">
-            AND warehouse_id=#{warehouseRegion.warehouse.warehouse_id}
+        <if test="warehouseRegion.warehouse!=null and warehouseRegion.warehouse.warehouseId>0">
+            AND warehouse_id=#{warehouseRegion.warehouse.warehouseId}
         </if>
     </sql>
     <insert id="add" parameterType="warehouseRegion">
@@ -35,7 +35,7 @@
       #{warehouse.warehouseId})
     </insert>
     <update id="update" parameterType="warehouseRegion">
-        UPDATE warehouse_region SET warehouse_region_id=#{warehouseRegionId},warehouse_region_no=#{warehouseRegionNo},remarks=#{remarks},
+        UPDATE warehouse_region SET warehouse_region_no=#{warehouseRegionNo},remarks=#{remarks},
         status=#{status},materiel_type_level_b_id=#{materielTypeLevelB.materielTypeLevelBId},warehouse_id=#{warehouse.warehouseId}
         WHERE  warehouse_region_id=#{warehouseRegionId}
     </update>
@@ -50,7 +50,7 @@
         <if test="warehouseRegionId!=null and warehouseRegionId>0">
             AND warehouse_region_id=#{warehouseRegionId}
         </if>
-        <if test="warehouseRegionNo!=null and warehouseRegionNo>0">
+        <if test="warehouseRegionNo!=null and warehouseRegionNo!=''">
             AND warehouse_region_no=#{warehouseRegionNo}
         </if>
         <if test="remarks!=null and remarks!=''">
@@ -59,17 +59,15 @@
         <if test="materielTypeLevelB!=null and materielTypeLevelB.materielTypeLevelBId>0">
             AND materiel_type_level_b_id=#{materielTypeLevelB.materielTypeLevelBId}
         </if>
-        <if test="warehouse!=null and warehouse.warehouse_id>0">
-            AND warehouse_id=#{warehouse.warehouse_id}
+        <if test="warehouse!=null and warehouse.warehouseId>0">
+            AND warehouse_id=#{warehouse.warehouseId}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="warehouseRegions">
         SELECT * FROM warehouse_region WHERE status=0
-        <if test="warehouseRegionId!=null and warehouseRegionId>0">
             AND warehouse_region_id=#{warehouseRegionId}
-        </if>
     </select>
     <select id="selectBywarehouseId" parameterType="int" resultMap="warehouseRegions">
-        SELECT * FROM Warehouse_Region WHERE `status`=0 and warehouse_id=#{warehouse.warehouseId}
+        SELECT * FROM Warehouse_Region WHERE `status`=0 and warehouse_id=#{warehouseId}
     </select>
 </mapper>

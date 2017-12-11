@@ -42,4 +42,5 @@
         <property name="basePackage" value="team.ruike.cim.dao"/>
     </bean>
     <context:component-scan base-package="team.ruike.cim.service.impl"/>
+    <context:component-scan base-package="team.ruike.cim.pojo"/>
 </beans>

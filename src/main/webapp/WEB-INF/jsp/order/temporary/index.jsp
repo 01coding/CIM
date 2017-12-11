@@ -1,38 +1,57 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: lenovo
-  Date: 2017/12/4
-  Time: 11:22
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>临时订单</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
-
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../../favicon.ico">
-    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../../favicon.ico">
+    <link rel="icon" href="../../../../favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <!-- Data table CSS -->
+    <link href="../../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- vector map CSS -->
+    <link href="../../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Footable CSS -->
+    <link href="../../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-    <!-- Custom Fonts -->
-    <link href="../../../dist/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <!-- Calendar CSS -->
-    <link href="../../../vendors/bower_components/fullcalendar/dist/fullcalendar.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+    <style>
+        /*** guide ***/
+        .guide {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000
+        }
+
+        .guide .btn-circle {
+            width: 55px;
+            height: 55px;
+            margin-left: 12px;
+            box-shadow: 1px 1px 1px #888888;
+        }
+    </style>
 
 </head>
 
@@ -186,7 +205,7 @@
                                             <a href="e-commerce.html">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="warehouse.html">Products</a>
+                                            <a href="product.html">Products</a>
                                         </li>
                                         <li>
                                             <a href="product-detail.html">Product Detail</a>
@@ -302,8 +321,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
-                                                 alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -340,10 +358,9 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
-                            src="../../../dist/img/user1.png"
-                            alt="user_auth"
-                            class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                                                                                         alt="user_auth"
+                                                                                         class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -417,7 +434,7 @@
                 </ul>
             </li>
             <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
+                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
                     <div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
                     </div>
                     <div class="pull-right"><span class="label label-success">hot</span></div>
@@ -428,7 +445,7 @@
                         <a href="e-commerce.html">Dashboard</a>
                     </li>
                     <li>
-                        <a class="active-page" href="warehouse.html">Products</a>
+                        <a href="product.html">Products</a>
                     </li>
                     <li>
                         <a href="product-detail.html">Product Detail</a>
@@ -485,7 +502,7 @@
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="contact-list.html">list</a>
+                                <a href="添加合同订单.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -524,7 +541,7 @@
                 </a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="warehouse_region.html">Panels & Wells</a>
+                        <a href="panels-wells.html">Panels & Wells</a>
                     </li>
                     <li>
                         <a href="modals.html">Modals</a>
@@ -666,7 +683,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
+                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
                     <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
@@ -683,9 +700,8 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a href="materiel.html"><span class="pull-right"><span
-                                class="label label-danger">New</span></span>Export
-                            Table</a>
+                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                                class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
                         <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
@@ -765,7 +781,7 @@
                 </a>
                 <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a class="active" href="blank.html">Blank Page</a>
+                        <a href="blank.html">Blank Page</a>
                     </li>
                     <li>
                         <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages
@@ -911,8 +927,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -960,8 +975,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1141,8 +1155,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1158,8 +1171,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1175,8 +1187,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1192,8 +1203,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1209,8 +1219,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1226,8 +1235,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1243,8 +1251,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1345,330 +1352,132 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">仓库</h5>
+                    <h5 class="txt-dark">Export</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>products</span></li>
+                        <li><a href="#"><span>table</span></a></li>
+                        <li class="active"><span>Export</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-            <div class="row">
-                <div class=" info ">
-                    <div class="col-md-0">
 
-                    </div>
-
-                </div>
-            </div>
-            <div class="form-group">
-
-            </div>
-            <!-- Product Row One -->
-            <div class="row">
-                <h5 class="txt-dark">物料仓库</h5>
-                <c:forEach var="warh" items="${lsitwar}">
-                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                        <div class="panel panel-default card-view pa-0">
-                            <div class="panel-wrapper collapse in">
-                                <div class="panel-body pa-0">
-                                    <article class="col-item">
-                                        <form action="">
-                                            <div class="photo">
-                                                <div class="options">
-                                                    <a href="materiel_register.html"
-                                                       class="font-18 txt-grey mr-10 pull-left"><i
-                                                            class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
-                                                       data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                        title="编辑"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
-                                                       data-target="#editor-modal3"><i
-                                                            class="fa fa-plus-square" title="添加仓库"></i></a>
-                                                </div>
-                                                <a href="/getwarehouseregion.cl?warehouse.warehouseId=${warh.warehouseId}"> <img
-                                                        src="../../../images/menuimg/timg.jpg" class="img-responsive"
-                                                        alt="Product Image" title="查看区域"/> </a>
-                                                <div class="info">
-                                                    <h6>
-                                                            ${warh.warehouseName}
-                                                    </h6>
-                                                    <div class="product-rating inline-block">
-                                                            ${warh.remarks}
-                                                    </div>
-                                                    <span class="head-font block text-warning font-16">管理人:【${warh.user.userName}】</span>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </c:forEach>
-                </div>
-            <div class="row">
-                <h5 class="txt-dark">成品仓库</h5>
-                <c:forEach var="prs" items="${productWarehouses}">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <div class="panel panel-default card-view pa-0">
+            <!-- Row -->
+            <div class="row" id="switch_points">
+                <div class="col-sm-12">
+                    <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <article class="col-item">
-                                    <form>
-                                        <div class="photo">
-                                            <div class="options">
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left"><i
-                                                        class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                    title="编辑"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal4"><i
-                                                        class="fa fa-plus-square" title="添加仓库"></i></a>
-                                            </div>
-                                            <a href="/getProductwarehouseregion.cl?productWarehouse.productWarehouseId=${prs.productWarehouseId}"> <img src="../../../images/menuimg/timg.jpg"
-                                                                                  class="img-responsive"
-                                                                                  alt="Product Image" title="查看区域"/> </a>
-                                            <div class="info">
-                                                <h6>
-                                                   ${prs.productWarehouseName}
-                                                </h6>
-                                                <div class="product-rating inline-block">
-                                                   ${prs.remarks}
+                            <div class="panel-body">
+
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
+
+
+
+
+                                        <div style="float: right;" id="storePa">
+                                            <form class="form-inline" id="conditionTemporary">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">门店/客户名称:</label>
+                                                        <input type="text" class="form-control" placeholder="名称" name="temporaryOrder.store.storeName">
+                                                        <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                            <button type="button" class="btn btn-primary"
+                                                                    style="height:42px;" onclick="temporaryModel.list()">
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div  class="input-group"  style="width: 300px;float: right;">
+                                                        <div class="col-sm-6">
+                                                            <div class="form-group">
+                                                                <label class="control-label mb-10 text-left">下单时间:</label>
+                                                                <div class="input-group date" id="datetimepicker1" style="width: 250px;">
+                                                                    <input type="text" class="form-control" name="temporaryOrder.temporaryOrderStartDate">
+                                                                    <span class="input-group-addon">
+																	<span class="fa fa-calendar"></span>
+																</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+
+                                                    <div class="input-group" style="width: 180px;float: right;position: relative;right: 40px;">
+                                                        <label class="control-label mb-10">订单状态:</label>
+                                                        <select class="form-control" name="temporaryOrder.temporaryOrderState.temporaryOrderStateId">
+                                                            <option selected value="0">请选择</option>
+                                                         <c:forEach var="temporaryOrderState" items="${temporaryOrderStateList}">
+                                                            <option value="${temporaryOrderState.temporaryOrderStateId}">${temporaryOrderState.temporaryOrderStateName}</option>
+                                                         </c:forEach>
+
+                                                        </select>
+                                                    </div>
+
+
                                                 </div>
-                                                <span class="head-font block text-warning font-16">管理员:【${prs.user.userName}】</span>
+                                            </form>
+                                        </div>
+
+                                        <div id="temporaryTable">
+
+
+                                        </div>
+
+                                        <div class="guide">
+                                            <div class="guide-wrap">
+                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
+                                                    <i class="icon-rocket"></i>
+                                                </button>
+                                                <button class="btn btn-info btn-icon-anim btn-circle"
+                                                        onclick="temporaryModel.toAdd()">
+                                                    <i class="fa ti-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                    </form>
-                                </article>
+
+
+                                    </div>
+                                </div>
+
+
+
+
                             </div>
                         </div>
                     </div>
                 </div>
-                </c:forEach>
+            </div>
+            <!-- /Row -->
+        </div>
+
+
+        <div class="row">
+
+            <!--查看显示框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+                    <!-- Row -->
+
+                    <!-- /Row -->
+                </div>
             </div>
 
-            <!-- /Product Row Four -->
         </div>
-        <div class="modal fade" id="editor-modal2" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加货架 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor2">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title2">修改物料仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id2" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal3" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor3">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title3">添加物料仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id3" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal4" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor4">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title4">添加成品仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id4" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="modal fade" id="editor-modal5" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加弹框 -->
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor5">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title5">添加成品仓库</h5>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id5" name="id" class="hidden"/>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
-                        </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
-                            </select></div>
-                        <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+
+
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1678,42 +1487,102 @@
             </div>
         </footer>
         <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
+
 </div>
 <!-- /#wrapper -->
 
 <!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Data table JavaScript -->
+<script src="../../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../../dist/js/export-table-data.js"></script>
+<script src="../../../../dist/js/dataTables-data.js"></script>
+
 
 <!-- Slimscroll JavaScript -->
-<script src="../../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<script src="../../../dist/js/sweetalert-data.js"></script>
+<script src="../../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-<!-- Treeview JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
-<!-- Treeview Init JavaScript -->
-<script src="../../../dist/js/treeview-data.js"></script>
+<script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
+
 <!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script>
+<script src="../../../../dist/js/init.js"></script>
+
+
+<!-- Sweet-Alert  -->
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+
+
+<%--date--%>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<script src="../../../../vendors/app.js"></script>
+<script>
+    function sc() {
+        window.location.href = "javascript:window.scrollTo(0,0)";
+    }
+
+    var temporaryModel=(function () {
+        $(function () {
+            toList();
+        });
+
+        function toList() {
+            appModule.load('/temporary/order/list.do', null, 'temporaryTable');
+        };
+        function  list() {
+            var data = $("#conditionTemporary").serializeArray();
+            appModule.load('/temporary/order/list.do', data, 'temporaryTable');
+        };
+        function toAdd() {
+            window.location.href="/temporary/order/toAdd.do";
+        };
+
+
+        return{
+            toAdd:toAdd,
+            list:list,
+            toList:toList
+        };
+    })();
+
+
+
+</script>
+<!-- Form Picker Init JavaScript -->
 
 </body>
 
 </html>
-

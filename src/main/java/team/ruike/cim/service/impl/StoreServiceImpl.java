@@ -65,5 +65,8 @@ public class StoreServiceImpl implements StoreService {
 
     }
 
-
+    @Override
+    public List<Store> queryAllStore() {
+        return storeDao.selectAll();
+    }
 }

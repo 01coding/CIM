@@ -57,4 +57,10 @@ public interface MenuTypeDao {
      * @return 菜谱类别对象
      */
     MenuType selectById(Integer menuTypeId);
+
+    /**
+     * 查询所有菜谱类别
+     * @return 菜谱类别集合
+     */
+    List<MenuType> selectAll();
 }

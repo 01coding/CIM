@@ -12,6 +12,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+/**
+ * 物料仓库
+ */
 @Controller
 public class WarehouseController {
 
@@ -20,7 +23,7 @@ public class WarehouseController {
 
     @RequestMapping("/addwarehouse.do")
     public String addWarehouse(Warehouse warehouse, HttpServletRequest request) {
-        int num = warehouseService.addwarehouse(warehouse);
+        int num = warehouseService.addWareHouse(warehouse);
         if (num == 0) {
             request.setAttribute("mes", "添加失败");
             return "warehouses/warehouse";
@@ -31,7 +34,7 @@ public class WarehouseController {
 
     @RequestMapping("/updwarehouse.do")
     public String updWarehouse(Warehouse warehouse, HttpServletRequest request) {
-        int num = warehouseService.addwarehouse(warehouse);
+        int num = warehouseService.updWareHouse(warehouse);
         if (num == 0) {
             request.setAttribute("mes", "修改失败");
             return "warehouses/warehouse";
@@ -40,9 +43,9 @@ public class WarehouseController {
         }
     }
 
-    @RequestMapping("/warehouse.do")
+    @RequestMapping("/warehouse.cl")
     public String selectWarehouse(Warehouse warehouse, Pager<Warehouse> pager, HttpServletRequest request) {
-        warehouseService.getwarehouses(warehouse, pager);
+        warehouseService.getWareHouses(warehouse, pager);
         request.setAttribute("lsitwar", pager.getList());
         return "forward:/productWarehouse.do";
     }
