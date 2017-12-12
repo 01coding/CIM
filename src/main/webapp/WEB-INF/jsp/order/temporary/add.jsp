@@ -1237,7 +1237,7 @@
 
                                                                 <div class="form-group">
                                                                     <div class="col-md-12 mb-20">
-                                                                    <label class="control-label mb-10">地址</label>
+                                                                    <label class="control-label mb-10">备注</label>
                                                                     <textarea class="form-control" name="temporaryOrderRemarks"></textarea>
                                                                     </div>
                                                                 </div>
@@ -1432,9 +1432,7 @@
 
         var fd1=$("#temporaty").serializeArray();
         var fd2 = $("#temporaryOrderTerms").serializeArray();
-        debugger;
         var fd =  fd1.concat(fd2);;
-        debugger;
         appModule.post('/temporary/order/add.do',fd,function (data) {
             appModule.alert("成功");
         });

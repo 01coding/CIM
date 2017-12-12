@@ -1,11 +1,6 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/12/4
-  Time: 8:48
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1386,92 +1381,117 @@
                             <div class="panel-body">
 
                                 <div class="table-wrap">
+
+
+
                                     <div class="table-responsive">
+
+                                        <div style="position: relative;bottom: 10px;">
+                                            <form method="get" action="/contract/order/index.do">
+                                                <div class="form-group">
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">合同名称:</label>
+                                                        <input type="text" class="form-control" name="orderContract.orderContractName"
+                                                               placeholder="名称"
+                                                        <c:if test="${contractOrder.orderContract.orderContractName!=''}">
+                                                               value="${contractOrder.orderContract.orderContractName}"
+                                                        </c:if>
+                                                        >
+                                                        <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;">
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                        <label class="control-label mb-10">签订时间:</label>
+                                                        <div class='input-group date' id='datetimepicker1'>
+                                                            <input type='text' class="form-control" name="contractOrderStartDate" placeholder="时间"
+
+                                                            />
+                                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
+                                                        <label class="control-label mb-10">订单状态:</label>
+                                                        <select class="form-control" name="contractOrderState">
+                                                            <option value="0">请选择</option>
+                                                            <option value="1"
+                                                            <c:if test="${contractOrder.contractOrderState==1}">
+                                                                selected
+                                                            </c:if>
+                                                             >完成</option>
+
+                                                            <option value="0"
+                                                            <c:if test="${contractOrder.contractOrderState==1}">
+                                                                selected
+                                                            </c:if>
+                                                            >未完成</option>
+                                                        </select>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </form>
+                                        </div>
+
+                                        <div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div>
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-
-                                                        <div class="input-group" style="width: 300px;float: right;">
-                                                            <label class="control-label mb-10">合同名称:</label>
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="名称">
-                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-
-                                                        <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
-                                                            <label class="control-label mb-10">签订时间:</label>
-                                                            <div class='input-group date' id='datetimepicker1'>
-                                                                <input type='text' class="form-control" placeholder="时间"/>
-                                                                <span class="input-group-addon">
-                                                                    <span class="fa fa-calendar"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
-                                                            <label class="control-label mb-10">订单状态:</label>
-                                                            <select class="form-control">
-                                                                <option selected>请选择</option>
-                                                                <option>10</option>
-                                                                <option>20</option>
-                                                            </select>
-                                                        </div>
-
-
-
-
-                                                    </div>
-                                                </form>
-                                            </div>
 
                                             <thead>
                                             <tr>
-                                                <th>日期</th>
-                                                <th>合同编号</th>
+                                                <th>订单号</th>
                                                 <th>合同名称</th>
-                                                <th>菜品编号&名称</th>
-                                                <th>数量</th>
+                                                <th>签订时间</th>
                                                 <th>交付时间</th>
-                                                <th>产品批次编号</th>
+                                                <th>确认人</th>
                                                 <th>备注</th>
+                                                <th>是否交付</th>
                                                 <th>ACTIONS</th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>日期</th>
-                                                <th>合同编号</th>
+                                                <th>订单号</th>
                                                 <th>合同名称</th>
-                                                <th>菜品编号&名称</th>
-                                                <th>数量</th>
+                                                <th>签订时间</th>
                                                 <th>交付时间</th>
-                                                <th>产品批次编号</th>
+                                                <th>确认人</th>
                                                 <th>备注</th>
+                                                <th>是否交付</th>
                                                 <th>ACTIONS</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
+                                    <c:forEach var="contractOrder" items="${pager.list}">
+
                                             <tr>
-                                                <td>2017/11/25</td>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
-                                                <td>200-0001 番茄炒蛋</td>
-                                                <td>500</td>
-                                                <td>201701225</td>
-                                                <td>03 170625 001</td>
-                                                <td>及时送达</td>
+                                                <td>${contractOrder.contractOrderNo}</td>
+                                                <td>${contractOrder.orderContract.orderContractName}</td>
+                                                <td><fmt:formatDate value="${contractOrder.contractOrderStartDate}" pattern="yyyy-MM-dd"/></td>
+                                                <td><fmt:formatDate value="${contractOrder.contractOrderEndDate}" pattern="yyyy-MM-dd"/></td>
+                                                <td>${contractOrder.user.userName}</td>
+                                                <td>${contractOrder.contractOrderRemarks}</td>
+                                                <td>
+                                                    <c:if test="${contractOrder.contractOrderState==0}">
+                                                        未交付
+                                                    </c:if>
+                                                    <c:if test="${contractOrder.contractOrderState==1}">
+                                                        已交付
+                                                    </c:if>
+                                                </td>
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
 
-                                                        <button type="button" class="btn btn-default footable-edit"
+                                                        <button type="button" class="btn btn-default footable-edit" onclick="toView(${contractOrder.contractOrderId})"
                                                                 data-toggle="modal" data-target="#exampleModalSelect">
                                                             <i class="fa ti-search" style="color: #2879ff;"></i>
                                                         </button>
@@ -1479,214 +1499,11 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>2017/11/21</td>
-                                                <td>9002 0000002</td>
-                                                <td>一号店</td>
-                                                <td>200-0032 红烧肉</td>
-                                                <td>21</td>
-                                                <td>201701222</td>
-                                                <td>03 170625 023</td>
-                                                <td>及时送达1</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/1/21</td>
-                                                <td>9002 0001222</td>
-                                                <td>二号店</td>
-                                                <td>200-0122 糖醋排骨</td>
-                                                <td>221</td>
-                                                <td>201700222</td>
-                                                <td>01 240625 023</td>
-                                                <td>及时送达4</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/25</td>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
-                                                <td>200-0001 番茄炒蛋</td>
-                                                <td>500</td>
-                                                <td>201701225</td>
-                                                <td>03 170625 001</td>
-                                                <td>及时送达</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
 
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/21</td>
-                                                <td>9002 0000002</td>
-                                                <td>一号店</td>
-                                                <td>200-0032 红烧肉</td>
-                                                <td>21</td>
-                                                <td>201701222</td>
-                                                <td>03 170625 023</td>
-                                                <td>及时送达1</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/1/21</td>
-                                                <td>9002 0001222</td>
-                                                <td>二号店</td>
-                                                <td>200-0122 糖醋排骨</td>
-                                                <td>221</td>
-                                                <td>201700222</td>
-                                                <td>01 240625 023</td>
-                                                <td>及时送达4</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/25</td>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
-                                                <td>200-0001 番茄炒蛋</td>
-                                                <td>500</td>
-                                                <td>201701225</td>
-                                                <td>03 170625 001</td>
-                                                <td>及时送达</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/21</td>
-                                                <td>9002 0000002</td>
-                                                <td>一号店</td>
-                                                <td>200-0032 红烧肉</td>
-                                                <td>21</td>
-                                                <td>201701222</td>
-                                                <td>03 170625 023</td>
-                                                <td>及时送达1</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/1/21</td>
-                                                <td>9002 0001222</td>
-                                                <td>二号店</td>
-                                                <td>200-0122 糖醋排骨</td>
-                                                <td>221</td>
-                                                <td>201700222</td>
-                                                <td>01 240625 023</td>
-                                                <td>及时送达4</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/25</td>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
-                                                <td>200-0001 番茄炒蛋</td>
-                                                <td>500</td>
-                                                <td>201701225</td>
-                                                <td>03 170625 001</td>
-                                                <td>及时送达</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/11/21</td>
-                                                <td>9002 0000002</td>
-                                                <td>一号店</td>
-                                                <td>200-0032 红烧肉</td>
-                                                <td>21</td>
-                                                <td>201701222</td>
-                                                <td>03 170625 023</td>
-                                                <td>及时送达1</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>2017/1/21</td>
-                                                <td>9002 0001222</td>
-                                                <td>二号店</td>
-                                                <td>200-0122 糖醋排骨</td>
-                                                <td>221</td>
-                                                <td>201700222</td>
-                                                <td>01 240625 023</td>
-                                                <td>及时送达4</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-
+                                    </c:forEach>
                                             </tbody>
                                         </table>
+                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1710,14 +1527,22 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+
+                                                    <li
+                                                            <c:if test="${pager.currentPage==pager.startIndex}" > class="disabled"</c:if>
+                                                    ><a data-previouspage="${pager.previousPage}" onclick="temporaryOrderList.previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
+
+                                                    <c:forEach items="${pager.pageBar}" var="pb">
+                                                        <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
+                                                        ><a data-currentpage="${pb}" onclick="temporaryOrderList.currentPage(this)">${pb}</a></li>
+                                                    </c:forEach>
+
+                                                    <li
+                                                            <c:if test="${pager.currentPage==pager.endIndex}" > class="disabled"</c:if>
+                                                    ><a data-nextid="${pager.nextPage}" onclick="temporaryOrderList.nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
+
                                                 </ul>
+
                                             </div>
                                         </div>
                                     </div>
@@ -1827,282 +1652,7 @@
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
                      aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">合同订单</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
 
-                                                            <div class="row">
-                                                                <!--订单-->
-                                                                <div class="col-md-4">
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">订单号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">交付时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">是否交付:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-
-
-                                                                <!--订单-->
-                                                                <div class="col-md-3">
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">备注:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">确认人:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!--订单合同-->
-                                                                <div class="col-md-5">
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同签订时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">签订人:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-
-                                                            </div>
-
-                                                            <hr class="light-grey-hr"/>
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">菜品数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成状态:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">产品批次:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">菜品数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成状态:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">产品批次:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
                 </div>
             </div>
 
@@ -2128,69 +1678,73 @@
 <!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+<script src="../../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
 
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
-<script src="../../../dist/js/export-table-data.js"></script>
-<script src="../../../dist/js/dataTables-data.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../../dist/js/export-table-data.js"></script>
+<script src="../../../../dist/js/dataTables-data.js"></script>
 
 
 <!-- Slimscroll JavaScript -->
-<script src="../../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="../../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script>
+<script src="../../../../dist/js/init.js"></script>
 
 
 <!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="../../../dist/js/sweetalert-data.js"></script>
+<script src="../../../../dist/js/sweetalert-data.js"></script>
 <!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
 
 <%--date--%>
 <!-- Bootstrap Colorpicker JavaScript -->
-<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Form Picker Init JavaScript -->
-<script src="../../../dist/js/form-picker-data.js"></script>
-
-
+<script src="../../../../dist/js/form-picker-data.js"></script>
+<script src="../../../../vendors/app.js"></script>
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
 
     function addContractOrderUrl() {
-        window.location.href = "添加合同订单.html";
+        window.location.href = "/contract/order/toAdd.do";
     }
+
+    function toView(id) {
+        var fd =new Array();
+        fd.push({name: "contractOrderId", value: id});
+        appModule.open('/contract/order/toView.do',fd,'exampleModalSelect')
+    };
 </script>
 </body>
 
 </html>
-

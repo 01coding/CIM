@@ -62,7 +62,7 @@
         </if>
     </sql>
     <insert id="add" parameterType="contractOrderTerm">
-        INSERT into contract_order_term VALUES(DEFAULT,#{menu.menuId},#{menuNumber},#{completeNumber},#{contractOrderTermState},#{productBatch},#{contractOrderId},0);
+        INSERT into contract_order_term VALUES(DEFAULT,#{menu.menuId},#{menuNumber},0,0,#{productBatch},#{contractOrderId},0);
     </insert>
 
     <update id="update" parameterType="contractOrderTerm">

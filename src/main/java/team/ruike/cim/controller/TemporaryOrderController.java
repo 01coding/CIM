@@ -38,7 +38,7 @@ public class TemporaryOrderController {
     @Resource
     private StoreService storeService;
     @Resource
-    private MenuDao menuDao;//业务类无方法
+    private MenuService menuService;
 
     @Resource
     private MenuTypeDao menuTypeDao;//暂无业务类
@@ -56,11 +56,6 @@ public class TemporaryOrderController {
         binder.setFieldDefaultPrefix("temporaryOrder.");
     }
 
-    @InitBinder("temporaryOrderTerms")
-    public void initBinder3(WebDataBinder binder) {
-        binder.setFieldDefaultPrefix("term.");
-    }
-
     @RequestMapping("index.do")
     public String index(Model model) {
         List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
@@ -76,7 +71,7 @@ public class TemporaryOrderController {
     }
 
     @RequestMapping("toAdd.do")
-    public String ToAdd(Model model) {
+    public String toAdd(Model model) {
         List<Store> storeList = storeService.queryAllStore();
         List<MenuType> menuTypeList = menuTypeDao.selectAll();
         model.addAttribute("storeList", storeList);
@@ -103,16 +98,10 @@ public class TemporaryOrderController {
     @ResponseBody
     public String queryMenu(@RequestParam(value = "menuTypeId") Integer menuTypeId,HttpServletResponse response) {
         response.setContentType("text/xml;charset=utf-8");
-        List<Menu> menuList = menuDao.selectByMenuTypeId(menuTypeId);
-        String menuJsonList =selectMune(menuList);
+        List<Menu> menuList = menuService.selectByMenuTypeId(menuTypeId);
+        String menuJsonList =menuService.muneSelectionBox(menuList);
         return menuJsonList;
     }
 
-    public String selectMune( List<Menu> menuList){
-        StringBuffer stringBuffer=new StringBuffer();
-        for (Menu menu : menuList) {
-            stringBuffer.append("<option value='" + menu.getMenuId() + "'>" + menu.getMenuName()+ "</option>");
-        }
-        return stringBuffer.toString();
-    }
+
 }
