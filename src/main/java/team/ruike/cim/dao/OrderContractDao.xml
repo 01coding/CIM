@@ -7,14 +7,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         INSERT INTO order_contract VALUES (DEFAULT,#{orderContractName},#{orderContractImage},
         #{orderContractNo},#{orderContractDate},#{store.storeId},0)
     </insert>
+
     <update id="update" parameterType="orderContract">
         UPDATE order_contract SET order_contract_name=#{orderContractName},
         order_contract_image=#{orderContractImage},
-        order_contract_no=#{orderContractNo},
         order_contract_date=#{orderContractDate},
-        store_id=#{store.storeId},
-        status=#{status} WHERE order_contract_id=#{orderContractId}
+        store_id=#{store.storeId}
+       WHERE order_contract_id=#{orderContractId}
     </update>
+
     <resultMap id="orderContractMap" type="orderContract">
         <result column="order_contract_id" property="orderContractId"/>
         <result column="order_contract_name" property="orderContractName"/>
@@ -44,11 +45,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="orderContract.store!=null and orderContract.store.storeId!=null and orderContract.store.storeId>0">
             AND store_id={orderContract.store.storeId}
         </if>
-         limit(#{pageNo},#{pageSize})
+        limit #{pageNo},#{pageSize}
     </select>
 
-    <select id="selectAllOrderContract" resultMap="orderContractMap">
-        SELECT * FROM order_contract WHERE status=0
+    <select id="selectAllNoOrderInfoContract" resultMap="orderContractMap">
+        SELECT * FROM order_contract WHERE status=0 and order_contract_id not  in (
+            SELECT order_contract_id FROM contract_order
+        )
     </select>
 
     <select id="selectCount" resultType="int">

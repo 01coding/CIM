@@ -61,4 +61,12 @@ public interface ContractOrderDao {
      */
     ContractOrder selectById(Integer contractOrderId);
 
+
+    /**
+     * 根据合同id 查询订单
+     * @param contractId 合同id
+     * @return 订单对象
+     */
+    ContractOrder  selectContractOrderByContractId(Integer contractId);
+
 }

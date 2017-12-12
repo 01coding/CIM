@@ -96,4 +96,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectById" parameterType="int" resultMap="contractOrderMap">
         SELECT * from contract_order WHERE `status`=0 and contract_order_id=#{contractOrderId}
     </select>
+
+
+    <select id="selectContractOrderByContractId" parameterType="int" resultMap="contractOrderMap">
+        SELECT * from contract_order WHERE `status`=0 and order_contract_id=#{orderContractId}
+    </select>
 </mapper>

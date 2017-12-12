@@ -9,7 +9,6 @@
 
             var fd =new Array();
             fd.push({name: "temporaryOrderId", value: id});
-            debugger;
             appModule.open('/temporary/order/toView.do',fd,'exampleModalSelect')
         };
 

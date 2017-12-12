@@ -46,6 +46,9 @@ public interface OrderContractService {
      */
     public void updateOrderContractById(OrderContract orderContract);
 
-
-    public List<OrderContract> selectAllOrderContract();
+    /**
+     * 查询所有无订单信息合同
+     * @return 合同集合
+     */
+    public List<OrderContract> selectAllNoOrderInfoContract();
 }
