@@ -13,6 +13,11 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import team.ruike.cim.pojo.User;
 
+/**
+ * 操作日志记录类
+ * @author 张振国
+ * @version 1.0
+ */
 public class ArchivesLogAspect {
     private final Logger logger = Logger.getLogger(this.getClass());
 
@@ -26,11 +31,8 @@ public class ArchivesLogAspect {
     private HttpServletRequest request = null;
 
     /**
-     *
-     * @Description: 方法调用前触发   记录开始时间
-     * @author fei.lei
-     * @date 2016年11月23日 下午5:10
-     * @param joinPoint
+     * 前置增强
+     * @param joinPoint 操作的方法
      */
     public void before(JoinPoint joinPoint){
         //System.out.println("被拦截方法调用之后调用此方法，输出此语句");
@@ -40,11 +42,8 @@ public class ArchivesLogAspect {
     }
 
     /**
-     *
-     * @Description: 方法调用后触发   记录结束时间
-     * @author fei.lei
-     * @date 2016年11月23日 下午5:10
-     * @param joinPoint
+     * 后置增强
+     * @param joinPoint 操作的方法
      */
     public  void after(JoinPoint joinPoint) {
         request = getHttpServletRequest();
@@ -75,32 +74,25 @@ public class ArchivesLogAspect {
         String endTime = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(endTimeMillis);
         System.out.println(" 操作人: "+user.getUserName()+" 操作方法: "+operationName+" 操作开始时间: "+startTime +" 操作结束时间: "+endTime);
     }
+
     /**
-     * @Description: 获取request
-     * @author fei.lei
-     * @date 2016年11月23日 下午5:10
-     * @param
+     * 获取HttpServletRequest
      * @return HttpServletRequest
      */
-    public HttpServletRequest getHttpServletRequest(){
+    private HttpServletRequest getHttpServletRequest(){
         RequestAttributes ra = RequestContextHolder.getRequestAttributes();
         ServletRequestAttributes sra = (ServletRequestAttributes)ra;
-        HttpServletRequest request = sra.getRequest();
-        return request;
+        return sra.getRequest();
     }
 
-    /**
-     *
-     * @Title：around
-     * @Description: 环绕触发
-     * @author fei.lei
-     * @date 2016年11月23日 下午5:10
-     * @param joinPoint
-     * @return Object
-     * @throws Throwable
-     */
-    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
-
-        return null;
-    }
+//    /**
+//     * 环绕增强 暂不实现
+//     * @param joinPoint 执行的方法
+//     * @return
+//     * @throws Throwable
+//     */
+//    public Object around(ProceedingJoinPoint joinPoint) throws Throwable {
+//
+//        return null;
+//    }
 }
