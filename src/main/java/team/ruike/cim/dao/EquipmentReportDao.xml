@@ -63,13 +63,13 @@
         insert into equipment_report
         values(
         <trim suffixOverrides=",">
-            #{equipmentReportId},
+            DEFAULT ,
             #{equipmentReportReason},
             #{maintenancePlan},
             #{endDate},
-            #{userId},
+            #{user.userId},
             #{status},
-            #{equipmentId},
+            #{equipment.equipmentId},
         </trim>
         )
     </insert>

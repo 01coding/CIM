@@ -45,4 +45,10 @@ public interface OrderContractService {
      * @param orderContract 订单合同信息
      */
     public void updateOrderContractById(OrderContract orderContract);
+
+    /**
+     * 查询所有无订单信息合同
+     * @return 合同集合
+     */
+    public List<OrderContract> selectAllNoOrderInfoContract();
 }

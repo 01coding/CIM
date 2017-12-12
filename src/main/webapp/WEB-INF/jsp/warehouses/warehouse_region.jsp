@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -319,7 +320,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -356,9 +358,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -925,7 +928,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -973,7 +977,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1153,7 +1158,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1169,7 +1175,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1185,7 +1192,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1201,7 +1209,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1217,7 +1226,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1233,7 +1243,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1249,7 +1260,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1374,79 +1386,152 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
-                                    <!--区域选择框-->
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                            <div class="panel panel-default card-view">
-                                                <div class="panel-heading">
-                                                    <div class="pull-left">
-                                                        <h6 class="panel-title txt-dark">A区域
-                                                            <div class="btn-group btn-group-xs " role="group">
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal"
-                                                                        data-target="#exampleModal">
-                                                                    <i class="fooicon fooicon-pencil"
-                                                                       aria-hidden="true" title="编辑区域"></i>
-                                                                </button>
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal" data-target="#exampleModal1">
-                                                                    <i class="fa fa-plus-square" title="添加区域"></i>
-                                                                </button>
+                                        <c:forEach var="was" items="${warehouseRegions}">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="panel panel-default card-view">
+                                                    <div class="panel-heading">
+                                                        <div class="pull-left">
+                                                            <h6 class="panel-title txt-dark">${was.materielTypeLevelB.materielTypeLevelBName}【区域】
+                                                                <div class="btn-group btn-group-xs "
+                                                                     role="group">
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal">
+                                                                        <i class="fooicon fooicon-pencil"
+                                                                           aria-hidden="true" title="编辑区域"></i>
+                                                                    </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal1">
+                                                                        <i class="fa fa-plus-square"
+                                                                           title="添加区域"></i>
+                                                                    </button>
 
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-edit"
-                                                                        data-toggle="modal" data-target="#exampleModal"
-                                                                        onclick="window.location.href='materiel.html'">
-                                                                    <i class="fa ti-search" style="color: #2879ff;"
-                                                                       title="查看物料"></i>
-                                                                </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal"
+                                                                            onclick="window.location.href='materiel.html'">
+                                                                        <i class="fa ti-search"
+                                                                           style="color: #2879ff;"
+                                                                           title="查看物料"></i>
+                                                                    </button>
 
-                                                                <button type="button"
-                                                                        class="btn btn-default footable-delete"
-                                                                        data-toggle="modal"
-                                                                        data-target=".bs-example-modal-lg">
-                                                                    <i class="fooicon fooicon-trash"
-                                                                       aria-hidden="true" title="删除区域"></i>
-                                                                </button>
-                                                            </div>
-                                                        </h6>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-delete"
+                                                                            data-toggle="modal"
+                                                                            data-target=".bs-example-modal-lg">
+                                                                        <i class="fooicon fooicon-trash"
+                                                                           aria-hidden="true" title="删除区域"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </h6>
+                                                        </div>
+
+                                                        <div class="clearfix"></div>
                                                     </div>
-
-                                                    <div class="clearfix"></div>
-                                                </div>
-                                                <div class="panel-wrapper collapse in">
-                                                    <div class="panel-body row pa-0">
-                                                        <table class="table table-hover mb-0">
-                                                            <thead>
-                                                            <tr>
-                                                                <th>货架编号</th>
-                                                                <th>存储数量</th>
-                                                            </tr>
-                                                            </thead>
-                                                            <tbody>
-                                                            <tr>
-                                                                <td>1</td>
-                                                                <td>Mark</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>2</td>
-                                                                <td>Jacob</td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>3</td>
-                                                                <td>Steave</td>
-                                                            </tr>
-                                                            </tbody>
-                                                        </table>
+                                                    <div class="panel-wrapper collapse in">
+                                                        <div class="panel-body row pa-0">
+                                                            <table class="table table-hover mb-0">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>货架编号</th>
+                                                                    <th>数量</th>
+                                                                    <th>物料</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <c:forEach items="${goodsShelves}" var="gos">
+                                                                <tbody>
+                                                                    <c:if test="${was.warehouseRegionId==gos.warehouseRegion.warehouseRegionId}">
+                                                                        <tr>
+                                                                            <td>${gos.goodsShelveNo} </td>
+                                                                            <td>${gos.materielNumber}</td>
+                                                                            <td>${gos.materiel.materielName}</td>
+                                                                        </tr>
+                                                                    </c:if>
+                                                                </tbody>
+                                                                </c:forEach>
+                                                            </table>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+
+                                        </c:forEach>
+                                        <c:forEach var="waa" items="${productWarehouseRegions}">
+                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <div class="panel panel-default card-view">
+                                                    <div class="panel-heading">
+                                                        <div class="pull-left">
+                                                            <h6 class="panel-title txt-dark">${waa.menuType.menuTypeName}【区域】
+                                                                <div class="btn-group btn-group-xs " role="group">
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal">
+                                                                        <i class="fooicon fooicon-pencil"
+                                                                           aria-hidden="true" title="编辑区域"></i>
+                                                                    </button>
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal1">
+                                                                        <i class="fa fa-plus-square" title="添加区域"></i>
+                                                                    </button>
+
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-edit"
+                                                                            data-toggle="modal"
+                                                                            data-target="#exampleModal"
+                                                                            onclick="window.location.href='materiel.html'">
+                                                                        <i class="fa ti-search" style="color: #2879ff;"
+                                                                           title="查看物料"></i>
+                                                                    </button>
+
+                                                                    <button type="button"
+                                                                            class="btn btn-default footable-delete"
+                                                                            data-toggle="modal"
+                                                                            data-target=".bs-example-modal-lg">
+                                                                        <i class="fooicon fooicon-trash"
+                                                                           aria-hidden="true" title="删除区域"></i>
+                                                                    </button>
+                                                                </div>
+                                                            </h6>
+                                                        </div>
+
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                    <div class="panel-wrapper collapse in">
+                                                        <div class="panel-body row pa-0">
+                                                            <table class="table table-hover mb-0">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>货架编号</th>
+                                                                    <th>数量</th>
+                                                                    <th>菜品</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <c:forEach var="pgs" items="${productGoodsShelves}">
+                                                                <tbody>
+                                                                <c:if test="${pgs.productWarehouseRegion.productWarehouseRegionId==waa.productWarehouseRegionId}">
+                                                                <tr>
+                                                                    <td>${pgs.productGoodsShelveNo}</td>
+                                                                    <td>${pgs.menuNumber}</td>
+                                                                    <td>${pgs.menu.menuName}</td>
+                                                                </tr>
+                                                                </c:if>
+                                                                </tbody>
+                                                                </c:forEach>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:forEach>
                                     </div>
-
-
                                     <div class="guide">
                                         <div class="guide-wrap">
                                             <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
@@ -1459,6 +1544,7 @@
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
                             <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">

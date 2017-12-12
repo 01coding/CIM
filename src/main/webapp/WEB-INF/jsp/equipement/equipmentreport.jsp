@@ -1,3 +1,4 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,6 +8,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1166,13 +1168,9 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
-
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
-
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -1189,19 +1187,15 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
                                     <div class="table-responsive">
-
                                         <table id="example" class="table table-hover display  pb-30" >
-
                                             <div style="width: 300px;float: right">
                                                 <form class="form-inline">
                                                     <div class="form-group">
@@ -1217,68 +1211,35 @@
                                                     </div>
                                                 </form>
                                             </div>
-
                                             <thead>
                                             <tr>
-                                                <th>异常编号</th>
+                                                <th>设备名称</th>
+                                                <th>登记人</th>
+                                                <th>设备负责人</th>
                                                 <th>停用原因</th>
                                                 <th>维修计划</th>
                                                 <th>预计恢复时间</th>
-                                                <th>登记人</th>
-                                                <th>设备编号</th>
                                                 <th>所属生产线</th>
                                                 <th>所属工序</th>
-                                                <th>设备负责人</th>
                                                 <th>设备状态</th>
-                                                <th>设备名称</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>异常编号</th>
-                                                <th>停用原因</th>
-                                                <th>维修计划</th>
-                                                <th>预计恢复时间</th>
-                                                <th>登记人</th>
-                                                <th>设备编号</th>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>设备状态</th>
-                                                <th>设备名称</th>
-                                            </tr>
-                                            </tfoot>
                                             <tbody>
-                                            <c:forEach var="e" items="${requestScope.equipmentReports}">
+                                            <c:forEach var="e" items="${requestScope.equipmentReports.list}">
                                                 <tr >
-                                                    <td>${e.equipmentReportId}</td>
+                                                    <td>${e.equipment.equipmentName}</td>
+                                                    <td>${e.user.userName}</td>
+                                                    <td>${e.equipment.user.userName}</td>
                                                     <td>${e.equipmentReportReason}</td>
                                                     <td>${e.maintenancePlan}</td>
-                                                    <td>${e.endDate}</td>
-                                                    <td>${e.user.userName}</td>
-                                                    <td>${e.equipment.equipmentId}</td>
+                                                    <td><fmt:formatDate value="${e.endDate}" pattern="yyyy-MM-dd" /></td>
                                                     <td>${e.equipment.productionLine.productionLineNo}</td>
                                                     <td>${e.equipment.working.workingName}</td>
-                                                    <td>${e.equipment.user.userName}</td>
                                                     <td>${e.equipment.equipmentType.equipmentTypeName}</td>
-                                                    <td>${e.equipment.equipmentName}</td>
                                                 </tr>
                                             </c:forEach>
-
                                             </tbody>
                                         </table>
-                                        <div class="guide">
-                                            <div class="guide-wrap">
-                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
-                                                    <i class="icon-rocket"></i>
-                                                </button>
-                                                <a href="/addequipmentreport.do">
-                                                    <button  class="btn btn-info btn-icon-anim btn-circle">
-                                                        <i class="fa ti-plus"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1288,191 +1249,52 @@
             </div>
             <!-- /Row -->
         </div>
-
-
-
-        <div class="row">
-            <!--提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true" data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true" data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;"><div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                    </div><div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                        <span class="sa-body pulseWarningIns"></span>
-                        <span class="sa-dot pulseWarningIns"></span>
-                    </div><div class="sa-icon sa-info" style="display: none;"></div><div class="sa-icon sa-success" style="display: none;">
-                        <span class="sa-line sa-tip"></span>
-                        <span class="sa-line sa-long"></span>
-
-                        <div class="sa-placeholder"></div>
-                        <div class="sa-fix"></div>
-                    </div><div class="sa-icon sa-custom" style="display: none;"></div><h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset><div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div><div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;" data-dismiss="modal" aria-label="Close">不，取消！</button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1" style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">是的，删除它！</button><div class="la-ball-fall">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                            </div>
-                        </div></div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-            <!--输入框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">修改异常信息</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="异常编号">
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="停用原因">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="维修计划">
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label class="control-label mb-10 text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></label>
-                                                <div class="input-group date" id="datetimepicker">
-                                                    <input type="text" class="form-control" placeholder="预计维修时间">
-                                                    <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="登记人">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                        <option value="Category 1">请选择设备名称</option>
-                                                        <option value="Category 1">设备名称1</option>
-                                                        <option value="Category 2">设备名称2</option>
-                                                        <option value="Category 3">设备名称3</option>
-                                                        <option value="Category 4">设备名称4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="设备负责人" >
-                                            </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                        <option value="Category 1">请选择设备所在工序</option>
-                                                        <option value="Category 1">设备所在工序1</option>
-                                                        <option value="Category 2">设备所在工序2</option>
-                                                        <option value="Category 3">设备所在工序3</option>
-                                                        <option value="Category 4">设备所在工序4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                    <option value="Category 1">请选择所属生产线</option>
-                                                    <option value="Category 1">所属生产线1</option>
-                                                    <option value="Category 2">所属生产线2</option>
-                                                    <option value="Category 3">所属生产线3</option>
-                                                    <option value="Category 4">所属生产线4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                    <option value="Category 1">请选择设备状态</option>
-                                                    <option value="Category 1">设备状态1</option>
-                                                    <option value="Category 2">设备状态2</option>
-                                                    <option value="Category 3">设备状态3</option>
-                                                    <option value="Category 4">设备状态4</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">确认修改</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-
         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="pagination pagination-split">
-                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                            <li class="disabled"><a href="#">1</a>
-                            <li class="active"><a href="#">2</a>
-                            <li><a href="#">3</a>
-                            <li><a href="#">4</a>
-                            <li><a href="#">5</a>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
+                            <li <c:if
+                                    test="${requestScope.equipmentReports.currentPage==1}"> class="disabled" </c:if>>
+                                <a <%
+                                    Pager pager = (Pager) request.getAttribute("equipmentReports");
+                                    if (pager.getCurrentPage() != 1) {%>
+                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.previousPage}"
+                                        <%
+                                        } else {%>
+                                        href="javascript:void(0);"
+                                        <%
+                                            }
+                                        %>>
+                                    <i class="fa fa-angle-left"></i></a>
+                            </li>
+                            <c:forEach var="bar"
+                                       items="${requestScope.equipmentReports.pageBar}">
+                                <li <c:if
+                                        test="${bar==requestScope.equipmentReports.currentPage}"> class="active" </c:if> >
+                                    <a href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${bar}">${bar}</a>
+                                </li>
+                            </c:forEach>
+                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                            <%--<li class="active"><a href="#">2</a></li>--%>
+                            <li <c:if
+                                    test="${requestScope.equipmentReports.currentPage>=requestScope.equipmentReports.totalPage}"> class="disabled" </c:if>>
+                                <a <%
+                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.nextPage}"
+                                        <%
+                                        } else {%>
+                                        href="javascript:void(0);"
+                                        <%
+                                            }
+                                        %>>
+                                    <i class="fa fa-angle-right"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
-
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1481,64 +1303,44 @@
                 </div>
             </div>
         </footer>
-        <!-- /Footer -->
-
     </div>
-    <!-- /Main Content -->
-
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
-
 <script src="../../../dist/js/export-table-data.js"></script>
+
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
-
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-
-
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="../../../dist/js/sweetalert-data.js"></script>
 
-<script>
-    function sc() {
-        /* window.location.href="javascript:window.scrollTo(0,0)";*/
-        location.href="222.html";
-    }
-</script>
 </body>
 
 </html>

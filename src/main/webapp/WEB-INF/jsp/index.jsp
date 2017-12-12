@@ -1472,6 +1472,7 @@
 <script src="../../dist/js/init.js"></script>
 <script>
     var zzgms = '${sessionScope.u.userName}';
+    var flag=${param.flag};
 </script>
 <script src="../../dist/js/dashboard-data.js" charset="utf-8" type="text/javascript"></script>
 </body>

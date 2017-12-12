@@ -86,16 +86,16 @@ public class Equipment implements Serializable {
         this.user = user;
     }
 
+    public EquipmentType getEquipmentType() {
+        return equipmentType;
+    }
+
     public Date getStartDate() {
         return startDate;
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
-    }
-
-    public EquipmentType getEquipmentType() {
-        return equipmentType;
     }
 
     public void setEquipmentType(EquipmentType equipmentType) {

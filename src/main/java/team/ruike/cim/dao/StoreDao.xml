@@ -12,29 +12,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="store_order_number" property="storeOrderNumber"/>
         <result column="store_no" property="storeNo"/>
         <result column="password" property="password"/>
-        <result column="" property="status"/>
+        <result column="status" property="status"/>
     </resultMap>
     <insert id="add" parameterType="store">
-        INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},#{storeOrderNumber},#{storeNo},#{password},#{status})
+        INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},0,#{storeNo},'123456',0)
     </insert>
+
+    <select id="selectAll" resultMap="storeMap">
+        SELECT * FROM store WHERE status=0
+    </select>
+    
     <update id="update" parameterType="store">
         UPDATE store SET
             store_name=#{storeName},
             store_type=#{storeType},
             store_address=#{storeAddress},
-            store_phone=#{storePhone},
-            store_order_number=#{storeOrderNumber},
-            password=#{password},
-            status=#{status}
-            WHERE store_id=#{storeId}
+            store_phone=#{storePhone}
+            WHERE store_id=#{storeId} and status=0
     </update>
+    
+    <update id="hiddenById">
+        update store set `status`=1 WHERE store_id=#{storeId}
+    </update>
+    
   <sql id="sql">
       SELECT * FROM store WHERE status=0
       <if test="store.storeId!=null and store.storeId>0">
           AND store_id=#{store.storeId}
       </if>
       <if test="store.storeName!=null and store.storeName!=''">
-          AND  store_name LIKE '%store.storeName%'
+          AND  store_name LIKE CONCAT('%',#{store.storeName},'%')
       </if>
       <if test="store.storeType!=null and store.storeType>0">
           AND  store_type=#{store.storeType}
@@ -48,7 +55,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <if test="store.storeOrderNumber!=null and store.storeOrderNumber>0">
           AND store_order_number=#{store.storeOrderNumber}
       </if>
-      <if test="store.storeNo!=null store.and storeNo>0">
+      <if test="store.storeNo!=null and store.storeNo>0">
           AND store_no=#{store.storeNo}
       </if>
       <if test="store.password!=null and store.password!=''">
@@ -57,15 +64,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </sql>
     <select id="select" resultMap="storeMap">
         select * from (<include refid="sql"/>) f
+        ORDER BY  store_id desc
         limit #{begin},#{pagesize}
     </select>
+
     <select id="selectCount" resultType="int" parameterType="store">
         SELECT COUNT(1)FROM store WHERE status=0
         <if test="storeId!=null and storeId>0">
            AND store_id=#{storeId}
         </if>
         <if test="storeName!=null and storeName!=''">
-            AND  store_name LIKE '%storeName%'
+            AND  store_name LIKE CONCAT('%',#{storeName},'%')
         </if>
         <if test="storeType!=null and storeType>0">
             AND  store_type=#{storeType}
@@ -88,8 +97,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <select id="selectById" parameterType="int" resultMap="storeMap">
           select * from store WHERE  status=0
-        <if test="storeId!=null and storeId>0">
-            store_id=#{storeId}
-        </if>
+           and store_id=#{storeId}
     </select>
 </mapper>

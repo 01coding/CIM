@@ -10,7 +10,7 @@
     </resultMap>
     <sql id="sql">
         SELECT * FROM working WHERE status=0
-        <if test="working.workingId!=null and working.workingId!=>0">
+        <if test="working.workingId!=null and working.workingId>0">
             AND working_id=#{working.workingId}
         </if>
         <if test="working.workingName!=null and working.workingName!=''">
@@ -29,7 +29,7 @@
     </select>
     <select id="selectCount" resultType="int" parameterType="working">
         SELECT COUNT(1) FROM working WHERE status=0
-        <if test="workingId!=null and workingId!=>0">
+        <if test="workingId!=null and workingId>0">
             AND working_id=#{workingId}
         </if>
         <if test="workingName!=null and workingName!=''">

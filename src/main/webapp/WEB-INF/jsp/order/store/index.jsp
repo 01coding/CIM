@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,19 +22,19 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
-    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+    <link href="../../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- vector map CSS -->
-    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
     <!-- Footable CSS -->
-    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+    <link href="../../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
         /*** guide ***/
         .guide {
@@ -67,7 +68,7 @@
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
                     <a href="index.html">
-                        <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
+                        <img class="brand-img" src="../../../../dist/img/logo.png" alt="brand"/>
                         <span class="brand-text">Hound</span>
                     </a>
                 </div>
@@ -319,7 +320,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -356,9 +358,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -925,7 +928,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -973,7 +977,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1153,7 +1158,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1169,7 +1175,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1185,7 +1192,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1201,7 +1209,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1217,7 +1226,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1233,7 +1243,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1249,7 +1260,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1374,43 +1386,46 @@
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
+
                                     <div class="table-responsive">
 
-                                        <div style="float: right;" >
-                                            <form class="form-inline">
+                                        <div style="float: right;" id="storePa">
+                                            <form class="form-inline" id="conditionStore">
                                                 <div class="form-group">
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">用户/门店名称:</label>
-                                                        <input type="text" class="form-control"
+                                                        <input type="text" class="form-control" name="store.storeName"
                                                                placeholder="名称">
-                                                        <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                        <div class="input-group-btn"
+                                                             style=" position: relative; top: 16px;">
                                                             <button type="button" class="btn btn-primary"
-                                                                    style="height:42px;">
+                                                                    style="height:42px;" onclick="storeModule.list()">
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
                                                     </div>
 
 
-                                                    <div class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
+                                                    <div class="input-group"
+                                                         style="width: 300px;float: right;position: relative;right: 20px;">
                                                         <label class="control-label mb-10">门店/用户类别:</label>
-                                                        <select class="form-control">
-                                                            <option selected>请选择</option>
-                                                            <option>10</option>
-                                                            <option>20</option>
+                                                        <select class="form-control" name="store.storeType">
+                                                            <option value="0" selected>请选择</option>
+                                                            <option value="1">合同用户</option>
+                                                            <option value="2">散户</option>
                                                         </select>
                                                     </div>
-
 
 
                                                 </div>
                                             </form>
                                         </div>
 
-                                       <%--table--%>
+                                        <div id="exampleTable">
+
+                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1424,27 +1439,12 @@
                                             </div>
                                         </div>
 
+
                                     </div>
+
                                 </div>
 
 
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
                         </div>
@@ -1494,12 +1494,12 @@
                             <p>Not valid!</p>
                         </div>
                         <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                            <button id="cancel1" class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
                                     data-dismiss="modal" aria-label="Close">不，取消！
                             </button>
                             <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                <button class="confirm" tabindex="1" id="storeDel" onclick="storeList.del(this)"
+                                        data-dismiss="modal"  style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
                                     是的，删除它！
                                 </button>
                                 <div class="la-ball-fall">
@@ -1526,31 +1526,29 @@
                                 <h5 class="modal-title" id="exampleModalLabel1">门店</h5>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form id="addStore">
                                     <div class="form-group">
                                         <label class="control-label mb-10">用户/门店名称:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="storeName">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">门店/用户类别:</label>
-                                        <select class="form-control">
-                                            <option>All Contacts</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>Custom</option>
+                                        <select class="form-control" name="storeType">
+                                            <option selected value="0">请选择</option>
+                                            <option value="1">合同用户</option>
+                                            <option value="2">散户</option>
                                         </select>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" class="form-control" name="storePhone">
                                     </div>
+
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" name="storeAddress"></textarea>
                                     </div>
 
 
@@ -1558,145 +1556,27 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">保存</button>
+                                <button type="button" class="btn btn-primary" onclick="storeModule.add()">保存</button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!--修改输入框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+
+                </div>
+            </div>
+
+
             <!--查看显示框-->
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
                      aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">门店信息</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
-                                                            <div class="row">
-                                                                <!--门店-->
-                                                                <div class="col-md-6">
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
 
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">地址:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">电话:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-                                                                <div class="col-md-6">
-
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单项数量:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店编号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div>
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">状态:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
                 </div>
             </div>
 
@@ -1722,46 +1602,47 @@
 <!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+<script src="../../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
 
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
-<script src="../../../dist/js/export-table-data.js"></script>
-<script src="../../../dist/js/dataTables-data.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../../dist/js/export-table-data.js"></script>
+<script src="../../../../dist/js/dataTables-data.js"></script>
 
 
 <!-- Slimscroll JavaScript -->
-<script src="../../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="../../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script>
+<script src="../../../../dist/js/init.js"></script>
 
 
 <!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="../../../dist/js/sweetalert-data.js"></script>
+
+<script src="../../../../vendors/app.js"></script>
 
 <script>
     function sc() {
@@ -1772,27 +1653,44 @@
         window.location.href = "添加合同订单.html";
     };
 
-    $(function () {
-        list();
-    });
-
-    function list() {
-
-    }
-    function load(url,data,container){
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: data,  // post时请求体
-            dataType: 'html',
-            success:function (html) {
-
-            },error:function() {
-                alert(1)
-            }
-
+    var storeModule = (function () {
+        $(function () {
+            toList();
         });
-    };
+
+        function list() {
+            var data = $("#conditionStore").serializeArray();
+            appModule.load('/store/list.do', data, 'exampleTable');
+        }
+
+        function toList() {
+            appModule.load('/store/list.do', null, 'exampleTable');
+        }
+        function add() {
+            var addStore = $("#addStore").serializeArray();
+            appModule.post('/store/add.do', addStore, function (data) {
+                appModule.alert("成功")
+                document.getElementById("addStore").reset();
+                toList();
+            });
+        }
+
+        function edit() {
+            var addStore = $("#updateStore").serializeArray();
+            appModule.post('/store/edit.do',addStore,function (data) {
+                appModule.alert("成功")
+                toList();
+            });
+        };
+
+
+        return {
+            add: add,
+            edit:edit,
+            list:list,
+            toList:toList
+        }
+    })();
 </script>
 </body>
 
