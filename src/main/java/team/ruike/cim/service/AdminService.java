@@ -38,4 +38,13 @@ public interface AdminService {
      * @return 是否成功
      */
     boolean addRole(Role role);
+
+    /**
+     * 更新用户权限
+     * @param jurisdictionIds 权限id数组
+     * @param functionIds 功能id数组
+     * @param roleId 角色id
+     * @return 是否成功
+     */
+    boolean updateRoleJurisdiction(Integer[] jurisdictionIds,Integer[] functionIds,Integer roleId);
 }

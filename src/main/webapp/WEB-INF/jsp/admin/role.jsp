@@ -1449,13 +1449,13 @@
                                                                                             id="myModalLabel">权限控制</h5>
                                                                                     </div>
                                                                                     <div class="modal-body">
-                                                                                        <form class="form-horizontal form-material">
+                                                                                        <form class="form-horizontal form-material" id="save${ls.roleId}">
                                                                                             <c:forEach
                                                                                                     items="${requestScope.jur}"
                                                                                                     var="j">
                                                                                                 <div>
                                                                                                     <div class="checkbox checkbox-primary">
-                                                                                                        <input id="checkbox1${j.jurisdictionId}"
+                                                                                                        <input id="checkbox1${j.jurisdictionId}" name="jurisdictionIds" value="${j.jurisdictionId}"
                                                                                                                type="checkbox"
                                                                                                         <c:forEach
                                                                                                                 items="${ls.jurisdictions}"
@@ -1473,8 +1473,8 @@
                                                                                                         <c:if test="${f.jurisdictionId==j.jurisdictionId}">
                                                                                                             <div class="checkbox checkbox-primary"
                                                                                                                  style="margin-top: 10px;margin-left: 10px;float: left">
-                                                                                                                <input id="checkbox2${f.functionId}"
-                                                                                                                       type="checkbox"
+                                                                                                                <input id="checkbox2${f.functionId}" name="functionIds"
+                                                                                                                       type="checkbox" value="${f.functionId}"
                                                                                                                 <c:forEach items="${ls.functions}" var="lf">
                                                                                                                     <c:if test="${f.functionId==lf.functionId}"> checked='checked' </c:if>
                                                                                                                 </c:forEach>>
@@ -1491,7 +1491,7 @@
                                                                                         </form>
                                                                                     </div>
                                                                                     <div class="modal-footer">
-                                                                                        <button type="button"
+                                                                                        <button type="button" flag="${ls.roleId}"
                                                                                                 class="btn btn-info save"
                                                                                                 data-dismiss="modal">
                                                                                             保存关闭
@@ -1633,6 +1633,30 @@
 <script src="../../../dist/js/modal-data.js"></script>
 <script>
     $(function () {
+        $(".save").click(function () {
+            var roleId = $(this).attr("flag");
+            var data = $("#save"+roleId).serialize();
+            var submitData = decodeURIComponent(data, true);
+            alert(submitData);
+            $.ajax({
+                type: 'post',
+                url: '${pageContext.request.contextPath}/admin/updateRoleJurisdiction.do?' + submitData+"&roleId="+roleId,
+                cache: false,
+                success: function (data) {
+                    if (data ==true) {
+                        swal({
+                            title: "修改成功！！!",
+                            type: "success",
+                            text: "此角色权限已发生改变！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    } else {
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                }
+            });
+        });
+
         $("#addrole").click(function () {
             var data = $("#role").serialize();
             var submitData = decodeURIComponent(data, true);

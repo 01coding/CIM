@@ -35,4 +35,19 @@ public class AdminController {
         return adminService.addRole(role)+"";
     }
 
+    /**
+     * 修改角色权限
+     * @return 成功标识
+     */
+    @ResponseBody
+    @RequestMapping("updateRoleJurisdiction.do")
+    public String updateRoleJurisdiction(Integer[] jurisdictionIds,Integer[] functionIds,Integer roleId){
+        boolean flag=false;
+        try {
+            adminService.updateRoleJurisdiction(jurisdictionIds,functionIds,roleId);
+            flag=true;
+        }finally {
+            return flag+"";
+        }
+    }
 }

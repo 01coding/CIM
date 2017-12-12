@@ -1,16 +1,13 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import team.ruike.cim.dao.FunctionDao;
-import team.ruike.cim.dao.JurisdictionDao;
-import team.ruike.cim.dao.RoleDao;
-import team.ruike.cim.pojo.Function;
-import team.ruike.cim.pojo.Jurisdiction;
-import team.ruike.cim.pojo.Role;
+import team.ruike.cim.dao.*;
+import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.AdminService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,6 +23,10 @@ public class AdminServiceImpl implements AdminService {
     private JurisdictionDao jurisdictionDao;
     @Resource
     private FunctionDao functionDao;
+    @Resource
+    private RoleFunctionDao roleFunctionDao;
+    @Resource
+    private RoleJurisdictionDao roleJurisdictionDao;
     /**
      * 获取角色列表
      * @param role 角色对象（参数）
@@ -63,5 +64,25 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public boolean addRole(Role role) {
         return roleDao.add(role)==1;
+    }
+
+    /**
+     * 更新角色权限
+     * @param jurisdictionIds 权限id数组
+     * @param functionIds 功能id数组
+     * @param roleId 角色id
+     * @return 是否成功
+     */
+    @Override
+    public boolean updateRoleJurisdiction(Integer[] jurisdictionIds, Integer[] functionIds, Integer roleId) {
+        roleFunctionDao.delete(roleId);
+        roleJurisdictionDao.delete(roleId);
+        for (Integer jurisdictionId : jurisdictionIds) {
+            roleJurisdictionDao.add(new RoleJurisdiction(roleId,jurisdictionId));
+        }
+        for (Integer functionId : functionIds) {
+            roleFunctionDao.add(new RoleFunction(roleId,functionId));
+        }
+        return true;
     }
 }
