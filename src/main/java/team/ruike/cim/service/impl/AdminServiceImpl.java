@@ -75,8 +75,10 @@ public class AdminServiceImpl implements AdminService {
      */
     @Override
     public boolean updateRoleJurisdiction(Integer[] jurisdictionIds, Integer[] functionIds, Integer roleId) {
+        /*首先将此角色关联的权限与功能全部删除（因为关系表非重要数据所以这里采用真正的删除）*/
         roleFunctionDao.delete(roleId);
         roleJurisdictionDao.delete(roleId);
+        /*第二部通过修改的权限id与功能id集合新增入关系表，就完成了修改*/
         for (Integer jurisdictionId : jurisdictionIds) {
             roleJurisdictionDao.add(new RoleJurisdiction(roleId,jurisdictionId));
         }
