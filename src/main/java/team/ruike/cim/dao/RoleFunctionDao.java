@@ -58,4 +58,11 @@ public interface RoleFunctionDao {
      * @return 用户功能对象
      */
     RoleFunction selectById(Integer roleFunctionId);
+
+    /**
+     * 根据角色id删除关系
+     * @param roleId 角色id
+     * @return 受影响的行数
+     */
+    int delete(@Param("roleId")Integer roleId);
 }

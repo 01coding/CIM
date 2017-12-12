@@ -58,4 +58,11 @@ public interface RoleJurisdictionDao {
      * @return 用户权限对象
      */
     RoleJurisdiction selectById(Integer roleJurisdictionId);
+
+    /**
+     * 根据角色id删除关系
+     * @param roleId 角色id
+     * @return 受影响的行数
+     */
+    int delete(@Param("roleId")Integer roleId);
 }

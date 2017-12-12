@@ -98,7 +98,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="user!=null and user.userId>0">
             AND  user_id =#{user.userId}
         </if>
-
+        <if test="store!=null and store.storeName!='' ">
+            and store_id in (SELECT store_id FROM store WHERE store_name LIKE CONCAT('%',#{store.storeName},'%'))
+        </if>
     </select>
 
 

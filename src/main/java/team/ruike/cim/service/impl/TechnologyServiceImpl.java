@@ -6,6 +6,7 @@ import team.ruike.cim.dao.WorkingDao;
 import team.ruike.cim.pojo.Technology;
 import team.ruike.cim.pojo.Working;
 import team.ruike.cim.service.TechnologyService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -47,11 +48,13 @@ public class TechnologyServiceImpl implements TechnologyService {
      * @return 是否成功
      */
     @Override
+    @ArchivesLog(operationType="新增操作",operationName="新增工艺")
     public boolean addTechnology(Technology technology) {
         return technologyDao.add(technology)==1;
     }
 
     @Override
+    @ArchivesLog(operationType="删除操作",operationName="删除工艺")
     public boolean delTechnology(Technology technology) {
         Technology technology1 = technologyDao.selectById(technology.getTechnologyId());
         technology1.setStatus(1);

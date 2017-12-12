@@ -1538,15 +1538,22 @@
 
 <script src="../../../../dist/js/sweetalert-data.js"></script>
 
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
 
 <%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<!-- Bootstrap Daterangepicker JavaScript -->
+<script src="../../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
+<!-- Slimscroll JavaScript -->
+<script src="../../../../dist/js/jquery.slimscroll.js"></script>
+
 
 <script src="../../../../vendors/app.js"></script>
 <script>

@@ -7,11 +7,13 @@ import team.ruike.cim.dao.ContractOrderTermDao;
 import team.ruike.cim.pojo.ContractOrder;
 import team.ruike.cim.pojo.ContractOrderTerm;
 import team.ruike.cim.pojo.OrderContract;
+import team.ruike.cim.pojo.User;
 import team.ruike.cim.service.ContractOrderService;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -51,16 +53,26 @@ public class ContractOrderServiceImpl implements ContractOrderService {
     public void addContractOrder(OrderContract orderContract, ContractOrder contractOrder, List<ContractOrderTerm> contractOrderTerms) {
         //添加合同订单
         if (orderContract != null && contractOrder != null && contractOrderTerms != null && contractOrderTerms.size() > 0) {
+            //合同
             contractOrder.setOrderContract(orderContract);
+
             //订单号
             contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName());
-            Integer orderId = contractOrderDao.add(contractOrder);
+
+            //用户表id(确认人) 未确认
+            contractOrder.setUser(new User(){{setUserId(1);}});
+
+
+            contractOrderDao.add(contractOrder);
+            final Integer orderId=contractOrder.getContractOrderId();
+
             //添加合同订单项
             for (ContractOrderTerm contractOrderTerm : contractOrderTerms) {
                 //合同订单ID
                 contractOrderTerm.setContractOrderId(orderId);
                 //生产批次编号
                 contractOrderTerm.setProductBatch(GenerateNumber.getGenerateNumber().getRandomFileName());
+
                 contractOrderTermDao.add(contractOrderTerm);
             }
         } else {
@@ -69,4 +81,12 @@ public class ContractOrderServiceImpl implements ContractOrderService {
 
     }
 
+    @Override
+    public ContractOrder queryContractOrderByContractId(Integer orderContractId) {
+        ContractOrder contractOrder = null;
+        if (orderContractId != null && orderContractId > 0) {
+            contractOrder = contractOrderDao.selectContractOrderByContractId(orderContractId);
+        }
+        return contractOrder;
+    }
 }

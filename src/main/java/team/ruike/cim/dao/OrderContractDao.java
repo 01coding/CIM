@@ -57,4 +57,7 @@ public interface OrderContractDao {
      * @return 订单合同对象
      */
     OrderContract selectById(Integer orderContractId);
+
+
+    List<OrderContract> selectAllNoOrderInfoContract();
 }

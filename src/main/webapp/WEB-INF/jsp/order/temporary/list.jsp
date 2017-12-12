@@ -9,27 +9,25 @@
 
             var fd =new Array();
             fd.push({name: "temporaryOrderId", value: id});
-            debugger;
             appModule.open('/temporary/order/toView.do',fd,'exampleModalSelect')
         };
 
         function nextPage(ts) {
             var addStore = $("#conditionTemporary").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("nextid")};
-            addStore.push(fd)
-            debugger;
+            addStore.push(fd);
             appModule.load('/temporary/order/list.do',addStore,"temporaryTable");
         }
         function previousPage(ts) {
             var addStore = $("#conditionTemporary").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("previouspage")};
-            addStore.push(fd)
+            addStore.push(fd);
             appModule.load('/temporary/order/list.do',addStore,"temporaryTable");
         }
         function currentPage(ts) {
             var addStore = $("#conditionTemporary").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("currentpage")};
-            addStore.push(fd)
+            addStore.push(fd);
             appModule.load('/temporary/order/list.do',addStore,"temporaryTable");
         }
 
@@ -104,7 +102,7 @@
 </table>
 
 <div style="float: right">
-
+       <input type="hidden" id="thisPage" value="${pager.currentPage}">
     <ul class="pagination pagination-split">
 
         <li

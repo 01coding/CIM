@@ -10,6 +10,13 @@ import java.io.Serializable;
  * @version  1.0
  */
 public class RoleJurisdiction implements Serializable {
+  public RoleJurisdiction() {
+  }
+
+  public RoleJurisdiction(Integer roleId, Integer jurisdictionId) {
+    this.roleId = roleId;
+    this.jurisdictionId = jurisdictionId;
+  }
 
   private static final long serialVersionUID = 3994098330391599594L;
   /**

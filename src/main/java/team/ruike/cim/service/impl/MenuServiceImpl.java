@@ -103,6 +103,8 @@ public class MenuServiceImpl implements MenuService{
     }
 
 
+
+
     /**
      * 获取菜品所有工序的最长时间
      * @param menuId 菜品id
@@ -124,5 +126,19 @@ public class MenuServiceImpl implements MenuService{
             maps.put(i+"",pFlow);
         }
         return maps;
+    }
+
+    @Override
+    public String muneSelectionBox(List<Menu> menuList) {
+        StringBuffer stringBuffer=new StringBuffer();
+        for (Menu menu : menuList) {
+            stringBuffer.append("<option value='" + menu.getMenuId() + "'>" + menu.getMenuName()+ "</option>");
+        }
+        return stringBuffer.toString();
+    }
+
+    @Override
+    public List<Menu> selectByMenuTypeId(Integer menuTypeId) {
+        return  menuDao.selectByMenuTypeId(menuTypeId);
     }
 }
