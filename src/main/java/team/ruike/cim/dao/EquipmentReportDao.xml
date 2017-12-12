@@ -92,6 +92,7 @@
         select * from equipment_report
         where status=0
         <include refid="modelConditionP"/>
+        limit #{pageNo},#{pageSize}
     </select>
 
 

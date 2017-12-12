@@ -121,6 +121,7 @@
       select * from equipment
       where status=0
 	  <include refid="modelConditionP"/>
+        limit #{pageNo},#{pageSize}
     </select>
 
     <select id="selectCount" resultType="int" parameterType="equipment">
