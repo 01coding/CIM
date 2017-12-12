@@ -58,4 +58,10 @@ public interface MaterielDao {
      * @return 物料对象
      */
     Materiel selectById(Integer materielId);
+
+    /**
+     * 根据purchase_date 与 Bid查询物料
+     * @return
+     */
+    List<Materiel> getMaterielByDate(Integer materielTypeLevelBId);
 }

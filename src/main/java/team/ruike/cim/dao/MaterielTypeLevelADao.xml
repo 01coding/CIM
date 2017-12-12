@@ -45,4 +45,11 @@
         SELECT * from materiel_type_level_a WHERE status=0
             AND materiel_type_level_a_id=#{materielTypeLevelAId}
     </select>
+    <select id="getMaterielTypeLevelAByDate" resultMap="materielTypeLevelAs">
+        SELECT * FROM materiel_type_level_a WHERE materiel_type_level_a_id in
+        (SELECT materiel_type_level_a_id FROM materiel_type_level_b WHERE materiel_type_level_b_id in
+        (SELECT materiel_type_level_b_id FROM materiel WHERE materiel_id in
+        (SELECT materiel_id FROM purchase_item WHERE purchase_id in
+        (SELECT purchase_id FROM purchase WHERE purchase_date=date_format(now(),'%y-%m-%d')))))
+    </select>
 </mapper>

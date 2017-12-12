@@ -58,4 +58,11 @@ public interface MaterielTypeLevelBDao {
      * @return 物料二级类别对象
      */
     MaterielTypeLevelB selectById(Integer materielTypeLevelBId);
+
+    /**
+     * 根据purchase_date 与 Bid查询物料
+     * @param materielTypeLevelAId AId
+     * @return
+     */
+    List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId);
 }

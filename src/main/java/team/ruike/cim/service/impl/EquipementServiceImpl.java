@@ -12,6 +12,11 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/12/5.
  */
+/**
+ * 设备管理业务实现类
+ * @author 王傲祥
+ * @version 1.0
+ */
 @Service("equipementService")
 public class EquipementServiceImpl implements EquipementService {
     @Resource
@@ -31,6 +36,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipment 设备表
      * @param pager 分页辅助类
      */
+
     public void getEquipment(Equipment equipment, Pager<Equipment> pager) {
         pager.setTotalRecord(equipmentDao.selectCount(equipment));
         List<Equipment> equipmentList=equipmentDao.select(equipment,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
@@ -42,6 +48,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipmentReport 异常表
      * @param pager 分页辅助类
      */
+
     public void getEquipmentReport(EquipmentReport equipmentReport, Pager<EquipmentReport> pager) {
         pager.setTotalRecord(equipmentReportDao.selectCount(equipmentReport));
         List<EquipmentReport> equipmentReportList=equipmentReportDao.select(equipmentReport,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
@@ -53,6 +60,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipment 设备对象
      * @return 单个设备信息
      */
+
     public Equipment getEquipmentReportByID(Integer equipment) {
         return equipmentDao.selectById(equipment);
     }
@@ -61,6 +69,7 @@ public class EquipementServiceImpl implements EquipementService {
      * 获取所有状态信息
      * @param equipmentType 状态表
      */
+
     public List<EquipmentType> getEquipmentType(EquipmentType equipmentType) {
        return equipmentTypeDao.select(equipmentType,0,99);
     }
@@ -70,6 +79,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param working 工序表
      * @return 工序集合
      */
+
     public List<Working> getWorking(Working working) {
         return workingDao.select(working,0,99);
     }
@@ -79,6 +89,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param productionLine 生产线
      * @return 生产线集合
      */
+
     public List<ProductionLine> getProductionLine(ProductionLine productionLine) {
         return productionLineDao.select(productionLine,0,99);
     }
@@ -88,6 +99,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param user 用户表
      * @return 用户集合
      */
+
     public List<User> getUser(User user) {
         return userDao.select(user,0,99);
     }
@@ -97,6 +109,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipment 设备对象
      * @return 是否成功
      */
+
     public int updateEquipment(Equipment equipment) {
         equipment.setStatus(0);
         if (equipment!=null && equipment.getEquipmentId()>0
@@ -117,6 +130,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipmentId 设备id
      * @return 是否成功
      */
+
     public int deleteEquipment(int equipmentId) {
         Equipment equipment=new Equipment();
         equipment.setEquipmentId(equipmentId);
@@ -131,8 +145,9 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipment 设备信息
      * @return 是否成功
      */
+
     @Override
-    public int insertEquipment(Equipment equipment) {
+    public int addEquipment(Equipment equipment) {
         equipment.setStatus(0);
        if (equipment.getEquipmentName()!="" && equipment.getInspectionCycle()>0 &&equipment.getMaintenanceCycle()>0
                 &&equipment.getProductionLine().getProductionLineId()>0 &&equipment.getUser().getUserId()>0 && equipment.getWorking().getWorkingId()>0){
@@ -143,11 +158,47 @@ public class EquipementServiceImpl implements EquipementService {
 
     /**
      * 添加异常报告
-     * @param equipmentType 异常类
+     * @param equipmentReport 异常类
      * @return 是否成功
      */
+
     @Override
-    public int insertEquipmentType(EquipmentType equipmentType) {
-        return equipmentTypeDao.add(equipmentType);
+    public int addEquipmentReport(EquipmentReport equipmentReport) {
+        equipmentReport.setStatus(0);
+        if (equipmentReport!=null && equipmentReport.getEquipment().getEquipmentId()>0
+                &&equipmentReport.getEndDate()!=null && equipmentReport.getEquipmentReportReason()!=null
+                &&equipmentReport.getEquipmentReportReason()!="" && equipmentReport.getMaintenancePlan()!=null
+                &&equipmentReport.getMaintenancePlan()!="" && equipmentReport.getUser().getUserId()>0){
+            return equipmentReportDao.add(equipmentReport);
+        }
+        return 0;
+    }
+
+    /**
+     * 预备查询异常所有外键
+     * @param equipment
+     * @return
+     */
+
+    @Override
+    public Equipment redalAddEP(Equipment equipment) {
+        //补全用户
+        if(equipment.getUser()!=null && equipment.getUser().getUserId()>0){
+            User user=userDao.selectById(equipment.getUser().getUserId());
+            equipment.setUser(user);
+        }
+        if (equipment.getWorking()!=null && equipment.getWorking().getWorkingId()>0){
+            Working working=workingDao.selectById(equipment.getWorking().getWorkingId());
+            equipment.setWorking(working);
+        }
+        if (equipment.getEquipmentType()!=null && equipment.getEquipmentType().getEquipmentTypeId()>0){
+            EquipmentType equipmentType=equipmentTypeDao.selectById(equipment.getEquipmentType().getEquipmentTypeId());
+            equipment.setEquipmentType(equipmentType);
+        }
+        if (equipment.getProductionLine()!=null && equipment.getProductionLine().getProductionLineId()>0){
+            ProductionLine productionLine=productionLineDao.selectById(equipment.getProductionLine().getProductionLineId());
+            equipment.setProductionLine(productionLine);
+        }
+        return equipment;
     }
 }

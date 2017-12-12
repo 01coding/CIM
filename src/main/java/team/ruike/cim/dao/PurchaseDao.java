@@ -58,4 +58,10 @@ public interface PurchaseDao {
      * @return 采购对象
      */
     Purchase selectById(Integer purchaseId);
+
+    /**
+     * 根据日期获取主键值
+     * @return
+     */
+    int getpurchaseNo();
 }

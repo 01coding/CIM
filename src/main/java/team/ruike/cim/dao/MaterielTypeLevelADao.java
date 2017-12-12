@@ -59,4 +59,10 @@ public interface MaterielTypeLevelADao {
      * @return 物料一级类别对象
      */
     MaterielTypeLevelA selectById(Integer materielTypeLevelAId);
+
+    /**
+     * 查询所有当天的物料一级菜单
+     * @return
+     */
+    List<MaterielTypeLevelA> getMaterielTypeLevelAByDate();
 }
