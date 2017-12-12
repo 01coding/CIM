@@ -50,4 +50,8 @@
         select * from role_jurisdiction WHERE status=0
         AND  role_jurisdiction_id=#{roleJurisdictionId}
     </select>
+
+    <delete id="delete">
+        DELETE FROM role_jurisdiction WHERE role_id=#{roleId}
+    </delete>
 </mapper>

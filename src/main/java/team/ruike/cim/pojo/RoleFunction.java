@@ -10,6 +10,13 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class RoleFunction implements Serializable {
+    public RoleFunction() {
+    }
+
+    public RoleFunction(Integer roleId, Integer functionId) {
+        this.roleId = roleId;
+        this.functionId = functionId;
+    }
 
     private static final long serialVersionUID = 2387468227803471501L;
     /**

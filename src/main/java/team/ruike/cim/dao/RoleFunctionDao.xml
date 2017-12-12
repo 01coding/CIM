@@ -56,4 +56,7 @@
              SELECT * FROM role_function WHERE status=0
              AND role_function_id=#{roleFunctionId}
     </select>
+    <delete id="delete">
+        DELETE FROM role_function WHERE role_id=#{roleId}
+    </delete>
 </mapper>

@@ -1,8 +1,8 @@
 <%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/12/11
-  Time: 15:06
+  Date: 2017/12/12
+  Time: 14:33
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>角色管理</title>
+    <title>管理员管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -23,8 +23,7 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap Wysihtml5 css -->
-    <link rel="stylesheet"
-          href="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
+    <link rel="stylesheet" href="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.css"/>
 
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
@@ -42,7 +41,6 @@
 </div>
 <!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-red">
-
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -50,7 +48,7 @@
                 <div class="logo-wrap">
                     <a href="index.html">
                         <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
-                        <span class="brand-text">Hound</span>
+                        <span class="brand-text">主页</span>
                     </a>
                 </div>
             </div>
@@ -301,8 +299,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
-                                                 alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -339,10 +336,9 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
-                            src="../../../dist/img/user1.png"
-                            alt="user_auth"
-                            class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                                                                                         alt="user_auth"
+                                                                                         class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -910,8 +906,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -959,8 +954,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1140,8 +1134,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1157,8 +1150,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1174,8 +1166,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1191,8 +1182,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1208,8 +1198,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1225,8 +1214,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1242,8 +1230,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1347,14 +1334,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">角色管理</h5>
+                    <h5 class="txt-dark">管理员管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">主页</a></li>
                         <li><a href="#"><span>管理员管理</span></a></li>
-                        <li class="active"><span>角色管理</span></li>
+                        <li class="active"><span>管理员列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1372,10 +1359,10 @@
 
 
                                         <aside class="col-lg-2 col-md-4 pr-0">
-                                            <!--选择门店 div-->
+                                            <!--选择合同 div-->
                                             <div class="mt-20 mb-20 ml-15 mr-15">
                                                 <a href="#myModal" data-toggle="modal" title="Compose"
-                                                   class="btn btn-danger btn-block">新增角色</a>
+                                                   class="btn btn-danger btn-block">添加管理员</a>
                                                 <!-- Modal -->
                                                 <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
                                                      class="modal fade" style="display: none;">
@@ -1385,22 +1372,35 @@
                                                                 <button type="button" class="close" data-dismiss="modal"
                                                                         aria-hidden="true">×
                                                                 </button>
-                                                                <h4 class="modal-title">新增角色</h4>
+                                                                <h4 class="modal-title">添加管理员</h4>
                                                             </div>
                                                             <div class="modal-body">
-                                                                <form class="form-horizontal form-material" id="role">
+                                                                <form class="form-horizontal form-material" id="addUser">
                                                                     <div class="form-group">
                                                                         <div class="col-md-12 mb-20">
-                                                                                <label class="control-label mb-10">角色名称</label>
-                                                                                <input type="text" name="roleName" class="form-control"
-                                                                                       placeholder="请输入角色名称"/>
+                                                                            <label class="control-label mb-10">选择角色</label>
+                                                                            <select class="form-control" name="roleId">
+                                                                            <c:forEach items="${requestScope.roles.list}" var="ls">
+                                                                                <option value="${ls.roleId}">${ls.roleName}</option>
+                                                                            </c:forEach>
+                                                                            </select>
+                                                                            <label class="control-label mb-10">管理员姓名</label>
+                                                                            <input type="text" class="form-control"
+                                                                                   placeholder="请输入管理员姓名" name="userName"/>
+                                                                            <label class="control-label mb-10">管理员手机号</label>
+                                                                            <input type="text" class="form-control" name="userPhone"
+                                                                                   placeholder="请输入管理员手机号"/>
+                                                                            <label class="control-label mb-10">管理员密码</label>
+                                                                            <input type="password" class="form-control"
+                                                                                   placeholder="请输入管理员密码" name="password"/>
                                                                         </div>
+
                                                                     </div>
                                                                 </form>
                                                             </div>
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-info waves-effect"
-                                                                        data-dismiss="modal" id="addrole">保存
+                                                                        data-dismiss="modal" id="saveUser">保存
                                                                 </button>
                                                                 <button type="button"
                                                                         class="btn btn-default waves-effect"
@@ -1414,6 +1414,27 @@
                                                 </div>
                                                 <!-- /.modal -->
                                             </div>
+                                            <br/>
+                                            <hr/>
+                                            <h6 class="pl-15 mb-10">条件检索</h6>
+                                            <div class="input-group" style="margin:0 auto;text-align:center;">
+                                                <input type="text" class="form-control" id="username"
+                                                       placeholder="请输入管理员名称"
+                                                       value="${requestScope.user.userName}"/>
+                                                <%--<hr/>--%>
+                                                <%--<br/>--%>
+                                                <%--<select class="form-control" id="roleId">--%>
+                                                    <%--<option value="0">请选择</option>--%>
+                                                    <%--<c:forEach items="${requestScope.roles.list}" var="ls">--%>
+                                                        <%--<option value="${ls.roleId}">${ls.roleName}</option>--%>
+                                                    <%--</c:forEach>--%>
+                                                <%--</select>--%>
+                                            </div>
+                                            <br/>
+                                            <div style="margin:0 auto;text-align:center;">
+                                                <button id="seb" class="btn btn-primary btn-rounded btn-icon left-icon">
+                                                    <i class="fa fa-search"></i> <span>检索</span></button>
+                                            </div>
                                         </aside>
 
                                         <aside class="col-lg-10 col-md-8 pl-0">
@@ -1426,102 +1447,32 @@
                                                                    data-page-size="10">
                                                                 <thead>
                                                                 <tr>
-                                                                    <th>角色名称</th>
+                                                                    <th>姓名</th>
+                                                                    <th>手机号</th>
+                                                                    <th>拥有角色</th>
                                                                     <th>操作</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
                                                                 <c:forEach items="${requestScope.pager.list}" var="ls">
                                                                     <tr>
-                                                                        <div id="myModal${ls.roleId}" class="modal fade"
-                                                                             tabindex="-1" role="dialog"
-                                                                             aria-labelledby="myModalLabel"
-                                                                             aria-hidden="true">
-                                                                            <div class="modal-dialog">
-                                                                                <div class="modal-content">
-                                                                                    <div class="modal-header">
-                                                                                        <button type="button"
-                                                                                                class="close"
-                                                                                                data-dismiss="modal"
-                                                                                                aria-hidden="true">×
-                                                                                        </button>
-                                                                                        <h5 class="modal-title"
-                                                                                            id="myModalLabel">权限控制</h5>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <form class="form-horizontal form-material" id="save${ls.roleId}">
-                                                                                            <c:forEach
-                                                                                                    items="${requestScope.jur}"
-                                                                                                    var="j">
-                                                                                                <div>
-                                                                                                    <div class="checkbox checkbox-primary">
-                                                                                                        <input id="checkbox1${j.jurisdictionId}" name="jurisdictionIds" value="${j.jurisdictionId}"
-                                                                                                               type="checkbox"
-                                                                                                        <c:forEach
-                                                                                                                items="${ls.jurisdictions}"
-                                                                                                                var="lj">
-                                                                                                        <c:if test="${j.jurisdictionId==lj.jurisdictionId}">
-                                                                                                               checked='checked' </c:if>
-                                                                                                        </c:forEach>>
-                                                                                                        <label for="checkbox1${j.jurisdictionId}">
-                                                                                                            <h6>${j.jurisdictionName}</h6>
-                                                                                                        </label>
-                                                                                                    </div>
-                                                                                                    <c:forEach
-                                                                                                            items="${requestScope.fun}"
-                                                                                                            var="f">
-                                                                                                        <c:if test="${f.jurisdictionId==j.jurisdictionId}">
-                                                                                                            <div class="checkbox checkbox-primary"
-                                                                                                                 style="margin-top: 10px;margin-left: 10px;float: left">
-                                                                                                                <input id="checkbox2${f.functionId}" name="functionIds"
-                                                                                                                       type="checkbox" value="${f.functionId}"
-                                                                                                                <c:forEach items="${ls.functions}" var="lf">
-                                                                                                                    <c:if test="${f.functionId==lf.functionId}"> checked='checked' </c:if>
-                                                                                                                </c:forEach>>
-                                                                                                                <label for="checkbox2${f.functionId}">
-                                                                                                                        ${f.functionName}
-                                                                                                                </label>
-                                                                                                            </div>
-                                                                                                        </c:if>
-                                                                                                    </c:forEach>
-                                                                                                    <div style="clear: left"></div>
-                                                                                                    <hr style='background-color:#D7D7EA;height:1px;border:none;'/>
-                                                                                                </div>
-                                                                                            </c:forEach>
-                                                                                        </form>
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="button" flag="${ls.roleId}"
-                                                                                                class="btn btn-info save"
-                                                                                                data-dismiss="modal">
-                                                                                            保存关闭
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!-- /.modal-content -->
-                                                                            </div>
-                                                                        </div>
-                                                                        <td>${ls.roleName}</td>
+                                                                        <td>${ls.userName}</td>
+                                                                        <td>${ls.userPhone}</td>
+                                                                        <td>${ls.roles[0].roleName}</td>
                                                                         <td>
-                                                                            <button title="修改"
-                                                                                    class="btn btn-default btn-icon-anim btn-circle"
-                                                                                    style="width: 30px;height: 30px">
-                                                                                <i class="fa fa-pencil"></i></button>
-                                                                            <button title="权限设置" data-toggle="modal"
-                                                                                    data-target="#myModal${ls.roleId}"
-                                                                                    class="btn btn-danger btn-icon-anim btn-circle"
-                                                                                    style="width: 30px;height: 30px">
-                                                                                <i class="icon-settings"></i></button>
-                                                                            <button title="删除"
-                                                                                    class="btn btn-info btn-icon-anim btn-circle"
-                                                                                    style="width: 30px;height: 30px">
-                                                                                <i class="icon-trash"></i></button>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="text-inverse" title="修改"
+                                                                               data-toggle="tooltip"><i
+                                                                                    class="fa fa-pencil-square txt-danger"></i></a>
+                                                                            <a href="javascript:void(0)"
+                                                                               class="text-inverse" title="删除"
+                                                                               data-toggle="tooltip"><i
+                                                                                    class="zmdi zmdi-delete txt-danger"></i></a>
                                                                         </td>
                                                                     </tr>
                                                                 </c:forEach>
                                                                 </tbody>
                                                             </table>
-
                                                         </div>
                                                         <div class="panel-wrapper collapse in"
                                                              style="margin:0 auto;text-align:center;">
@@ -1534,7 +1485,7 @@
                                                                                 <a <%
                                                                                     Pager pager = (Pager) request.getAttribute("pager");
                                                                                     if(pager.getCurrentPage()!=1){%>
-                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.previousPage}"
+                                                                                        href="${pageContext.request.contextPath}/admin/userList.do?currentPage=${requestScope.pager.previousPage}&userName=${requestScope.user.userName}"
                                                                                         <%
                                                                                         }else {%>
                                                                                         href="javascript:void(0);"
@@ -1544,7 +1495,7 @@
                                                                             <c:forEach var="bar" items="${requestScope.pager.pageBar}">
                                                                                 <li <c:if
                                                                                         test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
-                                                                                    <a href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${bar}">${bar}</a>
+                                                                                    <a href="${pageContext.request.contextPath}/admin/userList.do?currentPage=${bar}&userName=${requestScope.user.userName}">${bar}</a>
                                                                                 </li>
                                                                             </c:forEach>
                                                                             <%--<li class="disabled"><a href="#">1</a></li>--%>
@@ -1553,7 +1504,7 @@
                                                                                     test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
                                                                                 <a <%
                                                                                     if(pager.getCurrentPage()<pager.getTotalPage()){%>
-                                                                                        href="${pageContext.request.contextPath}/admin/roles.do?currentPage=${requestScope.pager.nextPage}"
+                                                                                        href="${pageContext.request.contextPath}/admin/userList.do?currentPage=${requestScope.pager.nextPage}&userName=${requestScope.user.userName}"
                                                                                         <%
                                                                                         }else {%>
                                                                                         href="javascript:void(0);"
@@ -1626,50 +1577,24 @@
 
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
-<!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-<script src="../../../dist/js/modal-data.js"></script>
 <script>
     $(function () {
-        $(".save").click(function () {
-            var roleId = $(this).attr("flag");
-            var data = $("#save"+roleId).serialize();
-            var submitData = decodeURIComponent(data, true);
-            alert(submitData);
-            $.ajax({
-                type: 'post',
-                url: '${pageContext.request.contextPath}/admin/updateRoleJurisdiction.do?' + submitData+"&roleId="+roleId,
-                cache: false,
-                success: function (data) {
-                    if (data ==true) {
-                        swal({
-                            title: "修改成功！！!",
-                            type: "success",
-                            text: "此角色权限已发生改变！",
-                            confirmButtonColor: "#01c853",
-                        });
-                    } else {
-                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
-                    }
-                }
-            });
-        });
-
-        $("#addrole").click(function () {
-            var data = $("#role").serialize();
+        $("#saveUser").click(function () {
+            var data = $("#addUser").serialize();
             var submitData = decodeURIComponent(data, true);
             $.ajax({
                 type: 'post',
-                url: '${pageContext.request.contextPath}/admin/addRole.do?' + submitData,
+                url: '${pageContext.request.contextPath}/admin/addUser.do?' + submitData,
                 cache: false,
                 success: function (data) {
                     if (data ==true) {
                         swal({
                             title: "新增成功！！!",
                             type: "success",
-                            text: "您现在可以为用户分配此角色了！",
+                            text: "您现在可以使用此管理员身份登录了！",
                             confirmButtonColor: "#01c853",
                         });
                     } else {
@@ -1678,8 +1603,12 @@
                 }
             });
         });
+        $("#seb").click(function () {
+            var username = $("#username").val();
+            location.href = "${pageContext.request.contextPath}/admin/userList.do?userName="+username;
+        });
     });
 </script>
 </body>
-
 </html>
+
