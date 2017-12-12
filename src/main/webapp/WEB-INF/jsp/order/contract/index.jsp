@@ -1387,7 +1387,7 @@
                                     <div class="table-responsive">
 
                                         <div style="position: relative;bottom: 10px;">
-                                            <form method="get" action="/contract/order/index.do">
+                                            <form method="get" id="orderForm" action="/contract/order/index.do">
                                                 <div class="form-group">
 
                                                     <div class="input-group" style="width: 300px;float: right;">
@@ -1409,9 +1409,8 @@
                                                     <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
                                                         <label class="control-label mb-10">签订时间:</label>
                                                         <div class='input-group date' id='datetimepicker1'>
-                                                            <input type='text' class="form-control" name="contractOrderStartDate" placeholder="时间"
-
-                                                            />
+                                                            <input type='text' class="form-control"
+                                                             name="contractOrderStartDate" placeholder="时间" value="<fmt:formatDate value="${contractOrder.contractOrderStartDate}" pattern="yyyy-MM-dd"/>"/>
                                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                                         </div>
                                                     </div>
@@ -1526,23 +1525,22 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
-
                                                     <li
-                                                            <c:if test="${pager.currentPage==pager.startIndex}" > class="disabled"</c:if>
-                                                    ><a data-previouspage="${pager.previousPage}" onclick="temporaryOrderList.previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
+                                                            <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
+                                                    ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
 
                                                     <c:forEach items="${pager.pageBar}" var="pb">
                                                         <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
-                                                        ><a data-currentpage="${pb}" onclick="temporaryOrderList.currentPage(this)">${pb}</a></li>
+                                                        ><a data-currentpage="${pb}" onclick="currentPage(this)">${pb}</a></li>
                                                     </c:forEach>
 
                                                     <li
-                                                            <c:if test="${pager.currentPage==pager.endIndex}" > class="disabled"</c:if>
-                                                    ><a data-nextid="${pager.nextPage}" onclick="temporaryOrderList.nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
-
+                                                            <c:if test="${pager.currentPage>=pager.totalPage}" > class="disabled"</c:if>
+                                                    ><a data-nextid="${pager.nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
                                                 </ul>
-
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div>
@@ -1744,6 +1742,30 @@
         fd.push({name: "contractOrderId", value: id});
         appModule.open('/contract/order/toView.do',fd,'exampleModalSelect')
     };
+
+
+    function nextPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("nextid")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/contract/order/index.do?"+url;
+    }
+    function previousPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("previouspage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/contract/order/index.do?"+url;
+    }
+    function currentPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("currentpage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/contract/order/index.do?"+url;
+    }
+
 </script>
 </body>
 

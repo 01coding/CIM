@@ -1487,11 +1487,11 @@
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
+                                                <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
-
                                                     <li
-                                                            <c:if test="${pager.currentPage==pager.startIndex}" > class="disabled" </c:if>
-                                                    ><a data-previouspage="${previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
+                                                            <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
+                                                    ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
 
                                                     <c:forEach items="${pager.pageBar}" var="pb">
                                                         <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
@@ -1499,10 +1499,10 @@
                                                     </c:forEach>
 
                                                     <li
-                                                            <c:if test="${pager.currentPage==pager.endIndex}" > class="disabled"</c:if>
-                                                    ><a data-nextid="${nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
-
+                                                            <c:if test="${pager.currentPage>=pager.totalPage}" > class="disabled"</c:if>
+                                                    ><a data-nextid="${pager.nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
                                                 </ul>
+                                                </c:if>
                                             </div>
                                         </div>
                                     </div>

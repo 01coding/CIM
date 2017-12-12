@@ -6,8 +6,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-import team.ruike.cim.dao.ContractOrderTermDao;
 import team.ruike.cim.pojo.ContractOrder;
 import team.ruike.cim.pojo.OrderContract;
 import team.ruike.cim.pojo.Store;
@@ -32,48 +30,48 @@ import java.util.List;
 public class OrderContractController {
 
     @Resource
-    public OrderContractService orderContractService;
+    private OrderContractService orderContractService;
 
     @Resource
-    public ContractOrderService contractOrderService;
+    private ContractOrderService contractOrderService;
 
     @Resource
-    public StoreService storeService;
+    private StoreService storeService;
 
 
     @RequestMapping("index.do")
     public String index(OrderContract orderContract, Pager<OrderContract> pager, Model model) {
-        orderContractService.queryOrderContract(orderContract,pager);
-        List<Store> storeList= storeService.queryAllStore();
-        model.addAttribute("storeList",storeList);
-        model.addAttribute("pager",pager);
-        model.addAttribute("orderContract",orderContract);
+        orderContractService.queryOrderContract(orderContract, pager);
+        List<Store> storeList = storeService.queryAllStore();
+        model.addAttribute("storeList", storeList);
+        model.addAttribute("pager", pager);
+        model.addAttribute("orderContract", orderContract);
         return "order/contractControl/index";
     }
 
     @RequestMapping("toEdit.do")
-    public String toEdit(@RequestParam(value = "orderContractId") Integer orderContractId,Model model) {
-        OrderContract orderContract= orderContractService.queryOrderContractById(orderContractId);
-        List<Store> storeList= storeService.queryAllStore();
-        model.addAttribute("storeList",storeList);
-        model.addAttribute("orderContract",orderContract);
+    public String toEdit(@RequestParam(value = "orderContractId") Integer orderContractId, Model model) {
+        OrderContract orderContract = orderContractService.queryOrderContractById(orderContractId);
+        List<Store> storeList = storeService.queryAllStore();
+        model.addAttribute("storeList", storeList);
+        model.addAttribute("orderContract", orderContract);
         return "order/contractControl/edit";
     }
 
     @RequestMapping("toView.do")
-    public String toView(@RequestParam(value = "orderContractId") Integer orderContractId,Model model) {
-        OrderContract orderContract= orderContractService.queryOrderContractById(orderContractId);
-        ContractOrder contractOrder= contractOrderService.queryContractOrderByContractId(orderContract.getOrderContractId());
-        model.addAttribute("contractOrder",contractOrder);
-        model.addAttribute("orderContract",orderContract);
+    public String toView(@RequestParam(value = "orderContractId") Integer orderContractId, Model model) {
+        OrderContract orderContract = orderContractService.queryOrderContractById(orderContractId);
+        ContractOrder contractOrder = contractOrderService.queryContractOrderByContractId(orderContract.getOrderContractId());
+        model.addAttribute("contractOrder", contractOrder);
+        model.addAttribute("orderContract", orderContract);
         return "order/contractControl/view";
     }
 
     @RequestMapping("edit.do")
     @ResponseBody
-    public String edit(OrderContract orderContract,@RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
-        String filePath= upload(file,request);
-        if (filePath!=null&&filePath!="") {
+    public String edit(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
+        String filePath = upload(file, request);
+        if (filePath != null && !filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
         orderContract.setOrderContractImage("");
@@ -86,8 +84,8 @@ public class OrderContractController {
     @RequestMapping("add.do")
     @ResponseBody
     public String add(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
-        String filePath= upload(file,request);
-        if (filePath!=null&&filePath!="") {
+        String filePath = upload(file, request);
+        if (filePath != null &&!filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
         orderContract.setOrderContractImage("");
@@ -96,7 +94,7 @@ public class OrderContractController {
     }
 
 
-    public String  upload( CommonsMultipartFile file,HttpServletRequest request ){
+    public String upload(CommonsMultipartFile file, HttpServletRequest request) {
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {

@@ -1,12 +1,12 @@
 package team.ruike.cim.controller;
 
-import com.alibaba.fastjson.JSON;
-import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-import team.ruike.cim.dao.MenuDao;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.dao.MenuTypeDao;
 import team.ruike.cim.dao.TemporaryOrderStateDao;
 import team.ruike.cim.pojo.*;
@@ -17,11 +17,7 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
-
-import static com.alibaba.fastjson.JSON.toJSON;
 
 /**
  * 临时订单控制器
@@ -94,13 +90,12 @@ public class TemporaryOrderController {
         return "order/temporary/view";
     }
 
-    @RequestMapping(value = "queryMenu.do",produces="text/html;charset=UTF-8")
+    @RequestMapping(value = "queryMenu.do", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String queryMenu(@RequestParam(value = "menuTypeId") Integer menuTypeId,HttpServletResponse response) {
+    public String queryMenu(@RequestParam(value = "menuTypeId") Integer menuTypeId, HttpServletResponse response) {
         response.setContentType("text/xml;charset=utf-8");
         List<Menu> menuList = menuService.selectByMenuTypeId(menuTypeId);
-        String menuJsonList =menuService.muneSelectionBox(menuList);
-        return menuJsonList;
+        return menuService.muneSelectionBox(menuList);
     }
 
 
