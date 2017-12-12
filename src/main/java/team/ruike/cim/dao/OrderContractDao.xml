@@ -36,7 +36,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND order_contract_image=#{orderContract.orderContractImage}
         </if>
         <if test="orderContract.orderContractNo!=null and orderContract.orderContractNo!=''">
-            AND order_contract_no LIKE CONCAT('%',#{orderContract.orderContractNo},'%')
+            AND order_contract_no LIKE CONCAT('%', #{orderContract.orderContractNo},'%')
         </if>
         <if test="orderContract.orderContractDate!=null">
             AND  order_contract_date=#{orderContract.orderContractDate}
@@ -46,6 +46,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
          limit(#{pageNo},#{pageSize})
     </select>
+
+    <select id="selectAllOrderContract" resultMap="orderContractMap">
+        SELECT * FROM order_contract WHERE status=0
+    </select>
+
     <select id="selectCount" resultType="int">
         SELECT count(1) FROM order_contract WHERE status=0
         <if test="orderContract.orderContractId!=null and orderContract.orderContractId>0">

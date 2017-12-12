@@ -54,4 +54,9 @@ public class OrderContractServiceImpl implements OrderContractService {
         }
         new NullPointerException("orderContract is null");
     }
+
+    @Override
+    public List<OrderContract> selectAllOrderContract() {
+        return  orderContractDao.selectAllOrderContract();
+    }
 }

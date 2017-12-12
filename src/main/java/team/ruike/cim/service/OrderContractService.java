@@ -45,4 +45,7 @@ public interface OrderContractService {
      * @param orderContract 订单合同信息
      */
     public void updateOrderContractById(OrderContract orderContract);
+
+
+    public List<OrderContract> selectAllOrderContract();
 }

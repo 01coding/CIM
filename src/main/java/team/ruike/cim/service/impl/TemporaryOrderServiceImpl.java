@@ -59,8 +59,6 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
             //用户表id(确认人) 未确认
             temporaryOrder.setUser(new User(){{setUserId(1);}});
 
-            //交付时间
-            temporaryOrder.setTemporaryOrderEndDate(new Date());
 
             temporaryOrderDao.add(temporaryOrder);
             final Integer orderId=temporaryOrder.getTemporaryOrderId();
