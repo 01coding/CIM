@@ -1470,4 +1470,5 @@
 <script src="dist/js/form-picker-data.js"></script>
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
+
 <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

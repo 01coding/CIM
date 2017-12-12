@@ -1312,12 +1312,19 @@
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
 <script src="../../../dist/js/export-table-data.js"></script>
+
 <script src="../../../dist/js/dataTables-data.js"></script>
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
@@ -1331,13 +1338,9 @@
 <script src="../../../dist/js/init.js"></script>
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
 <script src="../../../dist/js/sweetalert-data.js"></script>
-<script>
-    function sc() {
-        /* window.location.href="javascript:window.scrollTo(0,0)";*/
-        location.href="222.html";
-    }
-</script>
+
 </body>
 
 </html>

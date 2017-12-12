@@ -1660,10 +1660,6 @@
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-
-
-
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -1694,9 +1690,6 @@
 
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- Form Picker Init JavaScript -->
-
 
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
@@ -1740,7 +1733,6 @@
     });
 
 </script>
-
 </body>
 </html>
 
