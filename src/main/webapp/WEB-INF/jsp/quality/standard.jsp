@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: zzg
   Date: 17-12-1
@@ -20,6 +20,7 @@
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
+    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
@@ -38,8 +39,7 @@
           type="text/css"/>
 
 
-    <!-- Custom CSS -->
-    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
 
 
 </head>
@@ -947,14 +947,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">质控标准制定</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">主页</a></li>
+                        <li><a href="#"><span>质控标准制定</span></a></li>
+                        <li class="active"><span>物料标准制定</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -964,19 +964,15 @@
 
             <div class="panel-wrapper collapse in">
                 <div class="panel-body">
-                    <p class="text-muted">Default version of tab add only <code>pills-struct</code> class and add <code>nav-pills</code>
-                        class with nav class.</p>
                     <div class="pills-struct mt-40">
                         <ul role="tablist" class="nav nav-pills" id="myTabs_6">
                             <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab"
                                                                       id="home_tab_6" href="#home_6">物料品控</a></li>
-                            <li role="presentation" class=""><a data-toggle="tab" id="profile_tab_6" role="tab"
-                                                                href="#profile_6" aria-expanded="false">生产品控</a></li>
                             <li class="col-lg-7">
                                 <div>
                                     <div class="input-group col-lg-5">
                                         <input type="text" name="example-input1-group2" class="form-control"
-                                               placeholder="Search">
+                                               placeholder="拆卸">
                                         <span class="input-group-btn">
 										<button type="button" class="btn  btn-default" data-target="#search_form"
                                                 data-toggle="collapse" aria-label="Close" aria-expanded="true"><i
@@ -1019,41 +1015,42 @@
                                                                 </tr>
                                                                 </tfoot>
                                                                 <tbody>
-                                                                <tr>
-                                                                    <td>物料</td>
-                                                                    <td>4</td>
-                                                                    <td>里脊肉</td>
-                                                                    <td><a data-toggle="modal"
-                                                                           data-target=".bs-example-modal-lg"><span
-                                                                            class="glyphicon glyphicon-th-large"
-                                                                            aria-hidden="true"></span>详情</a></td>
-                                                                    <td>这是备注</td>
-                                                                    <td class="footable-editing"
-                                                                        style="display: table-cell;">
-                                                                        <div class="btn-group btn-group-xs"
-                                                                             role="group">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default footable-edit">
-                                                                                <a href="purchaseupdate.html">
+                                                                <c:forEach items="${requestScope.palist.list}" var="p">
+                                                                    <tr>
+                                                                        <td>物料</td>
+                                                                        <td>${p.materiel.materielId}</td>
+                                                                        <td>${p.materiel.materielName}</td>
+                                                                        <td><a data-toggle="modal"
+                                                                               data-target=".bs-example-modal-lg" class="xiangqing">
+                                                                            <input type="hidden" class="sb"value="${p.purchaseStandardId}">
+                                                                            <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>详情</a></td>
+                                                                        <td>${p.remarks}</td>
+                                                                        <td class="footable-editing"
+                                                                            style="display: table-cell;">
+                                                                            <div class="btn-group btn-group-xs"
+                                                                                 role="group">
+                                                                                <button type="button"
+                                                                                        class="btn btn-default footable-edit">
+                                                                                    <a href="toUpdate.do?Psid=${p.purchaseStandardId}">
                                                                                     <span class="fooicon fooicon-pencil"
                                                                                           aria-hidden="true"></span>
-                                                                                </a>
-                                                                            </button>
-                                                                            <button type="button"
-                                                                                    class="btn btn-default footable-delete">
+                                                                                    </a>
+                                                                                </button>
+                                                                                <button type="button"
+                                                                                        class="btn btn-default footable-delete del"
+                                                                                        flagId="${p.purchaseStandardId}"
+                                                                                        flagName="${p.materiel.materielName}">
                                                                                 <span class="fooicon fooicon-trash"
-                                                                                      aria-hidden="true"
-                                                                                      data-toggle="modal"
-                                                                                      data-target="#zero"></span>
-                                                                            </button>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
+                                                                                      aria-hidden="true"></span>
+                                                                                </button>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                </c:forEach>
                                                                 </tbody>
                                                             </table>
                                                             <button class="btn  btn-primary btn-rounded"><a
-                                                                    href="addpurchase.html" style="color: white">添加</a>
+                                                                    href="addpurchase.do" style="color: white">添加</a>
                                                             </button>
 
 
@@ -1076,119 +1073,42 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--fenye-->
-                            </div>
-
-                            <div id="profile_6" class="tab-pane fade" role="tabpanel">
-                                <!-- Row -->
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <div class="panel panel-default card-view">
-                                            <div class="panel-wrapper collapse in">
-                                                <div class="panel-body">
-                                                    <div class="table-wrap">
-                                                        <div class="table-responsive">
-                                                            <table id="example1"
-                                                                   class="table table-hover display  pb-30">
-                                                                <thead>
-                                                                <tr>
-                                                                    <th>品控类型</th>
-                                                                    <th>编号/批次</th>
-                                                                    <th>工序名称</th>
-                                                                    <th>标准</th>
-                                                                    <th>备注</th>
-                                                                    <th>操作</th>
-                                                                </tr>
-                                                                </thead>
-                                                                <tfoot>
-                                                                <tr>
-                                                                    <th>品控类型</th>
-                                                                    <th>编号/批次</th>
-                                                                    <th>工序名称</th>
-                                                                    <th>标准</th>
-                                                                    <th>备注</th>
-                                                                    <th>操作</th>
-                                                                </tr>
-                                                                </tfoot>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>生产</td>
-                                                                    <td>K5880</td>
-                                                                    <td>初加工</td>
-                                                                    <td><a data-toggle="modal"
-                                                                           data-target=".bs-example-modal-lg"><span
-                                                                            class="glyphicon glyphicon-th-large"
-                                                                            aria-hidden="true"></span>详情</a></td>
-                                                                    <td>这是备注</td>
-                                                                    <td class="footable-editing"
-                                                                        style="display: table-cell;">
-                                                                        <div class="btn-group btn-group-xs"
-                                                                             role="group">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default footable-edit"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModal">
-                                                                                <a href="productionupdate.html">
-                                                                                    <span class="fooicon fooicon-pencil"
-                                                                                          aria-hidden="true"></span>
-                                                                                </a>
-                                                                            </button>
-                                                                            <button type="button"
-                                                                                    class="btn btn-default footable-delete">
-                                                                                <span class="fooicon fooicon-trash"
-                                                                                      aria-hidden="true"
-                                                                                      data-toggle="modal"
-                                                                                      data-target="#zero"></span>
-                                                                            </button>
-                                                                        </div>
-                                                                    </td>
-                                                                </tr>
-
-                                                                </tbody>
-                                                            </table>
-                                                            <button class="btn  btn-primary btn-rounded"><a
-                                                                    href="addproduction.html"
-                                                                    style="color: white">添加</a></button>
-
-
-                                                        </div>
-                                                        <!--删除框确定dev-->
-
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <!-- /Row -->
-
-                                <!--fenye-->
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                    <li <c:if
+                                                            test="${requestScope.palist.currentPage==1}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            Pager pager = (Pager) request.getAttribute("palist");
+                                                            if (pager.getCurrentPage() != 1) {%>
+                                                                href="${pageContext.request.contextPath}/standard.do?currentPage=${requestScope.palist.previousPage}"
+                                                                <%
+                                                                } else {%>
+                                                                href="javascript:void(0);"
+                                                                <%
+                                                                    }
+                                                                %>>
+                                                            <i class="fa fa-angle-left"></i></a>
+                                                    </li>
+                                                    <c:forEach var="bar"
+                                                               items="${requestScope.palist.pageBar}">
+                                                        <li <c:if
+                                                                test="${bar==requestScope.palist.currentPage}"> class="active" </c:if> >
+                                                            <a href="${pageContext.request.contextPath}/standard.do?currentPage=${bar}">${bar}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                    <li <c:if
+                                                            test="${requestScope.palist.currentPage>=requestScope.palist.totalPage}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                href="${pageContext.request.contextPath}/materiellist.do?currentPage=${requestScope.palist.nextPage}"
+                                                                <%
+                                                                } else {%>
+                                                                href="javascript:void(0);"
+                                                                <%
+                                                                    }
+                                                                %>>
+                                                            <i class="fa fa-angle-right"></i></a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1201,167 +1121,6 @@
                 </div>
             </div>
         </div>
-
-
-        <!--删除提示框-->
-        <div id="zero" class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-             data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-             data-animation="pop" data-timer="null">
-            <div class="sa-icon sa-error" style="display: none;">
-												  <span class="sa-x-mark">
-													<span class="sa-line sa-left"></span>
-													<span class="sa-line sa-right"></span>
-												  </span>
-            </div>
-            <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                <span class="sa-body pulseWarningIns"></span>
-                <span class="sa-dot pulseWarningIns"></span>
-            </div>
-            <div class="sa-icon sa-info" style="display: none;"></div>
-            <div class="sa-icon sa-success" style="display: none;">
-                <span class="sa-line sa-tip"></span>
-                <span class="sa-line sa-long"></span>
-
-                <div class="sa-placeholder"></div>
-                <div class="sa-fix"></div>
-            </div>
-            <div class="sa-icon sa-custom" style="display: none;"></div>
-            <h2>Are you sure?</h2>
-            <p style="display: block;">You will not be able to recover this imaginary file!</p>
-            <fieldset>
-                <input type="text" tabindex="3" placeholder="">
-                <div class="sa-input-error"></div>
-            </fieldset>
-            <div class="sa-error-container">
-                <div class="icon">!</div>
-                <p>Not valid!</p>
-            </div>
-            <div class="sa-button-container">
-                <button class="cancel" tabindex="2" style="display: inline-block;" data-dismiss="modal">No, cancel
-                    plx!
-                </button>
-                <div class="sa-confirm-button-container">
-                    <button class="confirm" tabindex="1" id="content2" data-dismiss="modal"> Yes, delete it!
-                    </button>
-                    <div class="la-ball-fall">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--删除提示框-->
-
-        <!--										删除框取消dev-->
-        <div id="one" class="sweet-alert showSweetAlert visible" data-custom-class=""
-             data-has-cancel-button="false" data-has-confirm-button="true"
-             data-allow-outside-click="false" data-has-done-function="false"
-             data-animation="pop" data-timer="null"
-             style="display: none; margin-top: -168px;">
-            <div class="sa-icon sa-error animateErrorIcon" style="display: block;">
-													  <span class="sa-x-mark animateXMark">
-														<span class="sa-line sa-left"></span>
-														<span class="sa-line sa-right"></span>
-													  </span>
-            </div>
-            <div class="sa-icon sa-warning pulseWarning" style="display: none;">
-                <span class="sa-body pulseWarningIns"></span>
-                <span class="sa-dot pulseWarningIns"></span>
-            </div>
-            <div class="sa-icon sa-info" style="display: none;"></div>
-            <div class="sa-icon sa-success" style="display: none;">
-                <span class="sa-line sa-tip"></span>
-                <span class="sa-line sa-long"></span>
-
-                <div class="sa-placeholder"></div>
-                <div class="sa-fix"></div>
-            </div>
-            <div class="sa-icon sa-custom" style="display: none;"></div>
-            <h2>Cancelled</h2>
-            <p style="display: block;">Your imaginary file is safe :)</p>
-            <fieldset>
-                <input type="text" tabindex="3" placeholder="">
-                <div class="sa-input-error"></div>
-            </fieldset>
-            <div class="sa-error-container">
-                <div class="icon">!</div>
-                <p>Not valid!</p>
-            </div>
-            <div class="sa-button-container">
-                <button class="cancel" tabindex="2"
-                        style="display: none; box-shadow: none;">Cancel
-                </button>
-                <div class="sa-confirm-button-container">
-                    <button class="confirm" tabindex="1"
-                            style="display: inline-block; background-color: rgb(140, 212, 245); box-shadow: rgba(140, 212, 245, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                        OK
-                    </button>
-                    <div class="la-ball-fall">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!--	删除框取消dev-->
-
-
-        <!--删除框确定dev-->
-
-        <div id="two" class="sweet-alert showSweetAlert visible" data-custom-class=""
-             data-has-cancel-button="false" data-has-confirm-button="true"
-             data-allow-outside-click="false" data-has-done-function="false"
-             data-animation="pop" data-timer="null"
-             style="display: none; margin-top: -167px;">
-            <div class="sa-icon sa-error" style="display: none;">
-													  <span class="sa-x-mark">
-														<span class="sa-line sa-left"></span>
-														<span class="sa-line sa-right"></span>
-													  </span>
-            </div>
-            <div class="sa-icon sa-warning pulseWarning" style="display: none;">
-                <span class="sa-body pulseWarningIns"></span>
-                <span class="sa-dot pulseWarningIns"></span>
-            </div>
-            <div class="sa-icon sa-info" style="display: none;"></div>
-            <div class="sa-icon sa-success animate" style="display: block;">
-                <span class="sa-line sa-tip animateSuccessTip"></span>
-                <span class="sa-line sa-long animateSuccessLong"></span>
-
-                <div class="sa-placeholder"></div>
-                <div class="sa-fix"></div>
-            </div>
-            <div class="sa-icon sa-custom" style="display: none;"></div>
-            <h2>Deleted!</h2>
-            <p style="display: block;">Your imaginary file has been deleted.</p>
-            <fieldset>
-                <input type="text" tabindex="3" placeholder="">
-                <div class="sa-input-error"></div>
-            </fieldset>
-            <div class="sa-error-container">
-                <div class="icon">!</div>
-                <p>Not valid!</p>
-            </div>
-            <div class="sa-button-container">
-                <button class="cancel" tabindex="2"
-                        style="display: none; box-shadow: none;">Cancel1
-                </button>
-                <div class="sa-confirm-button-container">
-                    <button class="confirm" tabindex="1" data-dismiss="modal"
-                    >
-                        OK
-                    </button>
-                    <div class="la-ball-fall">
-                        <div></div>
-                        <div></div>
-                        <div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <!--提示框-->
             <div class="col-md-6">
@@ -1389,10 +1148,22 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
+                                                    <td><font style="vertical-align: inherit;"><font id="PS1"
+                                                            style="vertical-align: inherit;"></font></font></td>
                                                     <td><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">是否新鲜</font></font></td>
+                                                            style="vertical-align: inherit;" id="PSD1"></font></font></td>
+                                                </tr>
+                                                <tr>
                                                     <td><font style="vertical-align: inherit;"><font
-                                                            style="vertical-align: inherit;">是OR否</font></font></td>
+                                                            style="vertical-align: inherit;" id="PS2"></font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;" id="PSD2"></font></font></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;" id="PS3"></font></font></td>
+                                                    <td><font style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;" id="PSD3"></font></font></td>
                                                 </tr>
                                                 </tbody>
                                             </table>
@@ -1479,80 +1250,28 @@
 <!-- JavaScript -->
 
 <!-- jQuery -->
+<!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
-<script type="application/javascript">
-    $("#zero .cancel").click(function () {
-        $("#kuang").css({"display": "block"})
-        $("#one").show();
-    })
-    $("#zero .confirm").click(function () {
-        $("#zero").hide();
-        $("#kuang").css({"display": "block"})
-        $("#two").show();
-    })
-    $("#one .confirm").click(function () {
-        $("#kuang").css({"display": "none"})
-
-        $("#one").hide();
-    })
-    $("#two .confirm").click(function () {
-
-        $("#two").hide();
-        $("#zero").hide();
-        $("#kuang").css({"display": "none"})
-    })
-</script>
-
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.min.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
+<!-- wysuhtml5 Plugin JavaScript -->
+<script src="../../../vendors/bower_components/wysihtml5x/dist/wysihtml5x.min.js"></script>
 
-<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
-<script src="../../../dist/js/export-table-data.js"></script>
-<script src="../../../dist/js/dataTables-data.js"></script>
-
-
-<!-- Slimscroll JavaScript -->
-<script src="../../../dist/js/jquery.slimscroll.js"></script>
-
-<!-- Owl JavaScript -->
-<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
-<!-- Bootstrap Select JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
-
-<!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../vendors/bower_components/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.js"></script>
 
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
-<!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script>
-
-<!--弹窗-->
-<script src="../../../dist/js/modal-data.js"></script>
-
+<!-- Bootstrap Wysuhtml5 Init JavaScript -->
+<script src="../../../dist/js/bootstrap-wysuhtml5-data.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/moment/min/moment.min.js"></script>
-<script src="../../../vendors/bower_components/FooTable/compiled/footable.min.js" type="text/javascript"></script>
-<script src="../../../dist/js/footable-data.js"></script>
+
+<%--<script src="../../dist/js/dataTables-data.js"></script>--%>
 
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -1561,14 +1280,94 @@
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Init JavaScript -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/jquery.slimscroll.js"></script>
+<!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
 
+<!-- Init JavaScript -->
 
-<!--<script src="vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script type="application/javascript">
+    $(function () {
+        xiang();
+        dedd()
+    });
 
-<script src="dist/js/sweetalert-data.js"></script>-->
+    function dedd() {
+        alert("aaaaa")
+        $(".del").click(function(){
+            var mid=$(this).attr("flagId");
+            var mname=$(this).attr("flagName");
+            var $tr=$(this).parent().parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"的标准吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/deletePurchaseStandard.do?purchaseStandardId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    }
 
 
+    function xiang(){
+        $("body").on("click",".xiangqing",function(){
+            alert("asdsad");
+            var zhi= $(this).find(".sb").val();
+            $.ajax({
+                type: "post",
+                url: "/getStardXiang.do",
+                data: {"sid": zhi},
+                dataType: "json",
+                success: function (data) {
+                    $("#PS1").html(data.standardAName)
+                    $("#PS2").html(data.standardBName)
+                    $("#PS3").html(data.standardCName)
+                    if(data.standardAType==1){
+                        $("#PSD1").html("是或否")
+                    }else {
+                        $("#PSD1").html("十分制")
+                    }
+                    if(data.standardBType==1){
+                        $("#PSD2").html("是或否")
+                    }else {
+                        $("#PSD2").html("十分制")
+                    }
+                    if(data.standardCType==1){
+                        $("#PSD3").html("是或否")
+                    }else {
+                        $("#PSD3").html("十分制")
+                    }
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+
+            })
+        })
+    }
+
+
+
+</script>
 </body>
 
 </html>

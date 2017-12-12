@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: zzg
   Date: 17-12-1
@@ -97,13 +97,13 @@
             <a id="toggle_mobile_search" data-toggle="collapse" data-target="#search_form" class="mobile-only-view"
                href="javascript:void(0);"><i class="zmdi zmdi-search"></i></a>
             <a id="toggle_mobile_nav" class="mobile-only-view" href="javascript:void(0);"><i class="zmdi zmdi-more"></i></a>
-            <form id="search_form" role="search" class="top-nav-search collapse pull-left">
+            <form action="#1" id="search_form" role="search" class="top-nav-search collapse pull-left">
                 <div class="input-group">
-                    <input type="text" name="example-input1-group2" class="form-control" placeholder="Search">
+                    <input type="text"  class="form-control" placeholder="Search">
                     <span class="input-group-btn">
-						<button type="button" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
+						<button type="submit" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
                                 aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
-						</span>
+                    </span>
                 </div>
             </form>
         </div>
@@ -975,14 +975,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">质量控制系统</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">主页</a></li>
+                        <li><a href="#"><span>质量控制系统</span></a></li>
+                        <li class="active"><span>物料管理系统</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1007,17 +1007,15 @@
                                         <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab"
                                                                                   role="tab" id="home_tab_6"
                                                                                   href="#home_6">物料质检记录</a></li>
-                                        <li role="presentation" class=""><a data-toggle="tab" id="profile_tab_6"
-                                                                            role="tab" href="#profile_6"
-                                                                            aria-expanded="false">工序质检记录</a></li>
                                         <li class="col-lg-7">
                                             <div>
+
                                                 <div class="input-group col-lg-5">
-                                                    <input type="text" name="example-input1-group2" class="form-control"
-                                                           placeholder="Search">
-                                                    <span class="input-group-btn">
-										<button type="button" class="btn  btn-default" data-target="#search_form"
-                                                data-toggle="collapse" aria-label="Close" aria-expanded="true"><i
+                                                        <input id="sou" type="text" name="sdf" class="form-control"
+                                                               placeholder="请输入批次">
+                                                        <span class="input-group-btn">
+										<button type="submit" class="btn  btn-default" data-target="#search_form"
+                                                data-toggle="collapse" aria-label="Close" aria-expanded="true" onclick="suo()"><i
                                                 class="zmdi zmdi-search"></i></button>
 										</span>
                                                 </div>
@@ -1059,27 +1057,25 @@
                                                                             </tr>
                                                                             </tfoot>
                                                                             <tbody>
-                                                                            <c:forEach items="${requestScope.page1}" var="par">
-                                                                                <c:forEach items="${par.purchaseStandard.purchase.purchaseItems}" var="pg">
+                                                                            <c:forEach items="${requestScope.page1.list}" var="par">
                                                                                     <tr>
                                                                                         <td>物料</td>
-                                                                                        <td>4</td>
-                                                                                        <td>里脊肉</td>
-                                                                                        <td>物料批次</td>
-                                                                                        <td><a data-toggle="modal"
-                                                                                               data-target="#a"><span
-                                                                                                class="glyphicon glyphicon-th-large"
+                                                                                        <td>${par.materiel.materielId}</td>
+                                                                                        <td>${par.materiel.materielName}</td>
+                                                                                        <td>${par.purchase.everydayPurchasingPlan.everydayPurchasingPlanNo}</td>
+                                                                                        <td><a data-toggle="modal" data-target="#a" class="xiangqing" >
+                                                                                            <input type="hidden" class="sb"value="${par.purchaseStandardRecordId}">
+                                                                                            <span class="glyphicon glyphicon-th-large"
                                                                                                 aria-hidden="true"></span>详情</a>
                                                                                         </td>
-                                                                                        <td>结论：合格</td>
+                                                                                        <td>结论：${par.conclusion}</td>
                                                                                     </tr>
-                                                                                </c:forEach>
                                                                             </c:forEach>
                                                                             </tbody>
                                                                         </table>
                                                                         <button class="btn  btn-primary btn-rounded"><a
-                                                                                href="addrecord.html"
-                                                                                style="color: white">添加</a></button>
+                                                                                href="picitypeA.do"
+                                                                                style="color: white" >添加</a></button>
 
                                                                     </div>
                                                                 </div>
@@ -1097,14 +1093,40 @@
                                                     <div class="row">
                                                         <div class="col-md-12">
                                                             <ul class="pagination pagination-split">
-                                                                <li><a href="#"><i class="fa fa-angle-left"></i></a>
+                                                                <li <c:if test="${requestScope.page1.currentPage==1}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        Pager pager = (Pager) request.getAttribute("page1");
+                                                                        if (pager.getCurrentPage() != 1) {%>
+                                                                            href="${pageContext.request.contextPath}/record.do?currentPage=${requestScope.page1.previousPage}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-left"></i></a>
                                                                 </li>
-                                                                <li class="disabled"><a href="#">1</a></li>
-                                                                <li class="active"><a href="#">2</a></li>
-                                                                <li><a href="#">3</a></li>
-                                                                <li><a href="#">4</a></li>
-                                                                <li><a href="#">5</a></li>
-                                                                <li><a href="#"><i class="fa fa-angle-right"></i></a>
+                                                                <c:forEach var="bar"
+                                                                           items="${requestScope.page1.pageBar}">
+                                                                    <li <c:if
+                                                                            test="${bar==requestScope.page1.currentPage}"> class="active" </c:if> >
+                                                                        <a href="${pageContext.request.contextPath}/record.do?currentPage=${bar}">${bar}</a>
+                                                                    </li>
+                                                                </c:forEach>
+                                                                <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                <li <c:if
+                                                                        test="${requestScope.page1.currentPage>=requestScope.page1.totalPage}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                            href="${pageContext.request.contextPath}/materiellist.do?currentPage=${requestScope.page1.nextPage}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-right"></i></a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -1114,204 +1136,6 @@
 
 
                                         </div>
-                                        <div id="profile_6" class="tab-pane fade" role="tabpanel">
-                                            <!-- Row -->
-                                            <div class="row">
-                                                <div class="col-sm-12">
-                                                    <div class="panel panel-default card-view">
-                                                        <div class="panel-wrapper collapse in">
-                                                            <div class="panel-body">
-                                                                <div class="table-wrap">
-                                                                    <div class="table-responsive">
-                                                                        <table id="example2"
-                                                                               class="table table-hover display  pb-30">
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>品控类型</th>
-                                                                                <th>工序名称</th>
-                                                                                <th>生产批次</th>
-                                                                                <th>详情</th>
-                                                                                <th>结论</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tfoot>
-                                                                            <tr>
-                                                                                <th>品控类型</th>
-                                                                                <th>工序名称</th>
-                                                                                <th>生产批次</th>
-                                                                                <th>详情</th>
-                                                                                <th>结论</th>
-
-                                                                            </tr>
-                                                                            </tfoot>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td>工序</td>
-                                                                                <td>初加工</td>
-                                                                                <td>生产批次</td>
-                                                                                <td><a data-toggle="modal"
-                                                                                       data-target="#b"><span
-                                                                                        class="glyphicon glyphicon-th-large"
-                                                                                        aria-hidden="true"></span>详情</a>
-                                                                                </td>
-                                                                                <td>结论：合格</td>
-                                                                            </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                        <button class="btn  btn-primary btn-rounded"
-                                                                                data-toggle="modal"
-                                                                                data-target="#editor-modal2">添加
-                                                                        </button>
-                                                                        <div class="modal fade" id="editor-modal2"
-                                                                             tabindex="-1" role="dialog"
-                                                                             aria-labelledby="editor-title">
-
-                                                                            <div class="modal-dialog" role="document">
-                                                                                <form class="modal-content form-horizontal"
-                                                                                      id="editor2">
-                                                                                    <div class="modal-header">
-                                                                                        <button type="button"
-                                                                                                class="close"
-                                                                                                data-dismiss="modal"
-                                                                                                aria-label="Close"><span
-                                                                                                aria-hidden="true">×</span>
-                                                                                        </button>
-                                                                                        <h5 class="modal-title"
-                                                                                            id="editor-title2">
-                                                                                            添加工序质检记录</h5>
-                                                                                    </div>
-                                                                                    <div class="modal-body">
-                                                                                        <input type="number" id="id2"
-                                                                                               name="id"
-                                                                                               class="hidden"/>
-                                                                                        <div class="form-group required">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">工序名称</label>
-                                                                                            <div class="form-group mb-0 col-sm-9"
-                                                                                                 style="margin-left: 1px">
-                                                                                                <select class="selectpicker"
-                                                                                                        data-style="btn-default btn-outline">
-                                                                                                    <option data-tokens="ketchup mustard">
-                                                                                                        Hot Dog, Fries
-                                                                                                        and a Soda
-                                                                                                    </option>
-                                                                                                    <option data-tokens="mustard">
-                                                                                                        Burger, Shake
-                                                                                                        and a Smile
-                                                                                                    </option>
-                                                                                                    <option data-tokens="frosting">
-                                                                                                        Sugar, Spice and
-                                                                                                        all things nice
-                                                                                                    </option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group required">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">生产批次</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="lastName2"
-                                                                                                       name="lastName"
-                                                                                                       placeholder="Last Name"
-                                                                                                       required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">标准一评估</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="jobTitle2"
-                                                                                                       name="jobTitle"
-                                                                                                       placeholder="Job Title">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group required">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">标准二评估</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="startedOn2"
-                                                                                                       name="startedOn"
-                                                                                                       placeholder="Started On"
-                                                                                                       required>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">标准三评估</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="dob0"
-                                                                                                       name="dob"
-                                                                                                       placeholder="Date of Birth">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="form-group">
-                                                                                            <label
-                                                                                                   class="col-sm-3 control-label">结论</label>
-                                                                                            <div class="col-sm-9">
-                                                                                                <input type="text"
-                                                                                                       class="form-control"
-                                                                                                       id="dob2"
-                                                                                                       name="dob"
-                                                                                                       placeholder="Date of Birth">
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="modal-footer">
-                                                                                        <button type="submit"
-                                                                                                class="btn btn-primary">
-                                                                                            Save changes
-                                                                                        </button>
-                                                                                        <button type="button"
-                                                                                                class="btn btn-default"
-                                                                                                data-dismiss="modal">
-                                                                                            Cancel
-                                                                                        </button>
-                                                                                    </div>
-                                                                                </form>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <!-- /Row -->
-                                            </div>
-
-                                            <div class="panel-wrapper collapse in"
-                                                 style="margin:0 auto;text-align:center;">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <ul class="pagination pagination-split">
-                                                                <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                                                                </li>
-                                                                <li class="disabled"><a href="#">1</a></li>
-                                                                <li class="active"><a href="#">2</a></li>
-                                                                <li><a href="#">3</a></li>
-                                                                <li><a href="#">4</a></li>
-                                                                <li><a href="#">5</a></li>
-                                                                <li><a href="#"><i class="fa fa-angle-right"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>
@@ -1351,15 +1175,21 @@
                                                     <tbody>
                                                     <tr>
                                                         <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">是否新鲜</font></font></td>
+                                                                style="vertical-align: inherit;" id="PS1">是否新鲜</font></font></td>
                                                         <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">是</font></font></td>
+                                                                style="vertical-align: inherit;" id="PSD1">是</font></font></td>
                                                     </tr>
                                                     <tr>
                                                         <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">质感评分</font></font></td>
+                                                                style="vertical-align: inherit;" id="PS2">质感评分</font></font></td>
                                                         <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">6</font></font></td>
+                                                                style="vertical-align: inherit;" id="PSD2">6</font></font></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;" id="PS3">质感评分</font></font></td>
+                                                        <td><font style="vertical-align: inherit;"><font
+                                                                style="vertical-align: inherit;" id="PSD3">6</font></font></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -1412,12 +1242,6 @@
                                                         <td><font style="vertical-align: inherit;"><font
                                                                 style="vertical-align: inherit;">是</font></font></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">质感评分</font></font></td>
-                                                        <td><font style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">6</font></font></td>
-                                                    </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -1456,6 +1280,69 @@
 
     <!-- jQuery -->
     <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+     <script type="text/javascript">
+         $(function () {
+             xiang();
+         })
+
+
+         function suo() {
+             var so=$("#sou").val()
+             window.location.href="Something.do?sid="+so
+         }
+
+         function xiang(aaa){
+                $(".xiangqing").click(function () {
+                    var zhi= $(this).find(".sb").val();
+                    $.ajax({
+                     type: "post",
+                     url: "/xiangqing.do",
+                     data: {"pid": zhi},
+                     dataType: "json",
+                     success: function (data) {
+                         alert(data[0].purchaseStandardRecordId)
+                         $("#PS1").html(data[1].standardAName)
+                         $("#PS2").html(data[1].standardBName)
+                         $("#PS3").html(data[1].standardCName)
+                         if(data[1].standardAType==1){
+                             if (data[0].standardAScore==1){
+                                 $("#PSD1").html("是")
+                             }else {
+                                 $("#PSD1").html("否")
+                             }
+                         }else {
+                             $("#PSD1").html(data[0].standardAScore)
+                         }
+                         if(data[1].standardBType==1){
+                             if (data[0].standardBScore==1){
+                                 $("#PSD2").html("是")
+                             }else {
+                                 $("#PSD2").html("否")
+                             }
+                         }else {
+                             $("#PSD2").html(data[0].standardBScore)
+                         }
+                         if(data[1].standardCType==1){
+                             if (data[0].standardCScore==1){
+                                 $("#PSD3").html("是")
+                             }else {
+                                 $("#PSD3").html("否")
+                             }
+                         }else {
+                             $("#PSD3").html(data[0].standardCScore)
+                         }
+                     }, error: function () {
+                            alert("系统异常，请稍后重试！");
+                        }
+
+                    })
+                })
+         }
+
+     </script>
+
 
 
     <!-- Bootstrap Core JavaScript -->

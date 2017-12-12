@@ -955,7 +955,7 @@
 
                             <div class="panel-body ">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <form action="updatePurchaseStandard.do" method="post">
                                         <h6 class="txt-dark capitalize-font"><i
                                                 class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
                                         <hr class="light-grey-hr"/>
@@ -983,23 +983,34 @@
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="物料批次">
+                                                            <input name="materiel.materielId" type="hidden" value="${PStand.materiel.materielId}" />
+                                                            <input type="text" class="form-control" readonly="readonly" value="${PStand.materiel.materielName}">
                                                         </div>
                                                     </div>
-
                                                 </div>
+
+                                                <div class="row">
+                                                    <div class="form-group col-sm-12">
+                                                        <div class="form-group">
+                                                            <input name="remarks" type="text" class="form-control" value="${PStand.remarks}">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="标准一评估">
+                                                        <input type="text" class="form-control" name="standardAName" placeholder="标准一评估" value="${PStand.standardAName}">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio" id="radio3" value="option3">
+                                                        <input type="radio" <c:if test="${PStand.standardAType==1}">
+                                                                            checked="checked"
+                                                        </c:if> name="standardAType" id="radio3" value="1">
                                                         <label for="radio3"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio" id="radio7" value="option7">
+                                                        <input type="radio" <c:if test="${PStand.standardAType==2}">
+                                                               checked="checked"
+                                                        </c:if> name="standardAType" id="radio7" value="2">
                                                         <label for="radio7"> 10分制 </label>
                                                     </div>
                                                 </div>
@@ -1007,33 +1018,41 @@
 
                                                     <div class="form-group col-sm-6">
                                                         <input type="text" class="form-control"
-                                                               placeholder="标准二评估">
+                                                               placeholder="标准二评估" value="${PStand.standardBName}">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio2" id="radio4" value="option3">
+                                                        <input type="radio" <c:if test="${PStand.standardBType==1}">
+                                                               checked="checked"
+                                                        </c:if> name="standardBType" id="radio4" value="1">
                                                         <label for="radio3"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio2" id="radio5" value="option7">
+                                                        <input type="radio" <c:if test="${PStand.standardBType==2}">
+                                                               checked="checked"
+                                                        </c:if> name="standardBType" id="radio5" value="2">
                                                         <label for="radio7"> 10分制 </label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
                                                         <input type="text" class="form-control"
-                                                               placeholder="标准三评估">
+                                                               placeholder="标准三评估" value="${PStand.standardCName}">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio1" id="radio8" value="option3">
+                                                        <input type="radio" <c:if test="${PStand.standardCType==1}">
+                                                               checked="checked"
+                                                        </c:if> name="standardCType" id="radio8" value="1">
                                                         <label for="radio3"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio1" id="radio9" value="option7">
+                                                        <input type="radio" <c:if test="${PStand.standardCType==2}">
+                                                               checked="checked"
+                                                        </c:if> name="standardCType" id="radio9" value="2">
                                                         <label for="radio7"> 10分制 </label>
                                                     </div>
                                                 </div>
                                                 <div class="form-actions">
-                                                    <button class="btn btn-success btn-icon left-icon mr-10 pull-left">
+                                                    <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left">
                                                         <i class="fa fa-check"></i> <span>保存修改</span></button>
                                                     <button type="button" class="btn btn-warning pull-left">取消保存
                                                     </button>
