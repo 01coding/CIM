@@ -27,6 +27,10 @@ public class AdminServiceImpl implements AdminService {
     private RoleFunctionDao roleFunctionDao;
     @Resource
     private RoleJurisdictionDao roleJurisdictionDao;
+    @Resource
+    private UserDao userDao;
+    @Resource
+    private UserRoleDao userRoleDao;
     /**
      * 获取角色列表
      * @param role 角色对象（参数）
@@ -87,4 +91,26 @@ public class AdminServiceImpl implements AdminService {
         }
         return true;
     }
+
+    /**
+     * 获取管理员列表
+     * @param user 管理员对象（参数）
+     * @param pager 分页辅助类
+     */
+    @Override
+    public void getUsers(User user, Pager<User> pager) {
+        pager.setTotalRecord(userDao.selectCount(user));
+        pager.setList(userDao.select(user,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize()));
+    }
+
+    @Override
+    public boolean addUser(User user, Integer roleId) {
+        /*首先新增管理员*/
+        userDao.add(user);
+        /*再新增关联表信息*/
+        List<User> users = userDao.select(user, 0, 99);
+        userRoleDao.add(new UserRole(roleId,users.get(0).getUserId()));
+        return true;
+    }
+
 }

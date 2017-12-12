@@ -3,6 +3,7 @@ package team.ruike.cim.service;
 import team.ruike.cim.pojo.Function;
 import team.ruike.cim.pojo.Jurisdiction;
 import team.ruike.cim.pojo.Role;
+import team.ruike.cim.pojo.User;
 import team.ruike.cim.util.Pager;
 
 import java.util.List;
@@ -47,4 +48,19 @@ public interface AdminService {
      * @return 是否成功
      */
     boolean updateRoleJurisdiction(Integer[] jurisdictionIds,Integer[] functionIds,Integer roleId);
+
+    /**
+     * 获取管理员列表
+     * @param user 管理员对象（参数）
+     * @param pager 分页辅助类
+     */
+    void getUsers(User user,Pager<User> pager);
+
+    /**
+     * 新增管理员
+     * @param user 管理员对象
+     * @param roleId 角色id
+     * @return 是否成功
+     */
+    boolean addUser(User user,Integer roleId);
 }
