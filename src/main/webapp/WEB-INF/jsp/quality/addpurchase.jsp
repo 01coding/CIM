@@ -970,7 +970,7 @@
 
                             <div class="panel-body ">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <form action="insertPurchase.do">
                                         <h6 class="txt-dark capitalize-font"><i
                                                 class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
                                         <hr class="light-grey-hr"/>
@@ -990,31 +990,30 @@
                                                         <div class="panel-wrapper collapse in">
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">Select box</label>
-                                                                <select class="selectpicker"
+                                                                <select id="select1" class="selectpicker"
                                                                         data-style="form-control btn-default btn-outline">
-                                                                    <option>Mustard</option>
-                                                                    <option>Ketchup</option>
-                                                                    <option>Relish</option>
+                                                                    <c:forEach items="${requestScope.AList}" var="typeA">
+                                                                        <option value="${typeA.materielTypeLevelAId}">${typeA.materielTypeLevelAName}</option>
+                                                                    </c:forEach>
                                                                 </select>
                                                             </div>
 
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">Select box</label>
-                                                                <select class="selectpicker"
-                                                                        data-style="form-control btn-default btn-outline">
-                                                                    <option>Mustard</option>
-                                                                    <option>Ketchup</option>
-                                                                    <option>Relish</option>
+                                                                <select id="select2" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
+                                                                    <c:forEach items="${requestScope.BList}" var="typeB">
+                                                                        <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
+                                                                    </c:forEach>
                                                                 </select>
                                                             </div>
 
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">Select box</label>
-                                                                <select class="selectpicker"
-                                                                        data-style="form-control btn-default btn-outline">
-                                                                    <option>Mustard</option>
-                                                                    <option>Ketchup</option>
-                                                                    <option>Relish</option>
+
+                                                                    <select id="selectid" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
+                                                                    <c:forEach items="${requestScope.MList}" var="typeM">
+                                                                        <option value="${typeM.materielId}">${typeM.materielName}</option>
+                                                                    </c:forEach>
                                                                 </select>
                                                             </div>
 
@@ -1039,54 +1038,45 @@
 
                                                  </div>-->
                                                 <div class="row">
-                                                    <div class="form-group col-sm-12">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="物料批次">
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                                <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control"
+                                                        <input name="standardAName" type="text" class="form-control"
                                                                placeholder="标准一评估">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio" id="radio3" value="option3">
+                                                        <input type="radio" name="standardAType" id="radio3" value="1">
                                                         <label for="radio3"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio" id="radio7" value="option7">
+                                                        <input type="radio" name="standardAType" id="radio7" value="2">
                                                         <label for="radio7"> 10分制 </label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
 
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control"
+                                                        <input name="standardBName" type="text" class="form-control"
                                                                placeholder="标准二评估">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio2" id="radio4" value="option3">
+                                                        <input type="radio" name="standardBType" id="radio4" value="1">
                                                         <label for="radio4"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio2" id="radio5" value="option7">
+                                                        <input type="radio" name="standardBType" id="radio5" value="2">
                                                         <label for="radio5"> 10分制 </label>
                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control"
+                                                        <input name="standardCName" type="text" class="form-control"
                                                                placeholder="标准三评估">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio1" id="radio8" value="option3">
+                                                        <input type="radio" name="standardCType" id="radio8" value="1">
                                                         <label for="radio8"> 是OR否 </label>
                                                     </div>
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="radio1" id="radio9" value="option7">
+                                                        <input type="radio" name="standardCType" id="radio9" value="2">
                                                         <label for="radio9"> 10分制 </label>
                                                     </div>
                                                 </div>
@@ -1100,8 +1090,8 @@
                                         <div class="row">
                                             <div class="form-actions">
                                                 <button class="btn btn-success btn-icon left-icon mr-10 pull-left">
-                                                    <i class="fa fa-check"></i> <span>save</span></button>
-                                                <button type="button" class="btn btn-warning pull-left">Cancel</button>
+                                                    <i class="fa fa-check"></i> <span>保存</span></button>
+                                                <button type="button" class="btn btn-warning pull-left">取消</button>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -1137,6 +1127,86 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+    function s() {
+        $("#select1").change(function () {
+            var zhi = $(this).find("option:selected").val()
+            $.ajax({
+                type: "post",
+                url: "/TypeB.do",
+                data: {"materielTypeLevelAid": zhi},
+                dataType: "json",
+                success: function (data) {
+                    var str="";
+                    $("#select2").html("");
+                    var a=0;
+                    var b=0;
+                    $.each(data, function (i, item) {
+                        if(b==0){
+                            a=item.materielTypeLevelBId;
+                        }
+                        str += "<option value='" + item.materielTypeLevelBId + "'>" + item.materielTypeLevelBName + "</option>";
+                        b=1;
+                    })
+                    $("#select2").append(str)
+                    select(a);
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+
+            })
+
+
+        })
+    }
+
+    function ss() {
+        $("#select2").change(function () {
+            var zhi2 = $("#select2").find("option:selected").val();
+            select(zhi2);
+        })
+    }
+    function select(zhi2) {
+        $.ajax({
+            type: "post",
+            url: "/materiel.do",
+            data: {"materielTypeLevelBId": zhi2},
+            dataType: "json",
+            success: function (data) {
+                var str=""
+                $("#selectid").html("");
+                $.each(data, function (i, item) {
+                    str += "<option value='" + item.materielId + "'>" + item.materielName + "</option>";
+                })
+                $("#selectid").append(str)
+            }, error: function () {
+                alert("系统异常，请稍后重试！");
+            }
+
+        })
+    }
+
+
+    function sss(){
+        $("#selectid").change(function(){
+            alert($(this).find("option:selected").css({"color":"red"}))
+            $(this).find("option:selected").attr("disabled",true)
+            var uu=$(this).find("option:selected").text();
+            $("#aa").val(uu);
+
+        })
+    }
+
+
+    $(function(){
+        s();
+        ss();
+        sss();
+        alert("sss")
+    })
+</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

@@ -10,15 +10,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="standard_c_score" property="standardCScore"/>
         <result column="conclusion" property="conclusion"/>
         <result column="status" property="status"/>
-        <association column="purchase_standard_id" property="purchaseStandard" select="team.ruike.cim.dao.PurchaseStandardDao.selectById"/>
+        <association column="purchase_id" property="purchase" select="team.ruike.cim.dao.PurchaseDao.selectById"/>
+        <association column="materiel_id" property="materiel" select="team.ruike.cim.dao.MaterielDao.selectById"/>
     </resultMap>
     <sql id="sqlh">
         SELECT * FROM purchase_standard_record WHERE `status`=0
         <if test="purchaseStandardRecord.purchaseStandardRecordId!=null and purchaseStandardRecord.purchaseStandardRecordId>0">
             AND purchase_standard_record_id=#{purchaseStandardRecord.purchaseStandardRecordId}
         </if>
-        <if test="purchaseStandardRecord.purchaseStandard!=null and purchaseStandardRecord.purchaseStandard.purchaseStandardId!=null and purchaseStandardRecord.purchaseStandard.purchaseStandardId>0">
-            AND purchase_standard_id=#{purchaseStandardRecord.purchaseStandard.purchaseStandardId}
+        <if test="purchaseStandardRecord.purchase!=null and purchaseStandardRecord.purchase.purchaseId!=null and purchaseStandardRecord.purchase.purchaseId>0">
+            AND purchase_id=#{purchaseStandardRecord.purchase.purchaseId}
+        </if>
+        <if test="purchaseStandardRecord.materiel!=null and purchaseStandardRecord.materiel.materielId!=null and purchaseStandardRecord.materiel.materielId>0">
+            AND materiel_id=#{purchaseStandardRecord.materiel.materielId}
         </if>
         <if test="purchaseStandardRecord.standardAScore!=null and purchaseStandardRecord.standardAScore>0">
             AND standard_a_score=#{purchaseStandardRecord.standardAScore}
@@ -38,8 +42,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchaseStandardRecordId!=null and purchaseStandardRecordId>0">
             AND purchase_standard_record_id=#{purchaseStandardRecordId}
         </if>
-        <if test="purchaseStandard!=null and purchaseStandard.purchaseStandardId!=null and purchaseStandard.purchaseStandardId>0">
-            AND purchase_standard_id=#{purchaseStandard.purchaseStandardId}
+        <if test="purchase!=null and purchase.purchaseId!=null and purchase.purchaseId>0">
+            AND purchase_id=#{purchase.purchaseId}
+        </if>
+        <if test="materiel!=null and materiel.materielId!=null and materiel.materielId>0">
+            AND materiel_id=#{materiel.materielId}
         </if>
         <if test="standardAScore!=null and standardAScore>0">
             AND standard_a_score=#{standardAScore}
@@ -56,7 +63,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
     <insert id="add" parameterType="purchaseStandardRecord">
         INSERT into purchase_standard_record VALUES(DEFAULT,
-                                                    #{purchaseStandard.purchaseStandardId},
+                                                    #{purchase.purchaseId},
+                                                    #{materiel.materielId},
                                                     #{standardAScore},
                                                     #{standardBScore},
                                                     #{standardCScore},
@@ -64,7 +72,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                                                     0)
     </insert>
     <update id="update" parameterType="purchaseStandardRecord">
-        UPDATE purchase_standard_record set purchase_standard_id=#{purchaseStandard.purchaseStandardId},
+        UPDATE purchase_standard_record set purchase_id=#{purchase.purchaseId},
+            materiel_id=#{materiel.materielId},
             standard_a_score=#{standardAScore},
             standard_b_score=#{standardBScore},
             standard_c_score=#{standardCScore},

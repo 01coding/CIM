@@ -4,11 +4,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.PurchaseStandardDao">
     <insert id="add" parameterType="purchaseStandard">
-        INSERT INTO purchase_standard VALUES(default,#{purchase.purchaseId},#{standardAType},
+        INSERT INTO purchase_standard VALUES(default,#{materiel.materielId},#{standardAType},
         #{standardAName},#{standardBType},#{standardBName},#{standardCType},#{standardCName},#{remarks},0)
     </insert>
     <update id="update" parameterType="purchaseStandard">
-        UPDATE purchase_standard SET purchase_id=#{purchase.purchaseId},
+        UPDATE purchase_standard SET materiel_id=#{materiel.materielId},
             standard_a_type=#{standardAType},
             standard_a_name=#{standardAName},
             standard_b_type=#{standardBType},
@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="standard_a_name" property="standardAName"/>
         <result column="standard_a_type" property="standardAType"/>
         <result column="status" property="status"/>
-        <association property="purchase" column="purchase_id" select="team.ruike.cim.dao.PurchaseDao.selectById"/>
+        <association property="materiel" column="materiel_id" select="team.ruike.cim.dao.MaterielDao.selectById"/>
     </resultMap>
     <select id="select" resultMap="purchaseStandardMap">
         SELECT * FROM purchase_standard WHERE status=0
@@ -50,13 +50,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchaseStandard.standardBName!=null and purchaseStandard.standardBName!=''">
             AND standard_b_name LIKE like CONCAT('%',#{purchaseStandard.standardBName},'%')
         </if>
-        <if test="purchaseStandard.standardACame!=null and purchaseStandard.standardCName!=''">
+        <if test="purchaseStandard.standardCName!=null and purchaseStandard.standardCName!=''">
             AND standard_c_name LIKE like CONCAT('%',#{purchaseStandard.standardCName},'%')
         </if>
-        <if test="purchaseStandard.purchase!=null and purchaseStandard.purchase.purchaseId!=null and purchaseStandard.purchase.purchaseId>0">
-            AND purchase_id=#{purchaseStandard.purchase.purchaseId}
+        <if test="purchaseStandard.materiel!=null and purchaseStandard.materiel.materielId!=null and purchaseStandard.materiel.materielId>0">
+            AND materiel_id=#{purchaseStandard.materiel.materielId}
         </if>
-        LIMIT(#{pageNo},#{pageSize})
+        LIMIT #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int">
         SELECT count(1) FROM purchase_standard WHERE status=0
@@ -78,11 +78,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="purchaseStandard.standardBName!=null and purchaseStandard.standardBName!=''">
             AND standard_b_name LIKE like CONCAT('%',#{purchaseStandard.standardBName},'%')
         </if>
-        <if test="purchaseStandard.standardACame!=null and purchaseStandard.standardCName!=''">
+        <if test="purchaseStandard.standardCName!=null and purchaseStandard.standardCName!=''">
             AND standard_c_name LIKE like CONCAT('%',#{purchaseStandard.standardCName},'%')
         </if>
-        <if test="purchaseStandard.purchase!=null and purchaseStandard.purchase.purchaseId!=null and purchaseStandard.purchase.purchaseId>0">
-            AND purchase_id=#{purchaseStandard.purchase.purchaseId}
+        <if test="purchaseStandard.materiel!=null and purchaseStandard.materiel.materielId!=null and purchaseStandard.materiel.materielId>0">
+            AND materiel_id=#{purchaseStandard.materiel.materielId}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="purchaseStandardMap">

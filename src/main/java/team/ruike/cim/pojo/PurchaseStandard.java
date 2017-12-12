@@ -18,8 +18,14 @@ public class PurchaseStandard implements Serializable {
     private Integer purchaseStandardId;
     /**
      * 采购表外键
-     */
     private Purchase purchase;
+     */
+
+    /**
+     * 物料外键ID
+     */
+    private Materiel materiel;
+
     /**
      * 标准a类型
      */
@@ -53,7 +59,6 @@ public class PurchaseStandard implements Serializable {
      */
     private Integer status;
 
-
     public Integer getPurchaseStandardId() {
         return purchaseStandardId;
     }
@@ -62,12 +67,12 @@ public class PurchaseStandard implements Serializable {
         this.purchaseStandardId = purchaseStandardId;
     }
 
-    public Purchase getPurchase() {
-        return purchase;
+    public Materiel getMateriel() {
+        return materiel;
     }
 
-    public void setPurchase(Purchase purchase) {
-        this.purchase = purchase;
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
     }
 
     public Integer getStandardAType() {
@@ -78,7 +83,6 @@ public class PurchaseStandard implements Serializable {
         this.standardAType = standardAType;
     }
 
-
     public String getStandardAName() {
         return standardAName;
     }
@@ -86,7 +90,6 @@ public class PurchaseStandard implements Serializable {
     public void setStandardAName(String standardAName) {
         this.standardAName = standardAName;
     }
-
 
     public Integer getStandardBType() {
         return standardBType;
@@ -96,7 +99,6 @@ public class PurchaseStandard implements Serializable {
         this.standardBType = standardBType;
     }
 
-
     public String getStandardBName() {
         return standardBName;
     }
@@ -104,7 +106,6 @@ public class PurchaseStandard implements Serializable {
     public void setStandardBName(String standardBName) {
         this.standardBName = standardBName;
     }
-
 
     public Integer getStandardCType() {
         return standardCType;
@@ -114,7 +115,6 @@ public class PurchaseStandard implements Serializable {
         this.standardCType = standardCType;
     }
 
-
     public String getStandardCName() {
         return standardCName;
     }
@@ -122,7 +122,6 @@ public class PurchaseStandard implements Serializable {
     public void setStandardCName(String standardCName) {
         this.standardCName = standardCName;
     }
-
 
     public String getRemarks() {
         return remarks;
@@ -132,7 +131,6 @@ public class PurchaseStandard implements Serializable {
         this.remarks = remarks;
     }
 
-
     public Integer getStatus() {
         return status;
     }
@@ -140,5 +138,4 @@ public class PurchaseStandard implements Serializable {
     public void setStatus(Integer status) {
         this.status = status;
     }
-
 }
