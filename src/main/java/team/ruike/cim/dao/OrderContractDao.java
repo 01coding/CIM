@@ -59,5 +59,5 @@ public interface OrderContractDao {
     OrderContract selectById(Integer orderContractId);
 
 
-    List<OrderContract> selectAllOrderContract();
+    List<OrderContract> selectAllNoOrderInfoContract();
 }

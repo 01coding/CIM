@@ -43,4 +43,11 @@ public interface ContractOrderService {
     public void addContractOrder(OrderContract orderContract, ContractOrder contractOrder, List<ContractOrderTerm> contractOrderTerms);
 
 
+    /**
+     * 根据合同id 查询订单
+     * @param orderContractId 合同id
+     * @return 订单对象
+     */
+    public ContractOrder queryContractOrderByContractId(Integer orderContractId);
+
 }

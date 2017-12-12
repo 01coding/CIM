@@ -43,20 +43,24 @@ public class OrderContractServiceImpl implements OrderContractService {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
             orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
             orderContractDao.add(orderContract);
+        } else {
+            throw new NullPointerException("orderContract is null");
         }
-        new NullPointerException("orderContract is null");
+
     }
 
     @Transactional
     public void updateOrderContractById(OrderContract orderContract) {
         if (orderContract != null && orderContract.getOrderContractId() != null && orderContract.getOrderContractId() > 0) {
             orderContractDao.update(orderContract);
+        } else {
+            throw new NullPointerException("orderContract is null");
         }
-        new NullPointerException("orderContract is null");
+
     }
 
     @Override
-    public List<OrderContract> selectAllOrderContract() {
-        return  orderContractDao.selectAllOrderContract();
+    public List<OrderContract> selectAllNoOrderInfoContract() {
+        return orderContractDao.selectAllNoOrderInfoContract();
     }
 }

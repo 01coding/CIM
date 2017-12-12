@@ -81,4 +81,12 @@ public class ContractOrderServiceImpl implements ContractOrderService {
 
     }
 
+    @Override
+    public ContractOrder queryContractOrderByContractId(Integer orderContractId) {
+        ContractOrder contractOrder = null;
+        if (orderContractId != null && orderContractId > 0) {
+            contractOrder = contractOrderDao.selectContractOrderByContractId(orderContractId);
+        }
+        return contractOrder;
+    }
 }

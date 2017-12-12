@@ -50,7 +50,7 @@ public class ContractOrderController {
 
     @RequestMapping("toAdd.do")
     public String toAdd(Model model) {
-        List<OrderContract> orderContractList = orderContractService.selectAllOrderContract();
+        List<OrderContract> orderContractList = orderContractService.selectAllNoOrderInfoContract();
         List<MenuType> menuTypeList = menuTypeDao.selectAll();
         model.addAttribute("orderContractList", orderContractList);
         model.addAttribute("menuTypeList", menuTypeList);
