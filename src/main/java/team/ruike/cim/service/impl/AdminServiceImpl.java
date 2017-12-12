@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.*;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.AdminService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -66,6 +67,7 @@ public class AdminServiceImpl implements AdminService {
      * @return 是否成功
      */
     @Override
+    @ArchivesLog(operationType="新增操作",operationName="新增用户角色")
     public boolean addRole(Role role) {
         return roleDao.add(role)==1;
     }
