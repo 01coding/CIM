@@ -1285,115 +1285,160 @@
     <!-- Main Content -->
     <div class="page-wrapper" style="min-height: 1218px;">
         <div class="container-fluid">
-            <!-- Title -->
-
-            <!-- /Title -->
-
-            <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
+
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <form action="/addequipmentType.do">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加异常报告</font></font></h6>
                                         <hr class="light-grey-hr">
-
                                         <div class="row">
-                                            <div class="col-sm-6">
+                                            <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="异常编号">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        <input type="hidden"name="equipmentId" value="${et.equipmentId}"/>
+                                                        &nbsp;设&nbsp;备&nbsp;名&nbsp;称:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" style="width:400px;height: 40px" disabled class="form-control" name="equipmentName" id="equipmentName"value="${et.equipmentName}">
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        &nbsp; 所&nbsp;属&nbsp;工&nbsp;序:
+                                                    </div>
+                                                    <div class="col-sm-7">
 
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="停用原因">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="维修计划">
-                                                </div>
-                                            </div>
-                                                <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <input type="text" class="form-control" disabled="disabled"   placeholder="设备状态默认正常">
+                                                        <div class="col-sm-7">
+                                                            <input type="text" style="width:400px;height: 40px" disabled class="form-control" name="working.workingName" id="working.workingId"value="${et.working.workingName}">
                                                         </div>
                                                     </div>
-                                            </div>
-
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="登记人">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                        <option value="Category 1">请选择设备名称</option>
-                                                        <option value="Category 1">设备名称1</option>
-                                                        <option value="Category 2">设备名称2</option>
-                                                        <option value="Category 3">设备名称3</option>
-                                                        <option value="Category 4">设备名称4</option>
-                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="设备负责人" >
-                                                </div>
-                                            </div>
-
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                        <option value="Category 1">请选择设备所在工序</option>
-                                                        <option value="Category 1">设备所在工序1</option>
-                                                        <option value="Category 2">设备所在工序2</option>
-                                                        <option value="Category 3">设备所在工序3</option>
-                                                        <option value="Category 4">设备所在工序4</option>
-                                                    </select>
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        所属负责人:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <select name="user.userId" style="width: 400px;height: 40px">
+                                                            <select  name="user.userId" style="width: 170px;height: 40px">
+                                                                <c:forEach items="${eu}" var="us">
+                                                                    <c:choose>
+                                                                        <c:when test="${us.userId!=et.user.userId}">
+                                                                            <option  value="${us.userId}">${us.userName}</option>
+                                                                        </c:when>
+                                                                        <c:when test="${us.userId==et.user.userId}">
+                                                                            <option value="${et.user.userId}"selected="selected">${et.user.userName}</option>
+                                                                        </c:when>
+                                                                    </c:choose>
+                                                                </c:forEach>
+                                                            </select>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6" >
                                                 <div class="form-group">
-                                                    <select class="form-control" data-placeholder="Choose a Category" tabindex="1" >
-                                                        <option value="Category 1">请选择所属生产线</option>
-                                                        <option value="Category 1">所属生产线1</option>
-                                                        <option value="Category 2">所属生产线2</option>
-                                                        <option value="Category 3">所属生产线3</option>
-                                                        <option value="Category 4">所属生产线4</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="control-label mb-10 text-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font></font></label>
-                                                    <div class="input-group date" id="datetimepicker">
-                                                        <input type="text" class="form-control" placeholder="预计维修时间">
-                                                        <span class="input-group-addon">
-																	<span class="fa fa-calendar"></span>
-																</span>
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        所属生产线:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <select name="productionLine.productionLineId" style="width: 170px;height: 40px">
+                                                            <c:forEach items="${epl}" var="ps">
+                                                                <c:choose>
+                                                                    <c:when  test="${ps.productionLineId!=et.productionLine.productionLineId}">
+                                                                        <option  value="${ps.productionLineId}">${ps.productionLineNo}</option>
+                                                                    </c:when>
+                                                                    <c:when test="${ps.productionLineId==et.productionLine.productionLineId}">
+                                                                        <option value="${et.productionLine.productionLineId}" selected="selected">${et.productionLine.productionLineNo}</option>
+                                                                    </c:when>
+                                                                </c:choose>
+                                                            </c:forEach>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                    登记人:
+                                                </div>
+                                                <div class="col-sm-7">
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        设备状态:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <select id="se"  name="equipmentType.equipmentTypeId" style="width: 170px;height: 40px">
+                                                            <c:forEach items="${eqq}" var="equ">
+                                                                <c:choose>
+                                                                    <c:when test="${et.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
+                                                                        <option value="${equ.equipmentTypeId}">${equ.equipmentTypeName}</option>
+                                                                    </c:when>
+                                                                    <c:when test="${et.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
+                                                                        <option value="${et.equipmentType.equipmentTypeId}" selected="selected" >${et.equipmentType.equipmentTypeName}</option>
+                                                                    </c:when>
+
+                                                                </c:choose>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group" >
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        停用原因:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                    <input type="text" style="width: 400px;height: 40px" class="form-control">
+                                                </div>
+                                            </div>
+                                            </div>
 
 
-
+                                            <div class="col-sm-6">
+                                                <div class="form-group" >
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        维修计划:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                    <input type="text" style="width: 400px;height: 40px" class="form-control">
+                                                </div>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <div class="form-group" >
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        预计时间（分）:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <input type="text" style="width: 400px;height: 40px" class="form-control" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left"> <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></span></button>
+                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit"> <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></span></button>
                                             <button type="button" class="btn btn-warning pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
                                             <div class="clearfix"></div>
                                         </div>
@@ -1404,14 +1449,13 @@
                     </div>
                 </div>
             </div>
-            <!-- /Row -->
-        </div>
 
+        </div>
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
                 <div class="col-sm-12">
-                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2017©猎犬。</font><font style="vertical-align: inherit;">由于工作而受到尊重</font></font></p>
+                    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2017©瑞科。</font><font style="vertical-align: inherit;">由于工作而受到尊重</font></font></p>
                 </div>
             </div>
         </footer>
@@ -1419,10 +1463,6 @@
     </div>
     <!-- /Main Content -->
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
-
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -1443,7 +1483,6 @@
 
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
-
 
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="vendors/bower_components/moment/min/moment-with-locales.min.js"></script>

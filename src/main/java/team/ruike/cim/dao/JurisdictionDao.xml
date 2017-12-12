@@ -37,7 +37,7 @@
 </sql>
     <select id="select" resultMap="jurisdictionMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="jurisdiction">
         SELECT COUNT(1)FROM jurisdiction WHERE status=0
@@ -55,9 +55,7 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="jurisdictionMap">
-        <if test="jurisdictionId!=null and jurisdictionId>0">
             select * from jurisdiction WHERE jurisdiction_id=#{jurisdictionId}
-        </if>
     </select>
     <select id="selectByroleId" parameterType="int" resultMap="jurisdictionMap">
            SELECT * FROM jurisdiction WHERE jurisdiction_id in (SELECT jurisdiction_id FROM role_jurisdiction WHERE role_id=#{roleId})

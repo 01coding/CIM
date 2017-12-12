@@ -114,12 +114,40 @@ public class EquipementServiceImpl implements EquipementService {
 
     /**
      * 删除设备
-     * @param equipment 设备
+     * @param equipmentId 设备id
      * @return 是否成功
      */
-    public boolean deleteEquipment(Equipment equipment) {
-        Equipment equipment1=this.getEquipmentReportByID(equipment.getEquipmentId());
+    public int deleteEquipment(int equipmentId) {
+        Equipment equipment=new Equipment();
+        equipment.setEquipmentId(equipmentId);
+        List<Equipment>equipmentList= equipmentDao.select(equipment,0,99);
+        equipment=equipmentList.get(0);
         equipment.setStatus(1);
-        return equipmentDao.update(equipment1)==1;
+        return equipmentDao.update(equipment);
+    }
+
+    /**
+     * 新增设备信息
+     * @param equipment 设备信息
+     * @return 是否成功
+     */
+    @Override
+    public int insertEquipment(Equipment equipment) {
+        equipment.setStatus(0);
+       if (equipment.getEquipmentName()!="" && equipment.getInspectionCycle()>0 &&equipment.getMaintenanceCycle()>0
+                &&equipment.getProductionLine().getProductionLineId()>0 &&equipment.getUser().getUserId()>0 && equipment.getWorking().getWorkingId()>0){
+            return equipmentDao.add(equipment);
+        }
+        return 0;
+    }
+
+    /**
+     * 添加异常报告
+     * @param equipmentType 异常类
+     * @return 是否成功
+     */
+    @Override
+    public int insertEquipmentType(EquipmentType equipmentType) {
+        return equipmentTypeDao.add(equipmentType);
     }
 }

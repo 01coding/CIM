@@ -120,4 +120,6 @@ public class MaterielServiceImpl implements MaterielService {
     public Materiel getMaterielById(Integer materielId) {
         return materielDao.selectById(materielId);
     }
+
+
 }
