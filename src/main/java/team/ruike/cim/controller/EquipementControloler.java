@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Administrator on 2017/12/5.
@@ -40,12 +43,11 @@ public class EquipementControloler {
             System.out.print(ms);
         }
         equipementService.getEquipment(equipment, pager);
-        request.setAttribute("equipments",pager.getList());
+        request.setAttribute("equipments",pager);
         request.setAttribute("equipmentTypes",equipementService.getEquipmentType(equipmentType));
         request.setAttribute("workings",equipementService.getWorking(working));
         request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
         request.setAttribute("users",equipementService.getUser(user));
-
         return "equipement/equipment";
     }
     /**
@@ -79,9 +81,9 @@ public class EquipementControloler {
      * @param equipment 设备表
      * @return 是否成功
      */
-    @RequestMapping("/insertEquipment.do")
-    public  String insertEquipment(Equipment equipment){
-        int num=equipementService.insertEquipment(equipment);
+    @RequestMapping("/addEquipment.do")
+    public  String addEquipment(Equipment equipment){
+        int num=equipementService.addEquipment(equipment);
         if (num==0){
             return "redirect:addequipement.do";
         }else {
@@ -96,17 +98,55 @@ public class EquipementControloler {
     @RequestMapping("/updateMateriel.do")
     public String updateMateriels(Equipment equipments,HttpServletRequest request){
         int num = equipementService.updateEquipment(equipments);
+
         if (num==0){
             return"redirect:/equipment.do?ms=1";
         }else {
             if (equipments.getEquipmentType().getEquipmentTypeId()!=1) {
-
-                request.setAttribute("et",equipments);
-                System.out.println(equipments.getWorking().getWorkingName());
-                return "equipement/addequipmentreport";
+                return "forward:/redayAddEP.do?equipment="+equipments;
             } else {
                 return "redirect:/equipment.do";
             }
+        }
+    }
+
+    /**
+     * 预备新增页面
+     * @param equipment
+     * @param request
+     * @return
+     */
+    @RequestMapping("/redayAddEP.do")
+    public String redayAddEP(Equipment equipment,HttpServletRequest request){
+        Equipment equipment1=new Equipment();
+        equipment1=equipementService.redalAddEP(equipment);
+        request.setAttribute("et",equipment1);
+        return "equipement/addequipmentreport";
+    }
+
+    /**
+     * 添加异常报告
+     * @param equipmentReport 异常表
+     * @return 是否成功
+     */
+    @RequestMapping("/addequipmentType.do")
+    public String addequipmentType(EquipmentReport equipmentReport, String date){
+        Date dates=null;
+        try
+        {
+            java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+            dates =  formatter.parse(date);
+        }
+        catch (ParseException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        equipmentReport.setEndDate(dates);
+        int num=equipementService.addEquipmentReport(equipmentReport);
+        if (num==1) {
+            return "redirect:/equipment.do";
+        }else {
+            return "equipement/addequipmentreport";
         }
     }
     /**
@@ -130,7 +170,7 @@ public class EquipementControloler {
     @RequestMapping("/equipmentreport.do")
     public String equipmentreport(EquipmentReport equipmentReport,Pager<EquipmentReport> pager, HttpServletRequest request){
         equipementService.getEquipmentReport(equipmentReport,pager);
-        request.setAttribute("equipmentReports",pager.getList());
+        request.setAttribute("equipmentReports",pager);
         return "equipement/equipmentreport";
     }
 
@@ -148,7 +188,7 @@ public class EquipementControloler {
     }
 
     /**
-     * 跳转新增设备页面
+     * 跳转新增设备页面，并查询数据
      * @return
      */
     @RequestMapping("/addequipement.do")
@@ -158,13 +198,6 @@ public class EquipementControloler {
         request.setAttribute("users",equipementService.getUser(user));
         return "equipement/addequipement";
     }
-    @RequestMapping("/addequipmentType.do")
-    public String addequipmentType(EquipmentType equipmentType){
-        int num=equipementService.insertEquipmentType(equipmentType);
-        if (num==1) {
-            return "redirect:/equipment.do";
-        }else {
-            return "equipement/addequipmentreport";
-        }
-    }
+
+
 }

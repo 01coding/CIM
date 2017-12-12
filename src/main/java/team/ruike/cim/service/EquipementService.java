@@ -64,7 +64,7 @@ public interface EquipementService {
      * @param equipment 设备信息
      * @return 是否成功
      */
-    int insertEquipment(Equipment equipment);
+    int addEquipment(Equipment equipment);
     /**
      * 删除设备
      * @param equipmentId 设备id
@@ -74,8 +74,16 @@ public interface EquipementService {
 
     /**
      * 添加异常报告
-     * @param equipmentType 异常类
+     * @param equipmentReport 异常类
      * @return 是否成功
      */
-   int insertEquipmentType(EquipmentType equipmentType);
+   int addEquipmentReport(EquipmentReport equipmentReport);
+
+
+    /**
+     * 补全设备
+     * @param equipment
+     * @return
+     */
+   Equipment redalAddEP(Equipment equipment);
 }

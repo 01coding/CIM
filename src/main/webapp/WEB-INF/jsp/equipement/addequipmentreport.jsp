@@ -1292,7 +1292,7 @@
                             <div class="panel-body">
 
                                 <div class="form-wrap">
-                                    <form action="/addequipmentType.do">
+                                    <form action="/addequipmentType.do" >
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加异常报告</font></font></h6>
                                         <hr class="light-grey-hr">
@@ -1300,50 +1300,37 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
-                                                        <input type="hidden"name="equipmentId" value="${et.equipmentId}"/>
+                                                        <input type="hidden"name="equipment.equipmentId" value="${et.equipmentId}"/>
                                                         &nbsp;设&nbsp;备&nbsp;名&nbsp;称:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <input type="text" style="width:400px;height: 40px" disabled class="form-control" name="equipmentName" id="equipmentName"value="${et.equipmentName}">
+                                                        <input type="text" style="width:400px;height: 40px" readonly="readonly" class="form-control"value="${et.equipmentName}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
-                                                        &nbsp; 所&nbsp;属&nbsp;工&nbsp;序:
+                                                        <input type="hidden"name="equipmentId" value="${et.equipmentId}"/>
+                                                     所&nbsp;属&nbsp;工&nbsp;序:
                                                     </div>
-                                                    <div class="col-sm-7">
-
                                                         <div class="col-sm-7">
-                                                            <input type="text" style="width:400px;height: 40px" disabled class="form-control" name="working.workingName" id="working.workingId"value="${et.working.workingName}">
+                                                            <input type="text" style="width: 400px;height: 40px" readonly="readonly" class="form-control"value="${et.working.workingName}">
                                                         </div>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">&nbsp;</div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
-                                                        所属负责人:
-                                                    </div>
-                                                    <div class="col-sm-7">
-                                                        <select name="user.userId" style="width: 400px;height: 40px">
-                                                            <select  name="user.userId" style="width: 170px;height: 40px">
-                                                                <c:forEach items="${eu}" var="us">
-                                                                    <c:choose>
-                                                                        <c:when test="${us.userId!=et.user.userId}">
-                                                                            <option  value="${us.userId}">${us.userName}</option>
-                                                                        </c:when>
-                                                                        <c:when test="${us.userId==et.user.userId}">
-                                                                            <option value="${et.user.userId}"selected="selected">${et.user.userName}</option>
-                                                                        </c:when>
-                                                                    </c:choose>
-                                                                </c:forEach>
-                                                            </select>
-                                                    </div>
+                                            <div class="form-group">
+                                                <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                    所属负责人:
                                                 </div>
+                                                <div class="col-sm-7">
+                                                    <input type="text" style="width: 400px;height: 40px" readonly="readonly" class="form-control"value="${et.user.userName}">
+                                                </div>
+                                            </div>
                                             </div>
                                             <div class="col-md-6" >
                                                 <div class="form-group">
@@ -1351,56 +1338,38 @@
                                                         所属生产线:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <select name="productionLine.productionLineId" style="width: 170px;height: 40px">
-                                                            <c:forEach items="${epl}" var="ps">
-                                                                <c:choose>
-                                                                    <c:when  test="${ps.productionLineId!=et.productionLine.productionLineId}">
-                                                                        <option  value="${ps.productionLineId}">${ps.productionLineNo}</option>
-                                                                    </c:when>
-                                                                    <c:when test="${ps.productionLineId==et.productionLine.productionLineId}">
-                                                                        <option value="${et.productionLine.productionLineId}" selected="selected">${et.productionLine.productionLineNo}</option>
-                                                                    </c:when>
-                                                                </c:choose>
-                                                            </c:forEach>
-                                                        </select>
+                                                        <input type="text" style="width: 400px;height: 40px" readonly="readonly" class="form-control"value="${et.productionLine.productionLineNo}">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">&nbsp;</div>
                                         <div class="row">
-                                            <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
-                                                    登记人:
-                                                </div>
-                                                <div class="col-sm-7">
 
-                                                </div>
-                                            </div>
-                                        </div>
                                             <div class="col-sm-6">
                                                 <div class="form-group">
                                                     <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
                                                         设备状态:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <select id="se"  name="equipmentType.equipmentTypeId" style="width: 170px;height: 40px">
-                                                            <c:forEach items="${eqq}" var="equ">
-                                                                <c:choose>
-                                                                    <c:when test="${et.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
-                                                                        <option value="${equ.equipmentTypeId}">${equ.equipmentTypeName}</option>
-                                                                    </c:when>
-                                                                    <c:when test="${et.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
-                                                                        <option value="${et.equipmentType.equipmentTypeId}" selected="selected" >${et.equipmentType.equipmentTypeName}</option>
-                                                                    </c:when>
+                                                        <input type="text" style="width: 400px;height: 40px" readonly="readonly" class="form-control" value="${et.equipmentType.equipmentTypeName}">
+                                                    </div>
+                                                </div>
+                                            </div>
 
-                                                                </c:choose>
-                                                            </c:forEach>
-                                                        </select>
+                                            <div class="col-sm-6">
+                                                <div class="form-group">
+                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
+                                                        登&nbsp;&nbsp;&nbsp;&nbsp;记&nbsp;&nbsp;&nbsp;&nbsp;人:
+                                                    </div>
+                                                    <div class="col-sm-7">
+                                                        <input type="hidden" name="user.userId" value="${sessionScope.u.userId}"/>
+                                                        <input type="text" style="width: 400px;height: 40px" readonly="readonly" id="user.userId" value="${sessionScope.u.userName}" class="form-control" >
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="row">&nbsp;</div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group" >
@@ -1408,23 +1377,22 @@
                                                         停用原因:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" name="equipmentReportReason" class="form-control">
                                                 </div>
                                             </div>
                                             </div>
-
-
                                             <div class="col-sm-6">
                                                 <div class="form-group" >
                                                     <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
                                                         维修计划:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" name="maintenancePlan" class="form-control">
                                                 </div>
                                             </div>
                                             </div>
                                         </div>
+                                        <div class="row">&nbsp;</div>
                                         <div class="row">
                                             <div class="col-sm-6">
                                                 <div class="form-group" >
@@ -1432,15 +1400,17 @@
                                                         预计时间（分）:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <input type="text" style="width: 400px;height: 40px" class="form-control" >
+                                                        <div class="form-group" >
+                                                            <input style="width: 400px;height: 40px" name="date" type="date"/>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-actions">
                                             <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit"> <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></span></button>
-                                            <button type="button" class="btn btn-warning pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
-                                            <div class="clearfix"></div>
+
+                                                <div class="clearfix"></div>
                                         </div>
                                     </form>
                                 </div>

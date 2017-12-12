@@ -132,7 +132,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @return 是否成功
      */
     @Override
-    public int insertEquipment(Equipment equipment) {
+    public int addEquipment(Equipment equipment) {
         equipment.setStatus(0);
        if (equipment.getEquipmentName()!="" && equipment.getInspectionCycle()>0 &&equipment.getMaintenanceCycle()>0
                 &&equipment.getProductionLine().getProductionLineId()>0 &&equipment.getUser().getUserId()>0 && equipment.getWorking().getWorkingId()>0){
@@ -143,11 +143,47 @@ public class EquipementServiceImpl implements EquipementService {
 
     /**
      * 添加异常报告
-     * @param equipmentType 异常类
+     * @param equipmentReport 异常类
      * @return 是否成功
      */
     @Override
-    public int insertEquipmentType(EquipmentType equipmentType) {
-        return equipmentTypeDao.add(equipmentType);
+    public int addEquipmentReport(EquipmentReport equipmentReport) {
+        equipmentReport.setStatus(0);
+        if (equipmentReport!=null && equipmentReport.getEquipment().getEquipmentId()>0
+                &&equipmentReport.getEndDate()!=null && equipmentReport.getEquipmentReportReason()!=null
+                &&equipmentReport.getEquipmentReportReason()!="" && equipmentReport.getMaintenancePlan()!=null
+                &&equipmentReport.getMaintenancePlan()!="" && equipmentReport.getUser().getUserId()>0){
+            return equipmentReportDao.add(equipmentReport);
+        }
+        return 0;
     }
+
+    /**
+     * 预备查询异常所有外键
+     * @param equipment
+     * @return
+     */
+    @Override
+    public Equipment redalAddEP(Equipment equipment) {
+        //补全用户
+        if(equipment.getUser()!=null && equipment.getUser().getUserId()>0){
+            User user=userDao.selectById(equipment.getUser().getUserId());
+            equipment.setUser(user);
+        }
+        if (equipment.getWorking()!=null && equipment.getWorking().getWorkingId()>0){
+            Working working=workingDao.selectById(equipment.getWorking().getWorkingId());
+            equipment.setWorking(working);
+        }
+        if (equipment.getEquipmentType()!=null && equipment.getEquipmentType().getEquipmentTypeId()>0){
+            EquipmentType equipmentType=equipmentTypeDao.selectById(equipment.getEquipmentType().getEquipmentTypeId());
+            equipment.setEquipmentType(equipmentType);
+        }
+        if (equipment.getProductionLine()!=null && equipment.getProductionLine().getProductionLineId()>0){
+            ProductionLine productionLine=productionLineDao.selectById(equipment.getProductionLine().getProductionLineId());
+            equipment.setProductionLine(productionLine);
+        }
+        return equipment;
+    }
+
+
 }

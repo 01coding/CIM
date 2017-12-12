@@ -1,3 +1,4 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -1224,7 +1225,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach var="e" items="${requestScope.equipmentReports}">
+                                            <c:forEach var="e" items="${requestScope.equipmentReports.list}">
                                                 <tr >
                                                     <td>${e.equipment.equipmentName}</td>
                                                     <td>${e.user.userName}</td>
@@ -1239,18 +1240,6 @@
                                             </c:forEach>
                                             </tbody>
                                         </table>
-                                        <div class="guide">
-                                            <div class="guide-wrap">
-                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
-                                                    <i class="icon-rocket"></i>
-                                                </button>
-                                                <a href="/addequipmentreport.do">
-                                                    <button  class="btn btn-info btn-icon-anim btn-circle">
-                                                        <i class="fa ti-plus"></i>
-                                                    </button>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1265,13 +1254,42 @@
                 <div class="row">
                     <div class="col-md-12">
                         <ul class="pagination pagination-split">
-                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                            <li class="disabled"><a href="#">1</a>
-                            <li class="active"><a href="#">2</a>
-                            <li><a href="#">3</a>
-                            <li><a href="#">4</a>
-                            <li><a href="#">5</a>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
+                            <li <c:if
+                                    test="${requestScope.equipmentReports.currentPage==1}"> class="disabled" </c:if>>
+                                <a <%
+                                    Pager pager = (Pager) request.getAttribute("equipmentReports");
+                                    if (pager.getCurrentPage() != 1) {%>
+                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.previousPage}"
+                                        <%
+                                        } else {%>
+                                        href="javascript:void(0);"
+                                        <%
+                                            }
+                                        %>>
+                                    <i class="fa fa-angle-left"></i></a>
+                            </li>
+                            <c:forEach var="bar"
+                                       items="${requestScope.equipmentReports.pageBar}">
+                                <li <c:if
+                                        test="${bar==requestScope.equipmentReports.currentPage}"> class="active" </c:if> >
+                                    <a href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${bar}">${bar}</a>
+                                </li>
+                            </c:forEach>
+                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                            <%--<li class="active"><a href="#">2</a></li>--%>
+                            <li <c:if
+                                    test="${requestScope.equipmentReports.currentPage>=requestScope.equipmentReports.totalPage}"> class="disabled" </c:if>>
+                                <a <%
+                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.nextPage}"
+                                        <%
+                                        } else {%>
+                                        href="javascript:void(0);"
+                                        <%
+                                            }
+                                        %>>
+                                    <i class="fa fa-angle-right"></i></a>
+                            </li>
                         </ul>
                     </div>
                 </div>
