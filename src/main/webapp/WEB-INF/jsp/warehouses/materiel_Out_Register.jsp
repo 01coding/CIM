@@ -1,12 +1,19 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: lenovo
+  Date: 2017/12/4
+  Time: 11:20
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>合同管理</title>
+    <title>Hound I Fast build Admin dashboard for any platform</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -16,27 +23,19 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
-    <link href="../../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- vector map CSS -->
-    <link href="../../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
     <!-- Footable CSS -->
-    <link href="../../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
-
-    <%--date--%>
-    <!-- Bootstrap Colorpicker CSS -->
-    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Bootstrap Datetimepicker CSS -->
-    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
         /*** guide ***/
         .guide {
@@ -206,7 +205,7 @@
                                             <a href="e-commerce.html">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="product.html">Products</a>
+                                            <a href="warehouse.html">Products</a>
                                         </li>
                                         <li>
                                             <a href="product-detail.html">Product Detail</a>
@@ -322,7 +321,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -359,9 +359,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -446,7 +447,7 @@
                         <a href="e-commerce.html">Dashboard</a>
                     </li>
                     <li>
-                        <a href="product.html">Products</a>
+                        <a href="warehouse.html">Products</a>
                     </li>
                     <li>
                         <a href="product-detail.html">Product Detail</a>
@@ -503,7 +504,7 @@
                         </a>
                         <ul id="contact_dr" class="collapse collapse-level-2">
                             <li>
-                                <a href="添加合同订单.html">list</a>
+                                <a href="contact-list.html">list</a>
                             </li>
                             <li>
                                 <a href="contact-card.html">cards</a>
@@ -542,7 +543,7 @@
                 </a>
                 <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
                     <li>
-                        <a href="panels-wells.html">Panels & Wells</a>
+                        <a href="warehouse_region.html">Panels & Wells</a>
                     </li>
                     <li>
                         <a href="modals.html">Modals</a>
@@ -701,7 +702,7 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a class="active-page" href="合同订单.html"><span class="pull-right"><span
+                        <a class="active-page" href="materiel.html"><span class="pull-right"><span
                                 class="label label-danger">New</span></span>Export Table</a>
                     </li>
                     <li>
@@ -928,7 +929,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -976,7 +978,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1129,7 +1132,7 @@
                                                     <div class="input-group-btn attachment">
                                                         <div class="fileupload btn  btn-default"><i
                                                                 class="zmdi zmdi-attachment-alt"></i>
-                                                            <input type="file" name="file" class="upload">
+                                                            <input type="file" class="upload">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1156,7 +1159,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1172,7 +1176,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1188,7 +1193,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1204,7 +1210,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1220,7 +1227,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1236,7 +1244,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1252,7 +1261,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1357,7 +1367,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">出库记录</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -1370,98 +1380,67 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
-                                    <div class="table-responsive">
-
+                                    <!--区域选择框-->
+                                    <div class="table-responsive ">
+                                        <div class="form-group col-sm-3">
+                                                <button type="submit" class="btn btn-primary" onclick="window.location.href='getWarehouseRegisterItem.do'">入库记录</button>
+                                        </div>
+                                        <!--区域选择框-->
                                         <table id="example" class="table table-hover display  pb-30">
-
-                                            <div >
-                                                <form class="form-inline" id="orderForm" method="get" action="/order/contract/index.do">
+                                            <div style="width: 300px;float: right">
+                                                <form class="form-inline">
                                                     <div class="form-group">
-
-                                                        <div class="input-group" style="width: 300px;float: right;">
-                                                            <label class="control-label mb-10">合同名称:</label>
-                                                            <input type="text" class="form-control" name="orderContractName" value="${orderContract.orderContractName}" />
-
-                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
-                                                                <button type="submit" class="btn btn-primary"
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
+                                                                <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
                                                                 </button>
                                                             </div>
                                                         </div>
-
-                                                        <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
-                                                            <label class="control-label mb-10">签订时间:</label>
-                                                            <div class='input-group date' id='datetimepicker1'>
-                                                                <input type='text' class="form-control" placeholder="时间" name="orderContractDate"   value="<fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/>"
-                                                                />
-
-                                                                <span class="input-group-addon">
-                                                                    <span class="fa fa-calendar"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-
-
                                                     </div>
                                                 </form>
                                             </div>
 
                                             <thead>
                                             <tr>
-                                                <th>合同号</th>
-                                                <th>合同名称</th>
-                                                <th>合同签订时间</th>
-                                                <th>签订人</th>
-                                                <th>状态</th>
-                                                <th>ACTIONS</th>
+                                                <th>物料名称</th>
+                                                <th>出库数量</th>
+                                                <th>出库时间</th>
+                                                <th>货架编号</th>
+                                                <th>领料人</th>
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>合同号</th>
-                                                <th>合同名称</th>
-                                                <th>合同签订时间</th>
-                                                <th>签订人</th>
-                                                <th>状态</th>
-                                                <th>ACTIONS</th>
+                                                <th>物料名称</th>
+                                                <th>出库数量</th>
+                                                <th>出库时间</th>
+                                                <th>货架编号</th>
+                                                <th>领料人</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <c:forEach var="orderContract" items="${pager.list}">
-                                            <tr>
-                                                <td>${orderContract.orderContractNo}</td>
-                                                <td>${orderContract.orderContractName}</td>
-
-                                                <td><fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/> </td>
-                                                <td>${orderContract.store.storeName}</td>
-                                                <th>
-                                                    ---
-                                                </th>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-
-                                                        <button type="button" class="btn btn-default footable-edit"  data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${orderContract.orderContractId})">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect" onclick="toView(${orderContract.orderContractId})">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <c:forEach items="${OutRegisterItemPage.list}" var="itr">
+                                                <tr>
+                                                    <td>${itr.materiel.materielName}</td>
+                                                    <td>${itr.materielNumber}</td>
+                                                    <td><fmt:formatDate
+                                                            value="${itr.warehouseOutRegister.warehouseOutRegisterEndDate}"
+                                                            pattern="yyyy-MM-dd"/></td>
+                                                    <td>${itr.goodsShelve.goodsShelveNo}</td>
+                                                    <td>${itr.warehouseOutRegister.user.userName}</td>
+                                                </tr>
                                             </c:forEach>
                                             </tbody>
                                         </table>
@@ -1472,44 +1451,31 @@
                                                     <i class="icon-rocket"></i>
                                                 </button>
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        data-toggle="modal" data-target="#exampleModal">
-                                                    <i class="fa ti-plus"></i>
+                                                        onclick="window.location.href='add-products.html'">
+                                                    <i class="fa ti-plus" title="新增入库记录"></i>
                                                 </button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-
 
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
-                                            <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
-                                                <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
-                                                    <li
-                                                            <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
-                                                    ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
-
-                                                    <c:forEach items="${pager.pageBar}" var="pb">
-                                                        <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
-                                                        ><a data-currentpage="${pb}" onclick="currentPage(this)">${pb}</a></li>
-                                                    </c:forEach>
-
-                                                    <li
-                                                            <c:if test="${pager.currentPage>=pager.totalPage}" > class="disabled"</c:if>
-                                                    ><a data-nextid="${pager.nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="disabled"><a href="#">1</a></li>
+                                                    <li class="active"><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
                                                 </ul>
-                                                </c:if>
                                             </div>
-                                        </c:if>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
@@ -1520,80 +1486,116 @@
 
 
         <div class="row">
-
-
-            <!--添加输入框-->
+            <!--提示框-->
             <div class="col-md-6">
-                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModal" class="modal fade" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title">添加合同</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-material" method="post" action="/order/contract/add.do" id="contractUpload" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称" name="orderContractName">
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <div class='input-group date' id='datetimepicker1s'>
-                                                <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate"/>
-                                                <span class="input-group-addon">
-                                                    <span class="fa fa-calendar"></span>
-                                                </span>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <select class="form-control" name="store.storeId">
-                                                <option selected value="0">用户</option>
-                                                <c:forEach var="store" items="${storeList}">
-                                                <option value="${store.storeId}">${store.storeName}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload" name="file">
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-info waves-effect">保存</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
-                                    </div>
-                                </form>
-                            </div>
-
+                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
+                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
+                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
+                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
+                        <div class="sa-icon sa-error" style="display: none;">
+						  <span class="sa-x-mark">
+							<span class="sa-line sa-left"></span>
+							<span class="sa-line sa-right"></span>
+						  </span>
                         </div>
-                        <!-- /.modal-content -->
+                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
+                            <span class="sa-body pulseWarningIns"></span>
+                            <span class="sa-dot pulseWarningIns"></span>
+                        </div>
+                        <div class="sa-icon sa-info" style="display: none;"></div>
+                        <div class="sa-icon sa-success" style="display: none;">
+                            <span class="sa-line sa-tip"></span>
+                            <span class="sa-line sa-long"></span>
+
+                            <div class="sa-placeholder"></div>
+                            <div class="sa-fix"></div>
+                        </div>
+                        <div class="sa-icon sa-custom" style="display: none;"></div>
+                        <h2>你确定？</h2>
+                        <p style="display: block;">你将无法恢复这个的数据！</p>
+                        <fieldset>
+                            <input type="text" tabindex="3" placeholder="">
+                            <div class="sa-input-error"></div>
+                        </fieldset>
+                        <div class="sa-error-container">
+                            <div class="icon">!</div>
+                            <p>Not valid!</p>
+                        </div>
+                        <div class="sa-button-container">
+                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
+                                    data-dismiss="modal" aria-label="Close">不，取消！
+                            </button>
+                            <div class="sa-confirm-button-container">
+                                <button class="confirm" tabindex="1"
+                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
+                                    是的，删除它！
+                                </button>
+                                <div class="la-ball-fall">
+                                    <div></div>
+                                    <div></div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
-
-            <!--修改输入框-->
+            <!--输入框-->
             <div class="col-md-6">
-                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
-
-                </div>
-            </div>
-
-
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
-
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title" id="exampleModalLabel1">物料编辑</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <select class="form-control select2 select2-hidden-accessible"
+                                                tabindex="-1" aria-hidden="true">
+                                            <option><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">请选择区域</font></font>
+                                            </option>
+                                            <option value="AK"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
+                                            </option>
+                                            <option value="HI"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">夏威夷</font></font>
+                                            </option>
+                                        </select></div>
+                                    <div class="form-group">
+                                        <select class="form-control select2 select2-hidden-accessible"
+                                                tabindex="-1" aria-hidden="true">
+                                            <option><font style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">请选择货架</font></font>
+                                            </option>
+                                            <option value="AK"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
+                                            </option>
+                                            <option value="HI"><font
+                                                    style="vertical-align: inherit;"><font
+                                                    style="vertical-align: inherit;">夏威夷</font></font>
+                                            </option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Send message</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-
         </div>
 
 
@@ -1616,109 +1618,45 @@
 <!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="../../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
-<script src="../../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
-<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
-<script src="../../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
-<script src="../../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
-<script src="../../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-
-<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
-<script src="../../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
-<script src="../../../../dist/js/export-table-data.js"></script>
-<script src="../../../../dist/js/dataTables-data.js"></script>
-
-
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+<script src="../../../dist/js/export-table-data.js"></script>
+<script src="../../../dist/js/dataTables-data.js"></script>
 <!-- Slimscroll JavaScript -->
-<script src="../../../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="../../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="../../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Init JavaScript -->
-<script src="../../../../dist/js/init.js"></script>
+<script src="../../../dist/js/init.js"></script>
 
 
 <!-- Sweet-Alert  -->
-<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-<script src="../../../../dist/js/sweetalert-data.js"></script>
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 
-
-<%--date--%>
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="../../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="../../../../dist/js/form-picker-data.js"></script>
-<!-- Slimscroll JavaScript -->
-<script src="../../../../dist/js/jquery.slimscroll.js"></script>
-
-
-
-
-<script src="../../../../vendors/app.js"></script>
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
-    function toView(id) {
-        var fd =new Array();
-        fd.push({name: "orderContractId", value: id});
-        appModule.open("/order/contract/toView.do",fd,"exampleModalSelect")
-    }
-
-    function toEdit(id) {
-        var fd = {orderContractId:id};
-        appModule.open('/order/contract/toEdit.cl',fd,'exampleModalUpdate');
-    };
-
-    function nextPage(ts) {
-        var addStore = $("#orderForm").serializeArray();
-        var fd = {name: "currentPage", value: $(ts).data("nextid")};
-        addStore.push(fd)
-        var url = jQuery.param(addStore);
-        window.location.href="/order/contract/index.do?"+url;
-    }
-    function previousPage(ts) {
-        var addStore = $("#orderForm").serializeArray();
-        var fd = {name: "currentPage", value: $(ts).data("previouspage")};
-        addStore.push(fd)
-        var url = jQuery.param(addStore);
-        window.location.href="/order/contract/index.do?"+url;
-    }
-    function currentPage(ts) {
-        var addStore = $("#orderForm").serializeArray();
-        var fd = {name: "currentPage", value: $(ts).data("currentpage")};
-        addStore.push(fd)
-        var url = jQuery.param(addStore);
-        window.location.href="/order/contract/index.do?"+url;
-    }
-
-
-
-
-
 </script>
 </body>
 

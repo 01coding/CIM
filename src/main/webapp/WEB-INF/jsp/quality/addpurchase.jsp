@@ -1151,14 +1151,11 @@
                         b=1;
                     })
                     $("#select2").append(str)
-                    select(a);
+                       if(a!=0){select(a)}else {  $("#selectid").html("");};
                 }, error: function () {
                     alert("系统异常，请稍后重试！");
                 }
-
             })
-
-
         })
     }
 
@@ -1184,7 +1181,6 @@
             }, error: function () {
                 alert("系统异常，请稍后重试！");
             }
-
         })
     }
 
@@ -1195,7 +1191,6 @@
             $(this).find("option:selected").attr("disabled",true)
             var uu=$(this).find("option:selected").text();
             $("#aa").val(uu);
-
         })
     }
 
@@ -1204,7 +1199,6 @@
         s();
         ss();
         sss();
-        alert("sss")
     })
 </script>
 

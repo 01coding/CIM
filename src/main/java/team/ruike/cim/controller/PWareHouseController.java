@@ -16,9 +16,9 @@ import javax.servlet.http.HttpServletRequest;
 public class PWareHouseController {
     @Resource
     private PwarehouseService pwarehouseService;
-    @RequestMapping("productWarehouse.cl")
+    @RequestMapping("productWarehouse.do")
     public String getPwarehouse(ProductWarehouse productWarehouse, Pager<ProductWarehouse> pager,HttpServletRequest request){
-        pwarehouseService.getwarehouse(productWarehouse,pager);
+        pwarehouseService.getWarehouse(productWarehouse);
         request.setAttribute("productWarehouses", pager.getList());
         return "warehouses/warehouse";
     }

@@ -1602,7 +1602,6 @@
                 alert("Connection error");
             },
             success: function(data) {
-
                 if(data==1){
                     alert($("#selectid").find("option:selected").css({"color":"red"}))
                     $("#selectid").find("option:selected").attr("disabled",true)
@@ -1694,7 +1693,6 @@
         s();
         ss();
         sss();
-        alert("sss")
     })
 </script>
 

@@ -49,7 +49,7 @@ public class OrderContractController {
         return "order/contractControl/index";
     }
 
-    @RequestMapping("toEdit.do")
+    @RequestMapping("toEdit.cl")
     public String toEdit(@RequestParam(value = "orderContractId") Integer orderContractId, Model model) {
         OrderContract orderContract = orderContractService.queryOrderContractById(orderContractId);
         List<Store> storeList = storeService.queryAllStore();
@@ -82,7 +82,6 @@ public class OrderContractController {
 
 
     @RequestMapping("add.do")
-    @ResponseBody
     public String add(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
         String filePath = upload(file, request);
         if (filePath != null &&!filePath.equals("")) {
@@ -90,7 +89,7 @@ public class OrderContractController {
         }
         orderContract.setOrderContractImage("");
         orderContractService.addOrderContract(orderContract);
-        return "1";
+        return "redirect:/order/contract/index.do";
     }
 
 

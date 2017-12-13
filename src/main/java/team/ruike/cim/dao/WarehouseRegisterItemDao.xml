@@ -11,15 +11,15 @@
         <association property="goodsShelve" column="goods_shelve_id"
                      select="team.ruike.cim.dao.GoodsShelveDao.selectById"/>
         <association property="warehouseRegister" column="warehouse_register_id"
-                     select="team.ruike.cim.pojo.WarehouseRegister.selectById"/>
+                     select="team.ruike.cim.dao.WarehouseRegisterDao.selectById"/>
     </resultMap>
     <sql id="sql">
         select * from warehouse_register_item WHERE status=0
         <if test="WarehouseRegisterItem.warehouseRegisterItemId!=null and WarehouseRegisterItem.warehouseRegisterItemId>0">
-            AND warehouse_register_item_id=#{warehouse_register_item_id}
+            AND warehouse_register_item_id=#{WarehouseRegisterItem.warehouseRegisterItemId}
         </if>
-        <if test="WarehouseRegisterItem.materiel_number!=null and WarehouseRegisterItem.materiel_number>0">
-            AND materiel_number=#{WarehouseRegisterItem.materiel_number}
+        <if test="WarehouseRegisterItem.materielNumber!=null and WarehouseRegisterItem.materielNumber>0">
+            AND materiel_number=#{WarehouseRegisterItem.materielNumber}
         </if>
         <if test="WarehouseRegisterItem.materiel!=null and WarehouseRegisterItem.materiel.materielId>0">
             AND materiel_id=#{WarehouseRegisterItem.materiel.materielId}
@@ -39,25 +39,23 @@
     </insert>
     <update id="update" parameterType="warehouseRegisterItem">
         UPDATE warehouse_register_item
-        SET materiel_number       = #{materiel_number}, materiel_id = #{materiel.materielId},
+        SET materiel_number       = #{materielNumber}, materiel_id = #{materiel.materielId},
             goods_shelve_id       = #{goodsShelve.goodsShelveId},
             warehouse_register_id = #{warehouseRegister.warehouseRegisterId},
             status                = #{status}
         WHERE warehouse_register_item_id = #{warehouse_register_item_id}
     </update>
     <select id="select" resultMap="warehouseRegisterItems">
-        SELECT * FROM (
-        <include refid="sql"/>
-        ) f
+        SELECT * FROM ( <include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="warehouseRegisterItem">
         SELECT COUNT(1) FROM warehouse_register_item WHERE status=0
         <if test="warehouseRegisterItemId!=null and warehouseRegisterItemId>0">
-            AND warehouse_register_item_id=#{warehouse_register_item_id}
+            AND warehouse_register_item_id=#{warehouseRegisterItemId}
         </if>
-        <if test="materiel_number!=null and materiel_number>0">
-            AND materiel_number=#{materiel_number}
+        <if test="materielNumber!=null and materielNumber>0">
+            AND materiel_number=#{materielNumber}
         </if>
         <if test="materiel!=null and materiel.materielId>0">
             AND materiel_id=#{materiel.materielId}
@@ -70,9 +68,9 @@
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="warehouseRegisterItems">
-        SELECT * FROM warehouse_register_item WHERE status=0
-        <if test="warehouseRegisterItemId!=null and warehouseRegisterItemId>0">
-            AND warehouse_register_item_id=#{warehouse_register_item_id}
-        </if>
+        SELECT *
+        FROM warehouse_register_item
+        WHERE status = 0
+              AND warehouse_register_item_id = #{warehouseRegisterItemId}
     </select>
 </mapper>

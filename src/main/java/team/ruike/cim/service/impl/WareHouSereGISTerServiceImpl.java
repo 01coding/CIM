@@ -1,39 +1,39 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import team.ruike.cim.dao.WarehouseOutRegisterDao;
-import team.ruike.cim.pojo.WarehouseOutRegister;
-import team.ruike.cim.service.WareHouSereGISTerService;
+import team.ruike.cim.dao.WarehouseRegisterDao;
+import team.ruike.cim.pojo.WarehouseRegister;
+import team.ruike.cim.service.WarehouseRegisterSevice;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 
 /**
- * 物料出库记录
+ * 物料入库记录
  */
-@Service("wareHouSereGISTerService")
-public class WareHouSereGISTerServiceImpl implements WareHouSereGISTerService {
+@Service("warehouseRegisterSevice")
+public class WareHouSereGISTerServiceImpl implements WarehouseRegisterSevice {
     @Resource
-    private WarehouseOutRegisterDao warehouseOutRegisterDao;
-    public int addWareHouseOutRegister(WarehouseOutRegister warehouseOutRegister) {
-        if (warehouseOutRegister!=null&& warehouseOutRegister.getUser()!=null&&warehouseOutRegister.getUser().getUserId()>0
-                &&warehouseOutRegister.getWarehouseOutRegisterEndDate()!=null){
-           return warehouseOutRegisterDao.add(warehouseOutRegister);
+    private WarehouseRegisterDao warehouseRegisterDao;
+
+    public int addWarehouseRegister(WarehouseRegister warehouseRegister) {
+        if (warehouseRegister != null && warehouseRegister.getUser() != null && warehouseRegister.getUser().getUserId() > 0
+                && warehouseRegister.getWarehouseRegisterDate() != null && warehouseRegister.getEverydayPurchasingPlan().getEverydayPurchasingPlanId() > 0) {
+            return warehouseRegisterDao.add(warehouseRegister);
         }
         return 0;
     }
 
-    public int updWareHouseOutRegister(WarehouseOutRegister warehouseOutRegister) {
-        if (warehouseOutRegister!=null&& warehouseOutRegister.getUser()!=null&&warehouseOutRegister.getUser().getUserId()>0
-                &&warehouseOutRegister.getWarehouseOutRegisterEndDate()!=null){
-            return warehouseOutRegisterDao.update(warehouseOutRegister);
+    public int upd(WarehouseRegister warehouseRegister) {
+        if (warehouseRegister != null && warehouseRegister.getUser() != null && warehouseRegister.getUser().getUserId() > 0
+                && warehouseRegister.getWarehouseRegisterDate() != null && warehouseRegister.getEverydayPurchasingPlan().getEverydayPurchasingPlanId() > 0) {
+            return warehouseRegisterDao.update(warehouseRegister);
         }
         return 0;
     }
 
-    public void getWarehouseOutRegister(WarehouseOutRegister warehouseOutRegister, Pager<WarehouseOutRegister> pager) {
-        pager.setTotalRecord(warehouseOutRegisterDao.selectCount(warehouseOutRegister));
-        pager.setList(warehouseOutRegisterDao.select(warehouseOutRegister,(pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
-
+    public void getWarehouseRegister(WarehouseRegister warehouseRegister, Pager<WarehouseRegister> pager) {
+        pager.setTotalRecord(warehouseRegisterDao.selectCount(warehouseRegister));
+        pager.setList(warehouseRegisterDao.select(warehouseRegister, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
 }
