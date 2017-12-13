@@ -1294,7 +1294,6 @@
     });
 
     function dedd() {
-        alert("aaaaa")
         $(".del").click(function(){
             var mid=$(this).attr("flagId");
             var mname=$(this).attr("flagName");
@@ -1331,7 +1330,6 @@
 
     function xiang(){
         $("body").on("click",".xiangqing",function(){
-            alert("asdsad");
             var zhi= $(this).find(".sb").val();
             $.ajax({
                 type: "post",
