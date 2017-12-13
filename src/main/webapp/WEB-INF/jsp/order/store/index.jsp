@@ -1658,11 +1658,11 @@
 
         function list() {
             var data = $("#conditionStore").serializeArray();
-            appModule.load('/store/list.do', data, 'exampleTable');
+            appModule.load('/store/list.cl', data, 'exampleTable');
         }
 
         function toList() {
-            appModule.load('/store/list.do', null, 'exampleTable');
+            appModule.load('/store/list.cl', null, 'exampleTable');
         }
         function add() {
             var addStore = $("#addStore").serializeArray();

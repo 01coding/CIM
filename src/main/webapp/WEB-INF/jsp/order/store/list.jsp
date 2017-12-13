@@ -5,7 +5,7 @@
 
         function toEdit(id) {
             var fd = {storeId:id};
-            appModule.open('/store/toEdit.do',fd,'exampleModalUpdate');
+            appModule.open('/store/toEdit.cl',fd,'exampleModalUpdate');
         };
 
         function toView(id) {
@@ -28,19 +28,19 @@
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("nextid")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
         function previousPage(ts) {
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("previouspage")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
         function currentPage(ts) {
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("currentpage")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
 
         return{
