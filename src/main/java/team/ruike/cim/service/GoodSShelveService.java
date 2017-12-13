@@ -10,19 +10,19 @@ public interface GoodSShelveService {
      * @param goodsShelve
      *
      */
-    public List<GoodsShelve> getGoodsshelve(GoodsShelve goodsShelve);
+     List<GoodsShelve> getGoodsshelve(GoodsShelve goodsShelve);
 
     /**
      * 新增物料货架
      * @param goodsShelve
      * @return
      */
-    public int addGoods_shelve(GoodsShelve goodsShelve);
+     int addGoods_shelve(GoodsShelve goodsShelve);
 
     /**
      * 修改物料货架
      * @param goodsShelve
      * @return
      */
-    public int updGoods_shelve(GoodsShelve goodsShelve);
+     int updGoods_shelve(GoodsShelve goodsShelve);
 }

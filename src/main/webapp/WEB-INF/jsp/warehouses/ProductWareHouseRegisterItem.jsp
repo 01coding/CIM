@@ -1413,24 +1413,22 @@
 
                                             <thead>
                                             <tr>
-                                                <th>物料名称</th>
-                                                <th>当前数量</th>
-                                                <th>到期时间</th>
-                                                <th>所在区域</th>
-                                                <th>货架编号</th>
-                                                <th id="action" onclick="action()">操作</th>
+                                                <th>菜品名称</th>
+                                                <th>入库数量</th>
+                                                <th>入库时间</th>
+                                                <th>所在货架</th>
+                                                <th>入库人</th>
 
 
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>物料名称</th>
-                                                <th>当前数量</th>
-                                                <th>到期时间</th>
-                                                <th>所在区域</th>
-                                                <th>货架编号</th>
-                                                <th>操作</th>
+                                                <th>菜品名称</th>
+                                                <th>入库数量</th>
+                                                <th>入库时间</th>
+                                                <th>所在货架</th>
+                                                <th>入库人</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
@@ -1440,20 +1438,6 @@
                                                 <td>Edinburgh</td>
                                                 <td>61</td>
                                                 <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
                                             </tr>
                                             <tr>
                                                 <td>Tiger Nixonasasasasa</td>

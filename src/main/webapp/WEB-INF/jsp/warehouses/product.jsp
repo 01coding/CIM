@@ -1410,7 +1410,6 @@
                                                     </div>
                                                 </form>
                                             </div>
-
                                             <thead>
                                             <tr>
                                                 <th>菜品名称</th>
