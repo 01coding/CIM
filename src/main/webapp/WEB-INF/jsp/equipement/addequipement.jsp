@@ -1284,7 +1284,7 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="form-wrap">
-                                    <form action="/addEquipment.do">
+                                    <form action="/addEquipment.do" method="post">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加设备信息</font></font></h6>
                                         <hr class="light-grey-hr">

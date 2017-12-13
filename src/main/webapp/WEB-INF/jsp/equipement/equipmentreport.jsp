@@ -20,12 +20,17 @@
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
+
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
     <!-- vector map CSS -->
     <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+
     <!-- Footable CSS -->
     <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet" type="text/css"/>
 
@@ -34,6 +39,7 @@
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
     <style>
         /*** guide ***/
         .guide{ position: fixed;bottom: 20px;right: 20px;z-index: 1000}
@@ -1197,16 +1203,22 @@
                                     <div class="table-responsive">
                                         <table id="example" class="table table-hover display  pb-30" >
                                             <div style="width: 300px;float: right">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
+                                                <form action="/equipmentreport.do"class="form-inline" method="post">
+                                                    <div class="input-group">
+                                                        <div><label class="control-label mb-10 text-left">负责人:</label></div>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control" placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary" style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
+                                                        <select  name="user.userId" style="width:260px;height: 40px">
+                                                            <option selected value="0">请选择</option>
+                                                            <c:forEach items="${requestScope.users}" var="us">
+                                                                <option name="user.userId" value="${us.userId}">${us.userName}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <div class="input-group-btn">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;">
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -1309,8 +1321,10 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
 
@@ -1327,16 +1341,22 @@
 <script src="../../../dist/js/export-table-data.js"></script>
 
 <script src="../../../dist/js/dataTables-data.js"></script>
+
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
+
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
+
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 

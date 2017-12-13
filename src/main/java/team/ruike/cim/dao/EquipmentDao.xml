@@ -32,10 +32,9 @@
             and inspection_cycle=#{inspectionCycle}
         </if>
         <if test="equipmentName!=null and equipmentName!=''">
-            and equipment_name=#{equipmentName}
+            and equipment_name LIKE  CONCAT('%',#{equipmentName},'%')
         </if>
     </sql>
-
 
     <sql id="modelConditionP">
         <if test="equipment.equipmentId!=null">
@@ -63,7 +62,7 @@
             and inspection_cycle=#{equipment.inspectionCycle}
         </if>
         <if test="equipment.equipmentName!=null and equipment.equipmentName!=''">
-            and equipment_name=#{equipment.equipmentName}
+            and equipment_name LIKE  CONCAT('%',#{equipment.equipmentName},'%')
         </if>
     </sql>
 
@@ -120,7 +119,7 @@
     <select id="select" resultMap="selectMap">
       select * from equipment
       where status=0
-	  <include refid="modelConditionP"/>
+        <include refid="modelConditionP"/>
         limit #{pageNo},#{pageSize}
     </select>
 

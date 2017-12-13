@@ -20,16 +20,22 @@
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
+
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+
     <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
+
     <!-- vector map CSS -->
     <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+
     <!-- Footable CSS -->
     <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
@@ -39,6 +45,16 @@
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+
     <style>
         /*** guide ***/
         .guide {
@@ -55,9 +71,7 @@
             box-shadow: 1px 1px 1px #888888;
         }
     </style>
-
 </head>
-
 <body>
 <!--Preloader-->
 <div class="preloader-it">
@@ -1282,7 +1296,6 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
-                                    <!-- Todo-List -->
                                     <ul class="todo-list nicescroll-bar">
                                         <li class="todo-item">
                                             <div class="checkbox checkbox-default">
@@ -1339,7 +1352,6 @@
                                             <hr class="light-grey-hr"/>
                                         </li>
                                     </ul>
-                                    <!-- /Todo-List -->
                                 </div>
                             </div>
                         </div>
@@ -1348,7 +1360,6 @@
             </li>
         </ul>
     </div>
-    <!-- /Right Sidebar Menu -->
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
@@ -1367,7 +1378,6 @@
                 </div>
                 <!-- /Breadcrumb -->
             </div>
-            <!-- /Title -->
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
@@ -1378,20 +1388,43 @@
                                     <div class="table-responsive">
                                         <table id="example" class="table table-hover display  pb-30">
                                             <div style="width: 300px;float: right">
-                                                <form class="form-inline" action="/equipment.do">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">根据设备名字查询</label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="equipmentName" class="form-control"
-                                                                   placeholder="根据设备名字查询">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
+                                                <form class="form-inline" action="/equipment.do" method="post">
+
+
+                                                         <div class="form-group">
+                                                             <label class="control-label mb-10 text-left">安装设备时间:</label>
+                                                             <div class="input-group date" style="width: 260px;height: 40px">
+                                                                 <input id="date" type="date" class="form-control" name="SD">
+                                                             </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <div class="input-group">
+                                                                <div><label class="control-label mb-10 text-left">负责人:</label></div>
+                                                                <select  name="user.userId" style="width:260px;height: 40px">
+                                                                    <option selected value="0">请选择</option>
+                                                                    <c:forEach items="${requestScope.users}" var="us">
+                                                                        <option name="user.userId" value="${us.userId}">${us.userName}</option>
+                                                                    </c:forEach>
+                                                                </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+
+
+                                                        <div class="form-group">
+                                                                <label class="control-label mb-10 text-left">设备名字:</label><div class="input-group">
+                                                                <input type="text" name="equipmentName" class="form-control">
+
+                                                                <div class="input-group-btn">
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                            style="height:42px;">
+                                                                        <span class="fooicon fooicon-search"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                 </form>
                                             </div>
                                             <thead>
@@ -1678,7 +1711,6 @@
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr">
 
-
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
@@ -1696,43 +1728,7 @@
 
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Init JavaScript -->
-<script>
-    $(function () {
-        $(".del").click(function(){
-            var mid=$(this).attr("flagId");
-            var mname=$(this).attr("flagName");
-            var $tr=$(this).parent().parent().parent();
-            swal({
-                title: "你确定要删除"+mname+"吗?",
-                text: "删除操作不可恢复！!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#fec107",
-                confirmButtonText: "确定!",
-                cancelButtonText: "取消!",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function(isConfirm){
-                if (isConfirm) {
-                    $.ajax({
-                        url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
-                        cache: false,
-                        success:function(data){
-                            if(data == true){
-                                swal("删除成功", "删除成功！", "success");
-                                $($tr).remove();
-                            }else{
-                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
-                            }
-                        }
-                    });
-                }
-            });
-        });
-    });
-
-</script>
+</div>
 </body>
 </html>
 
