@@ -1387,18 +1387,17 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
                                         <table id="example" class="table table-hover display  pb-30">
-                                            <div style="width: 300px;float: right">
+                                            <div class="row">
                                                 <form class="form-inline" action="/equipment.do" method="post">
-
-
-                                                         <div class="form-group">
+                                                <div>
+                                                        <div class="form-group col-md-4" style="width: 300px;">
                                                              <label class="control-label mb-10 text-left">安装设备时间:</label>
                                                              <div class="input-group date" style="width: 260px;height: 40px">
                                                                  <input id="date" type="date" class="form-control" name="SD">
                                                              </div>
                                                         </div>
 
-                                                        <div class="form-group">
+                                                        <div class="form-group col-md-4 " style="width: 300px;">
                                                             <div class="input-group">
                                                                 <div><label class="control-label mb-10 text-left">负责人:</label></div>
                                                                 <select  name="user.userId" style="width:260px;height: 40px">
@@ -1410,9 +1409,7 @@
                                                             </div>
                                                         </div>
 
-
-
-                                                        <div class="form-group">
+                                                        <div class="form-group col-md-4 " style="width: 300px;">
                                                                 <label class="control-label mb-10 text-left">设备名字:</label><div class="input-group">
                                                                 <input type="text" name="equipmentName" class="form-control">
 
@@ -1624,8 +1621,10 @@
                                                         </div>
                                                     </div>
                                             </c:forEach>
+
                                             </tbody>
                                         </table>
+                                        <%--分页--%>
                                         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -1728,7 +1727,44 @@
 
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-</div>
+    <script>
+        $(function () {
+            dedd()
+            });
+        function dedd() {
+            $(".del").click(function(){
+                var mid=$(this).attr("flagId");
+                var mname=$(this).attr("flagName");
+                var $tr=$(this).parent().parent().parent();
+                swal({
+                    title: "你确定要删除"+mname+"的标准吗?",
+                    text: "删除操作不可恢复！!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }, function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
+                            cache: false,
+                            success:function(data){
+                                if(data == 1){
+                                    swal("删除成功", "删除成功！", "success");
+                                    $($tr).remove();
+                                }else{
+                                    swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>
 
