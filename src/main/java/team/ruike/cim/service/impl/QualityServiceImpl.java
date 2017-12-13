@@ -1,18 +1,16 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import team.ruike.cim.dao.ProductionStandardDao;
-import team.ruike.cim.dao.ProductionStandardRecordDao;
-import team.ruike.cim.dao.PurchaseStandardDao;
-import team.ruike.cim.dao.PurchaseStandardRecordDao;
-import team.ruike.cim.pojo.ProductionStandard;
-import team.ruike.cim.pojo.ProductionStandardRecord;
-import team.ruike.cim.pojo.PurchaseStandard;
-import team.ruike.cim.pojo.PurchaseStandardRecord;
+import org.springframework.web.bind.annotation.RequestMapping;
+import team.ruike.cim.dao.*;
+import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.QualityService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -35,6 +33,20 @@ public class QualityServiceImpl implements QualityService {
     @Resource
     private PurchaseStandardDao purchaseStandardDao;
 
+    @Resource
+    private MaterielTypeLevelADao materielTypeLevelADao;
+
+    @Resource
+    private MaterielTypeLevelBDao materielTypeLevelBDao;
+
+    @Resource
+    private MaterielDao materielDao;
+
+    @Resource
+    private EverydayPurchasingPlanDao everydayPurchasingPlanDao;
+
+    @Resource
+    private PurchaseDao purchaseDao;
 
     /**
      *分页查询所有数据
@@ -61,6 +73,50 @@ public class QualityServiceImpl implements QualityService {
     }
 
     /**
+     * 查询所有采购标准
+     * @param purchaseStandard
+     * @param pager
+     */
+    public void selectStandard(PurchaseStandard purchaseStandard, Pager<PurchaseStandard> pager) {
+        int number=purchaseStandardDao.selectCount(purchaseStandard);
+        pager.setTotalRecord(number);
+        List<PurchaseStandard> purchaseStandardList=purchaseStandardDao.select(purchaseStandard,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize());
+        pager.setList(purchaseStandardList);
+    }
+
+    /**
+     * 新增标准
+     * @param purchaseStandard 标准对象
+     * @return
+     */
+    public int addStandard(PurchaseStandard purchaseStandard) {
+        int number =purchaseStandardDao.add(purchaseStandard);
+        return number;
+    }
+
+    /**
+     * 删除标准
+     * @param purchaseStandard
+     * @return
+     */
+    public int deleteStand(PurchaseStandard purchaseStandard) {
+        PurchaseStandard purchaseStandard1=new PurchaseStandard();
+        purchaseStandard1=purchaseStandardDao.selectById(purchaseStandard.getPurchaseStandardId());
+        purchaseStandard1.setStatus(1);
+        return purchaseStandardDao.update(purchaseStandard1);
+    }
+
+    /**
+     * 修改采购标准
+     * @param purchaseStandard
+     * @return
+     */
+    public int updateStand(PurchaseStandard purchaseStandard) {
+        return purchaseStandardDao.update(purchaseStandard);
+    }
+
+
+    /**
      * 品控标准页面跳转  传生产品控标准
      * @param productionStandard  生产品控标准
      * @param pager     分页辅助类
@@ -83,4 +139,122 @@ public class QualityServiceImpl implements QualityService {
         List<PurchaseStandard> purchaseStandards=purchaseStandardDao.select(purchaseStandard,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize());
         pager.setList(purchaseStandards);
     }
+
+    /**
+     * 查询所有A级菜单
+     * @return
+     */
+    public List<MaterielTypeLevelA> getMaterielTypeLevelA() {
+        return materielTypeLevelADao.select(new MaterielTypeLevelA(),0,99);
+    }
+
+    /**
+     * 根据MaterielTypeLevelAID查询MaterielTypeLevelB列表
+     * @param materielTypeLevelB    MaterielTypeLevelB对象
+     * @return
+     */
+    public List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
+        return materielTypeLevelBDao.select(materielTypeLevelB,0,99);
+    }
+
+    /**
+     * 根据MaterielTypeLevelBID查询Materiel列表
+     * @param materiel 物料表集合
+     * @return
+     */
+    public List<Materiel> getMateriel(Materiel materiel) {
+        return materielDao.select(materiel,0,99);
+    }
+
+
+    /**
+     * 查询当前日期所有A级菜单
+     * @return
+     */
+    public List<MaterielTypeLevelA> getMaterielTypeLevelAByDate() {
+        return materielTypeLevelADao.getMaterielTypeLevelAByDate();
+    }
+
+    /**
+     * 根据MaterielTypeLevelAID 和当前日期 查询MaterielTypeLevelB列表
+     * @param materielTypeLevelAId  物料一级Id
+     * @return
+     */
+    public List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId) {
+        return materielTypeLevelBDao.getMaterielTypeLevelBByDate(materielTypeLevelAId);
+    }
+
+
+    /**
+     * 获取当前日期的物料
+     * @param materielTypeLevelBId  物料二级菜单Id
+     * @return
+     */
+    public List<Materiel> getMaterielByDate(Integer materielTypeLevelBId) {
+        return materielDao.getMaterielByDate(materielTypeLevelBId);
+    }
+
+    /**
+     * 根据日期获取采购批次 采购表Id
+     * @return
+     */
+    public Integer getNumberByDate() {
+        return everydayPurchasingPlanDao.getNumberByDate();
+    }
+
+    /**
+     * 根据物料获取标准
+     * @param materielId 物料Id
+     * @return
+     */
+    public PurchaseStandard getpurchaseStandard(Integer materielId) {
+        PurchaseStandard purchaseStandard=new PurchaseStandard();
+        Materiel materiel=new Materiel();
+        materiel.setMaterielId(materielId);
+        purchaseStandard.setMateriel(materiel);
+        List<PurchaseStandard> purchaseStandardList = purchaseStandardDao.select(purchaseStandard,0,99);
+
+        purchaseStandard=purchaseStandardList.get(0);
+
+        return purchaseStandard;
+    }
+
+
+    /**
+     * 新增物料标准记录
+     * @param purchaseStandardRecord 采购标准记录
+     * @return
+     */
+    public Integer addPurchaseStandardRecord(PurchaseStandardRecord purchaseStandardRecord) {
+        Purchase purchase=new Purchase();
+        purchase.setPurchaseId(purchaseDao.getpurchaseNo());
+        purchaseStandardRecord.setPurchase(purchase);
+        return purchaseStandardRecordDao.add(purchaseStandardRecord);
+    }
+
+    /**
+     * 根据批次查询
+     * @param sid
+     * @param purchaseStandardRecord
+     * @param pager
+     */
+    public void selectBySomething(Integer sid, PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager) {
+            EverydayPurchasingPlan everydayPurchasingPlan=new EverydayPurchasingPlan();
+            everydayPurchasingPlan.setEverydayPurchasingPlanNo(sid);
+            List<EverydayPurchasingPlan> everydayPurchasingPlans= everydayPurchasingPlanDao.select(everydayPurchasingPlan,0,99);
+            Purchase purchase=new Purchase();
+            if (everydayPurchasingPlans!=null && everydayPurchasingPlans.size()>0){
+                purchase.setEverydayPurchasingPlan(everydayPurchasingPlans.get(0));
+                List<Purchase> purchases = purchaseDao.select(purchase,0,99);
+                if (purchases!=null && purchases.size()>0){
+                    purchaseStandardRecord.setPurchase(purchase);
+                    int number=purchaseStandardRecordDao.selectCount(purchaseStandardRecord);
+                    pager.setTotalRecord(number);
+                    List<PurchaseStandardRecord> purchaseStandardRecordlist=purchaseStandardRecordDao.select(purchaseStandardRecord,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize());
+                    pager.setList(purchaseStandardRecordlist);
+                }
+            }
+    }
+
+
 }

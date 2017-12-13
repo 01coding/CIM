@@ -10,6 +10,7 @@ import team.ruike.cim.pojo.MaterielTypeLevelA;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.MaterielUnit;
 import team.ruike.cim.service.MaterielService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -56,6 +57,7 @@ public class MaterielServiceImpl implements MaterielService {
      * @param materiel 物料对象
      * @return 是否成功
      */
+    @ArchivesLog(operationType="新增操作",operationName="新增物料")
     public boolean addMaterielList(Materiel materiel) {
         int i = materielDao.add(materiel);
         return i==1;
@@ -97,6 +99,7 @@ public class MaterielServiceImpl implements MaterielService {
      * @param materiel 物料
      * @return 是否成功
      */
+    @ArchivesLog(operationType="删除操作",operationName="删除物料")
     public boolean delMateriel(Materiel materiel) {
         Materiel materiel1 = this.getMaterielById(materiel.getMaterielId());
         materiel1.setStatus(1);
@@ -108,6 +111,7 @@ public class MaterielServiceImpl implements MaterielService {
      * @param materiel 物料对象
      * @return 是否成功
      */
+    @ArchivesLog(operationType="修改操作",operationName="修改物料信息")
     public boolean updateMateriel(Materiel materiel) {
         return false;
     }
@@ -120,4 +124,6 @@ public class MaterielServiceImpl implements MaterielService {
     public Materiel getMaterielById(Integer materielId) {
         return materielDao.selectById(materielId);
     }
+
+
 }

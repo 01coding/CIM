@@ -42,4 +42,19 @@
         <property name="basePackage" value="team.ruike.cim.dao"/>
     </bean>
     <context:component-scan base-package="team.ruike.cim.service.impl"/>
+    <context:component-scan base-package="team.ruike.cim.pojo"/>
+    <context:component-scan base-package="team.ruike.cim.util"/>
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    <!--将日志类注入到bean中。-->
+    <bean id="logAspect" class="team.ruike.cim.util.ArchivesLogAspect"/>
+    <aop:config>
+        <!--调用日志类-->
+        <aop:aspect id="LogAspect" ref="logAspect">
+            <!--配置在controller包下所有的类在调用之前都会被拦截-->
+            <aop:pointcut id="log" expression="execution(* team.ruike.cim.service.*.addRole(..))"/>
+            <!-- 方法前触发 --><aop:before pointcut-ref="log" method="before"/>
+            <!-- 方法后触发 --><aop:after pointcut-ref="log" method="after"/>
+            <!-- 环绕触发  <aop:around pointcut-ref="log" method="around"/>  -->
+        </aop:aspect>
+    </aop:config>
 </beans>

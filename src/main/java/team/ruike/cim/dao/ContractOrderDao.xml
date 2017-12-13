@@ -11,8 +11,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="contract_order_start_date" property="contractOrderStartDate"/>
         <result column="contract_order_remarks" property="contractOrderRemarks"/>
         <result column="status" property="status"/>
-        <association property="order_contract_id" column="orderContract" select="team.ruike.cim.dao.OrderContractDao.selectById"/>
-        <association property="user_id" column="user" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <association column="order_contract_id" property="orderContract" select="team.ruike.cim.dao.OrderContractDao.selectById"/>
+        <association column="user_id" property="user" select="team.ruike.cim.dao.UserDao.selectById"/>
         <collection property="contractOrderTerms" column="contract_order_id" select="team.ruike.cim.dao.ContractOrderTermDao.selectBYContractOrderId"/>
     </resultMap>
 
@@ -24,20 +24,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="contractOrder.contractOrderEndDate!=null">
             and contract_order_end_date=#{contractOrder.contractOrderEndDate}
         </if>
-        <if test="contractOrder.contractOrderState!=null and contractOrder.contractOrderState>=0 and and 1>=contractOrder.contractOrderState">
+        <if test="contractOrder.contractOrderState!=null and contractOrder.contractOrderState>=0">
             and contract_order_state=#{contractOrder.contractOrderState}
         </if>
         <if test="contractOrder.contractOrderStartDate!=null">
-            and contract_order_start_date=#{contractOrder.contractOrderStartDate}
+            and contract_order_start_date >= #{contractOrder.contractOrderStartDate}  and contract_order_start_date &lt; date_sub(#{contractOrder.contractOrderStartDate},interval -1 day)
         </if>
-        <if test="contractOrder.orderContract!=null and contractOrder.orderContract.orderContractId!=null and contractOrder.orderContract.orderContractId>0">
-            and order_contract_id=#{contractOrder.orderContract.orderContractId}
-        </if>
+
         <if test="contractOrder.user!=null and contractOrder.user.userId!=null and contractOrder.user.userId>0">
             and user_id=#{contractOrder.user.userId}
         </if>
         <if test="contractOrder.contractOrderRemarks!=null and contractOrder.contractOrderRemarks!=''">
             and contract_order_remarks=#{contractOrder.contractOrderRemarks}
+        </if>
+        <if test="contractOrder.orderContract!=null and contractOrder.orderContract.orderContractId!=null and contractOrder.orderContract.orderContractId>0">
+        and order_contract_id=#{contractOrder.orderContract.orderContractId}
+        </if>
+        <if test="contractOrder.orderContract!=null and contractOrder.orderContract.orderContractName!=null and contractOrder.orderContract.orderContractName!=''">
+            and order_contract_id in (SELECT order_contract_id FROM order_contract WHERE order_contract_name like  CONCAT('%',#{contractOrder.orderContract.orderContractName},'%'))
         </if>
     </sql>
     <sql id="sqlz">
@@ -48,11 +52,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="contractOrderEndDate!=null">
             and contract_order_end_date=#{contractOrderEndDate}
         </if>
-        <if test="contractOrderState!=null and contractOrderState>=0 and and 1>=contractOrderState">
+        <if test="contractOrderState!=null and contractOrderState>=0">
             and contract_order_state=#{contractOrderState}
         </if>
         <if test="contractOrderStartDate!=null">
-            and contract_order_start_date=#{contractOrderStartDate}
+            and contract_order_start_date >= #{contractOrderStartDate}  and contract_order_start_date &lt; date_sub(#{contractOrderStartDate},interval -1 day)
         </if>
         <if test="orderContract!=null and orderContract.orderContractId!=null and orderContract.orderContractId>0">
             and order_contract_id=#{orderContract.orderContractId}
@@ -63,10 +67,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="contractOrderRemarks!=null and contractOrderRemarks!=''">
             and contract_order_remarks=#{contractOrderRemarks}
         </if>
+        <if test="orderContract!=null and orderContract.orderContractName!=null and orderContract.orderContractName!=''">
+            and order_contract_id in (SELECT order_contract_id FROM order_contract WHERE order_contract_name like CONCAT('%',#{orderContract.orderContractName},'%'))
+        </if>
     </sql>
 
-    <insert id="add"  useGeneratedKeys="true" keyProperty="contract_order_id" parameterType="contractOrder">
-      INSERT into contract_order VALUES(DEFAULT,#{contractOrderNo},#{contractOrderEndDate},0,#{contractOrderStartDate},#{orderContract.orderContractId},#{user.userId},#{contractOrderRemarks},0);
+    <insert id="add"  useGeneratedKeys="true" keyProperty="contractOrderId" parameterType="contractOrder">
+        INSERT into contract_order VALUES(DEFAULT,#{contractOrderNo},#{contractOrderEndDate},0,now(),#{orderContract.orderContractId},#{user.userId},#{contractOrderRemarks},0);
     </insert>
     <update id="update" parameterType="contractOrder">
         UPDATE contract_order set contract_order_no=#{contractOrderNo},
@@ -88,5 +95,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </select>
     <select id="selectById" parameterType="int" resultMap="contractOrderMap">
         SELECT * from contract_order WHERE `status`=0 and contract_order_id=#{contractOrderId}
+    </select>
+
+
+    <select id="selectContractOrderByContractId" parameterType="int" resultMap="contractOrderMap">
+        SELECT * from contract_order WHERE `status`=0 and order_contract_id=#{orderContractId}
     </select>
 </mapper>

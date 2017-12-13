@@ -1649,9 +1649,7 @@
         window.location.href = "javascript:window.scrollTo(0,0)";
     };
 
-    function addContractOrderUrl() {
-        window.location.href = "添加合同订单.html";
-    };
+
 
     var storeModule = (function () {
         $(function () {

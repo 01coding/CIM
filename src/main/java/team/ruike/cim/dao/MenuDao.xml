@@ -80,6 +80,11 @@
         SELECT * FROM (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
     </select>
+
+    <select id="selectByMenuTypeId" resultMap="menus">
+        SELECT * FROM menu WHERE status=0 and menu_type_id=#{menuTypeId}
+    </select>
+
     <select id="selectCount" resultType="int">
         SELECT COUNT(1) FROM menu WHERE   status=0
         <if test="menu.menuId!=null and menu.menuId>0">

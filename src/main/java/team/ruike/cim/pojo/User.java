@@ -16,6 +16,7 @@ public class User implements Serializable {
     /**
      * 用户表id
      */
+
     private Integer userId;
     /**
      * 用户姓名

@@ -20,6 +20,18 @@ var appModule = (function () {
         });
     }
 
+
+    function pagination(url, param) {
+        $.ajax({
+            url: url,
+            method: "get",
+            data: param,
+            success: function (data) {
+            }, error: function () {
+            }
+        });
+    }
+
     function post(url, param, success, error, type) {
         $.ajax({
             url: url,
@@ -49,6 +61,19 @@ var appModule = (function () {
             }
         });
     }
+    
+    function jump(url,param) {
+        $.ajax({
+            url: url,
+            method: "post",
+            data: param,
+            success: function (data) {
+                alert("success")
+            }, error: function () {
+                alert("error");
+            }
+        });
+    }
 
     function alert(message) {
         window.alert(message);
@@ -58,7 +83,8 @@ var appModule = (function () {
         load: load,
         post: post,
         open: open,
-        alert: alert
+        alert: alert,
+        pagination:pagination
 
     }
 })();

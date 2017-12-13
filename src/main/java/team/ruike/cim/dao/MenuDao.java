@@ -59,4 +59,12 @@ public interface MenuDao {
      * @return 菜单对象
      */
     Menu selectById(Integer menuId);
+
+    /**
+     * 根据菜谱类型id查询菜谱
+     *
+     * @param menuTypeId 菜谱类型
+     * @return 菜谱集合
+     */
+    List<Menu> selectByMenuTypeId(@Param("menuTypeId") Integer menuTypeId);
 }
