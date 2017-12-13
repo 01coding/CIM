@@ -1384,7 +1384,7 @@
                                         <form action="">
                                             <div class="photo">
                                                 <div class="options">
-                                                    <a href="materiel_register.html"
+                                                    <a href="/getWarehouseRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${warh.warehouseId}"
                                                        class="font-18 txt-grey mr-10 pull-left"><i
                                                             class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
                                                     <a href="" class="font-18 txt-grey mr-10 pull-left"
@@ -1396,9 +1396,11 @@
                                                        data-target="#editor-modal3"><i
                                                             class="fa fa-plus-square" title="添加仓库"></i></a>
                                                 </div>
-                                                <a href="/getwarehouseregion.cl?warehouse.warehouseId=${warh.warehouseId}"> <img
-                                                        src="../../../images/menuimg/timg.jpg" class="img-responsive"
-                                                        alt="Product Image" title="查看区域"/> </a>
+                                                <a href="/getwarehouseregion.do?warehouse.warehouseId=${warh.warehouseId}">
+                                                    <img
+                                                            src="../../../images/menuimg/timg.jpg"
+                                                            class="img-responsive"
+                                                            alt="Product Image" title="查看区域"/> </a>
                                                 <div class="info">
                                                     <h6>
                                                             ${warh.warehouseName}
@@ -1416,46 +1418,50 @@
                         </div>
                     </div>
                 </c:forEach>
-                </div>
+            </div>
             <div class="row">
                 <h5 class="txt-dark">成品仓库</h5>
                 <c:forEach var="prs" items="${productWarehouses}">
-                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-                    <div class="panel panel-default card-view pa-0">
-                        <div class="panel-wrapper collapse in">
-                            <div class="panel-body pa-0">
-                                <article class="col-item">
-                                    <form>
-                                        <div class="photo">
-                                            <div class="options">
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left"><i
-                                                        class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                    title="编辑"></i></a>
-                                                <a href="" class="font-18 txt-grey mr-10 pull-left" data-toggle="modal"
-                                                   data-target="#editor-modal4"><i
-                                                        class="fa fa-plus-square" title="添加仓库"></i></a>
-                                            </div>
-                                            <a href="/getProductwarehouseregion.cl?productWarehouse.productWarehouseId=${prs.productWarehouseId}"> <img src="../../../images/menuimg/timg.jpg"
-                                                                                  class="img-responsive"
-                                                                                  alt="Product Image" title="查看区域"/> </a>
-                                            <div class="info">
-                                                <h6>
-                                                   ${prs.productWarehouseName}
-                                                </h6>
-                                                <div class="product-rating inline-block">
-                                                   ${prs.remarks}
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
+                        <div class="panel panel-default card-view pa-0">
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body pa-0">
+                                    <article class="col-item">
+                                        <form>
+                                            <div class="photo">
+                                                <div class="options">
+                                                    <a href="getProductWarehouseRegister.do"
+                                                       class="font-18 txt-grey mr-10 pull-left"><i
+                                                            class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
+                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
+                                                       data-toggle="modal"
+                                                       data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
+                                                                                        title="编辑"></i></a>
+                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
+                                                       data-toggle="modal"
+                                                       data-target="#editor-modal4"><i
+                                                            class="fa fa-plus-square" title="添加仓库"></i></a>
                                                 </div>
-                                                <span class="head-font block text-warning font-16">管理员:【${prs.user.userName}】</span>
+                                                <a href="/getProductwarehouseregion.do?productWarehouse.productWarehouseId=${prs.productWarehouseId}">
+                                                    <img src="../../../images/menuimg/timg.jpg"
+                                                         class="img-responsive"
+                                                         alt="Product Image" title="查看区域"/> </a>
+                                                <div class="info">
+                                                    <h6>
+                                                            ${prs.productWarehouseName}
+                                                    </h6>
+                                                    <div class="product-rating inline-block">
+                                                            ${prs.remarks}
+                                                    </div>
+                                                    <span class="head-font block text-warning font-16">管理员:【${prs.user.userName}】</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </form>
-                                </article>
+                                        </form>
+                                    </article>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 </c:forEach>
             </div>
 

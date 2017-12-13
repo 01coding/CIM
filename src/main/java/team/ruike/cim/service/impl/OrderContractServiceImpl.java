@@ -41,7 +41,7 @@ public class OrderContractServiceImpl implements OrderContractService {
     @Transactional
     public void addOrderContract(OrderContract orderContract) {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
-            orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName().toString());
+            orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName());
             orderContractDao.add(orderContract);
         } else {
             throw new NullPointerException("orderContract is null");

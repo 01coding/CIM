@@ -10,7 +10,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 /**
  * 物料仓库
@@ -20,6 +19,8 @@ public class WarehouseController {
 
     @Resource
     private WarehouseService warehouseService;
+    @Resource
+    private PwarehouseService pwarehouseService;
 
     @RequestMapping("/addwarehouse.do")
     public String addWarehouse(Warehouse warehouse, HttpServletRequest request) {
@@ -43,10 +44,10 @@ public class WarehouseController {
         }
     }
 
-    @RequestMapping("/warehouse.cl")
-    public String selectWarehouse(Warehouse warehouse, Pager<Warehouse> pager, HttpServletRequest request) {
-        warehouseService.getWareHouses(warehouse, pager);
-        request.setAttribute("lsitwar", pager.getList());
-        return "forward:/productWarehouse.do";
+    @RequestMapping("/warehouse.do")
+    public String selectWarehouse(Warehouse warehouse, HttpServletRequest request, ProductWarehouse productWarehouse) {
+        request.setAttribute("lsitwar", warehouseService.getWareHouses(warehouse));
+        request.setAttribute("productWarehouses",pwarehouseService.getWarehouse(productWarehouse));
+        return "warehouses/warehouse";
     }
 }

@@ -13,7 +13,6 @@ import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -60,11 +59,13 @@ public class ContractOrderServiceImpl implements ContractOrderService {
             contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName());
 
             //用户表id(确认人) 未确认
-            contractOrder.setUser(new User(){{setUserId(1);}});
+            contractOrder.setUser(new User() {{
+                setUserId(1);
+            }});
 
 
             contractOrderDao.add(contractOrder);
-            final Integer orderId=contractOrder.getContractOrderId();
+            final Integer orderId = contractOrder.getContractOrderId();
 
             //添加合同订单项
             for (ContractOrderTerm contractOrderTerm : contractOrderTerms) {
@@ -76,7 +77,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
                 contractOrderTermDao.add(contractOrderTerm);
             }
         } else {
-            throw  new NullPointerException("添加合同订单失败 数据错误");
+            throw new NullPointerException("添加合同订单失败 数据错误");
         }
 
     }

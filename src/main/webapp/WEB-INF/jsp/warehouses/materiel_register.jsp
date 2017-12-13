@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -319,7 +321,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -356,9 +359,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -925,7 +929,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -973,7 +978,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1153,7 +1159,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1169,7 +1176,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1185,7 +1193,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1201,7 +1210,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1217,7 +1227,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1233,7 +1244,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1249,7 +1261,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1354,7 +1367,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">1号物料仓库记录</h5>
+                    <h5 class="txt-dark">入库记录</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -1377,20 +1390,7 @@
                                     <!--区域选择框-->
                                     <div class="table-responsive ">
                                         <div class="form-group col-sm-3">
-                                            <select class="form-control select2 select2-hidden-accessible"
-                                                    tabindex="-1" aria-hidden="true">
-                                                <option><font style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">记录类型</font></font>
-                                                </option>
-                                                <option value="AK"><font
-                                                        style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">入库记录</font></font>
-                                                </option>
-                                                <option value="HI"><font
-                                                        style="vertical-align: inherit;"><font
-                                                        style="vertical-align: inherit;">出库记录</font></font>
-                                                </option>
-                                            </select>
+                                                <button type="submit" class="btn btn-primary" onclick="window.location.href='getWarehouseOutRegisterItem.do'">出库记录</button>
                                         </div>
                                         <!--区域选择框-->
                                         <table id="example" class="table table-hover display  pb-30">
@@ -1417,91 +1417,32 @@
                                                 <th>物料名称</th>
                                                 <th>当前数量</th>
                                                 <th>到期时间</th>
-                                                <th>所在区域</th>
                                                 <th>货架编号</th>
+                                                <th>送料人</th>
 
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
+                                                <th>物料名称</th>
+                                                <th>当前数量</th>
+                                                <th>到期时间</th>
+                                                <th>货架编号</th>
+                                                <th>送料人</th>
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                            </tr>
+                                            <c:forEach items="${RegisterItemPager.list}" var="itr">
+                                                <tr>
+                                                    <td>${itr.materiel.materielName}</td>
+                                                    <td>${itr.materielNumber}</td>
+                                                    <td><fmt:formatDate
+                                                            value="${itr.warehouseRegister.warehouseRegisterDate}"
+                                                            pattern="yyyy-MM-dd"/></td>
+                                                    <td>${itr.goodsShelve.goodsShelveNo}</td>
+                                                    <td>${itr.warehouseRegister.user.userName}</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 
@@ -1512,7 +1453,7 @@
                                                 </button>
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
                                                         onclick="window.location.href='add-products.html'">
-                                                    <i class="fa ti-plus"></i>
+                                                    <i class="fa ti-plus" title="新增入库记录"></i>
                                                 </button>
                                             </div>
                                         </div>
