@@ -1382,8 +1382,6 @@
 
                                 <div class="table-wrap">
 
-
-
                                     <div class="table-responsive">
 
                                         <div style="position: relative;bottom: 10px;">
@@ -1518,12 +1516,14 @@
 
 
                                     </div>
+
                                 </div>
 
 
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
+                                            <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
                                                 <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
@@ -1542,6 +1542,7 @@
                                                 </ul>
                                                 </c:if>
                                             </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -1721,12 +1722,15 @@
 
 
 <%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Form Picker Init JavaScript -->
 <script src="../../../../dist/js/form-picker-data.js"></script>
+
 <script src="../../../../vendors/app.js"></script>
 <script>
     function sc() {
@@ -1734,7 +1738,7 @@
     }
 
     function addContractOrderUrl() {
-        window.location.href = "/contract/order/toAdd.do";
+        window.location.href = "/contract/order/toAdd.cl";
     }
 
     function toView(id) {

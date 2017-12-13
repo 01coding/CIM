@@ -1486,6 +1486,7 @@
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
+                                            <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
                                                 <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
@@ -1504,6 +1505,7 @@
                                                 </ul>
                                                 </c:if>
                                             </div>
+                                        </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -1537,7 +1539,7 @@
                                         </div>
 
                                         <div class="col-md-12 mb-20">
-                                            <div class='input-group date' id='datetimepicker1ss'>
+                                            <div class='input-group date' id='datetimepicker1s'>
                                                 <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate"/>
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
@@ -1688,7 +1690,7 @@
 
     function toEdit(id) {
         var fd = {orderContractId:id};
-        appModule.open('/order/contract/toEdit.do',fd,'exampleModalUpdate');
+        appModule.open('/order/contract/toEdit.cl',fd,'exampleModalUpdate');
     };
 
     function nextPage(ts) {
