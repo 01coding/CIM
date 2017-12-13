@@ -63,4 +63,9 @@ public interface EverydayPurchasingPlanDao {
      */
     EverydayPurchasingPlan selectById(Integer everydayPurchasingPlanId);
 
+    /**
+     * 根据日期查寻当前记录批次
+     * @return
+     */
+    int getNumberByDate();
 }

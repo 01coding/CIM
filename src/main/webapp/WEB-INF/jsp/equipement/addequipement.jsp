@@ -1284,7 +1284,7 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="form-wrap">
-                                    <form action="/insertEquipment.do">
+                                    <form action="/addEquipment.do">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加设备信息</font></font></h6>
                                         <hr class="light-grey-hr">
@@ -1404,9 +1404,6 @@
     </div>
     <!-- /Main Content -->
 </div>
-<!-- /#wrapper -->
-
-<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
@@ -1429,7 +1426,6 @@
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
 
-
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
@@ -1446,4 +1442,5 @@
 <script src="dist/js/form-picker-data.js"></script>
 <!-- Init JavaScript -->
 <script src="dist/js/init.js"></script>
+
 <div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>

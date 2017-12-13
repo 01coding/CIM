@@ -18,9 +18,22 @@ public class PurchaseStandardRecord implements Serializable {
     private Integer purchaseStandardRecordId;
     /**
      * 标准
-     */
     private PurchaseStandard purchaseStandard;
+     */
+
     /**
+     * 采购表外键
+     */
+    private Purchase purchase;
+
+
+    /**
+     * 物料表外键
+     */
+    private Materiel materiel;
+
+
+     /**
      * 标准a评分
      */
     private Integer standardAScore;
@@ -41,6 +54,22 @@ public class PurchaseStandardRecord implements Serializable {
      */
     private Integer status;
 
+    public Purchase getPurchase() {
+
+        return purchase;
+    }
+
+    public void setPurchase(Purchase purchase) {
+        this.purchase = purchase;
+    }
+
+    public Materiel getMateriel() {
+        return materiel;
+    }
+
+    public void setMateriel(Materiel materiel) {
+        this.materiel = materiel;
+    }
 
     public Integer getPurchaseStandardRecordId() {
         return purchaseStandardRecordId;
@@ -94,6 +123,7 @@ public class PurchaseStandardRecord implements Serializable {
         this.status = status;
     }
 
+/*
     public PurchaseStandard getPurchaseStandard() {
         return purchaseStandard;
     }
@@ -101,4 +131,6 @@ public class PurchaseStandardRecord implements Serializable {
     public void setPurchaseStandard(PurchaseStandard purchaseStandard) {
         this.purchaseStandard = purchaseStandard;
     }
+*/
+
 }

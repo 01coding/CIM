@@ -13,7 +13,6 @@ import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -57,16 +56,20 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
                 setTemporaryOrderStateId(1);
             }});
             //用户表id(确认人) 未确认
-            temporaryOrder.setUser(new User(){{setUserId(1);}});
+            temporaryOrder.setUser(new User() {{
+                setUserId(1);
+            }});
 
 
             temporaryOrderDao.add(temporaryOrder);
-            final Integer orderId=temporaryOrder.getTemporaryOrderId();
+            final Integer orderId = temporaryOrder.getTemporaryOrderId();
 
             //添加临时订单项
             for (TemporaryOrderTerm temporaryOrderTerm : temporaryOrderTerms) {
                 //合同订单ID
-                temporaryOrderTerm.setTemporaryOrder(new TemporaryOrder(){{setTemporaryOrderId(orderId);}});
+                temporaryOrderTerm.setTemporaryOrder(new TemporaryOrder() {{
+                    setTemporaryOrderId(orderId);
+                }});
                 //生产批次编号
                 temporaryOrderTerm.setProductBatch(GenerateNumber.getGenerateNumber().getRandomFileName());
 
@@ -74,7 +77,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
             }
 
         } else {
-            throw  new NullPointerException("添加临时订单失败 数据错误");
+            throw new NullPointerException("添加临时订单失败 数据错误");
         }
 
 

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/4
@@ -1378,12 +1378,12 @@
                                     <div class="table-responsive">
                                         <table id="example" class="table table-hover display  pb-30">
                                             <div style="width: 300px;float: right">
-                                                <form class="form-inline">
+                                                <form class="form-inline" action="/equipment.do">
                                                     <div class="form-group">
-                                                        <label class="sr-only">Search</label>
+                                                        <label class="sr-only">根据设备名字查询</label>
                                                         <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
+                                                            <input type="text" name="equipmentName" class="form-control"
+                                                                   placeholder="根据设备名字查询">
                                                             <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
@@ -1407,7 +1407,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <c:forEach items="${requestScope.equipments}" var="e">
+                                            <c:forEach items="${requestScope.equipments.list}" var="e">
                                                 <tr>
                                                     <td>${e.equipmentName}</td>
                                                     <td >${e.productionLine.productionLineNo}</td>
@@ -1435,68 +1435,70 @@
                                                     <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
                                                          aria-labelledby="exampleModalLabel1">
                                                         <div class="modal-dialog" role="document">
-                                                            <div class="modal-content">
+                                                            <div class="modal-content" style="width: 800px">
                                                                 <div class="modal-header">
                                                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                                                             aria-hidden="true">&times;</span></button>
                                                                     <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
                                                                 </div>
                                                                 <div class="modal-body">
-                                                                    <form action="/updateMateriel.do">
+                                                                    <form action="/updateMateriel.do" METHOD="post">
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <input type="hidden"name="equipmentId" value="${e.equipmentId}"/>
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         设备编号:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input name="equipmentId" disabled="disabled"  type="text" class="form-control" style="width: 170px;height: 40px" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}"/>
+                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}"/>
                                                                                     </div>
 
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         检查周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 170px;height: 40px" name="inspectionCycle" id="inspectionCycle" placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row">&nbsp;</div>
                                                                         <div class="row">
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         设备名称:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                        <input type="text" class="form-control" style="width: 170px;height: 40px" name="equipmentName" id="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
+                                                                                        <input type="text" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
                                                                                     </div>
                                                                                     </div>
                                                                             </div>
                                                                             <div class="col-sm-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         保养周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 170px;height: 40px" name="maintenanceCycle" id="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row">&nbsp;</div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         所属工序:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <select name="working.workingId" style="width: 170px;height: 40px">
+                                                                                    <select name="working.workingId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.workings}" var="w">
                                                                                             <c:choose>
                                                                                                 <c:when test="${w.workingId!=e.working.workingId}">
@@ -1513,11 +1515,11 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         所属负责人:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <select  name="user.userId" style="width: 170px;height: 40px">
+                                                                                    <select  name="user.userId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.users}" var="us">
                                                                                             <c:choose>
                                                                                                 <c:when test="${us.userId!=e.user.userId}">
@@ -1533,14 +1535,15 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row">&nbsp;</div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         所属状态:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <select id="se"  name="equipmentType.equipmentTypeId" style="width: 170px;height: 40px">
+                                                                                    <select id="se"  name="equipmentType.equipmentTypeId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.equipmentTypes}" var="equ">
                                                                                             <c:choose>
                                                                                                 <c:when test="${e.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
@@ -1558,11 +1561,11 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-20px">
+                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
                                                                                         所属生产线:
                                                                                     </div>
                                                                                     <div class="col-sm-3">
-                                                                                    <select name="productionLine.productionLineId" style="width: 170px;height: 40px">
+                                                                                    <select name="productionLine.productionLineId" style="width: 270px;height: 40px">
                                                                                         <c:forEach items="${requestScope.productionLines}" var="ps">
                                                                                             <c:choose>
                                                                                                 <c:when  test="${ps.productionLineId!=e.productionLine.productionLineId}">
@@ -1590,13 +1593,54 @@
                                             </c:forEach>
                                             </tbody>
                                         </table>
+                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.equipments.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%  Pager pager = (Pager) request.getAttribute("equipments");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/equipment.do?currentPage=${requestScope.equipments.previousPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.equipments.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.equipments.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/equipment.do?currentPage=${bar}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.equipments.currentPage>=requestScope.equipments.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/equipment.do?currentPage=${requestScope.equipments.nextPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="guide">
-                                            <div class="guide-wrap">
-                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
-                                                    <i class="icon-rocket"></i>
-                                                </button>
                                                 <a href="/addequipement.do">
-                                                    <button class="btn btn-info btn-icon-anim btn-circle">
+                                                    <button class="btn btn-info btn-icon-anim btn-circle" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
                                                 </a>
@@ -1610,40 +1654,11 @@
                 </div>
             </div>
         </div>
-        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-12">
-                        <ul class="pagination pagination-split">
-                            <li><a href="#"><i class="fa fa-angle-left"></i></a>
-                            <li class="disabled"><a href="#">1</a>
-                            <li class="active"><a href="#">2</a>
-                            <li><a href="#">3</a>
-                            <li><a href="#">4</a>
-                            <li><a href="#">5</a>
-                            <li><a href="#"><i class="fa fa-angle-right"></i></a>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer -->
-        <footer class="footer container-fluid pl-30 pr-30">
-            <div class="row">
-                <div class="col-sm-12">
-                    <p>2017 &copy; Hound. Pampered by Hencework</p>
-                </div>
-            </div>
-        </footer>
     </div>
 </div>
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
-
-
-
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1675,9 +1690,6 @@
 
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- Form Picker Init JavaScript -->
-
 
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
@@ -1721,7 +1733,6 @@
     });
 
 </script>
-
 </body>
 </html>
 
