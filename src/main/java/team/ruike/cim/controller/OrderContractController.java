@@ -68,7 +68,6 @@ public class OrderContractController {
     }
 
     @RequestMapping("edit.do")
-    @ResponseBody
     public String edit(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
         String filePath = upload(file, request);
         if (filePath != null && !filePath.equals("")) {
@@ -76,8 +75,7 @@ public class OrderContractController {
         }
         orderContract.setOrderContractImage("");
         orderContractService.updateOrderContractById(orderContract);
-        return "1";
-
+        return "order/contractControl/index";
     }
 
 

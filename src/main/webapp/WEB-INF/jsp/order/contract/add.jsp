@@ -1310,10 +1310,10 @@
                                                         </form>
                                                             <div class="modal-footer">
                                                             <button type="button" class="btn btn-success waves-effect"
-                                                                    data-dismiss="modal" onclick="addMenu()">Save
+                                                                    data-dismiss="modal" onclick="addMenu()">保存
                                                             </button>
                                                             <button type="button" class="btn btn-default waves-effect"
-                                                                    data-dismiss="modal">Cancel
+                                                                    data-dismiss="modal">取消
                                                             </button>
                                                         </div>
                                                     </div>

@@ -1443,22 +1443,10 @@
                                                     <th>交付时间</th>
                                                     <th>状态</th>
                                                     <th>备注</th>
-                                                    <th>ACTIONS</th>
+                                                    <th>操作</th>
                                                 </tr>
                                                 </thead>
-                                                <tfoot>
-                                                <tr>
-                                                    <th>订单编号</th>
-                                                    <th>下单日期</th>
-                                                    <th>门店/客户编号</th>
-                                                    <th>门店/客户名称</th>
-                                                    <th>订单确认人</th>
-                                                    <th>交付时间</th>
-                                                    <th>状态</th>
-                                                    <th>备注</th>
-                                                    <th>ACTIONS</th>
-                                                </tr>
-                                                </tfoot>
+
                                                 <tbody>
 
                                                 <c:forEach var="temporaryOrder" items="${pager.list}">

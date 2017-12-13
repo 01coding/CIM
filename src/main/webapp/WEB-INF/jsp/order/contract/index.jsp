@@ -1452,21 +1452,10 @@
                                                 <th>确认人</th>
                                                 <th>备注</th>
                                                 <th>是否交付</th>
-                                                <th>ACTIONS</th>
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>订单号</th>
-                                                <th>合同名称</th>
-                                                <th>签订时间</th>
-                                                <th>交付时间</th>
-                                                <th>确认人</th>
-                                                <th>备注</th>
-                                                <th>是否交付</th>
-                                                <th>ACTIONS</th>
-                                            </tr>
-                                            </tfoot>
+
                                             <tbody>
                                     <c:forEach var="contractOrder" items="${pager.list}">
 
@@ -1639,8 +1628,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Send message</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1728,8 +1717,7 @@
 <script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="../../../../dist/js/form-picker-data.js"></script>
+
 
 <script src="../../../../vendors/app.js"></script>
 <script>
@@ -1771,6 +1759,8 @@
     }
 
 </script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>
