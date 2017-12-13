@@ -20,7 +20,7 @@ public class PwarehouseServiceImpl implements PwarehouseService {
      * @param productWarehouse
      * @return
      */
-    public int addpwarehouse(ProductWarehouse productWarehouse) {
+    public int addPwarehouse(ProductWarehouse productWarehouse) {
         if (productWarehouse != null && productWarehouse.getProductWarehouseName() != "" && productWarehouse.getUser() != null && productWarehouse.getUser().getUserId() > 0) {
             return productWarehouseDao.add(productWarehouse);
         }
@@ -33,7 +33,7 @@ public class PwarehouseServiceImpl implements PwarehouseService {
      * @param productWarehouse
      * @return
      */
-    public int updwarehouse(ProductWarehouse productWarehouse) {
+    public int updWarehouse(ProductWarehouse productWarehouse) {
         if (productWarehouse != null && productWarehouse.getProductWarehouseName() != "" && productWarehouse.getUser() != null && productWarehouse.getUser().getUserId() > 0) {
             return productWarehouseDao.update(productWarehouse);
         }
@@ -44,12 +44,10 @@ public class PwarehouseServiceImpl implements PwarehouseService {
      * 根据条件查询成品仓库
      *
      * @param productWarehouse
-     * @param pager
      * @return
      */
-    public void getwarehouse(ProductWarehouse productWarehouse, Pager<ProductWarehouse> pager) {
-        pager.setTotalRecord(productWarehouseDao.selectCount(productWarehouse));
-        List<ProductWarehouse> aa= productWarehouseDao.select(productWarehouse, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize());
-        pager.setList(aa);
+    public List<ProductWarehouse> getWarehouse(ProductWarehouse productWarehouse) {
+        List<ProductWarehouse> ProductWarehouses= productWarehouseDao.select(productWarehouse,0,99);
+        return ProductWarehouses;
     }
 }

@@ -16,7 +16,7 @@ public interface PwarehouseService {
      * @param productWarehouse
      * @return
      */
-    public int addpwarehouse(ProductWarehouse productWarehouse);
+     int addPwarehouse(ProductWarehouse productWarehouse);
 
     /**
      * 修改成品仓库
@@ -24,14 +24,13 @@ public interface PwarehouseService {
      * @param productWarehouse
      * @return
      */
-    public int updwarehouse(ProductWarehouse productWarehouse);
+     int updWarehouse(ProductWarehouse productWarehouse);
 
     /**
      * 根据条件查询成品仓库
      *
      * @param productWarehouse
-     * @param pager
      * @return
      */
-    public void getwarehouse(ProductWarehouse productWarehouse, Pager<ProductWarehouse> pager);
+     List<ProductWarehouse> getWarehouse(ProductWarehouse productWarehouse);
 }

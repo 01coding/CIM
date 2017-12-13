@@ -3,13 +3,16 @@ package team.ruike.cim.service.impl;
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.ProductWarehouseRegionDao;
 import team.ruike.cim.pojo.ProductWarehouseRegion;
-import team.ruike.cim.service.ProductWareHouSereGIonServer;
+import team.ruike.cim.service.ProductWareHouSereGIonService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 
-@Service("productwarehouseregionServer")
-public class ProductWareHouSereGIonServerImpl implements ProductWareHouSereGIonServer {
+/**
+ * 成品仓库区域业务实现
+ */
+@Service("productWareHouSereGIonService")
+public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIonService {
     @Resource
     private ProductWarehouseRegionDao productWarehouseRegionDao;
     /**

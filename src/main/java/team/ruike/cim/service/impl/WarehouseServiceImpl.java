@@ -18,10 +18,10 @@ public class WarehouseServiceImpl implements WarehouseService {
      *
      * @return
      */
-    public void getWareHouses(Warehouse warehouse,Pager<Warehouse> pager) {
-        pager.setTotalRecord(warehouseDao.selectCount(warehouse));
-        List<Warehouse> aa=warehouseDao.select(warehouse,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize());
-        pager.setList(aa);
+    public List<Warehouse> getWareHouses(Warehouse warehouse) {
+        List<Warehouse> Warehouses=warehouseDao.select(warehouse,0,99);
+        return Warehouses;
+
     }
 
     /**

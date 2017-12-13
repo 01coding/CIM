@@ -31,20 +31,12 @@ public class WarehouseOutRegisterItem implements Serializable {
     /**
      * 出口登记表外键
      */
-    private Integer warehouseOutRegisterId;
+    private WarehouseOutRegister warehouseOutRegister;
     /**
      * 状态
      */
     private Integer status;
 
-
-    public Integer getWarehouseOutRegisterItemId() {
-        return warehouseOutRegisterItemId;
-    }
-
-    public void setWarehouseOutRegisterItemId(Integer warehouseOutRegisterItemId) {
-        this.warehouseOutRegisterItemId = warehouseOutRegisterItemId;
-    }
 
     public Integer getMaterielNumber() {
         return materielNumber;
@@ -54,15 +46,21 @@ public class WarehouseOutRegisterItem implements Serializable {
         this.materielNumber = materielNumber;
     }
 
-
-    public Integer getWarehouseOutRegisterId() {
-        return warehouseOutRegisterId;
+    public Integer getWarehouseOutRegisterItemId() {
+        return warehouseOutRegisterItemId;
     }
 
-    public void setWarehouseOutRegisterId(Integer warehouseOutRegisterId) {
-        this.warehouseOutRegisterId = warehouseOutRegisterId;
+    public void setWarehouseOutRegisterItemId(Integer warehouseOutRegisterItemId) {
+        this.warehouseOutRegisterItemId = warehouseOutRegisterItemId;
     }
 
+    public WarehouseOutRegister getWarehouseOutRegister() {
+        return warehouseOutRegister;
+    }
+
+    public void setWarehouseOutRegister(WarehouseOutRegister warehouseOutRegister) {
+        this.warehouseOutRegister = warehouseOutRegister;
+    }
 
     public Integer getStatus() {
         return status;
