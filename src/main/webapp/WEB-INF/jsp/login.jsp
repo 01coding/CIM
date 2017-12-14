@@ -22,9 +22,7 @@
 
     <!-- vector map CSS -->
     <link href="../../vendors/bower_components/jasny-bootstrap/dist/css/jasny-bootstrap.min.css" rel="stylesheet" type="text/css"/>
-
-
-
+    <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -113,9 +111,24 @@
 
 <!-- Slimscroll JavaScript -->
 <script src="../../dist/js/jquery.slimscroll.js"></script>
-
+<script src="../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Init JavaScript -->
 <script src="../../dist/js/init.js"></script>
+<script>
+    var ms=${param.ms};
+    if(ms==1){
+        swal({
+            title: "请您先登陆系统！",
+            confirmButtonColor: "#2879ff",
+        });
+    }else if(ms==2){
+        swal({
+            title: "抱歉您无权访问此功能！",
+            confirmButtonColor: "#2879ff",
+        });
+    }
+
+</script>
 </body>
 </html>
 
