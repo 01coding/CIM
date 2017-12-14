@@ -224,4 +224,8 @@ public class EquipementControloler {
         request.setAttribute("users",equipementService.getUser(user));
         return "equipement/addequipement";
     }
+@RequestMapping("/JumpHomepage.do")
+    public String JumpHomepage(){
+        return "redirect:/equipment.do";
+    }
 }
