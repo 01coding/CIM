@@ -1529,7 +1529,7 @@
                                 <form id="addStore">
                                     <div class="form-group">
                                         <label class="control-label mb-10">用户/门店名称:</label>
-                                        <input type="text" class="form-control" name="storeName">
+                                        <input type="text" class="form-control" required="required"  name="storeName">
                                     </div>
 
                                     <div class="form-group">

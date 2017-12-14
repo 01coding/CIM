@@ -44,9 +44,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  order_contract_date=#{orderContract.orderContractDate}
         </if>
         <if test="orderContract.store!=null and orderContract.store.storeId!=null and orderContract.store.storeId>0">
-            AND store_id={orderContract.store.storeId}
+            AND store_id=#{orderContract.store.storeId}
         </if>
-        ORDER BY order_contract_id desc
         limit #{pageNo},#{pageSize}
     </select>
 
@@ -74,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  order_contract_date=#{orderContract.orderContractDate}
         </if>
         <if test="orderContract.store!=null and orderContract.store.storeId!=null and orderContract.store.storeId>0">
-            AND store_id={orderContract.store.storeId}
+            AND store_id=#{orderContract.store.storeId}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="orderContractMap">

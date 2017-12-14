@@ -70,25 +70,28 @@ public class OrderContractController {
     @RequestMapping("edit.do")
     public String edit(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
         String filePath = upload(file, request);
+        orderContract.setOrderContractImage("");
         if (filePath != null && !filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
-        orderContract.setOrderContractImage("");
         orderContractService.updateOrderContractById(orderContract);
         return "order/contractControl/index";
     }
 
 
     @RequestMapping("add.do")
+    @ResponseBody
     public String add(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
         String filePath = upload(file, request);
+        orderContract.setOrderContractImage("");
         if (filePath != null &&!filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
-        orderContract.setOrderContractImage("");
         orderContractService.addOrderContract(orderContract);
-        return "redirect:/order/contract/index.do";
+        return "1";
     }
+
+
 
 
     public String upload(CommonsMultipartFile file, HttpServletRequest request) {
