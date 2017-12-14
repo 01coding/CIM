@@ -1,6 +1,8 @@
 package team.ruike.cim.pojo;
 
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -31,6 +33,7 @@ public class ContractProductionPlan implements Serializable {
     /**
      * 日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date date;
     /**
      * 合同生产计划项集合
