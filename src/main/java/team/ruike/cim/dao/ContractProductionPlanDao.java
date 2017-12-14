@@ -45,7 +45,7 @@ public interface ContractProductionPlanDao {
      * @param pageSize               页面数据大小
      * @return 合同订单生产计划对象集合
      */
-    List<ContractProductionPlan> select(@Param("contractOrder") ContractProductionPlan contractProductionPlan, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
+    List<ContractProductionPlan> select(@Param("contractProductionPlan") ContractProductionPlan contractProductionPlan, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 
 
     /**

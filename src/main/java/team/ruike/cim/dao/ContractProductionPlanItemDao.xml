@@ -18,7 +18,7 @@
         <if test="contractProductionPlanItem.menuNumber!=null and contractProductionPlanItem.menuNumber>0">
             AND menu_number=#{contractProductionPlanItem.menuNumber}
         </if>
-        <if test="contractProductionPlanItem.menuId!=null and contractProductionPlanItem.menu.menuId!=null and contractProductionPlanItem.menu.menuId>0">
+        <if test="contractProductionPlanItem.menu!=null and contractProductionPlanItem.menu.menuId!=null and contractProductionPlanItem.menu.menuId>0">
             AND menu_id=#{contractProductionPlanItem.menu.menuId}
         </if>
         <if test="contractProductionPlanItem.contractProductionPlanId!=null and contractProductionPlanItem.contractProductionPlanId>0">
@@ -33,7 +33,7 @@
         <if test="menuNumber!=null and menuNumber>0">
             AND menu_number=#{menuNumber}
         </if>
-        <if test="menuId!=null and menu.menuId!=null and menu.menuId>0">
+        <if test="menu!=null and menu.menuId!=null and menu.menuId>0">
             AND menu_id=#{menu.menuId}
         </if>
         <if test="contractProductionPlanId!=null and contractProductionPlanId>0">

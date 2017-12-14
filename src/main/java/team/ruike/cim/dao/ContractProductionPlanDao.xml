@@ -8,7 +8,7 @@
         <result column="production_batch" property="productionBatch"/>
         <result column="status" property="status"/>
         <result column="date" property="date"/>
-        <association column="contract_order_id" property="contractOrder"/>
+        <association column="contract_order_id" property="contractOrder" select="team.ruike.cim.dao.ContractOrderDao.selectById"/>
         <collection property="contractProductionPlanItems" column="contract_production_plan_id" select="team.ruike.cim.dao.ContractProductionPlanItemDao.selectBYContractProductionPlanId"/>
     </resultMap>
     <sql id="sqlh">
