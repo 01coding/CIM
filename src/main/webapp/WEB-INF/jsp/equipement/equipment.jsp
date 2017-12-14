@@ -1492,7 +1492,7 @@
                                                                                         检查周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1505,7 +1505,9 @@
                                                                                         设备名称:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                        <input type="text" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
+                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="只能输入中文" value="${e.equipmentName}"
+                                                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                                                     </div>
                                                                                     </div>
                                                                             </div>
@@ -1515,7 +1517,7 @@
                                                                                         保养周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1613,7 +1615,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button type="submit" class="btn btn-primary">确认修改</button>
+                                                                            <button id="butt" type="submit" class="btn btn-primary">确认修改</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1691,7 +1693,29 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#butt").click(function () {
+            var no ="不能为空";
+            var i=$("#inspectionCycle").val()
+            var e=$("#equipmentName").val()
+            var m=$("#maintenanceCycle").val()
 
+            if (i==null || i==""){
+                $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(e==null || e==""){
+                $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(m==null || m==""){
+                $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+        })
+    })
+</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -1728,6 +1752,8 @@
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
     <script>
+
+
         $(function () {
             dedd()
             });
