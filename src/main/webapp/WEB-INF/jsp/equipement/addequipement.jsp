@@ -1296,7 +1296,7 @@
                                                         &nbsp;检&nbsp;查&nbsp;周&nbsp;期:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <input type="text" id="inspectionCycle"  style="width: 400px;height: 40px" name="inspectionCycle" class="form-control" placeholder="检查周期" >
+                                                        <input type="number" min="1" id="inspectionCycle"  style="width: 400px;height: 40px" name="inspectionCycle" class="form-control" placeholder="检查周期">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1307,7 +1307,7 @@
                                                     </div>
 
                                                     <div class="col-sm-7">
-                                                        <input type="text" style="width:400px;height: 40px" id="maintenanceCycle" class="form-control" name="maintenanceCycle" placeholder="保养周期" >
+                                                        <input type="number" min="1" style="width:400px;height: 40px" id="maintenanceCycle" class="form-control" name="maintenanceCycle" placeholder="保养周期" >
                                                     </div>
                                                 </div>
                                             </div>
@@ -1320,7 +1320,9 @@
                                                             &nbsp;设&nbsp;备&nbsp;名&nbsp;称:
                                                         </div>
                                                         <div class="col-sm-7">
-                                                        <input type="text" style="width:400px;height: 40px" id="equipmentName" class="form-control" name="equipmentName" placeholder="设备名称">
+                                                        <input type="text" style="width:400px;height: 40px" id="equipmentNames" class="form-control" name="equipmentName" placeholder="只能输入中文"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))" >
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1372,7 +1374,7 @@
                                             </div>
                                         <div class="row">&nbsp;</div>
                                         <div class="form-actions">
-                                            <button id="but" class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
+                                            <button id="but"  class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
                                                 <i class="fa fa-check"></i>
                                                 <span>
                                                     <font style="vertical-align: inherit;">
@@ -1415,19 +1417,24 @@
         $("#but").click(function () {
             var a=$("#inspectionCycle").val()
             var m=$("#maintenanceCycle").val()
-            var e=$("#equipmentName").val()
+            var e=$("#equipmentNames").val()
             var no="不能为空";
             if(a==null || a==""){
-                $("#inspectionCycle").attr("placeholder","不能为空").css({color:"green",border:"solid 1px red","font-size":"16px"});
+                $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
             }
             if(m==null || m==""){
-                $("#maintenanceCycle").attr("placeholder","不能为空").css({color:"green",border:"solid 1px red","font-size":"16px"});
+                $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
             }
             if(e==null || e==""){
-                $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                $("#equipmentNames").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
             }
 
-        })
+
+    })
+
     })
 </script>
 

@@ -1387,7 +1387,9 @@
                                                         停用原因:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" name="equipmentReportReason" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" name="equipmentReportReason" class="form-control" placeholder="只能输入中文"
+                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                 </div>
                                             </div>
                                             </div>
@@ -1397,7 +1399,9 @@
                                                         维修计划:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" name="maintenancePlan" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" name="maintenancePlan" class="form-control" placeholder="只能输入中文"
+                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                 </div>
                                             </div>
                                             </div>
@@ -1411,7 +1415,7 @@
                                                     </div>
                                                     <div class="col-sm-7">
                                                         <div class="input-group date" style="width: 400px;height: 40px">
-                                                            <input  class="form-control" name="date" type="date"/>
+                                                            <input  class="form-control" name="date" type="date" />
 
                                                         </div>
 
