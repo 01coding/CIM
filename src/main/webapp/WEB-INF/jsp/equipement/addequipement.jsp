@@ -1305,7 +1305,6 @@
                                                     <div class="col-sm-5" style="margin-top: 10px;margin-right:-230px">
                                                         &nbsp;保&nbsp;养&nbsp;周&nbsp;期:
                                                     </div>
-
                                                     <div class="col-sm-7">
                                                         <input type="number" min="1" style="width:400px;height: 40px" id="maintenanceCycle" class="form-control" name="maintenanceCycle" placeholder="保养周期" >
                                                     </div>
@@ -1384,7 +1383,9 @@
                                                     </font>
                                                 </span>
                                             </button>
-                                            <button type="button" class="btn btn-warning pull-left"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
+
+                                                <button type="button" class="btn btn-warning pull-left" onclick="javascript:window.location.href='/JumpHomepage.do'"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
+
                                             <div class="clearfix"></div>
                                         </div>
                                     </form>
