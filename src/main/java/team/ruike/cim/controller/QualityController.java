@@ -162,7 +162,6 @@ public class QualityController {
     public String standard(PurchaseStandard purchaseStandard,Pager<PurchaseStandard> pager,HttpServletRequest request){
         qualityService.selectStandard(purchaseStandard,pager);
         request.setAttribute("palist",pager);
-
         return "quality/standard";
     }
 

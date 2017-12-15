@@ -1439,15 +1439,11 @@
 
                                                  </div>-->
                                                 <div class="row">
-
                                                     <div class="form-group">
                                                         <input type="text" disabled="disabled" class="form-control" placeholder="采购批次" value="${requestScope.num}">
                                                     </div>
-
                                                 </div>
-
                                                 <div  class="row">
-
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardAType==1}">
                                                                 <div class="form-group col-sm-6" style="margin-top: 10px">
@@ -1470,6 +1466,7 @@
 
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
+                                                    <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardBType==1}">
                                                             <div class="form-group col-sm-6" style="margin-top: 10px">
                                                                 <label><span id="p3" style="font-size: 15px">${requestScope.pstd.standardBName}</span></label>
@@ -1488,7 +1485,6 @@
                                                         </c:if>
                                                     </div>
                                                 </div>
-
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardCType==1}">
@@ -1512,7 +1508,9 @@
 
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
-                                                        <input id="p7" name="conclusion" type="text" class="form-control" placeholder="请填写结论">
+                                                        <input id="p7" name="conclusion" type="text" class="form-control" placeholder="请填写结论"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1528,10 +1526,6 @@
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
-
-
-
-
                                     </form>
                                 </div>
                             </div>
