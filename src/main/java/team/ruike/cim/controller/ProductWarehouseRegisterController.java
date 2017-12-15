@@ -10,6 +10,9 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
+/**
+ * 成品库入库控制器
+ */
 @Controller
 public class ProductWarehouseRegisterController {
     @Resource
