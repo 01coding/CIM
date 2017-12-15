@@ -26,7 +26,7 @@
             AND user_id=#{warehouse.user.userId}
         </if>
     </sql>
-    <insert id="add" parameterType="warehouse">
+    <insert id="add" parameterType="warehouse" useGeneratedKeys="true" keyProperty="warehouseId">
         INSERT INTO  warehouse VALUES (DEFAULT,#{warehouseName},#{remarks},0,#{user.userId})
     </insert>
     <update id="update" parameterType="warehouse">

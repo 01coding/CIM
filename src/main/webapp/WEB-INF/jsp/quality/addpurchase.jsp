@@ -946,7 +946,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">add-products</h5>
+                    <h5 class="txt-dark">添加质检标准</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -959,26 +959,19 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row" style="text-align:center">
                 <div class="col-sm-12">
-
-
                     <div class="panel panel-default card-view ">
                         <div class="panel-wrapper collapse in">
-
                             <div class="panel-body ">
                                 <div class="form-wrap">
                                     <form action="insertPurchase.do">
                                         <h6 class="txt-dark capitalize-font"><i
-                                                class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
+                                                class="zmdi zmdi-calendar-note mr-10"></i>添加质检信息</h6>
                                         <hr class="light-grey-hr"/>
-
                                         <div class="row">
-
                                             <div class="col-sm-4">
-
                                                 <div class="col-lg-12">
                                                     <div class="panel panel-default card-view">
                                                         <div class="panel-heading">
@@ -1016,31 +1009,18 @@
                                                                     </c:forEach>
                                                                 </select>
                                                             </div>
-
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                             </div>
 
                                             <div class="col-sm-6">
-                                                <!-- <div class="row">
-                                                         <div class="form-group">
-                                                             <div class='input-group date' id='datetimepicker1'>
-                                                                 <input type='text' class="form-control"
-                                                                        placeholder="物料入库时间"/>
-                                                                 <span class="input-group-addon">
-                                                                         <span class="fa fa-calendar"></span>
-                                                                     </span>
-                                                             </div>
-                                                         </div>
-
-                                                 </div>-->
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input name="standardAName" type="text" class="form-control"
-                                                               placeholder="标准一评估">
+                                                        <input name="standardAName" id="standardAName" type="text" class="form-control"
+                                                               placeholder="标准一评估"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" name="standardAType" id="radio3" value="1">
@@ -1052,10 +1032,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-
                                                     <div class="form-group col-sm-6">
-                                                        <input name="standardBName" type="text" class="form-control"
-                                                               placeholder="标准二评估">
+                                                        <input name="standardBName" id="standardBName" type="text" class="form-control"
+                                                               placeholder="标准二评估"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" name="standardBType" id="radio4" value="1">
@@ -1068,8 +1049,10 @@
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input name="standardCName" type="text" class="form-control"
-                                                               placeholder="标准三评估">
+                                                        <input name="standardCName" id="standardCName" type="text" class="form-control"
+                                                               placeholder="标准三评估"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" name="standardCType" id="radio8" value="1">
@@ -1080,23 +1063,18 @@
                                                         <label for="radio9"> 10分制 </label>
                                                     </div>
                                                 </div>
-
-
                                             </div>
-
                                         </div>
-
 
                                         <div class="row">
                                             <div class="form-actions">
-                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left">
-                                                    <i class="fa fa-check"></i> <span>保存</span></button>
+                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left" id="but">
+                                                    <i class="fa fa-check"></i> <span>保存</span>
+                                                </button>
                                                 <button type="button" class="btn btn-warning pull-left">取消</button>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
-
-
                                     </form>
                                 </div>
                             </div>
@@ -1116,7 +1094,6 @@
             </div>
         </footer>
         <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
 
@@ -1127,9 +1104,30 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#but").click(function () {
+            var no="不能为空";
+            var sas=$("#standardAName").val()
+            var sbs =$("#standardBName").val()
+            var scs=$("#standardCName").val()
+            if(sas==null || sas==""){
+                $("#standardAName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(sbs==null || sbs==""){
+                $("#standardBName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
 
+            if(scs==null || scs==""){
+                $("#standardCName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+        })
+    });
+</script>
 <script type="text/javascript">
-
     function s() {
         $("#select1").change(function () {
             var zhi = $(this).find("option:selected").val()
@@ -1184,16 +1182,14 @@
         })
     }
 
-
     function sss(){
         $("#selectid").change(function(){
-            alert($(this).find("option:selected").css({"color":"red"}))
+            $(this).find("option:selected").css({"color":"red"})
             $(this).find("option:selected").attr("disabled",true)
             var uu=$(this).find("option:selected").text();
             $("#aa").val(uu);
         })
     }
-
 
     $(function(){
         s();
