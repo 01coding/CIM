@@ -36,4 +36,10 @@ public class WarehouseOutRegisterItemServiceImpl implements WarehouseOutRegister
         pager.setTotalRecord(warehouseOutRegisterItemDao.selectCount(warehouseOutRegisterItem));
         pager.setList(warehouseOutRegisterItemDao.select(warehouseOutRegisterItem, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
+
+    @Override
+    public void getOutRegisterItemByWarehouseId(WarehouseOutRegisterItem warehouseOutRegisterItem, Pager<WarehouseOutRegisterItem> pager) {
+        pager.setTotalRecord(warehouseOutRegisterItemDao.selectCount(warehouseOutRegisterItem));
+        pager.setList(warehouseOutRegisterItemDao.selectByWarehouseId(warehouseOutRegisterItem, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
+    }
 }

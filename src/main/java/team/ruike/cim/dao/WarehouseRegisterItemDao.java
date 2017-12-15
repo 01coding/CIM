@@ -51,4 +51,13 @@ public interface WarehouseRegisterItemDao {
      * @return 合同订单对象
      */
     WarehouseRegisterItem selectById(Integer warehouseRegisterItemId);
+
+    /**
+     * 根据仓库id查询所有入库信息
+     * @param warehouseRegisterItem
+     * @param pageNo
+     * @param pageSize
+     * @return
+     */
+    List<WarehouseRegisterItem> selectWarehouseId(@Param("WarehouseRegisterItem") WarehouseRegisterItem warehouseRegisterItem, @Param("pageNo") int pageNo, @Param("pageSize") int pageSize);
 }

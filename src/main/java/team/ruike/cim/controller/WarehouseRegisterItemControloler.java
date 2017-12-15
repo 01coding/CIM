@@ -18,7 +18,7 @@ public class WarehouseRegisterItemControloler {
     private WarehouseRegisterItemService warehouseRegisterItemService;
     @RequestMapping("/getWarehouseRegisterItem.do")
     public String getWarehouseRegisterItem(HttpServletRequest request, WarehouseRegisterItem warehouseRegisterItem, Pager<WarehouseRegisterItem> pager) {
-        warehouseRegisterItemService.getWarehouseRegisterItem(warehouseRegisterItem,pager);
+        warehouseRegisterItemService.getWarehouseRegisterItemByWarehouseId(warehouseRegisterItem,pager);
         request.setAttribute("RegisterItemPager", pager);
         return "warehouses/materiel_register";
     }

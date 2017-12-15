@@ -36,4 +36,6 @@ public class WareHouSereGISTerServiceImpl implements WarehouseRegisterSevice {
         pager.setTotalRecord(warehouseRegisterDao.selectCount(warehouseRegister));
         pager.setList(warehouseRegisterDao.select(warehouseRegister, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
+
+
 }

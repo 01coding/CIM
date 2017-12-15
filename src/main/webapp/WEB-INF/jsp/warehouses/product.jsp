@@ -5,7 +5,9 @@
   Time: 11:21
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1376,6 +1378,9 @@
                                     <!--区域选择框-->
                                     <div class="table-responsive ">
                                         <div class="form-group col-sm-3">
+                                            <button type="submit" class="btn btn-primary" onclick="window.location.href='getProductOutRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${RuKuPage.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}'">出库记录</button>
+                                        </div>
+                                        <div class="form-group col-sm-3">
                                             <select class="form-control select2 select2-hidden-accessible"
                                                     tabindex="-1" aria-hidden="true">
                                                 <option><font style="vertical-align: inherit;"><font
@@ -1413,236 +1418,37 @@
                                             <thead>
                                             <tr>
                                                 <th>菜品名称</th>
-                                                <th>当前数量</th>
+                                                <th>入库数量</th>
                                                 <th>到期时间</th>
                                                 <th>所在区域</th>
                                                 <th>货架编号</th>
-                                                <th id="action" onclick="action()">ACTIONS</th>
+
 
 
                                             </tr>
                                             </thead>
                                             <tfoot>
                                             <tr>
-                                                <th>Name</th>
-                                                <th>Position</th>
-                                                <th>Office</th>
-                                                <th>Age</th>
-                                                <th>Start date</th>
-                                                <th>ACTIONS</th>
+                                                <th>菜品名称</th>
+                                                <th>入库数量</th>
+                                                <th>到期时间</th>
+                                                <th>所在区域</th>
+                                                <th>货架编号</th>
+
                                             </tr>
                                             </tfoot>
                                             <tbody>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Tiger Nixonasasasasa</td>
-                                                <td>System Architect</td>
-                                                <td>Edinburgh</td>
-                                                <td>61</td>
-                                                <td>2011/04/25</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModal">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"
-                                                                data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash"
-                                                                  aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            <c:forEach items="${requestScope.RuKuPage.list}" var="PKP">
+                                                <tr>
+                                                    <td>${PKP.menu.menuName}</td>
+                                                    <td>${PKP.menuNumber}</td>
+                                                    <td><fmt:formatDate
+                                                            value="${PKP.productWarehouseRegister.productWarehouseRegisterDate}"
+                                                            pattern="yyyy-MM-dd"/></td>
+                                                    <td>${PKP.productGoodsShelve.productWarehouseRegion.productWarehouseRegionNo}</td>
+                                                    <td>${PKP.productGoodsShelve.productGoodsShelveNo}</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 

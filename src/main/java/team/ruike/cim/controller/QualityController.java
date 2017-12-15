@@ -155,7 +155,7 @@ public class QualityController {
 
 
     /**
-     * 获取工序记录
+     * 跳转采购标准页面
      * @return
      */
     @RequestMapping("standard.do")
@@ -180,7 +180,7 @@ public class QualityController {
     }
 
     /**
-     * 获取一级菜单
+     * 跳转新增标准页面 获取一级菜单
      * @param request
      * @return
      */

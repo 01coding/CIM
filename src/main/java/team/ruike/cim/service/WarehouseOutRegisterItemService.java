@@ -12,4 +12,11 @@ public interface WarehouseOutRegisterItemService {
      int upd(WarehouseOutRegisterItem warehouseOutRegisterItem);
 
      void getWarehouseOutRegisterItem(WarehouseOutRegisterItem warehouseOutRegisterItem, Pager<WarehouseOutRegisterItem> pager);
+
+     /**
+      * 根据仓库id查询所有出库项
+      * @param warehouseOutRegisterItem
+      * @param pager
+      */
+     void getOutRegisterItemByWarehouseId(WarehouseOutRegisterItem warehouseOutRegisterItem, Pager<WarehouseOutRegisterItem> pager);
 }
