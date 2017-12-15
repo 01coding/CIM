@@ -99,7 +99,7 @@ public class OrderContractController {
         if (!file.isEmpty()) {
             try {
                 // 文件保存路径
-                String filePath = request.getSession().getServletContext().getRealPath("\\") + "\\upload\\"
+                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath()
                         + file.getOriginalFilename();
                 // 转存文件
                 file.transferTo(new File(filePath));

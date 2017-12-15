@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.service.StoreService;
@@ -25,26 +26,14 @@ public class StoreController {
     private StoreService storeService;
 
     @RequestMapping("index.do")
-    public String index() {
+    public String index(Store store, Pager<Store> pager, Model model) {
+        storeService.queryStore(store, pager);
+        model.addAttribute("pager", pager);
+        model.addAttribute("store",store);
         return "order/store/index";
     }
 
-    @InitBinder("pager")
-    public void initBinder1(WebDataBinder binder) {
-        binder.setFieldDefaultPrefix("pager.");
-    }
 
-    @InitBinder("store")
-    public void initBinder2(WebDataBinder binder) {
-        binder.setFieldDefaultPrefix("store.");
-    }
-
-    @RequestMapping("list.cl")
-    public String list(Store store, Pager<Store> pager, Model model) {
-        storeService.queryStore(store, pager);
-        model.addAttribute("pager", pager);
-        return "order/store/list";
-    }
 
     @RequestMapping("add.do")
     @ResponseBody
@@ -69,7 +58,7 @@ public class StoreController {
 
     @RequestMapping("delete.do")
     @ResponseBody
-    public String delete(Integer storeId) {
+    public String delete(@RequestParam(value = "storeId") Integer storeId) {
         storeService.deleteStoreById(storeId);
         return "1";
     }

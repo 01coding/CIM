@@ -10,9 +10,9 @@ $(function() {
         
     //Basic
     $('#sa-basic').on('click',function(e){
-	    swal({   
-			title: "Here's a message!",   
-            confirmButtonColor: "#2879ff",   
+	    swal({
+			title: "Here's a message!",
+            confirmButtonColor: "#2879ff",
         });
 		return false;
     });
@@ -78,14 +78,14 @@ $(function() {
 
     //Custom Image
 	$('#sa-image').on('click',function(e){
-		swal({   
-            title: "John!",   
-            text: "Recently joined twitter",   
+		swal({
+            title: "John!",
+            text: "Recently joined twitter",
             imageUrl: "dist/img/user.png" ,
-			confirmButtonColor: "#e91e63",   
-			
+            confirmButtonColor: "#e91e63",
+
         });
-		return false;
+        return false;
     });
 
     //Auto Close Timer

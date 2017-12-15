@@ -57,7 +57,6 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
             }});
 
 
-
             temporaryOrderDao.add(temporaryOrder);
             final Integer orderId = temporaryOrder.getTemporaryOrderId();
 

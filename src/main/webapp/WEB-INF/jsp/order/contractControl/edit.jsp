@@ -8,7 +8,7 @@
             <h4 class="modal-title">修改合同</h4>
         </div>
         <div class="modal-body">
-            <form class="form-horizontal form-material" method="post" action="/order/contract/edit.do" id="contractEdit" enctype="multipart/form-data">
+            <form class="form-horizontal form-material"  id="contractEdit" enctype="multipart/form-data">
                 <div class="form-group">
                     <div class="col-md-12 mb-20">
                         <input type="text" class="form-control" placeholder="合同名称" name="orderContractName" value="${orderContract.orderContractName}">
@@ -19,7 +19,7 @@
 
                     <div class="col-md-12 mb-20">
                         <div class='input-group date' id='datetimepicker1ss'>
-                            <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate"/>
+                            <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate" value="<fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/>"/>
                             <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
@@ -48,7 +48,7 @@
                 </div>
 
                 <div class="modal-footer">
-                    <button type="submit" class="btn btn-info waves-effect" >保存</button>
+                    <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" onclick="updateContract()">保存</button>
                     <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                 </div>
             </form>
@@ -58,3 +58,61 @@
     <!-- /.modal-content -->
 </div>
 
+<script>
+
+
+    /* Datetimepicker Init*/
+    $('#datetimepicker1ss').datetimepicker({
+        useCurrent: false,
+        format: 'YYYY-MM-DD',
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).on('dp.show', function() {
+        if($(this).data("DateTimePicker").date() === null)
+            $(this).data("DateTimePicker").date(moment());
+    });
+
+    function updateContractValidate() {
+
+        $("#contractEdit").validate({
+            rules: {
+                orderContractName: {
+                    required: true,
+                },
+            },
+            messages: {
+                orderContractName: {
+                    required: "请输入合同名称",
+                },
+            }
+        });
+
+    };
+
+    function updateContract(){
+        var flag = $("#contractEdit").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+        var formobj =  document.getElementById("contractEdit");
+        var formData=new FormData(formobj);
+        $.ajax({
+            url: '/order/contract/edit.do',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function(res) {
+            appModule.alert("修改成功");
+            document.getElementById("contractEdit").reset();
+        }).fail(function(res) {
+            appModule.alert("修改失败");
+        });
+    };
+</script>

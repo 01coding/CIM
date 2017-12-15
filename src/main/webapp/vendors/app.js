@@ -1,24 +1,7 @@
 var appModule = (function () {
 
 
-    function load(url, data, container, error) {
-        $.ajax({
-            url: url,
-            type: 'post',
-            data: data,  // post时请求体
-            dataType: 'html',
-            success: function (html) {
-                $("#" + container).empty().append(html);
-            }, error: function () {
-                if (null != error) {
-                    error();
-                } else {
-                    alert("error");
-                }
-            }
 
-        });
-    }
 
 
     function pagination(url, param) {
@@ -43,7 +26,7 @@ var appModule = (function () {
                     success(data);
                 }
             }, error: function () {
-                alert("error");
+                error(data);
             }
         });
     }
@@ -62,25 +45,17 @@ var appModule = (function () {
         });
     }
     
-    function jump(url,param) {
-        $.ajax({
-            url: url,
-            method: "post",
-            data: param,
-            success: function (data) {
-                alert("success")
-            }, error: function () {
-                alert("error");
-            }
-        });
-    }
+
 
     function alert(message) {
-        window.alert(message);
+        swal({
+            title: message,
+            confirmButtonColor: "#2879ff",
+        });
+        return false;
     }
 
     return {
-        load: load,
         post: post,
         open: open,
         alert: alert,

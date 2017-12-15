@@ -1368,14 +1368,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">合同列表</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>合同管理</span></a></li>
+                        <li class="active"><span>合同列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1579,7 +1579,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button"  class="btn btn-info waves-effect" onclick="up()">保存</button>
+                                        <button type="button"  class="btn btn-info waves-effect" onclick="ad()">保存</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
@@ -1667,8 +1667,6 @@
 <script src="../../../../dist/js/init.js"></script>
 
 
-<!-- Sweet-Alert  -->
-<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="../../../../dist/js/sweetalert-data.js"></script>
 <!-- Moment JavaScript -->
@@ -1688,12 +1686,22 @@
 <!-- Slimscroll JavaScript -->
 <script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
-<script src="../../../../vendors/validate.min.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+
+
+<script src="../../../../vendors/jquery.validate.js"></script>
 <script src="../../../../vendors/messages_zh.js"></script>
 
 <script src="../../../../vendors/app.js"></script>
 
 <script>
+    $(function () {
+        addContractValidate();
+    });
+
 
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
@@ -1734,9 +1742,34 @@
         window.location.href="/order/contract/index.do?"+url;
     };
 
+    function addContractValidate() {
+
+        $("#addcontract").validate({
+            rules: {
+                orderContractName: {
+                    required: true,
+                },
+            },
+            messages: {
+                orderContractName: {
+                    required: "请输入合同名称",
+                },
+            }
+        });
+
+    };
 
 
-    function up() {
+
+    function ad() {
+
+        var flag = $("#addcontract").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+
        var formobj =  document.getElementById("addcontract");
        var formData=new FormData(formobj);
         $.ajax({
@@ -1747,14 +1780,15 @@
             processData: false,
             contentType: false
         }).done(function(res) {
-            alert("成功");
+            appModule.alert("添加成功");
             document.getElementById("addcontract").reset();
         }).fail(function(res) {
-            alert("失败");
+            appModule.alert("添加失败");
         });
 
 
     }
+
 
 </script>
 

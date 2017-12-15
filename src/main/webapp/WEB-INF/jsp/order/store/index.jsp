@@ -1,18 +1,12 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2017/12/4
-  Time: 8:55
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>门店管理</title>
+    <title>门店列表</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -22,19 +16,21 @@
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
-    <link href="../../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- vector map CSS -->
-    <link href="../../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
     <!-- Footable CSS -->
-    <link href="../../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
+
     <style>
         /*** guide ***/
         .guide {
@@ -50,6 +46,7 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+
     </style>
 
 </head>
@@ -68,7 +65,7 @@
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
                     <a href="index.html">
-                        <img class="brand-img" src="../../../../dist/img/logo.png" alt="brand"/>
+                        <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
                         <span class="brand-text">Hound</span>
                     </a>
                 </div>
@@ -320,8 +317,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
-                                                 alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -358,10 +354,9 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
-                            src="../../../dist/img/user1.png"
-                            alt="user_auth"
-                            class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                                                                                         alt="user_auth"
+                                                                                         class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -928,8 +923,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -977,8 +971,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1158,8 +1151,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1175,8 +1167,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1192,8 +1183,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1209,8 +1199,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1226,8 +1215,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1243,8 +1231,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1260,8 +1247,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1366,14 +1352,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">门店列表</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>门店管理</span></a></li>
+                        <li class="active"><span>门店列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1386,22 +1372,24 @@
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
+
                                 <div class="table-wrap">
 
                                     <div class="table-responsive">
 
-                                        <div style="float: right;" id="storePa">
-                                            <form class="form-inline" id="conditionStore">
+                                        <div style="position: relative;bottom: 10px;">
+                                            <form method="get" id="orderForm" action="/store/index.do">
                                                 <div class="form-group">
+
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">用户/门店名称:</label>
-                                                        <input type="text" class="form-control" name="store.storeName"
+                                                        <input type="text" class="form-control" name="storeName" value="${store.storeName}"
                                                                placeholder="名称">
                                                         <div class="input-group-btn"
                                                              style=" position: relative; top: 16px;">
-                                                            <button type="button" class="btn btn-primary"
-                                                                    style="height:42px;" onclick="storeModule.list()">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;" >
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
@@ -1411,10 +1399,18 @@
                                                     <div class="input-group"
                                                          style="width: 300px;float: right;position: relative;right: 20px;">
                                                         <label class="control-label mb-10">门店/用户类别:</label>
-                                                        <select class="form-control" name="store.storeType">
-                                                            <option value="0" selected>请选择</option>
-                                                            <option value="1">合同用户</option>
-                                                            <option value="2">散户</option>
+                                                        <select class="form-control" name="storeType">
+                                                            <option value="">请选择</option>
+                                                            <option value="1"
+                                                            <c:if test="${store.storeType==1}">
+                                                                selected
+                                                            </c:if>
+                                                            >合同用户</option>
+                                                            <option value="0"
+                                                                    <c:if test="${store.storeType==0}">
+                                                                        selected
+                                                                    </c:if>
+                                                            >散户</option>
                                                         </select>
                                                     </div>
 
@@ -1423,8 +1419,55 @@
                                             </form>
                                         </div>
 
-                                        <div id="exampleTable">
+                                        <div>
 
+                                            <table id="example" class="table table-hover display  pb-30">
+
+                                                <thead>
+                                                <tr>
+                                                    <th>用户/门店名称</th>
+                                                    <th>门店/用户类别</th>
+                                                    <th>地址</th>
+                                                    <th>电话</th>
+                                                    <th>门店编号</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+                                                <c:forEach var="store" items="${pager.list}">
+                                                    <tr>
+                                                        <td>${store.storeName}</td>
+                                                        <td>
+                                                            <c:choose>
+                                                                <c:when test="${store.storeType==1}">
+                                                                    合同用户
+                                                                </c:when>
+                                                                <c:when test="${store.storeType==0}">
+                                                                    散户
+                                                                </c:when>
+                                                            </c:choose>
+                                                        </td>
+                                                        <td>${store.storeAddress}</td>
+                                                        <td>${store.storePhone}</td>
+                                                        <td>${store.storeNo}</td>
+                                                        <td class="footable-editing" style="display: table-cell;width: 100px">
+                                                            <div class="btn-group btn-group-xs" role="group">
+                                                                <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${store.storeId})">
+                                                                    <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
+                                                                </button>
+                                                                <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect" onclick="toView(${store.storeId})">
+                                                                    <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                                </button>
+                                                                <button type="button" class="btn btn-default footable-delete" onclick="del(${store.storeId})">
+                                                                    <span class="fooicon fooicon-trash" aria-hidden="true"></span>
+                                                                </button>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                                </tbody>
+                                            </table>
                                         </div>
 
                                         <div class="guide">
@@ -1432,8 +1475,7 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        data-toggle="modal" data-target="#exampleModal">
+                                                <button class="btn btn-info btn-icon-anim btn-circle"   data-toggle="modal" data-target="#exampleModal">
                                                     <i class="fa ti-plus"></i>
                                                 </button>
                                             </div>
@@ -1445,6 +1487,32 @@
                                 </div>
 
 
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <c:if test="${pager.totalRecord>8}" >
+                                                <div class="col-md-12">
+                                                    <c:if test="${pager.list.size()>0}" >
+                                                        <ul class="pagination pagination-split">
+                                                            <li
+                                                                    <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
+                                                            ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
+
+                                                            <c:forEach items="${pager.pageBar}" var="pb">
+                                                                <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
+                                                                ><a data-currentpage="${pb}" onclick="currentPage(this)">${pb}</a></li>
+                                                            </c:forEach>
+
+                                                            <li
+                                                                    <c:if test="${pager.currentPage>=pager.totalPage}" > class="disabled"</c:if>
+                                                            ><a data-nextid="${pager.nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
+                                                        </ul>
+                                                    </c:if>
+                                                </div>
+                                            </c:if>
+                                        </div>
+                                    </div>
+                                </div>
 
                             </div>
                         </div>
@@ -1456,63 +1524,6 @@
 
 
         <div class="row">
-
-            <!--删除提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
-
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                        <div class="sa-button-container">
-                            <button id="cancel1" class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1" id="storeDel" onclick="storeList.del(this)"
-                                        data-dismiss="modal"  style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
 
             <!--添加输入框-->
             <div class="col-md-6">
@@ -1556,7 +1567,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary" onclick="storeModule.add()">保存</button>
+                                <button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="add()">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1641,56 +1652,98 @@
 <!-- Sweet-Alert  -->
 <script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+
+
 
 <script src="../../../../vendors/app.js"></script>
-
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
+    }
+
+    function toEdit(id) {
+        var fd = {storeId:id};
+        appModule.open('/store/toEdit.cl',fd,'exampleModalUpdate');
+    };
+
+    function toView(id) {
+        var fd = {storeId:id};
+        appModule.open('/store/toView.do',fd,'exampleModalSelect')
+    };
+
+
+    function del(ts) {
+        swal({
+            title: "是否删除?",
+            text: "如果删除则无法恢复此数据!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#fec107",
+            confirmButtonText: "删除",
+            closeOnConfirm: false
+        }, function(){
+            var fd = {storeId:ts};
+            appModule.post('/store/delete.do',fd,function (data) {
+                appModule.alert("删除成功");
+                location.reload();
+            },function () {
+                appModule.alert("删除失败");
+            });
+        });
+    }
+
+
+
+
+    function add() {
+        var addStore = $("#addStore").serializeArray();
+        appModule.post('/store/add.do', addStore, function (data) {
+            appModule.alert("添加成功")
+            document.getElementById("addStore").reset();
+        },function () {
+            appModule.alert("添加失败")
+        });
+    }
+
+    function edit() {
+        var addStore = $("#updateStore").serializeArray();
+        appModule.post('/store/edit.do',addStore,function (data) {
+            appModule.alert("修改成功")
+            location.reload();
+        },function () {
+            appModule.alert("修改失败")
+        });
     };
 
 
 
-    var storeModule = (function () {
-        $(function () {
-            toList();
-        });
+    function nextPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("nextid")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/store/index.do?"+url;
+    }
+    function previousPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("previouspage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/store/index.do?"+url;
+    }
+    function currentPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("currentpage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/store/index.do?"+url;
+    }
 
-        function list() {
-            var data = $("#conditionStore").serializeArray();
-            appModule.load('/store/list.cl', data, 'exampleTable');
-        }
-
-        function toList() {
-            appModule.load('/store/list.cl', null, 'exampleTable');
-        }
-        function add() {
-            var addStore = $("#addStore").serializeArray();
-            appModule.post('/store/add.do', addStore, function (data) {
-                appModule.alert("成功")
-                document.getElementById("addStore").reset();
-                toList();
-            });
-        }
-
-        function edit() {
-            var addStore = $("#updateStore").serializeArray();
-            appModule.post('/store/edit.do',addStore,function (data) {
-                appModule.alert("成功")
-                toList();
-            });
-        };
-
-
-        return {
-            add: add,
-            edit:edit,
-            list:list,
-            toList:toList
-        }
-    })();
 </script>
+
 </body>
 
 </html>
-
