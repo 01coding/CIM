@@ -1390,7 +1390,7 @@
                                     <!--区域选择框-->
                                     <div class="table-responsive ">
                                         <div class="form-group col-sm-3">
-                                                <button type="submit" class="btn btn-primary" onclick="window.location.href='getWarehouseRegisterItem.do'">入库记录</button>
+                                                <button type="submit" class="btn btn-primary" onclick="window.location.href='getWarehouseRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${OutRegisterItemPage.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}'">入库记录</button>
                                         </div>
                                         <!--区域选择框-->
                                         <table id="example" class="table table-hover display  pb-30">

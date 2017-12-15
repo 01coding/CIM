@@ -1,7 +1,9 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
+import team.ruike.cim.dao.UserDao;
 import team.ruike.cim.dao.WarehouseDao;
+import team.ruike.cim.pojo.User;
 import team.ruike.cim.pojo.Warehouse;
 import team.ruike.cim.service.WarehouseService;
 import team.ruike.cim.util.Pager;
@@ -12,7 +14,8 @@ import java.util.List;
 public class WarehouseServiceImpl implements WarehouseService {
     @Resource
     private WarehouseDao warehouseDao;
-
+    @Resource
+    private UserDao userDao;
     /**
      * 查询所有物料仓库
      *
@@ -48,5 +51,9 @@ public class WarehouseServiceImpl implements WarehouseService {
             return warehouseDao.update(warehouse);
         }
         return 0;
+    }
+
+    public List<User> getUser(User user) {
+        return userDao.select(user,0,99);
     }
 }

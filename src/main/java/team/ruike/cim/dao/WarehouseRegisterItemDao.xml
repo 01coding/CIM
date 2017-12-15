@@ -21,11 +21,11 @@
         <if test="WarehouseRegisterItem.materielNumber!=null and WarehouseRegisterItem.materielNumber>0">
             AND materiel_number=#{WarehouseRegisterItem.materielNumber}
         </if>
+        <if test="WarehouseRegisterItem.goodsShelve!=null and WarehouseRegisterItem.goodsShelve.goodsShelveId!=null and WarehouseRegisterItem.goodsShelve.goodsShelveId>0">
+            AND goods_shelve_id=#{WarehouseRegisterItem.goodsShelve.goodsShelveId}
+        </if>
         <if test="WarehouseRegisterItem.materiel!=null and WarehouseRegisterItem.materiel.materielId>0">
             AND materiel_id=#{WarehouseRegisterItem.materiel.materielId}
-        </if>
-        <if test="WarehouseRegisterItem.goodsShelve!=null and WarehouseRegisterItem.goodsShelve.goodsShelveId>0">
-            AND goods_shelve_id=#{WarehouseRegisterItem.goodsShelve.goodsShelveId}
         </if>
         <if test="WarehouseRegisterItem.warehouseRegister!=null and WarehouseRegisterItem.warehouseRegister.warehouseRegisterId>0">
             AND warehouse_register_id=#{WarehouseRegisterItem.warehouseRegister.warehouseRegisterId}
@@ -57,11 +57,11 @@
         <if test="materielNumber!=null and materielNumber>0">
             AND materiel_number=#{materielNumber}
         </if>
+        <if test="goodsShelve!=null and goodsShelve.goodsShelveId!=null and goodsShelve.goodsShelveId>0">
+            AND goods_shelve_id=#{goodsShelve.goodsShelveId}
+        </if>
         <if test="materiel!=null and materiel.materielId>0">
             AND materiel_id=#{materiel.materielId}
-        </if>
-        <if test="goodsShelve!=null and goodsShelve.goodsShelveId>0">
-            AND goods_shelve_id=#{goodsShelve.goodsShelveId}
         </if>
         <if test="warehouseRegister!=null and warehouseRegister.warehouseRegisterId>0">
             AND warehouse_register_id=#{warehouseRegister.warehouseRegisterId}
@@ -73,4 +73,10 @@
         WHERE status = 0
               AND warehouse_register_item_id = #{warehouseRegisterItemId}
     </select>
+    <select id="selectWarehouseId" resultMap="warehouseRegisterItems">
+        SELECT * from warehouse_register_item where goods_shelve_id IN
+        (SELECT goods_shelve_id FROM goods_shelve WHERE warehouse_region_id IN
+        (SELECT warehouse_region_id FROM warehouse_region WHERE warehouse_id=#{WarehouseRegisterItem.goodsShelve.warehouseRegion.warehouse.warehouseId}))
+    </select>
+
 </mapper>

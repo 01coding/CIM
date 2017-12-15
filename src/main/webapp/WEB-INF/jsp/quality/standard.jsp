@@ -1004,16 +1004,6 @@
                                                                     <th>操作</th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tfoot>
-                                                                <tr>
-                                                                    <th>品控类型</th>
-                                                                    <th>编号/批次</th>
-                                                                    <th>名称</th>
-                                                                    <th>标准</th>
-                                                                    <th>备注</th>
-                                                                    <th>操作</th>
-                                                                </tr>
-                                                                </tfoot>
                                                                 <tbody>
                                                                 <c:forEach items="${requestScope.palist.list}" var="p">
                                                                     <tr>
@@ -1130,7 +1120,7 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h5 class="modal-title" id="myLargeModalLabel">Large modal</h5>
+                                <h5 class="modal-title" id="myLargeModalLabel">质检详情</h5>
                             </div>
                             <div class="modal-body">
                                 <h5 class="mb-15">品控标准与评分类型</h5>
@@ -1172,7 +1162,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-danger text-left" data-dismiss="modal">Close
+                                <button type="button" class="btn btn-danger text-left" data-dismiss="modal">取消
                                 </button>
                             </div>
                         </div>

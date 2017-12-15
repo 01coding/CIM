@@ -30,9 +30,8 @@
             AND warehouse_id=#{warehouseRegion.warehouse.warehouseId}
         </if>
     </sql>
-    <insert id="add" parameterType="warehouseRegion">
-      INSERT INTO  warehouse_region VALUES (DEFAULT,#{warehouse.warehouseRegionNo},#{materielTypeLevelB.materielTypeLevelBId},#{remarks},#{status},
-      #{warehouse.warehouseId})
+    <insert id="add" parameterType="warehouseRegion" useGeneratedKeys="true" keyProperty="warehouseRegionId">
+      INSERT INTO  warehouse_region VALUES (DEFAULT,#{warehouseRegionNo},#{materielTypeLevelB.materielTypeLevelBId},#{remarks},0,#{warehouse.warehouseId})
     </insert>
     <update id="update" parameterType="warehouseRegion">
         UPDATE warehouse_region SET warehouse_region_no=#{warehouseRegionNo},remarks=#{remarks},

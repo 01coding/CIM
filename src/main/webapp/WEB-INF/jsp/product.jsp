@@ -6,7 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1197,10 +1198,10 @@
                                     </div>
                                     <div class="col-xs-6 text-right">
                                         <address class="mb-15">
-                                            <span class="address-head mb-5">192345678954</span>
-                                            黄焖鸡<br>
-                                            11<br>
-                                            <abbr title="Phone"></abbr>2017-5-6
+                                            <span class="address-head mb-5">未知</span>
+                                            ${requestScope.citem.menu.menuName}<br>
+                                            ${requestScope.citem.menuNumber}<br>
+                                            <abbr title="Phone"></abbr>未知
                                         </address>
                                     </div>
                                 </div>
@@ -1221,42 +1222,26 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td>初加工</td>
-                                                <td>李四</td>
-                                                <td>2017-5-6 10:10:00</td>
-                                                <td>2017-5-6 22:10:00</td>
-                                                <td>10</td>
-                                                <td>1</td>
-                                                <td>及时完成</td>
-                                            </tr>
-                                            <tr>
-                                                <td>初加工</td>
-                                                <td>李四</td>
-                                                <td>2017-5-6 10:10:00</td>
-                                                <td>2017-5-6 22:10:00</td>
-                                                <td>10</td>
-                                                <td>1</td>
-                                                <td>及时完成</td>
-                                            </tr>
-                                            <tr>
-                                                <td>初加工</td>
-                                                <td>李四</td>
-                                                <td>2017-5-6 10:10:00</td>
-                                                <td>2017-5-6 22:10:00</td>
-                                                <td>10</td>
-                                                <td>1</td>
-                                                <td>及时完成</td>
-                                            </tr>
+                                            <c:forEach items="${requestScope.cps}" var="ls">
+                                                <tr>
+                                                    <td>${ls.working.workingName}</td>
+                                                    <td>${ls.user.userName}</td>
+                                                    <td><fmt:formatDate value="${ls.startDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
+                                                    <td><fmt:formatDate value="${ls.endDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></td>
+                                                    <td>${ls.peopleNumber}</td>
+                                                    <td>${ls.productionLine.productionLineNo}</td>
+                                                    <td>${ls.remarks}</td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="pull-right">
-                                        <button type="submit" class="btn btn-primary mr-10">
-                                            Proceed to payment
-                                        </button>
+                                        <%--<button type="submit" class="btn btn-primary mr-10">--%>
+                                            <%--Proceed to payment--%>
+                                        <%--</button>--%>
                                         <button type="button" class="btn btn-success btn-outline btn-icon left-icon" onclick="javascript:window.print();">
-                                            <i class="fa fa-print"></i><span> Print</span>
+                                            <i class="fa fa-print"></i><span>打印</span>
                                         </button>
                                     </div>
                                     <div class="clearfix"></div>
