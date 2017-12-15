@@ -36,4 +36,15 @@ public class WarehouseRegisterItemServiceImpl implements WarehouseRegisterItemSe
         pager.setTotalRecord(warehouseRegisterItemDao.selectCount(warehouseRegisterItem));
         pager.setList(warehouseRegisterItemDao.select(warehouseRegisterItem,(pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
+
+    /**
+     * 根据仓库id查询所有记录
+     * @param warehouseRegisterItem
+     * @param pager
+     */
+    @Override
+    public void getWarehouseRegisterItemByWarehouseId(WarehouseRegisterItem warehouseRegisterItem, Pager<WarehouseRegisterItem> pager) {
+        pager.setTotalRecord(warehouseRegisterItemDao.selectCount(warehouseRegisterItem));
+        pager.setList(warehouseRegisterItemDao.selectWarehouseId(warehouseRegisterItem,(pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
+    }
 }

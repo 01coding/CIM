@@ -18,7 +18,7 @@ public class WarehouseOutRegisterItemController {
     private WarehouseOutRegisterItemService warehouseOutRegisterItemService;
     @RequestMapping("getWarehouseOutRegisterItem.do")
     public String getWarehouseOutRegisterItem(WarehouseOutRegisterItem warehouseOutRegisterItem, Pager<WarehouseOutRegisterItem> pager,HttpServletRequest request) {
-            warehouseOutRegisterItemService.getWarehouseOutRegisterItem(warehouseOutRegisterItem,pager);
+            warehouseOutRegisterItemService.getOutRegisterItemByWarehouseId(warehouseOutRegisterItem,pager);
         request.setAttribute("OutRegisterItemPage",pager);
         return "warehouses/materiel_Out_Register";
     }

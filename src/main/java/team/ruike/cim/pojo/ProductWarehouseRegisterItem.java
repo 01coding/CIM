@@ -31,7 +31,8 @@ public class ProductWarehouseRegisterItem implements Serializable {
     /**
      * 成品入库记录
      */
-    private Integer productWarehouseRegisterId;
+    //private Integer productWarehouseRegisterId;
+    private ProductWarehouseRegister productWarehouseRegister;
     /**
      * 删除状态
      */
@@ -78,11 +79,19 @@ public class ProductWarehouseRegisterItem implements Serializable {
         this.productGoodsShelve = productGoodsShelve;
     }
 
-    public Integer getProductWarehouseRegisterId() {
+    /*public Integer getProductWarehouseRegisterId() {
         return productWarehouseRegisterId;
     }
 
     public void setProductWarehouseRegisterId(Integer productWarehouseRegisterId) {
         this.productWarehouseRegisterId = productWarehouseRegisterId;
+    }*/
+
+    public ProductWarehouseRegister getProductWarehouseRegister() {
+        return productWarehouseRegister;
+    }
+
+    public void setProductWarehouseRegister(ProductWarehouseRegister productWarehouseRegister) {
+        this.productWarehouseRegister = productWarehouseRegister;
     }
 }
