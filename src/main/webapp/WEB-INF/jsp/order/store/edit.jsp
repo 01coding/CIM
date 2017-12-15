@@ -24,7 +24,7 @@
                         </c:if>
                           >合同用户</option>
                         <option value="2"
-                        <c:if test="${store.storeType==2}">
+                        <c:if test="${store.storeType==0}">
                             selected
                         </c:if>
                         >散户</option>

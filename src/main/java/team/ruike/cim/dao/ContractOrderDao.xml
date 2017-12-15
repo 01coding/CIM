@@ -88,7 +88,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </update>
 
     <select id="select" resultMap="contractOrderMap">
-        SELECT * from (<include refid="sqlh"/>) f limit #{pageNo},#{pageSize}
+        SELECT * from (<include refid="sqlh"/>) f
+        ORDER BY contract_order_id desc
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="contractOrder">
         SELECT COUNT(1) FROM (<include refid="sqlz"/>) f

@@ -1386,46 +1386,23 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
-                                    <div class="row">
+                                    <div class="row lsitwar">
                                         <c:forEach var="was" items="${warehouseRegions}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
+                                                            <input type="hidden" value="${was.warehouse.warehouseId}"
+                                                                   class="warehouseId"/>
                                                             <h6 class="panel-title txt-dark">${was.materielTypeLevelB.materielTypeLevelBName}【区域】
                                                                 <div class="btn-group btn-group-xs "
                                                                      role="group">
                                                                     <button type="button"
-                                                                            class="btn btn-default footable-edit"
-                                                                            data-toggle="modal"
-                                                                            data-target="#exampleModal">
-                                                                        <i class="fooicon fooicon-pencil"
-                                                                           aria-hidden="true" title="编辑区域"></i>
-                                                                    </button>
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-edit"
+                                                                            class="btn btn-default footable-edit wiliao"
                                                                             data-toggle="modal"
                                                                             data-target="#exampleModal1">
                                                                         <i class="fa fa-plus-square"
                                                                            title="添加区域"></i>
-                                                                    </button>
-
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-edit"
-                                                                            data-toggle="modal"
-                                                                            data-target="#exampleModal"
-                                                                            onclick="window.location.href='materiel.html'">
-                                                                        <i class="fa ti-search"
-                                                                           style="color: #2879ff;"
-                                                                           title="查看物料"></i>
-                                                                    </button>
-
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-delete"
-                                                                            data-toggle="modal"
-                                                                            data-target=".bs-example-modal-lg">
-                                                                        <i class="fooicon fooicon-trash"
-                                                                           aria-hidden="true" title="删除区域"></i>
                                                                     </button>
                                                                 </div>
                                                             </h6>
@@ -1440,11 +1417,23 @@
                                                                 <tr>
                                                                     <th>货架编号</th>
                                                                     <th>数量</th>
-                                                                    <th>物料</th>
+                                                                    <th>物料
+                                                                        <div class="btn-group btn-group-xs "
+                                                                             role="group" style="background-color: white">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default footable-edit wiliao"
+                                                                                    data-toggle="modal"
+                                                                                    data-target="#exampleModal4"
+                                                                                    style="background-color: white;border: 0px" onclick="nucoll()">
+                                                                                <i class="fa fa-plus-square"
+                                                                                   title="添加区域"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </th>
                                                                 </tr>
                                                                 </thead>
                                                                 <c:forEach items="${goodsShelves}" var="gos">
-                                                                <tbody>
+                                                                    <tbody>
                                                                     <c:if test="${was.warehouseRegionId==gos.warehouseRegion.warehouseRegionId}">
                                                                         <tr>
                                                                             <td>${gos.goodsShelveNo} </td>
@@ -1452,51 +1441,27 @@
                                                                             <td>${gos.materiel.materielName}</td>
                                                                         </tr>
                                                                     </c:if>
-                                                                </tbody>
+                                                                    </tbody>
                                                                 </c:forEach>
                                                             </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </c:forEach>
                                         <c:forEach var="waa" items="${productWarehouseRegions}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                                <input type="text" value="" class="houseid"/>
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
                                                             <h6 class="panel-title txt-dark">${waa.menuType.menuTypeName}【区域】
                                                                 <div class="btn-group btn-group-xs " role="group">
                                                                     <button type="button"
-                                                                            class="btn btn-default footable-edit"
+                                                                            class="btn btn-default footable-edit wiliao"
                                                                             data-toggle="modal"
-                                                                            data-target="#exampleModal">
-                                                                        <i class="fooicon fooicon-pencil"
-                                                                           aria-hidden="true" title="编辑区域"></i>
-                                                                    </button>
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-edit"
-                                                                            data-toggle="modal"
-                                                                            data-target="#exampleModal1">
+                                                                            data-target="#exampleModal1" onclick="nucloo()">
                                                                         <i class="fa fa-plus-square" title="添加区域"></i>
-                                                                    </button>
-
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-edit"
-                                                                            data-toggle="modal"
-                                                                            data-target="#exampleModal"
-                                                                            onclick="window.location.href='materiel.html'">
-                                                                        <i class="fa ti-search" style="color: #2879ff;"
-                                                                           title="查看物料"></i>
-                                                                    </button>
-
-                                                                    <button type="button"
-                                                                            class="btn btn-default footable-delete"
-                                                                            data-toggle="modal"
-                                                                            data-target=".bs-example-modal-lg">
-                                                                        <i class="fooicon fooicon-trash"
-                                                                           aria-hidden="true" title="删除区域"></i>
                                                                     </button>
                                                                 </div>
                                                             </h6>
@@ -1512,18 +1477,20 @@
                                                                     <th>货架编号</th>
                                                                     <th>数量</th>
                                                                     <th>菜品</th>
+                                                                    <th>操作</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <c:forEach var="pgs" items="${productGoodsShelves}">
-                                                                <tbody>
-                                                                <c:if test="${pgs.productWarehouseRegion.productWarehouseRegionId==waa.productWarehouseRegionId}">
-                                                                <tr>
-                                                                    <td>${pgs.productGoodsShelveNo}</td>
-                                                                    <td>${pgs.menuNumber}</td>
-                                                                    <td>${pgs.menu.menuName}</td>
-                                                                </tr>
-                                                                </c:if>
-                                                                </tbody>
+                                                                    <tbody>
+                                                                    <c:if test="${pgs.productWarehouseRegion.productWarehouseRegionId==waa.productWarehouseRegionId}">
+                                                                        <tr>
+                                                                            <td>${pgs.productGoodsShelveNo}</td>
+                                                                            <td>${pgs.menuNumber}</td>
+                                                                            <td>${pgs.menu.menuName}</td>
+                                                                            <td></td>
+                                                                        </tr>
+                                                                    </c:if>
+                                                                    </tbody>
                                                                 </c:forEach>
                                                             </table>
                                                         </div>
@@ -1536,10 +1503,6 @@
                                         <div class="guide-wrap">
                                             <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                 <i class="icon-rocket"></i>
-                                            </button>
-                                            <button class="btn btn-info btn-icon-anim btn-circle"
-                                                    onclick="window.location.href='add-products.html'">
-                                                <i class="fa ti-plus"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -1572,104 +1535,8 @@
         <!-- /Row -->
     </div>
 
-
     <div class="row">
-        <!--提示框-->
         <div class="col-md-6">
-            <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                 aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                     data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                     data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                    <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                    </div>
-                    <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                        <span class="sa-body pulseWarningIns"></span>
-                        <span class="sa-dot pulseWarningIns"></span>
-                    </div>
-                    <div class="sa-icon sa-info" style="display: none;"></div>
-                    <div class="sa-icon sa-success" style="display: none;">
-                        <span class="sa-line sa-tip"></span>
-                        <span class="sa-line sa-long"></span>
-
-                        <div class="sa-placeholder"></div>
-                        <div class="sa-fix"></div>
-                    </div>
-                    <div class="sa-icon sa-custom" style="display: none;"></div>
-                    <h2>你确定？</h2>
-                    <p style="display: block;">你将无法恢复这个的数据！</p>
-                    <fieldset>
-                        <input type="text" tabindex="3" placeholder="">
-                        <div class="sa-input-error"></div>
-                    </fieldset>
-                    <div class="sa-error-container">
-                        <div class="icon">!</div>
-                        <p>Not valid!</p>
-                    </div>
-                    <div class="sa-button-container">
-                        <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                data-dismiss="modal" aria-label="Close">不，取消！
-                        </button>
-                        <div class="sa-confirm-button-container">
-                            <button class="confirm" tabindex="1"
-                                    style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                是的，删除它！
-                            </button>
-                            <div class="la-ball-fall">
-                                <div></div>
-                                <div></div>
-                                <div></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.modal-dialog -->
-            </div>
-        </div>
-        <!--输入框-->
-        <div class="col-md-6">
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h5 class="modal-title" id="exampleModalLabel1">修改区域</h5>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control select2 select2-hidden-accessible"
-                                            tabindex="-1" aria-hidden="true">
-                                        <option><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">可存放物料</font></font>
-                                        </option>
-                                        <option value="AK"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                        </option>
-                                        <option value="HI"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">夏威夷</font></font>
-                                        </option>
-                                    </select></div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="区域名称">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel1">
                 <div class="modal-dialog" role="document">
@@ -1677,24 +1544,91 @@
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                     aria-hidden="true">&times;</span></button>
-                            <h5 class="modal-title" id="exampleModalLabel11">添加区域</h5>
+                            <h5 class="modal-title" id="exampleModalLabel11">添加物料区域</h5>
                         </div>
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <select class="form-control select2 select2-hidden-accessible"
-                                            tabindex="-1" aria-hidden="true">
-                                        <option><font style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">可存放物料</font></font>
-                                        </option>
-                                        <option value="AK"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                        </option>
-                                        <option value="HI"><font
-                                                style="vertical-align: inherit;"><font
-                                                style="vertical-align: inherit;">夏威夷</font></font>
-                                        </option>
+                                    <select class="form-control select2 select2-hidden-accessible MB2"
+                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放物料"
+                                            id="materielTypeLevelB">
+                                    </select></div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="备注" id="remarks">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div style="float: right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
+                                        style="float: right">取消
+                                </button>
+                                <button type="button" class="btn btn-primary addWarehouseRegion" data-dismiss="modal"
+                                        style="float:right;margin-right: 20px;">保存
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title" id="exampleModalLabel14">添加物料货架</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control select2 select2-hidden-accessible MB2"
+                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放物料" id="addBName">
+                                    </select></div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="区域名称" id="">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div style="float: right">
+                                <div style="float: right">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
+                                            style="float: right">取消
+                                    </button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                            style="float:right;margin-right: 20px;">保存
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title" id="exampleModalLabel12">添加成品区域</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control select2 select2-hidden-accessible MB2"
+                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放菜品">
+
                                     </select></div>
                                 <div class="form-group">
                                     <input type="text" class="form-control" placeholder="区域名称">
@@ -1702,26 +1636,60 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Send message</button>
+                            <div style="float: right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
+                                        style="float: right">取消
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                        style="float:right;margin-right: 20px;">保存
+                                </button>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
+                 aria-labelledby="exampleModalLabel1">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                    aria-hidden="true">&times;</span></button>
+                            <h5 class="modal-title" id="exampleModalLabel13">添加成品货架</h5>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <select class="form-control select2 select2-hidden-accessible MB2"
+                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放菜品">
 
+                                    </select></div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" placeholder="区域名称">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <div style="float: right">
+                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
+                                        style="float: right">取消
+                                </button>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                        style="float:right;margin-right: 20px;">保存
+                                </button>
 
-    <!-- Footer -->
-    <footer class="footer container-fluid pl-30 pr-30">
-        <div class="row">
-            <div class="col-sm-12">
-                <p>2017 &copy; Hound. Pampered by Hencework</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </footer>
-    <!-- /Footer -->
-
+    </div>
 </div>
 <!-- /Main Content -->
 
@@ -1767,8 +1735,91 @@
 <script src="../../../dist/js/sweetalert-data.js"></script>
 
 <script>
-    function sc() {
-        window.location.href = "javascript:window.scrollTo(0,0)";
+    $(function () {
+        $(".wiliao").click(function () {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/getMaterielTypeLevelB.cl",
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    var daa = $(data);
+                    $(".MB2").html("");
+                    $.each(daa, function (i, imt) {
+                        $(".MB2").append("<option value='" + imt.materielTypeLevelBId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.materielTypeLevelBName + "</font></font> </option>");
+                    })
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        })
+        $(".addWarehouseRegion").click(function () {
+            var wul = $("#materielTypeLevelB").find("option:selected");
+            var id = $(wul).val();
+            var te = $(wul).text();
+            var wid = $(".warehouseId").val()
+            var remarks = $("#remarks").val();
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/addWarehouseRegion.do?materielTypeLevelB.materielTypeLevelBId=" + id + "&remarks=" + remarks + "&warehouse.warehouseId=" + wid,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data != "") {
+                        alert("添加成功");
+                        nucoll();
+                        $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
+                            "                                                <div class=\"panel panel-default card-view\">\n" +
+                            "                                                    <div class=\"panel-heading\">\n" +
+                            "                                                        <div class=\"pull-left\">\n" +
+                            "                                                            <input type=\"hidden\" value=\"+" + wid + "+\" class=\"warehouseId\"/>\n" +
+                            "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
+                            "                                                                <div class=\"btn-group btn-group-xs \"\n" +
+                            "                                                                     role=\"group\">\n" +
+                            "                                                                    <button type=\"button\"\n" +
+                            "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
+                            "                                                                            data-toggle=\"modal\"\n" +
+                            "                                                                            data-target=\"#exampleModal1\">\n" +
+                            "                                                                        <i class=\"fa fa-plus-square\"\n" +
+                            "                                                                           title=\"添加区域\"></i>\n" +
+                            "                                                                    </button>\n" +
+                            "                                                                </div>\n" +
+                            "                                                            </h6>\n" +
+                            "                                                        </div>\n" +
+                            "\n" +
+                            "                                                        <div class=\"clearfix\"></div>\n" +
+                            "                                                    </div>\n" +
+                            "                                                    <div class=\"panel-wrapper collapse in\">\n" +
+                            "                                                        <div class=\"panel-body row pa-0\">\n" +
+                            "                                                            <table class=\"table table-hover mb-0\">\n" +
+                            "                                                                <thead>\n" +
+                            "                                                                <tr>\n" +
+                            "                                                                    <th>货架编号</th>\n" +
+                            "                                                                    <th>数量</th>\n" +
+                            "                                                                    <th>物料</th>\n" +
+                            "                                                                    <th>操作</th>\n" +
+                            "                                                                </tr>\n" +
+                            "                                                                </thead>\n" +
+                            "                                                               \n" +
+                            "                                                                <tbody>\n" +
+                            "                                                                    \n" + "\n" +
+                            "                                                                </tbody>\n" +
+                            "                                                                \n" +
+                            "                                                            </table>\n" +
+                            "                                                        </div>\n" +
+                            "                                                    </div>\n" +
+                            "                                                </div>\n" +
+                            "                                            </div>");
+                    }
+                }, error: function () {
+                    nucoll();
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        })
+    })
+    function nucoll() {
+        $("#remarks").val("");
     }
 </script>
 </body>

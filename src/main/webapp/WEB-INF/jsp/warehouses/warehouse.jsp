@@ -1373,7 +1373,7 @@
 
             </div>
             <!-- Product Row One -->
-            <div class="row">
+            <div class="row lsitwar">
                 <h5 class="txt-dark">物料仓库</h5>
                 <c:forEach var="warh" items="${lsitwar}">
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
@@ -1389,12 +1389,8 @@
                                                             class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
                                                     <a href="" class="font-18 txt-grey mr-10 pull-left"
                                                        data-toggle="modal"
-                                                       data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                        title="编辑"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
                                                        data-target="#editor-modal3"><i
-                                                            class="fa fa-plus-square" title="添加仓库"></i></a>
+                                                            class="fa fa-plus-square addWareouse" title="添加仓库"></i></a>
                                                 </div>
                                                 <a href="/getwarehouseregion.do?warehouse.warehouseId=${warh.warehouseId}">
                                                     <img
@@ -1419,7 +1415,7 @@
                     </div>
                 </c:forEach>
             </div>
-            <div class="row">
+            <div class="row addprs">
                 <h5 class="txt-dark">成品仓库</h5>
                 <c:forEach var="prs" items="${productWarehouses}">
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
@@ -1433,14 +1429,10 @@
                                                     <a href="getProductWarehouseRegister.do"
                                                        class="font-18 txt-grey mr-10 pull-left"><i
                                                             class="zmdi zmdi-calendar-note mr-10" title="查看记录"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
-                                                       data-toggle="modal"
-                                                       data-target="#editor-modal2"> <i class="zmdi zmdi-edit"
-                                                                                        title="编辑"></i></a>
-                                                    <a href="" class="font-18 txt-grey mr-10 pull-left"
+                                                    <a href="" class="font-18 txt-grey mr-10 pull-left addWareouse"
                                                        data-toggle="modal"
                                                        data-target="#editor-modal4"><i
-                                                            class="fa fa-plus-square" title="添加仓库"></i></a>
+                                                            class="fa fa-plus-square " title="添加仓库"></i></a>
                                                 </div>
                                                 <a href="/getProductwarehouseregion.do?productWarehouse.productWarehouseId=${prs.productWarehouseId}">
                                                     <img src="../../../images/menuimg/timg.jpg"
@@ -1464,11 +1456,9 @@
                     </div>
                 </c:forEach>
             </div>
-
             <!-- /Product Row Four -->
         </div>
         <div class="modal fade" id="editor-modal2" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <!--添加货架 -->
             <div class="modal-dialog" role="document">
                 <form class="modal-content form-horizontal" id="editor2">
                     <div class="modal-header">
@@ -1481,40 +1471,23 @@
                         <div class="form-group col-sm-10">
                             <input type="text" class="form-control" placeholder="仓库名称">
                         </div>
-                        <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
+                        <div class="form-group col-sm-10 select">
+                            <select class="form-control select2 select2-hidden-accessible selectUser"
+                                    tabindex="-1" aria-hidden="true" placeholder="选择管理员">
                             </select></div>
                         <div class="form-group col-sm-10">
                             <input type="text" class="form-control" placeholder="备注">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <div style="float: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cloo()"
+                                    style="float: right">取消
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    style="float:right;margin-right: 20px;">保存
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1524,49 +1497,36 @@
             <div class="modal-dialog" role="document">
                 <form class="modal-content form-horizontal" id="editor3">
                     <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                onclick="cloo()"><span
                                 aria-hidden="true">×</span></button>
                         <h5 class="modal-title" id="editor-title3">添加物料仓库</h5>
                     </div>
                     <div class="modal-body">
                         <input type="number" id="id3" name="id" class="hidden"/>
                         <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
+                            <input type="text" class="form-control" placeholder="仓库名称"
+                                   id="warehouseName">
                         </div>
                         <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
+                            <select class="form-control select2 select2-hidden-accessible selectUser"
+                                    tabindex="-1" aria-hidden="true" id="userid" placeholder="选择管理员">
+
                             </select></div>
                         <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
+                            <input type="text" class="form-control" placeholder="备注" name="remarks" id="remarks">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <div style="float: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cloo()"
+                                    style="float: right">取消
+                            </button>
+                            <button type="button" class="btn btn-primary addwarehouse" data-dismiss="modal"
+                                    style="float:right;margin-right: 20px;">保存
+                            </button>
+
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1583,42 +1543,26 @@
                     <div class="modal-body">
                         <input type="number" id="id4" name="id" class="hidden"/>
                         <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="仓库名称">
+                            <input type="text" class="form-control" placeholder="仓库名称" name="productWarehouseName"
+                                   id="productWarehouseName">
                         </div>
                         <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
+                            <select class="form-control select2 select2-hidden-accessible selectUser"
+                                    tabindex="-1" aria-hidden="true" name="pname" id="Pname" placeholder="选择管理员">
                             </select></div>
                         <div class="form-group col-sm-10">
-                            <input type="text" class="form-control" placeholder="备注">
+                            <input type="text" class="form-control" placeholder="备注" name="remarks" id="Premarks">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <div style="float: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cloo()"
+                                    style="float: right">取消
+                            </button>
+                            <button type="button" class="btn btn-primary addPWareHouse" data-dismiss="modal"
+                                    style="float:right;margin-right: 20px;">保存
+                            </button>
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1630,7 +1574,7 @@
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                 aria-hidden="true">×</span></button>
-                        <h5 class="modal-title" id="editor-title5">添加成品仓库</h5>
+                        <h5 class="modal-title" id="editor-title5">修改成品仓库</h5>
                     </div>
                     <div class="modal-body">
                         <input type="number" id="id5" name="id" class="hidden"/>
@@ -1638,39 +1582,23 @@
                             <input type="text" class="form-control" placeholder="仓库名称">
                         </div>
                         <div class="form-group col-sm-10">
-                            <select class="form-control select2 select2-hidden-accessible"
-                                    tabindex="-1" aria-hidden="true">
-                                <option><font style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">管理员</font></font>
-                                </option>
-                                <option value="AK"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                </option>
-                                <option value="HI"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">夏威夷</font></font>
-                                </option>
-                                <option value="CA"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">加州</font></font>
-                                </option>
-                                <option value="NV"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">内华达</font></font>
-                                </option>
-                                <option value="OR"><font
-                                        style="vertical-align: inherit;"><font
-                                        style="vertical-align: inherit;">俄勒冈</font></font>
-                                </option>
+                            <select class="form-control select2 select2-hidden-accessible selectUser"
+                                    tabindex="-1" aria-hidden="true" placeholder="选择管理员">
                             </select></div>
                         <div class="form-group col-sm-10">
                             <input type="text" class="form-control" placeholder="备注">
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <div style="float: right">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" onclick="cloo()"
+                                    style="float: right">取消
+                            </button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                    style="float:right;margin-right: 20px;">保存
+                            </button>
+
+                        </div>
                     </div>
                 </form>
             </div>
@@ -1718,7 +1646,153 @@
 <script src="../../../dist/js/treeview-data.js"></script>
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
+<script>
+    $(function () {
+        $(".addWareouse").click(function () {
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/warehouseUser.cl",
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    var daa = $(data);
+                    $(".selectUser").html("");
+                    $.each(daa, function (i, imt) {
+                        $(".selectUser").append("<option value='" + imt.userId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.userName + "</font></font> </option>");
+                    })
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        });
+        $(".addwarehouse").click(function () {
+            var name = $("#warehouseName").val();
+            var remarks = $("#remarks").val();
+            var userId = $("#userid").find("option:selected");
+            var id = $(userId).val();
+            var uname = $(userId).text();
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/addwarehouse.do?warehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data != "") {
+                        cloo();
+                        alert("添加成功");
+                        $(".lsitwar").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" + "<div class=\"panel panel-default card-view pa-0\">\n" +
+                            "                            <div class=\"panel-wrapper collapse in\">\n" +
+                            "                                <div class=\"panel-body pa-0\">\n" +
+                            "                                    <article class=\"col-item\">\n" +
+                            "                                        <form>\n" +
+                            "                                            <div class=\"photo\">\n" +
+                            "                                                <div class=\"options\">\n" +
+                            "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
+                            "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
+                            "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
+                            "                                                 \n" +
+                            "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
+                            "                                                       data-toggle=\"modal\"\n" +
+                            "                                                       data-target=\"#editor-modal4\"><i\n" +
+                            "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
+                            "                                                </div>\n" +
+                            "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=$" + data + "\">\n" +
+                            "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
+                            "                                                         class=\"img-responsive\"\n" +
+                            "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
+                            "                                                <div class=\"info\">\n" +
+                            "                                                    <h6>\n" +
+                            "                                                            " + name + "\n" +
+                            "                                                    </h6>\n" +
+                            "                                                    <div class=\"product-rating inline-block\">\n" +
+                            "                                                            " + remarks + "\n" +
+                            "                                                    </div>\n" +
+                            "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
+                            "                                                </div>\n" +
+                            "                                            </div>\n" +
+                            "                                        </form>\n" +
+                            "                                    </article>\n" +
+                            "                                </div>\n" +
+                            "                            </div>\n" +
+                            "                        </div>\n" +
+                            "                    </div>");
+                    }
 
+                }, error: function () {
+                    cloo();
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        });
+
+        $(".addPWareHouse").click(function () {
+            var name = $("#productWarehouseName").val();
+            var remarks = $("#Premarks").val();
+            var userId = $("#Pname").find("option:selected");
+            var id = $(userId).val();
+            var uname = $(userId).text();
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/addPWareHouse.do?productWarehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    if (data != "") {
+                        alert("添加成功");
+                        cloo();
+                        $(".addprs").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" +
+                            "                        <div class=\"panel panel-default card-view pa-0\">\n" +
+                            "                            <div class=\"panel-wrapper collapse in\">\n" +
+                            "                                <div class=\"panel-body pa-0\">\n" +
+                            "                                    <article class=\"col-item\">\n" +
+                            "                                        <form>\n" +
+                            "                                            <div class=\"photo\">\n" +
+                            "                                                <div class=\"options\">\n" +
+                            "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
+                            "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
+                            "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
+                            "                                                  \n" +
+                            "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
+                            "                                                       data-toggle=\"modal\"\n" +
+                            "                                                       data-target=\"#editor-modal4\"><i\n" +
+                            "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
+                            "                                                </div>\n" +
+                            "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=" + data + "\">\n" +
+                            "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
+                            "                                                         class=\"img-responsive\"\n" +
+                            "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
+                            "                                                <div class=\"info\">\n" +
+                            "                                                    <h6>\n" +
+                            "                                                            " + name + "\n" +
+                            "                                                    </h6>\n" +
+                            "                                                    <div class=\"product-rating inline-block\">\n" +
+                            "                                                           " + remarks + "\n" +
+                            "                                                    </div>\n" +
+                            "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
+                            "                                                </div>\n" +
+                            "                                            </div>\n" +
+                            "                                        </form>\n" +
+                            "                                    </article>\n" +
+                            "                                </div>\n" +
+                            "                            </div>\n" +
+                            "                        </div>\n" +
+                            "                    </div>");
+                    }
+                }, error: function () {
+                    cloo();
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        });
+    });
+
+    function cloo() {
+        var name = $("#productWarehouseName").val("");
+        var remarks = $("#Premarks").val("");
+        $("#warehouseName").val("");
+        $("#remarks").val("");
+    }
+</script>
 </body>
 
 </html>

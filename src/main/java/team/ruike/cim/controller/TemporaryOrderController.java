@@ -16,7 +16,7 @@ import team.ruike.cim.service.TemporaryOrderService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -42,31 +42,19 @@ public class TemporaryOrderController {
     @Resource
     private TemporaryOrderStateDao temporaryOrderStateDao;//暂无业务类
 
-    @InitBinder("pager")
-    public void initBinder1(WebDataBinder binder) {
-        binder.setFieldDefaultPrefix("pager.");
-    }
-
-    @InitBinder("temporaryOrder")
-    public void initBinder2(WebDataBinder binder) {
-        binder.setFieldDefaultPrefix("temporaryOrder.");
-    }
 
     @RequestMapping("index.do")
-    public String index(Model model) {
+    public String index(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager,Model model) {
         List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
+        temporaryOrderService.queryTemporaryOrder(temporaryOrder, pager);
+        model.addAttribute("pager", pager);
+        model.addAttribute("temporaryOrder",temporaryOrder);
         model.addAttribute("temporaryOrderStateList", temporaryOrderStateList);
         return "order/temporary/index";
     }
 
-    @RequestMapping("list.do")
-    public String list(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager, Model model) {
-        temporaryOrderService.queryTemporaryOrder(temporaryOrder, pager);
-        model.addAttribute("pager", pager);
-        return "order/temporary/list";
-    }
 
-    @RequestMapping("toAdd.do")
+    @RequestMapping("toAdd.cl")
     public String toAdd(Model model) {
         List<Store> storeList = storeService.queryAllStore();
         List<MenuType> menuTypeList = menuTypeDao.selectAll();
@@ -77,7 +65,9 @@ public class TemporaryOrderController {
 
     @RequestMapping("add.do")
     @ResponseBody
-    public String add(TemporaryOrder temporaryOrder) {
+    public String add(TemporaryOrder temporaryOrder,HttpServletRequest request) {
+        User  user=(User) request.getSession().getAttribute("u");
+        temporaryOrder.setUser(user);
         temporaryOrderService.addTemporaryOrder(temporaryOrder, temporaryOrder.getTemporaryOrderTerms());
         return "1";
     }
@@ -90,13 +80,15 @@ public class TemporaryOrderController {
         return "order/temporary/view";
     }
 
-    @RequestMapping(value = "queryMenu.do", produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "queryMenu.cl", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String queryMenu(@RequestParam(value = "menuTypeId") Integer menuTypeId, HttpServletResponse response) {
-        response.setContentType("text/xml;charset=utf-8");
+    public String queryMenu(@RequestParam(value = "menuTypeId") Integer menuTypeId) {
         List<Menu> menuList = menuService.selectByMenuTypeId(menuTypeId);
-        return menuService.muneSelectionBox(menuList);
+        StringBuilder option = new StringBuilder();
+        for (Menu menu : menuList) {
+            option.append("<option value='" + menu.getMenuId() + "'>" + menu.getMenuName() + "</option>");
+        }
+        return option.toString();
     }
-
 
 }

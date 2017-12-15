@@ -42,17 +42,18 @@
             AND remarks=#{remarks}
         </if>
     </sql>
-    <insert id="add" parameterType="productWarehouse">
+    <insert id="add" parameterType="productWarehouse" useGeneratedKeys="true" keyProperty="productWarehouseId">
         INSERT INTO product_warehouse VALUES (DEFAULT,
                                               #{productWarehouseName},
                                               #{remarks},
-                                              0);
+                                              0, #{user.userId});
     </insert>
     <update id="update" parameterType="productWarehouse">
         UPDATE product_warehouse
         SET product_warehouse_name = #{productWarehouseName},
             remarks                = #{remarks},
-            `status`               = #{status}
+            `status`               = #{status},
+            user_id                = #{user.userid}
         WHERE product_warehouse_id = #{productWarehouseId}
     </update>
     <select id="select" resultMap="productWarehouseMap">

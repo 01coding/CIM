@@ -5,7 +5,7 @@
 
         function toEdit(id) {
             var fd = {storeId:id};
-            appModule.open('/store/toEdit.do',fd,'exampleModalUpdate');
+            appModule.open('/store/toEdit.cl',fd,'exampleModalUpdate');
         };
 
         function toView(id) {
@@ -28,19 +28,19 @@
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("nextid")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
         function previousPage(ts) {
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("previouspage")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
         function currentPage(ts) {
             var addStore = $("#conditionStore").serializeArray();
             var fd = {name: "pager.currentPage", value: $(ts).data("currentpage")};
             addStore.push(fd)
-            appModule.load('/store/list.do',addStore,"exampleTable");
+            appModule.load('/store/list.cl',addStore,"exampleTable");
         }
 
         return{
@@ -65,19 +65,9 @@
         <th>地址</th>
         <th>电话</th>
         <th>门店编号</th>
-        <th>ACTIONS</th>
+        <th>操作</th>
     </tr>
     </thead>
-    <tfoot>
-    <tr>
-        <th>用户/门店名称</th>
-        <th>门店/用户类别</th>
-        <th>地址</th>
-        <th>电话</th>
-        <th>门店编号</th>
-        <th>ACTIONS</th>
-    </tr>
-    </tfoot>
     <tbody>
 
     <c:forEach var="store" items="${pager.list}">
@@ -118,10 +108,11 @@
 
 
 <div style="float: right">
+    <c:if test="${pager.totalRecord>8}" >
 <ul class="pagination pagination-split">
 
     <li
-            <c:if test="${pager.currentPage==pager.startIndex}" > class="disabled"</c:if>
+            <c:if test="${pager.currentPage==1}" > class="disabled"</c:if>
     ><a data-previouspage="${pager.previousPage}" onclick="storeList.previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
 
     <c:forEach items="${pager.pageBar}" var="pb">
@@ -130,8 +121,9 @@
     </c:forEach>
 
     <li
-            <c:if test="${pager.currentPage==pager.endIndex}" > class="disabled"</c:if>
+            <c:if test="${pager.currentPage==pager.totalPage}" > class="disabled"</c:if>
     ><a data-nextid="${pager.nextPage}" onclick="storeList.nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
 
 </ul>
+    </c:if>
 </div>

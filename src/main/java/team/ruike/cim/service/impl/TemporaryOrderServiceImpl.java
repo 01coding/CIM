@@ -55,10 +55,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
             temporaryOrder.setTemporaryOrderState(new TemporaryOrderState() {{
                 setTemporaryOrderStateId(1);
             }});
-            //用户表id(确认人) 未确认
-            temporaryOrder.setUser(new User() {{
-                setUserId(1);
-            }});
+
 
 
             temporaryOrderDao.add(temporaryOrder);

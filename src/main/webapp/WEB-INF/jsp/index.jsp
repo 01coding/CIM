@@ -1242,7 +1242,7 @@
                         </div>
                         <div class="panel-heading">
                             <div class="pull-left">
-                                <h6 class="panel-title txt-dark">social campaigns</h6>
+                                <h6 class="panel-title txt-dark">今日生产任务</h6>
                             </div>
                             <div class="pull-right">
                                 <a href="#" class="pull-left inline-block refresh mr-15">
@@ -1273,79 +1273,27 @@
                                         <table class="table table-hover mb-0">
                                             <thead>
                                             <tr>
-                                                <th>Campaign</th>
-                                                <th>Client</th>
-                                                <th>Changes</th>
-                                                <th>Budget</th>
-                                                <th>Status</th>
+                                                <th>生产批次</th>
+                                                <th>生产类型</th>
+                                                <th>产品</th>
+                                                <th>数量</th>
+                                                <th>详情</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Facebook</span></td>
-                                                <td>Beavis</td>
-                                                <td><span class="txt-success"><i
-                                                        class="zmdi zmdi-caret-up mr-10 font-20"></i><span>2.43%</span></span>
-                                                </td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$1478</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-primary">Active</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Youtube</span></td>
-                                                <td>Felix</td>
-                                                <td><span class="txt-success"><i
-                                                        class="zmdi zmdi-caret-up mr-10 font-20"></i><span>1.43%</span></span>
-                                                </td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$951</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-danger">Closed</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Twitter</span></td>
-                                                <td>Cannibus</td>
-                                                <td><span class="txt-danger"><i
-                                                        class="zmdi zmdi-caret-down mr-10 font-20"></i><span>-8.43%</span></span>
-                                                </td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$632</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-default">Hold</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Spotify</span></td>
-                                                <td>Neosoft</td>
-                                                <td><span class="txt-success"><i
-                                                        class="zmdi zmdi-caret-up mr-10 font-20"></i><span>7.43%</span></span>
-                                                </td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$325</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-default">Hold</span>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td><span class="txt-dark weight-500">Instagram</span></td>
-                                                <td>Hencework</td>
-                                                <td><span class="txt-success"><i
-                                                        class="zmdi zmdi-caret-up mr-10 font-20"></i><span>9.43%</span></span>
-                                                </td>
-                                                <td>
-                                                    <span class="txt-dark weight-500">$258</span>
-                                                </td>
-                                                <td>
-                                                    <span class="label label-primary">Active</span>
-                                                </td>
-                                            </tr>
+                                            <c:forEach items="${requestScope.proLs}" var="ls">
+                                                <c:forEach items="${ls.contractProductionPlanItems}" var="prolss">
+                                                    <tr>
+                                                        <td><span class="txt-dark weight-500">${ls.productionBatch}</span></td>
+                                                        <td>合同订单</td>
+                                                        <td>
+                                                            <span class="txt-dark weight-500">${prolss.menu.menuName}</span>
+                                                        </td>
+                                                        <td>${prolss.menuNumber}</td>
+                                                        <td><a href="#">查看详情</a></td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>

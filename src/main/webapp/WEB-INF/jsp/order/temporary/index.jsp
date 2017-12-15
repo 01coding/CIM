@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,7 +33,6 @@
     <%--date--%>
     <!-- Bootstrap Colorpicker CSS -->
     <link href="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
-
     <!-- Bootstrap Datetimepicker CSS -->
     <link href="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
 
@@ -1380,20 +1380,16 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
 
-
-
-
                                         <div style="float: right;" id="storePa">
-                                            <form class="form-inline" id="conditionTemporary">
+                                            <form class="form-inline" id="orderForm" method="get" action="/temporary/order/index.do">
                                                 <div class="form-group">
-
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">门店/客户名称:</label>
-                                                        <input type="text" class="form-control" placeholder="名称" name="temporaryOrder.store.storeName">
+                                                        <input type="text" class="form-control" placeholder="名称" name="store.storeName" value="${temporaryOrder.store.storeName}">
                                                         <div class="input-group-btn" style=" position: relative; top: 16px;">
-                                                            <button type="button" class="btn btn-primary"
-                                                                    style="height:42px;" onclick="temporaryModel.list()">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;">
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
@@ -1404,7 +1400,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10 text-left">下单时间:</label>
                                                                 <div class="input-group date" id="datetimepicker1" style="width: 250px;">
-                                                                    <input type="text" class="form-control" name="temporaryOrder.temporaryOrderStartDate">
+                                                                    <input type="text" class="form-control" name="temporaryOrderStartDate" value="<fmt:formatDate value="${temporaryOrder.temporaryOrderStartDate}" pattern="yyyy-MM-dd"/>" />
                                                                     <span class="input-group-addon">
 																	<span class="fa fa-calendar"></span>
 																</span>
@@ -1416,10 +1412,14 @@
 
                                                     <div class="input-group" style="width: 180px;float: right;position: relative;right: 40px;">
                                                         <label class="control-label mb-10">订单状态:</label>
-                                                        <select class="form-control" name="temporaryOrder.temporaryOrderState.temporaryOrderStateId">
-                                                            <option selected value="0">请选择</option>
+                                                        <select class="form-control" name="temporaryOrderState.temporaryOrderStateId">
+                                                            <option  value="0">请选择</option>
                                                          <c:forEach var="temporaryOrderState" items="${temporaryOrderStateList}">
-                                                            <option value="${temporaryOrderState.temporaryOrderStateId}">${temporaryOrderState.temporaryOrderStateName}</option>
+                                                            <option value="${temporaryOrderState.temporaryOrderStateId}"
+                                                                    <c:if test="${temporaryOrderState.temporaryOrderStateId==temporaryOrder.temporaryOrderState.temporaryOrderStateId}">
+                                                                        selected
+                                                                    </c:if>
+                                                            >${temporaryOrderState.temporaryOrderStateName}</option>
                                                          </c:forEach>
 
                                                         </select>
@@ -1432,6 +1432,50 @@
 
                                         <div id="temporaryTable">
 
+                                            <table id="example" class="table table-hover display  pb-30">
+                                                <thead>
+                                                <tr>
+                                                    <th>订单编号</th>
+                                                    <th>下单日期</th>
+                                                    <th>门店/客户编号</th>
+                                                    <th>门店/客户名称</th>
+                                                    <th>订单确认人</th>
+                                                    <th>交付时间</th>
+                                                    <th>状态</th>
+                                                    <th>备注</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+
+                                                <c:forEach var="temporaryOrder" items="${pager.list}">
+
+                                                    <tr>
+                                                        <td>${temporaryOrder.temporaryOrderNo}</td>
+                                                        <td><fmt:formatDate value="${temporaryOrder.temporaryOrderStartDate}" pattern="yyyy-MM-dd"/></td>
+                                                        <td>${temporaryOrder.store.storeNo}</td>
+                                                        <td>${temporaryOrder.store.storeName}</td>
+                                                        <td>${temporaryOrder.user.userName}</td>
+                                                        <td><fmt:formatDate value="${temporaryOrder.temporaryOrderEndDate}" pattern="yyyy-MM-dd"/></td>
+                                                        <td>${temporaryOrder.temporaryOrderState.temporaryOrderStateName}</td>
+                                                        <td>${temporaryOrder.temporaryOrderRemarks}</td>
+                                                        <td class="footable-editing" style="display: table-cell;">
+                                                            <div class="btn-group btn-group-xs" role="group">
+
+                                                                <button type="button" class="btn btn-default footable-edit"
+                                                                        data-toggle="modal" data-target="#exampleModalSelect" onclick="toView(${temporaryOrder.temporaryOrderId})">
+                                                                    <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                                </button>
+
+                                                            </div>
+                                                        </td>
+                                                    </tr>
+
+                                                </c:forEach>
+
+                                                </tbody>
+                                            </table>
 
                                         </div>
 
@@ -1441,7 +1485,7 @@
                                                     <i class="icon-rocket"></i>
                                                 </button>
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        onclick="temporaryModel.toAdd()">
+                                                        onclick="toAdd()">
                                                     <i class="fa ti-plus"></i>
                                                 </button>
                                             </div>
@@ -1452,6 +1496,32 @@
                                 </div>
 
 
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                        <c:if test="${pager.totalRecord>8}" >
+                                            <div class="col-md-12">
+                                                <c:if test="${pager.list.size()>0}" >
+                                                    <ul class="pagination pagination-split">
+                                                        <li
+                                                                <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
+                                                        ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
+
+                                                        <c:forEach items="${pager.pageBar}" var="pb">
+                                                            <li<c:if test="${pb==pager.currentPage}"> class="active"</c:if>
+                                                            ><a data-currentpage="${pb}" onclick="currentPage(this)">${pb}</a></li>
+                                                        </c:forEach>
+
+                                                        <li
+                                                                <c:if test="${pager.currentPage>=pager.totalPage}" > class="disabled"</c:if>
+                                                        ><a data-nextid="${pager.nextPage}" onclick="nextPage(this)"><i class="fa fa-angle-right"></i></a></li>
+                                                    </ul>
+                                                </c:if>
+                                            </div>
+                                        </c:if>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -1547,12 +1617,6 @@
 <script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="../../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="../../../../dist/js/form-picker-data.js"></script>
-<!-- Slimscroll JavaScript -->
-<script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
 
 <script src="../../../../vendors/app.js"></script>
@@ -1561,34 +1625,47 @@
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
 
-    var temporaryModel=(function () {
-        $(function () {
-            toList();
-        });
-
-        function toList() {
-            appModule.load('/temporary/order/list.do', null, 'temporaryTable');
-        };
-        function  list() {
-            var data = $("#conditionTemporary").serializeArray();
-            appModule.load('/temporary/order/list.do', data, 'temporaryTable');
-        };
-        function toAdd() {
-            window.location.href="/temporary/order/toAdd.do";
-        };
+    function toAdd() {
+        window.location.href="/temporary/order/toAdd.cl";
+    };
 
 
-        return{
-            toAdd:toAdd,
-            list:list,
-            toList:toList
-        };
-    })();
+    function nextPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("nextid")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/temporary/order/index.do?"+url;
+    }
+    function previousPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("previouspage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/temporary/order/index.do?"+url;
+    }
+    function currentPage(ts) {
+        var addStore = $("#orderForm").serializeArray();
+        var fd = {name: "currentPage", value: $(ts).data("currentpage")};
+        addStore.push(fd)
+        var url = jQuery.param(addStore);
+        window.location.href="/temporary/order/index.do?"+url;
+    }
+
+
+    function toView(id) {
+        var fd =new Array();
+        fd.push({name: "temporaryOrderId", value: id});
+        appModule.open('/temporary/order/toView.do',fd,'exampleModalSelect')
+    };
+
 
 
 
 </script>
+
 <!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 
 </body>
 

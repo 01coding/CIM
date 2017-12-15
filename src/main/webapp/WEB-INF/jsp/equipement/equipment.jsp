@@ -20,16 +20,22 @@
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
+
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+
     <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
+
     <!-- vector map CSS -->
     <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+
     <!-- Footable CSS -->
     <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
@@ -39,6 +45,16 @@
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+
     <style>
         /*** guide ***/
         .guide {
@@ -55,9 +71,7 @@
             box-shadow: 1px 1px 1px #888888;
         }
     </style>
-
 </head>
-
 <body>
 <!--Preloader-->
 <div class="preloader-it">
@@ -1282,7 +1296,6 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
-                                    <!-- Todo-List -->
                                     <ul class="todo-list nicescroll-bar">
                                         <li class="todo-item">
                                             <div class="checkbox checkbox-default">
@@ -1339,7 +1352,6 @@
                                             <hr class="light-grey-hr"/>
                                         </li>
                                     </ul>
-                                    <!-- /Todo-List -->
                                 </div>
                             </div>
                         </div>
@@ -1348,7 +1360,6 @@
             </li>
         </ul>
     </div>
-    <!-- /Right Sidebar Menu -->
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
@@ -1367,7 +1378,6 @@
                 </div>
                 <!-- /Breadcrumb -->
             </div>
-            <!-- /Title -->
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
@@ -1377,21 +1387,41 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
                                         <table id="example" class="table table-hover display  pb-30">
-                                            <div style="width: 300px;float: right">
-                                                <form class="form-inline" action="/equipment.do">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">根据设备名字查询</label>
-                                                        <div class="input-group">
-                                                            <input type="text" name="equipmentName" class="form-control"
-                                                                   placeholder="根据设备名字查询">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
+                                            <div class="row">
+                                                <form class="form-inline" action="/equipment.do" method="post">
+                                                <div>
+                                                        <div class="form-group col-md-4" style="width: 300px;">
+                                                             <label class="control-label mb-10 text-left">安装设备时间:</label>
+                                                             <div class="input-group date" style="width: 260px;height: 40px">
+                                                                 <input id="date" type="date" class="form-control" name="SD">
+                                                             </div>
+                                                        </div>
+
+                                                        <div class="form-group col-md-4 " style="width: 300px;">
+                                                            <div class="input-group">
+                                                                <div><label class="control-label mb-10 text-left">负责人:</label></div>
+                                                                <select  name="user.userId" style="width:260px;height: 40px">
+                                                                    <option selected value="0">请选择</option>
+                                                                    <c:forEach items="${requestScope.users}" var="us">
+                                                                        <option name="user.userId" value="${us.userId}">${us.userName}</option>
+                                                                    </c:forEach>
+                                                                </select>
                                                             </div>
                                                         </div>
-                                                    </div>
+
+                                                        <div class="form-group col-md-4 " style="width: 300px;">
+                                                                <label class="control-label mb-10 text-left">设备名字:</label><div class="input-group">
+                                                                <input type="text" name="equipmentName" class="form-control">
+
+                                                                <div class="input-group-btn">
+                                                                    <button type="submit" class="btn btn-primary"
+                                                                            style="height:42px;">
+                                                                        <span class="fooicon fooicon-search"></span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                </div>
                                                 </form>
                                             </div>
                                             <thead>
@@ -1462,7 +1492,7 @@
                                                                                         检查周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1475,7 +1505,9 @@
                                                                                         设备名称:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                        <input type="text" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="设备名称" value="${e.equipmentName}">
+                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="只能输入中文" value="${e.equipmentName}"
+                                                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                                                     </div>
                                                                                     </div>
                                                                             </div>
@@ -1485,7 +1517,7 @@
                                                                                         保养周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="text" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1583,7 +1615,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button type="submit" class="btn btn-primary">确认修改</button>
+                                                                            <button id="butt" type="submit" class="btn btn-primary">确认修改</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1591,8 +1623,10 @@
                                                         </div>
                                                     </div>
                                             </c:forEach>
+
                                             </tbody>
                                         </table>
+                                        <%--分页--%>
                                         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -1659,7 +1693,29 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+    $(function () {
+        $("#butt").click(function () {
+            var no ="不能为空";
+            var i=$("#inspectionCycle").val()
+            var e=$("#equipmentName").val()
+            var m=$("#maintenanceCycle").val()
 
+            if (i==null || i==""){
+                $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(e==null || e==""){
+                $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(m==null || m==""){
+                $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+        })
+    })
+</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -1678,7 +1734,6 @@
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr">
 
-
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
@@ -1696,43 +1751,62 @@
 
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-<!-- Init JavaScript -->
-<script>
-    $(function () {
-        $(".del").click(function(){
-            var mid=$(this).attr("flagId");
-            var mname=$(this).attr("flagName");
-            var $tr=$(this).parent().parent().parent();
-            swal({
-                title: "你确定要删除"+mname+"吗?",
-                text: "删除操作不可恢复！!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#fec107",
-                confirmButtonText: "确定!",
-                cancelButtonText: "取消!",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function(isConfirm){
-                if (isConfirm) {
-                    $.ajax({
-                        url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
-                        cache: false,
-                        success:function(data){
-                            if(data == true){
-                                swal("删除成功", "删除成功！", "success");
-                                $($tr).remove();
-                            }else{
-                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
-                            }
-                        }
-                    });
-                }
+    <script>
+        $(function () {
+            dedd(),
+            GetNowDate()
             });
-        });
-    });
+        //获取当前日期给date控件赋值
+        function GetNowDate() {
+            var date = new Date();
+            var seperator1 = "-";
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var strDate = date.getDate();
+            if (month >= 1 && month <= 9) {
+                month = "0" + month;
+            }
+            if (strDate >= 0 && strDate <= 9) {
+                strDate = "0" + strDate;
+            }
+            var currentdate = year + seperator1 + month + seperator1 + strDate;
+            $("#date").val(currentdate);
+        }
 
-</script>
+        function dedd() {
+            $(".del").click(function(){
+                var mid=$(this).attr("flagId");
+                var mname=$(this).attr("flagName");
+                var $tr=$(this).parent().parent().parent();
+                swal({
+                    title: "你确定要删除"+mname+"的标准吗?",
+                    text: "删除操作不可恢复！!",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                }, function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
+                            cache: false,
+                            success:function(data){
+                                if(data == 1){
+                                    swal("删除成功", "删除成功！", "success");
+                                    $($tr).remove();
+                                }else{
+                                    swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                            }
+                        });
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>
 

@@ -24,6 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="order_contract_date" property="orderContractDate"/>
         <result column="status" property="status"/>
         <association property="store" column="store_id" select="team.ruike.cim.dao.StoreDao.selectById"/>
+        <association property="contractOrder" column="order_contract_id" select="team.ruike.cim.dao.ContractOrderDao.selectContractOrderByContractId"/>
     </resultMap>
     <select id="select" resultMap="orderContractMap">
         SELECT * FROM order_contract WHERE status=0
@@ -43,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  order_contract_date=#{orderContract.orderContractDate}
         </if>
         <if test="orderContract.store!=null and orderContract.store.storeId!=null and orderContract.store.storeId>0">
-            AND store_id={orderContract.store.storeId}
+            AND store_id=#{orderContract.store.storeId}
         </if>
         limit #{pageNo},#{pageSize}
     </select>
@@ -72,7 +73,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  order_contract_date=#{orderContract.orderContractDate}
         </if>
         <if test="orderContract.store!=null and orderContract.store.storeId!=null and orderContract.store.storeId>0">
-            AND store_id={orderContract.store.storeId}
+            AND store_id=#{orderContract.store.storeId}
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="orderContractMap">

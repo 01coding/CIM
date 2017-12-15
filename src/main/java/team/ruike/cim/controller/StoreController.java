@@ -13,6 +13,7 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 
 /**
+ * 门店
  * @author 甄立
  * @version 1.0
  */
@@ -38,7 +39,7 @@ public class StoreController {
         binder.setFieldDefaultPrefix("store.");
     }
 
-    @RequestMapping("list.do")
+    @RequestMapping("list.cl")
     public String list(Store store, Pager<Store> pager, Model model) {
         storeService.queryStore(store, pager);
         model.addAttribute("pager", pager);
@@ -52,7 +53,7 @@ public class StoreController {
         return "1";
     }
 
-    @RequestMapping("toEdit.do")
+    @RequestMapping("toEdit.cl")
     public String toEdit(Integer storeId, Model model) {
         Store store = storeService.queryStoreById(storeId);
         model.addAttribute("store", store);

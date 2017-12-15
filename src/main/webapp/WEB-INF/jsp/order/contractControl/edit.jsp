@@ -17,14 +17,14 @@
 
 
 
-                <div class="col-md-12 mb-20">
-                    <div class='input-group date' id='datetimepicker1ss'>
-                        <input type='text' class="form-control" placeholder="合同签订时间" name="orderContractDate" value="<fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/> "/>
-                        <span class="input-group-addon">
-                          <span class="fa fa-calendar"></span>
-                        </span>
+                    <div class="col-md-12 mb-20">
+                        <div class='input-group date' id='datetimepicker1ss'>
+                            <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate"/>
+                            <span class="input-group-addon">
+                                                    <span class="fa fa-calendar"></span>
+                                                </span>
+                        </div>
                     </div>
-                </div>
 
 
                     <div class="col-md-12 mb-20">

@@ -40,7 +40,7 @@ public class GenerateNumber {
 
         Random random = new Random();
 
-        int rannum = (int) (random.nextDouble() * (999 - 100 + 1)) + 100;// 获取5位随机数
+        int rannum = (int) (random.nextDouble() * (9999 - 1000 + 1)) + 1000;// 获取12位随机数
 
         return rannum + str;// 当前时间
     }

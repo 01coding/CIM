@@ -38,7 +38,7 @@ public class OrderContractServiceImpl implements OrderContractService {
         return orderContract;
     }
 
-    @Transactional
+
     public void addOrderContract(OrderContract orderContract) {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
             orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName());
