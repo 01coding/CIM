@@ -44,9 +44,19 @@ public class EquipementControloler {
      * @return list对象
      */
     @RequestMapping("/equipment.do")
-    public String  equipment(@RequestParam(value = "ms",required = false)Integer ms, Equipment equipment, Pager<Equipment> pager, HttpServletRequest request, EquipmentType equipmentType, Working working, ProductionLine productionLine, User user){
+    public String  equipment(@RequestParam(value = "ms",required = false)Integer ms, Equipment equipment, Pager<Equipment> pager, HttpServletRequest request, EquipmentType equipmentType, Working working, ProductionLine productionLine, User user,String SD){
         if (ms!=null&&ms==1){
             System.out.print(ms);
+        }
+        if (SD!=null  && SD!=""){
+            SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+            Date date=null;
+            try {
+                date=format.parse(SD);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            equipment.setStartDate(date);
         }
         equipementService.getEquipment(equipment, pager);
         request.setAttribute("equipments",pager);
@@ -179,8 +189,9 @@ public class EquipementControloler {
      * @return 异常集合
      */
     @RequestMapping("/equipmentreport.do")
-    public String equipmentreport(EquipmentReport equipmentReport,Pager<EquipmentReport> pager, HttpServletRequest request){
+    public String equipmentreport(EquipmentReport equipmentReport,Pager<EquipmentReport> pager, HttpServletRequest request,User user){
         equipementService.getEquipmentReport(equipmentReport,pager);
+        request.setAttribute("users",equipementService.getUser(user));
         request.setAttribute("equipmentReports",pager);
         return "equipement/equipmentreport";
     }
@@ -212,5 +223,9 @@ public class EquipementControloler {
         request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
         request.setAttribute("users",equipementService.getUser(user));
         return "equipement/addequipement";
+    }
+@RequestMapping("/JumpHomepage.do")
+    public String JumpHomepage(){
+        return "redirect:/equipment.do";
     }
 }

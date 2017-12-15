@@ -13,6 +13,16 @@
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
     <link type="text/css" rel="stylesheet" charset="UTF-8" href="https://translate.googleapis.com/translate_static/css/translateelement.css"></head>
+
+
+<%--date--%>
+<!-- Bootstrap Colorpicker CSS -->
+<link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+
+<!-- Bootstrap Datetimepicker CSS -->
+<link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
+
 <body>
 <!--Preloader-->
 <div class="preloader-it" style="display: none;">
@@ -1292,7 +1302,7 @@
                             <div class="panel-body">
 
                                 <div class="form-wrap">
-                                    <form action="/addequipmentType.do" >
+                                    <form action="/addequipmentType.do" method="post">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加异常报告</font></font></h6>
                                         <hr class="light-grey-hr">
@@ -1377,7 +1387,9 @@
                                                         停用原因:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" name="equipmentReportReason" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" id="equipmentReportReason" name="equipmentReportReason" class="form-control" placeholder="只能输入中文"
+                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                 </div>
                                             </div>
                                             </div>
@@ -1387,7 +1399,9 @@
                                                         维修计划:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" name="maintenancePlan" class="form-control">
+                                                    <input type="text" style="width: 400px;height: 40px" id="maintenancePlan" name="maintenancePlan" class="form-control" placeholder="只能输入中文"
+                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                 </div>
                                             </div>
                                             </div>
@@ -1400,15 +1414,19 @@
                                                         预计时间（分）:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                        <div class="form-group" >
-                                                            <input style="width: 400px;height: 40px" name="date" type="date"/>
+                                                        <div class="input-group date" style="width: 400px;height: 40px">
+                                                            <input  id="dates" class="form-control" name="date" type="date" />
+
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit"> <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存</font></font></span></button>
+                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
+                                                <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+                                                保存</font></font></span></button>
 
                                                 <div class="clearfix"></div>
                                         </div>
@@ -1434,41 +1452,101 @@
     <!-- /Main Content -->
 </div>
 <!-- jQuery -->
-<script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //获取当前日期给date控件赋值
+        GetNowDate();
+    })
+    $(function () {
+        $("#save").click(function () {
+            var e=$("#equipmentReportReason").val()
+            var m=$("#maintenancePlan").val()
+            var u=$("#user.userId").val()
+            var no="不能为空";
+            if(e==null || e==""){
+                $("#equipmentReportReason").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(m==null || m==""){
+                $("#maintenancePlan").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(u==null || u==""){
+                $("#user.userId").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+
+        })
+    });
+    //判断当前选择时间是否小于是当前实际时间
+    function contrastTime(dates) {
+        var evalue = document.getElementById(dates).value;
+        var dB = new Date(evalue.replace(/-/g, "/"));//获取当前选择日期
+        var d = new Date();
+        var str = d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();//获取当前实际日期
+        if (Date.parse(str) > Date.parse(dB)) {//时间戳对比
+            return 1;
+        }
+        return 0;
+    }
+    //作业开始时间失去焦点验证
+    $('#dates').blur(function(){
+        var ret = contrastTime("dates");//获取返回值
+        if(ret == 1){
+            alert("作业开始时间不能小于当前实际时间。");
+            $(this).val('').focus();
+            return;
+        }
+    });
+    //获取当前日期给date控件赋值
+    function GetNowDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate()+1;
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        $("#dates").val(currentdate);
+    }
+</script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Slimscroll JavaScript -->
-<script src="dist/js/jquery.slimscroll.js"></script>
+<script src="../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Init JavaScript -->
-<script src="dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
+<script src="../../../dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr"><div style="padding: 8px;"><div><div class="logo"><img src="https://www.gstatic.com/images/branding/product/1x/translate_24dp.png" width="20" height="20" alt="Google 翻译"></div></div></div><div class="top" style="padding: 8px; float: left; width: 100%;"><h1 class="title gray">原文</h1></div><div class="middle" style="padding: 8px;"><div class="original-text"></div></div><div class="bottom" style="padding: 8px;"><div class="activity-links"><span class="activity-link">提供更好的翻译建议</span><span class="activity-link"></span></div><div class="started-activity-container"><hr style="color: #CCC; background-color: #CCC; height: 1px; border: none;"><div class="activity-root"></div></div></div><div class="status-message" style="display: none;"></div></div>
 
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
 <!-- Bootstrap Colorpicker JavaScript -->
-<script src="vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript" src="vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
 <!-- Bootstrap Daterangepicker JavaScript -->
-<script src="vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+<!-- Init JavaScript -->
+<script src="../../../dist/js/init.js"></script>
 
 <!-- Form Picker Init JavaScript -->
-<script src="dist/js/form-picker-data.js"></script>
-<!-- Init JavaScript -->
-<script src="dist/js/init.js"></script>
+<script src="../../../dist/js/form-picker-data.js"></script>
 
-<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div></body></html>
+<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
+</body></html>

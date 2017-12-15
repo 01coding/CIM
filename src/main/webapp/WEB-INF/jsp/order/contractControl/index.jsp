@@ -45,7 +45,18 @@
             right: 20px;
             z-index: 1000
         }
-
+        .error{
+            color: red;
+        }
+        .zerror{
+            color: red;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
         .guide .btn-circle {
             width: 55px;
             height: 55px;
@@ -1424,19 +1435,10 @@
                                                 <th>合同签订时间</th>
                                                 <th>签订人</th>
                                                 <th>状态</th>
-                                                <th>ACTIONS</th>
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>合同号</th>
-                                                <th>合同名称</th>
-                                                <th>合同签订时间</th>
-                                                <th>签订人</th>
-                                                <th>状态</th>
-                                                <th>ACTIONS</th>
-                                            </tr>
-                                            </tfoot>
+
                                             <tbody>
                                             <c:forEach var="orderContract" items="${pager.list}">
                                             <tr>
@@ -1446,7 +1448,19 @@
                                                 <td><fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/> </td>
                                                 <td>${orderContract.store.storeName}</td>
                                                 <th>
-                                                    ---
+                                                    <c:choose>
+                                                        <c:when test="${orderContract.contractOrder!=null}">
+                                                            <c:if test="${orderContract.contractOrder.contractOrderState==0}">
+                                                                未完成
+                                                            </c:if>
+                                                            <c:if test="${orderContract.contractOrder.contractOrderState==1}">
+                                                                完成
+                                                            </c:if>
+                                                        </c:when>
+                                                        <c:when test="${orderContract.contractOrder==null}">
+                                                                无合同项
+                                                        </c:when>
+                                                    </c:choose>
                                                 </th>
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
@@ -1486,6 +1500,7 @@
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
+                                            <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
                                                 <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
@@ -1504,6 +1519,7 @@
                                                 </ul>
                                                 </c:if>
                                             </div>
+                                        </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -1530,24 +1546,25 @@
                                 <h4 class="modal-title">添加合同</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal form-material" method="post" action="/order/contract/add.do" id="contractUpload" enctype="multipart/form-data">
+                                <form class="form-horizontal form-material" id="addcontract" enctype="multipart/form-data" >
                                     <div class="form-group">
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称" name="orderContractName">
+                                            <input type="text" class="form-control" id="aorderContractName"   placeholder="合同名称" name="orderContractName">
                                         </div>
 
                                         <div class="col-md-12 mb-20">
-                                            <div class='input-group date' id='datetimepicker1ss'>
-                                                <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate"/>
+                                            <div class='input-group date' id='datetimepicker1s'>
+                                                <input type='text' class="form-control"  id="orderContractDate" placeholder="签订时间" name="orderContractDate"/>
                                                 <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
                                             </div>
+                                            <label style="display: none" id="dateerror" class="zerror">请选择签订时间</label>
                                         </div>
 
                                         <div class="col-md-12 mb-20">
                                             <select class="form-control" name="store.storeId">
-                                                <option selected value="0">用户</option>
+                                                <option selected value="">请选择门店</option>
                                                 <c:forEach var="store" items="${storeList}">
                                                 <option value="${store.storeId}">${store.storeName}</option>
                                                 </c:forEach>
@@ -1562,7 +1579,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="submit" class="btn btn-info waves-effect">保存</button>
+                                        <button type="button"  class="btn btn-info waves-effect" onclick="up()">保存</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
@@ -1667,28 +1684,30 @@
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="../../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="../../../../dist/js/form-picker-data.js"></script>
+
 <!-- Slimscroll JavaScript -->
 <script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
-
-
+<script src="../../../../vendors/validate.min.js"></script>
+<script src="../../../../vendors/messages_zh.js"></script>
 
 <script src="../../../../vendors/app.js"></script>
+
 <script>
+
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
-    }
+    };
+
     function toView(id) {
         var fd =new Array();
         fd.push({name: "orderContractId", value: id});
         appModule.open("/order/contract/toView.do",fd,"exampleModalSelect")
-    }
+    };
 
     function toEdit(id) {
         var fd = {orderContractId:id};
-        appModule.open('/order/contract/toEdit.do',fd,'exampleModalUpdate');
+        appModule.open('/order/contract/toEdit.cl',fd,'exampleModalUpdate');
     };
 
     function nextPage(ts) {
@@ -1697,27 +1716,50 @@
         addStore.push(fd)
         var url = jQuery.param(addStore);
         window.location.href="/order/contract/index.do?"+url;
-    }
+    };
+
     function previousPage(ts) {
         var addStore = $("#orderForm").serializeArray();
         var fd = {name: "currentPage", value: $(ts).data("previouspage")};
         addStore.push(fd)
         var url = jQuery.param(addStore);
         window.location.href="/order/contract/index.do?"+url;
-    }
+    };
+
     function currentPage(ts) {
         var addStore = $("#orderForm").serializeArray();
         var fd = {name: "currentPage", value: $(ts).data("currentpage")};
         addStore.push(fd)
         var url = jQuery.param(addStore);
         window.location.href="/order/contract/index.do?"+url;
+    };
+
+
+
+    function up() {
+       var formobj =  document.getElementById("addcontract");
+       var formData=new FormData(formobj);
+        $.ajax({
+            url: '/order/contract/add.do',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false
+        }).done(function(res) {
+            alert("成功");
+            document.getElementById("addcontract").reset();
+        }).fail(function(res) {
+            alert("失败");
+        });
+
+
     }
 
-
-
-
-
 </script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>

@@ -46,6 +46,18 @@ public class OrderContract implements Serializable {
      */
     private Integer status;
 
+    /**
+     * 合同订单
+     */
+    private ContractOrder contractOrder;
+
+    public ContractOrder getContractOrder() {
+        return contractOrder;
+    }
+
+    public void setContractOrder(ContractOrder contractOrder) {
+        this.contractOrder = contractOrder;
+    }
 
     public Integer getOrderContractId() {
         return orderContractId;

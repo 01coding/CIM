@@ -1382,8 +1382,6 @@
 
                                 <div class="table-wrap">
 
-
-
                                     <div class="table-responsive">
 
                                         <div style="position: relative;bottom: 10px;">
@@ -1454,21 +1452,10 @@
                                                 <th>确认人</th>
                                                 <th>备注</th>
                                                 <th>是否交付</th>
-                                                <th>ACTIONS</th>
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>订单号</th>
-                                                <th>合同名称</th>
-                                                <th>签订时间</th>
-                                                <th>交付时间</th>
-                                                <th>确认人</th>
-                                                <th>备注</th>
-                                                <th>是否交付</th>
-                                                <th>ACTIONS</th>
-                                            </tr>
-                                            </tfoot>
+
                                             <tbody>
                                     <c:forEach var="contractOrder" items="${pager.list}">
 
@@ -1518,12 +1505,14 @@
 
 
                                     </div>
+
                                 </div>
 
 
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
+                                            <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
                                                 <c:if test="${pager.list.size()>0}" >
                                                 <ul class="pagination pagination-split">
@@ -1542,6 +1531,7 @@
                                                 </ul>
                                                 </c:if>
                                             </div>
+                                            </c:if>
                                         </div>
                                     </div>
                                 </div>
@@ -1638,8 +1628,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Send message</button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1721,12 +1711,14 @@
 
 
 <%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-<!-- Form Picker Init JavaScript -->
-<script src="../../../../dist/js/form-picker-data.js"></script>
+
+
 <script src="../../../../vendors/app.js"></script>
 <script>
     function sc() {
@@ -1734,7 +1726,7 @@
     }
 
     function addContractOrderUrl() {
-        window.location.href = "/contract/order/toAdd.do";
+        window.location.href = "/contract/order/toAdd.cl";
     }
 
     function toView(id) {
@@ -1767,6 +1759,8 @@
     }
 
 </script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>

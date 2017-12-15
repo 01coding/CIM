@@ -1224,7 +1224,7 @@
                                                                         </div>
                                                                         <div class="col-md-12 mb-20">
                                                                         <label class="control-label mb-10 text-left">交付时间:</label>
-                                                                        <div class="input-group date" id="datetimepicker1" style="width: 300px;">
+                                                                        <div class="input-group date" id="datetimepicker1ss" style="width: 300px;">
                                                                             <input type="text" class="form-control" name="temporaryOrderEndDate">
                                                                             <span class="input-group-addon">
 																	<span class="fa fa-calendar"></span>
@@ -1274,6 +1274,7 @@
                                                             </button>
                                                             <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
                                                         </div>
+                                                        <form id="menutype">
                                                         <div class="modal-body">
 
 
@@ -1301,6 +1302,7 @@
                                                                 </div>
 
                                                         </div>
+                                                        </form>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-success waves-effect"
                                                                     data-dismiss="modal" onclick="addMenu()">Save
@@ -1415,7 +1417,17 @@
 
 <!-- Init JavaScript -->
 <script src="../../../../dist/js/init.js"></script>
+
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
 <script src="../../../../vendors/app.js"></script>
+
 
 <script>
 
@@ -1435,6 +1447,11 @@
         var fd =  fd1.concat(fd2);;
         appModule.post('/temporary/order/add.do',fd,function (data) {
             appModule.alert("成功");
+            $("tbody tr").remove();
+            /*清除记录*/
+            document.getElementById("temporaty").reset();
+            document.getElementById("menutype").reset();
+            $("#menuSelect").empty();
         });
         
     }
@@ -1473,7 +1490,7 @@
     function queryMenu(ts) {
         var fd = {"menuTypeId": ts};
         $.ajax({
-            url: "/temporary/order/queryMenu.do",
+            url: "/temporary/order/queryMenu.cl",
             type: 'post',
             data: fd,  // post时请求体
             dataType: 'html',
@@ -1487,6 +1504,8 @@
     }
 
 </script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 
 </body>
 

@@ -58,10 +58,6 @@ public class ContractOrderServiceImpl implements ContractOrderService {
             //订单号
             contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName());
 
-            //用户表id(确认人) 未确认
-            contractOrder.setUser(new User() {{
-                setUserId(1);
-            }});
 
 
             contractOrderDao.add(contractOrder);

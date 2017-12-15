@@ -24,6 +24,12 @@
     <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
 
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
         .quantity{
             border: 0px;
@@ -1214,7 +1220,7 @@
                                                                     <div class="form-group">
                                                                         <div class="col-md-12 mb-20">
                                                                             <label class="control-label mb-10">合同</label>
-                                                                            <select class="form-control" name="orderContract.orderContractId"  style="width: 300px;">
+                                                                            <select class="form-control" id="contractSelect" name="orderContract.orderContractId"  style="width: 300px;">
                                                                                 <option selected value="0">请选择</option>
                                                                                 <c:forEach var="orderContract" items="${orderContractList}">
                                                                                     <option value="${orderContract.orderContractId}">${orderContract.orderContractName}</option>
@@ -1274,8 +1280,8 @@
                                                             </button>
                                                             <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
                                                         </div>
+                                                        <form id="meueContract">
                                                         <div class="modal-body">
-
 
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10">菜品类型</label>
@@ -1301,12 +1307,13 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="modal-footer">
+                                                        </form>
+                                                            <div class="modal-footer">
                                                             <button type="button" class="btn btn-success waves-effect"
-                                                                    data-dismiss="modal" onclick="addMenu()">Save
+                                                                    data-dismiss="modal" onclick="addMenu()">保存
                                                             </button>
                                                             <button type="button" class="btn btn-default waves-effect"
-                                                                    data-dismiss="modal">Cancel
+                                                                    data-dismiss="modal">取消
                                                             </button>
                                                         </div>
                                                     </div>
@@ -1417,6 +1424,15 @@
 <script src="../../../../dist/js/init.js"></script>
 <script src="../../../../vendors/app.js"></script>
 
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+
 <script>
 
     $(function () {
@@ -1426,8 +1442,19 @@
         });
 
         $(".odd").remove();
-    });
 
+
+        contractSize();
+    });
+    /*计算合同选项*/
+    function contractSize() {
+        if ($("#contractSelect option").size()<=1){
+            var op="<option value='0' selected>无未签订合同</option>";
+            $("#contractSelect").empty().append(op);
+        }
+    }
+
+    /*添加合同订单*/
     function addOrder() {
 
         var fd1=$("#contract").serializeArray();
@@ -1435,10 +1462,40 @@
         var fd =  fd1.concat(fd2);;
         appModule.post('/contract/order/add.do',fd,function (data) {
             appModule.alert("成功");
+            $("tbody tr").remove();
+            /*清除记录*/
+            document.getElementById("contract").reset();
+            document.getElementById("meueContract").reset();
+            $("#menuSelect").empty();
+            /*成功之后刷新一下合同*/
+            refreshContract();
         });
 
     }
 
+    /*刷新合同选项*/
+    function refreshContract() {
+        $.ajax({
+            url: "/contract/order/contractInfo.cl",
+            type: 'post',
+            data: null,  // post时请求体
+            dataType: 'json',
+            contentType:"application/x-www-form-urlencoded;charset=utf-8",
+            success: function (data) {
+                $("#contractSelect").empty();
+                var op="<option value='0' selected>请选择</option>";
+                for(var p in data){//遍历json数组时，这么写p为索引，0,1
+                    op+="<option value='"+data[p].orderContractId +"'>"+data[p].orderContractName+"</option>";
+                }
+                $("#contractSelect").empty().append(op);
+                contractSize();
+            }, error: function () {
+                alert("error")
+            }
+        });
+    }
+
+    /*添加菜品*/
     function  addMenu() {
         var menuId= $("#menuSelect").val();
         var menuName=  $("#menuSelect").find("option:selected").text();
@@ -1466,14 +1523,16 @@
         $("tbody").append(ms);
     }
 
+    /*删除菜品*/
     function deleteDishes(del) {
         $(del).parent().parent().remove();
     }
 
+    /*根据菜品类型查询菜品*/
     function queryMenu(ts) {
         var fd = {"menuTypeId": ts};
         $.ajax({
-            url: "/temporary/order/queryMenu.do",
+            url: "/temporary/order/queryMenu.cl",
             type: 'post',
             data: fd,  // post时请求体
             dataType: 'html',
@@ -1487,6 +1546,8 @@
     }
 
 </script>
+<!-- Form Picker Init JavaScript -->
+<script src="../../../../dist/js/form-picker-data.js"></script>
 
 </body>
 

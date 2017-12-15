@@ -25,10 +25,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <update id="update" parameterType="temporaryOrder">
         UPDATE temporary_order SET
             temporary_order_id=#{temporaryOrderId},
-            temporary_order_no=#{temporaryOrderNo},
             temporary_order_end_date=#{temporaryOrderEndDate},
             temporary_order_state_id=#{temporaryOrderState.temporaryOrderStateId},
-            temporary_order_start_date=#{temporaryOrderStartDate},
             temporary_order_remarks=#{temporaryOrderRemarks},
             store_id=#{storeId},
             user_id=#{user.userId},
@@ -51,7 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
 
         <if test="temporaryOrder.temporaryOrderStartDate!=null">
-            AND  temporary_order_start_date =#{temporaryOrder.temporaryOrderStartDate}
+            AND  temporary_order_start_date >= #{temporaryOrder.temporaryOrderStartDate} and  temporary_order_start_date &lt; date_sub(#{temporaryOrder.temporaryOrderStartDate},interval -1 day)
         </if>
         <if test="temporaryOrder.temporaryOrderRemarks!=null and temporaryOrder.temporaryOrderRemarks!=''">
             AND temporary_order_remarks =#{temporaryOrder.temporaryOrderRemarks}
@@ -66,8 +64,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             and store_id in (SELECT store_id FROM store WHERE store_name LIKE CONCAT('%',#{temporaryOrder.store.storeName},'%'))
         </if>
     </sql>
+
     <select id="select" resultMap="temporaryOrderMap">
         select * from (<include refid="sql"/>) f
+        ORDER BY temporary_order_id desc
         limit #{pageNo},#{pageSize}
     </select>
 
@@ -81,13 +81,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND temporary_order_no =#{temporaryOrderNo}
         </if>
         <if test="temporaryOrderEndDate!=null">
-            AND temporary_order_end_date =#{temporaryOrderEndDate}
+
         </if>
         <if test="temporaryOrderState!=null and temporaryOrderState.temporaryOrderStateId!=null and temporaryOrderState.temporaryOrderStateId>0">
             AND  temporary_order_state_id=#{temporaryOrderState.temporaryOrderStateId}
         </if>
         <if test="temporaryOrderStartDate!=null">
-            AND  temporary_order_start_date =#{temporaryOrderStartDate}
+            AND  temporary_order_start_date >= #{temporaryOrderStartDate} and  temporary_order_start_date &lt; date_sub(#{temporaryOrderStartDate},interval -1 day)
         </if>
         <if test="temporaryOrderRemarks!=null and temporaryOrderRemarks!=''">
             AND temporary_order_remarks =#{temporaryOrderRemarks}

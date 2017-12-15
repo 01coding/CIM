@@ -53,13 +53,6 @@ public interface MenuService {
     List<List<MenuFlow>> getMenuFlows(int menuId);
 
 
-    /**
-     * 生成菜品选择框
-     * @param menuList 菜品集合
-     * @return 菜品选择框
-     */
-    public String muneSelectionBox(List<Menu> menuList);
-
 
     /**
      * 根据菜品类型id 查询菜品
