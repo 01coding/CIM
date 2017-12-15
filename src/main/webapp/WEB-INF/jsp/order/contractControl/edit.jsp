@@ -13,23 +13,21 @@
                     <div class="col-md-12 mb-20">
                         <input type="text" class="form-control" placeholder="合同名称" name="orderContractName" value="${orderContract.orderContractName}">
                     </div>
-                <input type="hidden" name="orderContractId" value="${orderContract.orderContractId}" >
-
-
+                    <input type="hidden" name="orderContractId" value="${orderContract.orderContractId}" >
 
                     <div class="col-md-12 mb-20">
                         <div class='input-group date' id='datetimepicker1ss'>
                             <input type='text' class="form-control" placeholder="签订时间" name="orderContractDate" value="<fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/>"/>
                             <span class="input-group-addon">
                                                     <span class="fa fa-calendar"></span>
-                                                </span>
+                            </span>
                         </div>
                     </div>
 
 
                     <div class="col-md-12 mb-20">
                         <select class="form-control" name="store.storeId">
-                            <option  value="0">用户</option>
+                            <option  value="">请选择用户</option>
                             <c:forEach var="store" items="${storeList}">
                                 <option value="${store.storeId}"
                                         <c:if test="${store.storeId==orderContract.store.storeId}">
@@ -76,22 +74,6 @@
             $(this).data("DateTimePicker").date(moment());
     });
 
-    function updateContractValidate() {
-
-        $("#contractEdit").validate({
-            rules: {
-                orderContractName: {
-                    required: true,
-                },
-            },
-            messages: {
-                orderContractName: {
-                    required: "请输入合同名称",
-                },
-            }
-        });
-
-    };
 
     function updateContract(){
         var flag = $("#contractEdit").valid();
@@ -110,9 +92,18 @@
             contentType: false
         }).done(function(res) {
             appModule.alert("修改成功");
+            upp();
             document.getElementById("contractEdit").reset();
         }).fail(function(res) {
             appModule.alert("修改失败");
         });
     };
+
+
+    function upp() {
+        var tbobj=document.getElementById("example");
+        tbobj.rows[$("#index").val()].cells[1].innerText=$("#contractEdit input[name='orderContractName']").val();
+        tbobj.rows[$("#index").val()].cells[2].innerText=$("#contractEdit input[name='orderContractDate']").val();
+        tbobj.rows[$("#index").val()].cells[3].innerText=$("#contractEdit select[name='store.storeId'] option:selected").text();
+    }
 </script>

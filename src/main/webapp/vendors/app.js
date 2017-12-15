@@ -26,7 +26,7 @@ var appModule = (function () {
                     success(data);
                 }
             }, error: function () {
-                error(data);
+                error("error");
             }
         });
     }

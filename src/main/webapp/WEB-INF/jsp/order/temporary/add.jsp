@@ -1336,7 +1336,7 @@
                                                                     <th>ID</th>
                                                                     <th>名称</th>
                                                                     <th>数量</th>
-                                                                    <th>Action</th>
+                                                                    <th>操作</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -1447,8 +1447,37 @@
 
         $(".odd").remove();
     });
+    function addTemporaryValidate() {
+
+        var ru=true;
+
+        var storeId= $("#temporaty select[name='storeId'] option:selected").val();
+        if(storeId==""){
+            ru=false;
+        }
+        var temporaryOrderEndDate=$("#temporaty input[name='temporaryOrderEndDate']").val();
+
+        if(temporaryOrderEndDate==""){
+            ru=false;
+        }
+        var menuSize=$("tbody tr").size();
+        if (menuSize==0){
+            ru=false;
+        }
+        return ru;
+
+    };
+
+
 
     function addOrder() {
+
+        var flag = addTemporaryValidate();
+        if(!flag){
+            appModule.alert("请填写完整信息")
+            return;
+        }
+
 
         var fd1=$("#temporaty").serializeArray();
         var fd2 = $("#temporaryOrderTerms").serializeArray();

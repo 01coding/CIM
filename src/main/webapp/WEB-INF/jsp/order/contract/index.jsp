@@ -53,6 +53,15 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+        .error{
+            color: red;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
 
     </style>
 

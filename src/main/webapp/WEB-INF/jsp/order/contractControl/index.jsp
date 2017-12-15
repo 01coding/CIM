@@ -1440,7 +1440,7 @@
                                             </thead>
 
                                             <tbody>
-                                            <c:forEach var="orderContract" items="${pager.list}">
+                                            <c:forEach var="orderContract" items="${pager.list}" varStatus="varStatus">
                                             <tr>
                                                 <td>${orderContract.orderContractNo}</td>
                                                 <td>${orderContract.orderContractName}</td>
@@ -1465,7 +1465,7 @@
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
 
-                                                        <button type="button" class="btn btn-default footable-edit"  data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${orderContract.orderContractId})">
+                                                        <button type="button" class="btn btn-default footable-edit"  data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${orderContract.orderContractId},${varStatus.count})">
                                                             <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                         </button>
                                                         <button type="button" class="btn btn-default footable-edit"
@@ -1559,7 +1559,7 @@
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
                                             </div>
-                                            <label style="display: none" id="dateerror" class="zerror">请选择签订时间</label>
+                                            <label for="orderContractDate" class="error"></label>
                                         </div>
 
                                         <div class="col-md-12 mb-20">
@@ -1595,6 +1595,7 @@
 
             <!--修改输入框-->
             <div class="col-md-6">
+                <input type="hidden" id="index" >
                 <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
 
                 </div>
@@ -1700,6 +1701,7 @@
 <script>
     $(function () {
         addContractValidate();
+        uupContractValidate();
     });
 
 
@@ -1713,8 +1715,11 @@
         appModule.open("/order/contract/toView.do",fd,"exampleModalSelect")
     };
 
-    function toEdit(id) {
-        var fd = {orderContractId:id};
+    function toEdit(id,indx) {
+        var fd = {
+            orderContractId:id
+        };
+        $("#index").val(indx)
         appModule.open('/order/contract/toEdit.cl',fd,'exampleModalUpdate');
     };
 
@@ -1749,11 +1754,45 @@
                 orderContractName: {
                     required: true,
                 },
+                orderContractDate:"required",
+                "store.storeId":"required",
             },
             messages: {
                 orderContractName: {
                     required: "请输入合同名称",
                 },
+                orderContractDate:{
+                    required:"请选择时间"
+                },
+                "store.storeId":{
+                    required:"请选择门店"
+                }
+            }
+        });
+
+    };
+
+
+    function uupContractValidate() {
+
+        $("#updateStore").validate({
+            rules: {
+                orderContractName: {
+                    required: true,
+                },
+                orderContractDate:"required",
+                "store.storeId":"required",
+            },
+            messages: {
+                orderContractName: {
+                    required: "请输入合同名称",
+                },
+                orderContractDate:{
+                    required:"请选择时间"
+                },
+                "store.storeId":{
+                    required:"请选择门店"
+                }
             }
         });
 

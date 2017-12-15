@@ -46,6 +46,9 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+        .error{
+            color: red;
+        }
 
     </style>
 
@@ -1435,7 +1438,7 @@
                                                 </thead>
 
                                                 <tbody>
-                                                <c:forEach var="store" items="${pager.list}">
+                                                <c:forEach var="store" items="${pager.list}" varStatus="varStatus">
                                                     <tr>
                                                         <td>${store.storeName}</td>
                                                         <td>
@@ -1453,7 +1456,7 @@
                                                         <td>${store.storeNo}</td>
                                                         <td class="footable-editing" style="display: table-cell;width: 100px">
                                                             <div class="btn-group btn-group-xs" role="group">
-                                                                <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${store.storeId})">
+                                                                <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${store.storeId},${varStatus.count})">
                                                                     <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                                 </button>
                                                                 <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect" onclick="toView(${store.storeId})">
@@ -1546,7 +1549,7 @@
                                     <div class="form-group">
                                         <label class="control-label mb-10">门店/用户类别:</label>
                                         <select class="form-control" name="storeType">
-                                            <option selected value="0">请选择</option>
+                                            <option selected value="">请选择</option>
                                             <option value="1">合同用户</option>
                                             <option value="2">散户</option>
                                         </select>
@@ -1554,7 +1557,7 @@
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control" name="storePhone">
+                                        <input type="text" class="form-control"   maxlength="11"  name="storePhone">
                                     </div>
 
                                     <div class="form-group">
@@ -1567,7 +1570,7 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary"  data-dismiss="modal" onclick="add()">保存</button>
+                                <button type="button" class="btn btn-primary"  onclick="add()">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1576,6 +1579,7 @@
 
             <!--修改输入框-->
             <div class="col-md-6">
+                <input type="hidden" id="index" >
                 <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
 
@@ -1656,6 +1660,8 @@
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
 
+<script src="../../../../vendors/jquery.validate.js"></script>
+<script src="../../../../vendors/messages_zh.js"></script>
 
 
 <script src="../../../../vendors/app.js"></script>
@@ -1663,9 +1669,77 @@
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
+    $(function () {
+        addStrotValidate();
+        uppStrotValidate();
+    })
 
-    function toEdit(id) {
+
+    function addStrotValidate() {
+
+        $("#addStore").validate({
+            rules: {
+                storeName: "required",
+                storeType:"required",
+                "storePhone":{
+                    required : true,
+                    minlength : 11,
+
+                },
+                "storeAddress":"required",
+            },
+            messages: {
+                storeName: {
+                    required:"请输入名称",
+                },
+                storeType:{
+                    required:"请选择类型"
+                },
+                "storePhone":{
+                    required : "请输入手机号",
+                    minlength : "确认手机不能小于11个字符",
+                },
+                "storeAddress":{
+                    required:"请输入地址"
+                }
+            }
+        });
+    }
+
+    function uppStrotValidate() {
+
+        $("#updateStore").validate({
+            rules: {
+                storeName: "required",
+                storeType:"required",
+                "storePhone":{
+                    required : true,
+                    minlength : 11,
+                },
+                "storeAddress":"required",
+            },
+            messages: {
+                storeName: {
+                    required:"请输入名称",
+                },
+                storeType:{
+                    required:"请选择类型"
+                },
+                "storePhone":{
+                    required : "请输入手机号",
+                    minlength : "确认手机不能小于11个字符",
+                },
+                "storeAddress":{
+                    required:"请输入地址"
+                }
+            }
+        });
+    }
+
+
+    function toEdit(id,inde) {
         var fd = {storeId:id};
+        $("#index").val(inde)
         appModule.open('/store/toEdit.cl',fd,'exampleModalUpdate');
     };
 
@@ -1699,6 +1773,13 @@
 
 
     function add() {
+
+        var flag = $("#addStore").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
         var addStore = $("#addStore").serializeArray();
         appModule.post('/store/add.do', addStore, function (data) {
             appModule.alert("添加成功")
@@ -1708,15 +1789,6 @@
         });
     }
 
-    function edit() {
-        var addStore = $("#updateStore").serializeArray();
-        appModule.post('/store/edit.do',addStore,function (data) {
-            appModule.alert("修改成功")
-            location.reload();
-        },function () {
-            appModule.alert("修改失败")
-        });
-    };
 
 
 
@@ -1741,6 +1813,35 @@
         var url = jQuery.param(addStore);
         window.location.href="/store/index.do?"+url;
     }
+
+    function upp() {
+        var tbobj=document.getElementById("example");
+        tbobj.rows[$("#index").val()].cells[0].innerText=$("#updateStore input[name='storeName']").val();
+        tbobj.rows[$("#index").val()].cells[1].innerText=$("#updateStore select[name='storeType'] option:selected").text();
+        tbobj.rows[$("#index").val()].cells[2].innerText=$("#updateStore textarea[name='storeAddress']").val();
+        tbobj.rows[$("#index").val()].cells[3].innerText=$("#updateStore input[name='storePhone']").val();
+    }
+
+
+
+    function edit() {
+
+        var flag = $("#updateStore").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+        var addStore = $("#updateStore").serializeArray();
+        appModule.post('/store/edit.do',addStore,function (data) {
+            appModule.alert("修改成功")
+            upp();
+        },function () {
+            appModule.alert("修改失败")
+        });
+    };
+
+
 
 </script>
 

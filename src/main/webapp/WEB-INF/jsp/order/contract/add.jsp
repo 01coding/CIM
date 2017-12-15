@@ -1223,7 +1223,7 @@
                                                                         <div class="col-md-12 mb-20">
                                                                             <label class="control-label mb-10">合同</label>
                                                                             <select class="form-control" id="contractSelect" name="orderContract.orderContractId"  style="width: 300px;">
-                                                                                <option selected value="0">请选择</option>
+                                                                                <option  value="">请选择</option>
                                                                                 <c:forEach var="orderContract" items="${orderContractList}">
                                                                                     <option value="${orderContract.orderContractId}">${orderContract.orderContractName}</option>
                                                                                 </c:forEach>
@@ -1288,7 +1288,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10">菜品类型</label>
                                                                 <select class="form-control" id="menuTyoe">
-                                                                    <option value="0" selected>请选择</option>
+                                                                    <option value="" selected>请选择</option>
                                                                     <c:forEach var="menuType" items="${menuTypeList}">
                                                                         <option value="${menuType.menuTypeId}">${menuType.menuTypeName}</option>
                                                                     </c:forEach>
@@ -1341,7 +1341,7 @@
                                                                         <th>ID</th>
                                                                         <th>名称</th>
                                                                         <th>数量</th>
-                                                                        <th>Action</th>
+                                                                        <th>操作</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -1449,9 +1449,32 @@
 
         $(".odd").remove();
 
-
         contractSize();
+
     });
+
+    function addContractValidate() {
+
+        var ru=true;
+
+        var contractSelect= $("#contractSelect").val();
+        if(contractSelect==""){
+            ru=false;
+        }
+        var contractOrderEndDate= $("input[name='contractOrderEndDate']").val();
+
+        if(contractOrderEndDate==""){
+            ru=false;
+        }
+        var menuSize=$("tbody tr").size();
+        if (menuSize==0){
+            ru=false;
+        }
+        return ru;
+
+    };
+
+
     /*计算合同选项*/
     function contractSize() {
         if ($("#contractSelect option").size()<=1){
@@ -1462,6 +1485,13 @@
 
     /*添加合同订单*/
     function addOrder() {
+
+        var flag = addContractValidate();
+        if(!flag){
+            appModule.alert("请填写完整信息")
+            return;
+        }
+
 
         var fd1=$("#contract").serializeArray();
         var fd2 = $("#contractOrderTerms").serializeArray();
