@@ -6,6 +6,7 @@ import team.ruike.cim.dao.ContractProductionPlanDao;
 import team.ruike.cim.dao.ContractProductionPlanItemDao;
 import team.ruike.cim.pojo.ContractProductionPlan;
 import team.ruike.cim.pojo.ContractProductionPlanItem;
+import team.ruike.cim.service.ContractProductionPlanService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +24,8 @@ import java.util.List;
 @Controller
 public class IndexController {
     @Resource
-    private ContractProductionPlanDao contractProductionPlanDao;
+    private ContractProductionPlanService contractProductionPlanService;
+
     /**
      * 跳转主页
      * @return 主页jsp
@@ -32,11 +34,7 @@ public class IndexController {
     public String index(HttpServletRequest request) throws ParseException {
         /*加载一些主页要展示的数据*/
         //加载今日生产计划start
-        ContractProductionPlan contractProductionPlan=new ContractProductionPlan();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        contractProductionPlan.setDate(simpleDateFormat.parse(new Date().toLocaleString()));
-        List<ContractProductionPlan> contractProductionPlans = contractProductionPlanDao.select(contractProductionPlan,0,99);
-        request.setAttribute("proLs",contractProductionPlans);
+        request.setAttribute("proLs",contractProductionPlanService.getDayContractProductionPlans());
         //加载今日生产计划stop
         return "index";
     }
