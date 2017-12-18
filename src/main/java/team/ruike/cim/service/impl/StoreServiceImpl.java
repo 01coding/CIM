@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.StoreDao;
 import team.ruike.cim.pojo.Store;
 import team.ruike.cim.service.StoreService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -37,14 +38,14 @@ public class StoreServiceImpl implements StoreService {
         return store;
     }
 
-
+    @ArchivesLog(operationType = "添加操作", operationName = "添加门店")
     public void addStore(Store store) {
         String storeNo = GenerateNumber.getGenerateNumber().getRandomFileName();
         store.setStoreNo(storeNo);
         storeDao.add(store);
     }
 
-
+    @ArchivesLog(operationType = "修改操作", operationName = "修改门店")
     public void updateStoreById(Store store) {
         if (store == null) {
             throw new NullPointerException("store not is null");
@@ -55,7 +56,7 @@ public class StoreServiceImpl implements StoreService {
         storeDao.update(store);
     }
 
-
+    @ArchivesLog(operationType = "删除操作", operationName = "删除门店")
     public void deleteStoreById(final Integer storeId) {
         if (storeId != null && storeId > 0) {
             storeDao.hiddenById(storeId);

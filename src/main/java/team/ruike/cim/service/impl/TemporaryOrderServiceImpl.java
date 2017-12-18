@@ -1,14 +1,13 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.TemporaryOrderDao;
 import team.ruike.cim.dao.TemporaryOrderTermDao;
 import team.ruike.cim.pojo.TemporaryOrder;
 import team.ruike.cim.pojo.TemporaryOrderState;
 import team.ruike.cim.pojo.TemporaryOrderTerm;
-import team.ruike.cim.pojo.User;
 import team.ruike.cim.service.TemporaryOrderService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -46,7 +45,7 @@ public class TemporaryOrderServiceImpl implements TemporaryOrderService {
         return temporaryOrder;
     }
 
-    @Transactional
+    @ArchivesLog(operationType = "添加操作", operationName = "添加临时订单")
     public void addTemporaryOrder(TemporaryOrder temporaryOrder, List<TemporaryOrderTerm> temporaryOrderTerms) {
         if (temporaryOrder != null && temporaryOrderTerms != null && temporaryOrderTerms.size() > 0) {
             //订单号
