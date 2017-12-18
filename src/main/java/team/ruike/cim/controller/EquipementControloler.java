@@ -1,6 +1,5 @@
 package team.ruike.cim.controller;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +10,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -122,7 +118,7 @@ public class EquipementControloler {
      * @param date 时间
      * @return 是否成功
      */
-    @RequestMapping("/addequipmentType.do")
+    @RequestMapping("/addequipmentreport.do")
     public String addequipmentType(EquipmentReport equipmentReport, String date){
         Date dates=null;
         try

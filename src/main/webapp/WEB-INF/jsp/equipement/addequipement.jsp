@@ -1384,7 +1384,7 @@
                                                 </span>
                                             </button>
 
-                                                <button type="button" class="btn btn-warning pull-left" onclick="javascript:window.location.href='/JumpHomepage.do'"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
+                                                <button type="button" class="btn btn-warning pull-left" onclick="javascript:window.location.href='/equipment.do'"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">取消</font></font></button>
 
                                             <div class="clearfix"></div>
                                         </div>
