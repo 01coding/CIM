@@ -72,11 +72,11 @@ public class EquipementControloler {
      * @param equipment 设备表
      * @return 是否成功
      */
-    @RequestMapping("/addEquipment.cl")
+    @RequestMapping("/addEquipment.do")
     public  String addEquipment(Equipment equipment){
         int num=equipementService.addEquipment(equipment);
         if (num==0){
-            return "redirect:addequipement.do";
+            return "redirect:addequipement.cl";
         }else {
             return "redirect:equipment.do";
         }
@@ -178,7 +178,7 @@ public class EquipementControloler {
      * @param user 童虎
      * @return 对象集合
      */
-    @RequestMapping("/addequipement.do")
+    @RequestMapping("/addequipement.cl")
     public String addequipement(HttpServletRequest request,Working working,ProductionLine productionLine,User user){
         request.setAttribute("workings",equipementService.getWorking(working));
         request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
