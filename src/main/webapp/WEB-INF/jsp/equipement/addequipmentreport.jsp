@@ -1424,7 +1424,7 @@
                                             </div>
                                         </div>
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
+                                            <button id="save" class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
                                                 <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
                                                 保存</font></font></span></button>
 
