@@ -203,7 +203,7 @@
                                                     <div class="col-md-offset-3 col-md-9">
                                                         <button type="button"
                                                                 class="btn btn-default"
-                                                                data-dismiss="modal">Cancel
+                                                                data-dismiss="modal">取消
                                                         </button>
                                                     </div>
                                                 </div>

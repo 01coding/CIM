@@ -46,7 +46,73 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" onclick="storeModule.edit()">保存</button>
+            <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
         </div>
     </div>
 </div>
+<script>
+
+    $(function () {
+        uppStrotValidate();
+    })
+
+    function upp() {
+        var tbobj=document.getElementById("example");
+        tbobj.rows[$("#index").val()].cells[0].innerText=$("#updateStore input[name='storeName']").val();
+        tbobj.rows[$("#index").val()].cells[1].innerText=$("#updateStore select[name='storeType'] option:selected").text();
+        tbobj.rows[$("#index").val()].cells[2].innerText=$("#updateStore textarea[name='storeAddress']").val();
+        tbobj.rows[$("#index").val()].cells[3].innerText=$("#updateStore input[name='storePhone']").val();
+    }
+
+
+    function edit() {
+
+        var flag = $("#updateStore").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+        var addStore = $("#updateStore").serializeArray();
+        appModule.post('/store/edit.do',addStore,function (data) {
+            appModule.alert("修改成功")
+            upp();
+        },function () {
+            appModule.alert("修改失败")
+        });
+    };
+
+
+    function uppStrotValidate() {
+
+        $("#updateStore").validate({
+            rules: {
+                storeName: "required",
+                storeType:"required",
+                "storePhone":{
+                    required : true,
+                    minlength : 11,
+                },
+                "storeAddress":"required",
+            },
+            messages: {
+                storeName: {
+                    required:"请输入名称",
+                },
+                storeType:{
+                    required:"请选择类型"
+                },
+                "storePhone":{
+                    required : "请输入手机号",
+                    minlength : "确认手机不能小于11个字符",
+                },
+                "storeAddress":{
+                    required:"请输入地址"
+                }
+            }
+        });
+    }
+
+
+</script>
+

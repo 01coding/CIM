@@ -64,7 +64,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   </sql>
     <select id="select" resultMap="storeMap">
         select * from (<include refid="sql"/>) f
-        ORDER BY  store_id desc
         limit #{begin},#{pagesize}
     </select>
 
