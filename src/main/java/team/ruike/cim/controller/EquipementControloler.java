@@ -1,6 +1,5 @@
 package team.ruike.cim.controller;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +10,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -68,32 +64,6 @@ public class EquipementControloler {
     }
 
     /**
-     * 根据ID查询设备信息并绑定修改弹框
-     * @param equipmentId 设备ID
-     * @param response 重定向
-     */
-    @RequestMapping("/equipmentReportByID.do")
-    @ResponseBody
-    public void equipmentReportByID(Integer equipmentId,HttpServletResponse response){
-            Equipment equipment= equipementService.getEquipmentReportByID(equipmentId);
-            String er= JSON.toJSON(equipment).toString();
-        try {
-            //设置页面不缓存
-            response.setContentType("application/json");
-            response.setHeader("Pragma", "No-cache");
-            response.setHeader("Cache-Control", "no-cache");
-            response.setCharacterEncoding("UTF-8");
-            PrintWriter out= null;
-            out = response.getWriter();
-            out.print(er);
-            out.flush();
-            out.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    /**
      * 新增设备信息
      * @param equipment 设备表
      * @return 是否成功
@@ -102,7 +72,7 @@ public class EquipementControloler {
     public  String addEquipment(Equipment equipment){
         int num=equipementService.addEquipment(equipment);
         if (num==0){
-            return "redirect:addequipement.do";
+            return "redirect:addequipement.cl";
         }else {
             return "redirect:equipment.do";
         }
@@ -119,7 +89,7 @@ public class EquipementControloler {
         int num = equipementService.updateEquipment(equipments);
         if (num==1){
             if (equipments.getEquipmentType().getEquipmentTypeId()!=1) {
-                return "forward:/redayAddEP.do?equipment="+equipments;
+                return "forward:/redayAddEP.cl?equipment="+equipments;
             } else {
                 return "redirect:/equipment.do";
             }
@@ -134,7 +104,7 @@ public class EquipementControloler {
      * @param request 转发
      * @return 对象ID
      */
-    @RequestMapping("/redayAddEP.do")
+    @RequestMapping("/redayAddEP.cl")
     public String redayAddEP(Equipment equipment,HttpServletRequest request){
         Equipment equipment1=new Equipment();
         equipment1=equipementService.redalAddEP(equipment);
@@ -148,7 +118,7 @@ public class EquipementControloler {
      * @param date 时间
      * @return 是否成功
      */
-    @RequestMapping("/addequipmentType.do")
+    @RequestMapping("/addequipmentreport.do")
     public String addequipmentType(EquipmentReport equipmentReport, String date){
         Date dates=null;
         try
@@ -197,19 +167,6 @@ public class EquipementControloler {
     }
 
     /**
-     * 查询所有状态
-     * @param equipmentType 状态
-     * @param pager 分页辅助类
-     * @param request 转发
-     * @return 状态集合
-     */
-    @RequestMapping("/equipmentType.do")
-    public String equipmentType(EquipmentType equipmentType,Pager<EquipmentType> pager,HttpServletRequest request){
-
-        return "equipement/equipment";
-    }
-
-    /**
      * 跳转新增设备页面，并查询数据
      * @param request 转发
      * @param working 工序
@@ -217,15 +174,11 @@ public class EquipementControloler {
      * @param user 童虎
      * @return 对象集合
      */
-    @RequestMapping("/addequipement.do")
+    @RequestMapping("/addequipement.cl")
     public String addequipement(HttpServletRequest request,Working working,ProductionLine productionLine,User user){
         request.setAttribute("workings",equipementService.getWorking(working));
         request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
         request.setAttribute("users",equipementService.getUser(user));
         return "equipement/addequipement";
-    }
-@RequestMapping("/JumpHomepage.do")
-    public String JumpHomepage(){
-        return "redirect:/equipment.do";
     }
 }

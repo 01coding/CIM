@@ -1302,7 +1302,8 @@
                             <div class="panel-body">
 
                                 <div class="form-wrap">
-                                    <form action="/addequipmentType.do" method="post">
+
+                                    <form action="/addequipmentreport.do" method="post">
                                         <!--/row-->
                                         <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-calendar-note mr-10"></i><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加异常报告</font></font></h6>
                                         <hr class="light-grey-hr">
@@ -1387,9 +1388,7 @@
                                                         停用原因:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" id="equipmentReportReason" name="equipmentReportReason" class="form-control" placeholder="只能输入中文"
-                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
+                                                    <input type="text" style="width: 400px;height: 40px" id="equipmentReportReason" name="equipmentReportReason" class="form-control">
                                                 </div>
                                             </div>
                                             </div>
@@ -1399,9 +1398,7 @@
                                                         维修计划:
                                                     </div>
                                                     <div class="col-sm-7">
-                                                    <input type="text" style="width: 400px;height: 40px" id="maintenancePlan" name="maintenancePlan" class="form-control" placeholder="只能输入中文"
-                                                           onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                           onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
+                                                    <input type="text" style="width: 400px;height: 40px" id="maintenancePlan" name="maintenancePlan" class="form-control">
                                                 </div>
                                             </div>
                                             </div>
@@ -1424,13 +1421,11 @@
                                             </div>
                                         </div>
                                         <div class="form-actions">
-                                            <button class="btn btn-success btn-icon left-icon mr-10 pull-left" type="submit">
-                                                <i class="fa fa-check"></i> <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                                                保存</font></font></span></button>
 
-                                                <div class="clearfix"></div>
+                                            <input id="save" type="submit"  class="btn btn-success btn-icon left-icon mr-10 pull-left"  value="保存"/>
                                         </div>
                                     </form>
+
                                 </div>
                             </div>
                         </div>
@@ -1457,12 +1452,10 @@
     $(function () {
         //获取当前日期给date控件赋值
         GetNowDate();
-    })
-    $(function () {
+
         $("#save").click(function () {
             var e=$("#equipmentReportReason").val()
             var m=$("#maintenancePlan").val()
-            var u=$("#user.userId").val()
             var no="不能为空";
             if(e==null || e==""){
                 $("#equipmentReportReason").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
@@ -1472,13 +1465,9 @@
                 $("#maintenancePlan").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
-            if(u==null || u==""){
-                $("#user.userId").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-
         })
-    });
+    })
+
     //判断当前选择时间是否小于是当前实际时间
     function contrastTime(dates) {
         var evalue = document.getElementById(dates).value;

@@ -1563,7 +1563,7 @@
             var zhi = $(this).find("option:selected").val()
             $.ajax({
                 type: "post",
-                url: "/picitypeB.do",
+                url: "/picitypeB.cl",
                 data: {"materielTypeLevelAid": zhi},
                 dataType: "json",
                 success: function (data) {
@@ -1619,7 +1619,7 @@
     function select(zhi2) {
         $.ajax({
             type: "post",
-            url: "/piciM.do",
+            url: "/piciM.cl",
             data: {"materielTypeLevelBid": zhi2},
             dataType: "json",
             success: function (data) {
@@ -1645,7 +1645,7 @@
             var zhi = $("#selectid").find("option:selected").val();
             $.ajax({
                 type: "post",
-                url: "/PStand.do",
+                url: "/PStand.cl",
                 data: {"materielId": zhi},
                 dataType: "json",
                 success: function (data) {
