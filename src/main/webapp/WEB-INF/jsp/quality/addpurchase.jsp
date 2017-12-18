@@ -1133,7 +1133,7 @@
             var zhi = $(this).find("option:selected").val()
             $.ajax({
                 type: "post",
-                url: "/TypeB.do",
+                url: "/TypeB.cl",
                 data: {"materielTypeLevelAid": zhi},
                 dataType: "json",
                 success: function (data) {
@@ -1166,7 +1166,7 @@
     function select(zhi2) {
         $.ajax({
             type: "post",
-            url: "/materiel.do",
+            url: "/materiel.cl",
             data: {"materielTypeLevelBId": zhi2},
             dataType: "json",
             success: function (data) {

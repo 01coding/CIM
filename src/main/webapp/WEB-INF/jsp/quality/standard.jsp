@@ -1021,7 +1021,7 @@
                                                                                  role="group">
                                                                                 <button type="button"
                                                                                         class="btn btn-default footable-edit">
-                                                                                    <a href="toUpdate.do?Psid=${p.purchaseStandardId}">
+                                                                                    <a href="toUpdate.cl?Psid=${p.purchaseStandardId}">
                                                                                     <span class="fooicon fooicon-pencil"
                                                                                           aria-hidden="true"></span>
                                                                                     </a>
@@ -1040,7 +1040,7 @@
                                                                 </tbody>
                                                             </table>
                                                             <button class="btn  btn-primary btn-rounded"><a
-                                                                    href="addpurchase.do" style="color: white">添加</a>
+                                                                    href="addpurchase.cl" style="color: white">添加</a>
                                                             </button>
 
 
