@@ -17,14 +17,14 @@
                 <div class="form-group">
                     <label class="control-label mb-10">门店/用户类别:</label>
                     <select class="form-control" name="storeType">
-                        <option value="0">请选择</option>
+                        <option value="">请选择</option>
                         <option value="1"
                         <c:if test="${store.storeType==1}">
                             selected
                         </c:if>
                           >合同用户</option>
                         <option value="2"
-                        <c:if test="${store.storeType==0}">
+                        <c:if test="${store.storeType==2}">
                             selected
                         </c:if>
                         >散户</option>
@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label class="control-label mb-10">电话:</label>
-                    <input type="text" class="form-control" name="storePhone" value="${store.storePhone}">
+                    <input type="text" class="form-control" name="storePhone"  maxlength="11" minlength="11" value="${store.storePhone}">
                 </div>
 
                 <div class="form-group">

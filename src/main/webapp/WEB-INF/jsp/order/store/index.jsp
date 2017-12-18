@@ -1409,8 +1409,8 @@
                                                                 selected
                                                             </c:if>
                                                             >合同用户</option>
-                                                            <option value="0"
-                                                                    <c:if test="${store.storeType==0}">
+                                                            <option value="2"
+                                                                    <c:if test="${store.storeType==2}">
                                                                         selected
                                                                     </c:if>
                                                             >散户</option>
@@ -1446,7 +1446,7 @@
                                                                 <c:when test="${store.storeType==1}">
                                                                     合同用户
                                                                 </c:when>
-                                                                <c:when test="${store.storeType==0}">
+                                                                <c:when test="${store.storeType==2}">
                                                                     散户
                                                                 </c:when>
                                                             </c:choose>
@@ -1462,7 +1462,7 @@
                                                                 <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect" onclick="toView(${store.storeId})">
                                                                     <i class="fa ti-search" style="color: #2879ff;"></i>
                                                                 </button>
-                                                                <button type="button" class="btn btn-default footable-delete" onclick="del(${store.storeId})">
+                                                                <button type="button" class="btn btn-default footable-delete" data-storeid="${store.storeId}" onclick="del(this)">
                                                                     <span class="fooicon fooicon-trash" aria-hidden="true"></span>
                                                                 </button>
                                                             </div>
@@ -1557,7 +1557,7 @@
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control"   maxlength="11"  name="storePhone">
+                                        <input type="text" class="form-control"   maxlength="11" minlength="11"  name="storePhone">
                                     </div>
 
                                     <div class="form-group">
@@ -1726,10 +1726,11 @@
             confirmButtonText: "删除",
             closeOnConfirm: false
         }, function(){
-            var fd = {storeId:ts};
+            var fd = {storeId:$(ts).data("storeid")};
             appModule.post('/store/delete.do',fd,function (data) {
                 appModule.alert("删除成功");
-                location.reload();
+                $(ts).parent().parent().parent().remove();
+
             },function () {
                 appModule.alert("删除失败");
             });

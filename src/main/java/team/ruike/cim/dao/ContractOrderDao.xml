@@ -14,6 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association column="order_contract_id" property="orderContract" select="team.ruike.cim.dao.OrderContractDao.selectById"/>
         <association column="user_id" property="user" select="team.ruike.cim.dao.UserDao.selectById"/>
         <collection property="contractOrderTerms" column="contract_order_id" select="team.ruike.cim.dao.ContractOrderTermDao.selectBYContractOrderId"/>
+
     </resultMap>
 
     <sql id="sqlh">
@@ -94,6 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectCount" resultType="int" parameterType="contractOrder">
         SELECT COUNT(1) FROM (<include refid="sqlz"/>) f
     </select>
+
     <select id="selectById" parameterType="int" resultMap="contractOrderMap">
         SELECT * from contract_order WHERE `status`=0 and contract_order_id=#{contractOrderId}
     </select>
