@@ -1,14 +1,13 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.ContractOrderDao;
 import team.ruike.cim.dao.ContractOrderTermDao;
 import team.ruike.cim.pojo.ContractOrder;
 import team.ruike.cim.pojo.ContractOrderTerm;
 import team.ruike.cim.pojo.OrderContract;
-import team.ruike.cim.pojo.User;
 import team.ruike.cim.service.ContractOrderService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -48,7 +47,7 @@ public class ContractOrderServiceImpl implements ContractOrderService {
     }
 
 
-    @Transactional
+    @ArchivesLog(operationType = "添加操作", operationName = "添加合同订单")
     public void addContractOrder(OrderContract orderContract, ContractOrder contractOrder, List<ContractOrderTerm> contractOrderTerms) {
         //添加合同订单
         if (orderContract != null && contractOrder != null && contractOrderTerms != null && contractOrderTerms.size() > 0) {
