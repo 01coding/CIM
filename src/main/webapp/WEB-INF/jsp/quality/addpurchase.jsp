@@ -1002,8 +1002,7 @@
 
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">Select box</label>
-
-                                                                    <select id="selectid" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
+                                                                    <select id="selectid" name="materiel.materielId" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
                                                                     <c:forEach items="${requestScope.MList}" var="typeM">
                                                                         <option value="${typeM.materielId}">${typeM.materielName}</option>
                                                                     </c:forEach>
@@ -1061,6 +1060,14 @@
                                                     <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" name="standardCType" id="radio9" value="2">
                                                         <label for="radio9"> 10分制 </label>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="form-group col-sm-6">
+                                                        <input name="remarks" id="remarks" type="text" class="form-control"
+                                                               placeholder="备注"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                 </div>
                                             </div>
