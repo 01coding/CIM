@@ -72,7 +72,7 @@ public class EquipementControloler {
      * @param equipment 设备表
      * @return 是否成功
      */
-    @RequestMapping("/addEquipment.do")
+    @RequestMapping("/addEquipment.cl")
     public  String addEquipment(Equipment equipment){
         int num=equipementService.addEquipment(equipment);
         if (num==0){
@@ -93,7 +93,7 @@ public class EquipementControloler {
         int num = equipementService.updateEquipment(equipments);
         if (num==1){
             if (equipments.getEquipmentType().getEquipmentTypeId()!=1) {
-                return "forward:/redayAddEP.do?equipment="+equipments;
+                return "forward:/redayAddEP.cl?equipment="+equipments;
             } else {
                 return "redirect:/equipment.do";
             }
@@ -108,7 +108,7 @@ public class EquipementControloler {
      * @param request 转发
      * @return 对象ID
      */
-    @RequestMapping("/redayAddEP.do")
+    @RequestMapping("/redayAddEP.cl")
     public String redayAddEP(Equipment equipment,HttpServletRequest request){
         Equipment equipment1=new Equipment();
         equipment1=equipementService.redalAddEP(equipment);
