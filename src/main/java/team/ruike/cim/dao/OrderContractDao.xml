@@ -24,8 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="order_contract_date" property="orderContractDate"/>
         <result column="status" property="status"/>
         <association property="store" column="store_id" select="team.ruike.cim.dao.StoreDao.selectById"/>
-        <association property="contractOrder" column="order_contract_id" select="team.ruike.cim.dao.ContractOrderDao.selectContractOrderByContractId"/>
+        <association property="contractOrder" column="order_contract_id" select="team.ruike.cim.dao.ContractOrderDao.selectById"/>
     </resultMap>
+
     <select id="select" resultMap="orderContractMap">
         SELECT * FROM order_contract WHERE status=0
         <if test="orderContract.orderContractId!=null and orderContract.orderContractId>0">

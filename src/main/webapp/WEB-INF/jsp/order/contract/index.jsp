@@ -1425,7 +1425,7 @@
                                                     <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
                                                         <label class="control-label mb-10">订单状态:</label>
                                                         <select class="form-control" name="contractOrderState">
-                                                            <option value="0">请选择</option>
+                                                            <option value="">请选择</option>
                                                             <option value="1"
                                                             <c:if test="${contractOrder.contractOrderState==1}">
                                                                 selected
@@ -1433,7 +1433,7 @@
                                                              >完成</option>
 
                                                             <option value="0"
-                                                            <c:if test="${contractOrder.contractOrderState==1}">
+                                                            <c:if test="${contractOrder.contractOrderState==0}">
                                                                 selected
                                                             </c:if>
                                                             >未完成</option>

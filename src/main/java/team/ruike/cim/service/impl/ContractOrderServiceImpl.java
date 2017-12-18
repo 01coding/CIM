@@ -58,8 +58,6 @@ public class ContractOrderServiceImpl implements ContractOrderService {
             //订单号
             contractOrder.setContractOrderNo(GenerateNumber.getGenerateNumber().getRandomFileName());
 
-
-
             contractOrderDao.add(contractOrder);
             final Integer orderId = contractOrder.getContractOrderId();
 

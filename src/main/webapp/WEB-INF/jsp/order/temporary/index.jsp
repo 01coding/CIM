@@ -1437,7 +1437,6 @@
                                                 <tr>
                                                     <th>订单编号</th>
                                                     <th>下单日期</th>
-                                                    <th>门店/客户编号</th>
                                                     <th>门店/客户名称</th>
                                                     <th>订单确认人</th>
                                                     <th>交付时间</th>
@@ -1454,7 +1453,6 @@
                                                     <tr>
                                                         <td>${temporaryOrder.temporaryOrderNo}</td>
                                                         <td><fmt:formatDate value="${temporaryOrder.temporaryOrderStartDate}" pattern="yyyy-MM-dd"/></td>
-                                                        <td>${temporaryOrder.store.storeNo}</td>
                                                         <td>${temporaryOrder.store.storeName}</td>
                                                         <td>${temporaryOrder.user.userName}</td>
                                                         <td><fmt:formatDate value="${temporaryOrder.temporaryOrderEndDate}" pattern="yyyy-MM-dd"/></td>

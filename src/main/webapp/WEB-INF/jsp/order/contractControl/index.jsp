@@ -1434,7 +1434,6 @@
                                                 <th>合同名称</th>
                                                 <th>合同签订时间</th>
                                                 <th>签订人</th>
-                                                <th>状态</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
@@ -1447,21 +1446,7 @@
 
                                                 <td><fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/> </td>
                                                 <td>${orderContract.store.storeName}</td>
-                                                <th>
-                                                    <c:choose>
-                                                        <c:when test="${orderContract.contractOrder!=null}">
-                                                            <c:if test="${orderContract.contractOrder.contractOrderState==0}">
-                                                                未完成
-                                                            </c:if>
-                                                            <c:if test="${orderContract.contractOrder.contractOrderState==1}">
-                                                                完成
-                                                            </c:if>
-                                                        </c:when>
-                                                        <c:when test="${orderContract.contractOrder==null}">
-                                                                无合同项
-                                                        </c:when>
-                                                    </c:choose>
-                                                </th>
+
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
 
