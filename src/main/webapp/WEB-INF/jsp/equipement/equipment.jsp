@@ -1673,7 +1673,7 @@
                                             </div>
                                         </div>
                                         <div class="guide">
-                                                <a href="/addequipement.do">
+                                                <a href="/addequipement.cl">
                                                     <button class="btn btn-info btn-icon-anim btn-circle" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
