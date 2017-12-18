@@ -99,7 +99,7 @@ public class EquipementControloler {
     }
 
     /**
-     * 预备新增页面
+     * 跳转异常新增页面
      * @param equipment 设备表
      * @param request 转发
      * @return 对象ID
@@ -152,7 +152,7 @@ public class EquipementControloler {
     }
 
     /**
-     * 查询所有异常信息
+     * 查询异常信息
      * @param equipmentReport 异常对象
      * @param pager 分页辅助类
      * @param request 转发
@@ -171,7 +171,7 @@ public class EquipementControloler {
      * @param request 转发
      * @param working 工序
      * @param productionLine 生产线
-     * @param user 童虎
+     * @param user 用户
      * @return 对象集合
      */
     @RequestMapping("/addequipement.cl")
