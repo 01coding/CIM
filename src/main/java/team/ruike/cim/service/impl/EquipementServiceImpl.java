@@ -177,7 +177,7 @@ public class EquipementServiceImpl implements EquipementService {
     }
 
     /**
-     * 预备查询异常所有外键
+     * 设备查询异常所有外键
      * @param equipment
      * @return
      */

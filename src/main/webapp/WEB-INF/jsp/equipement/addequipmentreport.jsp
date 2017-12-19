@@ -1500,7 +1500,7 @@
         }
         if (strDate >= 0 && strDate <= 9) {
             strDate = "0" + strDate;
-        }
+    }
         var currentdate = year + seperator1 + month + seperator1 + strDate;
         $("#dates").val(currentdate);
     }
