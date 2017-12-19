@@ -966,6 +966,7 @@
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
                                                         <div class="form-group">
+                                                            <input name="purchaseStandardId" type="hidden" value="${PStand.purchaseStandardId}">
                                                             <input  name="materiel.materielId" type="hidden" value="${PStand.materiel.materielId}" />
                                                             <input type="text" class="form-control" readonly="readonly" value="${PStand.materiel.materielName}">
                                                         </div>

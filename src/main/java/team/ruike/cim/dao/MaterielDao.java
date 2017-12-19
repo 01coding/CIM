@@ -3,6 +3,7 @@ package team.ruike.cim.dao;
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.Materiel;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -63,5 +64,5 @@ public interface MaterielDao {
      * 根据purchase_date 与 Bid查询物料
      * @return
      */
-    List<Materiel> getMaterielByDate(Integer materielTypeLevelBId);
+    List<Materiel> getMaterielByDate(@Param("materielTypeLevelBId") Integer materielTypeLevelBId,@Param("date") Date date);
 }

@@ -81,6 +81,6 @@
     </select>
 
     <select id="getNumberByDate" resultType="int">
-        SELECT everyday_purchasing_plan_no FROM everyday_purchasing_plan WHERE everyday_purchasing_plan_date=date_format(now(),'%y-%m-%d')
+        SELECT everyday_purchasing_plan_no FROM everyday_purchasing_plan WHERE everyday_purchasing_plan_date=#{date}
     </select>
 </mapper>

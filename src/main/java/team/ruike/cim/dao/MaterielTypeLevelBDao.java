@@ -3,6 +3,7 @@ package team.ruike.cim.dao;
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,5 +65,5 @@ public interface MaterielTypeLevelBDao {
      * @param materielTypeLevelAId AId
      * @return
      */
-    List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId);
+    List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(@Param("materielTypeLevelAId") Integer materielTypeLevelAId,@Param("date")Date date);
 }

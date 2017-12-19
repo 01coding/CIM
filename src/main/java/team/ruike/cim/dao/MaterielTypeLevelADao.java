@@ -3,6 +3,7 @@ package team.ruike.cim.dao;
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.MaterielTypeLevelA;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,5 +65,5 @@ public interface MaterielTypeLevelADao {
      * 查询所有当天的物料一级菜单
      * @return
      */
-    List<MaterielTypeLevelA> getMaterielTypeLevelAByDate();
+    List<MaterielTypeLevelA> getMaterielTypeLevelAByDate(Date date);
 }
