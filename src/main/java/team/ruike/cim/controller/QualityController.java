@@ -10,8 +10,13 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.PrintWriter;
+import java.text.Format;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.SimpleFormatter;
 
 /**
  * 质量管理控制器
@@ -147,6 +152,7 @@ public class QualityController {
      */
     @RequestMapping("updatePurchaseStandard.do")
     public String updateStand(PurchaseStandard purchaseStandard){
+        purchaseStandard.setStatus(0);
         qualityService.updateStand(purchaseStandard);
         return "redirect:/standard.do";
     }
@@ -248,14 +254,26 @@ public class QualityController {
      * @return
      */
     @RequestMapping("picitypeA.cl")
-    public String getPiciA(HttpServletRequest request){
-        List<MaterielTypeLevelA> materielTypeLevelAList=qualityService.getMaterielTypeLevelAByDate();
+    public String getPiciA(HttpServletRequest request, String date){
+        Date date1=null;
+        if (date==null){
+            date1=new Date();
+        }else {
+            try {
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+                date1=sdf.parse(date);
+            } catch (ParseException e) {
+                System.out.println("滚");
+            }
+        }
+        java.sql.Date dates = new java.sql.Date(date1.getTime());
+        List<MaterielTypeLevelA> materielTypeLevelAList=qualityService.getMaterielTypeLevelAByDate(dates);
 
-        List<MaterielTypeLevelB> materielTypeLevelBList=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAList.get(0).getMaterielTypeLevelAId());
+        List<MaterielTypeLevelB> materielTypeLevelBList=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAList.get(0).getMaterielTypeLevelAId(),dates);
 
-        List<Materiel> materielList=qualityService.getMaterielByDate(materielTypeLevelBList.get(0).getMaterielTypeLevelBId());
+        List<Materiel> materielList=qualityService.getMaterielByDate(materielTypeLevelBList.get(0).getMaterielTypeLevelBId(),dates);
 
-        Integer number=qualityService.getNumberByDate();
+        Integer number=qualityService.getNumberByDate(dates);
 
         PurchaseStandard purchaseStandard= qualityService.getpurchaseStandard(materielList.get(0).getMaterielId());
         request.setAttribute("piciA",materielTypeLevelAList);
@@ -272,8 +290,12 @@ public class QualityController {
      * @param materielTypeLevelAid 物料一级菜单Id
      */
     @RequestMapping("picitypeB.cl")
-    public void getPiciB(PrintWriter printWriter,Integer materielTypeLevelAid){
-        List<MaterielTypeLevelB> materielTypeLevelBS=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAid);
+    public void getPiciB(PrintWriter printWriter,Integer materielTypeLevelAid,Date date){
+        if (date==null){
+            date=new Date();
+        }
+        java.sql.Date dates = new java.sql.Date(date.getTime());
+        List<MaterielTypeLevelB> materielTypeLevelBS=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAid,dates);
         String jsonString=JSON.toJSONString(materielTypeLevelBS);
         printWriter.write(jsonString);
         printWriter.flush();
@@ -286,8 +308,12 @@ public class QualityController {
      * @param materielTypeLevelBid
      */
     @RequestMapping("piciM.cl")
-    public void getPiciM(PrintWriter printWriter,Integer materielTypeLevelBid){
-        List<Materiel> materiels=qualityService.getMaterielByDate(materielTypeLevelBid);
+    public void getPiciM(PrintWriter printWriter,Integer materielTypeLevelBid,Date date){
+        if(date==null){
+            date=new Date();
+        }
+        java.sql.Date dates = new java.sql.Date(date.getTime());
+        List<Materiel> materiels=qualityService.getMaterielByDate(materielTypeLevelBid,dates);
         String jsonString=JSON.toJSONString(materiels);
         printWriter.write(jsonString);
         printWriter.flush();

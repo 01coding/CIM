@@ -92,9 +92,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="selectById" parameterType="int" resultMap="materielMap">
         SELECT * from materiel WHERE status=0 AND materiel_id=#{materielId}
     </select>
-    <select id="getMaterielByDate" parameterType="int" resultMap="materielMap">
+    <select id="getMaterielByDate" resultMap="materielMap">
         SELECT * FROM materiel WHERE materiel_id in (SELECT materiel_id FROM purchase_item WHERE purchase_id in
-        (SELECT purchase_id FROM purchase WHERE purchase_date=date_format(now(),'%y-%m-%d')) and materiel_id not in
+        (SELECT purchase_id FROM purchase WHERE purchase_date=#{date}) and materiel_id not in
         (SELECT materiel_id FROM purchase_standard where `status`=1))
         and materiel_type_level_b_id=#{materielTypeLevelBId}
     </select>

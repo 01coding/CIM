@@ -48,12 +48,12 @@
             AND materiel_type_level_a_id=#{materielTypeLevelA.materielTypeLevelAId}
         </if>
     </select>
-    <select id="selectById" parameterType="int" resultMap="materielTypeLevelBs">
+    <select id="selectById" resultMap="materielTypeLevelBs">
         SELECT * FROM materiel_type_level_b WHERE status=0 AND materiel_type_level_b_id=#{materielTypeLevelBId}
     </select>
-    <select id="getMaterielTypeLevelBByDate" parameterType="int" resultMap="materielTypeLevelBs">
+    <select id="getMaterielTypeLevelBByDate" resultMap="materielTypeLevelBs">
         SELECT * FROM materiel_type_level_b WHERE materiel_type_level_b_id in (SELECT materiel_type_level_b_id FROM materiel WHERE materiel_id in
         (SELECT materiel_id FROM purchase_item WHERE purchase_id in
-        (SELECT purchase_id FROM purchase WHERE purchase_date=date_format(now(),'%y-%m-%d')))) and materiel_type_level_a_id=#{materielTypeLevelAId}
+        (SELECT purchase_id FROM purchase WHERE purchase_date=#{date}))) and materiel_type_level_a_id=#{materielTypeLevelAId}
     </select>
 </mapper>

@@ -112,7 +112,8 @@ public class QualityServiceImpl implements QualityService {
      * @return
      */
     public int updateStand(PurchaseStandard purchaseStandard) {
-        return purchaseStandardDao.update(purchaseStandard);
+        int a=purchaseStandardDao.update(purchaseStandard);
+        return a;
     }
 
 
@@ -171,8 +172,8 @@ public class QualityServiceImpl implements QualityService {
      * 查询当前日期所有A级菜单
      * @return
      */
-    public List<MaterielTypeLevelA> getMaterielTypeLevelAByDate() {
-        return materielTypeLevelADao.getMaterielTypeLevelAByDate();
+    public List<MaterielTypeLevelA> getMaterielTypeLevelAByDate(Date date) {
+        return materielTypeLevelADao.getMaterielTypeLevelAByDate(date);
     }
 
     /**
@@ -180,8 +181,8 @@ public class QualityServiceImpl implements QualityService {
      * @param materielTypeLevelAId  物料一级Id
      * @return
      */
-    public List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId) {
-        return materielTypeLevelBDao.getMaterielTypeLevelBByDate(materielTypeLevelAId);
+    public List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId,Date date) {
+        return materielTypeLevelBDao.getMaterielTypeLevelBByDate(materielTypeLevelAId,date);
     }
 
 
@@ -190,16 +191,16 @@ public class QualityServiceImpl implements QualityService {
      * @param materielTypeLevelBId  物料二级菜单Id
      * @return
      */
-    public List<Materiel> getMaterielByDate(Integer materielTypeLevelBId) {
-        return materielDao.getMaterielByDate(materielTypeLevelBId);
+    public List<Materiel> getMaterielByDate(Integer materielTypeLevelBId,Date date) {
+        return materielDao.getMaterielByDate(materielTypeLevelBId,date);
     }
 
     /**
      * 根据日期获取采购批次 采购表Id
      * @return
      */
-    public Integer getNumberByDate() {
-        return everydayPurchasingPlanDao.getNumberByDate();
+    public Integer getNumberByDate(Date date) {
+        return everydayPurchasingPlanDao.getNumberByDate(date);
     }
 
     /**
