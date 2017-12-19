@@ -1385,7 +1385,7 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
-                                    <div class="table-responsive">
+
                                         <table id="example" class="table table-hover display  pb-30">
                                             <div class="row">
                                                 <form class="form-inline" action="/equipment.do" method="post">
@@ -1673,20 +1673,92 @@
                                             </div>
                                         </div>
                                         <div class="guide">
-                                                <a href="/addequipement.cl">
-                                                    <button class="btn btn-info btn-icon-anim btn-circle" title="添加数据">
+
+                                                    <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModal" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
-                                                </a>
+
                                             </div>
                                         </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            <div>
+                <!--添加输入框-->
+                <div class="col-md-6">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel1">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h5 class="modal-title" id="df">新增设备</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form  id="addeq">
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">设备名称:</label>
+                                            <input type="text" class="form-control" name="equipmentName">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">保养周期:</label>
+                                            <input class="form-control" type="number" min="1" id="maintenanceCycle1"  name="maintenanceCycle">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">检查周天:</label>
+                                            <input class="form-control" type="number" min="1" id="inspectionCycle1"  name="inspectionCycle"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">生产线:</label>
+                                            <select class="form-control" name="productionLine.productionLineId">
+                                                    <c:forEach items="${requestScope.productionLines}" var="p">
+                                                        <option  value="${p.productionLineId}">${p.productionLineNo}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">工序:</label>
+                                            <select class="form-control" name="working.workingId" >
+                                                    <c:forEach items="${requestScope.workings}" var="w">
+                                                        <option   value="${w.workingId}">${w.workingName}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">负责人:</label>
+                                            <select class="form-control" name="user.userId">
+                                                    <c:forEach items="${requestScope.users}" var="u">
+                                                        <option   value="${u.userId}">${u.userName}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" onclick="add()" data-dismiss="modal">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
+
         </div>
     </div>
 </div>
@@ -1755,6 +1827,29 @@
         $(function () {
             dedd()
             });
+
+        function add() {
+
+            var equis=$("#addeq").serializeArray();
+
+            $.ajax({
+                url: "/addEquipment.do",
+                method: "post",
+                data: equis,
+                dataType: "json",
+                success: function (data) {
+                    if (null != data) {
+                        if(data>0){
+                            alert("新增成功")
+                        }else {
+                            alert("新增成功")
+                        }
+                    }
+                }, error: function () {
+                   alert("error");
+                }
+            });
+        }
         function dedd() {
             $(".del").click(function(){
                 var mid=$(this).attr("flagId");

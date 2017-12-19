@@ -69,13 +69,11 @@ public class EquipementControloler {
      * @return 是否成功
      */
     @RequestMapping("/addEquipment.do")
+    @ResponseBody
     public  String addEquipment(Equipment equipment){
-        int num=equipementService.addEquipment(equipment);
-        if (num==0){
-            return "redirect:addequipement.cl";
-        }else {
-            return "redirect:equipment.do";
-        }
+        equipment.setStatus(0);
+        equipementService.addEquipment(equipment);
+       return "1";
     }
 
     /**
@@ -164,21 +162,5 @@ public class EquipementControloler {
         request.setAttribute("users",equipementService.getUser(user));
         request.setAttribute("equipmentReports",pager);
         return "equipement/equipmentreport";
-    }
-
-    /**
-     * 跳转新增设备页面，并查询数据
-     * @param request 转发
-     * @param working 工序
-     * @param productionLine 生产线
-     * @param user 用户
-     * @return 对象集合
-     */
-    @RequestMapping("/addequipement.cl")
-    public String addequipement(HttpServletRequest request,Working working,ProductionLine productionLine,User user){
-        request.setAttribute("workings",equipementService.getWorking(working));
-        request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
-        request.setAttribute("users",equipementService.getUser(user));
-        return "equipement/addequipement";
     }
 }
