@@ -1484,7 +1484,7 @@
                                                                                         设备编号:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}"/>
+                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId"  value="${e.equipmentId}"/>
                                                                                     </div>
 
                                                                                 </div>
@@ -1495,7 +1495,7 @@
                                                                                         检查周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1508,9 +1508,7 @@
                                                                                         设备名称:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="只能输入中文" value="${e.equipmentName}"
-                                                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
+                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" value="${e.equipmentName}">
                                                                                     </div>
                                                                                     </div>
                                                                             </div>
@@ -1520,7 +1518,7 @@
                                                                                         保养周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
