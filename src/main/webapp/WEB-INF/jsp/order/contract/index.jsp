@@ -1391,7 +1391,7 @@
 
                                 <div class="table-wrap">
 
-                                    <div class="table-responsive">
+
 
                                         <div style="position: relative;bottom: 10px;">
                                             <form method="get" id="orderForm" action="/contract/order/index.do">
@@ -1430,13 +1430,13 @@
                                                             <c:if test="${contractOrder.contractOrderState==1}">
                                                                 selected
                                                             </c:if>
-                                                             >完成</option>
+                                                             >已交付</option>
 
                                                             <option value="0"
                                                             <c:if test="${contractOrder.contractOrderState==0}">
                                                                 selected
                                                             </c:if>
-                                                            >未完成</option>
+                                                            >未交付</option>
                                                         </select>
                                                     </div>
 
@@ -1447,7 +1447,6 @@
                                             </form>
                                         </div>
 
-                                        <div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
@@ -1498,7 +1497,7 @@
                                     </c:forEach>
                                             </tbody>
                                         </table>
-                                        </div>
+
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1513,7 +1512,7 @@
                                         </div>
 
 
-                                    </div>
+
 
                                 </div>
 
