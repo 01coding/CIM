@@ -70,6 +70,9 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+        .error{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -1615,7 +1618,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button id="butt" type="submit" class="btn btn-primary">确认修改</button>
+                                                                            <button  type="submit" class="btn btn-primary">确认修改</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1703,7 +1706,7 @@
                                     <form  id="addeq">
                                         <div class="form-group">
                                             <label class="control-label mb-10">设备名称:</label>
-                                            <input type="text" class="form-control" name="equipmentName">
+                                            <input type="text" class="form-control" id="equipmentName1" name="equipmentName">
                                         </div>
 
                                         <div class="form-group">
@@ -1748,7 +1751,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary" onclick="add()" data-dismiss="modal">保存</button>
+                                    <button type="button" id="addNo" class="btn btn-primary" onclick="add()" >保存</button>
                                 </div>
                             </div>
                         </div>
@@ -1765,6 +1768,107 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../../../vendors/jquery.validate.js"></script>
+<script src="../../../vendors/messages_zh.js"></script>
+
+
+<script>
+    $(function () {
+        dedd()
+        addeqValidate();
+    });
+
+    function addeqValidate() {
+
+        $("#addeq").validate({
+            rules: {
+                equipmentName: "required",
+                maintenanceCycle:"required",
+                inspectionCycle:"required",
+            },
+            messages: {
+                equipmentName: {
+                    required:"请输入设备名称",
+                },
+                maintenanceCycle:{
+                    required:"请选择保养周期"
+                },
+                inspectionCycle:{
+                    required:"请输入检查周天"
+                }
+            }
+        });
+    }
+
+
+    function add() {
+
+        var flag = $("#addeq").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+            var equis=$("#addeq").serializeArray();
+
+            $.ajax({
+                url: "/addEquipment.do",
+                method: "post",
+                data: equis,
+                dataType: "json",
+                success: function (data) {
+                    if (null != data) {
+                        if(data>0){
+                            alert("新增成功")
+                            document.getElementById("addeq").reset();
+                        }else {
+                            alert("新增失败")
+                        }
+                    }
+                }, error: function () {
+                    alert("error");
+                }
+            });
+
+
+
+
+    }
+    function dedd() {
+        $(".del").click(function(){
+            var mid=$(this).attr("flagId");
+            var mname=$(this).attr("flagName");
+            var $tr=$(this).parent().parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"的标准吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    }
+</script>
 <script>
     $(function () {
         $("#butt").click(function () {
@@ -1777,10 +1881,12 @@
                 $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
+
             if(e==null || e==""){
                 $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
+
             if(m==null || m==""){
                 $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
@@ -1823,67 +1929,7 @@
 
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        $(function () {
-            dedd()
-            });
 
-        function add() {
-
-            var equis=$("#addeq").serializeArray();
-
-            $.ajax({
-                url: "/addEquipment.do",
-                method: "post",
-                data: equis,
-                dataType: "json",
-                success: function (data) {
-                    if (null != data) {
-                        if(data>0){
-                            alert("新增成功")
-                        }else {
-                            alert("新增成功")
-                        }
-                    }
-                }, error: function () {
-                   alert("error");
-                }
-            });
-        }
-        function dedd() {
-            $(".del").click(function(){
-                var mid=$(this).attr("flagId");
-                var mname=$(this).attr("flagName");
-                var $tr=$(this).parent().parent().parent();
-                swal({
-                    title: "你确定要删除"+mname+"的标准吗?",
-                    text: "删除操作不可恢复！!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#fec107",
-                    confirmButtonText: "确定!",
-                    cancelButtonText: "取消!",
-                    closeOnConfirm: false,
-                    closeOnCancel: true
-                }, function(isConfirm){
-                    if (isConfirm) {
-                        $.ajax({
-                            url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
-                            cache: false,
-                            success:function(data){
-                                if(data == 1){
-                                    swal("删除成功", "删除成功！", "success");
-                                    $($tr).remove();
-                                }else{
-                                    swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
-                                }
-                            }
-                        });
-                    }
-                });
-            });
-        }
-    </script>
 </body>
 </html>
 
