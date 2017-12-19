@@ -139,7 +139,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
 
-                                                    <label class="control-label col-md-4">菜品编号&名称:</label>
+                                                    <label class="control-label col-md-4">名称:</label>
                                                     <div class="col-md-8">
                                                         <p class="form-control-static">${temporaryOrderTerm.menu.menuName}</p>
                                                     </div>
@@ -170,12 +170,12 @@
                                                     <label class="control-label col-md-3">完成状态:</label>
                                                     <div class="col-md-9">
                                                         <p class="form-control-static">
-                                                        <c:if test="${temporaryOrderTerm.temporaryOrderTermState==0}">
-                                                            未完成
-                                                        </c:if>
-                                                        <c:if test="${temporaryOrderTerm.temporaryOrderTermState==1}">
-                                                            已完成
-                                                        </c:if>
+                                                            <c:forEach var="temporaryOrderState" items="${temporaryOrderStateList}">
+                                                                <c:if test="${temporaryOrderTerm.temporaryOrderTermState==temporaryOrderState.temporaryOrderStateId}">
+                                                                    ${temporaryOrderState.temporaryOrderStateName}
+                                                                </c:if>
+                                                            </c:forEach>
+
                                                         </p>
                                                     </div>
                                                 </div>

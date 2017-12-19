@@ -2,8 +2,6 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -44,11 +42,11 @@ public class TemporaryOrderController {
 
 
     @RequestMapping("index.do")
-    public String index(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager,Model model) {
+    public String index(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager, Model model) {
         List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
         temporaryOrderService.queryTemporaryOrder(temporaryOrder, pager);
         model.addAttribute("pager", pager);
-        model.addAttribute("temporaryOrder",temporaryOrder);
+        model.addAttribute("temporaryOrder", temporaryOrder);
         model.addAttribute("temporaryOrderStateList", temporaryOrderStateList);
         return "order/temporary/index";
     }
@@ -65,8 +63,8 @@ public class TemporaryOrderController {
 
     @RequestMapping("add.do")
     @ResponseBody
-    public String add(TemporaryOrder temporaryOrder,HttpServletRequest request) {
-        User  user=(User) request.getSession().getAttribute("u");
+    public String add(TemporaryOrder temporaryOrder, HttpServletRequest request) {
+        User user = (User) request.getSession().getAttribute("u");
         temporaryOrder.setUser(user);
         temporaryOrderService.addTemporaryOrder(temporaryOrder, temporaryOrder.getTemporaryOrderTerms());
         return "1";
@@ -76,7 +74,9 @@ public class TemporaryOrderController {
     @RequestMapping("toView.do")
     public String toView(@RequestParam(value = "temporaryOrderId", required = false) Integer temporaryOrderId, Model model) {
         TemporaryOrder temporaryOrder = temporaryOrderService.queryTemporaryOrderById(temporaryOrderId);
+        List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
         model.addAttribute("temporaryOrder", temporaryOrder);
+        model.addAttribute("temporaryOrderStateList", temporaryOrderStateList);
         return "order/temporary/view";
     }
 
@@ -86,7 +86,7 @@ public class TemporaryOrderController {
         List<Menu> menuList = menuService.selectByMenuTypeId(menuTypeId);
         StringBuilder option = new StringBuilder();
         for (Menu menu : menuList) {
-            option.append("<option value='" + menu.getMenuId() + "'>" + menu.getMenuName() + "</option>");
+            option.append("<option value='").append(menu.getMenuId()).append("'>").append(menu.getMenuName()).append("</option>");
         }
         return option.toString();
     }

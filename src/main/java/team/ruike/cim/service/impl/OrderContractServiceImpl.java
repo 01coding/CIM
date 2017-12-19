@@ -1,10 +1,10 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import team.ruike.cim.dao.OrderContractDao;
 import team.ruike.cim.pojo.OrderContract;
 import team.ruike.cim.service.OrderContractService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -38,7 +38,7 @@ public class OrderContractServiceImpl implements OrderContractService {
         return orderContract;
     }
 
-
+    @ArchivesLog(operationType = "添加操作", operationName = "添加订单合同")
     public void addOrderContract(OrderContract orderContract) {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
             orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName());
@@ -49,7 +49,7 @@ public class OrderContractServiceImpl implements OrderContractService {
 
     }
 
-    @Transactional
+    @ArchivesLog(operationType = "修改操作", operationName = "修改订单合同")
     public void updateOrderContractById(OrderContract orderContract) {
         if (orderContract != null && orderContract.getOrderContractId() != null && orderContract.getOrderContractId() > 0) {
             orderContractDao.update(orderContract);

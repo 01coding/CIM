@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>合同订单添加</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
@@ -1280,7 +1280,7 @@
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">×
                                                             </button>
-                                                            <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
+                                                            <h5 class="modal-title" id="myModalLabel">添加菜品</h5>
                                                         </div>
                                                         <form id="meueContract">
                                                         <div class="modal-body">
@@ -1304,7 +1304,7 @@
 
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10">菜品数量</label>
-                                                                <input type="text" class="form-control" id="quantity"
+                                                                <input type="number" min="1" class="form-control" id="quantity"
                                                                        placeholder="数量">
                                                             </div>
 
@@ -1337,8 +1337,6 @@
                                                                        data-page-size="10">
                                                                     <thead>
                                                                     <tr>
-
-                                                                        <th>ID</th>
                                                                         <th>名称</th>
                                                                         <th>数量</th>
                                                                         <th>操作</th>
@@ -1497,41 +1495,22 @@
         var fd2 = $("#contractOrderTerms").serializeArray();
         var fd =  fd1.concat(fd2);;
         appModule.post('/contract/order/add.do',fd,function (data) {
-            appModule.alert("添加成功");
-            $("tbody tr").remove();
-            /*清除记录*/
-            document.getElementById("contract").reset();
-            document.getElementById("meueContract").reset();
-            $("#menuSelect").empty();
-            /*成功之后刷新一下合同*/
-            refreshContract();
+            swal({
+                title: "添加成功",
+                confirmButtonColor: "#2879ff",
+            }, function(){
+                location.href="/contract/order/index.do";
+            });
+            return false;
+
+
         },function () {
             appModule.alert("添加失败");
         });
 
     }
 
-    /*刷新合同选项*/
-    function refreshContract() {
-        $.ajax({
-            url: "/contract/order/contractInfo.cl",
-            type: 'post',
-            data: null,  // post时请求体
-            dataType: 'json',
-            contentType:"application/x-www-form-urlencoded;charset=utf-8",
-            success: function (data) {
-                $("#contractSelect").empty();
-                var op="<option value='0' selected>请选择</option>";
-                for(var p in data){//遍历json数组时，这么写p为索引，0,1
-                    op+="<option value='"+data[p].orderContractId +"'>"+data[p].orderContractName+"</option>";
-                }
-                $("#contractSelect").empty().append(op);
-                contractSize();
-            }, error: function () {
-                appModule.alert("合同刷新失败")
-            }
-        });
-    }
+
 
     /*添加菜品*/
     function  addMenu() {
@@ -1546,9 +1525,9 @@
         }
 
         var ms= "<tr data-mlength="+mlength+">\n" +
-            "<td>"+menuId+"<input type='hidden' value='"+menuId+"' name='contractOrderTerms["+mlength+"].menu.menuId'/></td>\n" +
+            "<input type='hidden' value='"+menuId+"' name='contractOrderTerms["+mlength+"].menu.menuId'/>" +
             "<td>"+menuName+"</td>\n" +
-            "<td><input type='text' class='quantity' value='"+menuQuantity+"' name='contractOrderTerms["+mlength+"].menuNumber'/></td>\n" +
+            "<td><input type='number' class='quantity' value='"+menuQuantity+"' name='contractOrderTerms["+mlength+"].menuNumber'/></td>\n" +
             "<td>\n" +
             " <a onclick='deleteDishes(this)' " +
             "class='text-inverse' title='Delete'" +
@@ -1559,6 +1538,9 @@
             "</tr>";
 
         $("tbody").append(ms);
+        document.getElementById("meueContract").reset();
+        var op="<option value='0' selected>请选择</option>";
+        $("#menuSelect").empty().append(op);
     }
 
     /*删除菜品*/

@@ -1,6 +1,5 @@
 package team.ruike.cim.controller;
 
-import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -11,9 +10,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -73,13 +69,11 @@ public class EquipementControloler {
      * @return 是否成功
      */
     @RequestMapping("/addEquipment.do")
+    @ResponseBody
     public  String addEquipment(Equipment equipment){
-        int num=equipementService.addEquipment(equipment);
-        if (num==0){
-            return "redirect:addequipement.cl";
-        }else {
-            return "redirect:equipment.do";
-        }
+        equipment.setStatus(0);
+        equipementService.addEquipment(equipment);
+       return "1";
     }
 
     /**
@@ -103,7 +97,7 @@ public class EquipementControloler {
     }
 
     /**
-     * 预备新增页面
+     * 跳转异常新增页面
      * @param equipment 设备表
      * @param request 转发
      * @return 对象ID
@@ -122,7 +116,7 @@ public class EquipementControloler {
      * @param date 时间
      * @return 是否成功
      */
-    @RequestMapping("/addequipmentType.do")
+    @RequestMapping("/addequipmentreport.do")
     public String addequipmentType(EquipmentReport equipmentReport, String date){
         Date dates=null;
         try
@@ -156,7 +150,7 @@ public class EquipementControloler {
     }
 
     /**
-     * 查询所有异常信息
+     * 查询异常信息
      * @param equipmentReport 异常对象
      * @param pager 分页辅助类
      * @param request 转发
@@ -168,21 +162,5 @@ public class EquipementControloler {
         request.setAttribute("users",equipementService.getUser(user));
         request.setAttribute("equipmentReports",pager);
         return "equipement/equipmentreport";
-    }
-
-    /**
-     * 跳转新增设备页面，并查询数据
-     * @param request 转发
-     * @param working 工序
-     * @param productionLine 生产线
-     * @param user 童虎
-     * @return 对象集合
-     */
-    @RequestMapping("/addequipement.cl")
-    public String addequipement(HttpServletRequest request,Working working,ProductionLine productionLine,User user){
-        request.setAttribute("workings",equipementService.getWorking(working));
-        request.setAttribute("productionLines",equipementService.getProductionLine(productionLine));
-        request.setAttribute("users",equipementService.getUser(user));
-        return "equipement/addequipement";
     }
 }

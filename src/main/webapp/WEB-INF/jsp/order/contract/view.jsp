@@ -147,9 +147,9 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
 
-                                                    <label class="control-label col-md-4">菜品编号&名称:</label>
+                                                    <label class="control-label col-md-4">菜品名称:</label>
                                                     <div class="col-md-8">
-                                                        <p class="form-control-static">${contractOrderTerm.menu.menuId}---${contractOrderTerm.menu.menuName}</p>
+                                                        <p class="form-control-static">${contractOrderTerm.menu.menuName}</p>
                                                     </div>
 
                                                 </div>

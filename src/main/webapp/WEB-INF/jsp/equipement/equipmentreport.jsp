@@ -1204,7 +1204,7 @@
                                         <table id="example" class="table table-hover display  pb-30" >
                                             <div style="width: 300px;float: right">
                                                 <form action="/equipmentreport.do"class="form-inline" method="post">
-                                                    <div class="input-group">
+                                                    <div class="input-group" style="position: relative; left: -80px" >
                                                         <div><label class="control-label mb-10 text-left">负责人:</label></div>
                                                         <div class="input-group">
                                                         <select  name="user.userId" style="width:260px;height: 40px">

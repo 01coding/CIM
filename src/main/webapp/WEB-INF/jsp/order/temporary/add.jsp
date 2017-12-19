@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>添加临时订单</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
@@ -1170,7 +1170,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">添加临时订单</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -1274,7 +1274,7 @@
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">×
                                                             </button>
-                                                            <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
+                                                            <h5 class="modal-title" id="myModalLabel">添加菜品</h5>
                                                         </div>
                                                         <form id="menutype">
                                                         <div class="modal-body">
@@ -1299,7 +1299,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="control-label mb-10">菜品数量</label>
-                                                                    <input type="text" class="form-control" id="quantity"
+                                                                    <input type="number" class="form-control" id="quantity"
                                                                            placeholder="数量">
                                                                 </div>
 
@@ -1332,8 +1332,6 @@
                                                                    data-page-size="10">
                                                                 <thead>
                                                                 <tr>
-
-                                                                    <th>ID</th>
                                                                     <th>名称</th>
                                                                     <th>数量</th>
                                                                     <th>操作</th>
@@ -1483,12 +1481,13 @@
         var fd2 = $("#temporaryOrderTerms").serializeArray();
         var fd =  fd1.concat(fd2);;
         appModule.post('/temporary/order/add.do',fd,function (data) {
-            appModule.alert("添加成功");
-            $("tbody tr").remove();
-            /*清除记录*/
-            document.getElementById("temporaty").reset();
-            document.getElementById("menutype").reset();
-            $("#menuSelect").empty();
+            swal({
+                title: "添加成功",
+                confirmButtonColor: "#2879ff",
+            }, function(){
+                location.href="/temporary/order/index.do";
+            });
+            return false;
         },function () {
             appModule.alert("添加失败");
         });
@@ -1507,9 +1506,9 @@
         }
 
         var ms= "<tr data-mlength="+mlength+">\n" +
-            "<td>"+menuId+"<input type='hidden' value='"+menuId+"' name='temporaryOrderTerms["+mlength+"].menu.menuId'/></td>\n" +
+            "<input type='hidden' value='"+menuId+"' name='temporaryOrderTerms["+mlength+"].menu.menuId'/>" +
             "<td>"+menuName+"</td>\n" +
-            "<td><input type='text' class='quantity' value='"+menuQuantity+"' name='temporaryOrderTerms["+mlength+"].menuNumber'/></td>\n" +
+            "<td><input type='number' class='quantity' value='"+menuQuantity+"' name='temporaryOrderTerms["+mlength+"].menuNumber'/></td>\n" +
             "<td>\n" +
             " <a onclick='deleteDishes(this)' " +
             "class='text-inverse' title='Delete'" +
@@ -1520,6 +1519,9 @@
             "</tr>";
 
         $("tbody").append(ms);
+        document.getElementById("menutype").reset();
+        var op="<option value='0' selected>请选择</option>";
+        $("#menuSelect").empty().append(op);
     }
 
     function deleteDishes(del) {
