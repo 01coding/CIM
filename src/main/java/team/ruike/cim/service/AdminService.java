@@ -63,4 +63,18 @@ public interface AdminService {
      * @return 是否成功
      */
     boolean addUser(User user,Integer roleId);
+
+    /**
+     * 修改角色信息
+     * @param role 角色对象
+     * @return 是否成功
+     */
+    boolean updateRole(Role role);
+
+    /**
+     * 删除角色
+     * @param roleId 角色id
+     * @return 成功标识 0：角色有用户无法删除 1：成功 其他：异常
+     */
+    int delRole(Integer roleId);
 }

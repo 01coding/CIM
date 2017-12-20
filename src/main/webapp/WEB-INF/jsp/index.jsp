@@ -461,8 +461,8 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="documentation.html">
-                    <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
+                <a href="/logOut.do">
+                    <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">注销</span>
                     </div>
                     <div class="clearfix"></div>
                 </a>

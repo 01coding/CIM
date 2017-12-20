@@ -7,6 +7,7 @@ import team.ruike.cim.service.UserService;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * 用户业务控制器
@@ -46,4 +47,15 @@ public class UserController {
         return "redirect:/index.do?flag=0";
     }
 
+    /**
+     * 注销
+     * @param request request
+     * @return 登陆页面
+     */
+    @RequestMapping("/logOut.do")
+    public String LogOut(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        session.setAttribute("u",null);
+        return "login";
+    }
 }
