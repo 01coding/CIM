@@ -925,9 +925,9 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>add-products</span></li>
+                        <li><a href="index.html">主页</a></li>
+                        <li><a href="#"><span>标准</span></a></li>
+                        <li class="active"><span>标准添加页面</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -946,8 +946,9 @@
                                 <div class="form-wrap">
                                     <form action="" id="formid">
                                         <h6 class="txt-dark capitalize-font"><i
-                                                class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
+                                                class="zmdi zmdi-calendar-note mr-10"></i>添加质检记录+</h6>
                                         <hr class="light-grey-hr"/>
+
                                         <div class="row">
                                             <div class="col-sm-6">
                                                     <div  class="form-group col-lg-12">
@@ -966,7 +967,7 @@
 
                                                         <div class="panel-wrapper collapse in">
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">一级物料</label>
                                                                 <select id="select1" class="selectpicker"
                                                                         data-style="form-control btn-default btn-outline">
                                                                     <c:forEach items="${requestScope.piciA}" var="typeA">
@@ -976,7 +977,7 @@
                                                             </div>
 
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">二级物料</label>
                                                                 <select id="select2" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
                                                                     <c:forEach items="${requestScope.piciB}" var="typeB">
                                                                         <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
@@ -985,7 +986,7 @@
                                                             </div>
 
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">三级物料</label>
                                                                 <select id="selectid" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
                                                                     <c:forEach items="${requestScope.piciM}" var="typeM">
                                                                         <option  value="${typeM.materielId}">${typeM.materielName}</option>
@@ -1002,7 +1003,7 @@
                                                     <div class="form-actions" style="padding-left: 22px">
                                                         <button type="button" onclick="ff()" class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
                                                                 class="fa fa-check"></i> <span>保存</span></button>
-                                                        <button type="button" class="btn btn-warning pull-left">取消</button>
+                                                        <a href="/record.do"><button type="button" class="btn btn-warning pull-left">取消</button></a>
                                                         <div class="clearfix"></div>
                                                     </div>
                                                 </div>

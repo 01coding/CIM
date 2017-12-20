@@ -962,7 +962,7 @@
                                                         </div>
                                                         <div class="panel-wrapper collapse in">
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">一级物料</label>
                                                                 <select id="select1" class="selectpicker"
                                                                         data-style="form-control btn-default btn-outline">
                                                                     <c:forEach items="${requestScope.AList}" var="typeA">
@@ -972,7 +972,7 @@
                                                             </div>
 
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">二级物料</label>
                                                                 <select id="select2" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
                                                                     <c:forEach items="${requestScope.BList}" var="typeB">
                                                                         <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
@@ -981,7 +981,7 @@
                                                             </div>
 
                                                             <div class="panel-body">
-                                                                <label class="control-label mb-10">Select box</label>
+                                                                <label class="control-label mb-10">三级物料</label>
                                                                     <select id="selectid" name="materiel.materielId" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
                                                                     <c:forEach items="${requestScope.MList}" var="typeM">
                                                                         <option value="${typeM.materielId}">${typeM.materielName}</option>
@@ -1058,7 +1058,7 @@
                                                 <button class="btn btn-success btn-icon left-icon mr-10 pull-left" id="but">
                                                     <i class="fa fa-check"></i> <span>保存</span>
                                                 </button>
-                                                <button type="button" class="btn btn-warning pull-left">取消</button>
+                                                <a href="/standard.do"><button type="button" class="btn btn-warning pull-left">取消</button></a>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>

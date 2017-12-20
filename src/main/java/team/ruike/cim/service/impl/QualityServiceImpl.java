@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import team.ruike.cim.dao.*;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.QualityService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -89,6 +90,7 @@ public class QualityServiceImpl implements QualityService {
      * @param purchaseStandard 标准对象
      * @return
      */
+    @ArchivesLog(operationType="新增操作",operationName="新增采购标准")
     public int addStandard(PurchaseStandard purchaseStandard) {
         int number =purchaseStandardDao.add(purchaseStandard);
         return number;
@@ -99,6 +101,7 @@ public class QualityServiceImpl implements QualityService {
      * @param purchaseStandard
      * @return
      */
+    @ArchivesLog(operationType="删除操作",operationName="删除采购标准")
     public int deleteStand(PurchaseStandard purchaseStandard) {
         PurchaseStandard purchaseStandard1=new PurchaseStandard();
         purchaseStandard1=purchaseStandardDao.selectById(purchaseStandard.getPurchaseStandardId());
@@ -111,6 +114,7 @@ public class QualityServiceImpl implements QualityService {
      * @param purchaseStandard
      * @return
      */
+    @ArchivesLog(operationType=" 修改操作",operationName="修改采购标准")
     public int updateStand(PurchaseStandard purchaseStandard) {
         int a=purchaseStandardDao.update(purchaseStandard);
         return a;
