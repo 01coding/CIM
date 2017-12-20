@@ -18,8 +18,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="materielTypeLevelB" column="materiel_type_level_b_id" select="team.ruike.cim.dao.MaterielTypeLevelBDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="supplier">
-INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierImage},#{supplierCharterImage},#{materielTypeLevelB.materielTypeLevelBId},#{supplierAddress},
-#{supplierPhone},#{cooperationStartDate},0,#{supplierRemarks},#{supplierState})
+        INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},
+        #{supplierNo},#{supplierImage},#{supplierCharterImage},
+        #{materielTypeLevelB.materielTypeLevelBId},#{supplierAddress},
+        #{supplierPhone},#{cooperationStartDate},0,#{supplierRemarks},#{supplierState})
 
     </insert>
     <update id="update" parameterType="supplier">
@@ -33,7 +35,8 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
               supplier_phone=#{supplierPhone},
               cooperation_start_date=#{cooperationStartDate},
               supplier_remarks=#{supplierRemarks},
-              supplier_state=#{supplierState}
+              supplier_state=#{supplierState},
+              status=#{status}
               WHERE supplier_id=#{supplierId}
     </update>
     <sql id="sql">

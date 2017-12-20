@@ -1,3 +1,4 @@
+
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1196,13 +1198,10 @@
 
                                         <div class="form-group">
                                             <label class="control-label mb-10">供货类型:</label>
-                                            <select class="form-control">
-                                                <option>All Contacts</option>
-                                                <option>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>Custom</option>
+                                            <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                                <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs.list}">
+                                                    <option value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
+                                                </c:forEach>
                                             </select>
                                         </div>
 
