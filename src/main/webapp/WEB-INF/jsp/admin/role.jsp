@@ -1433,6 +1433,40 @@
                                                                 <tbody>
                                                                 <c:forEach items="${requestScope.pager.list}" var="ls">
                                                                     <tr>
+                                                                        <div aria-hidden="true" role="dialog" tabindex="-1" id="xModal${ls.roleId}"
+                                                                             class="modal fade" style="display: none;">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                                                aria-hidden="true">×
+                                                                                        </button>
+                                                                                        <h4 class="modal-title">修改角色信息</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form class="form-horizontal form-material" id="xrole${ls.roleId}">
+                                                                                            <div class="form-group">
+                                                                                                <div class="col-md-12 mb-20">
+                                                                                                    <label class="control-label mb-10">角色名称</label>
+                                                                                                    <input id="roleName${ls.roleId}" type="text" name="roleName" class="form-control"
+                                                                                                           placeholder="请输入角色名称" value="${ls.roleName}"/>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" flagId="${ls.roleId}" class="btn btn-info waves-effect updrole"
+                                                                                                data-dismiss="modal">保存
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-default waves-effect"
+                                                                                                data-dismiss="modal">取消
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
                                                                         <div id="myModal${ls.roleId}" class="modal fade"
                                                                              tabindex="-1" role="dialog"
                                                                              aria-labelledby="myModalLabel"
@@ -1501,19 +1535,20 @@
                                                                                 <!-- /.modal-content -->
                                                                             </div>
                                                                         </div>
-                                                                        <td>${ls.roleName}</td>
+                                                                        <td id="rroleName${ls.roleId}" >${ls.roleName}</td>
                                                                         <td>
                                                                             <button title="修改"
                                                                                     class="btn btn-default btn-icon-anim btn-circle"
-                                                                                    style="width: 30px;height: 30px">
+                                                                                    style="width: 30px;height: 30px" data-toggle="modal"
+                                                                                    data-target="#xModal${ls.roleId}">
                                                                                 <i class="fa fa-pencil"></i></button>
                                                                             <button title="权限设置" data-toggle="modal"
                                                                                     data-target="#myModal${ls.roleId}"
                                                                                     class="btn btn-danger btn-icon-anim btn-circle"
                                                                                     style="width: 30px;height: 30px">
                                                                                 <i class="icon-settings"></i></button>
-                                                                            <button title="删除"
-                                                                                    class="btn btn-info btn-icon-anim btn-circle"
+                                                                            <button title="删除" flagId="${ls.roleId}" flagName="${ls.roleName}"
+                                                                                    class="btn btn-info btn-icon-anim btn-circle delRole"
                                                                                     style="width: 30px;height: 30px">
                                                                                 <i class="icon-trash"></i></button>
                                                                         </td>
@@ -1633,11 +1668,69 @@
 <script src="../../../dist/js/modal-data.js"></script>
 <script>
     $(function () {
+        $(".delRole").click(function () {
+            var rid=$(this).attr("flagId");
+            var rName=$(this).attr("flagName");
+            var $tr=$(this).parent().parent();
+            swal({
+                title: "你确定要删除"+rName+"吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/admin/delRole.do?roleId="+rid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
+                                $($tr).remove();
+                            }else if(data==0){
+                                swal("删除失败！！", "此角色拥有用户，请先删除用户！！", "error");
+                            }else {
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        },
+                        error:function () {
+                            swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    });
+                }
+            });
+        });
+        $(".updrole").click(function () {
+            var rid=$(this).attr("flagId");
+            var data = $("#xrole"+rid).serialize();
+            var submitData = decodeURIComponent(data, true);
+            $.ajax({
+                url:'${pageContext.request.contextPath}/admin/updateRole.do?'+submitData+'&roleId='+rid,
+                cache:false,
+                success:function(data){
+                    if (data ==true) {
+                        swal({
+                            title: "修改成功！！!",
+                            type: "success",
+                            text: "此角色名称已发生改变！",
+                            confirmButtonColor: "#01c853",
+                        });
+                        $("#rroleName"+rid).html($("#roleName"+rid).val());
+                    }
+                },
+                error:function () {
+                    swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
+                }
+            });
+        });
         $(".save").click(function () {
             var roleId = $(this).attr("flag");
             var data = $("#save"+roleId).serialize();
             var submitData = decodeURIComponent(data, true);
-            alert(submitData);
             $.ajax({
                 type: 'post',
                 url: '${pageContext.request.contextPath}/admin/updateRoleJurisdiction.do?' + submitData+"&roleId="+roleId,
@@ -1651,8 +1744,11 @@
                             confirmButtonColor: "#01c853",
                         });
                     } else {
-                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                        swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
                     }
+                },
+                error:function () {
+                    swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
                 }
             });
         });
