@@ -54,7 +54,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND product_warehouse_region_id=#{productWarehouseRegion.productWarehouseRegionId}
         </if>
     </sql>
-    <insert id="add" parameterType="productGoodsShelve">
+    <insert id="add" parameterType="productGoodsShelve" useGeneratedKeys="true" keyProperty="productGoodsShelveId">
         INSERT into product_goods_shelve VALUES(DEFAULT,
         #{productGoodsShelveNo},
         #{menu.menuId},

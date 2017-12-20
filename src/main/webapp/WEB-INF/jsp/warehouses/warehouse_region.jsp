@@ -1,3 +1,5 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
+<%@ page import="team.ruike.cim.pojo.WarehouseRegion" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -1387,8 +1389,32 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="row lsitwar">
-                                        <c:forEach var="was" items="${warehouseRegions}">
-                                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <c:if test="${warehouseRegions.list!=null}">
+                                            <c:if test="${warehouseRegions.list.size()<1}">
+                                                <div class="col-sm-12 ap1">
+                                                    <button class="btn bbid btn-primary btn-rounded wiliao"
+                                                            data-toggle="modal"
+                                                            data-target="#exampleModal1"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">添加物料区域</font></font>
+                                                    </button>
+                                                </div>
+                                            </c:if>
+                                        </c:if>
+                                        <c:if test="${productWarehouseRegions.list!=null}">
+                                            <c:if test="${productWarehouseRegions.list.size()<1}">
+                                                <div class="col-sm-12">
+                                                    <button class="btn bbid btn-primary btn-rounded wiliao"
+                                                            data-toggle="modal"
+                                                            data-target="#exampleModal1"><font
+                                                            style="vertical-align: inherit;"><font
+                                                            style="vertical-align: inherit;">添加成品区域</font></font>
+                                                    </button>
+                                                </div>
+                                            </c:if>
+                                        </c:if>
+                                        <c:forEach var="was" items="${warehouseRegions.list}">
+                                            <div class="col-md-4 col-sm-4 col-xs-12">
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
@@ -1407,51 +1433,52 @@
                                                                 </div>
                                                             </h6>
                                                         </div>
-
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <div class="panel-wrapper collapse in">
+                                                    <input class="Rid" type="hidden" value="${was.warehouseRegionId}">
+                                                    <div class="panel-wrapper collapse in biao">
                                                         <div class="panel-body row pa-0">
-                                                            <table class="table table-hover mb-0">
+                                                            <table class="table table-hover mb-0 ss">
                                                                 <thead>
                                                                 <tr>
                                                                     <th>货架编号</th>
                                                                     <th>数量</th>
                                                                     <th>物料
                                                                         <div class="btn-group btn-group-xs "
-                                                                             role="group" style="background-color: white">
+                                                                             role="group"
+                                                                             style="background-color: white">
                                                                             <button type="button"
-                                                                                    class="btn btn-default footable-edit wiliao"
-                                                                                    data-toggle="modal"
-                                                                                    data-target="#exampleModal4"
-                                                                                    style="background-color: white;border: 0px" onclick="nucoll()">
+                                                                                    class="btn btn-default footable-edit add"
+                                                                                    style="background-color: white;border: 0px"
+                                                                                    onclick="nucoll()">
                                                                                 <i class="fa fa-plus-square"
-                                                                                   title="添加区域"></i>
+                                                                                   title="添加货架"></i>
                                                                             </button>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
                                                                 </thead>
+                                                                <tbody class="addGOd  ssssss">
                                                                 <c:forEach items="${goodsShelves}" var="gos">
-                                                                    <tbody>
                                                                     <c:if test="${was.warehouseRegionId==gos.warehouseRegion.warehouseRegionId}">
                                                                         <tr>
-                                                                            <td>${gos.goodsShelveNo} </td>
+                                                                            <td>${gos.goodsShelveNo}</td>
                                                                             <td>${gos.materielNumber}</td>
                                                                             <td>${gos.materiel.materielName}</td>
                                                                         </tr>
                                                                     </c:if>
-                                                                    </tbody>
                                                                 </c:forEach>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </c:forEach>
-                                        <c:forEach var="waa" items="${productWarehouseRegions}">
+                                        <c:forEach var="waa" items="${productWarehouseRegions.list}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <input type="text" value="" class="houseid"/>
+                                                <input type="hidden" value="${waa.productWarehouseRegionId}"
+                                                       class="houseid"/>
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
@@ -1460,7 +1487,8 @@
                                                                     <button type="button"
                                                                             class="btn btn-default footable-edit wiliao"
                                                                             data-toggle="modal"
-                                                                            data-target="#exampleModal1" onclick="nucloo()">
+                                                                            data-target="#exampleModal2"
+                                                                            onclick="">
                                                                         <i class="fa fa-plus-square" title="添加区域"></i>
                                                                     </button>
                                                                 </div>
@@ -1476,22 +1504,32 @@
                                                                 <tr>
                                                                     <th>货架编号</th>
                                                                     <th>数量</th>
-                                                                    <th>菜品</th>
-                                                                    <th>操作</th>
+                                                                    <th>菜品
+                                                                        <div class="btn-group btn-group-xs "
+                                                                             role="group"
+                                                                             style="background-color: white">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default footable-edit addGod"
+                                                                                    style="background-color: white;border: 0px"
+                                                                                    onclick="nucoll()">
+                                                                                <i class="fa fa-plus-square"
+                                                                                   title="添加成品货架"></i>
+                                                                            </button>
+                                                                        </div>
+                                                                    </th>
                                                                 </tr>
                                                                 </thead>
+                                                                <tbody>
                                                                 <c:forEach var="pgs" items="${productGoodsShelves}">
-                                                                    <tbody>
                                                                     <c:if test="${pgs.productWarehouseRegion.productWarehouseRegionId==waa.productWarehouseRegionId}">
                                                                         <tr>
                                                                             <td>${pgs.productGoodsShelveNo}</td>
                                                                             <td>${pgs.menuNumber}</td>
                                                                             <td>${pgs.menu.menuName}</td>
-                                                                            <td></td>
                                                                         </tr>
                                                                     </c:if>
-                                                                    </tbody>
                                                                 </c:forEach>
+                                                                </tbody>
                                                             </table>
                                                         </div>
                                                     </div>
@@ -1507,9 +1545,7 @@
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
-
                             <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                 <div class="panel-body">
                                     <div class="row">
@@ -1534,7 +1570,6 @@
         </div>
         <!-- /Row -->
     </div>
-
     <div class="row">
         <div class="col-md-6">
             <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog"
@@ -1554,6 +1589,7 @@
                                             id="materielTypeLevelB">
                                     </select></div>
                                 <div class="form-group">
+                                    <input type="hidden" value="${hid}" class="hid">
                                     <input type="text" class="form-control" placeholder="备注" id="remarks">
                                 </div>
                             </form>
@@ -1575,45 +1611,6 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h5 class="modal-title" id="exampleModalLabel14">添加物料货架</h5>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control select2 select2-hidden-accessible MB2"
-                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放物料" id="addBName">
-                                    </select></div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="区域名称" id="">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div style="float: right">
-                                <div style="float: right">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
-                                            style="float: right">取消
-                                    </button>
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                            style="float:right;margin-right: 20px;">保存
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
             <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog"
                  aria-labelledby="exampleModalLabel1">
                 <div class="modal-dialog" role="document">
@@ -1626,12 +1623,21 @@
                         <div class="modal-body">
                             <form>
                                 <div class="form-group">
-                                    <select class="form-control select2 select2-hidden-accessible MB2"
-                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放菜品">
-
-                                    </select></div>
+                                    <input type="hidden" value="${Phid}" class="phid"/>
+                                    <select class="form-control select2 select2-hidden-accessible"
+                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放菜品" id="menuTypeName">
+                                        <c:forEach var="mt" items="${Mtype}">
+                                            <option value="${mt.menuTypeId}">
+                                                <font style="vertical-align: inherit;">
+                                                    <font style="vertical-align: inherit;">${mt.menuTypeName}
+                                                    </font>
+                                                </font>
+                                            </option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="区域名称">
+                                    <input type="text" class="form-control" placeholder="区域名称" id="premarks">
                                 </div>
                             </form>
                         </div>
@@ -1640,46 +1646,7 @@
                                 <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
                                         style="float: right">取消
                                 </button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"
-                                        style="float:right;margin-right: 20px;">保存
-                                </button>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog"
-                 aria-labelledby="exampleModalLabel1">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                    aria-hidden="true">&times;</span></button>
-                            <h5 class="modal-title" id="exampleModalLabel13">添加成品货架</h5>
-                        </div>
-                        <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <select class="form-control select2 select2-hidden-accessible MB2"
-                                            tabindex="-1" aria-hidden="true" placeholder="请选择可存放菜品">
-
-                                    </select></div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="区域名称">
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <div style="float: right">
-                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="nucoll()"
-                                        style="float: right">取消
-                                </button>
-                                <button type="button" class="btn btn-primary" data-dismiss="modal"
+                                <button type="button" class="btn btn-primary addPregion" data-dismiss="modal"
                                         style="float:right;margin-right: 20px;">保存
                                 </button>
 
@@ -1753,74 +1720,253 @@
                 }
             });
         })
+        $(".add").click(function () {
+            var aaa = $(this);
+            var Rid = $(".Rid").val();
+            swal({
+                title: "你确定要添加货架吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        url: "${pageContext.request.contextPath}/addGoodsshelve.do?warehouseRegion.warehouseRegionId=" + Rid,
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != null) {
+                                swal("添加成功", "添加成功！", "success");
+                                $(aaa).parents("thead").next().append("<tr><td>" + data.goodsShelveNo + "</td><td></td><td></td></tr>");
+                            } else {
+                                swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
         $(".addWarehouseRegion").click(function () {
             var wul = $("#materielTypeLevelB").find("option:selected");
             var id = $(wul).val();
             var te = $(wul).text();
-            var wid = $(".warehouseId").val()
+            var wid = $(".hid").val()
             var remarks = $("#remarks").val();
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/addWarehouseRegion.do?materielTypeLevelB.materielTypeLevelBId=" + id + "&remarks=" + remarks + "&warehouse.warehouseId=" + wid,
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    if (data != "") {
-                        alert("添加成功");
-                        nucoll();
-                        $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
-                            "                                                <div class=\"panel panel-default card-view\">\n" +
-                            "                                                    <div class=\"panel-heading\">\n" +
-                            "                                                        <div class=\"pull-left\">\n" +
-                            "                                                            <input type=\"hidden\" value=\"+" + wid + "+\" class=\"warehouseId\"/>\n" +
-                            "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
-                            "                                                                <div class=\"btn-group btn-group-xs \"\n" +
-                            "                                                                     role=\"group\">\n" +
-                            "                                                                    <button type=\"button\"\n" +
-                            "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
-                            "                                                                            data-toggle=\"modal\"\n" +
-                            "                                                                            data-target=\"#exampleModal1\">\n" +
-                            "                                                                        <i class=\"fa fa-plus-square\"\n" +
-                            "                                                                           title=\"添加区域\"></i>\n" +
-                            "                                                                    </button>\n" +
-                            "                                                                </div>\n" +
-                            "                                                            </h6>\n" +
-                            "                                                        </div>\n" +
-                            "\n" +
-                            "                                                        <div class=\"clearfix\"></div>\n" +
-                            "                                                    </div>\n" +
-                            "                                                    <div class=\"panel-wrapper collapse in\">\n" +
-                            "                                                        <div class=\"panel-body row pa-0\">\n" +
-                            "                                                            <table class=\"table table-hover mb-0\">\n" +
-                            "                                                                <thead>\n" +
-                            "                                                                <tr>\n" +
-                            "                                                                    <th>货架编号</th>\n" +
-                            "                                                                    <th>数量</th>\n" +
-                            "                                                                    <th>物料</th>\n" +
-                            "                                                                    <th>操作</th>\n" +
-                            "                                                                </tr>\n" +
-                            "                                                                </thead>\n" +
-                            "                                                               \n" +
-                            "                                                                <tbody>\n" +
-                            "                                                                    \n" + "\n" +
-                            "                                                                </tbody>\n" +
-                            "                                                                \n" +
-                            "                                                            </table>\n" +
-                            "                                                        </div>\n" +
-                            "                                                    </div>\n" +
-                            "                                                </div>\n" +
-                            "                                            </div>");
-                    }
-                }, error: function () {
-                    nucoll();
-                    alert("系统异常，请稍后重试！");
+            swal({
+                title: "你确定要添区域吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/addWarehouseRegion.do?materielTypeLevelB.materielTypeLevelBId=" + id + "&remarks=" + remarks + "&warehouse.warehouseId=" + wid,
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                if (data != null) {
+                                    swal("添加成功", "添加成功！", "success");
+                                    $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
+                                        "                                                <div class=\"panel panel-default card-view\">\n" +
+                                        "                                                    <div class=\"panel-heading\">\n" +
+                                        "                                                        <div class=\"pull-left\">\n" +
+                                        "                                                            <input type=\"hidden\" value=\"+" + wid + "+\" class=\"warehouseId\"/>\n" +
+                                        "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
+                                        "                                                                <div class=\"btn-group btn-group-xs \"\n" +
+                                        "                                                                     role=\"group\">\n" +
+                                        "                                                                    <button type=\"button\"\n" +
+                                        "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
+                                        "                                                                            data-toggle=\"modal\"\n" +
+                                        "                                                                            data-target=\"#exampleModal1\">\n" +
+                                        "                                                                        <i class=\"fa fa-plus-square\"\n" +
+                                        "                                                                           title=\"添加区域\"></i>\n" +
+                                        "                                                                    </button>\n" +
+                                        "                                                                </div>\n" +
+                                        "                                                            </h6>\n" +
+                                        "                                                        </div>\n" +
+                                        "\n" +
+                                        "                                                        <div class=\"clearfix\"></div>\n" +
+                                        "                                                    </div>\n" +
+                                        "                                                    <div class=\"panel-wrapper collapse in\">\n" +
+                                        "                                                        <div class=\"panel-body row pa-0\">\n" +
+                                        "                                                            <table class=\"table table-hover mb-0\">\n" +
+                                        "                                                                <thead>\n" +
+                                        "                                                                <tr>\n" +
+                                        "                                                                    <th>货架编号</th>\n" +
+                                        "                                                                    <th>数量</th>\n" +
+                                        "                                                                    <th>物料</th>\n" +
+                                        "                                                                    <th>操作</th>\n" +
+                                        "                                                                </tr>\n" +
+                                        "                                                                </thead>\n" +
+                                        "                                                               \n" +
+                                        "                                                                <tbody>\n" +
+                                        "                                                                    \n" + "\n" +
+                                        "                                                                </tbody>\n" +
+                                        "                                                                \n" +
+                                        "                                                            </table>\n" +
+                                        "                                                        </div>\n" +
+                                        "                                                    </div>\n" +
+                                        "                                                </div>\n" +
+                                        "                                            </div>");
+                                } else {
+                                    swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                                $(".ap1").html("");
+                                nucoll();
+                            }
+                        }, error: function () {
+                            nucoll();
+                            swal("系统异常，请稍后重试！");
+                        }
+                    });
                 }
             });
-        })
-    })
+        });
+
+        $(".addPregion").click(function () {
+            var wul = $("#menuTypeName").find("option:selected");
+            var id = $(wul).val();
+            var te = $(wul).text();
+            var wid = $(".phid").val()
+            var remarks = $("#premarks").val();
+            swal({
+                title: "你确定要添成品区域吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/addProductwarehouseregion.do?menuType.menuTypeId=" + id + "&remarks=" + remarks + "&productWarehouse.productWarehouseId=" + wid,
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                if (data != null) {
+                                    swal("添加成功", "添加成功！", "success");
+                                    nucoll();
+                                    $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
+                                        "                                                <input type=\"hidden\" value=\""+wid+"\"\n" +
+                                        "                                                       class=\"houseid\"/>\n" +
+                                        "                                                <div class=\"panel panel-default card-view\">\n" +
+                                        "                                                    <div class=\"panel-heading\">\n" +
+                                        "                                                        <div class=\"pull-left\">\n" +
+                                        "                                                            <h6 class=\"panel-title txt-dark\">"+te+"【区域】\n" +
+                                        "                                                                <div class=\"btn-group btn-group-xs \" role=\"group\">\n" +
+                                        "                                                                    <button type=\"button\"\n" +
+                                        "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
+                                        "                                                                            data-toggle=\"modal\"\n" +
+                                        "                                                                            data-target=\"#exampleModal2\"\n" +
+                                        "                                                                            onclick=\"\">\n" +
+                                        "                                                                        <i class=\"fa fa-plus-square\" title=\"添加区域\"></i>\n" +
+                                        "                                                                    </button>\n" +
+                                        "                                                                </div>\n" +
+                                        "                                                            </h6>\n" +
+                                        "                                                        </div>\n" +
+                                        "\n" +
+                                        "                                                        <div class=\"clearfix\"></div>\n" +
+                                        "                                                    </div>\n" +
+                                        "                                                    <div class=\"panel-wrapper collapse in\">\n" +
+                                        "                                                        <div class=\"panel-body row pa-0\">\n" +
+                                        "                                                            <table class=\"table table-hover mb-0\">\n" +
+                                        "                                                                <thead>\n" +
+                                        "                                                                <tr>\n" +
+                                        "                                                                    <th>货架编号</th>\n" +
+                                        "                                                                    <th>数量</th>\n" +
+                                        "                                                                    <th>菜品\n" +
+                                        "                                                                        <div class=\"btn-group btn-group-xs \"\n" +
+                                        "                                                                             role=\"group\"\n" +
+                                        "                                                                             style=\"background-color: white\">\n" +
+                                        "                                                                            <button type=\"button\"\n" +
+                                        "                                                                                    class=\"btn btn-default footable-edit addPh\"\n" +
+                                        "                                                                                    style=\"background-color: white;border: 0px\"\n" +
+                                        "                                                                                    onclick=\"nucoll()\">\n" +
+                                        "                                                                                <i class=\"fa fa-plus-square\"\n" +
+                                        "                                                                                   title=\"添加货架\"></i>\n" +
+                                        "                                                                            </button>\n" +
+                                        "                                                                        </div>\n" +
+                                        "                                                                    </th>\n" +
+                                        "                                                                </tr>\n" +
+                                        "                                                                </thead>\n" +
+                                        "                                                                <tbody>\n" +
+                                        "                                                                " +
+                                        "                                                                </tbody>\n" +
+                                        "                                                            </table>\n" +
+                                        "                                                        </div>\n" +
+                                        "                                                    </div>\n" +
+                                        "                                                </div>\n" +
+                                        "                                            </div>");
+                                } else {
+                                    swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                                $(".ap1").html(""
+                                )
+                                ;
+                                nucoll();
+                            }
+                        }, error: function () {
+                            nucoll();
+                            swal("系统异常，请稍后重试！");
+                        }
+                    });
+                }
+            });
+        });
+    });
+    $(".addGod").click(function () {
+        var aaa = $(this);
+        var Rid = $(".houseid").val();
+        swal({
+            title: "你确定要添加成品货架吗?",
+            text: "添加之后不可删除！!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#fec107",
+            confirmButtonText: "确定!",
+            cancelButtonText: "取消!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                $.ajax({
+                    url: "${pageContext.request.contextPath}/addProductGoodSShelve.do?productWarehouseRegion.productWarehouseRegionId=" + Rid,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != null) {
+                            swal("添加成功", "添加成功！", "success");
+                            $(aaa).parents("thead").next().append("<tr><td>" + data.productGoodsShelveNo + "</td><td></td><td></td></tr>");
+                        } else {
+                            swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    }
+                });
+            }
+        });
+    });
     function nucoll() {
         $("#remarks").val("");
+        $("#premarks").val("");
     }
+
 </script>
 </body>
 

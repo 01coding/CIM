@@ -15,6 +15,7 @@ import javax.annotation.Resource;
 public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIonService {
     @Resource
     private ProductWarehouseRegionDao productWarehouseRegionDao;
+
     /**
      * 添加成品区域表
      *
@@ -22,6 +23,11 @@ public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIon
      * @return
      */
     public int addProductWareHouSereGIon(ProductWarehouseRegion productWarehouseRegion) {
+        if (productWarehouseRegion.getProductWarehouseRegionNo() != null && productWarehouseRegion.getProductWarehouseRegionNo() != ""
+                && productWarehouseRegion.getMenuType() != null && productWarehouseRegion.getMenuType().getMenuTypeId() > 0
+                && productWarehouseRegion.getProductWarehouse() != null && productWarehouseRegion.getProductWarehouse().getProductWarehouseId() > 1) {
+            return productWarehouseRegionDao.add(productWarehouseRegion);
+        }
         return 0;
     }
 
@@ -32,7 +38,7 @@ public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIon
      * @return
      */
     public int updProductWareHouSereGIon(ProductWarehouseRegion productWarehouseRegion) {
-        return 0;
+        return productWarehouseRegionDao.add(productWarehouseRegion);
     }
 
     /**
@@ -44,6 +50,6 @@ public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIon
     public void getProductWareHouSereGIon(ProductWarehouseRegion productWarehouseRegion, Pager<ProductWarehouseRegion> pager) {
         pager.setPageSize(6);
         pager.setTotalRecord(productWarehouseRegionDao.selectCount(productWarehouseRegion));
-        pager.setList(productWarehouseRegionDao.select(productWarehouseRegion,(pager.getCurrentPage() - 1)*pager.getPageSize(), pager.getPageSize()));
+        pager.setList(productWarehouseRegionDao.select(productWarehouseRegion, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
 }

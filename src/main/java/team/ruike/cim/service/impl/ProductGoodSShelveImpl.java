@@ -12,10 +12,8 @@ public class ProductGoodSShelveImpl implements ProductGoodSShelve {
     @Resource
     private ProductGoodsShelveDao productGoodsShelveDao;
     public int addProductGoodSShelve(ProductGoodsShelve productGoodsShelve) {
-        if (productGoodsShelve != null && productGoodsShelve.getMenu() != null && productGoodsShelve.getMenu().getMenuId() > 0
-                && productGoodsShelve.getMenuNumber() > 0
-                && productGoodsShelve.getMaterielShelfLifeEndDate() != null && productGoodsShelve.getProductWarehouseRegion() != null
-                && productGoodsShelve.getProductWarehouseRegion().getProductWarehouseRegionId() > 0) {
+        if (productGoodsShelve != null  && productGoodsShelve.getProductWarehouseRegion() != null
+                && productGoodsShelve.getProductWarehouseRegion().getProductWarehouseRegionId() > 0&&productGoodsShelve.getProductGoodsShelveNo()!="") {
                 return productGoodsShelveDao.add(productGoodsShelve);
         }
         return 0;

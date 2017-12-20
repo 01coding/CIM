@@ -39,9 +39,9 @@
         </if>
 
     </sql>
-    <insert id="add" parameterType="goodsShelve">
+    <insert id="add" parameterType="goodsShelve" useGeneratedKeys="true" keyProperty="goodsShelveId">
         INSERT INTO goods_shelve VALUES (DEFAULT, #{goodsShelveNo}, #{materiel.materielId}, #{materielNumber},
-                                         #{materielShelfLifeEndDate}, 0, #{warehouseRegion.warehouseRegionid})
+                                         #{materielShelfLifeEndDate}, 0, #{warehouseRegion.warehouseRegionId})
     </insert>
     <update id="update" parameterType="goodsShelve">
         UPDATE goods_shelve
@@ -52,7 +52,7 @@
             materiel_number              = #{materielNumber},
             materiel_shelf_life_end_date = #{materielShelfLifeEndDate},
             status                       = #{status},
-            warehouse_region_id          = #{warehouseRegion.warehouseRegionid}
+            warehouse_region_id          = #{warehouseRegion.warehouseRegionId}
         WHERE goods_shelve_id = #{goodsShelveId}
     </update>
     <select id="select" resultMap="goodsShelveMap">
