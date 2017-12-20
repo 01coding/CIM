@@ -29,9 +29,10 @@ public class SupplierController {
      * @return
      */
     @RequestMapping("/supplier.do")
-    public String supplier(Supplier supplier, Pager<Supplier> pager, HttpServletRequest request){
+    public String supplier(Supplier supplier, Pager<Supplier> pager, HttpServletRequest request,MaterielTypeLevelB materielTypeLevelB){
         supplierService.getSupplier(supplier, pager);
         request.setAttribute("suppliers",pager);
+        request.setAttribute("MaterielTypeLevelBs",supplierService.getMaterielTypeLevelB(materielTypeLevelB));
         return "supplier/supplier";
     }
 
@@ -46,23 +47,17 @@ public class SupplierController {
         int num=supplierService.delectSupplier(supplierId);
         return (num==1)+"";
     }
+
     /**
-     * 跳转，新增供应商页面
+     * 添加供应商
+     * @param supplier
      * @return
      */
     @RequestMapping("/addSupplier.do")
-    public String addSupplier(MaterielTypeLevelB materielTypeLevelB,HttpServletRequest request){
-        request.setAttribute("MaterielTypeLevelBs",supplierService.getMaterielTypeLevelB(materielTypeLevelB) );
-        return "supplier/addSupplier";
-    }
-
-    /**
-     * 跳转，修改供应商页面
-     * @return
-     */
-    @RequestMapping("/updateSupplier.do")
-    public String updateSupplier(){
-        return "supplier/updateSupplier";
+    public String addSupplier(Supplier supplier){
+        supplier.setStatus(0);
+        supplierService.addSupplier(supplier);
+        return "1";
     }
 
     /**

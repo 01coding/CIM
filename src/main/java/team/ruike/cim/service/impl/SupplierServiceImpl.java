@@ -63,4 +63,23 @@ public class SupplierServiceImpl implements SupplierService{
     public List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
         return materielTypeLevelBDao.select(materielTypeLevelB,0,99);
     }
+
+    /**
+     * 添加供应商
+     * @param supplier 供应商
+     * @return
+     */
+    @Override
+    public int addSupplier(Supplier supplier) {
+        supplier.setStatus(0);
+       /* if (supplier.getCooperationStartDate()!=null && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0
+                && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
+                && supplier.getSupplierCharterImage()!=null && supplier.getSupplierId()!=null
+                && supplier.getSupplierId()>0 && supplier.getSupplierImage()!=null && supplier.getSupplierName()!=null
+                && supplier.getSupplierName()!="" && supplier.getSupplierNo()!=null && supplier.getSupplierNo()!=""
+                && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""){*/
+            return supplierDao.add(supplier);
+        /*}
+        return 0;*/
+    }
 }

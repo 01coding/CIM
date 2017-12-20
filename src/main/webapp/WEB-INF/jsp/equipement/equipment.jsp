@@ -1280,7 +1280,7 @@
                                     <h5 class="modal-title" id="df">新增设备</h5>
                                 </div>
                                 <div class="modal-body">
-                                    <form  id="addeq">
+                                    <form  id="addeq" >
                                         <div class="form-group">
                                             <label class="control-label mb-10">设备名称:</label>
                                             <input type="text" class="form-control" id="equipmentName1" name="equipmentName">
@@ -1327,8 +1327,8 @@
                                     </form>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" id="addNo" class="btn btn-primary" onclick="add()" >保存</button>
+                                    <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" id="addNo"  class="btn btn-primary" onclick="add()" >保存</button>
                                 </div>
                             </div>
                         </div>
@@ -1356,6 +1356,14 @@
         addeqValidate();
     });
 
+    function bomb(message) {
+        swal({
+            title: message,
+            confirmButtonColor: "#2879ff",
+        });
+        return false;
+    }
+    
     function addeqValidate() {
 
         $("#addeq").validate({
@@ -1397,10 +1405,11 @@
                 success: function (data) {
                     if (null != data) {
                         if(data>0){
-                            alert("新增成功")
+                            bomb("添加成功");
+                            $("#addmodal").click();
                             document.getElementById("addeq").reset();
                         }else {
-                            alert("新增失败")
+                            bomb("添加失败");
                         }
                     }
                 }, error: function () {

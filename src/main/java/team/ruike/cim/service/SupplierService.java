@@ -36,4 +36,11 @@ public interface SupplierService {
      * @return 二级类型集合
      */
     List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB);
+
+    /**
+     * 添加供应商
+     * @param supplier 供应商
+     * @return
+     */
+    int addSupplier(Supplier supplier);
 }
