@@ -47,7 +47,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" onclick="updateContract()">保存</button>
-                    <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                    <button type="button" id="ordereditModal" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                 </div>
             </form>
         </div>
@@ -91,9 +91,10 @@
             processData: false,
             contentType: false
         }).done(function(res) {
-            appModule.alert("修改成功");
             upp();
+            $("#ordereditModal").click();
             document.getElementById("contractEdit").reset();
+            appModule.alert("修改成功");
         }).fail(function(res) {
             appModule.alert("修改失败");
         });

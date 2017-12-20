@@ -45,7 +45,7 @@
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" id="storeEditmodal" class="btn btn-default" data-dismiss="modal">取消</button>
             <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
         </div>
     </div>
@@ -75,8 +75,9 @@
 
         var addStore = $("#updateStore").serializeArray();
         appModule.post('/store/edit.do',addStore,function (data) {
-            appModule.alert("修改成功")
+            $("#storeEditmodal").click();
             upp();
+            appModule.alert("修改成功");
         },function () {
             appModule.alert("修改失败")
         });

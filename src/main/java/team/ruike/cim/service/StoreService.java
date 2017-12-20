@@ -18,7 +18,7 @@ public interface StoreService {
      * @param store 查询条件
      * @param pager 分页辅助类
      */
-    public void queryStore(Store store, Pager<Store> pager);
+    void queryStore(Store store, Pager<Store> pager);
 
     /**
      * 根据ID查询门店数据
@@ -26,15 +26,15 @@ public interface StoreService {
      * @param storeId 门店ID
      * @return 门店对象
      */
-    public Store queryStoreById(Integer storeId);
+    Store queryStoreById(Integer storeId);
 
 
     /**
      * 添加门店
-     *
      * @param store 门店对象
+     * @return 新的门店
      */
-    public void addStore(Store store);
+    Store addStore(Store store);
 
 
     /**
@@ -42,7 +42,7 @@ public interface StoreService {
      *
      * @param store 修改信息
      */
-    public void updateStoreById(Store store);
+    void updateStoreById(Store store);
 
 
     /**
@@ -50,7 +50,7 @@ public interface StoreService {
      *
      * @param storeId 门店ID
      */
-    public void deleteStoreById(Integer storeId);
+    void deleteStoreById(Integer storeId);
 
 
     /**
@@ -58,7 +58,7 @@ public interface StoreService {
      *
      * @return 门店集合
      */
-    public List<Store> queryAllStore();
+    List<Store> queryAllStore();
 
 
 }

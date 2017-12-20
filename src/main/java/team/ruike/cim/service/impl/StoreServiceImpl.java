@@ -39,10 +39,11 @@ public class StoreServiceImpl implements StoreService {
     }
 
     @ArchivesLog(operationType = "添加操作", operationName = "添加门店")
-    public void addStore(Store store) {
+    public Store addStore(Store store) {
         String storeNo = GenerateNumber.getGenerateNumber().getRandomFileName();
         store.setStoreNo(storeNo);
         storeDao.add(store);
+        return store;
     }
 
     @ArchivesLog(operationType = "修改操作", operationName = "修改门店")
