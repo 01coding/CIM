@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,6 +18,10 @@
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
+
+
+    <!--alerts CSS -->
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.ico">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -1421,7 +1426,7 @@
                                                     <td>${s.materielTypeLevelB.materielTypeLevelBName}</td>
                                                     <td>${s.supplierAddress}</td>
                                                     <td>${s.supplierPhone}</td>
-                                                    <td>${s.cooperationStartDate}</td>
+                                                    <td><fmt:formatDate value="${s.cooperationStartDate}" pattern="yyyy-MM-dd" /></td>
                                                     <td>${s.supplierRemarks}</td>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
@@ -1431,8 +1436,8 @@
                                                             <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
                                                                 <i class="fa ti-search" style="color: #2879ff;"></i>
                                                             </button>
-                                                            <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                                <span class="fooicon fooicon-trash" aria-hidden="true"></span>
+                                                            <button type="button"  flagId="${s.supplierId}" flagName="${s.supplierName}"  class="btn btn-default footable-delete del" >
+                                                                <span class="fooicon fooicon-trash" title="删除"aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -1442,7 +1447,7 @@
                                             </tbody>
 
                                         </table>
-
+                                        <%--分页--%>
                                         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                             <div class="panel-body">
                                                 <div class="row">
@@ -1511,63 +1516,6 @@
 
 
         <div class="row">
-
-            <!--删除提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
-
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                        <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
 
             <!--添加输入框-->
             <div class="col-md-6">
@@ -1755,7 +1703,7 @@
                                                                         <div class="col-md-offset-3 col-md-9">
                                                                             <button type="button"
                                                                                     class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
+                                                                                    data-dismiss="modal">退出
                                                                             </button>
                                                                         </div>
                                                                     </div>
@@ -1839,6 +1787,16 @@
 
 <script src="../../../dist/js/sweetalert-data.js"></script>
 
+
+
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
+
+<script src="../../../vendors/jquery.validate.js"></script>
+<script src="../../../vendors/messages_zh.js"></script>
+
+
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
@@ -1850,6 +1808,42 @@
 
     function toUpdete() {
         window.location.href = "/updateSupplier.do";
+    }
+$(function () {
+    dedd();
+})
+    function dedd() {
+        $(".del").click(function(){
+            var mid=$(this).attr("flagId");
+            var mname=$(this).attr("flagName");
+            var $tr=$(this).parent().parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"的标准吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/delectSupplier.do?supplierId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
     }
 
 </script>

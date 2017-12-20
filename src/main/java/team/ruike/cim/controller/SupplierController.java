@@ -6,6 +6,8 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
 import team.ruike.cim.service.SupplierService;
 import team.ruike.cim.util.Pager;
@@ -34,11 +36,23 @@ public class SupplierController {
     }
 
     /**
+     * 删除供应商
+     * @param supplierId 供应商id
+     * @return
+     */
+    @RequestMapping("/delectSupplier.do")
+    @ResponseBody
+    public String delectSupplier(Integer supplierId){
+        int num=supplierService.delectSupplier(supplierId);
+        return (num==1)+"";
+    }
+    /**
      * 跳转，新增供应商页面
      * @return
      */
     @RequestMapping("/addSupplier.do")
-    public String addSupplier(){
+    public String addSupplier(MaterielTypeLevelB materielTypeLevelB,HttpServletRequest request){
+        request.setAttribute("MaterielTypeLevelBs",supplierService.getMaterielTypeLevelB(materielTypeLevelB) );
         return "supplier/addSupplier";
     }
 
