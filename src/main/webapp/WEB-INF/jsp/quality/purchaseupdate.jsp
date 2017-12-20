@@ -1047,8 +1047,7 @@
                                                 <div class="form-actions">
                                                     <button type="submit" id="butt" class="btn btn-success btn-icon left-icon mr-10 pull-left">
                                                         <i class="fa fa-check"></i> <span>保存修改</span></button>
-                                                    <button type="button" class="btn btn-warning pull-left">取消保存
-                                                    </button>
+                                                        <a href="standard.do"><button type="button" class="btn btn-warning pull-left">取消保存</button></a>
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>
