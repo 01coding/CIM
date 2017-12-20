@@ -6,6 +6,12 @@ package team.ruike.cim.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.service.SupplierService;
+import team.ruike.cim.util.Pager;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 供应商管理控制器
@@ -14,12 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class SupplierController {
+    @Resource
+    private SupplierService supplierService;
     /**
      * 跳转到供应商主页
      * @return
      */
     @RequestMapping("/supplier.do")
-    public String supplier(){
+    public String supplier(Supplier supplier, Pager<Supplier> pager, HttpServletRequest request){
+        supplierService.getSupplier(supplier, pager);
+        request.setAttribute("suppliers",pager);
         return "supplier/supplier";
     }
 

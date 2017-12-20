@@ -53,7 +53,7 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
         <if test="supplier.supplierCharterImage!=null and supplier.supplierCharterImage!=''">
             AND  supplier_charter_image =#{supplier.supplierCharterImage}
         </if>
-        <if test="supplier.materielTypeLevelB！=null and supplier.materielTypeLevelB.materielTypeLevelBId>0">
+        <if test="supplier.materielTypeLevelB!=null and supplier.materielTypeLevelB.materielTypeLevelBId!=null and supplier.materielTypeLevelB.materielTypeLevelBId>0">
             AND materiel_type_level_b_id=#{supplier.materielTypeLevelB.materielTypeLevelBId}
         </if>
         <if test="supplier.supplierAddress!=null and supplier.supplierAddress!=''">
@@ -68,13 +68,13 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
         <if test="supplier.supplierRemarks!=null and supplier.supplierRemarks!=''">
             AND supplier_remarks=#{supplier.supplierRemarks}
         </if>
-        <if test="supplier.supplierState！=null and supplier.supplierState>0">
+        <if test="supplier.supplierState!=null and supplier.supplierState>0">
             AND  supplier_state=#{supplier.supplierState}
         </if>
     </sql>
     <select id="select" resultMap="supplierMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="supplier">
     SELECT COUNT(1)FROM  supplier WHERE  status=0
@@ -93,7 +93,7 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
         <if test="supplierCharterImage!=null and supplierCharterImage!=''">
             AND  supplier_charter_image =#{supplierCharterImage}
         </if>
-        <if test="materielTypeLevelB！=null and materielTypeLevelB.materielTypeLevelBId>0">
+        <if test="materielTypeLevelB!=null and materielTypeLevelB.materielTypeLevelBId!=null and materielTypeLevelB.materielTypeLevelBId>0">
             AND materiel_type_level_b_id=#{materielTypeLevelB.materielTypeLevelBId}
         </if>
         <if test="supplierAddress!=null and supplierAddress!=''">
@@ -108,7 +108,7 @@ INSERT  INTO supplier VALUES (DEFAULT,#{supplierName},#{supplierNo},#{supplierIm
         <if test="supplierRemarks!=null and supplierRemarks!=''">
             AND supplier_remarks=#{supplierRemarks}
         </if>
-        <if test="supplierState！=null and supplierState>0">
+        <if test="supplierState!=null and supplierState>0">
             AND  supplier_state=#{supplierState}
         </if>
     </select>

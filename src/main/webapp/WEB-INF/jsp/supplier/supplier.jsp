@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/19
@@ -1382,7 +1382,7 @@
                                         <table id="example" class="table table-hover display  pb-30">
 
                                             <div style="width: 300px;float: right">
-                                                <form  class="form-inline">
+                                                <form  class="form-inline" action="/supplier.do">
                                                     <div class="form-group">
                                                         <label class="sr-only">Search</label>
                                                         <div class="input-group">
@@ -1412,35 +1412,82 @@
                                             </thead>
 
                                             <tbody>
-                                            <tr>
-                                                <td>三号店</td>
-                                                <td>旗舰店</td>
-                                                <td>江苏省</td>
-                                                <td>171938219381</td>
-                                                <td>2011-01-01</td>
-                                                <td>备注备注</td>
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-                                                        <button type="button" class="btn btn-default footable-edit" onclick="toUpdete()">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-                                                        <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
-                                                            <span class="fooicon fooicon-trash" aria-hidden="true"></span>
-                                                        </button>
-                                                    </div>
-                                                </td>
-                                            </tr>
 
 
+                                            <c:forEach items="${requestScope.suppliers.list}" var="s">
 
-
-
+                                                <tr>
+                                                    <td>${s.supplierName}</td>
+                                                    <td>${s.materielTypeLevelB.materielTypeLevelBName}</td>
+                                                    <td>${s.supplierAddress}</td>
+                                                    <td>${s.supplierPhone}</td>
+                                                    <td>${s.cooperationStartDate}</td>
+                                                    <td>${s.supplierRemarks}</td>
+                                                    <td class="footable-editing" style="display: table-cell;">
+                                                        <div class="btn-group btn-group-xs" role="group">
+                                                            <button type="button" class="btn btn-default footable-edit" onclick="toUpdete()">
+                                                                <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
+                                                            </button>
+                                                            <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
+                                                                <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                            </button>
+                                                            <button type="button" class="btn btn-default footable-delete"  data-toggle="modal" data-target=".bs-example-modal-lg">
+                                                                <span class="fooicon fooicon-trash" aria-hidden="true"></span>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
 
                                             </tbody>
+
                                         </table>
+
+                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.suppliers.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%  Pager pager = (Pager) request.getAttribute("suppliers");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.previousPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.suppliers.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.suppliers.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/supplier.do?currentPage=${bar}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.suppliers.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.nextPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1452,30 +1499,8 @@
                                                 </button>
                                             </div>
                                         </div>
-
-
                                     </div>
                                 </div>
-
-
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -1556,7 +1581,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel1">供应商</h5>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form >
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" class="form-control">
@@ -1634,7 +1659,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-wrap">
-                                                    <form action="/supplier.do" class="form-horizontal" role="form">
+                                                    <form action="" class="form-horizontal" role="form">
                                                         <div class="form-body">
                                                             <hr class="light-grey-hr"/>
                                                             <div class="row">

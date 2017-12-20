@@ -1678,7 +1678,6 @@
                                                     <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModal" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
-
                                             </div>
                                         </div>
 
