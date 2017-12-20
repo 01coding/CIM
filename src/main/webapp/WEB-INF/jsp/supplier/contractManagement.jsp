@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/12/4
-  Time: 8:52
+  Date: 2017/12/19
+  Time: 14:47
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -11,29 +11,29 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>合同管理</title>
+    <title>Hound I Fast build Admin dashboard for any platform</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../../favicon.ico">
-    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
     <!-- Data table CSS -->
-    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+    <link href="vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
     <!-- vector map CSS -->
-    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <link href="vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
     <!-- Footable CSS -->
-    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+    <link href="vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
         /*** guide ***/
         .guide {
@@ -67,7 +67,7 @@
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
                     <a href="index.html">
-                        <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
+                        <img class="brand-img" src="dist/img/logo.png" alt="brand"/>
                         <span class="brand-text">Hound</span>
                     </a>
                 </div>
@@ -230,23 +230,23 @@
                                     <hr class="light-grey-hr ma-0"/>
                                     <div class="product-carousel owl-carousel owl-theme text-center">
                                         <a href="#">
-                                            <img src="../../../dist/img/chair.jpg" alt="chair">
+                                            <img src="dist/img/chair.jpg" alt="chair">
                                             <span>Circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair3.jpg" alt="chair">
+                                            <img src="dist/img/chair3.jpg" alt="chair">
                                             <span>semi circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair4.jpg" alt="chair">
+                                            <img src="dist/img/chair4.jpg" alt="chair">
                                             <span>wooden chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                     </div>
@@ -319,7 +319,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -356,7 +356,7 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="dist/img/user1.png"
                                                                                          alt="user_auth"
                                                                                          class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
@@ -925,7 +925,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -938,7 +938,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user1.png" alt="user"/>
+                                                                     src="dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Evie Ono</span>
                                                                     <span class="time block truncate txt-grey">Unity is strength</span>
@@ -950,7 +950,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user2.png" alt="user"/>
+                                                                     src="dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Madalyn Rascon</span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
@@ -962,7 +962,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user3.png" alt="user"/>
+                                                                     src="dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Mitsuko Heid</span>
                                                                     <span class="time block truncate txt-grey">I’m thankful.</span>
@@ -973,7 +973,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -986,7 +986,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user1.png" alt="user"/>
+                                                                     src="dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Jonnie Metoyer</span>
                                                                     <span class="time block truncate txt-grey">Genius is eternal patience.</span>
@@ -998,7 +998,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user2.png" alt="user"/>
+                                                                     src="dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Angelic Lauver</span>
                                                                     <span class="time block truncate txt-grey">Every burden is a blessing.</span>
@@ -1010,7 +1010,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user3.png" alt="user"/>
+                                                                     src="dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Priscila Shy</span>
                                                                     <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
@@ -1022,7 +1022,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user4.png" alt="user"/>
+                                                                     src="dist/img/user4.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Linda Stack</span>
                                                                     <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
@@ -1058,7 +1058,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../../dist/img/user.png" alt="user"/>
+                                                                     src="dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Hello Jason, how are you, it's been a long time
                                                                         since we last met?</p>
@@ -1093,7 +1093,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../../dist/img/user.png" alt="user"/>
+                                                                     src="dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Not too bad.</p>
                                                                     <div class="msg-per-detail  text-right">
@@ -1153,7 +1153,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1169,7 +1169,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1185,7 +1185,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1201,7 +1201,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1217,7 +1217,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1233,7 +1233,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1249,7 +1249,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1378,46 +1378,23 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
 
+
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div >
+                                            <div style="width: 300px;float: right">
                                                 <form class="form-inline">
                                                     <div class="form-group">
-
-                                                        <div class="input-group" style="width: 300px;float: right;">
-                                                            <label class="control-label mb-10">合同名称:</label>
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
                                                             <input type="text" class="form-control"
-                                                                   placeholder="名称">
-                                                            <div class="input-group-btn" style=" position: relative; top: 16px;">
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
                                                                 <button type="button" class="btn btn-primary"
                                                                         style="height:42px;">
                                                                     <span class="fooicon fooicon-search"></span>
                                                                 </button>
                                                             </div>
                                                         </div>
-
-                                                        <div  class="input-group" style="width: 300px;float: right;position: relative;right: 20px;">
-                                                            <label class="control-label mb-10">签订时间:</label>
-                                                            <div class='input-group date' id='datetimepicker1'>
-                                                                <input type='text' class="form-control" placeholder="时间"/>
-                                                                <span class="input-group-addon">
-                                                                    <span class="fa fa-calendar"></span>
-                                                                </span>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
-                                                            <label class="control-label mb-10">合同状态:</label>
-                                                            <select class="form-control">
-                                                                <option selected>请选择</option>
-                                                                <option>10</option>
-                                                                <option>20</option>
-                                                            </select>
-                                                        </div>
-
-
-
-
                                                     </div>
                                                 </form>
                                             </div>
@@ -1426,42 +1403,29 @@
                                             <tr>
                                                 <th>合同号</th>
                                                 <th>合同名称</th>
-                                                <th>合同图片路径</th>
+
                                                 <th>合同签订时间</th>
-                                                <th>签订人</th>
-                                                <th>状态</th>
-                                                <th>ACTIONS</th>
+                                                <th>供应商</th>
+
+                                                <th>操作</th>
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>合同号</th>
-                                                <th>合同名称</th>
-                                                <th>合同图片路径</th>
-                                                <th>合同签订时间</th>
-                                                <th>签订人</th>
-                                                <th>状态</th>
-                                                <th>ACTIONS</th>
-                                            </tr>
-                                            </tfoot>
+
                                             <tbody>
                                             <tr>
                                                 <td>9001 0000001</td>
                                                 <td>三号店</td>
-                                                <td>C:\Program Files\Ecap\ico.jgp</td>
+
                                                 <td>2017/12/2</td>
                                                 <td>张三</td>
-                                                <th>未完成</th>
+
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
 
                                                         <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate">
                                                             <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                         </button>
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
+
 
                                                     </div>
                                                 </td>
@@ -1589,11 +1553,16 @@
                                         </div>
 
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同签订时间">
+
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control"
+                                                       name="contractOrderStartDate" placeholder="时间" />
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                            </div>
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <select class="form-control">
-                                                <option selected>请选择签订人</option>
+                                                <option selected>请选择供应商</option>
                                                 <option>10</option>
                                                 <option>20</option>
                                                 <option>30</option>
@@ -1638,12 +1607,19 @@
                                         </div>
 
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同签订时间">
+
+
+                                            <div class='input-group date' id='datetimepicker1'>
+                                                <input type='text' class="form-control"
+                                                       name="contractOrderStartDate" placeholder="时间" />
+                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                            </div>
+
                                         </div>
 
                                         <div class="col-md-12 mb-20">
                                             <select class="form-control">
-                                                <option selected>请选择签订人</option>
+                                                <option selected>请选择供应商</option>
                                                 <option>10</option>
                                                 <option>20</option>
                                                 <option>30</option>
@@ -1672,291 +1648,6 @@
             </div>
 
 
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">合同订单</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
-
-                                                            <div class="row">
-                                                                <!--订单-->
-                                                                <div class="col-md-4">
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">订单号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">交付时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">是否交付:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div  >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-
-
-                                                                <!--订单-->
-                                                                <div class="col-md-3">
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">备注:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">确认人:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <!--订单合同-->
-                                                                <div class="col-md-5">
-
-                                                                    <!--/span-->
-                                                                    <div  >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-
-                                                                    <!--/span-->
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-
-                                                                    <!--/span-->
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合同签订时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">签订人:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Free </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-
-                                                            </div>
-
-                                                            <hr class="light-grey-hr"/>
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">菜品数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成状态:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">产品批次:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">菜品编号&名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">菜品数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-4" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">完成状态:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-4">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">产品批次:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">Cancel
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
-                </div>
-            </div>
 
         </div>
 
@@ -1986,7 +1677,7 @@
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 <!-- Data table JavaScript -->
-<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>

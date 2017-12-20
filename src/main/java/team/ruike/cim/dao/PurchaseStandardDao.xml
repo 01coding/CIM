@@ -16,7 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             standard_c_name=#{standardCName},
             standard_c_type=#{standardCType},
             remarks=#{remarks},
-            status=#{status} WHERE purchase_standard_id=#{purchaseStandardId}
+            status=#{status}
+             WHERE purchase_standard_id=#{purchaseStandardId}
     </update>
     <resultMap id="purchaseStandardMap" type="purchaseStandard">
         <result column="purchase_standard_id" property="purchaseStandardId"/>

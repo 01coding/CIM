@@ -931,7 +931,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">add-products</h5>
+                    <h5 class="txt-dark">修改质检信息</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -957,49 +957,38 @@
                                 <div class="form-wrap">
                                     <form action="updatePurchaseStandard.do" method="post">
                                         <h6 class="txt-dark capitalize-font"><i
-                                                class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
+                                                class="zmdi zmdi-calendar-note mr-10"></i>修改质检</h6>
                                         <hr class="light-grey-hr"/>
-
                                         <div class="row">
-
                                             <div class="col-sm-4">
-
-
                                             </div>
-
                                             <div class="col-sm-6">
-                                                <!-- <div class="row">
-                                                         <div class="form-group">
-                                                             <div class='input-group date' id='datetimepicker1'>
-                                                                 <input type='text' class="form-control"
-                                                                        placeholder="物料入库时间"/>
-                                                                 <span class="input-group-addon">
-                                                                         <span class="fa fa-calendar"></span>
-                                                                     </span>
-                                                             </div>
-                                                         </div>
-
-                                                 </div>-->
                                                 <div class="row">
                                                     <div class="form-group col-sm-12">
                                                         <div class="form-group">
-                                                            <input name="materiel.materielId" type="hidden" value="${PStand.materiel.materielId}" />
+                                                            <input name="purchaseStandardId" type="hidden" value="${PStand.purchaseStandardId}">
+                                                            <input  name="materiel.materielId" type="hidden" value="${PStand.materiel.materielId}" />
                                                             <input type="text" class="form-control" readonly="readonly" value="${PStand.materiel.materielName}">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="row">
+
                                                     <div class="form-group col-sm-12">
                                                         <div class="form-group">
-                                                            <input name="remarks" type="text" class="form-control" value="${PStand.remarks}">
+                                                            <input name="remarks" id="remarks" type="text" class="form-control" value="${PStand.remarks}"
+                                                                   onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                                   onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control" name="standardAName" placeholder="标准一评估" value="${PStand.standardAName}">
+                                                        <input type="text" class="form-control" id="standardAName" name="standardAName" placeholder="标准一评估" value="${PStand.standardAName}"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" <c:if test="${PStand.standardAType==1}">
@@ -1017,8 +1006,10 @@
                                                 <div class="row">
 
                                                     <div class="form-group col-sm-6">
-                                                        <input type="text" class="form-control"
-                                                               placeholder="标准二评估" value="${PStand.standardBName}">
+                                                        <input type="text" class="form-control" id="standardBName" name="standardBName"
+                                                               placeholder="标准二评估" value="${PStand.standardBName}"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" <c:if test="${PStand.standardBType==1}">
@@ -1036,7 +1027,9 @@
                                                 <div class="row">
                                                     <div class="form-group col-sm-6">
                                                         <input type="text" class="form-control"
-                                                               placeholder="标准三评估" value="${PStand.standardCName}">
+                                                               placeholder="标准三评估" id="standardCName" value="${PStand.standardCName}" name="standardCName"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                     <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
                                                         <input type="radio" <c:if test="${PStand.standardCType==1}">
@@ -1052,19 +1045,14 @@
                                                     </div>
                                                 </div>
                                                 <div class="form-actions">
-                                                    <button type="submit" class="btn btn-success btn-icon left-icon mr-10 pull-left">
+                                                    <button type="submit" id="butt" class="btn btn-success btn-icon left-icon mr-10 pull-left">
                                                         <i class="fa fa-check"></i> <span>保存修改</span></button>
                                                     <button type="button" class="btn btn-warning pull-left">取消保存
                                                     </button>
                                                     <div class="clearfix"></div>
                                                 </div>
-
                                             </div>
-                                            `
-
                                         </div>
-
-
                                     </form>
                                 </div>
                             </div>
@@ -1095,7 +1083,33 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
+<script>
+    $(function () {
+        $("#butt").click(function () {
+            var no="不能为空";
+            var r=$("#remarks").val()
+            var sa=$("#standardAName").val()
+            var sb =$("#standardBName").val()
+            var sc=$("#standardCName").val()
+            if (r==null || r==""){
+                $("#remarks").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(sa==null || sa==""){
+                $("#standardAName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(sb==null || sb==""){
+                $("#standardBName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+            if(sc==null || sc==""){
+                $("#standardCName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
+                return false;
+            }
+        })
+    });
+</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

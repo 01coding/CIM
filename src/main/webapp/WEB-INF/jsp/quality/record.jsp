@@ -1074,7 +1074,7 @@
                                                                             </tbody>
                                                                         </table>
                                                                         <button class="btn  btn-primary btn-rounded"><a
-                                                                                href="picitypeA.do"
+                                                                                href="picitypeA.cl"
                                                                                 style="color: white" >添加</a></button>
 
                                                                     </div>
@@ -1290,7 +1290,7 @@
 
          function suo() {
              var so=$("#sou").val()
-             window.location.href="Something.do?sid="+so
+             window.location.href="Something.cl?sid="+so
          }
 
          function xiang(aaa){

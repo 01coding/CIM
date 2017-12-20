@@ -67,7 +67,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
     <select id="select" resultMap="temporaryOrderMap">
         select * from (<include refid="sql"/>) f
-        ORDER BY temporary_order_id desc
         limit #{pageNo},#{pageSize}
     </select>
 

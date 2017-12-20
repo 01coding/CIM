@@ -1290,7 +1290,7 @@
                                                             <span class="txt-dark weight-500">${prolss.menu.menuName}</span>
                                                         </td>
                                                         <td>${prolss.menuNumber}</td>
-                                                        <td><a href="#">查看详情</a></td>
+                                                        <td><a href="${pageContext.request.contextPath}/product.do?contractProductionPlanItemId=${prolss.contractProductionPlanItemId}">查看详情</a></td>
                                                     </tr>
                                                 </c:forEach>
                                             </c:forEach>

@@ -3,6 +3,7 @@ package team.ruike.cim.dao;
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.EverydayPurchasingPlan;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -67,5 +68,5 @@ public interface EverydayPurchasingPlanDao {
      * 根据日期查寻当前记录批次
      * @return
      */
-    int getNumberByDate();
+    int getNumberByDate(Date date);
 }

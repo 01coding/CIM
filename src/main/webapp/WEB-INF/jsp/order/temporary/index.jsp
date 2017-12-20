@@ -1361,9 +1361,9 @@
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>临时订单管理</span></a></li>
+                        <li class="active"><span>临时订单列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1437,7 +1437,6 @@
                                                 <tr>
                                                     <th>订单编号</th>
                                                     <th>下单日期</th>
-                                                    <th>门店/客户编号</th>
                                                     <th>门店/客户名称</th>
                                                     <th>订单确认人</th>
                                                     <th>交付时间</th>
@@ -1454,7 +1453,6 @@
                                                     <tr>
                                                         <td>${temporaryOrder.temporaryOrderNo}</td>
                                                         <td><fmt:formatDate value="${temporaryOrder.temporaryOrderStartDate}" pattern="yyyy-MM-dd"/></td>
-                                                        <td>${temporaryOrder.store.storeNo}</td>
                                                         <td>${temporaryOrder.store.storeName}</td>
                                                         <td>${temporaryOrder.user.userName}</td>
                                                         <td><fmt:formatDate value="${temporaryOrder.temporaryOrderEndDate}" pattern="yyyy-MM-dd"/></td>

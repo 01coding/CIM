@@ -17,14 +17,14 @@
                 <div class="form-group">
                     <label class="control-label mb-10">门店/用户类别:</label>
                     <select class="form-control" name="storeType">
-                        <option value="0">请选择</option>
+                        <option value="">请选择</option>
                         <option value="1"
                         <c:if test="${store.storeType==1}">
                             selected
                         </c:if>
                           >合同用户</option>
                         <option value="2"
-                        <c:if test="${store.storeType==0}">
+                        <c:if test="${store.storeType==2}">
                             selected
                         </c:if>
                         >散户</option>
@@ -33,7 +33,7 @@
 
                 <div class="form-group">
                     <label class="control-label mb-10">电话:</label>
-                    <input type="text" class="form-control" name="storePhone" value="${store.storePhone}">
+                    <input type="text" class="form-control" name="storePhone"  maxlength="11" minlength="11" value="${store.storePhone}">
                 </div>
 
                 <div class="form-group">
@@ -46,7 +46,73 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-            <button type="button" class="btn btn-primary" onclick="storeModule.edit()">保存</button>
+            <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
         </div>
     </div>
 </div>
+<script>
+
+    $(function () {
+        uppStrotValidate();
+    })
+
+    function upp() {
+        var tbobj=document.getElementById("example");
+        tbobj.rows[$("#index").val()].cells[0].innerText=$("#updateStore input[name='storeName']").val();
+        tbobj.rows[$("#index").val()].cells[1].innerText=$("#updateStore select[name='storeType'] option:selected").text();
+        tbobj.rows[$("#index").val()].cells[2].innerText=$("#updateStore textarea[name='storeAddress']").val();
+        tbobj.rows[$("#index").val()].cells[3].innerText=$("#updateStore input[name='storePhone']").val();
+    }
+
+
+    function edit() {
+
+        var flag = $("#updateStore").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+        var addStore = $("#updateStore").serializeArray();
+        appModule.post('/store/edit.do',addStore,function (data) {
+            appModule.alert("修改成功")
+            upp();
+        },function () {
+            appModule.alert("修改失败")
+        });
+    };
+
+
+    function uppStrotValidate() {
+
+        $("#updateStore").validate({
+            rules: {
+                storeName: "required",
+                storeType:"required",
+                "storePhone":{
+                    required : true,
+                    minlength : 11,
+                },
+                "storeAddress":"required",
+            },
+            messages: {
+                storeName: {
+                    required:"请输入名称",
+                },
+                storeType:{
+                    required:"请选择类型"
+                },
+                "storePhone":{
+                    required : "请输入手机号",
+                    minlength : "确认手机不能小于11个字符",
+                },
+                "storeAddress":{
+                    required:"请输入地址"
+                }
+            }
+        });
+    }
+
+
+</script>
+

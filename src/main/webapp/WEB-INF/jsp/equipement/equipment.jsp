@@ -70,6 +70,9 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+        .error{
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -1385,7 +1388,7 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
-                                    <div class="table-responsive">
+
                                         <table id="example" class="table table-hover display  pb-30">
                                             <div class="row">
                                                 <form class="form-inline" action="/equipment.do" method="post">
@@ -1481,7 +1484,7 @@
                                                                                         设备编号:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId" placeholder="设备编号" value="${e.equipmentId}"/>
+                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId"  value="${e.equipmentId}"/>
                                                                                     </div>
 
                                                                                 </div>
@@ -1492,7 +1495,7 @@
                                                                                         检查周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle"  placeholder="检查周期" value="${e.inspectionCycle}">
+                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle" value="${e.inspectionCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1505,9 +1508,7 @@
                                                                                         设备名称:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" placeholder="只能输入中文" value="${e.equipmentName}"
-                                                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
+                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" value="${e.equipmentName}">
                                                                                     </div>
                                                                                     </div>
                                                                             </div>
@@ -1517,7 +1518,7 @@
                                                                                         保养周期:
                                                                                     </div>
                                                                                     <div class="col-sm-7">
-                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" placeholder="保养周期" value="${e.maintenanceCycle}">
+                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" value="${e.maintenanceCycle}">
                                                                                 </div>
                                                                                 </div>
                                                                             </div>
@@ -1615,7 +1616,7 @@
                                                                         </div>
                                                                         <div class="modal-footer">
                                                                             <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button id="butt" type="submit" class="btn btn-primary">确认修改</button>
+                                                                            <button  type="submit" class="btn btn-primary">确认修改</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
@@ -1673,26 +1674,198 @@
                                             </div>
                                         </div>
                                         <div class="guide">
-                                                <a href="/addequipement.do">
-                                                    <button class="btn btn-info btn-icon-anim btn-circle" title="添加数据">
+
+                                                    <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModal" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
-                                                </a>
                                             </div>
                                         </div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+            <div>
+                <!--添加输入框-->
+                <div class="col-md-6">
+                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                         aria-labelledby="exampleModalLabel1">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                            aria-hidden="true">&times;</span></button>
+                                    <h5 class="modal-title" id="df">新增设备</h5>
+                                </div>
+                                <div class="modal-body">
+                                    <form  id="addeq">
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">设备名称:</label>
+                                            <input type="text" class="form-control" id="equipmentName1" name="equipmentName">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">保养周期:</label>
+                                            <input class="form-control" type="number" min="1" id="maintenanceCycle1"  name="maintenanceCycle">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">检查周天:</label>
+                                            <input class="form-control" type="number" min="1" id="inspectionCycle1"  name="inspectionCycle"/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">生产线:</label>
+                                            <select class="form-control" name="productionLine.productionLineId">
+                                                    <c:forEach items="${requestScope.productionLines}" var="p">
+                                                        <option  value="${p.productionLineId}">${p.productionLineNo}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">工序:</label>
+                                            <select class="form-control" name="working.workingId" >
+                                                    <c:forEach items="${requestScope.workings}" var="w">
+                                                        <option   value="${w.workingId}">${w.workingName}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            <label class="control-label mb-10">负责人:</label>
+                                            <select class="form-control" name="user.userId">
+                                                    <c:forEach items="${requestScope.users}" var="u">
+                                                        <option   value="${u.userId}">${u.userName}</option>
+                                                    </c:forEach>
+                                            </select>
+                                        </div>
+
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" id="addNo" class="btn btn-primary" onclick="add()" >保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
+
         </div>
     </div>
 </div>
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+<script src="../../../vendors/jquery.validate.js"></script>
+<script src="../../../vendors/messages_zh.js"></script>
+
+
+<script>
+    $(function () {
+        dedd()
+        addeqValidate();
+    });
+
+    function addeqValidate() {
+
+        $("#addeq").validate({
+            rules: {
+                equipmentName: "required",
+                maintenanceCycle:"required",
+                inspectionCycle:"required",
+            },
+            messages: {
+                equipmentName: {
+                    required:"请输入设备名称",
+                },
+                maintenanceCycle:{
+                    required:"请选择保养周期"
+                },
+                inspectionCycle:{
+                    required:"请输入检查周天"
+                }
+            }
+        });
+    }
+
+
+    function add() {
+
+        var flag = $("#addeq").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+            var equis=$("#addeq").serializeArray();
+
+            $.ajax({
+                url: "/addEquipment.do",
+                method: "post",
+                data: equis,
+                dataType: "json",
+                success: function (data) {
+                    if (null != data) {
+                        if(data>0){
+                            alert("新增成功")
+                            document.getElementById("addeq").reset();
+                        }else {
+                            alert("新增失败")
+                        }
+                    }
+                }, error: function () {
+                    alert("error");
+                }
+            });
+
+
+
+
+    }
+    function dedd() {
+        $(".del").click(function(){
+            var mid=$(this).attr("flagId");
+            var mname=$(this).attr("flagName");
+            var $tr=$(this).parent().parent().parent();
+            swal({
+                title: "你确定要删除"+mname+"的标准吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功！", "success");
+                                $($tr).remove();
+                            }else{
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        }
+                    });
+                }
+            });
+        });
+    }
+</script>
 <script>
     $(function () {
         $("#butt").click(function () {
@@ -1705,10 +1878,12 @@
                 $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
+
             if(e==null || e==""){
                 $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
+
             if(m==null || m==""){
                 $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
@@ -1751,62 +1926,7 @@
 
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        $(function () {
-            dedd(),
-            GetNowDate()
-            });
-        //获取当前日期给date控件赋值
-        function GetNowDate() {
-            var date = new Date();
-            var seperator1 = "-";
-            var year = date.getFullYear();
-            var month = date.getMonth() + 1;
-            var strDate = date.getDate();
-            if (month >= 1 && month <= 9) {
-                month = "0" + month;
-            }
-            if (strDate >= 0 && strDate <= 9) {
-                strDate = "0" + strDate;
-            }
-            var currentdate = year + seperator1 + month + seperator1 + strDate;
-            $("#date").val(currentdate);
-        }
 
-        function dedd() {
-            $(".del").click(function(){
-                var mid=$(this).attr("flagId");
-                var mname=$(this).attr("flagName");
-                var $tr=$(this).parent().parent().parent();
-                swal({
-                    title: "你确定要删除"+mname+"的标准吗?",
-                    text: "删除操作不可恢复！!",
-                    type: "warning",
-                    showCancelButton: true,
-                    confirmButtonColor: "#fec107",
-                    confirmButtonText: "确定!",
-                    cancelButtonText: "取消!",
-                    closeOnConfirm: false,
-                    closeOnCancel: true
-                }, function(isConfirm){
-                    if (isConfirm) {
-                        $.ajax({
-                            url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
-                            cache: false,
-                            success:function(data){
-                                if(data == 1){
-                                    swal("删除成功", "删除成功！", "success");
-                                    $($tr).remove();
-                                }else{
-                                    swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
-                                }
-                            }
-                        });
-                    }
-                });
-            });
-        }
-    </script>
 </body>
 </html>
 

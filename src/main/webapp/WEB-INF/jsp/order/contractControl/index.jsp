@@ -1368,14 +1368,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">合同列表</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>合同管理</span></a></li>
+                        <li class="active"><span>合同列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1434,38 +1434,23 @@
                                                 <th>合同名称</th>
                                                 <th>合同签订时间</th>
                                                 <th>签订人</th>
-                                                <th>状态</th>
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
 
                                             <tbody>
-                                            <c:forEach var="orderContract" items="${pager.list}">
+                                            <c:forEach var="orderContract" items="${pager.list}" varStatus="varStatus">
                                             <tr>
                                                 <td>${orderContract.orderContractNo}</td>
                                                 <td>${orderContract.orderContractName}</td>
 
                                                 <td><fmt:formatDate value="${orderContract.orderContractDate}" pattern="yyyy-MM-dd"/> </td>
                                                 <td>${orderContract.store.storeName}</td>
-                                                <th>
-                                                    <c:choose>
-                                                        <c:when test="${orderContract.contractOrder!=null}">
-                                                            <c:if test="${orderContract.contractOrder.contractOrderState==0}">
-                                                                未完成
-                                                            </c:if>
-                                                            <c:if test="${orderContract.contractOrder.contractOrderState==1}">
-                                                                完成
-                                                            </c:if>
-                                                        </c:when>
-                                                        <c:when test="${orderContract.contractOrder==null}">
-                                                                无合同项
-                                                        </c:when>
-                                                    </c:choose>
-                                                </th>
+
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
 
-                                                        <button type="button" class="btn btn-default footable-edit"  data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${orderContract.orderContractId})">
+                                                        <button type="button" class="btn btn-default footable-edit"  data-toggle="modal" data-target="#exampleModalUpdate" onclick="toEdit(${orderContract.orderContractId},${varStatus.count})">
                                                             <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                         </button>
                                                         <button type="button" class="btn btn-default footable-edit"
@@ -1559,7 +1544,7 @@
                                                     <span class="fa fa-calendar"></span>
                                                 </span>
                                             </div>
-                                            <label style="display: none" id="dateerror" class="zerror">请选择签订时间</label>
+                                            <label for="orderContractDate" class="error"></label>
                                         </div>
 
                                         <div class="col-md-12 mb-20">
@@ -1579,7 +1564,7 @@
                                     </div>
 
                                     <div class="modal-footer">
-                                        <button type="button"  class="btn btn-info waves-effect" onclick="up()">保存</button>
+                                        <button type="button"  class="btn btn-info waves-effect" onclick="ad()">保存</button>
                                         <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
@@ -1595,6 +1580,7 @@
 
             <!--修改输入框-->
             <div class="col-md-6">
+                <input type="hidden" id="index" >
                 <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
 
                 </div>
@@ -1667,8 +1653,6 @@
 <script src="../../../../dist/js/init.js"></script>
 
 
-<!-- Sweet-Alert  -->
-<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
 <script src="../../../../dist/js/sweetalert-data.js"></script>
 <!-- Moment JavaScript -->
@@ -1688,12 +1672,23 @@
 <!-- Slimscroll JavaScript -->
 <script src="../../../../dist/js/jquery.slimscroll.js"></script>
 
-<script src="../../../../vendors/validate.min.js"></script>
+
+<!-- Sweet-Alert  -->
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+
+
+<script src="../../../../vendors/jquery.validate.js"></script>
 <script src="../../../../vendors/messages_zh.js"></script>
 
 <script src="../../../../vendors/app.js"></script>
 
 <script>
+    $(function () {
+        addContractValidate();
+        uupContractValidate();
+    });
+
 
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
@@ -1705,8 +1700,11 @@
         appModule.open("/order/contract/toView.do",fd,"exampleModalSelect")
     };
 
-    function toEdit(id) {
-        var fd = {orderContractId:id};
+    function toEdit(id,indx) {
+        var fd = {
+            orderContractId:id
+        };
+        $("#index").val(indx)
         appModule.open('/order/contract/toEdit.cl',fd,'exampleModalUpdate');
     };
 
@@ -1734,9 +1732,68 @@
         window.location.href="/order/contract/index.do?"+url;
     };
 
+    function addContractValidate() {
+
+        $("#addcontract").validate({
+            rules: {
+                orderContractName: {
+                    required: true,
+                },
+                orderContractDate:"required",
+                "store.storeId":"required",
+            },
+            messages: {
+                orderContractName: {
+                    required: "请输入合同名称",
+                },
+                orderContractDate:{
+                    required:"请选择时间"
+                },
+                "store.storeId":{
+                    required:"请选择门店"
+                }
+            }
+        });
+
+    };
 
 
-    function up() {
+    function uupContractValidate() {
+
+        $("#updateStore").validate({
+            rules: {
+                orderContractName: {
+                    required: true,
+                },
+                orderContractDate:"required",
+                "store.storeId":"required",
+            },
+            messages: {
+                orderContractName: {
+                    required: "请输入合同名称",
+                },
+                orderContractDate:{
+                    required:"请选择时间"
+                },
+                "store.storeId":{
+                    required:"请选择门店"
+                }
+            }
+        });
+
+    };
+
+
+
+    function ad() {
+
+        var flag = $("#addcontract").valid();
+        if(!flag){
+            //没有通过验证
+            return;
+        }
+
+
        var formobj =  document.getElementById("addcontract");
        var formData=new FormData(formobj);
         $.ajax({
@@ -1747,14 +1804,15 @@
             processData: false,
             contentType: false
         }).done(function(res) {
-            alert("成功");
+            appModule.alert("添加成功");
             document.getElementById("addcontract").reset();
         }).fail(function(res) {
-            alert("失败");
+            appModule.alert("添加失败");
         });
 
 
     }
+
 
 </script>
 

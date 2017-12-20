@@ -3,6 +3,7 @@ package team.ruike.cim.service;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.util.Pager;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -64,14 +65,14 @@ public interface QualityService {
      * 查询当前日期所有A级菜单
      * @return
      */
-    List<MaterielTypeLevelA> getMaterielTypeLevelAByDate();
+    List<MaterielTypeLevelA> getMaterielTypeLevelAByDate(Date date);
 
     /**
      * 根据MaterielTypeLevelAID 和当前日期 查询MaterielTypeLevelB列表
      * @param materielTypeLevelAId  物料一级Id
      * @return
      */
-    List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId);
+    List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(Integer materielTypeLevelAId,Date date);
 
 
 
@@ -79,13 +80,13 @@ public interface QualityService {
      * 获取当前日期的物料集合
      * @return
      */
-    List<Materiel> getMaterielByDate(Integer materielTypeLevelBId);
+    List<Materiel> getMaterielByDate(Integer materielTypeLevelBId,Date date);
 
     /**
      * 获取今日采购批次
      * @return
      */
-    Integer getNumberByDate();
+    Integer getNumberByDate(Date date);
 
     /**
      * 获取物料标准

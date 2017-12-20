@@ -53,6 +53,15 @@
             margin-left: 12px;
             box-shadow: 1px 1px 1px #888888;
         }
+        .error{
+            color: red;
+            margin: 0;
+            padding: 0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+        }
 
     </style>
 
@@ -1359,14 +1368,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">合同订单列表</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>合同订单管理</span></a></li>
+                        <li class="active"><span>合同订单列表</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1382,7 +1391,7 @@
 
                                 <div class="table-wrap">
 
-                                    <div class="table-responsive">
+
 
                                         <div style="position: relative;bottom: 10px;">
                                             <form method="get" id="orderForm" action="/contract/order/index.do">
@@ -1416,18 +1425,18 @@
                                                     <div class="input-group" style="width: 300px;float: right;position: relative;right: 40px;">
                                                         <label class="control-label mb-10">订单状态:</label>
                                                         <select class="form-control" name="contractOrderState">
-                                                            <option value="0">请选择</option>
+                                                            <option value="">请选择</option>
                                                             <option value="1"
                                                             <c:if test="${contractOrder.contractOrderState==1}">
                                                                 selected
                                                             </c:if>
-                                                             >完成</option>
+                                                             >已交付</option>
 
                                                             <option value="0"
-                                                            <c:if test="${contractOrder.contractOrderState==1}">
+                                                            <c:if test="${contractOrder.contractOrderState==0}">
                                                                 selected
                                                             </c:if>
-                                                            >未完成</option>
+                                                            >未交付</option>
                                                         </select>
                                                     </div>
 
@@ -1438,7 +1447,6 @@
                                             </form>
                                         </div>
 
-                                        <div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
@@ -1489,7 +1497,7 @@
                                     </c:forEach>
                                             </tbody>
                                         </table>
-                                        </div>
+
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1504,7 +1512,7 @@
                                         </div>
 
 
-                                    </div>
+
 
                                 </div>
 

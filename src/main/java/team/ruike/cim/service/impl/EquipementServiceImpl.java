@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.*;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.EquipementService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -110,6 +111,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @return 是否成功
      */
 
+    @ArchivesLog(operationType="修改操作",operationName="修改设备信息")
     public int updateEquipment(Equipment equipment) {
         equipment.setStatus(0);
         if (equipment!=null && equipment.getEquipmentId()>0
@@ -130,7 +132,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipmentId 设备id
      * @return 是否成功
      */
-
+    @ArchivesLog(operationType="删除操作",operationName="删除设备信息")
     public int deleteEquipment(int equipmentId) {
         Equipment equipment=new Equipment();
         equipment.setEquipmentId(equipmentId);
@@ -145,7 +147,7 @@ public class EquipementServiceImpl implements EquipementService {
      * @param equipment 设备信息
      * @return 是否成功
      */
-
+    @ArchivesLog(operationType="新增操作",operationName="新增设备信息")
     @Override
     public int addEquipment(Equipment equipment) {
         equipment.setStatus(0);
@@ -157,11 +159,11 @@ public class EquipementServiceImpl implements EquipementService {
     }
 
     /**
-     * 添加异常报告
+     * 新增异常报告
      * @param equipmentReport 异常类
      * @return 是否成功
      */
-
+    @ArchivesLog(operationType="新增操作",operationName="新增设备异常信息")
     @Override
     public int addEquipmentReport(EquipmentReport equipmentReport) {
         equipmentReport.setStatus(0);
@@ -175,7 +177,7 @@ public class EquipementServiceImpl implements EquipementService {
     }
 
     /**
-     * 预备查询异常所有外键
+     * 设备查询异常所有外键
      * @param equipment
      * @return
      */

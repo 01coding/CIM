@@ -1369,11 +1369,13 @@
                                         <h6 class="txt-dark capitalize-font"><i
                                                 class="zmdi zmdi-calendar-note mr-10"></i>general info</h6>
                                         <hr class="light-grey-hr"/>
-
                                         <div class="row">
-
                                             <div class="col-sm-6">
-
+                                                    <div  class="form-group col-lg-12">
+                                                        <div class='input-group date' id='datetimepicker1'>
+                                                            <input id="dada" type="date" placeholder="请选择质检日期" style="width: 558px;height: 44px">
+                                                        </div>
+                                                    </div>
                                                 <div class="col-lg-12">
                                                     <div class="panel panel-default card-view col-lg-12">
                                                         <div class="panel-heading">
@@ -1417,7 +1419,14 @@
                                                     </div>
                                                 </div>
 
-
+                                                <div class="col-lg-12">
+                                                    <div class="form-actions" style="padding-left: 22px">
+                                                        <button type="button" onclick="ff()" class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
+                                                                class="fa fa-check"></i> <span>保存</span></button>
+                                                        <button type="button" class="btn btn-warning pull-left">取消</button>
+                                                        <div class="clearfix"></div>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="col-sm-5">
@@ -1426,28 +1435,13 @@
                                                         <input type="text" name="materiel.materielId" readonly="readonly" id="aa"  class="form-control" placeholder="物料编号" value="${requestScope.piciM[0].materielId}">
                                                     </div>
                                                 </div>
-                                                <!-- <div class="row">
-                                                         <div class="form-group">
-                                                             <div class='input-group date' id='datetimepicker1'>
-                                                                 <input type='text' class="form-control"
-                                                                        placeholder="物料入库时间"/>
-                                                                 <span class="input-group-addon">
-                                                                         <span class="fa fa-calendar"></span>
-                                                                     </span>
-                                                             </div>
-                                                         </div>
 
-                                                 </div>-->
                                                 <div class="row">
-
                                                     <div class="form-group">
                                                         <input type="text" disabled="disabled" class="form-control" placeholder="采购批次" value="${requestScope.num}">
                                                     </div>
-
                                                 </div>
-
                                                 <div  class="row">
-
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardAType==1}">
                                                                 <div class="form-group col-sm-6" style="margin-top: 10px">
@@ -1470,6 +1464,7 @@
 
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
+                                                    <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardBType==1}">
                                                             <div class="form-group col-sm-6" style="margin-top: 10px">
                                                                 <label><span id="p3" style="font-size: 15px">${requestScope.pstd.standardBName}</span></label>
@@ -1488,7 +1483,6 @@
                                                         </c:if>
                                                     </div>
                                                 </div>
-
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardCType==1}">
@@ -1512,28 +1506,16 @@
 
                                                 <div  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
-                                                        <input id="p7" name="conclusion" type="text" class="form-control" placeholder="请填写结论">
+                                                        <input id="p7" name="conclusion" type="text" class="form-control" placeholder="请填写结论"
+                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
+                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
                                                     </div>
                                                 </div>
                                             </div>
-
                                         </div>
 
-
-                                        <div class="row">
-                                            <div class="form-actions" style="padding-left: 22px">
-                                                <button type="button" onclick="ff()" class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
-                                                        class="fa fa-check"></i> <span>保存</span></button>
-                                                <button type="button" class="btn btn-warning pull-left">取消</button>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
-
-
-
-
-                                    </form>
                                 </div>
+                              </form>
                             </div>
                         </div>
                     </div>
@@ -1569,7 +1551,7 @@
             var zhi = $(this).find("option:selected").val()
             $.ajax({
                 type: "post",
-                url: "/picitypeB.do",
+                url: "/picitypeB.cl",
                 data: {"materielTypeLevelAid": zhi},
                 dataType: "json",
                 success: function (data) {
@@ -1625,7 +1607,7 @@
     function select(zhi2) {
         $.ajax({
             type: "post",
-            url: "/piciM.do",
+            url: "/piciM.cl",
             data: {"materielTypeLevelBid": zhi2},
             dataType: "json",
             success: function (data) {
@@ -1651,7 +1633,7 @@
             var zhi = $("#selectid").find("option:selected").val();
             $.ajax({
                 type: "post",
-                url: "/PStand.do",
+                url: "/PStand.cl",
                 data: {"materielId": zhi},
                 dataType: "json",
                 success: function (data) {
@@ -1688,11 +1670,19 @@
         $("#p7").val("")
     }
 
+    function ssss() {
+        $("#dada").change(function () {
+            alert(2222222)
+            var da=$("#dada").val()
+            window.location.href="picitypeA.cl?date="+da
+        })
+    }
 
     $(function(){
         s();
         ss();
         sss();
+        ssss();
     })
 </script>
 

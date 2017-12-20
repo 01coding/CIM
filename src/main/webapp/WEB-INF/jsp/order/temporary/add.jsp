@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>添加临时订单</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
@@ -23,6 +23,8 @@
     <!-- Custom CSS -->
     <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
+    <!--alerts CSS -->
+    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <style>
         .quantity{
@@ -1168,14 +1170,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">添加临时订单</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>apps</span></a></li>
-                        <li class="active"><span>contact list</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>临时订单管理</span></a></li>
+                        <li class="active"><span>添加临时订单</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1247,11 +1249,11 @@
 
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-info waves-effect"
-                                                                        data-dismiss="modal">Save
+                                                                        data-dismiss="modal">保存
                                                                 </button>
                                                                 <button type="button"
                                                                         class="btn btn-default waves-effect"
-                                                                        data-dismiss="modal">Cancel
+                                                                        data-dismiss="modal">取消
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -1272,7 +1274,7 @@
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">×
                                                             </button>
-                                                            <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
+                                                            <h5 class="modal-title" id="myModalLabel">添加菜品</h5>
                                                         </div>
                                                         <form id="menutype">
                                                         <div class="modal-body">
@@ -1297,7 +1299,7 @@
 
                                                                 <div class="form-group">
                                                                     <label class="control-label mb-10">菜品数量</label>
-                                                                    <input type="text" class="form-control" id="quantity"
+                                                                    <input type="number" class="form-control" id="quantity"
                                                                            placeholder="数量">
                                                                 </div>
 
@@ -1305,10 +1307,10 @@
                                                         </form>
                                                         <div class="modal-footer">
                                                             <button type="button" class="btn btn-success waves-effect"
-                                                                    data-dismiss="modal" onclick="addMenu()">Save
+                                                                    data-dismiss="modal" onclick="addMenu()">保存
                                                             </button>
                                                             <button type="button" class="btn btn-default waves-effect"
-                                                                    data-dismiss="modal">Cancel
+                                                                    data-dismiss="modal">取消
                                                             </button>
                                                         </div>
                                                     </div>
@@ -1330,11 +1332,9 @@
                                                                    data-page-size="10">
                                                                 <thead>
                                                                 <tr>
-
-                                                                    <th>ID</th>
                                                                     <th>名称</th>
                                                                     <th>数量</th>
-                                                                    <th>Action</th>
+                                                                    <th>操作</th>
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody>
@@ -1345,9 +1345,10 @@
                                                             </table>
                                                             </form>
                                                         </div>
-                                                        <button class="btn btn-danger" type="submit"
+                                                        <button class="btn btn-danger" type="button"
                                                                 style="float: right" onclick="addOrder()">保存
                                                         </button>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -1415,6 +1416,10 @@
 <!-- Fancy Dropdown JS -->
 <script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
+<!-- Sweet-Alert  -->
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+
 <!-- Init JavaScript -->
 <script src="../../../../dist/js/init.js"></script>
 
@@ -1432,6 +1437,7 @@
 <script>
 
     $(function () {
+
         $("#menuTyoe").change(function(){
             var a= $(this).val();
             queryMenu(a)
@@ -1439,19 +1445,51 @@
 
         $(".odd").remove();
     });
+    function addTemporaryValidate() {
+
+        var ru=true;
+
+        var storeId= $("#temporaty select[name='storeId'] option:selected").val();
+        if(storeId==""){
+            ru=false;
+        }
+        var temporaryOrderEndDate=$("#temporaty input[name='temporaryOrderEndDate']").val();
+
+        if(temporaryOrderEndDate==""){
+            ru=false;
+        }
+        var menuSize=$("tbody tr").size();
+        if (menuSize==0){
+            ru=false;
+        }
+        return ru;
+
+    };
+
+
 
     function addOrder() {
+
+        var flag = addTemporaryValidate();
+        if(!flag){
+            appModule.alert("请填写完整信息")
+            return;
+        }
+
 
         var fd1=$("#temporaty").serializeArray();
         var fd2 = $("#temporaryOrderTerms").serializeArray();
         var fd =  fd1.concat(fd2);;
         appModule.post('/temporary/order/add.do',fd,function (data) {
-            appModule.alert("成功");
-            $("tbody tr").remove();
-            /*清除记录*/
-            document.getElementById("temporaty").reset();
-            document.getElementById("menutype").reset();
-            $("#menuSelect").empty();
+            swal({
+                title: "添加成功",
+                confirmButtonColor: "#2879ff",
+            }, function(){
+                location.href="/temporary/order/index.do";
+            });
+            return false;
+        },function () {
+            appModule.alert("添加失败");
         });
         
     }
@@ -1468,9 +1506,9 @@
         }
 
         var ms= "<tr data-mlength="+mlength+">\n" +
-            "<td>"+menuId+"<input type='hidden' value='"+menuId+"' name='temporaryOrderTerms["+mlength+"].menu.menuId'/></td>\n" +
+            "<input type='hidden' value='"+menuId+"' name='temporaryOrderTerms["+mlength+"].menu.menuId'/>" +
             "<td>"+menuName+"</td>\n" +
-            "<td><input type='text' class='quantity' value='"+menuQuantity+"' name='temporaryOrderTerms["+mlength+"].menuNumber'/></td>\n" +
+            "<td><input type='number' class='quantity' value='"+menuQuantity+"' name='temporaryOrderTerms["+mlength+"].menuNumber'/></td>\n" +
             "<td>\n" +
             " <a onclick='deleteDishes(this)' " +
             "class='text-inverse' title='Delete'" +
@@ -1481,6 +1519,9 @@
             "</tr>";
 
         $("tbody").append(ms);
+        document.getElementById("menutype").reset();
+        var op="<option value='0' selected>请选择</option>";
+        $("#menuSelect").empty().append(op);
     }
 
     function deleteDishes(del) {
@@ -1498,7 +1539,7 @@
             success: function (data) {
                     $("#menuSelect").empty().append(data);
             }, error: function () {
-                alert("error")
+                appModule.alert("菜品加载失败")
             }
         });
     }

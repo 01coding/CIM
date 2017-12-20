@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>合同订单添加</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework." />
     <meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
     <meta name="author" content="hencework"/>
@@ -23,6 +23,8 @@
     <!-- Custom CSS -->
     <link href="../../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
+    <!--alerts CSS -->
+    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <%--date--%>
     <!-- Bootstrap Colorpicker CSS -->
@@ -1174,14 +1176,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">添加合同订单</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>apps</span></a></li>
-                        <li class="active"><span>contact list</span></li>
+                        <li><a href="${pageContext.request.contextPath}/index.do">首页</a></li>
+                        <li><a href="#"><span>合同订单管理</span></a></li>
+                        <li class="active"><span>添加合同订单</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1221,7 +1223,7 @@
                                                                         <div class="col-md-12 mb-20">
                                                                             <label class="control-label mb-10">合同</label>
                                                                             <select class="form-control" id="contractSelect" name="orderContract.orderContractId"  style="width: 300px;">
-                                                                                <option selected value="0">请选择</option>
+                                                                                <option  value="">请选择</option>
                                                                                 <c:forEach var="orderContract" items="${orderContractList}">
                                                                                     <option value="${orderContract.orderContractId}">${orderContract.orderContractName}</option>
                                                                                 </c:forEach>
@@ -1253,11 +1255,11 @@
 
                                                             <div class="modal-footer">
                                                                 <button type="button" class="btn btn-info waves-effect"
-                                                                        data-dismiss="modal">Save
+                                                                        data-dismiss="modal">保存
                                                                 </button>
                                                                 <button type="button"
                                                                         class="btn btn-default waves-effect"
-                                                                        data-dismiss="modal">Cancel
+                                                                        data-dismiss="modal">取消
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -1278,7 +1280,7 @@
                                                             <button type="button" class="close" data-dismiss="modal"
                                                                     aria-hidden="true">×
                                                             </button>
-                                                            <h5 class="modal-title" id="myModalLabel">Add Lable</h5>
+                                                            <h5 class="modal-title" id="myModalLabel">添加菜品</h5>
                                                         </div>
                                                         <form id="meueContract">
                                                         <div class="modal-body">
@@ -1286,7 +1288,7 @@
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10">菜品类型</label>
                                                                 <select class="form-control" id="menuTyoe">
-                                                                    <option value="0" selected>请选择</option>
+                                                                    <option value="" selected>请选择</option>
                                                                     <c:forEach var="menuType" items="${menuTypeList}">
                                                                         <option value="${menuType.menuTypeId}">${menuType.menuTypeName}</option>
                                                                     </c:forEach>
@@ -1302,7 +1304,7 @@
 
                                                             <div class="form-group">
                                                                 <label class="control-label mb-10">菜品数量</label>
-                                                                <input type="text" class="form-control" id="quantity"
+                                                                <input type="number" min="1" class="form-control" id="quantity"
                                                                        placeholder="数量">
                                                             </div>
 
@@ -1335,11 +1337,9 @@
                                                                        data-page-size="10">
                                                                     <thead>
                                                                     <tr>
-
-                                                                        <th>ID</th>
                                                                         <th>名称</th>
                                                                         <th>数量</th>
-                                                                        <th>Action</th>
+                                                                        <th>操作</th>
                                                                     </tr>
                                                                     </thead>
                                                                     <tbody>
@@ -1419,6 +1419,10 @@
 
 <!-- Fancy Dropdown JS -->
 <script src="../../../../dist/js/dropdown-bootstrap-extended.js"></script>
+<!-- Sweet-Alert  -->
+<script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../../dist/js/sweetalert-data.js"></script>
+
 
 <!-- Init JavaScript -->
 <script src="../../../../dist/js/init.js"></script>
@@ -1443,9 +1447,32 @@
 
         $(".odd").remove();
 
-
         contractSize();
+
     });
+
+    function addContractValidate() {
+
+        var ru=true;
+
+        var contractSelect= $("#contractSelect").val();
+        if(contractSelect==""){
+            ru=false;
+        }
+        var contractOrderEndDate= $("input[name='contractOrderEndDate']").val();
+
+        if(contractOrderEndDate==""){
+            ru=false;
+        }
+        var menuSize=$("tbody tr").size();
+        if (menuSize==0){
+            ru=false;
+        }
+        return ru;
+
+    };
+
+
     /*计算合同选项*/
     function contractSize() {
         if ($("#contractSelect option").size()<=1){
@@ -1457,43 +1484,33 @@
     /*添加合同订单*/
     function addOrder() {
 
+        var flag = addContractValidate();
+        if(!flag){
+            appModule.alert("请填写完整信息")
+            return;
+        }
+
+
         var fd1=$("#contract").serializeArray();
         var fd2 = $("#contractOrderTerms").serializeArray();
         var fd =  fd1.concat(fd2);;
         appModule.post('/contract/order/add.do',fd,function (data) {
-            appModule.alert("成功");
-            $("tbody tr").remove();
-            /*清除记录*/
-            document.getElementById("contract").reset();
-            document.getElementById("meueContract").reset();
-            $("#menuSelect").empty();
-            /*成功之后刷新一下合同*/
-            refreshContract();
+            swal({
+                title: "添加成功",
+                confirmButtonColor: "#2879ff",
+            }, function(){
+                location.href="/contract/order/index.do";
+            });
+            return false;
+
+
+        },function () {
+            appModule.alert("添加失败");
         });
 
     }
 
-    /*刷新合同选项*/
-    function refreshContract() {
-        $.ajax({
-            url: "/contract/order/contractInfo.cl",
-            type: 'post',
-            data: null,  // post时请求体
-            dataType: 'json',
-            contentType:"application/x-www-form-urlencoded;charset=utf-8",
-            success: function (data) {
-                $("#contractSelect").empty();
-                var op="<option value='0' selected>请选择</option>";
-                for(var p in data){//遍历json数组时，这么写p为索引，0,1
-                    op+="<option value='"+data[p].orderContractId +"'>"+data[p].orderContractName+"</option>";
-                }
-                $("#contractSelect").empty().append(op);
-                contractSize();
-            }, error: function () {
-                alert("error")
-            }
-        });
-    }
+
 
     /*添加菜品*/
     function  addMenu() {
@@ -1508,9 +1525,9 @@
         }
 
         var ms= "<tr data-mlength="+mlength+">\n" +
-            "<td>"+menuId+"<input type='hidden' value='"+menuId+"' name='contractOrderTerms["+mlength+"].menu.menuId'/></td>\n" +
+            "<input type='hidden' value='"+menuId+"' name='contractOrderTerms["+mlength+"].menu.menuId'/>" +
             "<td>"+menuName+"</td>\n" +
-            "<td><input type='text' class='quantity' value='"+menuQuantity+"' name='contractOrderTerms["+mlength+"].menuNumber'/></td>\n" +
+            "<td><input type='number' class='quantity' value='"+menuQuantity+"' name='contractOrderTerms["+mlength+"].menuNumber'/></td>\n" +
             "<td>\n" +
             " <a onclick='deleteDishes(this)' " +
             "class='text-inverse' title='Delete'" +
@@ -1521,6 +1538,9 @@
             "</tr>";
 
         $("tbody").append(ms);
+        document.getElementById("meueContract").reset();
+        var op="<option value='0' selected>请选择</option>";
+        $("#menuSelect").empty().append(op);
     }
 
     /*删除菜品*/
@@ -1540,7 +1560,7 @@
             success: function (data) {
                 $("#menuSelect").empty().append(data);
             }, error: function () {
-                alert("error")
+                appModule.alert("菜品加载失败")
             }
         });
     }
