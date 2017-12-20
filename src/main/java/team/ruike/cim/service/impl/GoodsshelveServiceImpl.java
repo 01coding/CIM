@@ -29,7 +29,7 @@ public class GoodsshelveServiceImpl implements GoodSShelveService {
      * @return
      */
     public int addGoods_shelve(GoodsShelve goodsShelve) {
-        if (goodsShelve != null && goodsShelve.getMateriel().getMaterielId() > 0 && goodsShelve.getMaterielNumber() > 0 && goodsShelve.getWarehouseRegion().getWarehouseRegionId() > 0) {
+        if (goodsShelve != null && goodsShelve.getWarehouseRegion().getWarehouseRegionId() > 0) {
             return goodsShelveDao.add(goodsShelve);
         }
         return 0;

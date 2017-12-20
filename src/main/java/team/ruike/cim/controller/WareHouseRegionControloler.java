@@ -41,7 +41,8 @@ public class WareHouseRegionControloler {
         warehouseregionServer.getWareHouSereGIonServer(warehouseRegion,pager);
         List<GoodsShelve> good= goodsshelveService.getGoodsshelve(goodsShelve);
         request.setAttribute("goodsShelves",good);
-        request.setAttribute("warehouseRegions",pager.getList());
+        request.setAttribute("warehouseRegions",pager);
+        request.setAttribute("hid",warehouseRegion.getWarehouse().getWarehouseId());
         return "warehouses/warehouse_region";
     }
 
@@ -63,10 +64,23 @@ public class WareHouseRegionControloler {
     }
     @RequestMapping("getMaterielTypeLevelB.cl")
     public void getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB,PrintWriter printWriter){
-       List<MaterielTypeLevelB> materielTypeLevelBS=  materielTypeLevelBService.getMaterielTypeLevelB(materielTypeLevelB);
+       List<MaterielTypeLevelB> materielTypeLevelBS=materielTypeLevelBService.getMaterielTypeLevelB(materielTypeLevelB);
         String Stringusers= JSON.toJSONString(materielTypeLevelBS);
         printWriter.write(Stringusers);
         printWriter.flush();
         printWriter.close();
+    }
+    @RequestMapping("addGoodsshelve.do")
+    public void addGoodsshelve(PrintWriter printWriter,GoodsShelve goodsShelve){
+        int i=(int)((Math.random()*9+1)*100000);
+        goodsShelve.setGoodsShelveNo(i+"");
+        goodsshelveService.addGoods_shelve(goodsShelve);
+        if (goodsShelve.getGoodsShelveId()!=null&&goodsShelve.getGoodsShelveId()>0){
+            String Stringusers= JSON.toJSONString(goodsShelve);
+            printWriter.write(Stringusers);
+            printWriter.flush();
+            printWriter.close();
+        }
+
     }
 }
