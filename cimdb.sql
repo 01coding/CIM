@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 12/12/2017 10:14:10
+ Date: 20/12/2017 08:52:31
 */
 
 SET NAMES utf8mb4;
@@ -36,7 +36,13 @@ CREATE TABLE `contract_order`  (
   INDEX `Fk_order_user`(`user_id`) USING BTREE,
   CONSTRAINT `Fk_order_order_contract` FOREIGN KEY (`order_contract_id`) REFERENCES `order_contract` (`order_contract_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_order_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of contract_order
+-- ----------------------------
+INSERT INTO `contract_order` VALUES (2, '12964573124', '2017-05-06 00:00:00', 0, '2017-05-06 00:00:00', 1, 1, '12452', 0);
+INSERT INTO `contract_order` VALUES (3, '685220171218', '2017-11-29 00:00:00', 0, '2017-12-18 14:03:19', 2, 1, '是', 0);
 
 -- ----------------------------
 -- Table structure for contract_order_term
@@ -56,7 +62,13 @@ CREATE TABLE `contract_order_term`  (
   INDEX `contract_order_term_contract_order`(`contract_order_id`) USING BTREE,
   CONSTRAINT `Fk_contract_order_term_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `contract_order_term_contract_order` FOREIGN KEY (`contract_order_id`) REFERENCES `contract_order` (`contract_order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of contract_order_term
+-- ----------------------------
+INSERT INTO `contract_order_term` VALUES (1, 1, 11, 0, 0, '449720171218', 3, 0);
+INSERT INTO `contract_order_term` VALUES (2, 1, 11, 0, 0, '134120171218', 3, 0);
 
 -- ----------------------------
 -- Table structure for contract_production_distribution
@@ -83,7 +95,15 @@ CREATE TABLE `contract_production_distribution`  (
   CONSTRAINT `Fk_distribution_production_line` FOREIGN KEY (`production_line_id`) REFERENCES `production_line` (`production_line_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_distribution_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_distribution_working` FOREIGN KEY (`working_id`) REFERENCES `working` (`working_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 8 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of contract_production_distribution
+-- ----------------------------
+INSERT INTO `contract_production_distribution` VALUES (4, 3, 1, 1, '2017-12-15 00:00:00', '2017-12-15 00:00:00', 20, 2, '000000', 0, 10);
+INSERT INTO `contract_production_distribution` VALUES (5, 3, 2, 1, '2017-12-15 00:00:00', '2017-12-15 00:00:00', 10, 2, '00000', 0, 10);
+INSERT INTO `contract_production_distribution` VALUES (6, 3, 3, 2, '2017-12-15 00:00:00', '2017-12-15 00:00:00', 15, 2, '000000', 0, 10);
+INSERT INTO `contract_production_distribution` VALUES (7, 3, 4, 2, '2017-12-15 00:00:00', '2017-12-15 00:00:00', 12, 2, '000000', 0, 10);
 
 -- ----------------------------
 -- Table structure for contract_production_plan
@@ -98,7 +118,13 @@ CREATE TABLE `contract_production_plan`  (
   PRIMARY KEY (`contract_production_plan_id`) USING BTREE,
   INDEX `Fk_plan_contract_order`(`contract_order_id`) USING BTREE,
   CONSTRAINT `Fk_plan_contract_order` FOREIGN KEY (`contract_order_id`) REFERENCES `contract_order` (`contract_order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of contract_production_plan
+-- ----------------------------
+INSERT INTO `contract_production_plan` VALUES (3, 2, '12345678941', 0, '2017-12-15');
+INSERT INTO `contract_production_plan` VALUES (4, 2, '58971235478', 0, '2017-12-15');
 
 -- ----------------------------
 -- Table structure for contract_production_plan_item
@@ -115,7 +141,20 @@ CREATE TABLE `contract_production_plan_item`  (
   INDEX `Fk_contract_production_plan_item_contract_production_plan`(`contract_production_plan_id`) USING BTREE,
   CONSTRAINT `Fk_contract_production_plan_item_contract_production_plan` FOREIGN KEY (`contract_production_plan_id`) REFERENCES `contract_production_plan` (`contract_production_plan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_contract_production_plan_item_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of contract_production_plan_item
+-- ----------------------------
+INSERT INTO `contract_production_plan_item` VALUES (2, 1, 1, 3, 0);
+INSERT INTO `contract_production_plan_item` VALUES (3, 2, 2, 3, 0);
+INSERT INTO `contract_production_plan_item` VALUES (4, 3, 3, 3, 0);
+INSERT INTO `contract_production_plan_item` VALUES (5, 4, 4, 3, 0);
+INSERT INTO `contract_production_plan_item` VALUES (6, 5, 8, 3, 0);
+INSERT INTO `contract_production_plan_item` VALUES (10, 1, 5, 4, 0);
+INSERT INTO `contract_production_plan_item` VALUES (11, 2, 5, 4, 0);
+INSERT INTO `contract_production_plan_item` VALUES (12, 3, 8, 4, 0);
+INSERT INTO `contract_production_plan_item` VALUES (13, 4, 9, 4, 0);
 
 -- ----------------------------
 -- Table structure for contract_progress
@@ -157,7 +196,13 @@ CREATE TABLE `equipment`  (
   CONSTRAINT `Fk_equipment_production_line` FOREIGN KEY (`production_line_id`) REFERENCES `production_line` (`production_line_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_equipment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_equipment_working` FOREIGN KEY (`working_id`) REFERENCES `working` (`working_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of equipment
+-- ----------------------------
+INSERT INTO `equipment` VALUES (1, 1, 1, 1, '2017-12-08', 2, 1, 1, 'szxc', 0);
+INSERT INTO `equipment` VALUES (2, 2, 1, 2, '2017-12-18', 2, 1, 1, '受到广泛的', 0);
 
 -- ----------------------------
 -- Table structure for equipment_report
@@ -243,7 +288,7 @@ CREATE TABLE `function`  (
   PRIMARY KEY (`function_id`) USING BTREE,
   INDEX `Fk_function_jurisdiction`(`jurisdiction_id`) USING BTREE,
   CONSTRAINT `Fk_function_jurisdiction` FOREIGN KEY (`jurisdiction_id`) REFERENCES `jurisdiction` (`jurisdiction_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 25 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 62 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of function
@@ -262,12 +307,45 @@ INSERT INTO `function` VALUES (13, '修改物料', '###', 1, 0, 1);
 INSERT INTO `function` VALUES (14, '修改工艺', '###', 1, 0, 1);
 INSERT INTO `function` VALUES (15, '门店管理', 'store/index.do', 2, 0, 0);
 INSERT INTO `function` VALUES (17, '添加门店', 'store/add.do', 2, 0, 1);
-INSERT INTO `function` VALUES (18, '门店修改', '/store/edit.do', 2, 0, 1);
+INSERT INTO `function` VALUES (18, '门店修改', 'store/edit.do', 2, 0, 1);
 INSERT INTO `function` VALUES (19, '门店详细信息查询', 'store/toView.do', 2, 0, 1);
 INSERT INTO `function` VALUES (20, '删除门店', 'store/delete.do\r\n', 2, 0, 1);
 INSERT INTO `function` VALUES (21, '临时订单管理', 'temporary/order/index.do', 2, 0, 0);
-INSERT INTO `function` VALUES (23, '添加临时订单', '/temporary/order/add.do', 2, 0, 1);
-INSERT INTO `function` VALUES (24, '临时订单详细信息查询', '/temporary/order/toView.do', 2, 0, 1);
+INSERT INTO `function` VALUES (23, '添加临时订单', 'temporary/order/add.do', 2, 0, 1);
+INSERT INTO `function` VALUES (24, '临时订单详细信息查询', 'temporary/order/toView.do', 2, 0, 1);
+INSERT INTO `function` VALUES (25, '角色管理', 'admin/roles.do', 10, 0, 0);
+INSERT INTO `function` VALUES (26, '添加角色', 'admin/addRole.do', 10, 0, 1);
+INSERT INTO `function` VALUES (27, '管理员列表', 'admin/userList.do', 10, 0, 0);
+INSERT INTO `function` VALUES (28, '仓库列表', 'warehouse.do', 5, 0, 0);
+INSERT INTO `function` VALUES (29, '添加仓库', 'addwarehouse.do', 5, 0, 1);
+INSERT INTO `function` VALUES (30, '修改仓库信息', 'updwarehouse.do', 5, 0, 1);
+INSERT INTO `function` VALUES (31, '仓库区域列表', 'getwarehouseregion.do', 5, 0, 1);
+INSERT INTO `function` VALUES (32, '成品仓库列表', 'productWarehouse.do', 5, 0, 0);
+INSERT INTO `function` VALUES (33, '成品仓库区域列表', 'getProductwarehouseregion.do', 5, 0, 1);
+INSERT INTO `function` VALUES (34, '入库记录查询', 'getWarehouseRegisterItem.do', 5, 0, 1);
+INSERT INTO `function` VALUES (35, '出口记录查询', 'getWarehouseOutRegisterItem.do', 5, 0, 1);
+INSERT INTO `function` VALUES (36, '合同订单管理', 'contract/order/index.do', 2, 0, 0);
+INSERT INTO `function` VALUES (37, '添加合同订单', 'contract/order/add.do', 2, 0, 1);
+INSERT INTO `function` VALUES (38, '查看详细合同订单', 'contract/order/toView.do', 2, 0, 1);
+INSERT INTO `function` VALUES (39, '合同管理', 'order/contract/index.do', 2, 0, 0);
+INSERT INTO `function` VALUES (40, '合同详情查看', 'order/contract/toView.do', 2, 0, 1);
+INSERT INTO `function` VALUES (41, '修改合同信息', 'order/contract/edit.do', 2, 0, 1);
+INSERT INTO `function` VALUES (42, '添加合同', 'order/contract/add.do', 2, 0, 1);
+INSERT INTO `function` VALUES (43, '修改角色权限', 'admin/updateRoleJurisdiction.do', 10, 0, 1);
+INSERT INTO `function` VALUES (44, '设备信息列表', 'equipment.do', 8, 0, 0);
+INSERT INTO `function` VALUES (45, '新增设备信息', 'addEquipment.do', 8, 0, 1);
+INSERT INTO `function` VALUES (46, '修改设备信息', 'updateMateriel.do', 8, 0, 1);
+INSERT INTO `function` VALUES (47, '删除设备', 'elequipment.do', 8, 0, 1);
+INSERT INTO `function` VALUES (48, '设备异常报告列表', 'equipmentreport.do', 8, 0, 0);
+INSERT INTO `function` VALUES (49, '添加异常报告', 'addequipmentType.do', 8, 0, 1);
+INSERT INTO `function` VALUES (52, '品控记录列表', 'record.do', 7, 0, 0);
+INSERT INTO `function` VALUES (53, '新增品控记录', 'addpurchaseRecord.do', 7, 0, 1);
+INSERT INTO `function` VALUES (56, '记录详情查询', 'xiangqing.do', 7, 0, 1);
+INSERT INTO `function` VALUES (57, '采购标准列表', 'standard.do', 7, 0, 0);
+INSERT INTO `function` VALUES (58, '标准详情查询', 'getStardXiang.do', 7, 0, 1);
+INSERT INTO `function` VALUES (59, '修改标准', 'updatePurchaseStandard.do', 7, 0, 1);
+INSERT INTO `function` VALUES (60, '新增标准', 'insertPurchase.do', 7, 0, 1);
+INSERT INTO `function` VALUES (61, '删除标准', 'deletePurchaseStandard.do', 7, 0, 1);
 
 -- ----------------------------
 -- Table structure for goods_shelve
@@ -610,7 +688,16 @@ CREATE TABLE `order_contract`  (
   PRIMARY KEY (`order_contract_id`) USING BTREE,
   INDEX `Fk_contract_store`(`store_id`) USING BTREE,
   CONSTRAINT `Fk_contract_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of order_contract
+-- ----------------------------
+INSERT INTO `order_contract` VALUES (1, '合同', '1', '123456789', '2017-05-06', 1, 0);
+INSERT INTO `order_contract` VALUES (2, '111', 'D:\\JavaProject\\CIM\\target\\CIM\\upload\\aaa.jpg', '47420171215', '2017-12-15', 2, 0);
+INSERT INTO `order_contract` VALUES (3, '111', 'D:\\JavaProject\\CIM\\target\\CIM\\upload\\aaa.jpg', '67320171215', '2017-12-15', 2, 0);
+INSERT INTO `order_contract` VALUES (4, '111', 'D:\\JavaProject\\CIM\\target\\CIM\\upload\\aaa.jpg', '55020171215', '2017-12-15', 2, 0);
+INSERT INTO `order_contract` VALUES (5, '撒地方', '/D:/JavaProject/CIM/target/CIM/upload/aaa.jpg', '332620171218', '2017-12-13', 2, 0);
 
 -- ----------------------------
 -- Table structure for product_goods_shelve
@@ -776,7 +863,13 @@ CREATE TABLE `production_line`  (
   `remarks` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`production_line_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of production_line
+-- ----------------------------
+INSERT INTO `production_line` VALUES (1, 231234, 0, '0', 0);
+INSERT INTO `production_line` VALUES (2, 12312345, 0, '0', 0);
 
 -- ----------------------------
 -- Table structure for production_standard
@@ -859,7 +952,7 @@ CREATE TABLE `purchase_item`  (
 DROP TABLE IF EXISTS `purchase_standard`;
 CREATE TABLE `purchase_standard`  (
   `purchase_standard_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '采购品控主键自增',
-  `purchase_id` int(11) NOT NULL COMMENT '采购表id外键\r\n',
+  `materiel_id` int(11) NOT NULL COMMENT '物料ID外键',
   `standard_a_type` int(11) NOT NULL COMMENT '标准a类型\r\n',
   `standard_a_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '标准a名称\r\n',
   `standard_b_type` int(11) NULL DEFAULT NULL COMMENT '标准b类型\r\n',
@@ -868,8 +961,31 @@ CREATE TABLE `purchase_standard`  (
   `standard_c_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '标准c名称\r\n',
   `remarks` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注\r\n',
   `status` int(11) NOT NULL COMMENT '删除伪列',
-  PRIMARY KEY (`purchase_standard_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`purchase_standard_id`) USING BTREE,
+  INDEX `FK_purchase_standard_materiel_id`(`materiel_id`) USING BTREE,
+  CONSTRAINT `FK_purchase_standard_materiel_id` FOREIGN KEY (`materiel_id`) REFERENCES `materiel` (`materiel_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 18 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of purchase_standard
+-- ----------------------------
+INSERT INTO `purchase_standard` VALUES (1, 1, 1, '户籍科', 2, '脚后跟v', 1, '韩国', 'i和价格还有', 1);
+INSERT INTO `purchase_standard` VALUES (2, 2, 1, '撒旦发个', 2, '阿道夫', 1, '撒地方', '啊手动阀', 0);
+INSERT INTO `purchase_standard` VALUES (3, 3, 1, '撒旦发个', 2, '岁的法国', 1, '岁的法国', '阿斯蒂芬', 0);
+INSERT INTO `purchase_standard` VALUES (4, 4, 1, '的撒发给', 2, '士大夫', 1, '撒旦发个', '阿瑟反攻', 1);
+INSERT INTO `purchase_standard` VALUES (5, 5, 1, '自动覆盖', 2, '等同于', 1, '啊我惹她', '阿斯茹', 0);
+INSERT INTO `purchase_standard` VALUES (6, 6, 1, '下地铁规划', 2, '啊人定胜天', 1, '儿童', '额是人体', 0);
+INSERT INTO `purchase_standard` VALUES (7, 7, 1, '撒地方更是', 2, 'sear发', 1, 'erstwhile', '去问人体人', 0);
+INSERT INTO `purchase_standard` VALUES (8, 8, 1, '啊我让他问人体', 2, '色如头晕', 1, '百废待举', '色让他为人', 1);
+INSERT INTO `purchase_standard` VALUES (9, 9, 1, '刷卡机', 2, '撒日汤唯', 1, '额耸人听闻', '是的人听袁惟仁', 0);
+INSERT INTO `purchase_standard` VALUES (10, 10, 1, '饿啊日因为人', 2, 'wart', 1, '色如头晕', '啊而它也', 0);
+INSERT INTO `purchase_standard` VALUES (11, 11, 1, '豆腐干恢复', 2, '阿桑的歌发帖', 1, '1212', NULL, 0);
+INSERT INTO `purchase_standard` VALUES (12, 12, 1, '阿斯各', 2, 'qq', 1, '啊啊', NULL, 0);
+INSERT INTO `purchase_standard` VALUES (13, 1, 1, '1111111111', 1, '222222222222', 1, '333333333333333333', '44444444444444444444444444444444', 0);
+INSERT INTO `purchase_standard` VALUES (14, 1, 2, '成功好几个地方', 1, '大范甘迪', 2, '地方个好地方', NULL, 0);
+INSERT INTO `purchase_standard` VALUES (15, 1, 1, '二十一微软他', 1, '为微软', 1, '微软他', NULL, 0);
+INSERT INTO `purchase_standard` VALUES (16, 1, 2, '恶意', 1, '尔特人', 2, '尔特瑞特', '容易让他', 0);
+INSERT INTO `purchase_standard` VALUES (17, 1, 1, '撒地方是', 1, '发到付', 1, '发斯蒂芬', '阿什顿发送到', 0);
 
 -- ----------------------------
 -- Table structure for purchase_standard_record
@@ -877,16 +993,36 @@ CREATE TABLE `purchase_standard`  (
 DROP TABLE IF EXISTS `purchase_standard_record`;
 CREATE TABLE `purchase_standard_record`  (
   `purchase_standard_record_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '采购品控评估记录主键',
-  `purchase_standard_id` int(11) NOT NULL COMMENT '标准id',
+  `purchase_id` int(11) NOT NULL COMMENT '采购表id外键',
+  `materiel_id` int(11) NOT NULL COMMENT '物料ID外键',
   `standard_a_score` int(11) NOT NULL COMMENT '标准a评分',
   `standard_b_score` int(11) NULL DEFAULT NULL COMMENT '标准b评分',
   `standard_c_score` int(11) NULL DEFAULT NULL COMMENT '标准c评分',
   `conclusion` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '结论',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`purchase_standard_record_id`) USING BTREE,
-  INDEX `Fk_purchase_standard_record_purchase_standard`(`purchase_standard_id`) USING BTREE,
-  CONSTRAINT `Fk_purchase_standard_record_purchase_standard` FOREIGN KEY (`purchase_standard_id`) REFERENCES `purchase_standard` (`purchase_standard_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+  INDEX `Fk_purchase_standard_record_purchase_id`(`purchase_id`) USING BTREE,
+  INDEX `Fk_psr_materiel_id`(`materiel_id`) USING BTREE,
+  CONSTRAINT `Fk_psr_materiel_id` FOREIGN KEY (`materiel_id`) REFERENCES `materiel` (`materiel_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `Fk_purchase_standard_record_purchase_id` FOREIGN KEY (`purchase_id`) REFERENCES `purchase` (`purchase_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of purchase_standard_record
+-- ----------------------------
+INSERT INTO `purchase_standard_record` VALUES (1, 4, 6, 1, 213, 1, '额', 0);
+INSERT INTO `purchase_standard_record` VALUES (2, 4, 4, 2, 24, 1, 'WRTE ', 0);
+INSERT INTO `purchase_standard_record` VALUES (3, 4, 4, 1, 324, 2, 'ADS', 0);
+INSERT INTO `purchase_standard_record` VALUES (10, 4, 4, 1, 12, 2, '阿斯蒂芬', 0);
+INSERT INTO `purchase_standard_record` VALUES (11, 4, 4, 1, 12, 2, '阿斯顿', 0);
+INSERT INTO `purchase_standard_record` VALUES (12, 4, 4, 1, 12, 2, '啊SD', 0);
+INSERT INTO `purchase_standard_record` VALUES (13, 4, 4, 1, 23, 2, 'DHHF', 0);
+INSERT INTO `purchase_standard_record` VALUES (14, 4, 5, 1, 23, 2, 'DHHF', 0);
+INSERT INTO `purchase_standard_record` VALUES (15, 4, 5, 1, 12, 2, '去问啊', 0);
+INSERT INTO `purchase_standard_record` VALUES (16, 4, 4, 1, 32, 2, '请问', 0);
+INSERT INTO `purchase_standard_record` VALUES (17, 4, 4, 1, 1232, 2, '阿斯蒂芬', 0);
+INSERT INTO `purchase_standard_record` VALUES (18, 4, 4, 1, 123, 2, '犬瘟热', 0);
+INSERT INTO `purchase_standard_record` VALUES (19, 4, 4, 1, NULL, 2, '', 0);
 
 -- ----------------------------
 -- Table structure for role
@@ -897,7 +1033,7 @@ CREATE TABLE `role`  (
   `role_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
@@ -913,6 +1049,9 @@ INSERT INTO `role` VALUES (8, '采购主管', 0);
 INSERT INTO `role` VALUES (9, '采购专员', 0);
 INSERT INTO `role` VALUES (10, '生产专员', 0);
 INSERT INTO `role` VALUES (11, '研发部专员', 0);
+INSERT INTO `role` VALUES (13, '生产主管', 0);
+INSERT INTO `role` VALUES (14, '工序主管', 0);
+INSERT INTO `role` VALUES (15, '1', 0);
 
 -- ----------------------------
 -- Table structure for role_function
@@ -928,32 +1067,67 @@ CREATE TABLE `role_function`  (
   INDEX `Fk_role_function_function`(`function_id`) USING BTREE,
   CONSTRAINT `Fk_role_function_function` FOREIGN KEY (`function_id`) REFERENCES `function` (`function_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_function_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 34 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 286 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_function
 -- ----------------------------
-INSERT INTO `role_function` VALUES (1, 1, 1, 0);
-INSERT INTO `role_function` VALUES (2, 1, 4, 0);
-INSERT INTO `role_function` VALUES (3, 1, 5, 0);
-INSERT INTO `role_function` VALUES (4, 1, 6, 0);
-INSERT INTO `role_function` VALUES (15, 1, 7, 0);
-INSERT INTO `role_function` VALUES (16, 1, 8, 0);
-INSERT INTO `role_function` VALUES (17, 1, 9, 0);
-INSERT INTO `role_function` VALUES (18, 1, 10, 0);
-INSERT INTO `role_function` VALUES (19, 1, 11, 0);
-INSERT INTO `role_function` VALUES (20, 1, 12, 0);
-INSERT INTO `role_function` VALUES (21, 1, 13, 0);
-INSERT INTO `role_function` VALUES (22, 1, 14, 0);
-INSERT INTO `role_function` VALUES (23, 1, 15, 0);
-INSERT INTO `role_function` VALUES (24, 1, 17, 0);
-INSERT INTO `role_function` VALUES (25, 1, 18, 0);
-INSERT INTO `role_function` VALUES (26, 1, 19, 0);
-INSERT INTO `role_function` VALUES (27, 1, 20, 0);
-INSERT INTO `role_function` VALUES (28, 1, 21, 0);
-INSERT INTO `role_function` VALUES (31, 1, 23, 0);
-INSERT INTO `role_function` VALUES (32, 1, 24, 0);
-INSERT INTO `role_function` VALUES (33, 2, 1, 0);
+INSERT INTO `role_function` VALUES (36, 2, 4, 0);
+INSERT INTO `role_function` VALUES (37, 11, 1, 0);
+INSERT INTO `role_function` VALUES (39, 3, 15, 0);
+INSERT INTO `role_function` VALUES (233, 1, 1, 0);
+INSERT INTO `role_function` VALUES (234, 1, 4, 0);
+INSERT INTO `role_function` VALUES (235, 1, 5, 0);
+INSERT INTO `role_function` VALUES (236, 1, 6, 0);
+INSERT INTO `role_function` VALUES (237, 1, 7, 0);
+INSERT INTO `role_function` VALUES (238, 1, 8, 0);
+INSERT INTO `role_function` VALUES (239, 1, 9, 0);
+INSERT INTO `role_function` VALUES (240, 1, 10, 0);
+INSERT INTO `role_function` VALUES (241, 1, 11, 0);
+INSERT INTO `role_function` VALUES (242, 1, 12, 0);
+INSERT INTO `role_function` VALUES (243, 1, 13, 0);
+INSERT INTO `role_function` VALUES (244, 1, 14, 0);
+INSERT INTO `role_function` VALUES (245, 1, 15, 0);
+INSERT INTO `role_function` VALUES (246, 1, 17, 0);
+INSERT INTO `role_function` VALUES (247, 1, 18, 0);
+INSERT INTO `role_function` VALUES (248, 1, 19, 0);
+INSERT INTO `role_function` VALUES (249, 1, 20, 0);
+INSERT INTO `role_function` VALUES (250, 1, 21, 0);
+INSERT INTO `role_function` VALUES (251, 1, 23, 0);
+INSERT INTO `role_function` VALUES (252, 1, 24, 0);
+INSERT INTO `role_function` VALUES (253, 1, 36, 0);
+INSERT INTO `role_function` VALUES (254, 1, 37, 0);
+INSERT INTO `role_function` VALUES (255, 1, 38, 0);
+INSERT INTO `role_function` VALUES (256, 1, 39, 0);
+INSERT INTO `role_function` VALUES (257, 1, 40, 0);
+INSERT INTO `role_function` VALUES (258, 1, 41, 0);
+INSERT INTO `role_function` VALUES (259, 1, 42, 0);
+INSERT INTO `role_function` VALUES (260, 1, 28, 0);
+INSERT INTO `role_function` VALUES (261, 1, 29, 0);
+INSERT INTO `role_function` VALUES (262, 1, 30, 0);
+INSERT INTO `role_function` VALUES (263, 1, 31, 0);
+INSERT INTO `role_function` VALUES (264, 1, 32, 0);
+INSERT INTO `role_function` VALUES (265, 1, 33, 0);
+INSERT INTO `role_function` VALUES (266, 1, 34, 0);
+INSERT INTO `role_function` VALUES (267, 1, 35, 0);
+INSERT INTO `role_function` VALUES (268, 1, 52, 0);
+INSERT INTO `role_function` VALUES (269, 1, 53, 0);
+INSERT INTO `role_function` VALUES (270, 1, 56, 0);
+INSERT INTO `role_function` VALUES (271, 1, 57, 0);
+INSERT INTO `role_function` VALUES (272, 1, 58, 0);
+INSERT INTO `role_function` VALUES (273, 1, 59, 0);
+INSERT INTO `role_function` VALUES (274, 1, 60, 0);
+INSERT INTO `role_function` VALUES (275, 1, 61, 0);
+INSERT INTO `role_function` VALUES (276, 1, 44, 0);
+INSERT INTO `role_function` VALUES (277, 1, 45, 0);
+INSERT INTO `role_function` VALUES (278, 1, 46, 0);
+INSERT INTO `role_function` VALUES (279, 1, 47, 0);
+INSERT INTO `role_function` VALUES (280, 1, 48, 0);
+INSERT INTO `role_function` VALUES (281, 1, 49, 0);
+INSERT INTO `role_function` VALUES (282, 1, 25, 0);
+INSERT INTO `role_function` VALUES (283, 1, 26, 0);
+INSERT INTO `role_function` VALUES (284, 1, 27, 0);
+INSERT INTO `role_function` VALUES (285, 1, 43, 0);
 
 -- ----------------------------
 -- Table structure for role_jurisdiction
@@ -969,22 +1143,24 @@ CREATE TABLE `role_jurisdiction`  (
   INDEX `Fk_jurisdiction`(`jurisdiction_id`) USING BTREE,
   CONSTRAINT `Fk_jurisdiction` FOREIGN KEY (`jurisdiction_id`) REFERENCES `jurisdiction` (`jurisdiction_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_jurisdiction_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 76 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_jurisdiction
 -- ----------------------------
-INSERT INTO `role_jurisdiction` VALUES (1, 1, 1, 0);
-INSERT INTO `role_jurisdiction` VALUES (2, 1, 2, 0);
-INSERT INTO `role_jurisdiction` VALUES (3, 1, 3, 0);
-INSERT INTO `role_jurisdiction` VALUES (4, 1, 4, 0);
-INSERT INTO `role_jurisdiction` VALUES (5, 1, 5, 0);
-INSERT INTO `role_jurisdiction` VALUES (6, 1, 6, 0);
-INSERT INTO `role_jurisdiction` VALUES (7, 1, 7, 0);
-INSERT INTO `role_jurisdiction` VALUES (8, 1, 8, 0);
-INSERT INTO `role_jurisdiction` VALUES (9, 1, 9, 0);
-INSERT INTO `role_jurisdiction` VALUES (10, 1, 10, 0);
-INSERT INTO `role_jurisdiction` VALUES (11, 2, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (13, 2, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (14, 11, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (15, 3, 2, 0);
+INSERT INTO `role_jurisdiction` VALUES (66, 1, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (67, 1, 2, 0);
+INSERT INTO `role_jurisdiction` VALUES (68, 1, 3, 0);
+INSERT INTO `role_jurisdiction` VALUES (69, 1, 4, 0);
+INSERT INTO `role_jurisdiction` VALUES (70, 1, 5, 0);
+INSERT INTO `role_jurisdiction` VALUES (71, 1, 6, 0);
+INSERT INTO `role_jurisdiction` VALUES (72, 1, 7, 0);
+INSERT INTO `role_jurisdiction` VALUES (73, 1, 8, 0);
+INSERT INTO `role_jurisdiction` VALUES (74, 1, 9, 0);
+INSERT INTO `role_jurisdiction` VALUES (75, 1, 10, 0);
 
 -- ----------------------------
 -- Table structure for stage_purchasing_plan
@@ -1039,7 +1215,7 @@ CREATE TABLE `store`  (
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`store_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of store
@@ -1051,9 +1227,11 @@ INSERT INTO `store` VALUES (4, '皇后大道店', 1, '皇后路186号', '1875210
 INSERT INTO `store` VALUES (5, '六中店', 1, '和平路16号', '18752105664', 0, '500', '10005', 0);
 INSERT INTO `store` VALUES (6, '二院店', 1, '医学路186号', '18752105664', 0, '500', '10006', 0);
 INSERT INTO `store` VALUES (7, '四院店', 1, '医院路86号', '18752105664', 0, '500', '10007', 0);
-INSERT INTO `store` VALUES (8, '建筑学院店', 0, '解放路186号', '18752105664', 0, '500', '10008', 0);
-INSERT INTO `store` VALUES (9, '师范学院店', 0, '解放路186号', '18752105664', 0, '500', '10009', 0);
+INSERT INTO `store` VALUES (8, '建筑学院店', 2, '解放路186号', '18752105664', 0, '500', '10008', 0);
+INSERT INTO `store` VALUES (9, '师范学院店', 2, '解放路186号', '18752105664', 0, '500', '10009', 0);
 INSERT INTO `store` VALUES (10, '海云店', 1, '解放路186号', '18752105664', 0, '500', '10010', 0);
+INSERT INTO `store` VALUES (11, '000', 1, '12131564231345', '18905222325', 0, '52120171215', '123456', 1);
+INSERT INTO `store` VALUES (12, '多大点事', 2, '地方个地方', '18905222325', 0, '544020171218', '123456', 1);
 
 -- ----------------------------
 -- Table structure for supplier
@@ -1159,7 +1337,12 @@ CREATE TABLE `temporary_order`  (
   CONSTRAINT `Fk_temporary_order_state` FOREIGN KEY (`temporary_order_state_id`) REFERENCES `temporary_order_state` (`temporary_order_state_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_temporary_store` FOREIGN KEY (`store_id`) REFERENCES `store` (`store_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_temporary_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of temporary_order
+-- ----------------------------
+INSERT INTO `temporary_order` VALUES (3, '516720171218', '2017-12-18 00:00:00', 1, '2017-12-18 13:54:07', '地方规定发给', 2, 1, 0);
 
 -- ----------------------------
 -- Table structure for temporary_order_state
@@ -1170,7 +1353,13 @@ CREATE TABLE `temporary_order_state`  (
   `temporary_order_state_name` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '状态名',
   `status` int(11) NOT NULL COMMENT '删除伪劣',
   PRIMARY KEY (`temporary_order_state_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of temporary_order_state
+-- ----------------------------
+INSERT INTO `temporary_order_state` VALUES (1, '未交付', 0);
+INSERT INTO `temporary_order_state` VALUES (2, '已交付', 0);
 
 -- ----------------------------
 -- Table structure for temporary_order_term
@@ -1190,7 +1379,13 @@ CREATE TABLE `temporary_order_term`  (
   INDEX `Fk_temporary_order_term_temporary_order`(`temporary_order_id`) USING BTREE,
   CONSTRAINT `Fk_temporary_order_term_menu` FOREIGN KEY (`menu_id`) REFERENCES `menu` (`menu_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_temporary_order_term_temporary_order` FOREIGN KEY (`temporary_order_id`) REFERENCES `temporary_order` (`temporary_order_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of temporary_order_term
+-- ----------------------------
+INSERT INTO `temporary_order_term` VALUES (1, 3, 11, 0, 0, '776820171218', 3, 0);
+INSERT INTO `temporary_order_term` VALUES (2, 3, 11, 0, 0, '522920171218', 3, 0);
 
 -- ----------------------------
 -- Table structure for temporary_production_distribution
@@ -1278,7 +1473,7 @@ CREATE TABLE `user`  (
   `user_phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '联系电话(登陆账号)',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
@@ -1294,6 +1489,9 @@ INSERT INTO `user` VALUES (8, '倪四城', '123', '18752105664', 0);
 INSERT INTO `user` VALUES (9, '李金伟', '123', '18752105664', 0);
 INSERT INTO `user` VALUES (10, '郭旭', '123', '18752105664', 0);
 INSERT INTO `user` VALUES (11, '索志文', '123', '18752105664', 0);
+INSERT INTO `user` VALUES (12, '张三', '123', '17756871234', 0);
+INSERT INTO `user` VALUES (13, '付雪艳', '123', '12345678901', 0);
+INSERT INTO `user` VALUES (14, '涨', '123', '12012012012', 0);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -1309,7 +1507,7 @@ CREATE TABLE `user_role`  (
   INDEX `Fk_user_role_user`(`user_id`) USING BTREE,
   CONSTRAINT `Fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_user_role_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_role
@@ -1324,6 +1522,9 @@ INSERT INTO `user_role` VALUES (7, 7, 7, 0);
 INSERT INTO `user_role` VALUES (8, 8, 8, 0);
 INSERT INTO `user_role` VALUES (9, 9, 9, 0);
 INSERT INTO `user_role` VALUES (10, 10, 10, 0);
+INSERT INTO `user_role` VALUES (11, 1, 12, 0);
+INSERT INTO `user_role` VALUES (12, 2, 13, 0);
+INSERT INTO `user_role` VALUES (13, 1, 14, 0);
 
 -- ----------------------------
 -- Table structure for warehouse
