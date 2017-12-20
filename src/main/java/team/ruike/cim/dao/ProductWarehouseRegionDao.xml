@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.ProductWarehouseRegionDao">
-    <insert id="add" parameterType="productWarehouseRegion">
+    <insert id="add" parameterType="productWarehouseRegion" useGeneratedKeys="true" keyProperty="productWarehouseRegionId">
         INSERT INTO product_warehouse_region VALUES(DEFAULT,#{productWarehouseRegionNo}
         ,#{menuType.menuTypeId},#{remarks},0,#{productWarehouse.productWarehouseId})
     </insert>
