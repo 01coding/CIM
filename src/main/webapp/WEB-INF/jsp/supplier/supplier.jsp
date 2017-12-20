@@ -1430,7 +1430,7 @@
                                                     <td>${s.supplierRemarks}</td>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
-                                                            <button type="button" class="btn btn-default footable-edit" onclick="toUpdete()">
+                                                            <button type="button" class="btn btn-default footable-edit"   data-toggle="modal" data-target="#exampleModalUpdate">
                                                                 <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                             </button>
                                                             <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
@@ -1499,7 +1499,7 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <button class="btn btn-info btn-icon-anim btn-circle"  onclick="toAdd()">
+                                                <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModalAdd"  >
                                                     <i class="fa ti-plus"></i>
                                                 </button>
                                             </div>
@@ -1517,19 +1517,22 @@
 
         <div class="row">
 
-            <!--添加输入框-->
+
+            <!--修改输入框-->
             <div class="col-md-6">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+
+                <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
+
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">供应商</h5>
+                                <h5 class="modal-title" >门店</h5>
                             </div>
                             <div class="modal-body">
-                                <form >
+                                <form>
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" class="form-control">
@@ -1566,7 +1569,7 @@
                                         <textarea class="form-control"></textarea>
                                     </div>
 
-                                    <div class="col-md-12 mb-20">
+                                    <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
                                             <input type="file" class="upload">
                                         </div>
@@ -1577,16 +1580,94 @@
                                     </div>
 
 
+
+                                </form>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+            <!--add输入框-->
+            <div class="col-md-6">
+
+                <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title" >门店</h5>
+                            </div>
+                            <div class="modal-body">
+                                <form action="/addSupplier.do">
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">供应商名称:</label>
+                                        <input type="text" name="supplierName" class="form-control">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">供货类型:</label>
+                                        <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                            <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
+                                                <option value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
+                                            </c:forEach>
+                                        </select>
+                                    </div>
+
+
+                                    <div  class="form-group" >
+                                        <label class="control-label mb-10">签订时间:</label>
+                                        <div class='input-group date' id='datetimepicker1s'>
+                                            <input type='text' class="form-control"
+                                                   name="cooperationStartDate" placeholder="时间" />
+                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">电话:</label>
+                                        <input type="text" name="supplierPhone" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">地址</label>
+                                        <textarea class="form-control" name="supplierRemarks"></textarea>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
+                                            <input type="file" class="upload">
+                                        </div>
+
+                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
+                                            <input type="file" class="upload">
+                                        </div>
+                                    </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                                 <button type="button" class="btn btn-primary">保存</button>
                             </div>
+
                         </div>
                     </div>
+
+
                 </div>
             </div>
+
+
 
             <!--查看显示框-->
             <div class="col-md-6">
@@ -1798,20 +1879,11 @@
 
 
 <script>
-    function sc() {
-        window.location.href = "javascript:window.scrollTo(0,0)";
-    }
 
-    function toAdd() {
-        window.location.href = "/addSupplier.do";
-    }
+    $(function () {
+        dedd();
+    })
 
-    function toUpdete() {
-        window.location.href = "/updateSupplier.do";
-    }
-$(function () {
-    dedd();
-})
     function dedd() {
         $(".del").click(function(){
             var mid=$(this).attr("flagId");
