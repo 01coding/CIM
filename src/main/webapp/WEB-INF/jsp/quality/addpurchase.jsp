@@ -395,7 +395,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="active">
+                <a href="javascript:void(0);">
                     <div class="pull-left"><i class="icon-home mr-20"></i><span
                             class="right-nav-text">主页</span></div>
                     <div class="pull-right"><span class="label label-warning">8</span></div>
@@ -405,7 +405,8 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#${j.jurisdictionId}">
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==7}"> class="active" </c:if>
+                           data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
                             </div>
@@ -413,11 +414,13 @@
                             <div class="clearfix"></div>
                         </a>
                             <%--在此处判断权限类型--%>
-                        <ul id="${j.jurisdictionId}" class="collapse collapse-level-1">
+                        <ul id="${j.jurisdictionId}"
+                            class="collapse <c:if test="${j.jurisdictionId==7}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
+                                        <a <c:if test="${f.functionId==57}"> class="active-page" </c:if>
+                                                href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
                             </c:forEach>
@@ -425,29 +428,6 @@
                     </li>
                 </c:forEach>
             </c:forEach>
-            <%--<li>--%>
-            <%--<a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">--%>
-            <%--<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span--%>
-            <%--class="right-nav-text">研发管理</span>--%>
-            <%--</div>--%>
-            <%--<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>--%>
-            <%--<div class="clearfix"></div>--%>
-            <%--</a>--%>
-            <%--<ul id="dashboard_dr" class="collapse collapse-level-1">--%>
-            <%--<li>--%>
-            <%--<a class="active-page" href="index.do">Analytical</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index2.html">Demographic</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index3.html">Project</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="profile.html">profile</a>--%>
-            <%--</li>--%>
-            <%--</ul>--%>
-            <%--</li>--%>
             <li>
                 <hr class="light-grey-hr mb-10"/>
             </li>

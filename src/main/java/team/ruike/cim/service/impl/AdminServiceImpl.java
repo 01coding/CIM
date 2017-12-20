@@ -1,6 +1,9 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestAttributes;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import team.ruike.cim.dao.*;
 import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.AdminService;
@@ -114,6 +117,40 @@ public class AdminServiceImpl implements AdminService {
         List<User> users = userDao.select(user, 0, 99);
         userRoleDao.add(new UserRole(roleId,users.get(0).getUserId()));
         return true;
+    }
+
+    /**
+     * 修改角色信息
+     * @param role 角色对象
+     * @return 是否成功
+     */
+    @Override
+    public boolean updateRole(Role role) {
+        role.setStatus(0);//设置删除状态为0
+        return roleDao.update(role)==1;
+    }
+
+    /**
+     * 删除角色
+     * @param roleId 角色id
+     * @return 成功标识 0：角色有用户无法删除 1：成功 其他：异常
+     */
+    @Override
+    public int delRole(Integer roleId) {
+        Role role = roleDao.selectById(roleId);//先进行查询操作
+        if (role!=null){//如果查到的对象不为空
+            List<User> users = userDao.selectByRoleId(roleId);
+            if (users!=null&&users.size()>0){//判断是否查询到数据
+                RequestAttributes ra = RequestContextHolder.getRequestAttributes();
+                ServletRequestAttributes sra = (ServletRequestAttributes)ra;
+                sra.getRequest().setAttribute("users",users);
+                return 0;//返回0代表此角色有用户，无法删除
+            }
+            //否则进行删除操作
+            role.setStatus(1);
+            roleDao.update(role);
+        }
+        return 1;
     }
 
 }

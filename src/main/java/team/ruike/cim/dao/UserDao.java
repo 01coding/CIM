@@ -54,4 +54,11 @@ public interface UserDao {
      * @return 用户表对象
      */
     User selectById(Integer userId);
+
+    /**
+     * 根据角色id查询角色所拥有用户
+     * @param roleId 角色id
+     * @return 用户集合
+     */
+    List<User> selectByRoleId(Integer roleId);
 }

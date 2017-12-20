@@ -415,29 +415,6 @@
                     </li>
                 </c:forEach>
             </c:forEach>
-            <%--<li>--%>
-            <%--<a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">--%>
-            <%--<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span--%>
-            <%--class="right-nav-text">研发管理</span>--%>
-            <%--</div>--%>
-            <%--<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>--%>
-            <%--<div class="clearfix"></div>--%>
-            <%--</a>--%>
-            <%--<ul id="dashboard_dr" class="collapse collapse-level-1">--%>
-            <%--<li>--%>
-            <%--<a class="active-page" href="index.do">Analytical</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index2.html">Demographic</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index3.html">Project</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="profile.html">profile</a>--%>
-            <%--</li>--%>
-            <%--</ul>--%>
-            <%--</li>--%>
             <li>
                 <hr class="light-grey-hr mb-10"/>
             </li>

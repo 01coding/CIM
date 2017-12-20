@@ -89,4 +89,27 @@ public class AdminController {
             return flag+"";
         }
     }
+
+    /**
+     * 修改角色信息
+     * @param role 角色对象
+     * @return 结果标识
+     */
+    @RequestMapping("updateRole.do")
+    @ResponseBody
+    public String updateRole(Role role){
+        return adminService.updateRole(role)+"";
+    }
+
+    /**
+     * 删除角色
+     * @param roleId 角色id
+     * @return 结果标识
+     */
+    @RequestMapping("delRole.do")
+    @ResponseBody
+    public String delRole(Integer roleId){
+        return adminService.delRole(roleId)+"";
+    }
+
 }
