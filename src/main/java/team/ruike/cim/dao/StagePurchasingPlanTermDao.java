@@ -60,4 +60,6 @@ public interface StagePurchasingPlanTermDao {
      * @return 阶段采购计划项对象集合
      */
     List<StagePurchasingPlanTerm> selectBystagePurchasingPlanId(Integer stagePurchasingPlanId);
+
+    int delStagePurchasingPlanTermBysId(Integer stagePurchasingPlanId);
 }

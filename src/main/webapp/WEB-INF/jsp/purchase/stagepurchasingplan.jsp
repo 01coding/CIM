@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: 张振国
   Date: 2017/12/21
@@ -421,7 +421,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==4}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -431,11 +431,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==4}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==62}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -934,14 +934,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">周期采购</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="/index.do">主页</a></li>
+                        <li><a href="javaScript.void(0)"><span>采购</span></a></li>
+                        <li class="active"><span>周期采购</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1109,7 +1109,7 @@
                                                     <div class="btn-group btn-group-xs" role="group">
 
                                                         <button type="button" class="btn btn-default footable-edit"
-                                                                onclick="update()">
+                                                                onclick="update(${ls.stagePurchasingPlanId})">
                                                             <span class="fooicon fooicon-pencil"
                                                                   aria-hidden="true"></span>
                                                         </button>
@@ -1146,13 +1146,37 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            Pager pager = (Pager) request.getAttribute("pager");
+                                                            if(pager.getCurrentPage()!=1){%>
+                                                                href="${pageContext.request.contextPath}/purchase/stagePurchasingPlan.do?currentPage=${requestScope.pager.previousPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-left"></i></a></li>
+                                                    <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                        <li <c:if
+                                                                test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                            <a href="${pageContext.request.contextPath}/purchase/stagePurchasingPlan.do?currentPage=${bar}">${bar}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                href="${pageContext.request.contextPath}/purchase/stagePurchasingPlan.do?currentPage=${requestScope.pager.nextPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-right"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1240,8 +1264,8 @@
         window.location.href = "添加周期采购.html";
     }
 
-    function update() {
-        window.location.href = "修改周期采购.html";
+    function update(sid) {
+        window.location.href = "${pageContext.request.contextPath}/purchase/stagePurchasingPlan.cl?stagePurchasingPlanId="+sid;
     }
 </script>
 </body>
