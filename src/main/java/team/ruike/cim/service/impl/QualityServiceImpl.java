@@ -204,7 +204,12 @@ public class QualityServiceImpl implements QualityService {
      * @return
      */
     public Integer getNumberByDate(Date date) {
-        return everydayPurchasingPlanDao.getNumberByDate(date);
+        EverydayPurchasingPlan everydayPurchasingPlan=everydayPurchasingPlanDao.getNumberByDate(date);
+        int result=0;
+        if(everydayPurchasingPlan!=null && everydayPurchasingPlan.getEverydayPurchasingPlanNo()!=null){
+            result=everydayPurchasingPlan.getEverydayPurchasingPlanNo();
+        }
+        return result;
     }
 
     /**
