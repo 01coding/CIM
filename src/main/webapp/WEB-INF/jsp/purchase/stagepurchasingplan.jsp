@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -987,11 +988,124 @@
                                             </thead>
 
                                             <tbody>
+                                            <c:forEach items="${requestScope.pager.list}" var="ls">
                                             <tr>
-                                                <td>2</td>
-                                                <td>三号店</td>
-                                                <td>及时送达</td>
+                                                <td>${ls.stagePurchasingPlanCycle}</td>
+                                                <td>${ls.user.userName}</td>
+                                                <td>${ls.stagePurchasingPlanRemarks}</td>
                                                 <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="row">
+                                                        <!--查看显示框-->
+                                                        <div class="col-md-6">
+                                                            <div class="modal fade" id="exampleModalSelect${ls.stagePurchasingPlanId}" tabindex="0" role="dialog"
+                                                                 aria-labelledby="exampleModalLabel1">
+                                                                <!-- Row -->
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="panel panel-default card-view">
+                                                                            <div class="panel-heading">
+                                                                                <div class="pull-left">
+                                                                                    <h6 class="panel-title txt-dark">采购项</h6>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <div class="panel-wrapper collapse in">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-wrap">
+                                                                                                <form class="form-horizontal">
+                                                                                                    <div class="form-body">
+                                                                                                        <c:forEach items="${ls.stagePurchasingPlanTermList}" var="lpts">
+                                                                                                        <hr class="light-grey-hr"/>
+                                                                                                        <div class="row">
+                                                                                                            <!--订单项-->
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">物料名称:</label>
+                                                                                                                    <div class="col-md-8">
+                                                                                                                        <p class="form-control-static">${lpts.materiel.materielName}</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">数量:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.materielNumber} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-5">预计采购单价:</label>
+                                                                                                                    <div class="col-md-5">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.unitPrice} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">价格允许浮动范围:</label>
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.priceFloat} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">供应商:</label>
+                                                                                                                    <div class="col-md-5">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.supplier.supplierName} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">备注:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.remarks} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <hr class="light-grey-hr"/>
+                                                                                                        </div>
+                                                                                                        </c:forEach>
+                                                                                                    </div>
+                                                                                                    <div class="form-actions mt-10">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-10"></div>
+                                                                                                            <div class="col-md-2">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                                                                        <button type="button"
+                                                                                                                                class="btn btn-default"
+                                                                                                                                data-dismiss="modal">关闭
+                                                                                                                        </button>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Row -->
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
                                                     <div class="btn-group btn-group-xs" role="group">
 
                                                         <button type="button" class="btn btn-default footable-edit"
@@ -1000,15 +1114,14 @@
                                                                   aria-hidden="true"></span>
                                                         </button>
                                                         <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect">
+                                                                data-toggle="modal" data-target="#exampleModalSelect${ls.stagePurchasingPlanId}">
                                                             <i class="fa ti-search" style="color: #2879ff;"></i>
                                                         </button>
 
                                                     </div>
                                                 </td>
                                             </tr>
-
-
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 
@@ -1055,131 +1168,7 @@
         </div>
 
 
-        <div class="row">
 
-
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">采购项</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
-
-
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">物料名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-5">预计采购单价:</label>
-                                                                        <div class="col-md-5">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-4">价格允许浮动范围:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-4">供应商:</label>
-                                                                        <div class="col-md-5">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">备注:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr class="light-grey-hr"/>
-
-                                                            </div>
-
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">关闭
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
-                </div>
-            </div>
-
-        </div>
 
 
         <!-- Footer -->

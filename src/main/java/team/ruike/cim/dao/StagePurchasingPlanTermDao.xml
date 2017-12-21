@@ -12,7 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="stage_purchasing_plan_id" property="stagePurchasingPlanId"/>
         <result column="status" property="status"/>
         <association column="supplier_id" property="supplier" select="team.ruike.cim.dao.SupplierDao.selectById"/>
-        <association column="materiel" property="materiel_id" select="team.ruike.cim.dao.MaterielDao.selectById"/>
+        <association column="materiel_id" property="materiel" select="team.ruike.cim.dao.MaterielDao.selectById"/>
     </resultMap>
     <sql id="sqlh">
         SELECT * FROM stage_purchasing_plan_term WHERE `status`=0
