@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>设备列表</title>
+    <title>设备信息管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -948,14 +948,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">设备信息管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#"><span>设备信息管理</span></a></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1328,7 +1327,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" id="addNo"  class="btn btn-primary" onclick="add()" >保存</button>
+                                    <button type="button" class="btn btn-primary" onclick="add()" >保存</button>
                                 </div>
                             </div>
                         </div>

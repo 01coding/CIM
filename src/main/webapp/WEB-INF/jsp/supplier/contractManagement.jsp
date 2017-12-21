@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>供应商合同管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -1354,14 +1354,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">供应商合同信息</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#"><span>供应商合同信息</span></a></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1403,11 +1402,8 @@
                                             <tr>
                                                 <th>合同号</th>
                                                 <th>合同名称</th>
-
                                                 <th>合同签订时间</th>
                                                 <th>供应商</th>
-
-                                                <th>操作</th>
                                             </tr>
                                             </thead>
 
@@ -1418,17 +1414,6 @@
 
                                                 <td>2017/12/2</td>
                                                 <td>张三</td>
-
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-
-
-                                                    </div>
-                                                </td>
                                             </tr>
                                             </tbody>
                                         </table>
@@ -1588,66 +1573,6 @@
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
-
-            <!--修改输入框-->
-            <div class="col-md-6">
-                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title">修改合同</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group">
-                                        <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称">
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-
-
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control"
-                                                       name="contractOrderStartDate" placeholder="时间" />
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <select class="form-control">
-                                                <option selected>请选择供应商</option>
-                                                <option>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>Custom</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-
-
 
         </div>
 
