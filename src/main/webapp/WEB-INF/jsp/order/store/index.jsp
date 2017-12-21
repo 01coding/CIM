@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>门店列表</title>
+    <title>门店管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -934,7 +934,7 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">门店列表</h5>
+                    <h5 class="txt-dark">门店管理</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
@@ -1075,7 +1075,7 @@
                                             <c:if test="${pager.totalRecord>8}" >
                                                 <div class="col-md-12">
                                                     <c:if test="${pager.list.size()>0}" >
-                                                        <ul class="pagination pagination-split">
+                                                        <ul class="pagination pagination-split" data-pagesize="${pager.pageSize}">
                                                             <li
                                                                     <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
                                                             ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
@@ -1148,8 +1148,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary"  onclick="add()">保存</button>
+                                <button type="button" id="addStoreModal" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button"  class="btn btn-primary"  onclick="add()">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1323,15 +1323,49 @@
             //没有通过验证
             return;
         }
-
         var addStore = $("#addStore").serializeArray();
         appModule.post('/store/add.do', addStore, function (data) {
-            appModule.alert("添加成功")
+            $("#addStoreModal").click();
+            addSuccess(data);
             document.getElementById("addStore").reset();
+            appModule.alert("添加成功")
         },function () {
-            appModule.alert("添加失败")
+            appModule.alert("添加失败");
         });
     }
+
+    function addSuccess(data) {
+        var pagesize= $(".pagination-split").data("pagesize");
+        var thisPagesize=$("tbody tr").size();
+        if(thisPagesize<pagesize){
+
+            var storeType=$("#addStore select[name='storeType'] option:selected").text();
+            var row="<tr>\n" +
+                "    <td>"+data.storeName+"</td>\n" +
+                "    <td>"+storeType+"</td>\n" +
+                "    <td>"+data.storeAddress+"</td>\n" +
+                "    <td>"+data.storePhone+"</td>\n" +
+                "    <td>"+data.storeNo+"</td>\n" +
+                "    <td class='footable-editing' style='display: table-cell;width: 100px'>\n" +
+                "        <div class='btn-group btn-group-xs' role='group'>\n" +
+                "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalUpdate' onclick='toEdit("+data.storeId+","+thisPagesize+")'>\n" +
+                "                <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+                "            </button>\n" +
+                "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalSelect' onclick='toView("+data.storeId+")'>\n" +
+                "                <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+                "            </button>\n" +
+                "            <button type='button' class='btn btn-default footable-delete' data-storeid='"+data.storeId+"' onclick='del(this)'>\n" +
+                "                <span class='fooicon fooicon-trash' aria-hidden='true'></span>\n" +
+                "            </button>\n" +
+                "        </div>\n" +
+                "    </td>\n" +
+                "</tr>";
+            $("tbody").append(row);
+        }
+    }
+
+
+
 
     function nextPage(ts) {
         var addStore = $("#orderForm").serializeArray();

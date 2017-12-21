@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: zzg
-  Date: 17-12-1
-  Time: 上午9:45
+  User: 张振国
+  Date: 2017/12/21
+  Time: 9:22
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>添加质检标准</title>
+    <title>周期采购计划</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -20,38 +20,56 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <!-- Data table CSS -->
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- vector map CSS -->
+    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Footable CSS -->
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+
+    <!--alerts CSS -->
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
-    <!-- Bootstrap Treeview -->
-    <link href="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet"
-          type="text/css">
+    <style>
+        /*** guide ***/
+        .guide {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000
+        }
 
-    <!-- bootstrap-select CSS -->
-    <link href="../../../vendors/bower_components/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet"
-          type="text/css"/>
-
-
-    <!-- Bootstrap Datetimepicker CSS -->
-    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
-          rel="stylesheet" type="text/css"/>
+        .guide .btn-circle {
+            width: 55px;
+            height: 55px;
+            margin-left: 12px;
+            box-shadow: 1px 1px 1px #888888;
+        }
+    </style>
 
 </head>
+
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
+<!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-red">
+
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="index.do">
+                    <a href="index.html">
                         <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
-                        <span class="brand-text">餐饮工业化</span>
+                        <span class="brand-text">Hound</span>
                     </a>
                 </div>
             </div>
@@ -136,16 +154,16 @@
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#xx">
+                                    <a href="javascript:void(0);">
                                         <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
-                                                class="right-nav-text">研发管理</span></div>
+                                                class="right-nav-text">Dashboard</span></div>
                                         <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                                         <div class="clearfix"></div>
                                     </a>
                                     <hr class="light-grey-hr ma-0"/>
-                                    <ul id="xx" class="collapse in collapse-level-1">
+                                    <ul>
                                         <li>
-                                            <a href="index.do">Analytical</a>
+                                            <a href="index.html">Analytical</a>
                                         </li>
                                         <li>
                                             <a href="index2.html">Demographic</a>
@@ -302,8 +320,7 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
-                                                 alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -340,10 +357,9 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
-                            src="../../../dist/img/user1.png"
-                            alt="user_auth"
-                            class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
+                                                                                         alt="user_auth"
+                                                                                         class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -405,7 +421,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==7}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -415,11 +431,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==7}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==57}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -436,7 +452,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="documentation.html">
+                <a href="/logOut.do">
                     <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
                     </div>
                     <div class="clearfix"></div>
@@ -477,9 +493,9 @@
                                             <input type="text" id="example-input1-group2" name="example-input1-group2"
                                                    class="form-control" placeholder="Search">
                                             <span class="input-group-btn">
-													<button type="button" class="btn  btn-default"><i
-                                                            class="zmdi zmdi-search"></i></button>
-													</span>
+												<button type="button" class="btn  btn-default"><i
+                                                        class="zmdi zmdi-search"></i></button>
+												</span>
                                         </div>
                                     </form>
                                     <div id="chat_list_scroll">
@@ -489,8 +505,7 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -538,8 +553,7 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -719,8 +733,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -736,8 +749,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -753,8 +765,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -770,8 +781,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -787,8 +797,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -804,8 +813,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -821,8 +829,7 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -923,147 +930,235 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">添加质检标准</h5>
+                    <h5 class="txt-dark">Export</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>add-products</span></li>
+                        <li><a href="#"><span>table</span></a></li>
+                        <li class="active"><span>Export</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
+
             <!-- Row -->
-            <div class="row" style="text-align:center">
+            <div class="row">
                 <div class="col-sm-12">
-                    <div class="panel panel-default card-view ">
+                    <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
-                            <div class="panel-body ">
-                                <div class="form-wrap">
-                                    <form action="insertPurchase.do">
-                                        <h6 class="txt-dark capitalize-font"><i
-                                                class="zmdi zmdi-calendar-note mr-10"></i>添加质检信息</h6>
-                                        <hr class="light-grey-hr"/>
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <div class="col-lg-12">
-                                                    <div class="panel panel-default card-view">
-                                                        <div class="panel-heading">
-                                                            <div class="pull-left">
-                                                                <h6 class="panel-title txt-dark">物料名称</h6>
-                                                            </div>
-                                                            <div class="clearfix"></div>
-                                                        </div>
-                                                        <div class="panel-wrapper collapse in">
-                                                            <div class="panel-body">
-                                                                <label class="control-label mb-10">一级物料</label>
-                                                                <select id="select1" class="selectpicker"
-                                                                        data-style="form-control btn-default btn-outline">
-                                                                    <c:forEach items="${requestScope.AList}" var="typeA">
-                                                                        <option value="${typeA.materielTypeLevelAId}">${typeA.materielTypeLevelAName}</option>
-                                                                    </c:forEach>
-                                                                </select>
-                                                            </div>
+                            <div class="panel-body">
 
-                                                            <div class="panel-body">
-                                                                <label class="control-label mb-10">二级物料</label>
-                                                                <select id="select2" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
-                                                                    <c:forEach items="${requestScope.BList}" var="typeB">
-                                                                        <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
-                                                                    </c:forEach>
-                                                                </select>
-                                                            </div>
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
 
-                                                            <div class="panel-body">
-                                                                <label class="control-label mb-10">三级物料</label>
-                                                                    <select id="selectid" name="materiel.materielId" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
-                                                                    <c:forEach items="${requestScope.MList}" var="typeM">
-                                                                        <option value="${typeM.materielId}">${typeM.materielName}</option>
-                                                                    </c:forEach>
-                                                                </select>
+                                        <table id="example" class="table table-hover display  pb-30">
+
+                                            <div style="width: 300px;float: right">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
+                                                                <button type="button" class="btn btn-primary"
+                                                                        style="height:42px;">
+                                                                    <span class="fooicon fooicon-search"></span>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </form>
                                             </div>
 
-                                            <div class="col-sm-6">
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6">
-                                                        <input name="standardAName" id="standardAName" type="text" class="form-control"
-                                                               placeholder="标准一评估"
-                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
-                                                    </div>
-                                                    <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardAType" id="radio3" value="1">
-                                                        <label for="radio3"> 是OR否 </label>
-                                                    </div>
-                                                    <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardAType" id="radio7" value="2">
-                                                        <label for="radio7"> 10分制 </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6">
-                                                        <input name="standardBName" id="standardBName" type="text" class="form-control"
-                                                               placeholder="标准二评估"
-                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
-                                                    </div>
-                                                    <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardBType" id="radio4" value="1">
-                                                        <label for="radio4"> 是OR否 </label>
-                                                    </div>
-                                                    <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardBType" id="radio5" value="2">
-                                                        <label for="radio5"> 10分制 </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6">
-                                                        <input name="standardCName" id="standardCName" type="text" class="form-control"
-                                                               placeholder="标准三评估"
-                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
-                                                    </div>
-                                                    <div class="radio radio-primary col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardCType" id="radio8" value="1">
-                                                        <label for="radio8"> 是OR否 </label>
-                                                    </div>
-                                                    <div class="radio radio-warning col-sm-3" style="margin-top: 5px">
-                                                        <input type="radio" name="standardCType" id="radio9" value="2">
-                                                        <label for="radio9"> 10分制 </label>
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="form-group col-sm-6">
-                                                        <input name="remarks" id="remarks" type="text" class="form-control"
-                                                               placeholder="备注"
-                                                               onkeyup="value=value.replace(/[^\u4E00-\u9FA5]/g,'')"
-                                                               onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\u4E00-\u9FA5]/g,''))">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                            <thead>
+                                            <tr>
+                                                <th>采购周期</th>
+                                                <th>制定人</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
 
-                                        <div class="row">
-                                            <div class="form-actions">
-                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left" id="but">
-                                                    <i class="fa fa-check"></i> <span>保存</span>
+                                            <tbody>
+                                            <c:forEach items="${requestScope.pager.list}" var="ls">
+                                            <tr>
+                                                <td>${ls.stagePurchasingPlanCycle}</td>
+                                                <td>${ls.user.userName}</td>
+                                                <td>${ls.stagePurchasingPlanRemarks}</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="row">
+                                                        <!--查看显示框-->
+                                                        <div class="col-md-6">
+                                                            <div class="modal fade" id="exampleModalSelect${ls.stagePurchasingPlanId}" tabindex="0" role="dialog"
+                                                                 aria-labelledby="exampleModalLabel1">
+                                                                <!-- Row -->
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="panel panel-default card-view">
+                                                                            <div class="panel-heading">
+                                                                                <div class="pull-left">
+                                                                                    <h6 class="panel-title txt-dark">采购项</h6>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <div class="panel-wrapper collapse in">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-wrap">
+                                                                                                <form class="form-horizontal">
+                                                                                                    <div class="form-body">
+                                                                                                        <c:forEach items="${ls.stagePurchasingPlanTermList}" var="lpts">
+                                                                                                        <hr class="light-grey-hr"/>
+                                                                                                        <div class="row">
+                                                                                                            <!--订单项-->
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">物料名称:</label>
+                                                                                                                    <div class="col-md-8">
+                                                                                                                        <p class="form-control-static">${lpts.materiel.materielName}</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">数量:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.materielNumber} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-5">预计采购单价:</label>
+                                                                                                                    <div class="col-md-5">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.unitPrice} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">价格允许浮动范围:</label>
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.priceFloat} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">供应商:</label>
+                                                                                                                    <div class="col-md-5">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.supplier.supplierName} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">备注:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.remarks} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <hr class="light-grey-hr"/>
+                                                                                                        </div>
+                                                                                                        </c:forEach>
+                                                                                                    </div>
+                                                                                                    <div class="form-actions mt-10">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-10"></div>
+                                                                                                            <div class="col-md-2">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                                                                        <button type="button"
+                                                                                                                                class="btn btn-default"
+                                                                                                                                data-dismiss="modal">关闭
+                                                                                                                        </button>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Row -->
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="btn-group btn-group-xs" role="group">
+
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                onclick="update()">
+                                                            <span class="fooicon fooicon-pencil"
+                                                                  aria-hidden="true"></span>
+                                                        </button>
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModalSelect${ls.stagePurchasingPlanId}">
+                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+
+                                        <div class="guide">
+                                            <div class="guide-wrap">
+                                                <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
+                                                    <i class="icon-rocket"></i>
                                                 </button>
-                                                <a href="/standard.do"><button type="button" class="btn btn-warning pull-left">取消</button></a>
-                                                <div class="clearfix"></div>
+                                                <button class="btn btn-info btn-icon-anim btn-circle" onclick="add()">
+                                                    <i class="fa ti-plus"></i>
+                                                </button>
                                             </div>
                                         </div>
-                                    </form>
+
+
+                                    </div>
                                 </div>
+
+
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="pagination pagination-split">
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="disabled"><a href="#">1</a></li>
+                                                    <li class="active"><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -1071,6 +1166,10 @@
             </div>
             <!-- /Row -->
         </div>
+
+
+
+
 
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
@@ -1081,6 +1180,7 @@
             </div>
         </footer>
         <!-- /Footer -->
+
     </div>
     <!-- /Main Content -->
 
@@ -1091,125 +1191,27 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-<script>
-    $(function () {
-        $("#but").click(function () {
-            var no="不能为空";
-            var sas=$("#standardAName").val()
-            var sbs =$("#standardBName").val()
-            var scs=$("#standardCName").val()
-            if(sas==null || sas==""){
-                $("#standardAName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-            if(sbs==null || sbs==""){
-                $("#standardBName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-
-            if(scs==null || scs==""){
-                $("#standardCName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-        })
-    });
-</script>
-<script type="text/javascript">
-    function s() {
-        $("#select1").change(function () {
-            var zhi = $(this).find("option:selected").val()
-            $.ajax({
-                type: "post",
-                url: "/TypeB.cl",
-                data: {"materielTypeLevelAid": zhi},
-                dataType: "json",
-                success: function (data) {
-                    var str="";
-                    $("#select2").html("");
-                    var a=0;
-                    var b=0;
-                    $.each(data, function (i, item) {
-                        if(b==0){
-                            a=item.materielTypeLevelBId;
-                        }
-                        str += "<option value='" + item.materielTypeLevelBId + "'>" + item.materielTypeLevelBName + "</option>";
-                        b=1;
-                    })
-                    $("#select2").append(str)
-                       if(a!=0){select(a)}else {  $("#selectid").html("");};
-                }, error: function () {
-                    alert("系统异常，请稍后重试！");
-                }
-            })
-        })
-    }
-
-    function ss() {
-        $("#select2").change(function () {
-            var zhi2 = $("#select2").find("option:selected").val();
-            select(zhi2);
-        })
-    }
-    function select(zhi2) {
-        $.ajax({
-            type: "post",
-            url: "/materiel.cl",
-            data: {"materielTypeLevelBId": zhi2},
-            dataType: "json",
-            success: function (data) {
-                var str=""
-                $("#selectid").html("");
-                $.each(data, function (i, item) {
-                    str += "<option value='" + item.materielId + "'>" + item.materielName + "</option>";
-                })
-                $("#selectid").append(str)
-            }, error: function () {
-                alert("系统异常，请稍后重试！");
-            }
-        })
-    }
-
-    function sss(){
-        $("#selectid").change(function(){
-            $(this).find("option:selected").css({"color":"red"})
-            $(this).find("option:selected").attr("disabled",true)
-            var uu=$(this).find("option:selected").text();
-            $("#aa").val(uu);
-        })
-    }
-
-    $(function(){
-        s();
-        ss();
-        sss();
-    })
-</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Data table JavaScript -->
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
 
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript"
-        src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- Bootstrap Select JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-select/dist/js/bootstrap-select.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../dist/js/export-table-data.js"></script>
+<script src="../../../dist/js/dataTables-data.js"></script>
 
 
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -1217,20 +1219,30 @@
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
+<!-- Fancy Dropdown JS -->
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
+
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
 
 
-<!-- Treeview JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
-<!-- Treeview Init JavaScript -->
-<script src="../../../dist/js/treeview-data.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 
+<script>
+    function sc() {
+        window.location.href = "javascript:window.scrollTo(0,0)";
+    }
 
-<!-- Form Picker Init JavaScript -->
-<script src="../../../dist/js/form-picker-data.js"></script>
+    function add() {
+        window.location.href = "添加周期采购.html";
+    }
 
-
+    function update() {
+        window.location.href = "修改周期采购.html";
+    }
+</script>
 </body>
 </html>

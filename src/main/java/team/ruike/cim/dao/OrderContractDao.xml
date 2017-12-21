@@ -3,7 +3,7 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="team.ruike.cim.dao.OrderContractDao">
-    <insert id="add" parameterType="orderContract">
+    <insert id="add" parameterType="orderContract"  useGeneratedKeys="true" keyProperty="orderContractId">
         INSERT INTO order_contract VALUES (DEFAULT,#{orderContractName},#{orderContractImage},
         #{orderContractNo},#{orderContractDate},#{store.storeId},0)
     </insert>

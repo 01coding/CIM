@@ -80,7 +80,7 @@
 		and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
     </select>
 
-    <select id="getNumberByDate" resultType="int">
-        SELECT everyday_purchasing_plan_no FROM everyday_purchasing_plan WHERE everyday_purchasing_plan_date=#{date}
+    <select id="getNumberByDate" resultMap="selectMap">
+        SELECT * FROM everyday_purchasing_plan WHERE everyday_purchasing_plan_date=#{date}
     </select>
 </mapper>
