@@ -3,8 +3,8 @@ $(function(){
 	"use strict";
 	
 	/* Basic Wizard Init*/
-	if($('#example-basic').length >0)
-		$("#example-basic").steps({
+	if($('.example-basic').length >0)
+		$(".example-basic").steps({
 			headerTag: "h3",
 			bodyTag: "section",
 			transitionEffect: "fade",

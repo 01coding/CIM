@@ -94,6 +94,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM stage_purchasing_plan_term WHERE `status`=0 and stage_purchasing_plan_term_id=#{stagePurchasingPlanTermId}
     </select>
     <select id="selectBystagePurchasingPlanId" parameterType="int" resultMap="stagePurchasingPlanTermMap">
-          select * from stage_purchasing_plan_term where `status`=0 and stage_purchasing_plan_id=#{stagePurchasingPlanTermId}
+          select * from stage_purchasing_plan_term where `status`=0 and stage_purchasing_plan_id=#{stagePurchasingPlanId}
     </select>
+    <delete id="delStagePurchasingPlanTermBysId">
+        DELETE FROM stage_purchasing_plan_term WHERE stage_purchasing_plan_id=#{stagePurchasingPlanId}
+    </delete>
 </mapper>

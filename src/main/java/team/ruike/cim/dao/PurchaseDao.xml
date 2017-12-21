@@ -47,7 +47,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="purchase">
-        SELECT COUNT (1)FROM purchase WHERE status=0
+        SELECT COUNT(1) FROM purchase WHERE status=0
           <if test="purchaseId!=null and purchaseId>0">
               AND   purchase_id=#{purchaseId}
           </if>
