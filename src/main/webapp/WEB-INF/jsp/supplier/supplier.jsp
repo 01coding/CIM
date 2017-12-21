@@ -13,7 +13,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>供应商管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -1360,14 +1360,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">供应商信息</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#"><span>供应商管理</span></a></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1406,6 +1405,7 @@
 
                                             <thead>
                                             <tr>
+                                                <th>供应商编号</th>
                                                 <th>供应商名称</th>
                                                 <th>供货类型</th>
                                                 <th>地址</th>
@@ -1422,12 +1422,18 @@
                                             <c:forEach items="${requestScope.suppliers.list}" var="s">
 
                                                 <tr>
+                                                    <td>${s.supplierNo}</td>
                                                     <td>${s.supplierName}</td>
                                                     <td>${s.materielTypeLevelB.materielTypeLevelBName}</td>
                                                     <td>${s.supplierAddress}</td>
                                                     <td>${s.supplierPhone}</td>
                                                     <td><fmt:formatDate value="${s.cooperationStartDate}" pattern="yyyy-MM-dd" /></td>
-                                                    <td>${s.supplierRemarks}</td>
+                                                    <c:if test="${s.supplierRemarks !=null}">
+                                                        <td>${s.supplierRemarks}</td>
+                                                    </c:if>
+                                                    <c:if test="${s.supplierRemarks ==null}">
+                                                        <td>此条信息没有备注</td>
+                                                    </c:if>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
                                                             <button type="button" class="btn btn-default footable-edit"   data-toggle="modal" data-target="#exampleModalUpdate">
@@ -1610,7 +1616,7 @@
                                 <h5 class="modal-title" >门店</h5>
                             </div>
                             <div class="modal-body">
-                                <form action="/addSupplier.do">
+                                <form id="addS">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" name="supplierName" class="form-control">
@@ -1629,8 +1635,8 @@
                                     <div  class="form-group" >
                                         <label class="control-label mb-10">签订时间:</label>
                                         <div class='input-group date' id='datetimepicker1s'>
-                                            <input type='text' class="form-control"
-                                                   name="cooperationStartDate" placeholder="时间" />
+                                            <input id="signDate" type='text' class="form-control"
+                                                   name="date" placeholder="时间" />
                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                         </div>
                                     </div>
@@ -1641,9 +1647,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
+                                        <textarea class="form-control" name="supplierAddress"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">备注</label>
                                         <textarea class="form-control" name="supplierRemarks"></textarea>
                                     </div>
-
                                     <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
                                             <input type="file" class="upload">
@@ -1656,8 +1665,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary">保存</button>
+                                <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" onclick="addSupplierMethod()">保存</button>
                             </div>
 
                         </div>
@@ -1878,11 +1887,63 @@
 <script src="../../../vendors/messages_zh.js"></script>
 
 
+
 <script>
 
     $(function () {
         dedd();
+        GetNowDate();
     })
+    function bomb(message) {
+        swal({
+            title: message,
+            confirmButtonColor: "#2879ff",
+        });
+        return false;
+    }
+
+     function addSupplierMethod(){
+
+         var equis=$("#addS").serializeArray();
+
+         $.ajax({
+             url: "/addSupplier.do",
+             method: "post",
+             data: equis,
+             dataType: "json",
+
+             success: function (data) {
+                 if (data != "") {
+                     if(data >"0"){
+                         bomb("添加成功");
+                         $("#addmodal").click();
+                     }else {
+                         bomb("添加失败");
+                     }
+                 }
+             }, error: function () {
+                 alert("error");
+             }
+         });
+     }
+
+
+    //获取当前日期给date控件赋值
+    function GetNowDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        $("#signDate").val(currentdate);
+    }
 
     function dedd() {
         $(".del").click(function(){

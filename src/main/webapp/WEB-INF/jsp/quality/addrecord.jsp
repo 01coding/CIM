@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>添加质检标准</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -970,27 +970,33 @@
                                                                 <label class="control-label mb-10">一级物料</label>
                                                                 <select id="select1" class="selectpicker"
                                                                         data-style="form-control btn-default btn-outline">
-                                                                    <c:forEach items="${requestScope.piciA}" var="typeA">
-                                                                        <option value="${typeA.materielTypeLevelAId}">${typeA.materielTypeLevelAName}</option>
-                                                                    </c:forEach>
+
+                                                                        <c:forEach items="${requestScope.piciA}" var="typeA">
+                                                                            <option value="${typeA.materielTypeLevelAId}">${typeA.materielTypeLevelAName}</option>
+                                                                        </c:forEach>
+
                                                                 </select>
                                                             </div>
 
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">二级物料</label>
                                                                 <select id="select2" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
-                                                                    <c:forEach items="${requestScope.piciB}" var="typeB">
-                                                                        <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
-                                                                    </c:forEach>
+
+                                                                        <c:forEach items="${requestScope.piciB}" var="typeB">
+                                                                            <option value="${typeB.materielTypeLevelBId}">${typeB.materielTypeLevelBName}</option>
+                                                                        </c:forEach>
+
                                                                 </select>
                                                             </div>
 
                                                             <div class="panel-body">
                                                                 <label class="control-label mb-10">三级物料</label>
                                                                 <select id="selectid" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
-                                                                    <c:forEach items="${requestScope.piciM}" var="typeM">
-                                                                        <option  value="${typeM.materielId}">${typeM.materielName}</option>
-                                                                    </c:forEach>
+
+                                                                        <c:forEach items="${requestScope.piciM}" var="typeM">
+                                                                            <option  value="${typeM.materielId}">${typeM.materielName}</option>
+                                                                        </c:forEach>
+
                                                                 </select>
                                                             </div>
 
@@ -1257,6 +1263,8 @@
             window.location.href="picitypeA.cl?date="+da
         })
     }
+
+
 
     $(function(){
         s();

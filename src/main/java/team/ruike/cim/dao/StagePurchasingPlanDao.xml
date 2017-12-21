@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="stage_purchasing_plan_cycle" property="stagePurchasingPlanCycle"/>
         <result column="stage_purchasing_plan_remarks" property="stagePurchasingPlanRemarks"/>
         <result column="status" property="status"/>
-        <association column="user_id" property="user.userId" select="team.ruike.cim.dao.UserDao.selectById"/>
+        <association column="user_id" property="user" select="team.ruike.cim.dao.UserDao.selectById"/>
         <collection property="stagePurchasingPlanTermList" column="stage_purchasing_plan_id" select="team.ruike.cim.dao.StagePurchasingPlanTermDao.selectBystagePurchasingPlanId"/>
     </resultMap>
     <sql id="sqlh">
