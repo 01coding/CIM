@@ -1,8 +1,10 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
+import team.ruike.cim.dao.PurchaseDao;
 import team.ruike.cim.dao.StagePurchasingPlanDao;
 import team.ruike.cim.dao.StagePurchasingPlanTermDao;
+import team.ruike.cim.pojo.Purchase;
 import team.ruike.cim.pojo.StagePurchasingPlan;
 import team.ruike.cim.pojo.StagePurchasingPlanTerm;
 import team.ruike.cim.service.PurchaseService;
@@ -22,6 +24,8 @@ public class PurchaseServiceImpl implements PurchaseService {
     private StagePurchasingPlanDao stagePurchasingPlanDao;
     @Resource
     private StagePurchasingPlanTermDao stagePurchasingPlanTermDao;
+    @Resource
+    private PurchaseDao purchaseDao;
     /**
      * 获取周期采购计划列表
      * @param stagePurchasingPlan 计划对象（参数）
@@ -57,5 +61,16 @@ public class PurchaseServiceImpl implements PurchaseService {
         for (StagePurchasingPlanTerm item : items) {
             stagePurchasingPlanTermDao.add(item);
         }
+    }
+
+    /**
+     * 获取所有采购列表
+     * @param purchase 采购对象（参数）
+     * @param pager 分页辅助类
+     */
+    @Override
+    public void getPurchase(Purchase purchase, Pager<Purchase> pager) {
+        pager.setTotalRecord(purchaseDao.selectCount(purchase));
+        pager.setList(purchaseDao.select(purchase,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize()));
     }
 }

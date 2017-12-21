@@ -20,7 +20,7 @@ public class EverydayPurchasingPlan implements Serializable {
     /**
      * 采购批次
      */
-    private Integer everydayPurchasingPlanNo;
+    private String everydayPurchasingPlanNo;
     /**
      * 采购时间
      */
@@ -50,15 +50,13 @@ public class EverydayPurchasingPlan implements Serializable {
         this.everydayPurchasingPlanId = everydayPurchasingPlanId;
     }
 
-
-    public Integer getEverydayPurchasingPlanNo() {
+    public String getEverydayPurchasingPlanNo() {
         return everydayPurchasingPlanNo;
     }
 
-    public void setEverydayPurchasingPlanNo(Integer everydayPurchasingPlanNo) {
+    public void setEverydayPurchasingPlanNo(String everydayPurchasingPlanNo) {
         this.everydayPurchasingPlanNo = everydayPurchasingPlanNo;
     }
-
 
     public Date getEverydayPurchasingPlanDate() {
         return everydayPurchasingPlanDate;

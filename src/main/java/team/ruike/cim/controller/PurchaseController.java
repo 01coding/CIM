@@ -7,10 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import team.ruike.cim.dao.MaterielDao;
-import team.ruike.cim.pojo.Materiel;
-import team.ruike.cim.pojo.StagePurchasingPlan;
-import team.ruike.cim.pojo.StagePurchasingPlanTerm;
-import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.*;
 import team.ruike.cim.service.MaterielService;
 import team.ruike.cim.service.PurchaseService;
 import team.ruike.cim.service.SupplierService;
@@ -82,5 +79,11 @@ public class PurchaseController {
             }
             purchaseService.updateStagePurchasingPlan(stagePurchasingPlan,items);
             return true+"";
+    }
+    @RequestMapping("purchase.do")
+    public String purchase(Purchase purchase,Pager<Purchase> pager,HttpServletRequest request){
+        purchaseService.getPurchase(purchase,pager);
+        request.setAttribute("pager",pager);
+        return "purchase/purchase";
     }
 }

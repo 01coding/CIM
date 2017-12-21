@@ -1104,7 +1104,6 @@
                                                                 <!-- /Row -->
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                     <div class="btn-group btn-group-xs" role="group">
 

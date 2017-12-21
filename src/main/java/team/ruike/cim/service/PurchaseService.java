@@ -1,5 +1,6 @@
 package team.ruike.cim.service;
 
+import team.ruike.cim.pojo.Purchase;
 import team.ruike.cim.pojo.StagePurchasingPlan;
 import team.ruike.cim.pojo.StagePurchasingPlanTerm;
 import team.ruike.cim.util.Pager;
@@ -32,4 +33,11 @@ public interface PurchaseService {
      * @param items 计划项集合
      */
     void updateStagePurchasingPlan(StagePurchasingPlan stagePurchasingPlan,List<StagePurchasingPlanTerm> items);
+
+    /**
+     * 获取所有采购列表
+     * @param purchase 采购对象（参数）
+     * @param pager 分页辅助类
+     */
+    void getPurchase(Purchase purchase,Pager<Purchase> pager);
 }
