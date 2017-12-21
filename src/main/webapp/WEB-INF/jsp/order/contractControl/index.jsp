@@ -1067,7 +1067,7 @@
                                             <c:if test="${pager.totalRecord>8}" >
                                             <div class="col-md-12">
                                                 <c:if test="${pager.list.size()>0}" >
-                                                <ul class="pagination pagination-split">
+                                                <ul class="pagination pagination-split" data-pagesize="${pager.pageSize}">
                                                     <li
                                                             <c:if test="${pager.currentPage==1}" > class="disabled" </c:if>
                                                     ><a data-previouspage="${pager.previousPage}" onclick="previousPage(this)"><i class="fa fa-angle-left"></i></a></li>
@@ -1128,7 +1128,7 @@
 
                                         <div class="col-md-12 mb-20">
                                             <select class="form-control" name="store.storeId">
-                                                <option selected value="">请选择门店</option>
+                                                <option  value="">请选择门店</option>
                                                 <c:forEach var="store" items="${storeList}">
                                                 <option value="${store.storeId}">${store.storeName}</option>
                                                 </c:forEach>
@@ -1144,7 +1144,7 @@
 
                                     <div class="modal-footer">
                                         <button type="button"  class="btn btn-info waves-effect" onclick="ad()">保存</button>
-                                        <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                        <button type="button" id="addordermodal" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                     </div>
                                 </form>
                             </div>
@@ -1371,8 +1371,6 @@
             //没有通过验证
             return;
         }
-
-
        var formobj =  document.getElementById("addcontract");
        var formData=new FormData(formobj);
         $.ajax({
@@ -1382,14 +1380,46 @@
             data: formData,
             processData: false,
             contentType: false
-        }).done(function(res) {
-            appModule.alert("添加成功");
+        }).done(function(data) {
+            addSuccess(data)
             document.getElementById("addcontract").reset();
+            $("#addordermodal").click();
+            appModule.alert("添加成功");
         }).fail(function(res) {
             appModule.alert("添加失败");
         });
 
 
+    }
+
+    function addSuccess(data) {
+        var pagesize= $(".pagination-split").data("pagesize");
+        var thisPagesize=$("tbody tr").size();
+        if(thisPagesize<pagesize){
+
+            var store=$("#addcontract select[name='store.storeId'] option:selected").text();
+            var orderContractDate=$("#addcontract input[name='orderContractDate']").val();
+
+            var row="<tr>\n" +
+                "    <td>"+data.orderContractNo+"</td>\n" +
+                "    <td>"+data.orderContractName+"</td>\n" +
+                "    <td>"+orderContractDate+"</td>\n" +
+                "    <td>"+store+"</td>\n" +
+                "    <td class='footable-editing' style='display: table-cell;'>\n" +
+                "        <div class='btn-group btn-group-xs' role='group'>\n" +
+                "            <button type='button' class='btn btn-default footable-edit'  data-toggle='modal' data-target='#exampleModalUpdate' onclick='toEdit("+data.orderContractId+","+thisPagesize+")'>\n" +
+                "                <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+                "            </button>\n" +
+                "            <button type='button' class='btn btn-default footable-edit'\n" +
+                "                    data-toggle='modal' data-target='#exampleModalSelect' onclick='toView("+data.orderContractId+")'>\n" +
+                "                <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+                "            </button>\n" +
+                "        </div>\n" +
+                "    </td>\n" +
+                "</tr>";
+
+            $("tbody").append(row);
+        }
     }
 
 

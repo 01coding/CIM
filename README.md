@@ -38,7 +38,12 @@
 ![数据库结构图](images/cimdb.png)
 ## 页面展示
 ![主页](images/index.png)
+![主页2](images/index2.png)
 ![菜谱](images/menu.png)
 ![流程](images/gongxu.png)
 ![流程2](images/gongxu2.png)
 ![质检](images/zhijian.png)
+![订单](images/dingdan.png)
+![合同](images/hetongdingdan.png)
+![门店](images/mendian.png)
+![设备](images/shebei.png)

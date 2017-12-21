@@ -1,41 +1,30 @@
-<%@ page import="team.ruike.cim.util.Pager" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/12/4
-  Time: 9:58
+  Date: 2017/12/21
+  Time: 9:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>设备列表</title>
+    <title>每人采购</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
     <link rel="shortcut icon" href="../../../favicon.ico">
-
     <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
-
-    <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
-    <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
-
     <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
-
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
           type="text/css"/>
-
     <!-- vector map CSS -->
     <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
-
     <!-- Footable CSS -->
     <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
@@ -45,36 +34,12 @@
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
-
-
-    <%--date--%>
-    <!-- Bootstrap Colorpicker CSS -->
-    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Bootstrap Datetimepicker CSS -->
-    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-
-
     <style>
-        /*** guide ***/
-        .guide {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 1000
-        }
 
-        .guide .btn-circle {
-            width: 55px;
-            height: 55px;
-            margin-left: 12px;
-            box-shadow: 1px 1px 1px #888888;
-        }
-        .error{
-            color: red;
-        }
     </style>
+
 </head>
+
 <body>
 <!--Preloader-->
 <div class="preloader-it">
@@ -442,7 +407,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==8}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -452,11 +417,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==8}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==44}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -473,7 +438,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="documentation.html">
+                <a href="/logOut.do">
                     <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
                     </div>
                     <div class="clearfix"></div>
@@ -737,6 +702,7 @@
                                 </div>
                             </div>
                         </div>
+
                         <div id="messages_tab" class="tab-pane fade" role="tabpanel">
                             <div class="message-box-wrap">
                                 <div class="msg-search">
@@ -878,6 +844,7 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
+                                    <!-- Todo-List -->
                                     <ul class="todo-list nicescroll-bar">
                                         <li class="todo-item">
                                             <div class="checkbox checkbox-default">
@@ -934,6 +901,7 @@
                                             <hr class="light-grey-hr"/>
                                         </li>
                                     </ul>
+                                    <!-- /Todo-List -->
                                 </div>
                             </div>
                         </div>
@@ -942,552 +910,302 @@
             </li>
         </ul>
     </div>
+    <!-- /Right Sidebar Menu -->
+
+
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">实际采购</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">主页</a></li>
+                        <li><a href="#"><span>采购管理</span></a></li>
+                        <li class="active"><span>每日实际采购</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
+            <!-- /Title -->
+
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
+
                                 <div class="table-wrap">
+                                    <div class="table-responsive">
 
                                         <table id="example" class="table table-hover display  pb-30">
-                                            <div class="row">
-                                                <form class="form-inline" action="/equipment.do" method="post">
-                                                <div>
-                                                        <div class="form-group col-md-4" style="width: 300px;">
-                                                             <label class="control-label mb-10 text-left">安装设备时间:</label>
-                                                             <div class="input-group date" style="width: 260px;height: 40px">
-                                                                 <input id="date" type="date" class="form-control" name="SD">
-                                                             </div>
-                                                        </div>
 
-                                                        <div class="form-group col-md-4 " style="width: 300px;">
-                                                            <div class="input-group">
-                                                                <div><label class="control-label mb-10 text-left">负责人:</label></div>
-                                                                <select  name="user.userId" style="width:260px;height: 40px">
-                                                                    <option selected value="0">请选择</option>
-                                                                    <c:forEach items="${requestScope.users}" var="us">
-                                                                        <option name="user.userId" value="${us.userId}">${us.userName}</option>
-                                                                    </c:forEach>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="form-group col-md-4 " style="width: 300px;">
-                                                                <label class="control-label mb-10 text-left">设备名字:</label><div class="input-group">
-                                                                <input type="text" name="equipmentName" class="form-control">
-
-                                                                <div class="input-group-btn">
-                                                                    <button type="submit" class="btn btn-primary"
-                                                                            style="height:42px;">
-                                                                        <span class="fooicon fooicon-search"></span>
-                                                                    </button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                </div>
-                                                </form>
-                                            </div>
-                                            <thead>
-                                            <tr>
-                                                <th>设备名称</th>
-                                                <th>所属生产线</th>
-                                                <th>所属工序</th>
-                                                <th>设备负责人</th>
-                                                <th>启用时间</th>
-                                                <th>设备状态</th>
-                                                <th>保养周期</th>
-                                                <th>检查周期</th>
-                                            </tr>
-                                            </thead>
-                                            <tbody>
-                                            <c:forEach items="${requestScope.equipments.list}" var="e">
-                                                <tr>
-                                                    <td>${e.equipmentName}</td>
-                                                    <td >${e.productionLine.productionLineNo}</td>
-                                                    <td>${e.working.workingName}</td>
-                                                    <td>${e.user.userName}</td>
-                                                    <td><fmt:formatDate value="${e.startDate}" pattern="yyyy-MM-dd" /></td>
-                                                    <td>${e.equipmentType.equipmentTypeName}</td>
-                                                    <td>${e.maintenanceCycle}</td>
-                                                    <td>${e.inspectionCycle}</td>
-                                                    <td class="footable-editing" style="display: table-cell;">
-                                                        <div class="btn-group btn-group-xs" role="group">
-                                                            <button type="button" class="btn btn-default footable-edit"
-                                                                    data-toggle="modal" data-target="#exampleModal${e.equipmentId}" title="修改">
-                                                            <span class="fooicon fooicon-pencil"
-                                                                  aria-hidden="true">
-                                                            </span>
-                                                            </button>
-                                                            <button flagid="${e.equipmentId}" flagname="${e.equipmentName}" type="button" class="btn btn-default footable-delete del">
-                                                            <span class="fooicon fooicon-trash" title="删除"aria-hidden="true"></span>
-                                                            </button>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <div class="col-md-6">
-                                                    <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
-                                                         aria-labelledby="exampleModalLabel1">
-                                                        <div class="modal-dialog" role="document">
-                                                            <div class="modal-content" style="width: 800px">
-                                                                <div class="modal-header">
-                                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                                                            aria-hidden="true">&times;</span></button>
-                                                                    <h5 class="modal-title" id="exampleModalLabel1">修改设备信息</h5>
-                                                                </div>
-                                                                <div class="modal-body">
-                                                                    <form action="/updateMateriel.do" METHOD="post">
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        设备编号:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <input name="equipmentId" readonly="readonly"  type="text" class="form-control" style="width: 270px;height: 40px" id="equipmentId"  value="${e.equipmentId}"/>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        检查周期:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <input type="number" min="1" class="form-control" style="width: 270px;height: 40px" id="inspectionCycle" name="inspectionCycle" value="${e.inspectionCycle}">
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">&nbsp;</div>
-                                                                        <div class="row">
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        设备名称:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                        <input type="text" id="equipmentName" class="form-control" style="width: 270px;height: 40px" name="equipmentName" value="${e.equipmentName}">
-                                                                                    </div>
-                                                                                    </div>
-                                                                            </div>
-                                                                            <div class="col-sm-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        保养周期:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <input type="number" min="1" id="maintenanceCycle" class="form-control" style="width: 270px;height: 40px" name="maintenanceCycle" value="${e.maintenanceCycle}">
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">&nbsp;</div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        所属工序:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <select name="working.workingId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.workings}" var="w">
-                                                                                            <c:choose>
-                                                                                                <c:when test="${w.workingId!=e.working.workingId}">
-                                                                                                    <option value="${w.workingId}">${w.workingName}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${w.workingId==e.working.workingId}">
-                                                                                                    <option value="${e.working.workingId}"selected="selected">${e.working.workingName}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        所属负责人:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <select  name="user.userId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.users}" var="us">
-                                                                                            <c:choose>
-                                                                                                <c:when test="${us.userId!=e.user.userId}">
-                                                                                                    <option  value="${us.userId}">${us.userName}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${us.userId==e.user.userId}">
-                                                                                                    <option value="${e.user.userId}"selected="selected">${e.user.userName}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="row">&nbsp;</div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        所属状态:
-                                                                                    </div>
-                                                                                    <div class="col-sm-7">
-                                                                                    <select id="se"  name="equipmentType.equipmentTypeId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.equipmentTypes}" var="equ">
-                                                                                            <c:choose>
-                                                                                                <c:when test="${e.equipmentType.equipmentTypeId!=equ.equipmentTypeId}">
-                                                                                                    <option value="${equ.equipmentTypeId}">${equ.equipmentTypeName}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${e.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
-                                                                                                    <option value="${e.equipmentType.equipmentTypeId}" selected="selected" >${e.equipmentType.equipmentTypeName}</option>
-                                                                                                </c:when>
-
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <div class="col-sm-5" style="margin-top: 10px;margin-right:-80px">
-                                                                                        所属生产线:
-                                                                                    </div>
-                                                                                    <div class="col-sm-3">
-                                                                                    <select name="productionLine.productionLineId" style="width: 270px;height: 40px">
-                                                                                        <c:forEach items="${requestScope.productionLines}" var="ps">
-                                                                                            <c:choose>
-                                                                                                <c:when  test="${ps.productionLineId!=e.productionLine.productionLineId}">
-                                                                                                    <option  value="${ps.productionLineId}">${ps.productionLineNo}</option>
-                                                                                                </c:when>
-                                                                                                <c:when test="${ps.productionLineId==e.productionLine.productionLineId}">
-                                                                                                    <option value="${e.productionLine.productionLineId}" selected="selected">${e.productionLine.productionLineNo}</option>
-                                                                                                </c:when>
-                                                                                            </c:choose>
-                                                                                        </c:forEach>
-                                                                                    </select>
-                                                                                </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                                                            <button  type="submit" class="btn btn-primary">确认修改</button>
-                                                                        </div>
-                                                                    </form>
-                                                                </div>
+                                            <div style="width: 300px;float: right">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
+                                                                <button type="button" class="btn btn-primary"
+                                                                        style="height:42px;">
+                                                                    <span class="fooicon fooicon-search"></span>
+                                                                </button>
                                                             </div>
                                                         </div>
                                                     </div>
-                                            </c:forEach>
+                                                </form>
+                                            </div>
+
+                                            <thead>
+                                            <tr>
+                                                <th>采购批次</th>
+                                                <th>采购时间</th>
+                                                <th>采购人</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+                                            <tr>
+                                                <td>11219010011</td>
+                                                <td>2017/01/10</td>
+                                                <td>三号店</td>
+                                                <td>及时送达</td>
+                                                <td class="footable-editing" style="display: table-cell;">
+                                                    <div class="btn-group btn-group-xs" role="group">
+
+
+                                                        <button type="button" class="btn btn-default footable-edit"
+                                                                data-toggle="modal" data-target="#exampleModalSelect">
+                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+
 
                                             </tbody>
                                         </table>
-                                        <%--分页--%>
-                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="pagination pagination-split">
-                                                            <li <c:if
-                                                                    test="${requestScope.equipments.currentPage==1}"> class="disabled" </c:if>>
-                                                                <a <%  Pager pager = (Pager) request.getAttribute("equipments");
-                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                        href="${pageContext.request.contextPath}/equipment.do?currentPage=${requestScope.equipments.previousPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-left"></i></a>
-                                                            </li>
-                                                            <c:forEach var="bar"
-                                                                       items="${requestScope.equipments.pageBar}">
-                                                                <li <c:if
-                                                                        test="${bar==requestScope.equipments.currentPage}"> class="active" </c:if> >
-                                                                    <a href="${pageContext.request.contextPath}/equipment.do?currentPage=${bar}">${bar}</a>
-                                                                </li>
-                                                            </c:forEach>
-                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                            <%--<li class="active"><a href="#">2</a></li>--%>
-                                                            <li <c:if
-                                                                    test="${requestScope.equipments.currentPage>=requestScope.equipments.totalPage}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                        href="${pageContext.request.contextPath}/equipment.do?currentPage=${requestScope.equipments.nextPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+
+
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="pagination pagination-split">
+                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                                                    <li class="disabled"><a href="#">1</a></li>
+                                                    <li class="active"><a href="#">2</a></li>
+                                                    <li><a href="#">3</a></li>
+                                                    <li><a href="#">4</a></li>
+                                                    <li><a href="#">5</a></li>
+                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Row -->
+        </div>
+
+
+        <div class="row">
+
+
+
+            <!--查看显示框-->
+            <div class="col-md-6">
+                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                     aria-labelledby="exampleModalLabel1">
+                    <!-- Row -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="panel panel-default card-view">
+                                <div class="panel-heading">
+                                    <div class="pull-left">
+                                        <h6 class="panel-title txt-dark">采购项</h6>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-wrapper collapse in">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="form-wrap">
+                                                    <form class="form-horizontal" role="form">
+                                                        <div class="form-body">
+                                                            <hr class="light-grey-hr"/>
+
+
+                                                            <div class="row">
+                                                                <!--订单项-->
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+
+                                                                        <label class="control-label col-md-4">物料名称:</label>
+                                                                        <div class="col-md-8">
+                                                                            <p class="form-control-static">John</p>
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">数量:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                John </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-md-3" >
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-5">预计采购单价:</label>
+                                                                        <div class="col-md-5">
+                                                                            <p class="form-control-static">
+                                                                                Male </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-4">价格允许浮动范围:</label>
+                                                                        <div class="col-md-4">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-4">供应商:</label>
+                                                                        <div class="col-md-5">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label class="control-label col-md-3">备注:</label>
+                                                                        <div class="col-md-9">
+                                                                            <p class="form-control-static">
+                                                                                24/05/1990 </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <hr class="light-grey-hr"/>
+
+                                                            </div>
+
+
+
+
+
+
+
+
+                                                        </div>
+
+                                                        <div class="form-actions mt-10">
+                                                            <div class="row">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-2">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">关闭
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="guide">
-
-                                                    <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModal" title="添加数据">
-                                                        <i class="fa ti-plus"></i>
-                                                    </button>
-
-                                            </div>
-                                        </div>
-
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!-- /Row -->
                 </div>
-
-            <div>
-                <!--添加输入框-->
-                <div class="col-md-6">
-                    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                         aria-labelledby="exampleModalLabel1">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                            aria-hidden="true">&times;</span></button>
-                                    <h5 class="modal-title" id="df">新增设备</h5>
-                                </div>
-                                <div class="modal-body">
-                                    <form  id="addeq" >
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">设备名称:</label>
-                                            <input type="text" class="form-control" id="equipmentName1" name="equipmentName">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">保养周期:</label>
-                                            <input class="form-control" type="number" min="1" id="maintenanceCycle1"  name="maintenanceCycle">
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">检查周天:</label>
-                                            <input class="form-control" type="number" min="1" id="inspectionCycle1"  name="inspectionCycle"/>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">生产线:</label>
-                                            <select class="form-control" name="productionLine.productionLineId">
-                                                    <c:forEach items="${requestScope.productionLines}" var="p">
-                                                        <option  value="${p.productionLineId}">${p.productionLineNo}</option>
-                                                    </c:forEach>
-                                            </select>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">工序:</label>
-                                            <select class="form-control" name="working.workingId" >
-                                                    <c:forEach items="${requestScope.workings}" var="w">
-                                                        <option   value="${w.workingId}">${w.workingName}</option>
-                                                    </c:forEach>
-                                            </select>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label class="control-label mb-10">负责人:</label>
-                                            <select class="form-control" name="user.userId">
-                                                    <c:forEach items="${requestScope.users}" var="u">
-                                                        <option   value="${u.userId}">${u.userName}</option>
-                                                    </c:forEach>
-                                            </select>
-                                        </div>
-
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" id="addNo"  class="btn btn-primary" onclick="add()" >保存</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
             </div>
 
-
         </div>
+
+
+        <!-- Footer -->
+        <footer class="footer container-fluid pl-30 pr-30">
+            <div class="row">
+                <div class="col-sm-12">
+                    <p>2017 &copy; Hound. Pampered by Hencework</p>
+                </div>
+            </div>
+        </footer>
+        <!-- /Footer -->
+
     </div>
+    <!-- /Main Content -->
+
 </div>
+<!-- /#wrapper -->
+
+<!-- JavaScript -->
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-<script src="../../../vendors/jquery.validate.js"></script>
-<script src="../../../vendors/messages_zh.js"></script>
-
-
-<script>
-    $(function () {
-        dedd()
-        addeqValidate();
-    });
-
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
-    }
-    
-    function addeqValidate() {
-
-        $("#addeq").validate({
-            rules: {
-                equipmentName: "required",
-                maintenanceCycle:"required",
-                inspectionCycle:"required",
-            },
-            messages: {
-                equipmentName: {
-                    required:"请输入设备名称",
-                },
-                maintenanceCycle:{
-                    required:"请选择保养周期"
-                },
-                inspectionCycle:{
-                    required:"请输入检查周天"
-                }
-            }
-        });
-    }
-
-
-    function add() {
-
-        var flag = $("#addeq").valid();
-        if(!flag){
-            //没有通过验证
-            return;
-        }
-
-            var equis=$("#addeq").serializeArray();
-
-            $.ajax({
-                url: "/addEquipment.do",
-                method: "post",
-                data: equis,
-                dataType: "json",
-                success: function (data) {
-                    if (null != data) {
-                        if(data>0){
-                            bomb("添加成功");
-                            $("#addmodal").click();
-                            document.getElementById("addeq").reset();
-                        }else {
-                            bomb("添加失败");
-                        }
-                    }
-                }, error: function () {
-                    alert("error");
-                }
-            });
-
-
-
-
-    }
-    function dedd() {
-        $(".del").click(function(){
-            var mid=$(this).attr("flagId");
-            var mname=$(this).attr("flagName");
-            var $tr=$(this).parent().parent().parent();
-            swal({
-                title: "你确定要删除"+mname+"的标准吗?",
-                text: "删除操作不可恢复！!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#fec107",
-                confirmButtonText: "确定!",
-                cancelButtonText: "取消!",
-                closeOnConfirm: false,
-                closeOnCancel: true
-            }, function(isConfirm){
-                if (isConfirm) {
-                    $.ajax({
-                        url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
-                        cache: false,
-                        success:function(data){
-                            if(data == 1){
-                                swal("删除成功", "删除成功！", "success");
-                                $($tr).remove();
-                            }else{
-                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
-                            }
-                        }
-                    });
-                }
-            });
-        });
-    }
-</script>
-<script>
-    $(function () {
-        $("#butt").click(function () {
-            var no ="不能为空";
-            var i=$("#inspectionCycle").val()
-            var e=$("#equipmentName").val()
-            var m=$("#maintenanceCycle").val()
-
-            if (i==null || i==""){
-                $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-
-            if(e==null || e==""){
-                $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-
-            if(m==null || m==""){
-                $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
-                return false;
-            }
-        })
-    })
-</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
+<!-- Data table JavaScript -->
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../dist/js/export-table-data.js"></script>
+<script src="../../../dist/js/dataTables-data.js"></script>
+
+
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
-<!-- Fancy Dropdown JS -->
-<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
@@ -1495,27 +1213,27 @@
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
-<!-- Init JavaScript -->
-<script src="../../../dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr">
-
-<!-- Moment JavaScript -->
-<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
-
-<!-- Bootstrap Colorpicker JavaScript -->
-<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-
-<!-- Bootstrap Datetimepicker JavaScript -->
-<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
-<!-- Bootstrap Daterangepicker JavaScript -->
-<script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
-<!-- Switchery JavaScript -->
-<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<!-- Fancy Dropdown JS -->
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Init JavaScript -->
+<script src="../../../dist/js/init.js"></script>
+
+
+<!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 
+<script src="../../../dist/js/sweetalert-data.js"></script>
+
+<script>
+    function sc() {
+        window.location.href = "javascript:window.scrollTo(0,0)";
+    }
+    function addContractOrderUrl() {
+        window.location.href = "添加周期采购.html";
+    }
+</script>
 </body>
+
 </html>
 

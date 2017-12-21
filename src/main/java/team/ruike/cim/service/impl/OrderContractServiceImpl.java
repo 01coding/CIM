@@ -39,13 +39,14 @@ public class OrderContractServiceImpl implements OrderContractService {
     }
 
     @ArchivesLog(operationType = "添加操作", operationName = "添加订单合同")
-    public void addOrderContract(OrderContract orderContract) {
+    public OrderContract addOrderContract(OrderContract orderContract) {
         if (orderContract != null && orderContract.getStore() != null && orderContract.getStore().getStoreId() != null && orderContract.getStore().getStoreId() > 0) {
             orderContract.setOrderContractNo(GenerateNumber.getGenerateNumber().getRandomFileName());
             orderContractDao.add(orderContract);
         } else {
             throw new NullPointerException("orderContract is null");
         }
+        return orderContract;
 
     }
 
