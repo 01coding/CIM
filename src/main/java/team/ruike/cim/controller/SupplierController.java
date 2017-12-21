@@ -4,20 +4,23 @@ package team.ruike.cim.controller;
  * Created by Administrator on 2017/12/19.
  */
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.multipart.MultipartFile;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
+import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -62,21 +65,7 @@ public class SupplierController {
      */
     @RequestMapping("/addSupplier.do")
     @ResponseBody
-    public String addSupplier(Supplier supplier,String date,@RequestParam("file") CommonsMultipartFile file,HttpServletRequest request){
-
-        String filePath = upload(file, request);
-        supplier.setSupplierCharterImage("");
-        if (filePath != null &&!filePath.equals("")) {
-            supplier.setSupplierCharterImage(filePath);
-        }
-
-        String filePath1=upload(file, request);
-        supplier.setSupplierImage("");
-        if (filePath != null &&!filePath.equals("")) {
-            supplier.setSupplierImage(filePath);
-        }
-
-
+    public String addSupplier(Supplier supplier, String date, @RequestParam MultipartFile[] photos, HttpSession session, HttpServletRequest request) throws IOException {
         Date dates=null;
         try
         {
@@ -92,47 +81,75 @@ public class SupplierController {
         //供应商状态，默认为1,
         supplier.setSupplierState(1);
 
-
+        supplier.setSupplierImage("");
+        supplier.setSupplierCharterImage("");
 
         //自动生成编号
         supplier.setSupplierNo(GenerateNumber.getGenerateNumber().getRandomFileName());
+        supplierService.addSupplier(supplier);
 
+        //服务端的imges目录需要手动创建好
+        /*String path = session.getServletContext().getRealPath("/upload");
+        for (int i = 0; i < photos.length; i++) {
+            if(!photos[i].isEmpty()){
 
-       supplierService.addSupplier(supplier);
+                String fileName = photos[i].getOriginalFilename();
+
+                if(fileName.endsWith(".jpg")||fileName.endsWith(".png")){
+
+                    File file = new File(path, fileName);
+
+                    //完成文件上传
+                    photos[i].transferTo(file);
+
+                }else{
+
+                   return "2";
+                }
+
+            }
+        }*/
+
        return  "1";
 
     }
 
     /**
-     * 上传文件
-     * @param file
-     * @param request
+     * 修改供应商信息
+     * @param supplier
      * @return
      */
-    public String upload(CommonsMultipartFile file, HttpServletRequest request) {
-        // 判断文件是否为空
-        if (!file.isEmpty()) {
-            try {
-                // 文件保存路径
-                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath()
-                        + file.getOriginalFilename();
-                // 转存文件
-                file.transferTo(new File(filePath));
-                return filePath;
-
-            } catch (Exception e) {
-                throw new RuntimeException(e);
-            }
-        }
-        return null;
+    @RequestMapping("/updateSupplier.do")
+    @ResponseBody
+    public String updateSupplier(Supplier supplier){
+       int num= supplierService.updateSupplier(supplier);
+        return (num==1)+"";
     }
 
     /**
+     * 根据id查询数据
+     * @param id
+     * @return
+     */
+    @RequestMapping("/getSupplierById.do")
+    @ResponseBody
+    public String getSupplierById(@RequestParam(value = "id") int id){
+        Supplier supplier=supplierService.getSupplierById(id);
+        return JSON.toJSONString(supplier);
+    }
+
+
+    /**
      * 跳转，合同管理页面
+     * @param supplierContract
+     * @param pager
+     * @param request
      * @return
      */
     @RequestMapping("/contractManagement.do")
-    public String contractManagement(){
+    public String contractManagement(SupplierContract supplierContract,Pager<SupplierContract> pager,HttpServletRequest request){
+        supplierService.getSupplierContract(supplierContract,pager);
+        request.setAttribute("supplierContracts",pager);
         return "supplier/contractManagement";
     }
 

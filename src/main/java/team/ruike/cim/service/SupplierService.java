@@ -6,6 +6,7 @@ package team.ruike.cim.service;
 
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.util.Pager;
 
 import java.util.List;
@@ -43,4 +44,25 @@ public interface SupplierService {
      * @return
      */
     int addSupplier(Supplier supplier);
+
+    /**
+     * 修改供应商
+     * @param supplier 供应商
+     * @return
+     */
+    int updateSupplier(Supplier supplier);
+
+    /**
+     * 根据id查
+     * @param id 供应商id
+     * @return
+     */
+    Supplier getSupplierById(int id);
+
+    /**
+     * 查询所有合同供应商
+     * @param supplierContract
+     * @param pager
+     */
+    void getSupplierContract(SupplierContract supplierContract,Pager<SupplierContract> pager);
 }

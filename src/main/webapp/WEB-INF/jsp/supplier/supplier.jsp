@@ -1386,7 +1386,7 @@
                                         <table id="example" class="table table-hover display  pb-30">
 
                                             <div style="width: 300px;float: right">
-                                                <form  class="form-inline" action="/supplier.do">
+                                                <form  class="form-inline" action="${pageContext.request.contextPath}/supplier.do">
                                                     <div class="form-group">
                                                         <label class="sr-only">Search</label>
                                                         <div class="input-group">
@@ -1436,18 +1436,22 @@
                                                     </c:if>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
-                                                            <button type="button" class="btn btn-default footable-edit"   data-toggle="modal" data-target="#exampleModalUpdate">
+                                                            <button type="button" title="修改" class="btn btn-default footable-edit" onclick="supplierById(${s.supplierId})" data-toggle="modal" data-target="#exampleModalUpdate">
+
                                                                 <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                             </button>
-                                                            <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
+                                                            <button type="button" title="详情" class="btn btn-default footable-edit" onclick="detailsSupplier(${s.supplierId})" data-toggle="modal" data-target="#exampleModalSelect">
                                                                 <i class="fa ti-search" style="color: #2879ff;"></i>
                                                             </button>
                                                             <button type="button"  flagId="${s.supplierId}" flagName="${s.supplierName}"  class="btn btn-default footable-delete del" >
-                                                                <span class="fooicon fooicon-trash" title="删除"aria-hidden="true"></span>
+                                                                <span class="fooicon fooicon-trash" title="删除" aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
+
+
+
                                             </c:forEach>
 
                                             </tbody>
@@ -1524,6 +1528,7 @@
         <div class="row">
 
 
+
             <!--修改输入框-->
             <div class="col-md-6">
 
@@ -1535,64 +1540,46 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" >门店</h5>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form id="updateSu">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="supplierName" name="supplierName" class="form-control" value="${s.supplierName}">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">供货类型:</label>
-                                        <select class="form-control">
-                                            <option>All Contacts</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>Custom</option>
+                                        <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
+                                            <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
+                                                <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
+                                                    <option value="${s.materielTypeLevelB.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
+                                                </c:if>
+
+                                                <c:if test="${m.materielTypeLevelBId != s.materielTypeLevelB.materielTypeLevelBId}">
+                                                    <option value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
+                                                </c:if>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
 
-                                    <div  class="form-group" >
-                                        <label class="control-label mb-10">签订时间:</label>
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' class="form-control"
-                                                   name="contractOrderStartDate" placeholder="时间" />
-                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="supplierPhone" name="supplierPhone" class="form-control" value="${s.supplierPhone}">
                                     </div>
+
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" id="supplierAddress" name="supplierAddress">${s.supplierAddress}</textarea>
                                     </div>
-
-                                    <div class="form-group">
-                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
-                                            <input type="file" class="upload">
-                                        </div>
-
-                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
-                                            <input type="file" class="upload">
-                                        </div>
-                                    </div>
-
-
 
                                 </form>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
+                                <button type="button" id="updateModal" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary" onclick="updateSupplierMethod()">保存</button>
                             </div>
                         </div>
                     </div>
@@ -1600,8 +1587,6 @@
 
                 </div>
             </div>
-
-
             <!--add输入框-->
             <div class="col-md-6">
 
@@ -1619,7 +1604,7 @@
                                 <form id="addS">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" name="supplierName" class="form-control">
+                                        <input type="text" name="supplierName" class="form-control" >
                                     </div>
 
                                     <div class="form-group">
@@ -1655,11 +1640,11 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
-                                            <input type="file" class="upload">
+                                            <input type="file" name="photos" class="upload">
                                         </div>
 
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
-                                            <input type="file" class="upload">
+                                            <input type="file" name="photos" class="upload">
                                         </div>
                                     </div>
                                 </form>
@@ -1675,9 +1660,6 @@
 
                 </div>
             </div>
-
-
-
             <!--查看显示框-->
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
@@ -1697,7 +1679,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-wrap">
-                                                    <form action="" class="form-horizontal" role="form">
+                                                    <form class="form-horizontal" role="form">
                                                         <div class="form-body">
                                                             <hr class="light-grey-hr"/>
                                                             <div class="row">
@@ -1707,8 +1689,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3">用户/门店名称:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                    <input id="supplierName1" name="supplierName" value="${s.supplierName}"/>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1901,20 +1882,86 @@
         });
         return false;
     }
+    detailsSupplier
 
+    function detailsSupplier(sid) {
+        var datds={
+            "id":sid
+        };
+        $.ajax({
+            url: '${pageContext.request.contextPath}/getSupplierById.do',
+            type: 'POST',
+            data: datds,
+            success: function (data) {
+                $("#supplierName1").val(data.supplierName);
+            }, error: function () {
+                alert("error");
+            }
+
+        })
+    }
+
+
+    function supplierById(sid) {
+        var datds={
+            "id":sid
+        };
+        $.ajax({
+            url: '${pageContext.request.contextPath}/getSupplierById.do',
+            type: 'POST',
+            data: datds,
+            success: function (data) {
+                $("#supplierName").val(data.supplierName);
+                $("#materielTypeLevelB.materielTypeLevelBId").val(data.materielTypeLevelB.materielTypeLevelBId);
+                $("#supplierPhone").val(data.supplierPhone);
+                $("#supplierAddress").val(data.supplierAddress);
+            }, error: function () {
+                alert("error");
+            }
+
+        })
+    }
+    function updateSupplierMethod(){
+        var formob =  document.getElementById("updateSu");
+        var formData1=new FormData(formob);
+        $.ajax({
+            url: '${pageContext.request.contextPath}/updateSupplier.do?',
+            type: 'POST',
+            cache: false,
+            data: formData1,
+            processData: false,
+            contentType: false,
+
+            success: function (data) {
+                if (null != data) {
+                    if(data>0){
+                        bomb("添加成功");
+                        $("#updateModal").click();
+                    }else {
+                        bomb("添加失败");
+                    }
+                }
+            }, error: function () {
+                alert("error");
+            }
+
+        })
+
+    }
      function addSupplierMethod(){
-
-         var equis=$("#addS").serializeArray();
-
+         var formobj =  document.getElementById("addS");
+         var formData=new FormData(formobj);
          $.ajax({
-             url: "/addSupplier.do",
-             method: "post",
-             data: equis,
-             dataType: "json",
+             url: '${pageContext.request.contextPath}/addSupplier.do',
+             type: 'POST',
+             cache: false,
+             data: formData,
+             processData: false,
+             contentType: false,
 
              success: function (data) {
-                 if (data != "") {
-                     if(data >"0"){
+                 if (null != data) {
+                     if(data>0){
                          bomb("添加成功");
                          $("#addmodal").click();
                      }else {
@@ -1924,8 +1971,11 @@
              }, error: function () {
                  alert("error");
              }
-         });
+
+         })
+
      }
+
 
 
     //获取当前日期给date控件赋值

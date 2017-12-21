@@ -44,7 +44,7 @@ SELECT * FROM supplier_contract WHERE status=0
 </sql>
     <select id="select" resultMap="supplierContractMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="supplierContract">
         SELECT COUNT(1) FROM supplier_contract WHERE status=0

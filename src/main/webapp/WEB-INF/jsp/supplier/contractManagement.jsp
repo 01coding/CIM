@@ -1,3 +1,7 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -5,7 +9,6 @@
   Time: 14:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1408,15 +1411,64 @@
                                             </thead>
 
                                             <tbody>
-                                            <tr>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
+                                            <c:forEach items="${requestScope.supplierContracts.list}" var="su">
+                                                <tr>
+                                                    <td>${su.supplier.supplierNo}</td>
+                                                    <td>${su.supplierContractName}</td>
+                                                    <td><fmt:formatDate value="${su.supplierContractDate}" pattern="yyyy-MM-dd" /></td>
+                                                    <td>${su.supplier.supplierName}</td>
+                                                </tr>
+                                            </c:forEach>
 
-                                                <td>2017/12/2</td>
-                                                <td>张三</td>
-                                            </tr>
                                             </tbody>
                                         </table>
+
+                                        <%--分页--%>
+                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.supplierContracts.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%  Pager pager = (Pager) request.getAttribute("supplierContracts");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${requestScope.supplierContracts.previousPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.supplierContracts.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.supplierContracts.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${bar}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.supplierContracts.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.supplierContracts.nextPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1435,24 +1487,6 @@
                                 </div>
 
 
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -1463,63 +1497,6 @@
 
 
         <div class="row">
-
-            <!--提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
-
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                        <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
 
             <!--添加输入框-->
             <div class="col-md-6">

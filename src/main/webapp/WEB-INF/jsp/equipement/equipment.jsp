@@ -968,6 +968,7 @@
                                 <div class="table-wrap">
 
                                         <table id="example" class="table table-hover display  pb-30">
+                                            <%--模糊查询--%>
                                             <div class="row">
                                                 <form class="form-inline" action="/equipment.do" method="post">
                                                 <div>
@@ -1042,6 +1043,8 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                            <%--修改--%>
                                                 <div class="col-md-6">
                                                     <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
                                                          aria-labelledby="exampleModalLabel1">
@@ -1115,6 +1118,7 @@
                                                                                                 <c:when test="${w.workingId!=e.working.workingId}">
                                                                                                     <option value="${w.workingId}">${w.workingName}</option>
                                                                                                 </c:when>
+
                                                                                                 <c:when test="${w.workingId==e.working.workingId}">
                                                                                                     <option value="${e.working.workingId}"selected="selected">${e.working.workingName}</option>
                                                                                                 </c:when>
@@ -1204,6 +1208,7 @@
                                             </c:forEach>
 
                                             </tbody>
+
                                         </table>
                                         <%--分页--%>
                                         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">

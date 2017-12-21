@@ -6,9 +6,11 @@ package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.MaterielTypeLevelBDao;
+import team.ruike.cim.dao.SupplierContractDao;
 import team.ruike.cim.dao.SupplierDao;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
 import team.ruike.cim.util.Pager;
 
@@ -26,6 +28,8 @@ public class SupplierServiceImpl implements SupplierService{
     private SupplierDao supplierDao;
     @Resource
     private MaterielTypeLevelBDao materielTypeLevelBDao;
+    @Resource
+    private SupplierContractDao supplierContractDao;
     /**
      * 查询所有供应商信息
      * @param supplier 供应商
@@ -81,5 +85,44 @@ public class SupplierServiceImpl implements SupplierService{
             return supplierDao.add(supplier);
         /*}
         return 0;*/
+    }
+
+    /**
+     * 修改供应商
+     * @param supplier 供应商
+     * @return
+     */
+    @Override
+    public int updateSupplier(Supplier supplier) {
+        if(supplier!=null && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""
+                && supplier.getSupplierName()!=null && supplier.getSupplierName()!=""
+                && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
+                && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0)
+        {
+            return supplierDao.update(supplier);
+        }
+        return 0;
+    }
+
+    /**
+     * 根据id查询信息
+     * @param id 供应商id
+     * @return
+     */
+    @Override
+    public Supplier getSupplierById(int id) {
+        return supplierDao.selectById(id);
+    }
+
+    /**
+     * 查询所有合同信息
+     * @param supplierContract 合同
+     * @param pager 分页辅助类
+     */
+    @Override
+    public void getSupplierContract(SupplierContract supplierContract, Pager<SupplierContract> pager) {
+        pager.setTotalRecord(supplierContractDao.selectCount(supplierContract));
+        List<SupplierContract>supplierContractList=supplierContractDao.select(supplierContract,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
+        pager.setList(supplierContractList);
     }
 }
