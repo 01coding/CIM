@@ -203,12 +203,12 @@ public class QualityServiceImpl implements QualityService {
      * 根据日期获取采购批次 采购表Id
      * @return
      */
-    public Integer getNumberByDate(Date date) {
+    public String getNumberByDate(Date date) {
         EverydayPurchasingPlan everydayPurchasingPlan=everydayPurchasingPlanDao.getNumberByDate(date);
-        int result=0;
-//        if(everydayPurchasingPlan!=null && everydayPurchasingPlan.getEverydayPurchasingPlanNo()!=null){
-//            result=everydayPurchasingPlan.getEverydayPurchasingPlanNo();
-//        }
+        String result=null;
+       if(everydayPurchasingPlan!=null && everydayPurchasingPlan.getEverydayPurchasingPlanNo()!=null){
+           result=everydayPurchasingPlan.getEverydayPurchasingPlanNo();
+       }
         return result;
     }
 
@@ -248,9 +248,9 @@ public class QualityServiceImpl implements QualityService {
      * @param purchaseStandardRecord
      * @param pager
      */
-    public void selectBySomething(Integer sid, PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager) {
+    public void selectBySomething(String sid, PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager) {
             EverydayPurchasingPlan everydayPurchasingPlan=new EverydayPurchasingPlan();
-//            everydayPurchasingPlan.setEverydayPurchasingPlanNo(sid);
+            everydayPurchasingPlan.setEverydayPurchasingPlanNo(sid);
             List<EverydayPurchasingPlan> everydayPurchasingPlans= everydayPurchasingPlanDao.select(everydayPurchasingPlan,0,99);
             Purchase purchase=new Purchase();
             if (everydayPurchasingPlans!=null && everydayPurchasingPlans.size()>0){
@@ -265,6 +265,4 @@ public class QualityServiceImpl implements QualityService {
                 }
             }
     }
-
-
 }
