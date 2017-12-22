@@ -25,6 +25,13 @@ public interface SupplierService {
     void getSupplier(Supplier supplier, Pager<Supplier>pager);
 
     /**
+     * 查询所有供应商信息
+     * @param supplier 供应商
+     */
+    List<Supplier> getSupplierList(Supplier supplier);
+
+
+    /**
      * 删除供应商
      * @param supplierId 供应商id
      * @return
@@ -65,4 +72,11 @@ public interface SupplierService {
      * @param pager
      */
     void getSupplierContract(SupplierContract supplierContract,Pager<SupplierContract> pager);
+
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @return
+     */
+    int addSupplierContract(SupplierContract supplierContract);
 }

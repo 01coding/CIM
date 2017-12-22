@@ -1,7 +1,8 @@
-<%@ page import="team.ruike.cim.util.Pager" %>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="team.ruike.cim.util.Pager" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -1379,27 +1380,57 @@
 
                                 <div class="table-wrap">
                                     <div class="table-responsive">
+                                        <div style="position: relative;bottom: 10px;">
+                                            <form method="get"  action="/contractManagement.do">
+                                                <div class="form-group">
 
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">合同编号:</label>
+                                                        <input type="text" class="form-control" name="supplierNo" value="${su.su.supplier.supplierNo}"
+                                                               placeholder="合同编号">
+                                                        <div class="input-group-btn"
+                                                             style=" position: relative; top: 16px;">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;" >
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">合同名称:</label>
+                                                        <input type="text" class="form-control" name="supplierContractName" value="${su.supplierContractName}"
+                                                               placeholder="合同名称">
+                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">开始合作时间:</label>
+                                                        <input type="date" id="" class="form-control" name="date" >
+                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
+                                                        <label class="control-label mb-10">供货类行:</label>
+                                                        <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                                            <option value="">请选择</option>
+                                                            <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
+                                                                <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
+                                                            </c:forEach>
+
+                                                        </select>
+                                                    </div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
 
                                             <thead>
                                             <tr>
@@ -1508,28 +1539,30 @@
                                 <h4 class="modal-title">添加合同</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal form-material">
+                                <form class="form-horizontal form-material" id="addSuContract">
                                     <div class="form-group">
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称">
+                                            <input type="text" name="supplierContractName" class="form-control" placeholder="合同名称">
                                         </div>
 
                                         <div class="col-md-12 mb-20">
 
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control"
-                                                       name="contractOrderStartDate" placeholder="时间" />
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                            <div class='input-group date'>
+                                                <div class='input-group date' id='datetimepicker1s'>
+                                                    <input id="signDate" type='text' class="form-control"
+                                                           name="date" placeholder="时间" />
+                                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12 mb-20">
-                                            <select class="form-control">
-                                                <option selected>请选择供应商</option>
-                                                <option>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>Custom</option>
+                                            <select class="form-control" name="supplier.supplierId">
+                                                <option selected value="0">请选择</option>
+                                                <c:forEach items="${requestScope.supplierList}" var="su">
+                                                    <option value="${su.supplierId}">${su.supplierName}</option>
+                                                </c:forEach>
+
+
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-20">
@@ -1541,8 +1574,8 @@
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" onclick="addSupplierContract()">保存</button>
+                                <button type="button" id="addmodal" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -1574,7 +1607,67 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script>
 
+    $(function () {
+        GetNowDate();
+    })
+
+
+    /*提示框*/
+    function bomb(message) {
+        swal({
+            title: message,
+            confirmButtonColor: "#2879ff",
+        });
+        return false;
+    }
+
+    /*添加合同*/
+    function addSupplierContract(){
+        var formobj =  document.getElementById("addSuContract");
+        var formData=new FormData(formobj);
+        $.ajax({
+            url: '/addSupplierContract.do',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (null != data) {
+                    if(data>0){
+                        bomb("添加成功");
+                        $("#addmodal").click();
+                    }else {
+                        bomb("添加失败");
+                    }
+                }
+            }, error: function () {
+                alert("error");
+            }
+        })
+    }
+
+    //获取当前日期给date控件赋值
+    function GetNowDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        $("#signDate").val(currentdate);
+    }
+
+
+</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

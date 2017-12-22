@@ -12,7 +12,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="supplier" column="supplier_id" select="team.ruike.cim.dao.SupplierDao.selectById"/>
     </resultMap>
     <insert id="add" parameterType="supplierContract">
-        INSERT  INTO supplier_contract VALUES (DEFAULT,#{supplierContractName},#{supplierContractDate},#{supplierContractImage},#{status},#{supplierId})
+        INSERT  INTO supplier_contract VALUES (DEFAULT,#{supplierContractName},
+        #{supplierContractDate},#{supplierContractImage},#{status},#{supplier.supplierId})
     </insert>
     <update id="update" parameterType="supplierContract">
           UPDATE supplier_contract SET
@@ -36,7 +37,7 @@ SELECT * FROM supplier_contract WHERE status=0
     <if test="supplierContract.supplierContractImage!=null and supplierContract.supplierContractImage!=''">
         AND supplier_contract_image#{supplierContract.supplierContractImage}
     </if>
-    <if test="supplierContract.supplier!=null and supplierContract.supplier.supplierId>0">
+    <if test="supplierContract.supplier!=null and supplierContract.supplier.supplierId!=null and supplierContract.supplier.supplierId>0">
         AND  supplier_id=#{supplierContract.supplier.supplierId}
     </if>
 
@@ -60,7 +61,7 @@ SELECT * FROM supplier_contract WHERE status=0
         <if test="supplierContractImage!=null and supplierContractImage!=''">
             AND supplier_contract_image#{supplierContractImage}
         </if>
-        <if test="supplier!=null and supplier.supplierId>0">
+        <if test="supplier!=null and supplier.supplierId!=null and supplier.supplierId>0">
             AND  supplier_id=#{supplier.supplierId}
         </if>
     </select>

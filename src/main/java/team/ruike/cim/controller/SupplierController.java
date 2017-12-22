@@ -21,6 +21,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -40,6 +41,7 @@ public class SupplierController {
      */
     @RequestMapping("/supplier.do")
     public String supplier(Supplier supplier, Pager<Supplier> pager, HttpServletRequest request,MaterielTypeLevelB materielTypeLevelB){
+
         supplierService.getSupplier(supplier, pager);
         request.setAttribute("suppliers",pager);
         request.setAttribute("MaterielTypeLevelBs",supplierService.getMaterielTypeLevelB(materielTypeLevelB));
@@ -81,8 +83,8 @@ public class SupplierController {
         //供应商状态，默认为1,
         supplier.setSupplierState(1);
 
-        supplier.setSupplierImage("");
-        supplier.setSupplierCharterImage("");
+        supplier.setSupplierImage("1");
+        supplier.setSupplierCharterImage("1");
 
         //自动生成编号
         supplier.setSupplierNo(GenerateNumber.getGenerateNumber().getRandomFileName());
@@ -135,6 +137,9 @@ public class SupplierController {
     @ResponseBody
     public String getSupplierById(@RequestParam(value = "id") int id){
         Supplier supplier=supplierService.getSupplierById(id);
+        SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd");
+        Date date=new Date();
+        String str=format.format(date);
         return JSON.toJSONString(supplier);
     }
 
@@ -147,10 +152,43 @@ public class SupplierController {
      * @return
      */
     @RequestMapping("/contractManagement.do")
-    public String contractManagement(SupplierContract supplierContract,Pager<SupplierContract> pager,HttpServletRequest request){
+    public String contractManagement(SupplierContract supplierContract,Pager<SupplierContract> pager,HttpServletRequest request,Supplier supplier){
         supplierService.getSupplierContract(supplierContract,pager);
         request.setAttribute("supplierContracts",pager);
+
+        request.setAttribute("supplierList",supplierService.getSupplierList(supplier));
         return "supplier/contractManagement";
     }
 
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @return
+     */
+    @RequestMapping("/addSupplierContract.do")
+    @ResponseBody
+    public void addSupplierContract(SupplierContract supplierContract,String date,PrintWriter printWriter){
+        Date dates=null;
+        try
+        {
+            //转换时间
+            java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+            dates =  formatter.parse(date);
+        }
+        catch (ParseException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        supplierContract.setSupplierContractDate(dates);
+
+        supplierContract.setStatus(0);
+
+        supplierContract.setSupplierContractImage("1");
+        int a = supplierService.addSupplierContract(supplierContract);
+
+        String jeonString=JSON.toJSONString(a);
+        printWriter.write(jeonString);
+        printWriter.flush();
+        printWriter.close();
+    }
 }
