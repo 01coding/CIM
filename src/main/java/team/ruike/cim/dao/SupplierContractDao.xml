@@ -20,11 +20,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                 supplier_contract_name=#{supplierContractName},
                 supplier_contract_date=#{supplierContractDate},
                 supplier_contract_image=#{supplierContractImage},
-                status=#{status},
+                status=#{status}
+                WHERE
                 supplier_id=#{supplier.supplierId}
     </update>
 <sql id="sql">
-SELECT * FROM supplier_contract WHERE status=0
+  SELECT * FROM supplier_contract WHERE status=0
     <if test="supplierContract.supplierContractId!=null and supplierContract.supplierContractId>0">
     AND supplier_contract_id=#{supplierContract.supplierContractId}
     </if>

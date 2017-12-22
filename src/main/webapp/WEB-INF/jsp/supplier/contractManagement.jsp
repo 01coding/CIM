@@ -1387,7 +1387,7 @@
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">合同编号:</label>
-                                                        <input type="text" class="form-control" name="supplierNo" value="${su.su.supplier.supplierNo}"
+                                                        <input type="text" class="form-control" name="supplier.supplierNo"
                                                                placeholder="合同编号">
                                                         <div class="input-group-btn"
                                                              style=" position: relative; top: 16px;">
@@ -1396,35 +1396,16 @@
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
                                                         </div>
+
                                                     </div>
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">合同名称:</label>
-                                                        <input type="text" class="form-control" name="supplierContractName" value="${su.supplierContractName}"
+                                                        <input type="text" class="form-control" name="supplierContractName"
                                                                placeholder="合同名称">
                                                         <div class="input-group-btn"style=" position: relative; top: 16px;">
                                                         </div>
                                                     </div>
-
-                                                    <div class="input-group" style="width: 300px;float: right;">
-                                                        <label class="control-label mb-10">开始合作时间:</label>
-                                                        <input type="date" id="" class="form-control" name="date" >
-                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
-                                                        <label class="control-label mb-10">供货类行:</label>
-                                                        <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
-                                                                <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
-                                                            </c:forEach>
-
-                                                        </select>
-                                                    </div>
-
-
                                                 </div>
                                             </form>
                                         </div>

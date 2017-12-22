@@ -155,7 +155,6 @@ public class SupplierController {
     public String contractManagement(SupplierContract supplierContract,Pager<SupplierContract> pager,HttpServletRequest request,Supplier supplier){
         supplierService.getSupplierContract(supplierContract,pager);
         request.setAttribute("supplierContracts",pager);
-
         request.setAttribute("supplierList",supplierService.getSupplierList(supplier));
         return "supplier/contractManagement";
     }
