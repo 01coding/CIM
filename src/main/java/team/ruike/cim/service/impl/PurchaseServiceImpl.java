@@ -86,4 +86,19 @@ public class PurchaseServiceImpl implements PurchaseService {
             stagePurchasingPlanTermDao.add(stagePurchasingPlanTerm);
         }
     }
+
+    /**
+     * 删除周期采购计划
+     * @param stagePurchasingPlanId 计划id
+     */
+    @Override
+    public void delStagePurchasingPlan(Integer stagePurchasingPlanId) {
+        //1.根据查询计划对象
+        StagePurchasingPlan stagePurchasingPlan = stagePurchasingPlanDao.selectById(stagePurchasingPlanId);
+        //2.修改数据，调用修改方法
+        stagePurchasingPlan.setStatus(1);
+        stagePurchasingPlanDao.update(stagePurchasingPlan);
+        //3.删除计划项
+        stagePurchasingPlanTermDao.delStagePurchasingPlanTermBysId(stagePurchasingPlanId);
+    }
 }

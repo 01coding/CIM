@@ -46,4 +46,10 @@ public interface PurchaseService {
      * @param stagePurchasingPlan 采购计划对象
      */
     void addStagePurchasingPlan(StagePurchasingPlan stagePurchasingPlan);
+
+    /**
+     * 删除周期采购计划
+     * @param stagePurchasingPlanId 计划id
+     */
+    void delStagePurchasingPlan(Integer stagePurchasingPlanId);
 }

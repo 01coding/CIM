@@ -138,4 +138,16 @@ public class PurchaseController {
         purchaseService.addStagePurchasingPlan(stagePurchasingPlan);//调用业务层方法新增
         return true+"";//直接返回true（如出错的话前端ajax的error会接收）
     }
+
+    /**
+     * 删除周期计划
+     * @param stagePurchasingPlanId 计划id
+     * @return 成功标识
+     */
+    @RequestMapping("delstagePurchasingPlan.do")
+    @ResponseBody
+    public String delStagePlan(Integer stagePurchasingPlanId){
+        purchaseService.delStagePurchasingPlan(stagePurchasingPlanId);//调用业务层方法新增
+        return true+"";//直接返回true（如出错的话前端ajax的error会接收）
+    }
 }
