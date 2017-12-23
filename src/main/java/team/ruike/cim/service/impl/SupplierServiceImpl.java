@@ -12,6 +12,7 @@ import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
 import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
+import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -74,16 +75,12 @@ public class SupplierServiceImpl implements SupplierService{
      * @return
      */
     @Override
-    public int addSupplier(Supplier supplier) {
+    public Supplier addSupplier(Supplier supplier) {
         supplier.setStatus(0);
-       if ( supplier!=null && supplier.getCooperationStartDate()!=null && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0
-                && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
-                && supplier.getSupplierCharterImage()!=null && supplier.getSupplierImage()!=null && supplier.getSupplierName()!=null
-                && supplier.getSupplierName()!="" && supplier.getSupplierNo()!=null && supplier.getSupplierNo()!=""
-                && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!="") {
-           return supplierDao.add(supplier);
-       }
-        return 0;
+        String supplierNo= GenerateNumber.getGenerateNumber().getRandomFileName();
+        supplier.setSupplierNo(supplierNo);
+        supplierDao.add(supplier);
+        return supplier;
     }
 
     /**
@@ -93,14 +90,27 @@ public class SupplierServiceImpl implements SupplierService{
      */
     @Override
     public int updateSupplier(Supplier supplier) {
-        if(supplier!=null && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""
+        Supplier supplierById = getSupplierById(supplier.getSupplierId());
+        //删除伪列
+        supplier.setStatus(0);
+        //时间
+        supplier.setCooperationStartDate(supplierById.getCooperationStartDate());
+        //特许经营许可路径
+        supplier.setSupplierCharterImage(supplierById.getSupplierCharterImage());
+        //营业执照路径
+        supplier.setSupplierImage(supplierById.getSupplierImage());
+        //合同编号
+        supplier.setSupplierNo(supplierById.getSupplierNo());
+        //状态
+        supplier.setSupplierState(supplierById.getSupplierState());
+       /* if(supplier!=null && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""
                 && supplier.getSupplierName()!=null && supplier.getSupplierName()!=""
                 && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
                 && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0)
         {
-            return supplierDao.update(supplier);
-        }
-        return 0;
+         */   return supplierDao.update(supplier);
+        /*}
+        return 0;*/
     }
 
     /**
@@ -132,14 +142,11 @@ public class SupplierServiceImpl implements SupplierService{
      * @return
      */
     @Override
-    public int addSupplierContract(SupplierContract supplierContract) {
-       if(supplierContract.getSupplierContractName()!=null && supplierContract.getSupplierContractName()!=""
-                && supplierContract.getSupplierContractDate()!=null && supplierContract.getSupplier()!=null
-                && supplierContract.getSupplier().getSupplierId()>0)
-        {
-            return  supplierContractDao.add(supplierContract);
-       }
-        return 0;
+    public SupplierContract addSupplierContract(SupplierContract supplierContract) {
+        String supplierContractNo= GenerateNumber.getGenerateNumber().getRandomFileName();
+        supplierContract.getSupplier().setSupplierNo(supplierContractNo);
+        supplierContractDao.add(supplierContract);
+        return supplierContract;
     }
 
     /**

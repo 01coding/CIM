@@ -50,7 +50,7 @@ public interface SupplierService {
      * @param supplier 供应商
      * @return
      */
-    int addSupplier(Supplier supplier);
+    Supplier addSupplier(Supplier supplier);
 
     /**
      * 修改供应商
@@ -78,5 +78,5 @@ public interface SupplierService {
      * @param supplierContract 合同对象
      * @return
      */
-    int addSupplierContract(SupplierContract supplierContract);
+    SupplierContract addSupplierContract(SupplierContract supplierContract);
 }

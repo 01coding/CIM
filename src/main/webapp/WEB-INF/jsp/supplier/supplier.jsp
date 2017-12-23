@@ -40,6 +40,13 @@
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
         /*** guide ***/
         .guide {
@@ -1391,7 +1398,7 @@
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">供应商编号:</label>
-                                                        <input type="text" class="form-control" name="supplierNo" value="${s.supplierNo}"
+                                                        <input type="text" class="form-control" name="supplierNo"
                                                                placeholder="供应商编号">
                                                         <div class="input-group-btn"
                                                              style=" position: relative; top: 16px;">
@@ -1404,7 +1411,7 @@
 
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">供应商名称:</label>
-                                                        <input type="text" class="form-control" name="supplierName" value="${s.supplierName}"
+                                                        <input type="text" class="form-control" name="supplierName"
                                                                placeholder="供应商名称">
                                                         <div class="input-group-btn"style=" position: relative; top: 16px;">
                                                         </div>
@@ -1570,10 +1577,14 @@
                                         aria-hidden="true">&times;</span></button>
                             </div>
                             <div class="modal-body">
-                                <form id="updateSu">
+                                <form id="updateSu" method="get">
+
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" id="supplierName" name="supplierName" class="form-control" value="${s.supplierName}">
+                                        <input type="text" id="supplierName" name="supplierName" class="form-control">
+                                        <input type="text" id="supplierId" name="supplierId">
+
+
                                     </div>
 
                                     <div class="form-group">
@@ -1594,13 +1605,19 @@
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" id="supplierPhone" name="supplierPhone" class="form-control" value="${s.supplierPhone}">
+                                        <input type="text" id="supplierPhone" name="supplierPhone" class="form-control">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
                                         <textarea class="form-control" id="supplierAddress" name="supplierAddress">${s.supplierAddress}</textarea>
                                     </div>
+
+                                    <div class="form-group">
+                                        <label class="control-label mb-10">备注</label>
+                                        <textarea class="form-control" id="supplierRemarks" name="supplierRemarks">${s.supplierRemarks}</textarea>
+                                    </div>
+
 
                                 </form>
 
@@ -1629,7 +1646,7 @@
                                 <h5 class="modal-title" >门店</h5>
                             </div>
                             <div class="modal-body">
-                                <form id="addS">
+                                <form id="addS" method="post">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" name="supplierName" class="form-control" >
@@ -1707,7 +1724,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
+                                                    <form class="form-horizontal" role="form" method="post">
                                                         <div class="form-body">
                                                             <hr class="light-grey-hr"/>
                                                             <div class="row">
@@ -1914,6 +1931,7 @@
         dedd();
         GetNowDate();
     })
+
     /*提示框*/
     function bomb(message) {
         swal({
@@ -1940,14 +1958,15 @@
                 $("#supplierNo1").html(" <p class='form-control-static' id='supplierNo1' style='margin-top: -8px'>"+data.supplierNo+"</p>");
                 $("#cooperationStartDate1").html(" <p class='form-control-static' id='cooperationStartDate1' style='margin-top: -8px'>"+data.cooperationStartDate+"</p>");
                 $("#supplierRemarks1").html("<p class='form-control-static' id='supplierRemarks1' style='margin-top: -8px'>"+data.supplierRemarks+"</p>");
-
-
             }, error: function () {
                 alert("error");
             }
-
         })
     }
+
+
+
+
 
     /*根据id显示数据*/
     function supplierById(sid) {
@@ -1959,14 +1978,17 @@
             type: 'POST',
             data: datds,
             success: function (data) {
+                 //id                      实体类属性
                 $("#supplierName").val(data.supplierName);
                 $("#materielTypeLevelB.materielTypeLevelBId").val(data.materielTypeLevelB.materielTypeLevelBId);
                 $("#supplierPhone").val(data.supplierPhone);
                 $("#supplierAddress").val(data.supplierAddress);
+                $("#supplierId").val(data.supplierId);
+                $("#supplierRemarks").val(data.supplierRemarks);
+
             }, error: function () {
                 alert("error");
             }
-
         })
     }
 
@@ -1974,14 +1996,14 @@
     function updateSupplierMethod(){
         var formob =  document.getElementById("updateSu");
         var formData1=new FormData(formob);
+        alert(document.getElementsByName("supplierId"));
         $.ajax({
-            url: '${pageContext.request.contextPath}/updateSupplier.do?',
+            url: '/updateSupplier.do',
             type: 'POST',
             cache: false,
             data: formData1,
             processData: false,
             contentType: false,
-
             success: function (data) {
                 if (null != data) {
                     if(data>0){
@@ -1994,9 +2016,7 @@
             }, error: function () {
                 alert("error");
             }
-
         })
-
     }
 
     /*添加供应商*/
@@ -2013,12 +2033,25 @@
 
              success: function (data) {
                  if (null != data) {
-                     if(data>0){
-                         bomb("添加成功");
+                         bomb("【"+data.supplierName+"】添加成功");
+                         /*添加成功退出弹框*/
                          $("#addmodal").click();
+                         /*添加成功清空文本框*/
+                         document.getElementById("addS").reset();
+                         /*添加成功显示页面，一次*/
+                         var display="<tr>"
+                             +"<td>"+data.supplierNo+"</td>"
+                             +"<td>"+data.supplierName+"</td>"
+                             +"<td>"+data.materielTypeLevelB.materielTypeLevelBName+"</td>"
+                             +"<td>"+data.supplierAddress+"</td>"
+                             +"<td>"+data.supplierPhone+"</td>"
+                             +"<td>"+data.cooperationStartDate+"</td>"
+                             +"<td>"+data.supplierRemarks+"</td>"
+                             +"</tr>";
+                         $("tbody").append(display)
                      }else {
                          bomb("添加失败");
-                     }
+
                  }
              }, error: function () {
                  alert("error");
@@ -2027,8 +2060,6 @@
          })
 
      }
-
-
 
     //获取当前日期给date控件赋值
     function GetNowDate() {
@@ -2083,6 +2114,16 @@
     }
 
 </script>
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>
