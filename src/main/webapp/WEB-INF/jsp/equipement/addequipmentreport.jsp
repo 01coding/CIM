@@ -18,7 +18,6 @@
 <%--date--%>
 <!-- Bootstrap Colorpicker CSS -->
 <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
-
 <!-- Bootstrap Datetimepicker CSS -->
 <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
 
@@ -1080,7 +1079,11 @@
                                                     </div>
                                                     <div class="col-sm-7">
                                                         <div class="input-group date" style="width: 400px;height: 40px">
-                                                            <input  id="dates" class="form-control" name="date" type="date" />
+                                                            <div class='input-group date' id='datetimepicker1s'>
+                                                                <input id="dates" type='text' class="form-control"
+                                                                       name="date" placeholder="时间" />
+                                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                            </div>
 
                                                         </div>
 
@@ -1205,5 +1208,23 @@
 <!-- Form Picker Init JavaScript -->
 <script src="../../../dist/js/form-picker-data.js"></script>
 
-<div class="goog-te-spinner-pos"><div class="goog-te-spinner-animation"><svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66"><circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle></svg></div></div>
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
+
+<div class="goog-te-spinner-pos">
+    <div class="goog-te-spinner-animation">
+        <svg xmlns="http://www.w3.org/2000/svg" class="goog-te-spinner" width="96px" height="96px" viewBox="0 0 66 66">
+            <circle class="goog-te-spinner-path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30">
+            </circle>
+        </svg>
+    </div>
+</div>
 </body></html>

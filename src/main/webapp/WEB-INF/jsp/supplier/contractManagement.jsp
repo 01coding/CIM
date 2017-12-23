@@ -38,6 +38,13 @@
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
         /*** guide ***/
         .guide {
@@ -1381,29 +1388,20 @@
                                 <div class="table-wrap">
                                     <div class="table-responsive">
                                         <div style="position: relative;bottom: 10px;">
-                                            <form method="get"  action="/contractManagement.do">
+                                            <form method="post"  action="/contractManagement.do">
                                                 <div class="form-group">
 
 
                                                     <div class="input-group" style="width: 300px;float: right;">
-                                                        <label class="control-label mb-10">合同编号:</label>
-                                                        <input type="text" class="form-control" name="supplier.supplierNo"
-                                                               placeholder="合同编号">
+                                                        <label class="control-label mb-10">合同名称:</label>
+                                                        <input type="text" class="form-control" name="supplierContractName"
+                                                               placeholder="合同名称">
                                                         <div class="input-group-btn"
                                                              style=" position: relative; top: 16px;">
                                                             <button type="submit" class="btn btn-primary"
                                                                     style="height:42px;" >
                                                                 <span class="fooicon fooicon-search"></span>
                                                             </button>
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="input-group" style="width: 300px;float: right;">
-                                                        <label class="control-label mb-10">合同名称:</label>
-                                                        <input type="text" class="form-control" name="supplierContractName"
-                                                               placeholder="合同名称">
-                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -1523,21 +1521,19 @@
                                 <form class="form-horizontal form-material" id="addSuContract">
                                     <div class="form-group">
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" name="supplierContractName" class="form-control" placeholder="合同名称">
+                                            <input type="text" id="supplierContractName" name="supplierContractName" class="form-control" placeholder="合同名称">
                                         </div>
 
                                         <div class="col-md-12 mb-20">
 
-                                            <div class='input-group date'>
                                                 <div class='input-group date' id='datetimepicker1s'>
                                                     <input id="signDate" type='text' class="form-control"
                                                            name="date" placeholder="时间" />
                                                     <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                                 </div>
-                                            </div>
                                         </div>
                                         <div class="col-md-12 mb-20">
-                                            <select class="form-control" name="supplier.supplierId">
+                                            <select class="form-control" id="supplierId" name="supplier.supplierId">
                                                 <option selected value="0">请选择</option>
                                                 <c:forEach items="${requestScope.supplierList}" var="su">
                                                     <option value="${su.supplierId}">${su.supplierName}</option>
@@ -1548,7 +1544,7 @@
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload">
+                                                <input type="file" class="upload" name="file">
                                             </div>
                                         </div>
                                     </div>
@@ -1588,6 +1584,10 @@
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+
+
 <script>
 
     $(function () {
@@ -1603,7 +1603,6 @@
         });
         return false;
     }
-
     /*添加合同*/
     function addSupplierContract(){
         var formobj =  document.getElementById("addSuContract");
@@ -1617,12 +1616,21 @@
             contentType: false,
             success: function (data) {
                 if (null != data) {
-                    if(data>0){
-                        bomb("添加成功");
-                        $("#addmodal").click();
-                    }else {
-                        bomb("添加失败");
-                    }
+                    bomb("【"+data.supplierContractName+"】添加成功");
+                    /*添加成功退出弹框*/
+                    $("#addmodal").click();
+                    /*添加成功清空文本框*/
+                    document.getElementById("addSuContract").reset();
+                    /*添加成功显示页面，一次*/
+                        var display="<tr>"
+                            +"<td>"+data.supplier.supplierNo+"</td>"
+                            +"<td>"+data.supplierContractName+"</td>"
+                            +"<td>"+ data.supplierContractDate+"</td>"
+                            +"<td>"+data.supplier.supplierName+"</td>"
+                            +"</tr>";
+                            $("tbody").append(display)
+                }else {
+                    bomb("添加失败");
                 }
             }, error: function () {
                 alert("error");
@@ -1693,6 +1701,17 @@
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
 </script>
+
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>
