@@ -150,4 +150,18 @@ public class PurchaseController {
         purchaseService.delStagePurchasingPlan(stagePurchasingPlanId);//调用业务层方法新增
         return true+"";//直接返回true（如出错的话前端ajax的error会接收）
     }
+
+    /**
+     * 跳转每日计划页面并返回数据
+     * @param everydayPurchasingPlan 计划对象（查询参数）
+     * @param pager 分页辅助类
+     * @param request request
+     * @return 计划页面
+     */
+    @RequestMapping("getEverydayPurchasePlans.do")
+    public String getEverydayPurchasePlans(EverydayPurchasingPlan everydayPurchasingPlan,Pager<EverydayPurchasingPlan> pager,HttpServletRequest request){
+        purchaseService.getEverydayPurchasePlans(everydayPurchasingPlan,pager);
+        request.setAttribute("pager",pager);
+        return "purchase/everydaypurchasingplan";
+    }
 }

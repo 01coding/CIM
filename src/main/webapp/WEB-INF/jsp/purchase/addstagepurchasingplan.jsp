@@ -370,7 +370,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==4}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -380,11 +380,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==4}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==62}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
