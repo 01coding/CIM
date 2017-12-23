@@ -36,6 +36,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </sql>
     <insert id="add" parameterType="stagePurchasingPlan">
+        <selectKey resultType="int" order="AFTER"  keyProperty="stagePurchasingPlanId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
             INSERT into stage_purchasing_plan VALUES(DEFAULT,
             #{stagePurchasingPlanCycle},
             #{stagePurchasingPlanRemarks},

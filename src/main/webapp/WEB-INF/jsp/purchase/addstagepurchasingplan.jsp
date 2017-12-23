@@ -26,7 +26,7 @@
 
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
@@ -370,7 +370,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==4}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -380,11 +380,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==4}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==62}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -840,14 +840,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">新增周期采购计划</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>apps</span></a></li>
-                        <li class="active"><span>contact list</span></li>
+                        <li><a href="/index.do">主页</a></li>
+                        <li><a href="javaScript.void(0)"><span>周期采购计划</span></a></li>
+                        <li class="active"><span>新增周期采购计划</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -862,12 +862,9 @@
                             <div class="panel-body pa-0">
                                 <div class="contact-list">
                                     <div class="row">
-
-
                                         <aside class="col-lg-2 col-md-4 pr-0">
                                             <!--选择合同 div-->
                                             <div class="mt-20 mb-20 ml-15 mr-15">
-
                                                 <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-danger btn-block">填写信息</a>
                                                 <!-- Modal -->
                                                 <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
@@ -881,16 +878,12 @@
                                                                 <form>
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">采购周期:</label>
-                                                                        <input type="number" class="form-control">
+                                                                        <input type="number" class="form-control" id="stagePurchasingPlanCycle">
                                                                     </div>
-
-
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">备注</label>
-                                                                        <textarea class="form-control"></textarea>
+                                                                        <textarea class="form-control" id="stagePurchasingPlanRemarks"></textarea>
                                                                     </div>
-
-
                                                                 </form>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
@@ -915,63 +908,43 @@
 
                                                             <div class="modal-body">
                                                                 <form>
-
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">物料</label>
-                                                                        <select class="form-control">
-                                                                            <option>All Contacts</option>
-                                                                            <option>10</option>
-                                                                            <option>20</option>
-                                                                            <option>30</option>
-                                                                            <option>40</option>
-                                                                            <option>Custom</option>
+                                                                        <select class="form-control" id="materiel">
+                                                                            <c:forEach var="ls" items="${requestScope.materiels}">
+                                                                                <option value="${ls.materielId}">${ls.materielName}</option>
+                                                                            </c:forEach>
                                                                         </select>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">数量</label>
-                                                                        <input type="number" class="form-control" >
+                                                                        <input type="number" class="form-control" id="materielNumber">
                                                                     </div>
-
                                                                     <div class="form-group ">
                                                                         <label class="control-label mb-10">预计采购单价</label>
-                                                                        <input type="number" class="form-control" >
-
+                                                                        <input type="number" class="form-control" id="unitPrice">
                                                                     </div>
-
                                                                     <div class="form-group ">
                                                                         <label class="control-label mb-10">价格允许浮动范围</label>
-                                                                        <input type="number" class="form-control" >
+                                                                        <input type="number" class="form-control" id="priceFloat">
                                                                     </div>
-
-
-
-
-
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">供应商</label>
-                                                                        <select class="form-control">
-                                                                            <option>All Contacts</option>
-                                                                            <option>10</option>
-                                                                            <option>20</option>
-                                                                            <option>30</option>
-                                                                            <option>40</option>
-                                                                            <option>Custom</option>
+                                                                        <select class="form-control" id="supplier">
+                                                                            <c:forEach items="${requestScope.suppliers}" var="ls">
+                                                                                <option value="${ls.supplierId}">${ls.supplierName}</option>
+                                                                            </c:forEach>
                                                                         </select>
                                                                     </div>
-
-
                                                                     <div class="form-group">
                                                                         <label class="control-label mb-10">备注</label>
-                                                                        <textarea class="form-control"></textarea>
+                                                                        <textarea class="form-control" id="remarks"></textarea>
                                                                     </div>
-
-
-
                                                                 </form>
                                                             </div>
 
                                                             <div class="modal-footer">
-                                                                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal">保存</button>
+                                                                <button type="button" class="btn btn-success waves-effect" data-dismiss="modal" id="save">保存</button>
                                                                 <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                                                             </div>
                                                         </div>
@@ -1000,37 +973,22 @@
                                                                     <th>操作</th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tbody>
-                                                                <tr>
-                                                                    <td>五花肉</td>
-                                                                    <td><input type='number' class="quantity" value="789"/></td>
-                                                                    <td><input type='number' class="quantity" value="20"/></td>
-                                                                    <td><input type='number' class="quantity" value="25"/></td>
-                                                                    <td>雨润</td>
-                                                                    <td>尽快</td>
-                                                                    <td>
-                                                                        <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="zmdi zmdi-delete txt-danger"></i></a>
-                                                                    </td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <td>后腿肉</td>
-                                                                    <td><input type='number' class="quantity" value="789"/></td>
-                                                                    <td><input type='number' class="quantity" value="20"/></td>
-                                                                    <td><input type='number' class="quantity" value="25"/></td>
-                                                                    <td>雨润</td>
-                                                                    <td>尽快</td>
-                                                                    <td>
-                                                                        <a href="javascript:void(0)" class="text-inverse" title="Delete" data-toggle="tooltip"><i class="zmdi zmdi-delete txt-danger"></i></a>
-                                                                    </td>
-                                                                </tr>
-
-
-
+                                                                <tbody id="tbo">
+                                                                <%--<tr class="items">--%>
+                                                                    <%--<td>五花肉</td>--%>
+                                                                    <%--<td><input type='number' class="quantity" value="789"/></td>--%>
+                                                                    <%--<td><input type='number' class="quantity" value="20"/></td>--%>
+                                                                    <%--<td><input type='number' class="quantity" value="25"/></td>--%>
+                                                                    <%--<td>雨润</td>--%>
+                                                                    <%--<td>尽快</td>--%>
+                                                                    <%--<td>--%>
+                                                                        <%--<a href="javascript:void(0)" class="text-inverse del" title="Delete" data-toggle="tooltip"><i class="zmdi zmdi-delete txt-danger"></i></a>--%>
+                                                                    <%--</td>--%>
+                                                                <%--</tr>--%>
                                                                 </tbody>
                                                             </table>
-
                                                         </div>
-                                                        <button class="btn btn-danger" type="submit" style="float: right">保存</button>
+                                                        <button class="btn btn-danger" type="button" style="float: right" id="addSt">保存</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1083,7 +1041,7 @@
 
 <!-- Data table JavaScript -->
 
-<script src="../../../dist/js/dataTables-data.js"></script>
+<%--<script src="../../../dist/js/dataTables-data.js"></script>--%>
 
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
@@ -1093,10 +1051,73 @@
 
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-
+<script>
+    $(function () {
+        $("#addSt").click(function () {
+            var stagePurchasingPlanTerms = new Array();
+            $(".items").each(function (i, e) {
+                stagePurchasingPlanTerms.push({
+                    stagePurchasingPlanTermId:0,
+                    materiel:{
+                        materielName:$(this).find("td:eq(0)").html(),
+                        materielId:$(this).find("td:eq(0)").attr("flagmid")
+                    },
+                    materielNumber:$(this).find("td:eq(1) input").val(),
+                    unitPrice:$(this).find("td:eq(2) input").val(),
+                    supplier:{
+                        supplierId:$(this).find("td:eq(4)").attr("flagsid"),
+                        supplierName:$(this).find("td:eq(4)").html()
+                    },
+                    priceFloat:$(this).find("td:eq(3) input").val(),
+                    remarks:$(this).find("td:eq(5)").html(),
+                    stagePurchasingPlanId:0
+                });
+            });
+            var stagePurchasingPlans={
+                stagePurchasingPlanCycle:$("#stagePurchasingPlanCycle").val(),
+                stagePurchasingPlanRemarks:$("#stagePurchasingPlanRemarks").val(),
+                status:0
+            };
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/purchase/addStagePurchasingPlan.do",
+                data: {"stagePurchasingPlans":JSON.stringify(stagePurchasingPlans),"stagePurchasingPlanTerms":JSON.stringify(stagePurchasingPlanTerms)},//将对象序列化成JSON字符串
+                success: function(data){
+                    if(data==true){
+                        swal({
+                            title: "新增成功！！!",
+                            type: "success",
+                            text: "您现在可以在其他系统中使用它！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    }else{
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                },
+                error: function(){
+                    swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                }
+            });
+        });
+        $("#save").click(function(){
+            var $tr = $("<tr class='items'></tr>");
+            $tr.append('<td flagmid="'+$("#materiel").val()+'">'+$("#materiel option:selected").text()+'</td>');
+            $tr.append('<td><input type=\'number\' class="quantity" value="'+$("#materielNumber").val()+'"/></td>');
+            $tr.append('<td><input type=\'number\' class="quantity" value="'+$("#unitPrice").val()+'"/></td>');
+            $tr.append('<td><input type=\'number\' class="quantity" value="'+$("#priceFloat").val()+'"/></td>');
+            $tr.append('<td flagsid="'+$("#supplier").val()+'">'+$("#supplier option:selected").text()+'</td>');
+            $tr.append('<td>'+$("#remarks").val()+'</td>');
+            $tr.append('<td><a href="javascript:void(0)" class="text-inverse del" title="删除" data-toggle="tooltip"><i class="zmdi zmdi-delete txt-danger"></i></a></td>');
+            $("#tbo").append($tr);
+            $(".del").click(function () {
+                $(this).parent().parent().remove();
+            });
+        });
+    });
+</script>
 </body>
 
 </html>

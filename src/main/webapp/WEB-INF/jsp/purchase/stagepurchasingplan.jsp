@@ -1107,7 +1107,7 @@
                                                     </div>
                                                     <div class="btn-group btn-group-xs" role="group">
 
-                                                        <button type="button" class="btn btn-default footable-edit"
+                                                        <button type="button" title="修改" class="btn btn-default footable-edit"
                                                                 onclick="update(${ls.stagePurchasingPlanId})">
                                                             <span class="fooicon fooicon-pencil"
                                                                   aria-hidden="true"></span>
@@ -1116,7 +1116,10 @@
                                                                 data-toggle="modal" data-target="#exampleModalSelect${ls.stagePurchasingPlanId}">
                                                             <i class="fa ti-search" style="color: #2879ff;"></i>
                                                         </button>
-
+                                                        <button type="button" title="删除" flagId="${ls.stagePurchasingPlanId}" class="btn btn-default footable-edit delsta"
+                                                                data-toggle="modal">
+                                                            <i class="zmdi zmdi-delete txt-danger"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -1129,7 +1132,7 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
-                                                <button class="btn btn-info btn-icon-anim btn-circle" onclick="add()">
+                                                <button class="btn btn-info btn-icon-anim btn-circle" title="新增" onclick="add()">
                                                     <i class="fa ti-plus"></i>
                                                 </button>
                                             </div>
@@ -1260,12 +1263,45 @@
     }
 
     function add() {
-        window.location.href = "添加周期采购.html";
+        window.location.href = "${pageContext.request.contextPath}/purchase/addStagePurchasingPlan.cl";
     }
 
     function update(sid) {
         window.location.href = "${pageContext.request.contextPath}/purchase/stagePurchasingPlan.cl?stagePurchasingPlanId="+sid;
     }
+    $(".delsta").click(function () {
+        var sid=$(this).attr("flagId");
+        var $tr=$(this).parent().parent().parent();
+        swal({
+            title: "你确定要删除吗?",
+            text: "删除操作不可恢复！!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#fec107",
+            confirmButtonText: "确定!",
+            cancelButtonText: "取消!",
+            closeOnConfirm: false,
+            closeOnCancel: true
+        }, function(isConfirm){
+            if (isConfirm) {
+                $.ajax({
+                    url:"${pageContext.request.contextPath}/purchase/delstagePurchasingPlan.do?stagePurchasingPlanId="+sid,
+                    cache: false,
+                    success:function(data){
+                        if(data == true){
+                            swal("删除成功", "删除成功，如需要恢复请再次添加！", "success");
+                            $($tr).remove();
+                        }else{
+                            swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    },
+                    error:function () {
+                        swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                    }
+                });
+            }
+        });
+    });
 </script>
 </body>
 </html>
