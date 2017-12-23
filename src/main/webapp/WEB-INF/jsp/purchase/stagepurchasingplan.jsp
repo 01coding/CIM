@@ -1260,7 +1260,7 @@
     }
 
     function add() {
-        window.location.href = "添加周期采购.html";
+        window.location.href = "${pageContext.request.contextPath}/purchase/addStagePurchasingPlan.cl";
     }
 
     function update(sid) {

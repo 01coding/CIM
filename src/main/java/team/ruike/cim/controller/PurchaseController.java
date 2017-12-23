@@ -80,10 +80,39 @@ public class PurchaseController {
             purchaseService.updateStagePurchasingPlan(stagePurchasingPlan,items);
             return true+"";
     }
+
+    /**
+     * 获取采购记录
+     * @param purchase 采购记录对象（参数）
+     * @param pager 分页辅助类
+     * @param request request
+     * @return 采购页面
+     */
     @RequestMapping("purchase.do")
     public String purchase(Purchase purchase,Pager<Purchase> pager,HttpServletRequest request){
         purchaseService.getPurchase(purchase,pager);
         request.setAttribute("pager",pager);
         return "purchase/purchase";
+    }
+
+    /**
+     * 新增周期采购计划页面跳转
+     * @return 新增页面
+     */
+    @RequestMapping("addStagePurchasingPlan.cl")
+    public String addStagePurchasingPlan(HttpServletRequest request){
+        //查询供应商
+        Pager<Supplier> supplierPager=new Pager<Supplier>();
+        supplierPager.setCurrentPage(1);
+        supplierPager.setPageSize(1000);
+        supplierService.getSupplier(new Supplier(),supplierPager);//获取供应商集合
+        request.setAttribute("suppliers",supplierPager.getList());
+        //查询物料
+        Pager<Materiel> pager=new Pager<Materiel>();
+        pager.setCurrentPage(1);
+        pager.setPageSize(1000);
+        materielService.getMaterielList(new Materiel(),pager);//获取物料集合
+        request.setAttribute("materiels",pager.getList());
+        return "purchase/addstagepurchasingplan";
     }
 }
