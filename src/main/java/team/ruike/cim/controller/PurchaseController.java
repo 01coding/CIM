@@ -1,5 +1,6 @@
 package team.ruike.cim.controller;
 
+import com.alibaba.fastjson.JSON;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.springframework.stereotype.Controller;
@@ -114,5 +115,27 @@ public class PurchaseController {
         materielService.getMaterielList(new Materiel(),pager);//获取物料集合
         request.setAttribute("materiels",pager.getList());
         return "purchase/addstagepurchasingplan";
+    }
+
+    /**
+     * 新增周期采购计划
+     * @param stagePurchasingPlans 周期采购计划Json
+     * @return 成功标识
+     */
+    @RequestMapping("addStagePurchasingPlan.do")
+    @ResponseBody
+    public String addStagePlan(String stagePurchasingPlans,String stagePurchasingPlanTerms,HttpServletRequest request){
+        StagePurchasingPlan stagePurchasingPlan =null;
+        JSONObject jsonObject=JSONObject.fromObject(stagePurchasingPlans);
+        stagePurchasingPlan= (StagePurchasingPlan) (JSONObject.toBean(jsonObject, StagePurchasingPlan.class));
+        stagePurchasingPlan.setUser((User)(request.getSession().getAttribute("u")));
+        List<StagePurchasingPlanTerm> items=new ArrayList<StagePurchasingPlanTerm>();
+        JSONArray array = JSONArray.fromObject(stagePurchasingPlanTerms);
+        for (Object o : array) {
+            items.add((StagePurchasingPlanTerm) (JSONObject.toBean(JSONObject.fromObject(o), StagePurchasingPlanTerm.class)));
+        }
+        stagePurchasingPlan.setStagePurchasingPlanTermList(items);
+        purchaseService.addStagePurchasingPlan(stagePurchasingPlan);//调用业务层方法新增
+        return true+"";//直接返回true（如出错的话前端ajax的error会接收）
     }
 }

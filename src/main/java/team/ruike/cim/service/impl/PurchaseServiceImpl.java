@@ -73,4 +73,17 @@ public class PurchaseServiceImpl implements PurchaseService {
         pager.setTotalRecord(purchaseDao.selectCount(purchase));
         pager.setList(purchaseDao.select(purchase,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize()));
     }
+
+    /**
+     * 新增周期采购计划
+     * @param stagePurchasingPlan 采购计划对象
+     */
+    @Override
+    public void addStagePurchasingPlan(StagePurchasingPlan stagePurchasingPlan) {
+        stagePurchasingPlanDao.add(stagePurchasingPlan);
+        for (StagePurchasingPlanTerm stagePurchasingPlanTerm : stagePurchasingPlan.getStagePurchasingPlanTermList()) {
+            stagePurchasingPlanTerm.setStagePurchasingPlanId(stagePurchasingPlan.getStagePurchasingPlanId());
+            stagePurchasingPlanTermDao.add(stagePurchasingPlanTerm);
+        }
+    }
 }

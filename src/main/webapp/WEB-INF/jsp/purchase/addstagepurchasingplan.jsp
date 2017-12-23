@@ -26,7 +26,7 @@
 
     <!-- Data table CSS -->
     <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
-
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
 
@@ -840,14 +840,14 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">contact</h5>
+                    <h5 class="txt-dark">新增周期采购计划</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>apps</span></a></li>
-                        <li class="active"><span>contact list</span></li>
+                        <li><a href="/index.do">主页</a></li>
+                        <li><a href="javaScript.void(0)"><span>周期采购计划</span></a></li>
+                        <li class="active"><span>新增周期采购计划</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -862,12 +862,9 @@
                             <div class="panel-body pa-0">
                                 <div class="contact-list">
                                     <div class="row">
-
-
                                         <aside class="col-lg-2 col-md-4 pr-0">
                                             <!--选择合同 div-->
                                             <div class="mt-20 mb-20 ml-15 mr-15">
-
                                                 <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-danger btn-block">填写信息</a>
                                                 <!-- Modal -->
                                                 <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
@@ -977,7 +974,7 @@
                                                                 </tr>
                                                                 </thead>
                                                                 <tbody id="tbo">
-                                                                <%--<tr class="item">--%>
+                                                                <%--<tr class="items">--%>
                                                                     <%--<td>五花肉</td>--%>
                                                                     <%--<td><input type='number' class="quantity" value="789"/></td>--%>
                                                                     <%--<td><input type='number' class="quantity" value="20"/></td>--%>
@@ -991,7 +988,7 @@
                                                                 </tbody>
                                                             </table>
                                                         </div>
-                                                        <button class="btn btn-danger" type="button" style="float: right">保存</button>
+                                                        <button class="btn btn-danger" type="button" style="float: right" id="addSt">保存</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1054,13 +1051,59 @@
 
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
 <script>
     $(function () {
+        $("#addSt").click(function () {
+            var stagePurchasingPlanTerms = new Array();
+            $(".items").each(function (i, e) {
+                stagePurchasingPlanTerms.push({
+                    stagePurchasingPlanTermId:0,
+                    materiel:{
+                        materielName:$(this).find("td:eq(0)").html(),
+                        materielId:$(this).find("td:eq(0)").attr("flagmid")
+                    },
+                    materielNumber:$(this).find("td:eq(1) input").val(),
+                    unitPrice:$(this).find("td:eq(2) input").val(),
+                    supplier:{
+                        supplierId:$(this).find("td:eq(4)").attr("flagsid"),
+                        supplierName:$(this).find("td:eq(4)").html()
+                    },
+                    priceFloat:$(this).find("td:eq(3) input").val(),
+                    remarks:$(this).find("td:eq(5)").html(),
+                    stagePurchasingPlanId:0
+                });
+            });
+            var stagePurchasingPlans={
+                stagePurchasingPlanCycle:$("#stagePurchasingPlanCycle").val(),
+                stagePurchasingPlanRemarks:$("#stagePurchasingPlanRemarks").val(),
+                status:0
+            };
+            $.ajax({
+                type: "POST",
+                url: "${pageContext.request.contextPath}/purchase/addStagePurchasingPlan.do",
+                data: {"stagePurchasingPlans":JSON.stringify(stagePurchasingPlans),"stagePurchasingPlanTerms":JSON.stringify(stagePurchasingPlanTerms)},//将对象序列化成JSON字符串
+                success: function(data){
+                    if(data==true){
+                        swal({
+                            title: "新增成功！！!",
+                            type: "success",
+                            text: "您现在可以在其他系统中使用它！",
+                            confirmButtonColor: "#01c853",
+                        });
+                    }else{
+                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                    }
+                },
+                error: function(){
+                    swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                }
+            });
+        });
         $("#save").click(function(){
-            var $tr = $("<tr class='item'></tr>");
+            var $tr = $("<tr class='items'></tr>");
             $tr.append('<td flagmid="'+$("#materiel").val()+'">'+$("#materiel option:selected").text()+'</td>');
             $tr.append('<td><input type=\'number\' class="quantity" value="'+$("#materielNumber").val()+'"/></td>');
             $tr.append('<td><input type=\'number\' class="quantity" value="'+$("#unitPrice").val()+'"/></td>');

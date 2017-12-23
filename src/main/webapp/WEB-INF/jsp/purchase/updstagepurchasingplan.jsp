@@ -1281,7 +1281,6 @@ $(function () {
         $(this).parent().parent().parent().remove();
     });
     $("#save").click(function () {
-
         var stagePurchasingPlanTerms = new Array();
         $(".planitem").each(function (i, e) {
             var pid=$(this).attr("flagId");

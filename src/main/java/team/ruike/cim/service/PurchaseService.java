@@ -40,4 +40,10 @@ public interface PurchaseService {
      * @param pager 分页辅助类
      */
     void getPurchase(Purchase purchase,Pager<Purchase> pager);
+
+    /**
+     * 新增周期采购计划
+     * @param stagePurchasingPlan 采购计划对象
+     */
+    void addStagePurchasingPlan(StagePurchasingPlan stagePurchasingPlan);
 }
