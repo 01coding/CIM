@@ -1381,27 +1381,55 @@
                             <div class="panel-body">
 
                                 <div class="table-wrap">
+
+
                                     <div class="table-responsive">
+                                        <div style="position: relative;bottom: 10px;">
+                                            <form method="post"  action="/supplier.do">
+                                                <div class="form-group">
+
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">供应商编号:</label>
+                                                        <input type="text" class="form-control" name="supplierNo" value="${s.supplierNo}"
+                                                               placeholder="供应商编号">
+                                                        <div class="input-group-btn"
+                                                             style=" position: relative; top: 16px;">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;" >
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">供应商名称:</label>
+                                                        <input type="text" class="form-control" name="supplierName" value="${s.supplierName}"
+                                                               placeholder="供应商名称">
+                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
+                                                        <label class="control-label mb-10">供货类行:</label>
+                                                        <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                                            <option value="">请选择</option>
+                                                            <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
+                                                                <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
+                                                            </c:forEach>
+
+                                                        </select>
+                                                    </div>
+
+
+                                                </div>
+                                            </form>
+                                        </div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
-                                                <form  class="form-inline" action="${pageContext.request.contextPath}/supplier.do">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+
 
                                             <thead>
                                             <tr>
@@ -1687,19 +1715,26 @@
                                                                 <div class="col-md-6">
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
+                                                                            <label class="control-label col-md-3">供应商名称:</label>
                                                                             <div class="col-md-9">
-                                                                                    <input id="supplierName1" name="supplierName" value="${s.supplierName}"/>
+                                                                                <p id="supplierName1" class="form-control-static"> John </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
+                                                                            <label class="control-label col-md-3">供应商编号:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                <p class="form-control-static" id="supplierNo1"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div >
+
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">供货类型:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static" id="materielTypeLevelBId">John </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1708,8 +1743,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3">地址:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
+                                                                                <p class="form-control-static" id="supplierAddress1">John </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1719,8 +1753,7 @@
                                                                         <div class="form-group">
                                                                             <label class="control-label col-md-3">电话:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
+                                                                                <p class="form-control-static" id="supplierPhone1">24/05/1990 </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1729,37 +1762,43 @@
                                                                 <div class="col-md-6">
 
 
+
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单项数量:</label>
+                                                                            <label class="control-label col-md-3">合作开始时间:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                <p class="form-control-static" id="cooperationStartDate1"></p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店编号:</label>
+                                                                            <label class="control-label col-md-3">备注:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
+                                                                                <p class="form-control-static" id="supplierRemarks1"></p>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+
+                                                                    <div >
+                                                                        <div class="form-group">
+                                                                            <label class="control-label col-md-3">特许经营许可路径:</label>
+                                                                            <div class="col-md-9">
+                                                                                <p class="form-control-static"> </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">状态:</label>
+                                                                            <label class="control-label col-md-3">营业执照路径:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                <p class="form-control-static"> </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-
 
                                                                 </div>
                                                             </div>
@@ -1875,6 +1914,7 @@
         dedd();
         GetNowDate();
     })
+    /*提示框*/
     function bomb(message) {
         swal({
             title: message,
@@ -1882,8 +1922,8 @@
         });
         return false;
     }
-    detailsSupplier
 
+    /*根据id查询供应商*/
     function detailsSupplier(sid) {
         var datds={
             "id":sid
@@ -1893,7 +1933,15 @@
             type: 'POST',
             data: datds,
             success: function (data) {
-                $("#supplierName1").val(data.supplierName);
+                $("#supplierName1").html("<p id='supplierName1' class='form-control-static' style='margin-top: -8px'>"+data.supplierName+" </p>");
+                $("#materielTypeLevelBId").html("<p class='form-control-static' id='materielTypeLevelBId' style='margin-top: -8px'>"+data.materielTypeLevelB.materielTypeLevelBName+" </p>");
+                $("#supplierAddress1").html("<p class='form-control-static' id='supplierAddress1' style='margin-top: -8px'>"+data.supplierAddress+" </p>");
+                $("#supplierPhone1").html("<p class='form-control-static'' id='supplierPhone1' style='margin-top: -8px'>"+data.supplierPhone+" </p>");
+                $("#supplierNo1").html(" <p class='form-control-static' id='supplierNo1' style='margin-top: -8px'>"+data.supplierNo+"</p>");
+                $("#cooperationStartDate1").html(" <p class='form-control-static' id='cooperationStartDate1' style='margin-top: -8px'>"+data.cooperationStartDate+"</p>");
+                $("#supplierRemarks1").html("<p class='form-control-static' id='supplierRemarks1' style='margin-top: -8px'>"+data.supplierRemarks+"</p>");
+
+
             }, error: function () {
                 alert("error");
             }
@@ -1901,7 +1949,7 @@
         })
     }
 
-
+    /*根据id显示数据*/
     function supplierById(sid) {
         var datds={
             "id":sid
@@ -1921,6 +1969,8 @@
 
         })
     }
+
+    /*修改供应商*/
     function updateSupplierMethod(){
         var formob =  document.getElementById("updateSu");
         var formData1=new FormData(formob);
@@ -1935,10 +1985,10 @@
             success: function (data) {
                 if (null != data) {
                     if(data>0){
-                        bomb("添加成功");
+                        bomb("修改成功");
                         $("#updateModal").click();
                     }else {
-                        bomb("添加失败");
+                        bomb("修改失败");
                     }
                 }
             }, error: function () {
@@ -1948,6 +1998,8 @@
         })
 
     }
+
+    /*添加供应商*/
      function addSupplierMethod(){
          var formobj =  document.getElementById("addS");
          var formData=new FormData(formobj);
@@ -1995,6 +2047,7 @@
         $("#signDate").val(currentdate);
     }
 
+    /*删除供应商*/
     function dedd() {
         $(".del").click(function(){
             var mid=$(this).attr("flagId");

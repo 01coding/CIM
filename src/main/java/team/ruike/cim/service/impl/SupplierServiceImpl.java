@@ -76,15 +76,14 @@ public class SupplierServiceImpl implements SupplierService{
     @Override
     public int addSupplier(Supplier supplier) {
         supplier.setStatus(0);
-       /* if (supplier.getCooperationStartDate()!=null && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0
+       if ( supplier!=null && supplier.getCooperationStartDate()!=null && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0
                 && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
-                && supplier.getSupplierCharterImage()!=null && supplier.getSupplierId()!=null
-                && supplier.getSupplierId()>0 && supplier.getSupplierImage()!=null && supplier.getSupplierName()!=null
+                && supplier.getSupplierCharterImage()!=null && supplier.getSupplierImage()!=null && supplier.getSupplierName()!=null
                 && supplier.getSupplierName()!="" && supplier.getSupplierNo()!=null && supplier.getSupplierNo()!=""
-                && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""){*/
-            return supplierDao.add(supplier);
-        /*}
-        return 0;*/
+                && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!="") {
+           return supplierDao.add(supplier);
+       }
+        return 0;
     }
 
     /**
@@ -125,4 +124,32 @@ public class SupplierServiceImpl implements SupplierService{
         List<SupplierContract>supplierContractList=supplierContractDao.select(supplierContract,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
         pager.setList(supplierContractList);
     }
+
+
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @return
+     */
+    @Override
+    public int addSupplierContract(SupplierContract supplierContract) {
+       if(supplierContract.getSupplierContractName()!=null && supplierContract.getSupplierContractName()!=""
+                && supplierContract.getSupplierContractDate()!=null && supplierContract.getSupplier()!=null
+                && supplierContract.getSupplier().getSupplierId()>0)
+        {
+            return  supplierContractDao.add(supplierContract);
+       }
+        return 0;
+    }
+
+    /**
+     * 获取所有供应商信息，放到合同
+     * @param supplier 供应商
+     * @return
+     */
+    @Override
+    public List<Supplier> getSupplierList(Supplier supplier) {
+        return supplierDao.select(supplier,0,99);
+    }
+
 }

@@ -47,7 +47,7 @@ public class QualityController {
      * @return
      */
     @RequestMapping("Something.cl")
-    public String getRecordBySomething(Integer sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
+    public String getRecordBySomething(String sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
         System.out.println(sid);
         if (sid!=null){
             System.out.println(sid);
@@ -281,7 +281,7 @@ public class QualityController {
         if(materielList!=null && materielList.get(0)!=null){
             purchaseStandard= qualityService.getpurchaseStandard(materielList.get(0).getMaterielId());
         }
-        Integer number=qualityService.getNumberByDate(dates);
+        String number=qualityService.getNumberByDate(dates);
 
 
         request.setAttribute("piciA",materielTypeLevelAList);
