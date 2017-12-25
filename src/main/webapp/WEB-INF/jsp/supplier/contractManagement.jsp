@@ -1616,19 +1616,13 @@
             contentType: false,
             success: function (data) {
                 if (null != data) {
+                    addSuCont(data);
                     bomb("【"+data.supplierContractName+"】添加成功");
                     /*添加成功退出弹框*/
                     $("#addmodal").click();
                     /*添加成功清空文本框*/
                     document.getElementById("addSuContract").reset();
-                    /*添加成功显示页面，一次*/
-                        var display="<tr>"
-                            +"<td>"+data.supplier.supplierNo+"</td>"
-                            +"<td>"+data.supplierContractName+"</td>"
-                            +"<td>"+ data.supplierContractDate+"</td>"
-                            +"<td>"+data.supplier.supplierName+"</td>"
-                            +"</tr>";
-                            $("tbody").append(display)
+
                 }else {
                     bomb("添加失败");
                 }
@@ -1638,6 +1632,17 @@
         })
     }
 
+    function addSuCont(data) {
+        /*添加成功显示页面，一次*/
+        var store=$("#addSuContract select[name='supplier.supplierId'] option:selected").text();
+        var display="<tr>"
+            +"<td>"+data.supplier.supplierNo+"</td>"
+            +"<td>"+data.supplierContractName+"</td>"
+            +"<td>"+data.supplierContractDate+"</td>"
+            +"<td>"+store+"</td>"
+            +"</tr>";
+        $("tbody").append(display)
+    }
     //获取当前日期给date控件赋值
     function GetNowDate() {
         var date = new Date();

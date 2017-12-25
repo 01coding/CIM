@@ -967,9 +967,9 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
 
-                                        <table id="example" class="table table-hover display  pb-30">
+
                                             <%--模糊查询--%>
-                                            <div class="row">
+                                            <div style="position: relative;bottom: 10px;">
                                                 <form class="form-inline" action="/equipment.do" method="post">
                                                 <div>
                                                         <div class="form-group col-md-4" style="width: 300px;">
@@ -1006,6 +1006,7 @@
                                                 </div>
                                                 </form>
                                             </div>
+                                   <table id="example" class="table table-hover display  pb-30">
                                             <thead>
                                             <tr>
                                                 <th>设备名称</th>
@@ -1359,7 +1360,7 @@
         dedd()
         addeqValidate();
     });
-
+    /*添加成功弹框*/
     function bomb(message) {
         swal({
             title: message,
@@ -1367,7 +1368,7 @@
         });
         return false;
     }
-    
+    /*设备验证*/
     function addeqValidate() {
 
         $("#addeq").validate({
@@ -1390,7 +1391,7 @@
         });
     }
 
-
+/*添加设备*/
     function add() {
 
         var flag = $("#addeq").valid();
@@ -1425,6 +1426,7 @@
 
 
     }
+    /*删除*/
     function dedd() {
         $(".del").click(function(){
             var mid=$(this).attr("flagId");
@@ -1458,8 +1460,7 @@
             });
         });
     }
-</script>
-<script>
+    /*分空判断*/
     $(function () {
         $("#butt").click(function () {
             var no ="不能为空";
@@ -1484,6 +1485,7 @@
         })
     })
 </script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

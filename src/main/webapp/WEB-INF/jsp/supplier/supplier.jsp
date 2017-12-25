@@ -1392,47 +1392,47 @@
 
                                     <div class="table-responsive">
                                         <div style="position: relative;bottom: 10px;">
-                                            <form method="post"  action="/supplier.do">
-                                                <div class="form-group">
+                                        <form method="post"  action="/supplier.do">
+                                            <div class="form-group">
 
 
-                                                    <div class="input-group" style="width: 300px;float: right;">
-                                                        <label class="control-label mb-10">供应商编号:</label>
-                                                        <input type="text" class="form-control" name="supplierNo"
-                                                               placeholder="供应商编号">
-                                                        <div class="input-group-btn"
-                                                             style=" position: relative; top: 16px;">
-                                                            <button type="submit" class="btn btn-primary"
-                                                                    style="height:42px;" >
-                                                                <span class="fooicon fooicon-search"></span>
-                                                            </button>
-                                                        </div>
+                                                <div class="input-group" style="width: 300px;float: right;">
+                                                    <label class="control-label mb-10">供应商编号:</label>
+                                                    <input type="text" class="form-control" name="supplierNo"
+                                                           placeholder="供应商编号">
+                                                    <div class="input-group-btn"
+                                                         style=" position: relative; top: 16px;">
+                                                        <button type="submit" class="btn btn-primary"
+                                                                style="height:42px;" >
+                                                            <span class="fooicon fooicon-search"></span>
+                                                        </button>
                                                     </div>
-
-                                                    <div class="input-group" style="width: 300px;float: right;">
-                                                        <label class="control-label mb-10">供应商名称:</label>
-                                                        <input type="text" class="form-control" name="supplierName"
-                                                               placeholder="供应商名称">
-                                                        <div class="input-group-btn"style=" position: relative; top: 16px;">
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
-                                                        <label class="control-label mb-10">供货类行:</label>
-                                                        <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
-                                                            <option value="">请选择</option>
-                                                            <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
-                                                                <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
-                                                            </c:forEach>
-
-                                                        </select>
-                                                    </div>
-
-
                                                 </div>
-                                            </form>
-                                        </div>
+
+                                                <div class="input-group" style="width: 300px;float: right;">
+                                                    <label class="control-label mb-10">供应商名称:</label>
+                                                    <input type="text" class="form-control" name="supplierName"
+                                                           placeholder="供应商名称">
+                                                    <div class="input-group-btn"style=" position: relative; top: 16px;">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
+                                                    <label class="control-label mb-10">供货类行:</label>
+                                                    <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                                        <option value="">请选择</option>
+                                                        <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
+                                                            <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
+                                                        </c:forEach>
+
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
@@ -1451,12 +1451,12 @@
                                             </tr>
                                             </thead>
 
-                                            <tbody>
+                                            <tbody >
 
 
                                             <c:forEach items="${requestScope.suppliers.list}" var="s">
 
-                                                <tr>
+                                                <tr id="tr">
                                                     <td>${s.supplierNo}</td>
                                                     <td>${s.supplierName}</td>
                                                     <td>${s.materielTypeLevelB.materielTypeLevelBName}</td>
@@ -1479,7 +1479,7 @@
                                                                 <i class="fa ti-search" style="color: #2879ff;"></i>
                                                             </button>
                                                             <button type="button"  flagId="${s.supplierId}" flagName="${s.supplierName}"  class="btn btn-default footable-delete del" >
-                                                                <span class="fooicon fooicon-trash" title="删除" aria-hidden="true"></span>
+                                                                <span class="fooicon fooicon-trash" title="删除" onclick="dedd(${s.supplierId})" aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                     </td>
@@ -1559,7 +1559,6 @@
             <!-- /Row -->
         </div>
 
-
         <div class="row">
 
 
@@ -1575,14 +1574,15 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
+                                <h5 class="modal-title" >供应商修改</h5>
                             </div>
                             <div class="modal-body">
-                                <form id="updateSu" method="get">
+                                <form id="updateSu" method="post">
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" id="supplierName" name="supplierName" class="form-control">
-                                        <input type="text" id="supplierId" name="supplierId">
+                                        <input type="hidden" id="supplierId" name="supplierId">
 
 
                                     </div>
@@ -1592,16 +1592,14 @@
                                         <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
                                             <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
                                                 <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
-                                                    <option value="${s.materielTypeLevelB.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
+                                                    <option id="s.materielTypeLevelB.materielTypeLevelBId" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
                                                 </c:if>
-
                                                 <c:if test="${m.materielTypeLevelBId != s.materielTypeLevelB.materielTypeLevelBId}">
-                                                    <option value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
+                                                    <option id="m.materielTypeLevelBId">${m.materielTypeLevelBName}</option>
                                                 </c:if>
                                             </c:forEach>
                                         </select>
                                     </div>
-
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
@@ -1643,7 +1641,7 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" >门店</h5>
+                                <h5 class="modal-title" >供应商添加</h5>
                             </div>
                             <div class="modal-body">
                                 <form id="addS" method="post">
@@ -1996,7 +1994,7 @@
     function updateSupplierMethod(){
         var formob =  document.getElementById("updateSu");
         var formData1=new FormData(formob);
-        alert(document.getElementsByName("supplierId"));
+
         $.ajax({
             url: '/updateSupplier.do',
             type: 'POST',
@@ -2007,8 +2005,10 @@
             success: function (data) {
                 if (null != data) {
                     if(data>0){
+
                         bomb("修改成功");
                         $("#updateModal").click();
+                        upp();
                     }else {
                         bomb("修改失败");
                     }
@@ -2018,7 +2018,15 @@
             }
         })
     }
-
+    /*修改成功,显示修改后的值*/
+    function upp() {
+        var tr=document.getElementById("tr");
+        tr.cells[1].innerText=$("#updateSu input[name='supplierName']").val();
+        tr.cells[2].innerText=$("#updateSu select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
+        tr.cells[3].innerText=$("#updateSu textarea[name='supplierAddress']").val();
+        tr.cells[4].innerText=$("#updateSu input[name='supplierPhone']").val();
+        tr.cells[6].innerText=$("#updateSu textarea[name='supplierRemarks']").val();
+    }
     /*添加供应商*/
      function addSupplierMethod(){
          var formobj =  document.getElementById("addS");
@@ -2033,22 +2041,13 @@
 
              success: function (data) {
                  if (null != data) {
+                     addsupplier(data);
                          bomb("【"+data.supplierName+"】添加成功");
                          /*添加成功退出弹框*/
                          $("#addmodal").click();
                          /*添加成功清空文本框*/
                          document.getElementById("addS").reset();
-                         /*添加成功显示页面，一次*/
-                         var display="<tr>"
-                             +"<td>"+data.supplierNo+"</td>"
-                             +"<td>"+data.supplierName+"</td>"
-                             +"<td>"+data.materielTypeLevelB.materielTypeLevelBName+"</td>"
-                             +"<td>"+data.supplierAddress+"</td>"
-                             +"<td>"+data.supplierPhone+"</td>"
-                             +"<td>"+data.cooperationStartDate+"</td>"
-                             +"<td>"+data.supplierRemarks+"</td>"
-                             +"</tr>";
-                         $("tbody").append(display)
+
                      }else {
                          bomb("添加失败");
 
@@ -2061,6 +2060,33 @@
 
      }
 
+
+     function addsupplier(data) {
+         /*添加成功显示页面，一次*/
+         var materielTypeLevelBId=$("#addS select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
+         var display="<tr>"
+          +"<td>"+data.supplierNo+"</td>"
+          +"<td>"+data.supplierName+"</td>"
+          +"<td>"+materielTypeLevelBId+"</td>"
+          +"<td>"+data.supplierAddress+"</td>"
+          +"<td>"+data.supplierPhone+"</td>"
+          +"<td>"+data.cooperationStartDate+"</td>"
+          +"<td>"+data.supplierRemarks+"</td>" +
+          "<td><div class='btn-group btn-group-xs' role='group'>\n" +
+             "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
+             "\n" +
+             "     <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+             "  </button>\n" +
+             "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
+             "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+             "  </button>\n" +
+             "  <button type='button'  flagId='"+data.supplierId+"' flagName='"+data.supplierName+"'  class='btn btn-default footable-delete del' >\n" +
+             "      <span class='fooicon fooicon-trash' title='删除' onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
+             "  </button>\n" +
+             "</div></td>"
+
+          $("tbody").append(display)
+     }
     //获取当前日期给date控件赋值
     function GetNowDate() {
         var date = new Date();

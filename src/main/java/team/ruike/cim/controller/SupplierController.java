@@ -5,7 +5,6 @@ package team.ruike.cim.controller;
  */
 
 import com.alibaba.fastjson.JSON;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -152,7 +151,9 @@ public class SupplierController {
 
         String filePath = upload(file, request);
         supplierContract.setSupplierContractImage("");
-        if (filePath != null && !filePath.equals("")) {
+        if (filePath != null && !filePath.equals("")) {/*
+            String pic_time = new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());*/
+
             supplierContract.setSupplierContractImage(filePath);
         }
 
