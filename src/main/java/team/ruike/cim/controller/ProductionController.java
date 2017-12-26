@@ -43,6 +43,7 @@ public class ProductionController {
     @RequestMapping("/generateContractProductionPlan.do")
     @ResponseBody
     public String generateContractProductionPlan() throws ParseException {
-        return JSON.toJSONString(productionService.generateContractProductionPlan());
+        productionService.generateContractProductionPlan();
+        return "";
     }
 }

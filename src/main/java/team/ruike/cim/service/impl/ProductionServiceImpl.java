@@ -1,5 +1,6 @@
 package team.ruike.cim.service.impl;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.ContractOrderDao;
 import team.ruike.cim.dao.ContractProductionPlanDao;
@@ -35,7 +36,8 @@ public class ProductionServiceImpl implements ProductionService {
      * @return 今日合同生产计划
      */
     @Override
-    public ContractProductionPlan generateContractProductionPlan() throws ParseException {
+    @Scheduled(cron = "0 03 14 ? * *")
+    public void generateContractProductionPlan() throws ParseException {
         //实例化生产计划对象
         ContractProductionPlan contractProductionPlan=new ContractProductionPlan();
         contractProductionPlan.setContractProductionPlanItems(new ArrayList<ContractProductionPlanItem>());
@@ -80,6 +82,5 @@ public class ProductionServiceImpl implements ProductionService {
                 }
             }
         }
-        return contractProductionPlan;
     }
 }

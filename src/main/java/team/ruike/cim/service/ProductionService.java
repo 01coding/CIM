@@ -11,7 +11,6 @@ import java.util.List;
 public interface ProductionService {
     /**
      * 生成今日合同生产计划
-     * @return 今日合同生产计划
      */
-    ContractProductionPlan generateContractProductionPlan() throws ParseException;
+    void generateContractProductionPlan() throws ParseException;
 }
