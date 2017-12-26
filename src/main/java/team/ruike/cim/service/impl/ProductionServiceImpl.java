@@ -36,7 +36,7 @@ public class ProductionServiceImpl implements ProductionService {
      * @return 今日合同生产计划
      */
     @Override
-    @Scheduled(cron = "0 03 14 ? * *")
+//    @Scheduled(cron = "0 03 14 ? * *")
     public void generateContractProductionPlan() throws ParseException {
         //实例化生产计划对象
         ContractProductionPlan contractProductionPlan=new ContractProductionPlan();
