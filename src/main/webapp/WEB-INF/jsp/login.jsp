@@ -76,8 +76,8 @@
 
                                         <div class="form-group">
                                             <div class="checkbox checkbox-primary pr-10 pull-left">
-                                                <input id="checkbox_2" required="" type="checkbox">
-                                                <label for="checkbox_2"> 自动登陆</label>
+                                                <input id="checkbox_2" type="checkbox" value="1" name="flag">
+                                                <label for="checkbox_2">15天内自动登陆</label>
                                             </div>
                                             <div class="clearfix"></div>
                                         </div>

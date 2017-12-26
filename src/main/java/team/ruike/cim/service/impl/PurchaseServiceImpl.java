@@ -1,8 +1,12 @@
 package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
+import team.ruike.cim.dao.EverydayPurchasingPlanDao;
+import team.ruike.cim.dao.PurchaseDao;
 import team.ruike.cim.dao.StagePurchasingPlanDao;
 import team.ruike.cim.dao.StagePurchasingPlanTermDao;
+import team.ruike.cim.pojo.EverydayPurchasingPlan;
+import team.ruike.cim.pojo.Purchase;
 import team.ruike.cim.pojo.StagePurchasingPlan;
 import team.ruike.cim.pojo.StagePurchasingPlanTerm;
 import team.ruike.cim.service.PurchaseService;
@@ -22,6 +26,10 @@ public class PurchaseServiceImpl implements PurchaseService {
     private StagePurchasingPlanDao stagePurchasingPlanDao;
     @Resource
     private StagePurchasingPlanTermDao stagePurchasingPlanTermDao;
+    @Resource
+    private PurchaseDao purchaseDao;
+    @Resource
+    private EverydayPurchasingPlanDao everydayPurchasingPlanDao;
     /**
      * 获取周期采购计划列表
      * @param stagePurchasingPlan 计划对象（参数）
@@ -57,5 +65,55 @@ public class PurchaseServiceImpl implements PurchaseService {
         for (StagePurchasingPlanTerm item : items) {
             stagePurchasingPlanTermDao.add(item);
         }
+    }
+
+    /**
+     * 获取所有采购列表
+     * @param purchase 采购对象（参数）
+     * @param pager 分页辅助类
+     */
+    @Override
+    public void getPurchase(Purchase purchase, Pager<Purchase> pager) {
+        pager.setTotalRecord(purchaseDao.selectCount(purchase));
+        pager.setList(purchaseDao.select(purchase,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize()));
+    }
+
+    /**
+     * 新增周期采购计划
+     * @param stagePurchasingPlan 采购计划对象
+     */
+    @Override
+    public void addStagePurchasingPlan(StagePurchasingPlan stagePurchasingPlan) {
+        stagePurchasingPlanDao.add(stagePurchasingPlan);
+        for (StagePurchasingPlanTerm stagePurchasingPlanTerm : stagePurchasingPlan.getStagePurchasingPlanTermList()) {
+            stagePurchasingPlanTerm.setStagePurchasingPlanId(stagePurchasingPlan.getStagePurchasingPlanId());
+            stagePurchasingPlanTermDao.add(stagePurchasingPlanTerm);
+        }
+    }
+
+    /**
+     * 删除周期采购计划
+     * @param stagePurchasingPlanId 计划id
+     */
+    @Override
+    public void delStagePurchasingPlan(Integer stagePurchasingPlanId) {
+        //1.根据查询计划对象
+        StagePurchasingPlan stagePurchasingPlan = stagePurchasingPlanDao.selectById(stagePurchasingPlanId);
+        //2.修改数据，调用修改方法
+        stagePurchasingPlan.setStatus(1);
+        stagePurchasingPlanDao.update(stagePurchasingPlan);
+        //3.删除计划项
+        stagePurchasingPlanTermDao.delStagePurchasingPlanTermBysId(stagePurchasingPlanId);
+    }
+
+    /**
+     * 获取每日采购计划列表
+     * @param everydayPurchasingPlan 每日采购计划对象（参数）
+     * @param pager                  分页辅助类
+     */
+    @Override
+    public void getEverydayPurchasePlans(EverydayPurchasingPlan everydayPurchasingPlan, Pager<EverydayPurchasingPlan> pager) {
+        pager.setTotalRecord(everydayPurchasingPlanDao.selectCount(everydayPurchasingPlan));
+        pager.setList(everydayPurchasingPlanDao.select(everydayPurchasingPlan,(pager.getCurrentPage()-1)*pager.getPageSize(),pager.getPageSize()));
     }
 }

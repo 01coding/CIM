@@ -967,8 +967,9 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
 
-                                        <table id="example" class="table table-hover display  pb-30">
-                                            <div class="row">
+
+                                            <%--模糊查询--%>
+                                            <div style="position: relative;bottom: 10px;">
                                                 <form class="form-inline" action="/equipment.do" method="post">
                                                 <div>
                                                         <div class="form-group col-md-4" style="width: 300px;">
@@ -1005,6 +1006,7 @@
                                                 </div>
                                                 </form>
                                             </div>
+                                   <table id="example" class="table table-hover display  pb-30">
                                             <thead>
                                             <tr>
                                                 <th>设备名称</th>
@@ -1042,6 +1044,8 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                            <%--修改--%>
                                                 <div class="col-md-6">
                                                     <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
                                                          aria-labelledby="exampleModalLabel1">
@@ -1115,6 +1119,7 @@
                                                                                                 <c:when test="${w.workingId!=e.working.workingId}">
                                                                                                     <option value="${w.workingId}">${w.workingName}</option>
                                                                                                 </c:when>
+
                                                                                                 <c:when test="${w.workingId==e.working.workingId}">
                                                                                                     <option value="${e.working.workingId}"selected="selected">${e.working.workingName}</option>
                                                                                                 </c:when>
@@ -1204,6 +1209,7 @@
                                             </c:forEach>
 
                                             </tbody>
+
                                         </table>
                                         <%--分页--%>
                                         <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
@@ -1327,7 +1333,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary" onclick="add()" >保存</button>
+                                    <button type="button" class="btn btn-primary adds" onclick="add()" >保存</button>
                                 </div>
                             </div>
                         </div>
@@ -1355,14 +1361,7 @@
         addeqValidate();
     });
 
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
-    }
-    
+    /*设备验证*/
     function addeqValidate() {
 
         $("#addeq").validate({
@@ -1385,7 +1384,7 @@
         });
     }
 
-
+/*添加设备*/
     function add() {
 
         var flag = $("#addeq").valid();
@@ -1394,32 +1393,45 @@
             return;
         }
 
-            var equis=$("#addeq").serializeArray();
 
-            $.ajax({
-                url: "/addEquipment.do",
-                method: "post",
-                data: equis,
-                dataType: "json",
-                success: function (data) {
-                    if (null != data) {
-                        if(data>0){
-                            bomb("添加成功");
-                            $("#addmodal").click();
-                            document.getElementById("addeq").reset();
-                        }else {
-                            bomb("添加失败");
-                        }
+        $(".adds").click(function() {
+            var equis = $("#addeq").serializeArray();
+            swal({
+                    title: "你确定要添加?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: "/addEquipment.do",
+                            method: "post",
+                            data: equis,
+                            dataType: "json",
+                            success: function (data) {
+                                if (null != data) {
+                                    if (data > 0) {
+                                        swal("添加成功");
+                                        $("#addmodal").click();
+                                        document.getElementById("addeq").reset();
+                                    } else {
+                                        swal("添加失败");
+                                    }
+                                }
+                            }, error: function () {
+                                swal("error");
+                            }
+                        });
                     }
-                }, error: function () {
-                    alert("error");
-                }
             });
-
-
-
-
+        });
     }
+    /*删除*/
     function dedd() {
         $(".del").click(function(){
             var mid=$(this).attr("flagId");
@@ -1453,8 +1465,7 @@
             });
         });
     }
-</script>
-<script>
+    /*分空判断*/
     $(function () {
         $("#butt").click(function () {
             var no ="不能为空";
@@ -1479,6 +1490,7 @@
         })
     })
 </script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 

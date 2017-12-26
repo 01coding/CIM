@@ -6,10 +6,13 @@ package team.ruike.cim.service.impl;
 
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.MaterielTypeLevelBDao;
+import team.ruike.cim.dao.SupplierContractDao;
 import team.ruike.cim.dao.SupplierDao;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
+import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -26,6 +29,8 @@ public class SupplierServiceImpl implements SupplierService{
     private SupplierDao supplierDao;
     @Resource
     private MaterielTypeLevelBDao materielTypeLevelBDao;
+    @Resource
+    private SupplierContractDao supplierContractDao;
     /**
      * 查询所有供应商信息
      * @param supplier 供应商
@@ -70,16 +75,84 @@ public class SupplierServiceImpl implements SupplierService{
      * @return
      */
     @Override
-    public int addSupplier(Supplier supplier) {
+    public Supplier addSupplier(Supplier supplier) {
         supplier.setStatus(0);
-       /* if (supplier.getCooperationStartDate()!=null && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0
-                && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
-                && supplier.getSupplierCharterImage()!=null && supplier.getSupplierId()!=null
-                && supplier.getSupplierId()>0 && supplier.getSupplierImage()!=null && supplier.getSupplierName()!=null
-                && supplier.getSupplierName()!="" && supplier.getSupplierNo()!=null && supplier.getSupplierNo()!=""
-                && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""){*/
-            return supplierDao.add(supplier);
-        /*}
-        return 0;*/
+        String supplierNo= GenerateNumber.getGenerateNumber().getRandomFileName();
+        supplier.setSupplierNo(supplierNo);
+        supplierDao.add(supplier);
+        return supplier;
     }
+
+    /**
+     * 修改供应商
+     * @param supplier 供应商
+     * @return
+     */
+    @Override
+    public int updateSupplier(Supplier supplier) {
+
+        Supplier supplierById = getSupplierById(supplier.getSupplierId());
+
+        //删除伪列
+        supplier.setStatus(0);
+        //时间
+        supplier.setCooperationStartDate(supplierById.getCooperationStartDate());
+        //特许经营许可路径
+        supplier.setSupplierCharterImage(supplierById.getSupplierCharterImage());
+        //营业执照路径
+        supplier.setSupplierImage(supplierById.getSupplierImage());
+        //合同编号
+        supplier.setSupplierNo(supplierById.getSupplierNo());
+        //状态
+        supplier.setSupplierState(supplierById.getSupplierState());
+        return supplierDao.update(supplier);
+
+    }
+
+    /**
+     * 根据id查询信息
+     * @param id 供应商id
+     * @return
+     */
+    @Override
+    public Supplier getSupplierById(int id) {
+        return supplierDao.selectById(id);
+    }
+
+    /**
+     * 查询所有合同信息
+     * @param supplierContract 合同
+     * @param pager 分页辅助类
+     */
+    @Override
+    public void getSupplierContract(SupplierContract supplierContract, Pager<SupplierContract> pager) {
+        pager.setTotalRecord(supplierContractDao.selectCount(supplierContract));
+        List<SupplierContract>supplierContractList=supplierContractDao.select(supplierContract,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
+        pager.setList(supplierContractList);
+    }
+
+
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @return
+     */
+    @Override
+    public SupplierContract addSupplierContract(SupplierContract supplierContract) {
+        String supplierContractNo= GenerateNumber.getGenerateNumber().getRandomFileName();
+        supplierContract.getSupplier().setSupplierNo(supplierContractNo);
+        supplierContractDao.add(supplierContract);
+        return supplierContract;
+    }
+
+    /**
+     * 获取所有供应商信息，放到合同
+     * @param supplier 供应商
+     * @return
+     */
+    @Override
+    public List<Supplier> getSupplierList(Supplier supplier) {
+        return supplierDao.select(supplier,0,99);
+    }
+
 }

@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/21
@@ -7,6 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -421,7 +422,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==2}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==4}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -431,11 +432,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==2}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==4}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==15}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==65}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -988,24 +989,123 @@
                                             </thead>
 
                                             <tbody>
-                                            <tr>
+                                            <c:forEach items="${requestScope.pager.list}" var="ls">
+                                                <tr>
+                                                    <td>${ls.everydayPurchasingPlanNo}</td>
+                                                    <td><fmt:formatDate value="${ls.everydayPurchasingPlanDate}" pattern="yyyy年MM月dd日"/></td>
+                                                    <td class="footable-editing" style="display: table-cell;">
+                                                        <!--查看显示框-->
+                                                        <div class="col-md-6">
+                                                            <div class="modal fade" id="exampleModalSelect${ls.everydayPurchasingPlanId}" tabindex="0" role="dialog"
+                                                                 aria-labelledby="exampleModalLabel1">
+                                                                <!-- Row -->
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <div class="panel panel-default card-view">
+                                                                            <div class="panel-heading">
+                                                                                <div class="pull-left">
+                                                                                    <h6 class="panel-title txt-dark">采购项</h6>
+                                                                                </div>
+                                                                                <div class="clearfix"></div>
+                                                                            </div>
+                                                                            <div class="panel-wrapper collapse in">
+                                                                                <div class="panel-body">
+                                                                                    <div class="row">
+                                                                                        <div class="col-md-12">
+                                                                                            <div class="form-wrap">
+                                                                                                <form class="form-horizontal" role="form">
+                                                                                                    <div class="form-body">
+                                                                                                        <c:forEach items="${ls.everydayPurchasingPlanTerms}" var="lpts">
+                                                                                                        <hr class="light-grey-hr"/>
+                                                                                                        <div class="row">
+                                                                                                            <!--订单项-->
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">物料名称:</label>
+                                                                                                                    <div class="col-md-8">
+                                                                                                                        <p class="form-control-static">${lpts.materiel.materielName}</p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3" >
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">数量:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.materielNumber} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3" >
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-5">预计采购单价:</label>
+                                                                                                                    <div class="col-md-5">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.unitPrice} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-4">价格允许浮动范围:</label>
+                                                                                                                    <div class="col-md-4">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.priceFloat} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-3">
+                                                                                                                <div class="form-group">
+                                                                                                                    <label class="control-label col-md-3">备注:</label>
+                                                                                                                    <div class="col-md-9">
+                                                                                                                        <p class="form-control-static">
+                                                                                                                            ${lpts.remarks} </p>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <hr class="light-grey-hr"/>
+                                                                                                        </div>
+                                                                                                        </c:forEach>
+                                                                                                    </div>
 
-                                                <td>02 170826 001</td>
-                                                <td>2018/01/01</td>
+                                                                                                    <div class="form-actions mt-10">
+                                                                                                        <div class="row">
+                                                                                                            <div class="col-md-10"></div>
+                                                                                                            <div class="col-md-2">
+                                                                                                                <div class="row">
+                                                                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                                                                        <button type="button"
+                                                                                                                                class="btn btn-default"
+                                                                                                                                data-dismiss="modal">关闭
+                                                                                                                        </button>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
 
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
+                                                                                                </form>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- /Row -->
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-group btn-group-xs" role="group">
+                                                            <button type="button" class="btn btn-default footable-edit"
+                                                                    data-toggle="modal" data-target="#exampleModalSelect${ls.everydayPurchasingPlanId}">
+                                                                <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                            </button>
 
-                                                        <button type="button" class="btn btn-default footable-edit"
-                                                                data-toggle="modal" data-target="#exampleModalSelect">
-                                                            <i class="fa ti-search" style="color: #2879ff;"></i>
-                                                        </button>
-
-                                                    </div>
-                                                </td>
-                                            </tr>
-
-
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
 
@@ -1020,20 +1120,42 @@
 
                                     </div>
                                 </div>
-
-
                                 <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                     <div class="panel-body">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            Pager pager = (Pager) request.getAttribute("pager");
+                                                            if(pager.getCurrentPage()!=1){%>
+                                                                href="${pageContext.request.contextPath}/purchase/getEverydayPurchasePlans.do?currentPage=${requestScope.pager.previousPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-left"></i></a></li>
+                                                    <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                        <li <c:if
+                                                                test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                            <a href="${pageContext.request.contextPath}/purchase/getEverydayPurchasePlans.do?currentPage=${bar}">${bar}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                href="${pageContext.request.contextPath}/purchase/getEverydayPurchasePlans.do?currentPage=${requestScope.pager.nextPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-right"></i></a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -1053,133 +1175,7 @@
 
 
 
-            <!--查看显示框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <!-- Row -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="panel panel-default card-view">
-                                <div class="panel-heading">
-                                    <div class="pull-left">
-                                        <h6 class="panel-title txt-dark">采购项</h6>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="panel-wrapper collapse in">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="form-wrap">
-                                                    <form class="form-horizontal" role="form">
-                                                        <div class="form-body">
-                                                            <hr class="light-grey-hr"/>
 
-
-                                                            <div class="row">
-                                                                <!--订单项-->
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-
-                                                                        <label class="control-label col-md-4">物料名称:</label>
-                                                                        <div class="col-md-8">
-                                                                            <p class="form-control-static">John</p>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">数量:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                John </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3" >
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-5">预计采购单价:</label>
-                                                                        <div class="col-md-5">
-                                                                            <p class="form-control-static">
-                                                                                Male </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-4">价格允许浮动范围:</label>
-                                                                        <div class="col-md-4">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-4">供应商:</label>
-                                                                        <div class="col-md-5">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-
-
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label class="control-label col-md-3">备注:</label>
-                                                                        <div class="col-md-9">
-                                                                            <p class="form-control-static">
-                                                                                24/05/1990 </p>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <hr class="light-grey-hr"/>
-
-                                                            </div>
-
-
-
-
-
-
-
-
-                                                        </div>
-
-                                                        <div class="form-actions mt-10">
-                                                            <div class="row">
-                                                                <div class="col-md-10"></div>
-                                                                <div class="col-md-2">
-                                                                    <div class="row">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button"
-                                                                                    class="btn btn-default"
-                                                                                    data-dismiss="modal">关闭
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Row -->
-                </div>
-            </div>
 
         </div>
 

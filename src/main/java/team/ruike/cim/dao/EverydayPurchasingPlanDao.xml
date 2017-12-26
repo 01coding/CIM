@@ -7,7 +7,7 @@
         <if test="everydayPurchasingPlanId!=null and everydayPurchasingPlanId>0">
             and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
         </if>
-        <if test="everydayPurchasingPlanNo!=null and everydayPurchasingPlanNo>0">
+        <if test="everydayPurchasingPlanNo!=null and everydayPurchasingPlanNo!=''">
             and everyday_purchasing_plan_no=#{everydayPurchasingPlanNo}
         </if>
         <if test="everydayPurchasingPlanDate!=null">
@@ -20,7 +20,7 @@
         <if test="everydayPurchasingPlan.everydayPurchasingPlanId!=null and everydayPurchasingPlan.everydayPurchasingPlanId>0">
             and everyday_purchasing_plan_id=#{everydayPurchasingPlan.everydayPurchasingPlanId}
         </if>
-        <if test="everydayPurchasingPlan.everydayPurchasingPlanNo!=null and everydayPurchasingPlan.everydayPurchasingPlanNo>0">
+        <if test="everydayPurchasingPlan.everydayPurchasingPlanNo!=null and everydayPurchasingPlan.everydayPurchasingPlanNo!=''">
             and everyday_purchasing_plan_no=#{everydayPurchasingPlan.everydayPurchasingPlanNo}
         </if>
         <if test="everydayPurchasingPlan.everydayPurchasingPlanDate!=null">

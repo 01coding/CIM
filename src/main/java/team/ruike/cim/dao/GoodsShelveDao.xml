@@ -90,5 +90,11 @@
         WHERE status = 0
               AND goods_shelve_id = #{goodsShelve.goodsShelveId}
     </select>
+    <select id="selectByWarehouseRegionId" parameterType="int" resultMap="goodsShelveMap">
+        SELECT *
+        FROM goods_shelve
+        WHERE materiel_number IS NULL
+              AND warehouse_region_id = #{warehouseRegionId}
+    </select>
 
 </mapper>

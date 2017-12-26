@@ -86,7 +86,7 @@ public interface QualityService {
      * 获取今日采购批次
      * @return
      */
-    Integer getNumberByDate(Date date);
+    String getNumberByDate(Date date);
 
     /**
      * 获取物料标准
@@ -109,7 +109,7 @@ public interface QualityService {
      * @param pager
      * @return
      */
-    void selectBySomething(Integer sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager);
+    void selectBySomething(String sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager);
 
     /**
      * 查询所有标准

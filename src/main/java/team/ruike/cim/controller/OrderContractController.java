@@ -84,11 +84,13 @@ public class OrderContractController {
     @RequestMapping("add.do")
     @ResponseBody
     public String add(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
+
         String filePath = upload(file, request);
         orderContract.setOrderContractImage("");
         if (filePath != null && !filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
+
         OrderContract orderContract1 = orderContractService.addOrderContract(orderContract);
         return JSON.toJSONString(orderContract1);
     }

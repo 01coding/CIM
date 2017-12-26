@@ -1,4 +1,4 @@
-<%@ page import="team.ruike.cim.util.Pager" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/19
@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="team.ruike.cim.util.Pager" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +41,13 @@
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
         /*** guide ***/
         .guide {
@@ -1381,27 +1389,55 @@
                             <div class="panel-body">
 
                                 <div class="table-wrap">
+
+
                                     <div class="table-responsive">
+                                        <div style="position: relative;bottom: 10px;">
+                                        <form method="post"  action="/supplier.do">
+                                            <div class="form-group">
+
+
+                                                <div class="input-group" style="width: 300px;float: right;">
+                                                    <label class="control-label mb-10">供应商编号:</label>
+                                                    <input type="text" class="form-control" name="supplierNo"
+                                                           placeholder="供应商编号">
+                                                    <div class="input-group-btn"
+                                                         style=" position: relative; top: 16px;">
+                                                        <button type="submit" class="btn btn-primary"
+                                                                style="height:42px;" >
+                                                            <span class="fooicon fooicon-search"></span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="input-group" style="width: 300px;float: right;">
+                                                    <label class="control-label mb-10">供应商名称:</label>
+                                                    <input type="text" class="form-control" name="supplierName"
+                                                           placeholder="供应商名称">
+                                                    <div class="input-group-btn"style=" position: relative; top: 16px;">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
+                                                    <label class="control-label mb-10">供货类行:</label>
+                                                    <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
+                                                        <option value="">请选择</option>
+                                                        <c:forEach var="mat" items="${requestScope.MaterielTypeLevelBs}">
+                                                            <option name="materielTypeLevelB.materielTypeLevelBId" value="${mat.materielTypeLevelBId}">${mat.materielTypeLevelBName}</option>
+                                                        </c:forEach>
+
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+                                        </form>
+                                    </div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
-                                                <form  class="form-inline" action="/supplier.do">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
+
 
                                             <thead>
                                             <tr>
@@ -1416,12 +1452,12 @@
                                             </tr>
                                             </thead>
 
-                                            <tbody>
+                                            <tbody >
 
 
                                             <c:forEach items="${requestScope.suppliers.list}" var="s">
 
-                                                <tr>
+                                                <tr id="tr">
                                                     <td>${s.supplierNo}</td>
                                                     <td>${s.supplierName}</td>
                                                     <td>${s.materielTypeLevelB.materielTypeLevelBName}</td>
@@ -1436,69 +1472,27 @@
                                                     </c:if>
                                                     <td class="footable-editing" style="display: table-cell;">
                                                         <div class="btn-group btn-group-xs" role="group">
-                                                            <button type="button" class="btn btn-default footable-edit"   data-toggle="modal" data-target="#exampleModalUpdate">
+                                                            <button type="button" title="修改" class="btn btn-default footable-edit" onclick="supplierById(${s.supplierId})" data-toggle="modal" data-target="#exampleModalUpdate">
+
                                                                 <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
                                                             </button>
-                                                            <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalSelect">
+                                                            <button type="button" title="详情" class="btn btn-default footable-edit" onclick="detailsSupplier(${s.supplierId})" data-toggle="modal" data-target="#exampleModalSelect">
                                                                 <i class="fa ti-search" style="color: #2879ff;"></i>
                                                             </button>
                                                             <button type="button"  flagId="${s.supplierId}" flagName="${s.supplierName}"  class="btn btn-default footable-delete del" >
-                                                                <span class="fooicon fooicon-trash" title="删除"aria-hidden="true"></span>
+                                                                <span class="fooicon fooicon-trash" title="删除" onclick="dedd(${s.supplierId})" aria-hidden="true"></span>
                                                             </button>
                                                         </div>
                                                     </td>
                                                 </tr>
+
+
+
                                             </c:forEach>
 
                                             </tbody>
 
                                         </table>
-                                        <%--分页--%>
-                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="pagination pagination-split">
-                                                            <li <c:if
-                                                                    test="${requestScope.suppliers.currentPage==1}"> class="disabled" </c:if>>
-                                                                <a <%  Pager pager = (Pager) request.getAttribute("suppliers");
-                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.previousPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-left"></i></a>
-                                                            </li>
-                                                            <c:forEach var="bar"
-                                                                       items="${requestScope.suppliers.pageBar}">
-                                                                <li <c:if
-                                                                        test="${bar==requestScope.suppliers.currentPage}"> class="active" </c:if> >
-                                                                    <a href="${pageContext.request.contextPath}/supplier.do?currentPage=${bar}">${bar}</a>
-                                                                </li>
-                                                            </c:forEach>
-                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                            <%--<li class="active"><a href="#">2</a></li>--%>
-                                                            <li <c:if
-                                                                    test="${requestScope.suppliers.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.nextPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1511,6 +1505,53 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                    <%--分页--%>
+                                    <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="pagination pagination-split">
+                                                        <li <c:if
+                                                                test="${requestScope.suppliers.currentPage==1}"> class="disabled" </c:if>>
+                                                            <a <%  Pager pager = (Pager) request.getAttribute("suppliers");
+                                                                if (pager.getCurrentPage() != 1) {%>
+                                                                    href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.previousPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <c:forEach var="bar"
+                                                                   items="${requestScope.suppliers.pageBar}">
+                                                            <li <c:if
+                                                                    test="${bar==requestScope.suppliers.currentPage}"> class="active" </c:if> >
+                                                                <a href="${pageContext.request.contextPath}/supplier.do?currentPage=${bar}">${bar}</a>
+                                                            </li>
+                                                        </c:forEach>
+                                                        <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                        <%--<li class="active"><a href="#">2</a></li>--%>
+                                                        <li <c:if
+                                                                test="${requestScope.suppliers.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                    href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.nextPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -1520,8 +1561,8 @@
             <!-- /Row -->
         </div>
 
-
         <div class="row">
+
 
 
             <!--修改输入框-->
@@ -1535,64 +1576,53 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" >门店</h5>
+                                <h5 class="modal-title" >供应商修改</h5>
                             </div>
                             <div class="modal-body">
-                                <form>
+                                <form id="updateSu" method="post">
+
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="supplierName" name="supplierName" class="form-control">
+                                        <input type="hidden" id="supplierId" name="supplierId">
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">供货类型:</label>
-                                        <select class="form-control">
-                                            <option>All Contacts</option>
-                                            <option>10</option>
-                                            <option>20</option>
-                                            <option>30</option>
-                                            <option>40</option>
-                                            <option>Custom</option>
+                                        <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
+                                            <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
+                                                <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
+                                                    <option id="s.materielTypeLevelB.materielTypeLevelBId" value="${m.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
+                                                </c:if>
+                                                <c:if test="${m.materielTypeLevelBId != s.materielTypeLevelB.materielTypeLevelBId}">
+                                                    <option id="m.materielTypeLevelBId" value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
+                                                </c:if>
+                                            </c:forEach>
                                         </select>
-                                    </div>
-
-
-                                    <div  class="form-group" >
-                                        <label class="control-label mb-10">签订时间:</label>
-                                        <div class='input-group date' id='datetimepicker1'>
-                                            <input type='text' class="form-control"
-                                                   name="contractOrderStartDate" placeholder="时间" />
-                                            <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                        </div>
                                     </div>
 
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
-                                        <input type="text" class="form-control">
+                                        <input type="text" id="supplierPhone" name="supplierPhone" class="form-control">
                                     </div>
+
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
-                                        <textarea class="form-control"></textarea>
+                                        <textarea class="form-control" id="supplierAddress" name="supplierAddress">${s.supplierAddress}</textarea>
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
-                                            <input type="file" class="upload">
-                                        </div>
-
-                                        <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
-                                            <input type="file" class="upload">
-                                        </div>
+                                        <label class="control-label mb-10">备注</label>
+                                        <textarea class="form-control" id="supplierRemarks" name="supplierRemarks">${s.supplierRemarks}</textarea>
                                     </div>
-
 
 
                                 </form>
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary"  onclick="edit()">保存</button>
+                                <button type="button" id="updateModal" class="btn btn-default" data-dismiss="modal">取消修改</button>
+                                <button type="button" class="btn btn-primary update" onclick="updateSupplierMethod()">确定修改</button>
                             </div>
                         </div>
                     </div>
@@ -1600,8 +1630,6 @@
 
                 </div>
             </div>
-
-
             <!--add输入框-->
             <div class="col-md-6">
 
@@ -1613,13 +1641,13 @@
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                                         aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" >门店</h5>
+                                <h5 class="modal-title" >供应商添加</h5>
                             </div>
                             <div class="modal-body">
-                                <form id="addS">
+                                <form id="addS" method="post">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" name="supplierName" class="form-control">
+                                        <input type="text" flagName="supplierName" name="supplierName" class="form-control" >
                                     </div>
 
                                     <div class="form-group">
@@ -1633,7 +1661,7 @@
 
 
                                     <div  class="form-group" >
-                                        <label class="control-label mb-10">签订时间:</label>
+                                        <label class="control-label mb-10">合作开始时间:</label>
                                         <div class='input-group date' id='datetimepicker1s'>
                                             <input id="signDate" type='text' class="form-control"
                                                    name="date" placeholder="时间" />
@@ -1655,18 +1683,18 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
-                                            <input type="file" class="upload">
+                                            <input type="file" name="file" class="upload" onchange="Javascript:validate_img(this);">
                                         </div>
 
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
-                                            <input type="file" class="upload">
+                                            <input type="file" name="img" class="upload" onchange="Javascript:validate_img(this);">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary" onclick="addSupplierMethod()">保存</button>
+                                <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消添加</button>
+                                <button type="button" class="btn btn-primary add" onclick="addSupplierMethod()">确认添加</button>
                             </div>
 
                         </div>
@@ -1675,9 +1703,6 @@
 
                 </div>
             </div>
-
-
-
             <!--查看显示框-->
             <div class="col-md-6">
                 <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
@@ -1697,7 +1722,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-wrap">
-                                                    <form action="" class="form-horizontal" role="form">
+                                                    <form class="form-horizontal" role="form" method="post">
                                                         <div class="form-body">
                                                             <hr class="light-grey-hr"/>
                                                             <div class="row">
@@ -1705,80 +1730,21 @@
                                                                 <div class="col-md-6">
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">用户/门店名称:</label>
+                                                                            <label class="control-label col-md-3">特许经营许可:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                <p class="form-control-static"> </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店/用户类别:</label>
+                                                                            <label class="control-label col-md-3">营业执照:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
+                                                                                <p class="form-control-static"> </p>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">地址:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div  >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">电话:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-                                                                <div class="col-md-6">
-
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">下单项数量:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">门店编号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    Male </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">状态:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static">
-                                                                                    John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
 
                                                                 </div>
                                                             </div>
@@ -1894,40 +1860,193 @@
         dedd();
         GetNowDate();
     })
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
+
+    //限制上传文件的类型和大小
+    function validate_img(ele){
+        // 返回 KB，保留小数点后两位
+        //alert((ele.files[0].size/(1024*1024)).toFixed(2));
+        var file = ele.value;
+
+        if(!/.(gif|jpg|jpeg|png|GIF|JPG|bmp)$/.test(file)){
+
+            swal("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
+            return false;
+
+        }else{
+
+            //alert((ele.files[0].size).toFixed(2));
+            //返回Byte(B),保留小数点后两位
+            if(((ele.files[0].size).toFixed(2))>=(2*1024*1024)){
+
+                swal("请上传小于2M的图片");
+                return false;
+            }
+        }
+        swal("图片通过");
+    }
+    /*根据id查询供应商，弹框显示*/
+    function detailsSupplier(sid) {
+        var datds={
+            "id":sid
+        };
+        $.ajax({
+            url: '${pageContext.request.contextPath}/getSupplierById.do',
+            type: 'POST',
+            data: datds,
+            success: function (data) {
+                $("#supplierName1").html("<p id='supplierName1' class='form-control-static' style='margin-top: -8px'>"+data.supplierName+" </p>");
+               }, error: function () {
+                swal("error");
+            }
+        })
+    }
+    /*根据id显示数据*/
+    function supplierById(sid) {
+        var datds={
+            "id":sid
+        };
+        $.ajax({
+            url: '${pageContext.request.contextPath}/getSupplierById.do',
+            type: 'POST',
+            data: datds,
+            success: function (data) {
+                 //id                      实体类属性
+                $("#supplierName").val(data.supplierName);
+                $("#materielTypeLevelB.materielTypeLevelBId").val(data.materielTypeLevelB.materielTypeLevelBId);
+                $("#supplierPhone").val(data.supplierPhone);
+                $("#supplierAddress").val(data.supplierAddress);
+                $("#supplierId").val(data.supplierId);
+                $("#supplierRemarks").val(data.supplierRemarks);
+
+            }, error: function () {
+                swal("error");
+            }
+        })
     }
 
+    /*修改供应商*/
+    function updateSupplierMethod(){
+        $(".update").click(function(){
+            var formobj =  document.getElementById("addS");
+            var formData=new FormData(formobj);
+            swal({
+                    title: "你确定要修改?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true},
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '/updateSupplier.do',
+                            type: 'POST',
+                            data: $('#updateSu').serialize(),
+                            success: function (data) {
+                                if (null != data) {
+                                    if (data > 0) {
+                                        swal("修改成功");
+                                        $("#updateModal").click();
+                                        upp();
+                                    } else {
+                                        swal("修改失败");
+                                    }
+                                }
+                            }, error: function () {
+                                swal("error");
+                            }
+
+                            })
+                    }
+            });
+        });
+
+    }
+    /*修改成功,显示修改后的值*/
+    function upp() {
+        var tr=document.getElementById("tr");
+        tr.cells[1].innerText=$("#updateSu input[name='supplierName']").val();
+        tr.cells[2].innerText=$("#updateSu select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
+        tr.cells[3].innerText=$("#updateSu textarea[name='supplierAddress']").val();
+        tr.cells[4].innerText=$("#updateSu input[name='supplierPhone']").val();
+        tr.cells[6].innerText=$("#updateSu textarea[name='supplierRemarks']").val();
+    }
+    /*添加供应商*/
      function addSupplierMethod(){
+         $(".add").click(function(){
+             var formobj =  document.getElementById("addS");
+             var formData=new FormData(formobj);
+             swal({
+                 title: "你确定要添加?",
+                 type: "warning",
+                 showCancelButton: true,
+                 confirmButtonColor: "#fec107",
+                 confirmButtonText: "确定!",
+                 cancelButtonText: "取消!",
+                 closeOnConfirm: false,
+                 closeOnCancel: true},
+                 function(isConfirm){
+                     if (isConfirm) {
+                     $.ajax({
+                         url: '${pageContext.request.contextPath}/addSupplier.do',
+                         type: 'POST',
+                         cache: false,
+                         data: formData,
+                         processData: false,
+                         contentType: false,
+                         success: function (data) {
+                             if (null != data) {
+                                 addsupplier(data);
+                                 swal("【"+data.supplierName+"】添加成功");
+                                 /*添加成功退出弹框*/
+                                 $("#addmodal").click();
+                                 /*添加成功清空文本框*/
+                                 document.getElementById("addS").reset();
 
-         var equis=$("#addS").serializeArray();
+                             }else {
+                                 swal("添加失败");
 
-         $.ajax({
-             url: "/addSupplier.do",
-             method: "post",
-             data: equis,
-             dataType: "json",
+                             }
+                         }, error: function () {
+                             swal("error");
+                         }
 
-             success: function (data) {
-                 if (data != "") {
-                     if(data >"0"){
-                         bomb("添加成功");
-                         $("#addmodal").click();
-                     }else {
-                         bomb("添加失败");
-                     }
-                 }
-             }, error: function () {
-                 alert("error");
-             }
+                     })
+                  }
+             });
          });
+    }
+
+
+     function addsupplier(data) {
+         /*添加成功显示页面，一次*/
+         var materielTypeLevelBId=$("#addS select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
+         var display="<tr>"
+          +"<td>"+data.supplierNo+"</td>"
+          +"<td>"+data.supplierName+"</td>"
+          +"<td>"+materielTypeLevelBId+"</td>"
+          +"<td>"+data.supplierAddress+"</td>"
+          +"<td>"+data.supplierPhone+"</td>"
+          +"<td>"+data.cooperationStartDate+"</td>"
+          +"<td>"+data.supplierRemarks+"</td>" +
+
+          "<td><div class='btn-group btn-group-xs' role='group'>\n" +
+             "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
+             "\n" +
+             "     <span class='fooicon fooicon-pencil' style='color:#1aee20; aria-hidden='true'></span>\n" +
+             "  </button>\n" +
+             "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
+             "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+             "  </button>\n" +
+             "  <button type='button'  flagId='"+data.supplierId+"' flagName='"+data.supplierName+"'  class='btn btn-default footable-delete del' >\n" +
+             "      <span class='fooicon fooicon-trash' title='删除' style='color: red; onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
+             "  </button>\n" +
+             "</div></td>"
+
+          $("tbody").append(display)
      }
-
-
     //获取当前日期给date控件赋值
     function GetNowDate() {
         var date = new Date();
@@ -1945,6 +2064,7 @@
         $("#signDate").val(currentdate);
     }
 
+    /*删除供应商*/
     function dedd() {
         $(".del").click(function(){
             var mid=$(this).attr("flagId");
@@ -1980,6 +2100,16 @@
     }
 
 </script>
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>

@@ -6,6 +6,7 @@ package team.ruike.cim.service;
 
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.util.Pager;
 
 import java.util.List;
@@ -22,6 +23,13 @@ public interface SupplierService {
      * @param pager 分页辅助类
      */
     void getSupplier(Supplier supplier, Pager<Supplier>pager);
+
+    /**
+     * 查询所有供应商信息
+     * @param supplier 供应商
+     */
+    List<Supplier> getSupplierList(Supplier supplier);
+
 
     /**
      * 删除供应商
@@ -42,5 +50,33 @@ public interface SupplierService {
      * @param supplier 供应商
      * @return
      */
-    int addSupplier(Supplier supplier);
+    Supplier addSupplier(Supplier supplier);
+
+    /**
+     * 修改供应商
+     * @param supplier 供应商
+     * @return
+     */
+    int updateSupplier(Supplier supplier);
+
+    /**
+     * 根据id查
+     * @param id 供应商id
+     * @return
+     */
+    Supplier getSupplierById(int id);
+
+    /**
+     * 查询所有合同供应商
+     * @param supplierContract
+     * @param pager
+     */
+    void getSupplierContract(SupplierContract supplierContract,Pager<SupplierContract> pager);
+
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @return
+     */
+    SupplierContract addSupplierContract(SupplierContract supplierContract);
 }

@@ -4,13 +4,16 @@ package team.ruike.cim.controller;
  * Created by Administrator on 2017/12/19.
  */
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
+import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
@@ -18,9 +21,11 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * 供应商管理控制器
@@ -31,12 +36,18 @@ import java.util.Date;
 public class SupplierController {
     @Resource
     private SupplierService supplierService;
+
     /**
-     * 跳转到供应商主页
+     * 跳转到供应商，并加载数据
+     * @param supplier 供应商对象
+     * @param pager 分页辅助类
+     * @param request 转发
+     * @param materielTypeLevelB 二级类型对象
      * @return
      */
     @RequestMapping("/supplier.do")
     public String supplier(Supplier supplier, Pager<Supplier> pager, HttpServletRequest request,MaterielTypeLevelB materielTypeLevelB){
+
         supplierService.getSupplier(supplier, pager);
         request.setAttribute("suppliers",pager);
         request.setAttribute("MaterielTypeLevelBs",supplierService.getMaterielTypeLevelB(materielTypeLevelB));
@@ -48,6 +59,7 @@ public class SupplierController {
      * @param supplierId 供应商id
      * @return
      */
+
     @RequestMapping("/delectSupplier.do")
     @ResponseBody
     public String delectSupplier(Integer supplierId){
@@ -55,26 +67,60 @@ public class SupplierController {
         return (num==1)+"";
     }
 
+    // 2个多个上传
+
+    public void uploads(HttpServletRequest request, @RequestParam MultipartFile[] file, @RequestParam MultipartFile[] img,Supplier supplier) {
+        try {
+            for (MultipartFile f : file) {
+                if (!f.isEmpty()) {
+                    String landing = UUID.randomUUID().toString();
+                    //文件名
+                    String fileName = landing + f.getOriginalFilename();
+                    // 文件保存路径
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+
+                    supplier.setSupplierImage(fileName);
+                    f.transferTo(new File(filePath));
+                } else {
+                    System.out.println("file====isempty");
+                }
+            }
+
+            for (MultipartFile f : img) {
+                if (!f.isEmpty()) {
+                    String landing = UUID.randomUUID().toString();
+                    //文件名
+                    String fileName = landing + f.getOriginalFilename();
+                    // 文件保存路径
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+
+                    f.transferTo(new File(filePath));
+
+                    supplier.setSupplierCharterImage(fileName);
+                } else {
+                    System.out.println("img====isempty");
+                }
+            }
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
     /**
      * 添加供应商
-     * @param supplier
+     * @param supplier 供应商对象
+     * @param date 转换时间
      * @return
+     * @throws IOException 自动抛出异常
      */
     @RequestMapping("/addSupplier.do")
     @ResponseBody
-    public String addSupplier(Supplier supplier,String date,@RequestParam("file") CommonsMultipartFile file,HttpServletRequest request){
+    public String addSupplier(Supplier supplier, String date,HttpServletRequest request, @RequestParam MultipartFile[] file, @RequestParam MultipartFile[] img) throws IOException {
 
-        String filePath = upload(file, request);
-        supplier.setSupplierCharterImage("");
-        if (filePath != null &&!filePath.equals("")) {
-            supplier.setSupplierCharterImage(filePath);
-        }
-
-        String filePath1=upload(file, request);
-        supplier.setSupplierImage("");
-        if (filePath != null &&!filePath.equals("")) {
-            supplier.setSupplierImage(filePath);
-        }
+        uploads(request,file,img,supplier);
 
 
         Date dates=null;
@@ -91,32 +137,115 @@ public class SupplierController {
         supplier.setCooperationStartDate(dates);
         //供应商状态，默认为1,
         supplier.setSupplierState(1);
-
-
-
         //自动生成编号
         supplier.setSupplierNo(GenerateNumber.getGenerateNumber().getRandomFileName());
 
 
-       supplierService.addSupplier(supplier);
-       return  "1";
+        Supplier supplierNo=supplierService.addSupplier(supplier);
+
+        String supplier2=JSON.toJSONString(supplierNo);
+
+
+       return  supplier2;
 
     }
 
     /**
-     * 上传文件
-     * @param file
-     * @param request
+     * 修改供应商信息
+     * @param supplier 供应商对象
      * @return
      */
-    public String upload(CommonsMultipartFile file, HttpServletRequest request) {
+
+    @RequestMapping("/updateSupplier.do")
+    @ResponseBody
+    public String updateSupplier(Supplier supplier){
+        int num= supplierService.updateSupplier(supplier);
+        return (num==1)+"";
+    }
+
+    /**
+     * 根据id查询数据
+     * @param id 供应商id
+     * @return
+     */
+
+    @RequestMapping("/getSupplierById.do")
+    @ResponseBody
+    public String getSupplierById(@RequestParam(value = "id") int id){
+        Supplier supplier=supplierService.getSupplierById(id);
+        return JSON.toJSONString(supplier);
+    }
+
+
+    /**
+     * 跳转，合同管理页面，并加载数据
+     * @param supplierContract 合同对象
+     * @param pager 分页辅助类
+     * @param request 转发
+     * @param supplier 供应商对象
+     * @return
+     */
+    @RequestMapping("/contractManagement.do")
+    public String contractManagement(SupplierContract supplierContract,Pager<SupplierContract> pager,HttpServletRequest request,Supplier supplier){
+        supplierService.getSupplierContract(supplierContract,pager);
+        request.setAttribute("supplierContracts",pager);
+        request.setAttribute("supplierList",supplierService.getSupplierList(supplier));
+        return "supplier/contractManagement";
+    }
+
+    /**
+     * 添加合同
+     * @param supplierContract 合同对象
+     * @param date 时间转换
+     * @param file 上传文件
+     * @param request 转发
+     * @return
+     */
+    @RequestMapping("/addSupplierContract.do")
+    @ResponseBody
+    public String addSupplierContract(SupplierContract supplierContract,String date,@RequestParam("file") CommonsMultipartFile file, HttpServletRequest request){
+        String filePath = upload(file, request,supplierContract);
+        supplierContract.setSupplierContractImage("");
+        if (filePath != null && !filePath.equals("")) {
+            supplierContract.setSupplierContractImage(filePath);
+        }
+        Date dates=null;
+        try
+        {
+            //转换时间
+            java.text.SimpleDateFormat formatter = new SimpleDateFormat( "yyyy-MM-dd");
+            dates =  formatter.parse(date);
+        }
+        catch (ParseException e)
+        {
+            System.out.println(e.getMessage());
+        }
+        supplierContract.setSupplierContractDate(dates);
+
+        supplierContract.setStatus(0);
+
+        SupplierContract supplierContractNo = supplierService.addSupplierContract(supplierContract);
+        String supplierContract1= JSON.toJSONString(supplierContractNo);
+        return supplierContract1;
+    }
+
+    /**
+     * 上传文件
+     * @param file 上传
+     * @param request 转发
+     * @return
+     */
+    public String upload(CommonsMultipartFile file, HttpServletRequest request,SupplierContract supplierContract) {
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {
+
+                String landing = UUID.randomUUID().toString();
+                //文件名
+                String fileName = landing +file.getOriginalFilename();
                 // 文件保存路径
-                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath()
-                        + file.getOriginalFilename();
-                // 转存文件
+                String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+                supplierContract.setSupplierContractImage(fileName);
                 file.transferTo(new File(filePath));
                 return filePath;
 
@@ -127,13 +256,5 @@ public class SupplierController {
         return null;
     }
 
-    /**
-     * 跳转，合同管理页面
-     * @return
-     */
-    @RequestMapping("/contractManagement.do")
-    public String contractManagement(){
-        return "supplier/contractManagement";
-    }
 
 }
