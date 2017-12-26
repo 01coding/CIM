@@ -90,7 +90,9 @@ public class SupplierServiceImpl implements SupplierService{
      */
     @Override
     public int updateSupplier(Supplier supplier) {
+
         Supplier supplierById = getSupplierById(supplier.getSupplierId());
+
         //删除伪列
         supplier.setStatus(0);
         //时间
@@ -103,14 +105,8 @@ public class SupplierServiceImpl implements SupplierService{
         supplier.setSupplierNo(supplierById.getSupplierNo());
         //状态
         supplier.setSupplierState(supplierById.getSupplierState());
-       /* if(supplier!=null && supplier.getSupplierPhone()!=null && supplier.getSupplierPhone()!=""
-                && supplier.getSupplierName()!=null && supplier.getSupplierName()!=""
-                && supplier.getSupplierAddress()!=null && supplier.getSupplierAddress()!=""
-                && supplier.getMaterielTypeLevelB()!=null && supplier.getMaterielTypeLevelB().getMaterielTypeLevelBId()>0)
-        {
-         */   return supplierDao.update(supplier);
-        /*}
-        return 0;*/
+        return supplierDao.update(supplier);
+
     }
 
     /**

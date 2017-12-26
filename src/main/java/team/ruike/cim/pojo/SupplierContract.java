@@ -1,6 +1,8 @@
 package team.ruike.cim.pojo;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -24,6 +26,8 @@ public class SupplierContract implements Serializable {
     /**
      * 签订时间
      */
+
+    @JSONField(format="yyyy-MM-dd")
     private Date supplierContractDate;
     /**
      * 合同图片路径

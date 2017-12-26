@@ -83,7 +83,7 @@ public class EquipementControloler {
      * @return 是否成功
      */
     @RequestMapping("/updateMateriel.do")
-    public String updateMateriels(Equipment equipments,HttpServletRequest request){
+    public String updateMateriels(Equipment equipments){
         int num = equipementService.updateEquipment(equipments);
         if (num==1){
             if (equipments.getEquipmentType().getEquipmentTypeId()!=1) {

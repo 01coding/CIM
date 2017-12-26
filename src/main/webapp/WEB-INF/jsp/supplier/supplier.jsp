@@ -1,4 +1,4 @@
-<%@ page import="team.ruike.cim.util.Pager" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/19
@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="team.ruike.cim.util.Pager" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -1492,52 +1493,6 @@
                                             </tbody>
 
                                         </table>
-                                        <%--分页--%>
-                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="pagination pagination-split">
-                                                            <li <c:if
-                                                                    test="${requestScope.suppliers.currentPage==1}"> class="disabled" </c:if>>
-                                                                <a <%  Pager pager = (Pager) request.getAttribute("suppliers");
-                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.previousPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-left"></i></a>
-                                                            </li>
-                                                            <c:forEach var="bar"
-                                                                       items="${requestScope.suppliers.pageBar}">
-                                                                <li <c:if
-                                                                        test="${bar==requestScope.suppliers.currentPage}"> class="active" </c:if> >
-                                                                    <a href="${pageContext.request.contextPath}/supplier.do?currentPage=${bar}">${bar}</a>
-                                                                </li>
-                                                            </c:forEach>
-                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                            <%--<li class="active"><a href="#">2</a></li>--%>
-                                                            <li <c:if
-                                                                    test="${requestScope.suppliers.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.nextPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1547,6 +1502,53 @@
                                                 <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModalAdd"  >
                                                     <i class="fa ti-plus"></i>
                                                 </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <%--分页--%>
+                                    <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="pagination pagination-split">
+                                                        <li <c:if
+                                                                test="${requestScope.suppliers.currentPage==1}"> class="disabled" </c:if>>
+                                                            <a <%  Pager pager = (Pager) request.getAttribute("suppliers");
+                                                                if (pager.getCurrentPage() != 1) {%>
+                                                                    href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.previousPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <c:forEach var="bar"
+                                                                   items="${requestScope.suppliers.pageBar}">
+                                                            <li <c:if
+                                                                    test="${bar==requestScope.suppliers.currentPage}"> class="active" </c:if> >
+                                                                <a href="${pageContext.request.contextPath}/supplier.do?currentPage=${bar}">${bar}</a>
+                                                            </li>
+                                                        </c:forEach>
+                                                        <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                        <%--<li class="active"><a href="#">2</a></li>--%>
+                                                        <li <c:if
+                                                                test="${requestScope.suppliers.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                    href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.suppliers.nextPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1583,8 +1585,6 @@
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" id="supplierName" name="supplierName" class="form-control">
                                         <input type="hidden" id="supplierId" name="supplierId">
-
-
                                     </div>
 
                                     <div class="form-group">
@@ -1592,10 +1592,10 @@
                                         <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
                                             <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
                                                 <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
-                                                    <option id="s.materielTypeLevelB.materielTypeLevelBId" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
+                                                    <option id="s.materielTypeLevelB.materielTypeLevelBId" value="${m.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
                                                 </c:if>
                                                 <c:if test="${m.materielTypeLevelBId != s.materielTypeLevelB.materielTypeLevelBId}">
-                                                    <option id="m.materielTypeLevelBId">${m.materielTypeLevelBName}</option>
+                                                    <option id="m.materielTypeLevelBId" value="${m.materielTypeLevelBId}">${m.materielTypeLevelBName}</option>
                                                 </c:if>
                                             </c:forEach>
                                         </select>
@@ -1661,7 +1661,7 @@
 
 
                                     <div  class="form-group" >
-                                        <label class="control-label mb-10">签订时间:</label>
+                                        <label class="control-label mb-10">合作开始时间:</label>
                                         <div class='input-group date' id='datetimepicker1s'>
                                             <input id="signDate" type='text' class="form-control"
                                                    name="date" placeholder="时间" />
@@ -1730,76 +1730,7 @@
                                                                 <div class="col-md-6">
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">供应商名称:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p id="supplierName1" class="form-control-static"> John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">供应商编号:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="supplierNo1"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div >
-
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">供货类型:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="materielTypeLevelBId">John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">地址:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="supplierAddress1">John </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--/span-->
-                                                                    <div  >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">电话:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="supplierPhone1">24/05/1990 </p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <!--/span-->
-                                                                </div>
-                                                                <div class="col-md-6">
-
-
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">合作开始时间:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="cooperationStartDate1"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">备注:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static" id="supplierRemarks1"></p>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-
-                                                                    <div >
-                                                                        <div class="form-group">
-                                                                            <label class="control-label col-md-3">特许经营许可路径:</label>
+                                                                            <label class="control-label col-md-3">特许经营许可:</label>
                                                                             <div class="col-md-9">
                                                                                 <p class="form-control-static"> </p>
                                                                             </div>
@@ -1808,7 +1739,7 @@
 
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">营业执照路径:</label>
+                                                                            <label class="control-label col-md-3">营业执照:</label>
                                                                             <div class="col-md-9">
                                                                                 <p class="form-control-static"> </p>
                                                                             </div>
@@ -1939,7 +1870,7 @@
         return false;
     }
 
-    /*根据id查询供应商*/
+    /*根据id查询供应商，弹框显示*/
     function detailsSupplier(sid) {
         var datds={
             "id":sid
@@ -1950,13 +1881,7 @@
             data: datds,
             success: function (data) {
                 $("#supplierName1").html("<p id='supplierName1' class='form-control-static' style='margin-top: -8px'>"+data.supplierName+" </p>");
-                $("#materielTypeLevelBId").html("<p class='form-control-static' id='materielTypeLevelBId' style='margin-top: -8px'>"+data.materielTypeLevelB.materielTypeLevelBName+" </p>");
-                $("#supplierAddress1").html("<p class='form-control-static' id='supplierAddress1' style='margin-top: -8px'>"+data.supplierAddress+" </p>");
-                $("#supplierPhone1").html("<p class='form-control-static'' id='supplierPhone1' style='margin-top: -8px'>"+data.supplierPhone+" </p>");
-                $("#supplierNo1").html(" <p class='form-control-static' id='supplierNo1' style='margin-top: -8px'>"+data.supplierNo+"</p>");
-                $("#cooperationStartDate1").html(" <p class='form-control-static' id='cooperationStartDate1' style='margin-top: -8px'>"+data.cooperationStartDate+"</p>");
-                $("#supplierRemarks1").html("<p class='form-control-static' id='supplierRemarks1' style='margin-top: -8px'>"+data.supplierRemarks+"</p>");
-            }, error: function () {
+               }, error: function () {
                 alert("error");
             }
         })
@@ -1992,20 +1917,15 @@
 
     /*修改供应商*/
     function updateSupplierMethod(){
-        var formob =  document.getElementById("updateSu");
-        var formData1=new FormData(formob);
-
+        /*var formob =  document.getElementById("updateSu");*/
+        alert($("#updateSu").serialize())
         $.ajax({
             url: '/updateSupplier.do',
             type: 'POST',
-            cache: false,
-            data: formData1,
-            processData: false,
-            contentType: false,
+            data: $('#updateSu').serialize(),
             success: function (data) {
                 if (null != data) {
                     if(data>0){
-
                         bomb("修改成功");
                         $("#updateModal").click();
                         upp();
@@ -2072,6 +1992,7 @@
           +"<td>"+data.supplierPhone+"</td>"
           +"<td>"+data.cooperationStartDate+"</td>"
           +"<td>"+data.supplierRemarks+"</td>" +
+
           "<td><div class='btn-group btn-group-xs' role='group'>\n" +
              "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
              "\n" +

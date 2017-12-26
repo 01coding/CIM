@@ -1433,52 +1433,6 @@
                                             </tbody>
                                         </table>
 
-                                        <%--分页--%>
-                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="pagination pagination-split">
-                                                            <li <c:if
-                                                                    test="${requestScope.supplierContracts.currentPage==1}"> class="disabled" </c:if>>
-                                                                <a <%  Pager pager = (Pager) request.getAttribute("supplierContracts");
-                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                        href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${requestScope.supplierContracts.previousPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-left"></i></a>
-                                                            </li>
-                                                            <c:forEach var="bar"
-                                                                       items="${requestScope.supplierContracts.pageBar}">
-                                                                <li <c:if
-                                                                        test="${bar==requestScope.supplierContracts.currentPage}"> class="active" </c:if> >
-                                                                    <a href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${bar}">${bar}</a>
-                                                                </li>
-                                                            </c:forEach>
-                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                            <%--<li class="active"><a href="#">2</a></li>--%>
-                                                            <li <c:if
-                                                                    test="${requestScope.supplierContracts.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.supplierContracts.nextPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1493,6 +1447,53 @@
                                         </div>
 
 
+                                    </div>
+
+                                    <%--分页--%>
+                                    <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="pagination pagination-split">
+                                                        <li <c:if
+                                                                test="${requestScope.supplierContracts.currentPage==1}"> class="disabled" </c:if>>
+                                                            <a <%  Pager pager = (Pager) request.getAttribute("supplierContracts");
+                                                                if (pager.getCurrentPage() != 1) {%>
+                                                                    href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${requestScope.supplierContracts.previousPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <c:forEach var="bar"
+                                                                   items="${requestScope.supplierContracts.pageBar}">
+                                                            <li <c:if
+                                                                    test="${bar==requestScope.supplierContracts.currentPage}"> class="active" </c:if> >
+                                                                <a href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${bar}">${bar}</a>
+                                                            </li>
+                                                        </c:forEach>
+                                                        <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                        <%--<li class="active"><a href="#">2</a></li>--%>
+                                                        <li <c:if
+                                                                test="${requestScope.supplierContracts.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                    href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.supplierContracts.nextPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
