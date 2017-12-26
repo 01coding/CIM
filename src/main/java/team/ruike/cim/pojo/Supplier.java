@@ -1,6 +1,8 @@
 package team.ruike.cim.pojo;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -48,6 +50,7 @@ public class Supplier implements Serializable {
     /**
      * 合作开始时间
      */
+    @JSONField(format="yyyy-MM-dd")
     private Date cooperationStartDate;
     /**
      * 删除伪列

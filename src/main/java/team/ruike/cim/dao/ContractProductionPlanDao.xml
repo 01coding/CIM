@@ -42,6 +42,9 @@
         </if>
     </sql>
     <insert id="add" parameterType="contractProductionPlan">
+        <selectKey resultType="int" order="AFTER"  keyProperty="contractProductionPlanId">
+            SELECT LAST_INSERT_ID()
+        </selectKey>
         INSERT into contract_production_plan VALUES(DEFAULT,
         #{contractOrder.contractOrderId},
         #{productionBatch},

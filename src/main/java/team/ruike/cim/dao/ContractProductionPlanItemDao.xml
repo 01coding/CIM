@@ -7,6 +7,7 @@
         <result column="contract_production_plan_item_id" property="contractProductionPlanItemId"/>
         <result column="menu_number" property="menuNumber"/>
         <result column="status" property="status"/>
+        <result column="contract_order_term_id" property="contractOrderTermId"/>
         <result column="contract_production_plan_id" property="contractProductionPlanId"/>
         <association column="menu_id" property="menu" select="team.ruike.cim.dao.MenuDao.selectById"/>
     </resultMap>
@@ -24,6 +25,9 @@
         <if test="contractProductionPlanItem.contractProductionPlanId!=null and contractProductionPlanItem.contractProductionPlanId>0">
             AND contract_production_plan_id=#{contractProductionPlanItem.contractProductionPlanId}
         </if>
+        <if test="contractProductionPlanItem.contractOrderTermId!=null and contractProductionPlanItem.contractOrderTermId>0">
+            AND contract_order_term_id=#{contractProductionPlanItem.contractOrderTermId}
+        </if>
     </sql>
     <sql id="sqlz">
         SELECT * from contract_production_plan_item where `status`=0
@@ -39,18 +43,22 @@
         <if test="contractProductionPlanId!=null and contractProductionPlanId>0">
             AND contract_production_plan_id=#{contractProductionPlanId}
         </if>
+        <if test="contractOrderTermId!=null and contractOrderTermId>0">
+            AND contract_order_term_id=#{contractOrderTermId}
+        </if>
     </sql>
     <insert id="add" parameterType="contractProductionPlanItem">
             INSERT into contract_production_plan_item VALUES(DEFAULT,
             #{menu.menuId},
             #{menuNumber},
-            #{contractProductionPlanItemId},
+            #{contractProductionPlanId},
+            #{contractOrderTermId},
             0);
     </insert>
     <update id="update" parameterType="contractProductionPlanItem">
             UPDATE contract_production_plan_item set menu_id=#{menu.menuId},
             menu_number=#{menuNumber},
-            contract_production_plan_id=#{contractProductionPlanItemId},
+            contract_production_plan_id=#{contractProductionPlanId},contract_order_term_id=#{contractOrderTermId},
             status=#{status}
             WHERE contract_production_plan_item_id=#{contractProductionPlanItemId}
     </update>
