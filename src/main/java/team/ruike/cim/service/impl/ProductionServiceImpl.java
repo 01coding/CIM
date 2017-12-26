@@ -12,8 +12,11 @@ import team.ruike.cim.pojo.ContractProductionPlanItem;
 import team.ruike.cim.service.ProductionService;
 import team.ruike.cim.util.DateUtil;
 import team.ruike.cim.util.GenerateNumber;
+//import team.ruike.cim.websocket.WebSocket;
+//import team.ruike.cim.websocket.WebSocketFactory;
 
 import javax.annotation.Resource;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -33,7 +36,6 @@ public class ProductionServiceImpl implements ProductionService {
     private ContractProductionPlanItemDao contractProductionPlanItemDao;
     /**
      * 今日合同生产计划生成
-     * @return 今日合同生产计划
      */
     @Override
 //    @Scheduled(cron = "0 03 14 ? * *")
@@ -83,4 +85,12 @@ public class ProductionServiceImpl implements ProductionService {
             }
         }
     }
+
+//    @Override
+//    @Scheduled(cron = "0 24 18 ? * *")
+//    public void test() throws IOException {
+//        for (WebSocket webSocket : WebSocketFactory.webSocketMap.values()) {
+//            webSocket.getSession().getBasicRemote().sendText("生产");
+//        }
+//    }
 }
