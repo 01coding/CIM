@@ -60,4 +60,12 @@ public class TechnologyServiceImpl implements TechnologyService {
         technology1.setStatus(1);
         return technologyDao.update(technology1) == 1;
     }
+
+    /**
+     * 获取所有工艺
+     * @return 所有工艺
+     */
+    public List<Technology> selectAllTechnology() {
+        return technologyDao.select(new Technology(),0,99);
+    }
 }

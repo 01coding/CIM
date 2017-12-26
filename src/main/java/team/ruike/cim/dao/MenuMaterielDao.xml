@@ -41,7 +41,7 @@
             AND materiel_id=#{materiel.materielId}
         </if>
     </sql>
-    <insert id="add" parameterType="menuMateriel">
+    <insert id="add" parameterType="menuMateriel" useGeneratedKeys="true" keyProperty="menuMaterielId">
         INSERT into menu_materiel VALUES(DEFAULT,
         #{menuId},
         #{materiel.materielId},
@@ -53,6 +53,11 @@
         materiel_id=#{materiel.materielId},
         menu_materiel_type=#{menuMaterielType},
         status=#{status}
+        WHERE  menu_materiel_id=#{menuMaterielId}
+    </update>
+
+    <update id="deleteById">
+        UPDATE menu_materiel set status=1
         WHERE  menu_materiel_id=#{menuMaterielId}
     </update>
     <select id="select" resultMap="menuMaterielMap">

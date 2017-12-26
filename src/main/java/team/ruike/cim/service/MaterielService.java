@@ -1,5 +1,6 @@
 package team.ruike.cim.service;
 
+import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.Materiel;
 import team.ruike.cim.pojo.MaterielTypeLevelA;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
@@ -81,6 +82,9 @@ public interface MaterielService{
      */
     Materiel getMaterielById(Integer materielId);
 
-
-
+    /**
+     * 获取所有物料
+     * @return 物料集合
+     */
+    List<Materiel> selectAllMateriel();
 }

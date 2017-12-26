@@ -45,6 +45,19 @@ public class MenuFlow implements Serializable {
      */
     private Integer status;
 
+    /**
+     * 图片路径对应
+     * 用于多上传（找对应的文件）
+     */
+    private String menuFlowImageCorrespond;
+
+    public String getMenuFlowImageCorrespond() {
+        return menuFlowImageCorrespond;
+    }
+
+    public void setMenuFlowImageCorrespond(String menuFlowImageCorrespond) {
+        this.menuFlowImageCorrespond = menuFlowImageCorrespond;
+    }
 
     public Integer getMenuFlowId() {
         return menuFlowId;

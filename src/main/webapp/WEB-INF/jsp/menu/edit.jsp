@@ -1215,112 +1215,123 @@
                                                                 <div class="col-sm-12 col-xs-12">
                                                                     <div class="form-wrap">
 
-                                                                    <form id="menuForm" enctype="multipart/form-data">
-                                                                        <div class="form-body">
-                                                                            <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-account mr-10"></i>菜谱信息</h6>
-                                                                            <hr class="light-grey-hr"/>
+                                                                        <form id="menuForm" enctype="multipart/form-data">
+                                                                            <div class="form-body">
+                                                                                <h6 class="txt-dark capitalize-font"><i class="zmdi zmdi-account mr-10"></i>菜谱信息</h6>
+                                                                                <hr class="light-grey-hr"/>
+                                                                                <input type="hidden" name="menuId" value="${menu.menuId}"/>
+                                                                                <input type="hidden" name="menuCreateDate" value="${menu.menuCreateDate}"/>
 
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">菜谱名称</label>
-                                                                                        <input type="text" class="form-control" name="menuName">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">储存条件(最高温度)</label>
-                                                                                        <input type="number" class="form-control" name="menuStoreMax">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!-- /Row -->
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">菜谱类别</label>
-                                                                                        <select class="form-control" name="menuType.menuTypeId">
-                                                                                            <option value="">请选择</option>
-                                                                                            <c:forEach var="menuType" items="${menuTypeList}">
-                                                                                                <option value="${menuType.menuTypeId}">${menuType.menuTypeName}</option>
-                                                                                            </c:forEach>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">储存条件(最低温度)</label>
-                                                                                        <input type="number" class="form-control" name="menuStoreMin">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!-- /Row -->
-
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">净重</label>
-                                                                                        <input type="number" class="form-control" name="menuWeight">
-                                                                                    </div>
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">成本(元)</label>
-                                                                                        <input type="number" class="form-control" name="menuCost">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">保质期</label>
-                                                                                        <input type="number" class="form-control" name="menuShelfLife">
-                                                                                    </div>
-
-                                                                                    <div class="form-group">
-                                                                                        <label class="control-label mb-10">菜谱状态</label>
-                                                                                        <select class="form-control" name="menuState.menuStateId">
-                                                                                            <option value="">请选择</option>
-                                                                                            <c:forEach var="menuState" items="${menuStateList}">
-                                                                                            <option value="${menuState.menuStateId}">${menuState.menuStateName}</option>
-                                                                                            </c:forEach>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <!--/span-->
-                                                                            </div>
-                                                                            <!-- /Row -->
-
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <div class="pull-left">
-                                                                                            <h6 class="panel-title txt-dark">上传菜谱图片</h6>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">菜谱名称</label>
+                                                                                            <input type="text" class="form-control" name="menuName" value="${menu.menuName}">
                                                                                         </div>
-                                                                                        <div class="panel-wrapper collapse in">
-                                                                                            <div class="panel-body">
-                                                                                                <div class="mt-20">
-                                                                                                    <input type="file" id="input-file-now" class="dropify"/>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">储存条件(最高温度)</label>
+                                                                                            <input type="number" class="form-control" name="menuStoreMax" value="${menu.menuStoreMax}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                </div>
+                                                                                <!-- /Row -->
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">菜谱类别</label>
+                                                                                            <select class="form-control" name="menuType.menuTypeId">
+                                                                                                <option value="">请选择</option>
+                                                                                                <c:forEach var="menuType" items="${menuTypeList}">
+                                                                                                    <option value="${menuType.menuTypeId}"
+                                                                                                    <c:if test="${menu.menuType.menuTypeId==menuType.menuTypeId}">
+                                                                                                        selected
+                                                                                                    </c:if>
+                                                                                                  >${menuType.menuTypeName}</option>
+                                                                                                </c:forEach>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">储存条件(最低温度)</label>
+                                                                                            <input type="number" class="form-control" name="menuStoreMin" value="${menu.menuStoreMin}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                </div>
+                                                                                <!-- /Row -->
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">净重</label>
+                                                                                            <input type="number" class="form-control" name="menuWeight" value="${menu.menuWeight}">
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">成本(元)</label>
+                                                                                            <input type="number" class="form-control" name="menuCost" value="${menu.menuCost}">
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">保质期</label>
+                                                                                            <input type="number" class="form-control" name="menuShelfLife" value="${menu.menuShelfLife}">
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <label class="control-label mb-10">菜谱状态</label>
+                                                                                            <select class="form-control" name="menuState.menuStateId">
+                                                                                                <option value="">请选择</option>
+                                                                                                <c:forEach var="menuState" items="${menuStateList}">
+                                                                                                    <option value="${menuState.menuStateId}"
+                                                                                                    <c:if test="${menu.menuState.menuStateId==menuState.menuStateId}">
+                                                                                                        selected
+                                                                                                    </c:if>
+                                                                                                   >${menuState.menuStateName}</option>
+                                                                                                </c:forEach>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--/span-->
+                                                                                </div>
+                                                                                <!-- /Row -->
+
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <div class="pull-left">
+                                                                                                <h6 class="panel-title txt-dark">上传菜谱图片</h6>
+                                                                                            </div>
+                                                                                            <div class="panel-wrapper collapse in">
+                                                                                                <div class="panel-body">
+                                                                                                    <div class="mt-20">
+                                                                                                        <input type="hidden" name="menuImage" value="${menu.menuImage}">
+                                                                                                        <input type="file"   id="input-file-now" class="dropify"/>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <div class="pull-left">
-                                                                                            <h6 class="panel-title txt-dark">备注</h6>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <div class="pull-left">
+                                                                                                <h6 class="panel-title txt-dark">备注</h6>
+                                                                                            </div>
+                                                                                            <textarea class="form-control" name="menuRemarks"  style="width: 572px;height: 200px;resize: none;">${menu.menuRemarks}</textarea>
                                                                                         </div>
-                                                                                        <textarea class="form-control" name="menuRemarks"  style="width: 572px;height: 200px;resize: none;"></textarea>
                                                                                     </div>
+
                                                                                 </div>
+
 
                                                                             </div>
-
-
-                                                                        </div>
-                                                                    </form>
+                                                                        </form>
 
                                                                     </div>
                                                                 </div>
@@ -1360,9 +1371,9 @@
                                                                                         <label class="control-label mb-10">一级物料</label>
                                                                                         <select class="form-control" id="materielTypeLevelA">
                                                                                             <option value="">请选择</option>
-                                                                                           <c:forEach var="materielTypeLevelA" items="${materielTypeLevelAList}">
-                                                                                               <option value="${materielTypeLevelA.materielTypeLevelAId}">${materielTypeLevelA.materielTypeLevelAName}</option>
-                                                                                           </c:forEach>
+                                                                                            <c:forEach var="materielTypeLevelA" items="${materielTypeLevelAList}">
+                                                                                                <option value="${materielTypeLevelA.materielTypeLevelAId}">${materielTypeLevelA.materielTypeLevelAName}</option>
+                                                                                            </c:forEach>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
@@ -1480,198 +1491,468 @@
                                                                                     </ul>
 
                                                                                     <form id="flowFrom" enctype="multipart/form-data">
-                                                                                    <div class="tab-content">
+                                                                                        <div class="tab-content">
 
 
-                                                                                        <div  id="home_7"  class="tab-pane fade active in" role="tabpanel">
+                                                                                            <div  id="home_7"  class="tab-pane fade active in" role="tabpanel">
 
-                                                                                            <div class="col-sm-12">
+                                                                                                <div class="col-sm-12">
 
-                                                                                                <table  class="table" data-filtering="true"  data-show-toggle="false">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th>物料</th>
-                                                                                                        <th>物料类别</th>
-                                                                                                        <th>工序</th>
-                                                                                                        <th>工艺</th>
-                                                                                                        <th>耗时(H)</th>
-                                                                                                        <th>描述</th>
-                                                                                                        <th>图片</th>
-                                                                                                        <th>操作</th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="muneFBody">
+                                                                                                    <table  class="table" data-filtering="true"  data-show-toggle="false">
+                                                                                                        <thead>
+                                                                                                        <tr>
+                                                                                                            <th>物料</th>
+                                                                                                            <th>物料类别</th>
+                                                                                                            <th>工序</th>
+                                                                                                            <th>工艺</th>
+                                                                                                            <th>耗时(H)</th>
+                                                                                                            <th>描述</th>
+                                                                                                            <th>图片</th>
+                                                                                                            <th>操作</th>
+                                                                                                        </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody class="muneFBody">
+                                                                                                        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}" >
+                                                                                                        <c:forEach var="menuFlow" items="${menuMateriel.menuFlow}"  varStatus="status">
+                                                                                                        <c:if test="${menuFlow.working.workingId==1}">
+                                                                                                            <tr>
+                                                                                                                <td style="display: none" >${menuFlow.menuFlowId}</td>
+                                                                                                                <td style="display: none">${menuFlow.menuMateriel.menuMaterielId}</td>
+                                                                                                                <td data-materielid='${menuFlow.menuMateriel.materiel.materielId}'>${menuFlow.menuMateriel.materiel.materielName}</td>
+                                                                                                                <c:choose>
+                                                                                                                    <c:when test="${menuFlow.menuMateriel.menuMaterielType==0}">
+                                                                                                                        <td data-menumaterieltype='0'>主</td>
+                                                                                                                    </c:when>
+                                                                                                                    <c:when test="${menuFlow.menuMateriel.menuMaterielType==1}">
+                                                                                                                        <td data-menumaterieltype='1'>辅</td>
+                                                                                                                    </c:when>
+                                                                                                                    <c:when test="${menuFlow.menuMateriel.menuMaterielType==2}">
+                                                                                                                        <td data-menumaterieltype='2'>配</td>
+                                                                                                                    </c:when>
+                                                                                                                    <c:when test="${menuFlow.menuMateriel.menuMaterielType==3}">
+                                                                                                                        <td data-menumaterieltype='3'>耗材</td>
+                                                                                                                    </c:when>
+                                                                                                                </c:choose>
+                                                                                                                <td data-workingid='${menuFlow.working.workingId}'>${menuFlow.working.workingName}</td>
+                                                                                                                <td data-technologyid='${menuFlow.technology.technologyId}'>${menuFlow.technology.technologyName}</td>
+                                                                                                                <td>${menuFlow.menuFlowHour}</td>
+                                                                                                                <td>${menuFlow.menuFlowDescribe}</td>
+                                                                                                                <td data-imagecorrespond='img'>
+                                                                                                                    <div class='form-group'>
+                                                                                                                        <div class='fileinput input-group fileinput-new' data-provides='fileinput'>
+                                                                                                                            <div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>
+                                                                                                                            <span class='input-group-addon fileupload btn btn-info btn-anim btn-file'>
+                                                                                                                                    <i class='fa fa-upload'></i>
+                                                                                                                                    <span class='fileinput-new btn-text'>上传</span>
+                                                                                                                                    <span class='fileinput-exists btn-text'>更改</span>
+                                                                                                                                    <input type='file' name='img'/>
+                                                                                                                                    <input type="hidden" name="menuFlowImage" value="${menuFlow.menuFlowImage}">
+                                                                                                                                    </span>
+                                                                                                                            <a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'>
+                                                                                                                                <i class='fa fa-trash'></i>
+                                                                                                                                <span class='btn-text'>删除</span>
+                                                                                                                            </a>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </td>
+                                                                                                                <td class='footable-editing' style='display: table-cell;'>
+                                                                                                                    <div class='btn-group btn-group-xs' role='group'>
+                                                                                                                        <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#upexampleModal' onclick='toUppMenuFlow(this)'>
+                                                                                                                            <i class='fa ti-pencil' style='color: #2879ff;'></i>
+                                                                                                                        </button>
+                                                                                                                        <button type='button' class='btn btn-default footable-edit' onclick='delMenuFlow(this)' >
+                                                                                                                            <i class='fa ti-close' style='color: #2879ff;'></i>
+                                                                                                                        </button>
+                                                                                                                    </div>
+                                                                                                                </td>
+                                                                                                            </tr>
+                                                                                                        </c:if>
+                                                                                                        </c:forEach>
+                                                                                                        </c:forEach>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6"></div>
 
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6"></div>
-
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group" style="float: right;margin-right: 15px;">
-                                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group" style="float: right;margin-right: 15px;">
+                                                                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                     </div>
+
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div  id="profile_1" class="tab-pane fade" role="tabpanel">
+
+                                                                                                <div class="col-sm-12">
+
+                                                                                                    <table  class="table" data-filtering="true"  data-show-toggle="false">
+                                                                                                        <thead>
+                                                                                                        <tr>
+                                                                                                            <th>物料</th>
+                                                                                                            <th>物料类别</th>
+                                                                                                            <th>工序</th>
+                                                                                                            <th>工艺</th>
+                                                                                                            <th>耗时(H)</th>
+                                                                                                            <th>描述</th>
+                                                                                                            <th>图片</th>
+                                                                                                            <th>操作</th>
+                                                                                                        </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody class="muneFBody">
+                                                                                                        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}">
+                                                                                                            <c:forEach var="menuFlow" items="${menuMateriel.menuFlow}" varStatus="status">
+                                                                                                                <c:if test="${menuFlow.working.workingId==2}">
+                                                                                                                    <tr>
+                                                                                                                        <td style="display: none" >${menuFlow.menuFlowId}</td>
+                                                                                                                        <td style="display: none">${menuFlow.menuMateriel.menuMaterielId}</td>
+                                                                                                                        <td data-materielid='${menuFlow.menuMateriel.materiel.materielId}'>${menuFlow.menuMateriel.materiel.materielName}</td>
+                                                                                                                        <c:choose>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==0}">
+                                                                                                                                <td data-menumaterieltype='0'>主</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==1}">
+                                                                                                                                <td data-menumaterieltype='1'>辅</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==2}">
+                                                                                                                                <td data-menumaterieltype='2'>配</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==3}">
+                                                                                                                                <td data-menumaterieltype='3'>耗材</td>
+                                                                                                                            </c:when>
+                                                                                                                        </c:choose>
+                                                                                                                        <td data-workingid='${menuFlow.working.workingId}'>${menuFlow.working.workingName}</td>
+                                                                                                                        <td data-technologyid='${menuFlow.technology.technologyId}'>${menuFlow.technology.technologyName}</td>
+                                                                                                                        <td>${menuFlow.menuFlowHour}</td>
+                                                                                                                        <td>${menuFlow.menuFlowDescribe}</td>
+                                                                                                                        <td data-imagecorrespond='img'>
+                                                                                                                            <div class='form-group'>
+                                                                                                                                <div class='fileinput input-group fileinput-new' data-provides='fileinput'>
+                                                                                                                                    <div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>
+                                                                                                                                    <span class='input-group-addon fileupload btn btn-info btn-anim btn-file'>
+                                                                                                                                    <i class='fa fa-upload'></i>
+                                                                                                                                    <span class='fileinput-new btn-text'>上传</span>
+                                                                                                                                    <span class='fileinput-exists btn-text'>更改</span>
+                                                                                                                                    <input type='file' name='img'/>
+                                                                                                                                    <input type="hidden" name="menuFlowImage" value="${menuFlow.menuFlowImage}">
+                                                                                                                                    </span>
+                                                                                                                                    <a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'>
+                                                                                                                                        <i class='fa fa-trash'></i>
+                                                                                                                                        <span class='btn-text'>删除</span>
+                                                                                                                                    </a>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                        <td class='footable-editing' style='display: table-cell;'>
+                                                                                                                            <div class='btn-group btn-group-xs' role='group'>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#upexampleModal' onclick='toUppMenuFlow(this)'>
+                                                                                                                                    <i class='fa ti-pencil' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' onclick='delMenuFlow(this)' >
+                                                                                                                                    <i class='fa ti-close' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </c:forEach>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6"></div>
+
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group" style="float: right;margin-right: 15px;">
+                                                                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+
+
+                                                                                            </div>
+
+                                                                                            <div  id="profile_2" class="tab-pane fade" role="tabpanel">
+
+                                                                                                <div class="col-sm-12">
+
+                                                                                                    <table  class="table" data-filtering="true"  data-show-toggle="false">
+                                                                                                        <thead>
+                                                                                                        <tr>
+                                                                                                            <th>物料</th>
+                                                                                                            <th>物料类别</th>
+                                                                                                            <th>工序</th>
+                                                                                                            <th>工艺</th>
+                                                                                                            <th>耗时(H)</th>
+                                                                                                            <th>描述</th>
+                                                                                                            <th>图片</th>
+                                                                                                            <th>操作</th>
+                                                                                                        </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody class="muneFBody">
+                                                                                                        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}">
+                                                                                                            <c:forEach var="menuFlow" items="${menuMateriel.menuFlow}" varStatus="status">
+                                                                                                                <c:if test="${menuFlow.working.workingId==3}">
+                                                                                                                    <tr>
+                                                                                                                        <td style="display: none" >${menuFlow.menuFlowId}</td>
+                                                                                                                        <td style="display: none">${menuFlow.menuMateriel.menuMaterielId}</td>
+                                                                                                                        <td data-materielid='${menuFlow.menuMateriel.materiel.materielId}'>${menuFlow.menuMateriel.materiel.materielName}</td>
+                                                                                                                        <c:choose>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==0}">
+                                                                                                                                <td data-menumaterieltype='0'>主</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==1}">
+                                                                                                                                <td data-menumaterieltype='1'>辅</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==2}">
+                                                                                                                                <td data-menumaterieltype='2'>配</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==3}">
+                                                                                                                                <td data-menumaterieltype='3'>耗材</td>
+                                                                                                                            </c:when>
+                                                                                                                        </c:choose>
+                                                                                                                        <td data-workingid='${menuFlow.working.workingId}'>${menuFlow.working.workingName}</td>
+                                                                                                                        <td data-technologyid='${menuFlow.technology.technologyId}'>${menuFlow.technology.technologyName}</td>
+                                                                                                                        <td>${menuFlow.menuFlowHour}</td>
+                                                                                                                        <td>${menuFlow.menuFlowDescribe}</td>
+                                                                                                                        <td data-imagecorrespond='img'>
+                                                                                                                            <div class='form-group'>
+                                                                                                                                <div class='fileinput input-group fileinput-new' data-provides='fileinput'>
+                                                                                                                                    <div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>
+                                                                                                                                    <span class='input-group-addon fileupload btn btn-info btn-anim btn-file'>
+                                                                                                                                    <i class='fa fa-upload'></i>
+                                                                                                                                    <span class='fileinput-new btn-text'>上传</span>
+                                                                                                                                    <span class='fileinput-exists btn-text'>更改</span>
+                                                                                                                                    <input type='file' name='img'/>
+                                                                                                                                    <input type="hidden" name="menuFlowImage" value="${menuFlow.menuFlowImage}">
+                                                                                                                                    </span>
+                                                                                                                                    <a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'>
+                                                                                                                                        <i class='fa fa-trash'></i>
+                                                                                                                                        <span class='btn-text'>删除</span>
+                                                                                                                                    </a>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                        <td class='footable-editing' style='display: table-cell;'>
+                                                                                                                            <div class='btn-group btn-group-xs' role='group'>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#upexampleModal' onclick='toUppMenuFlow(this)'>
+                                                                                                                                    <i class='fa ti-pencil' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' onclick='delMenuFlow(this)' >
+                                                                                                                                    <i class='fa ti-close' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </c:forEach>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6"></div>
+
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group" style="float: right;margin-right: 15px;">
+                                                                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+
+                                                                                            </div>
+
+                                                                                            <div  id="profile_3" class="tab-pane fade" role="tabpanel">
+
+
+                                                                                                <div class="col-sm-12">
+
+                                                                                                    <table  class="table" data-filtering="true"  data-show-toggle="false">
+                                                                                                        <thead>
+                                                                                                        <tr>
+                                                                                                            <th>物料</th>
+                                                                                                            <th>物料类别</th>
+                                                                                                            <th>工序</th>
+                                                                                                            <th>工艺</th>
+                                                                                                            <th>耗时(H)</th>
+                                                                                                            <th>描述</th>
+                                                                                                            <th>图片</th>
+                                                                                                            <th>操作</th>
+                                                                                                        </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody class="muneFBody">
+                                                                                                        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}">
+                                                                                                            <c:forEach var="menuFlow" items="${menuMateriel.menuFlow}" varStatus="status">
+                                                                                                                <c:if test="${menuFlow.working.workingId==4}">
+                                                                                                                    <tr>
+                                                                                                                        <td style="display: none" >${menuFlow.menuFlowId}</td>
+                                                                                                                        <td style="display: none">${menuFlow.menuMateriel.menuMaterielId}</td>
+                                                                                                                        <td data-materielid='${menuFlow.menuMateriel.materiel.materielId}'>${menuFlow.menuMateriel.materiel.materielName}</td>
+                                                                                                                        <c:choose>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==0}">
+                                                                                                                                <td data-menumaterieltype='0'>主</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==1}">
+                                                                                                                                <td data-menumaterieltype='1'>辅</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==2}">
+                                                                                                                                <td data-menumaterieltype='2'>配</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==3}">
+                                                                                                                                <td data-menumaterieltype='3'>耗材</td>
+                                                                                                                            </c:when>
+                                                                                                                        </c:choose>
+                                                                                                                        <td data-workingid='${menuFlow.working.workingId}'>${menuFlow.working.workingName}</td>
+                                                                                                                        <td data-technologyid='${menuFlow.technology.technologyId}'>${menuFlow.technology.technologyName}</td>
+                                                                                                                        <td>${menuFlow.menuFlowHour}</td>
+                                                                                                                        <td>${menuFlow.menuFlowDescribe}</td>
+                                                                                                                        <td data-imagecorrespond='img'>
+                                                                                                                            <div class='form-group'>
+                                                                                                                                <div class='fileinput input-group fileinput-new' data-provides='fileinput'>
+                                                                                                                                    <div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>
+                                                                                                                                    <span class='input-group-addon fileupload btn btn-info btn-anim btn-file'>
+                                                                                                                                    <i class='fa fa-upload'></i>
+                                                                                                                                    <span class='fileinput-new btn-text'>上传</span>
+                                                                                                                                    <span class='fileinput-exists btn-text'>更改</span>
+                                                                                                                                    <input type='file' name='img'/>
+                                                                                                                                    <input type="hidden" name="menuFlowImage" value="${menuFlow.menuFlowImage}">
+                                                                                                                                    </span>
+                                                                                                                                    <a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'>
+                                                                                                                                        <i class='fa fa-trash'></i>
+                                                                                                                                        <span class='btn-text'>删除</span>
+                                                                                                                                    </a>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                        <td class='footable-editing' style='display: table-cell;'>
+                                                                                                                            <div class='btn-group btn-group-xs' role='group'>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#upexampleModal' onclick='toUppMenuFlow(this)'>
+                                                                                                                                    <i class='fa ti-pencil' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' onclick='delMenuFlow(this)' >
+                                                                                                                                    <i class='fa ti-close' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </c:forEach>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6"></div>
+
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group" style="float: right;margin-right: 15px;">
+                                                                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
+                                                                                                </div>
+
+
+                                                                                            </div>
+
+                                                                                            <div  id="profile_4" class="tab-pane fade" role="tabpanel">
+
+                                                                                                <div class="col-sm-12">
+
+                                                                                                    <table  class="table" data-filtering="true"  data-show-toggle="false">
+                                                                                                        <thead>
+                                                                                                        <tr>
+                                                                                                            <th>物料</th>
+                                                                                                            <th>物料类别</th>
+                                                                                                            <th>工序</th>
+                                                                                                            <th>工艺</th>
+                                                                                                            <th>耗时(H)</th>
+                                                                                                            <th>描述</th>
+                                                                                                            <th>图片</th>
+                                                                                                            <th>操作</th>
+                                                                                                        </tr>
+                                                                                                        </thead>
+                                                                                                        <tbody class="muneFBody">
+                                                                                                        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}">
+                                                                                                            <c:forEach var="menuFlow" items="${menuMateriel.menuFlow}" varStatus="status">
+                                                                                                                <c:if test="${menuFlow.working.workingId==5}">
+                                                                                                                    <tr>
+                                                                                                                        <td style="display: none" >${menuFlow.menuFlowId}</td>
+                                                                                                                        <td style="display: none">${menuFlow.menuMateriel.menuMaterielId}</td>
+                                                                                                                        <td data-materielid='${menuFlow.menuMateriel.materiel.materielId}'>${menuFlow.menuMateriel.materiel.materielName}</td>
+                                                                                                                        <c:choose>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==0}">
+                                                                                                                                <td data-menumaterieltype='0'>主</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==1}">
+                                                                                                                                <td data-menumaterieltype='1'>辅</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==2}">
+                                                                                                                                <td data-menumaterieltype='2'>配</td>
+                                                                                                                            </c:when>
+                                                                                                                            <c:when test="${menuFlow.menuMateriel.menuMaterielType==3}">
+                                                                                                                                <td data-menumaterieltype='3'>耗材</td>
+                                                                                                                            </c:when>
+                                                                                                                        </c:choose>
+                                                                                                                        <td data-workingid='${menuFlow.working.workingId}'>${menuFlow.working.workingName}</td>
+                                                                                                                        <td data-technologyid='${menuFlow.technology.technologyId}'>${menuFlow.technology.technologyName}</td>
+                                                                                                                        <td>${menuFlow.menuFlowHour}</td>
+                                                                                                                        <td>${menuFlow.menuFlowDescribe}</td>
+                                                                                                                        <td data-imagecorrespond='img'>
+                                                                                                                            <div class='form-group'>
+                                                                                                                                <div class='fileinput input-group fileinput-new' data-provides='fileinput'>
+                                                                                                                                    <div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>
+                                                                                                                                    <span class='input-group-addon fileupload btn btn-info btn-anim btn-file'>
+                                                                                                                                    <i class='fa fa-upload'></i>
+                                                                                                                                    <span class='fileinput-new btn-text'>上传</span>
+                                                                                                                                    <span class='fileinput-exists btn-text'>更改</span>
+                                                                                                                                    <input type='file' name='img'/>
+                                                                                                                                    <input type="hidden" name="menuFlowImage" value="${menuFlow.menuFlowImage}">
+                                                                                                                                    </span>
+                                                                                                                                    <a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'>
+                                                                                                                                        <i class='fa fa-trash'></i>
+                                                                                                                                        <span class='btn-text'>删除</span>
+                                                                                                                                    </a>
+                                                                                                                                </div>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                        <td class='footable-editing' style='display: table-cell;'>
+                                                                                                                            <div class='btn-group btn-group-xs' role='group'>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#upexampleModal' onclick='toUppMenuFlow(this)'>
+                                                                                                                                    <i class='fa ti-pencil' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                                <button type='button' class='btn btn-default footable-edit' onclick='delMenuFlow(this)' >
+                                                                                                                                    <i class='fa ti-close' style='color: #2879ff;'></i>
+                                                                                                                                </button>
+                                                                                                                            </div>
+                                                                                                                        </td>
+                                                                                                                    </tr>
+                                                                                                                </c:if>
+                                                                                                            </c:forEach>
+                                                                                                        </c:forEach>
+                                                                                                        </tbody>
+                                                                                                    </table>
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-md-6"></div>
+
+                                                                                                        <div class="col-md-6">
+                                                                                                            <div class="form-group" style="float: right;margin-right: 15px;">
+                                                                                                                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+
                                                                                                 </div>
 
                                                                                             </div>
 
                                                                                         </div>
-
-                                                                                        <div  id="profile_1" class="tab-pane fade" role="tabpanel">
-
-                                                                                            <div class="col-sm-12">
-
-                                                                                                <table  class="table" data-filtering="true"  data-show-toggle="false">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th>物料</th>
-                                                                                                        <th>物料类别</th>
-                                                                                                        <th>工序</th>
-                                                                                                        <th>工艺</th>
-                                                                                                        <th>耗时(H)</th>
-                                                                                                        <th>描述</th>
-                                                                                                        <th>图片</th>
-                                                                                                        <th>操作</th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="muneFBody">
-
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6"></div>
-
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group" style="float: right;margin-right: 15px;">
-                                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                            </div>
-
-
-                                                                                        </div>
-
-                                                                                        <div  id="profile_2" class="tab-pane fade" role="tabpanel">
-
-                                                                                            <div class="col-sm-12">
-
-                                                                                                <table  class="table" data-filtering="true"  data-show-toggle="false">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th>物料</th>
-                                                                                                        <th>物料类别</th>
-                                                                                                        <th>工序</th>
-                                                                                                        <th>工艺</th>
-                                                                                                        <th>耗时(H)</th>
-                                                                                                        <th>描述</th>
-                                                                                                        <th>图片</th>
-                                                                                                        <th>操作</th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="muneFBody">
-
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6"></div>
-
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group" style="float: right;margin-right: 15px;">
-                                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                            </div>
-
-                                                                                        </div>
-
-                                                                                        <div  id="profile_3" class="tab-pane fade" role="tabpanel">
-
-
-                                                                                            <div class="col-sm-12">
-
-                                                                                                <table  class="table" data-filtering="true"  data-show-toggle="false">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th>物料</th>
-                                                                                                        <th>物料类别</th>
-                                                                                                        <th>工序</th>
-                                                                                                        <th>工艺</th>
-                                                                                                        <th>耗时(H)</th>
-                                                                                                        <th>描述</th>
-                                                                                                        <th>图片</th>
-                                                                                                        <th>操作</th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="muneFBody">
-
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6"></div>
-
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group" style="float: right;margin-right: 15px;">
-                                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                            </div>
-
-
-                                                                                        </div>
-
-                                                                                        <div  id="profile_4" class="tab-pane fade" role="tabpanel">
-
-                                                                                            <div class="col-sm-12">
-
-                                                                                                <table  class="table" data-filtering="true"  data-show-toggle="false">
-                                                                                                    <thead>
-                                                                                                    <tr>
-                                                                                                        <th>物料</th>
-                                                                                                        <th>物料类别</th>
-                                                                                                        <th>工序</th>
-                                                                                                        <th>工艺</th>
-                                                                                                        <th>耗时(H)</th>
-                                                                                                        <th>描述</th>
-                                                                                                        <th>图片</th>
-                                                                                                        <th>操作</th>
-                                                                                                    </tr>
-                                                                                                    </thead>
-                                                                                                    <tbody class="muneFBody">
-
-
-
-                                                                                                    </tbody>
-                                                                                                </table>
-                                                                                                <div class="row">
-                                                                                                    <div class="col-md-6"></div>
-
-                                                                                                    <div class="col-md-6">
-                                                                                                        <div class="form-group" style="float: right;margin-right: 15px;">
-                                                                                                            <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal"  onclick="toAddMenuFlowOption(this)">添加</button>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                            </div>
-
-                                                                                        </div>
-
-                                                                                    </div>
 
                                                                                     </form>
 
@@ -1861,7 +2142,7 @@
 <script src="../../../vendors/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js"></script>
 
 <!-- Bootstrap Daterangepicker JavaScript -->
-<script src="../../../vendors/bower_components/dropify/dist/js/dropify.min.js"></script>
+<script src="../../../vendors/bower_components/dropify/dist/js/dropify.js"></script>
 
 
 <!-- Starrr JavaScript -->
@@ -1891,11 +2172,11 @@
 
 <script>
 
-        $(function () {
-            queryMaterielByOneLevel();
-            queryMaterielByTwoLevel();
-            addMateriel();
-        });
+    $(function () {
+        queryMaterielByOneLevel();
+        queryMaterielByTwoLevel();
+        addMateriel();
+    });
 
     /*根据一物料级别查询物料*/
     function queryMaterielByOneLevel() {
@@ -1918,7 +2199,7 @@
         });
 
     };
-    
+
     /*根据二物料级别查询物料*/
     function queryMaterielByTwoLevel() {
         $("#materielTypeLevelB").change(function () {
@@ -1943,23 +2224,23 @@
     /*添加物料*/
     var  materielArray=new Array();
     function addMateriel() {
-       var addMaterielId= $("#addMateriel option:selected").val();
-       var addMaterielName= $("#addMateriel option:selected").text();
-       var addMaterielTypeId =$("#addMaterielType option:selected").val();
-       var addMaterielTypeName= $("#addMaterielType option:selected").text();
+        var addMaterielId= $("#addMateriel option:selected").val();
+        var addMaterielName= $("#addMateriel option:selected").text();
+        var addMaterielTypeId =$("#addMaterielType option:selected").val();
+        var addMaterielTypeName= $("#addMaterielType option:selected").text();
 
-       if (addMaterielId!=""&&addMaterielTypeId!=""){
-           
-           var materiel= {
-               "materielId": addMaterielId,
-               "materielName": addMaterielName,
-               "menuMaterielTypeId": addMaterielTypeId,
-               "menuMaterielTypeName": addMaterielTypeName
-           }
-           if(addMaterielRow(materiel)){
-               materielArray.push(materiel);
-           };
-       }
+        if (addMaterielId!=""&&addMaterielTypeId!=""){
+
+            var materiel= {
+                "materielId": addMaterielId,
+                "materielName": addMaterielName,
+                "menuMaterielTypeId": addMaterielTypeId,
+                "menuMaterielTypeName": addMaterielTypeName
+            }
+            if(addMaterielRow(materiel)){
+                materielArray.push(materiel);
+            };
+        }
         return materielArray;
     }
 
@@ -2018,23 +2299,22 @@
     }
 
     /*添加流程选项*/
-    var menuFlowImageRecording=0;
     function addMenuFlowOption() {
         var thi=$("div .active").find("table");
 
 
-       var materielId= $("#flof select[name='materielId'] option:selected").val();
-       var materielName= $("#flof select[name='materielId'] option:selected").text();
+        var materielId= $("#flof select[name='materielId'] option:selected").val();
+        var materielName= $("#flof select[name='materielId'] option:selected").text();
 
-       var technologyId= $("#flof select[name='technologyId'] option:selected").val();
-       var technologyName= $("#flof select[name='technologyId'] option:selected").text();
+        var technologyId= $("#flof select[name='technologyId'] option:selected").val();
+        var technologyName= $("#flof select[name='technologyId'] option:selected").text();
 
-       var menuFlowHour= $("#flof input[name='menuFlowHour']").val();
-       var menuFlowDescribe=$("#flof textarea[name='menuFlowDescribe']").val();
+        var menuFlowHour= $("#flof input[name='menuFlowHour']").val();
+        var menuFlowDescribe=$("#flof textarea[name='menuFlowDescribe']").val();
 
 
-       var workingid=  $("#ulFolw>.active>a").data("workingid");
-       var workingName= $("#ulFolw>.active>a").text();
+        var workingid=  $("#ulFolw>.active>a").data("workingid");
+        var workingName= $("#ulFolw>.active>a").text();
 
 
         var materielTypeId;
@@ -2046,20 +2326,22 @@
             }
         };
 
-        menuFlowImageRecording+=1;
+
         var flowRow="<tr>\n" +
+            "<td style='display: none'></td>" +
+            "<td style='display: none'></td>"+
             "\t<td data-materielid='"+materielId+"'>"+materielName+"</td>\n" +
             "\t<td data-menumaterieltype='"+materielTypeId+"'>"+materielTypeName+"</td>\n" +
             "\t<td data-workingid='"+workingid+"'>"+workingName+"</td>\n" +
             "\t<td data-technologyid='"+technologyId+"'>"+technologyName+"</td>\n" +
             "\t<td>"+menuFlowHour+"</td>\n" +
             "\t<td>"+menuFlowDescribe+"</td>\n" +
-            "\t<td data-imagecorrespond='img"+menuFlowImageRecording+"'>\n" +
+            "\t<td data-imagecorrespond='img'>\n" +
             "\t\t<div class='form-group'>\n" +
             "\t\t\t<div class='fileinput input-group fileinput-new' data-provides='fileinput'>\n" +
             "\t\t\t\t<div class='form-control' data-trigger='fileinput'> <i class='glyphicon glyphicon-file fileinput-exists'></i> <span class='fileinput-filename'></span></div>\n" +
             "\t\t\t\t<span class='input-group-addon fileupload btn btn-info btn-anim btn-file'><i class='fa fa-upload'></i> <span class='fileinput-new btn-text'>上传</span> <span class='fileinput-exists btn-text'>更改</span>\n" +
-            "\t\t\t\t\t\t<input type='hidden' value='' name='img"+menuFlowImageRecording+"'/> <input type='file' value='' name='img"+menuFlowImageRecording+"'/>\n" +
+            "\t\t\t\t\t\t<input type='hidden' value='' name='menuFlowImage'/> <input type='file' value='' name='img'/>\n" +
             "\t\t\t\t\t\t</span>\n" +
             "\t\t\t\t<a href='#' class='input-group-addon btn btn-danger btn-anim fileinput-exists' data-dismiss='fileinput'><i class='fa fa-trash'></i><span class='btn-text'>删除</span></a>\n" +
             "\t\t\t</div>\n" +
@@ -2089,15 +2371,15 @@
     function toUppMenuFlow(th) {
         toUppMenuFlowThis=th;
         /*物料id*/
-        var materielFlowId= $(th).parents("tr").children("td").eq(0).attr("data-materielid");
-        var utechnologyId= $(th).parents("tr").children("td").eq(3).attr("data-technologyid");
-        var menuFlowHour=$(th).parents("tr").children("td").eq(4).text();
-        var menuFlowDescribe=$(th).parents("tr").children("td").eq(5).text();
+        var materielFlowId= $(th).parents("tr").children("td").eq(3).attr("data-materielid");
+        var utechnologyId= $(th).parents("tr").children("td").eq(5).attr("data-technologyid");
+        var menuFlowHour=$(th).parents("tr").children("td").eq(6).text();
+        var menuFlowDescribe=$(th).parents("tr").children("td").eq(7).text();
 
         var wlOption="";
         for(var i in materielArray){
             if(materielFlowId==materielArray[i].materielId){
-              wlOption+="<option selected value='"+materielArray[i].materielId+"'>"+materielArray[i].materielName+"</option>";
+                wlOption+="<option selected value='"+materielArray[i].materielId+"'>"+materielArray[i].materielName+"</option>";
             }else{
                 wlOption+="<option value='"+materielArray[i].materielId+"'>"+materielArray[i].materielName+"</option>";
             }
@@ -2153,68 +2435,83 @@
 
 
         /*物料*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(0).attr("data-materielid",materielId);
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(0).text(materielName);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(2).attr("data-materielid",materielId);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(2).text(materielName);
         /*物料类别*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(1).attr("data-menumaterieltype",materielTypeId);
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(1).text(materielTypeName);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(3).attr("data-menumaterieltype",materielTypeId);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(3).text(materielTypeName);
         /*工序*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(2).attr("data-workingid",workingid);
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(2).text(workingName);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(4).attr("data-workingid",workingid);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(4).text(workingName);
         /*工艺*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(3).attr("data-technologyid",technologyId);
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(3).text(technologyName);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(5).attr("data-technologyid",technologyId);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(5).text(technologyName);
         /*耗时(H)*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(4).text(menuFlowHour);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(6).text(menuFlowHour);
         /* 描述*/
-        $(toUppMenuFlowThis).parents("tr").children("td").eq(5).text(menuFlowDescribe);
+        $(toUppMenuFlowThis).parents("tr").children("td").eq(7).text(menuFlowDescribe);
     }
 
 
     /*添加流程*/
     var  menuFlowArray=new Array();
+    var flowData = new FormData();
     function addMenuFlow() {
 
-            menuFlowArray.splice(0,menuFlowArray.length);
-            var trList=$(".muneFBody>tr");
-            for(var r=0;r<trList.length;r++){
-                var tdList=$(trList).eq(r).children("td");
+        menuFlowArray.splice(0,menuFlowArray.length);
+        var trList=$(".muneFBody>tr");
+        for(var r=0;r<trList.length;r++){
+            var  tdList=$(trList).eq(r).children("td");
+            var menuFlowId=$(tdList).eq(0).text();
+            var menumaterielid=$(tdList).eq(1).text();
+            var  materielid=$(tdList).eq(2).data("materielid");
+            var  menumaterieltype=$(tdList).eq(3).data("menumaterieltype");
+            var  workingid=$(tdList).eq(4).data("workingid");
+            var  technologyid=$(tdList).eq(5).data("technologyid");
+            var  menuflowuour=$(tdList).eq(6).text();
+            var  menuflowdescribe=$(tdList).eq(7).text();
 
-                var  materielid=$(tdList).eq(0).data("materielid");
-                var  menumaterieltype=$(tdList).eq(1).data("menumaterieltype");
-                var  workingid=$(tdList).eq(2).data("workingid");
-                var  technologyid=$(tdList).eq(3).data("technologyid");
-                var  menuflowuour=$(tdList).eq(4).text();
-                var  menuflowdescribe=$(tdList).eq(5).text();
-                var  menuFlowImageCorrespond=$(tdList).eq(6).data("imagecorrespond");
-                var data={
-                    "menuMateriel":{
-                        "materiel":{
-                            "materielId":materielid
-                        },
-                        "menuMaterielType":menumaterieltype,
-                    },
-                    "working":{
-                        "workingId":workingid,
-                    },
-                    "technology":{
-                        "technologyId":technologyid
-                    },
-                    "menuFlowHour":menuflowuour,
-                    "menuFlowDescribe":menuflowdescribe,
-                    "menuFlowImageCorrespond":menuFlowImageCorrespond
-                };
-                menuFlowArray.push(data);
+            $(tdList).eq(8).attr("data-imagecorrespond","img"+r);
+            var  menuFlowImageCorrespond=$(tdList).eq(8).attr("data-imagecorrespond");
+
+            $(tdList).eq(8).find("input[type='file']").attr("name","img"+r);
+            var img=$(tdList).eq(8).find("input[type='file']").attr("name")
+            var file=$(tdList).eq(8).find("input[type='file']")[0].files[0];
+            if (file!=null){
+                flowData.append(img, file);
             }
+
+            var menuFlowImage=$(tdList).eq(8).find("input[name='menuFlowImage']").val();
+
+
+            var data={
+                "menuFlowId":menuFlowId,
+                "menuMateriel":{
+                    "menuMaterielId":menumaterielid,
+                    "materiel":{
+                        "materielId":materielid
+                    },
+                    "menuMaterielType":menumaterieltype,
+                },
+                "working":{
+                    "workingId":workingid,
+                },
+                "technology":{
+                    "technologyId":technologyid
+                },
+                "menuFlowHour":menuflowuour,
+                "menuFlowDescribe":menuflowdescribe,
+                "menuFlowImageCorrespond":menuFlowImageCorrespond,
+                "menuFlowImage":menuFlowImage
+            };
+            menuFlowArray.push(data);
         }
+    }
 
 
     function buttonTemplateClick() {
         addMenuFlow();
         var menuForm=document.getElementById("menuForm");
-        var flowFrom=document.getElementById("flowFrom");
-        var flowData = new FormData(flowFrom);
-
         var formData = new FormData(menuForm);
 
         for(var pair of flowData.entries()) {
@@ -2225,7 +2522,7 @@
         formData.append("menuImageData",$('#input-file-now')[0].files[0]);
 
         $.ajax({
-            url: '/menu/add.do',
+            url: '/menu/edit.do',
             type: 'POST',
             data: formData,
             cache: false,
@@ -2238,8 +2535,6 @@
         });
     }
 
-
-    
 </script>
 
 </body>

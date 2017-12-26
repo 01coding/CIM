@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 订单合同
@@ -97,12 +98,14 @@ public class OrderContractController {
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {
+                String landing = UUID.randomUUID().toString();
+                //文件名
+                String fileName = landing + file.getOriginalFilename();
                 // 文件保存路径
-                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath()
-                        + file.getOriginalFilename();
+                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath() + fileName;
                 // 转存文件
                 file.transferTo(new File(filePath));
-                return filePath;
+                return fileName;
 
             } catch (Exception e) {
                 throw new RuntimeException(e);

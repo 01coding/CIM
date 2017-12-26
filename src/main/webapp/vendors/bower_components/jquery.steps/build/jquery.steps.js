@@ -1056,6 +1056,7 @@ function renderPagination(wizard, options, state)
     {
         var pagination = "<{0} class=\"actions {1}\"><ul role=\"menu\" aria-label=\"{2}\">{3}</ul></{0}>",
             buttonTemplate = "<li><a href=\"#{0}\" role=\"menuitem\">{1}</a></li>",
+            buttonTemplateClick = "<li><a href=\"#{0}\" onclick='buttonTemplateClick()' role=\"menuitem\">{1}</a></li>",
             buttons = "";
 
         if (!options.forceMoveForward)
@@ -1067,7 +1068,7 @@ function renderPagination(wizard, options, state)
 
         if (options.enableFinishButton)
         {
-            buttons += buttonTemplate.format("finish", options.labels.finish);
+            buttons += buttonTemplateClick.format("finish", options.labels.finish);
         }
 
         if (options.enableCancelButton)
@@ -2006,7 +2007,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Finish"
          * @for defaults
          **/
-        finish: "Finish",
+        finish: "保存",
 
         /**
          * Label for the next button.
@@ -2016,7 +2017,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Next"
          * @for defaults
          **/
-        next: "Next",
+        next: "下一项",
 
         /**
          * Label for the previous button.
@@ -2026,7 +2027,7 @@ var defaults = $.fn.steps.defaults = {
          * @default "Previous"
          * @for defaults
          **/
-        previous: "Previous",
+        previous: "上一项",
 
         /**
          * Label for the loading animation.

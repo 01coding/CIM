@@ -68,4 +68,11 @@ public interface MenuFlowDao {
      */
     List<MenuFlow> selectBYMenuMaterielId(Integer menuMaterielId);
 
+
+    /**
+     * 删除菜谱流程
+     * @param menuFlowId 菜谱流程id
+     */
+    void deleteById(Integer menuFlowId);
+
 }

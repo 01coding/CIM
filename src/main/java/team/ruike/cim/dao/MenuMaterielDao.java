@@ -67,4 +67,7 @@ public interface MenuMaterielDao {
      * @return 菜谱物料关系对象集合
      */
     List<MenuMateriel> selectByMenuId(Integer menuId);
+
+
+    void deleteById(Integer menuMaterielId);
 }

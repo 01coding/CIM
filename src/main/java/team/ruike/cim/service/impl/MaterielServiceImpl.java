@@ -126,4 +126,11 @@ public class MaterielServiceImpl implements MaterielService {
     }
 
 
+    /**
+     * 获取所有物料
+     * @return 物料集合
+     */
+    public List<Materiel> selectAllMateriel() {
+        return materielDao.select(new Materiel(), 0, 99);
+    }
 }

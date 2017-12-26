@@ -41,4 +41,11 @@ public interface TechnologyService {
      * @return 是否成功
      */
     boolean delTechnology(Technology technology);
+
+    /**
+     * 获取所有工艺
+     * @return  所有工艺
+     */
+    List<Technology> selectAllTechnology();
+
 }

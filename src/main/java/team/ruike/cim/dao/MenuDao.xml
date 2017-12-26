@@ -68,13 +68,14 @@
             AND  menu_type_id=#{menu.menuType.menuTypeId}
         </if>
     </sql>
-    <insert id="add" parameterType="menu">
-        INSERT  INTO menu VALUES (DEFAULT ,#{menuName},#{menuNo},#{menuType.menuTypeId},#{menuWeight},#{menuCost},#{menuImage},#{menuStoreMax},#{menuStoreMin},#{menuShelfLife},#{menuCreateDate},#{menuState.menuStateId},#{menuReleaseDate},#{status},#{menuRemarks})
+    <insert id="add" parameterType="menu"  useGeneratedKeys="true" keyProperty="menuId">
+        INSERT  INTO menu VALUES (DEFAULT ,#{menuName},#{menuNo},#{menuType.menuTypeId},#{menuWeight},#{menuCost},#{menuImage},#{menuStoreMax},#{menuStoreMin},#{menuShelfLife},now(),#{menuState.menuStateId},#{menuReleaseDate},0,#{menuRemarks})
     </insert>
     <update id="update" parameterType="menu">
-        UPDATE menu SET menu_id=#{menuName},menu_name=#{menuNo},menu_no=#{menuType.menuTypeId},menu_weight=#{menuWeight},menu_cost=#{menuCost},
-        menu_image=#{menuImage},menu_store_max=#{menuStoreMax},menu_store_min=#{menuStoreMin},menu_shelf_life=#{menuShelfLife},menu_create_date=#{menuCreateDate},menu_release_date=#{menuReleaseDate},status=#{status},menu_state_id=#{menuState.menuStateId},
+        UPDATE menu SET menu_name=#{menuName},menu_weight=#{menuWeight},menu_cost=#{menuCost},
+        menu_image=#{menuImage},menu_store_max=#{menuStoreMax},menu_store_min=#{menuStoreMin},menu_shelf_life=#{menuShelfLife},menu_release_date=#{menuReleaseDate},menu_state_id=#{menuState.menuStateId},
         menu_type_id=#{menuType.menuTypeId}
+        WHERE  menu_id=#{menuId}
     </update>
     <select id="select" resultMap="menus">
         SELECT * FROM (<include refid="sql"/> ) f

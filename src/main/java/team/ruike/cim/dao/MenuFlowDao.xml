@@ -41,9 +41,10 @@
     </sql>
     <insert id="add" parameterType="menuFlow">
         INSERT INTO menu_flow VALUES
-            (DEFAULT, #{menuMaterielId}, #{working.workingId}, #{technology.technologyId}, #{menuFlowDescribe},
+            (DEFAULT, #{menuMateriel.menuMaterielId}, #{working.workingId}, #{technology.technologyId}, #{menuFlowDescribe},
              #{menuFlowHour}, #{menuFlowImage}, 0)
     </insert>
+
     <update id="update" parameterType="menuFlow">
         UPDATE menu_flow
         SET menu_flow_id= #{menuFlowId}, menu_materiel_id = #{menuMaterielId},
@@ -52,6 +53,13 @@
             technology_id= #{working.workingId}, technology_id = #{technology.technologyId}
         WHERE menu_flow_id = #{menuMateriel}
     </update>
+
+
+    <update id="deleteById">
+        UPDATE menu_flow SET `status` = 1
+        WHERE menu_flow_id = #{menuFlowId}
+    </update>
+
     <select id="select" resultMap="menuMateriels">
         SELECT * FROM (
         <include refid="sql"/>
