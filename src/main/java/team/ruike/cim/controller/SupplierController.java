@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
@@ -20,7 +19,6 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
@@ -36,8 +34,13 @@ import java.util.Date;
 public class SupplierController {
     @Resource
     private SupplierService supplierService;
+
     /**
-     * 跳转到供应商主页
+     * 跳转到供应商，并加载数据
+     * @param supplier 供应商对象
+     * @param pager 分页辅助类
+     * @param request 转发
+     * @param materielTypeLevelB 二级类型对象
      * @return
      */
     @RequestMapping("/supplier.do")
@@ -54,6 +57,7 @@ public class SupplierController {
      * @param supplierId 供应商id
      * @return
      */
+
     @RequestMapping("/delectSupplier.do")
     @ResponseBody
     public String delectSupplier(Integer supplierId){
@@ -63,12 +67,14 @@ public class SupplierController {
 
     /**
      * 添加供应商
-     * @param supplier
+     * @param supplier 供应商对象
+     * @param date 转换时间
      * @return
+     * @throws IOException 自动抛出异常
      */
     @RequestMapping("/addSupplier.do")
     @ResponseBody
-    public String addSupplier(Supplier supplier, String date, @RequestParam MultipartFile[] photos, HttpSession session, HttpServletRequest request) throws IOException {
+    public String addSupplier(Supplier supplier, String date) throws IOException {
         Date dates=null;
         try
         {
@@ -102,21 +108,23 @@ public class SupplierController {
 
     /**
      * 修改供应商信息
-     * @param supplier
+     * @param supplier 供应商对象
      * @return
      */
+
     @RequestMapping("/updateSupplier.do")
     @ResponseBody
     public String updateSupplier(Supplier supplier){
-       int num= supplierService.updateSupplier(supplier);
+        int num= supplierService.updateSupplier(supplier);
         return (num==1)+"";
     }
 
     /**
      * 根据id查询数据
-     * @param id
+     * @param id 供应商id
      * @return
      */
+
     @RequestMapping("/getSupplierById.do")
     @ResponseBody
     public String getSupplierById(@RequestParam(value = "id") int id){
@@ -126,10 +134,11 @@ public class SupplierController {
 
 
     /**
-     * 跳转，合同管理页面
-     * @param supplierContract
-     * @param pager
-     * @param request
+     * 跳转，合同管理页面，并加载数据
+     * @param supplierContract 合同对象
+     * @param pager 分页辅助类
+     * @param request 转发
+     * @param supplier 供应商对象
      * @return
      */
     @RequestMapping("/contractManagement.do")
@@ -143,6 +152,9 @@ public class SupplierController {
     /**
      * 添加合同
      * @param supplierContract 合同对象
+     * @param date 时间转换
+     * @param file 上传文件
+     * @param request 转发
      * @return
      */
     @RequestMapping("/addSupplierContract.do")
@@ -179,8 +191,8 @@ public class SupplierController {
 
     /**
      * 上传文件
-     * @param file
-     * @param request
+     * @param file 上传
+     * @param request 转发
      * @return
      */
     public String upload(CommonsMultipartFile file, HttpServletRequest request) {
