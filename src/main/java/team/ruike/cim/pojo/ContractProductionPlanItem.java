@@ -34,7 +34,15 @@ public class ContractProductionPlanItem implements Serializable {
     /**
      * 合同订单项id外键
      */
-    private Integer contractOrderTermId;
+    private ContractOrderTerm contractOrderTerm;
+
+    public ContractOrderTerm getContractOrderTerm() {
+        return contractOrderTerm;
+    }
+
+    public void setContractOrderTerm(ContractOrderTerm contractOrderTerm) {
+        this.contractOrderTerm = contractOrderTerm;
+    }
 
     public Integer getContractProductionPlanItemId() {
         return contractProductionPlanItemId;
