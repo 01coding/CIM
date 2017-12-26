@@ -7,8 +7,8 @@
         <result column="contract_production_plan_item_id" property="contractProductionPlanItemId"/>
         <result column="menu_number" property="menuNumber"/>
         <result column="status" property="status"/>
-        <result column="contract_order_term_id" property="contractOrderTermId"/>
         <result column="contract_production_plan_id" property="contractProductionPlanId"/>
+        <association column="contract_order_term_id" property="contractOrderTerm" select="team.ruike.cim.dao.ContractOrderTermDao.selectById"/>
         <association column="menu_id" property="menu" select="team.ruike.cim.dao.MenuDao.selectById"/>
     </resultMap>
     <sql id="sqlh">
@@ -25,8 +25,8 @@
         <if test="contractProductionPlanItem.contractProductionPlanId!=null and contractProductionPlanItem.contractProductionPlanId>0">
             AND contract_production_plan_id=#{contractProductionPlanItem.contractProductionPlanId}
         </if>
-        <if test="contractProductionPlanItem.contractOrderTermId!=null and contractProductionPlanItem.contractOrderTermId>0">
-            AND contract_order_term_id=#{contractProductionPlanItem.contractOrderTermId}
+        <if test="contractProductionPlanItem.contractOrderTerm!=null and contractProductionPlanItem.contractOrderTerm.contractOrderTermId!=null and contractProductionPlanItem.contractOrderTerm.contractOrderTermId>0">
+            AND contract_order_term_id=#{contractProductionPlanItem.contractOrderTerm.contractOrderTermId}
         </if>
     </sql>
     <sql id="sqlz">
@@ -43,7 +43,7 @@
         <if test="contractProductionPlanId!=null and contractProductionPlanId>0">
             AND contract_production_plan_id=#{contractProductionPlanId}
         </if>
-        <if test="contractOrderTermId!=null and contractOrderTermId>0">
+        <if test="contractOrderTerm!=null and contractOrderTerm.contractOrderTermId!=null and contractOrderTerm.contractOrderTermId>0">
             AND contract_order_term_id=#{contractOrderTermId}
         </if>
     </sql>
@@ -52,13 +52,12 @@
             #{menu.menuId},
             #{menuNumber},
             #{contractProductionPlanId},
-            #{contractOrderTermId},
-            0);
+            0,#{contractOrderTerm.contractOrderTermId});
     </insert>
     <update id="update" parameterType="contractProductionPlanItem">
             UPDATE contract_production_plan_item set menu_id=#{menu.menuId},
             menu_number=#{menuNumber},
-            contract_production_plan_id=#{contractProductionPlanId},contract_order_term_id=#{contractOrderTermId},
+            contract_production_plan_id=#{contractProductionPlanId},contract_order_term_id=#{contractOrderTerm.contractOrderTermId},
             status=#{status}
             WHERE contract_production_plan_item_id=#{contractProductionPlanItemId}
     </update>
