@@ -68,5 +68,5 @@ public interface EverydayPurchasingPlanDao {
      * 根据日期查寻当前记录批次
      * @return
      */
-    int getNumberByDate(Date date);
+    EverydayPurchasingPlan getNumberByDate(Date date);
 }

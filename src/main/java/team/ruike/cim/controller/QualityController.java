@@ -47,7 +47,7 @@ public class QualityController {
      * @return
      */
     @RequestMapping("Something.cl")
-    public String getRecordBySomething(Integer sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
+    public String getRecordBySomething(String sid,PurchaseStandardRecord purchaseStandardRecord, Pager<PurchaseStandardRecord> pager, HttpServletRequest request){
         System.out.println(sid);
         if (sid!=null){
             System.out.println(sid);
@@ -269,13 +269,21 @@ public class QualityController {
         java.sql.Date dates = new java.sql.Date(date1.getTime());
         List<MaterielTypeLevelA> materielTypeLevelAList=qualityService.getMaterielTypeLevelAByDate(dates);
 
-        List<MaterielTypeLevelB> materielTypeLevelBList=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAList.get(0).getMaterielTypeLevelAId(),dates);
+        List<MaterielTypeLevelB> materielTypeLevelBList=null;
+        List<Materiel> materielList=null;
+        PurchaseStandard purchaseStandard=null;
+        if (materielTypeLevelAList!=null && materielTypeLevelAList.size()>0 && materielTypeLevelAList.get(0)!=null){
+            materielTypeLevelBList =qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAList.get(0).getMaterielTypeLevelAId(),dates);
+        }
+        if(materielTypeLevelBList!=null && materielTypeLevelBList.get(0)!=null){
+            materielList=qualityService.getMaterielByDate(materielTypeLevelBList.get(0).getMaterielTypeLevelBId(),dates);
+        }
+        if(materielList!=null && materielList.get(0)!=null){
+            purchaseStandard= qualityService.getpurchaseStandard(materielList.get(0).getMaterielId());
+        }
+        String number=qualityService.getNumberByDate(dates);
 
-        List<Materiel> materielList=qualityService.getMaterielByDate(materielTypeLevelBList.get(0).getMaterielTypeLevelBId(),dates);
 
-        Integer number=qualityService.getNumberByDate(dates);
-
-        PurchaseStandard purchaseStandard= qualityService.getpurchaseStandard(materielList.get(0).getMaterielId());
         request.setAttribute("piciA",materielTypeLevelAList);
         request.setAttribute("piciB",materielTypeLevelBList);
         request.setAttribute("piciM",materielList);

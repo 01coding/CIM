@@ -84,6 +84,6 @@
         SELECT * from everyday_purchasing_plan_term WHERE status=0 and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
     </select>
     <select id="selectByeverydayPurchasingPlanId" parameterType="int" resultMap="everydayPurchasingPlanTermMap">
-          select * from everyday_purchasing_plan_term where `status`=0 and everyday_purchasing_plan_term_id=#{everydayPurchasingPlanTermId}
+          select * from everyday_purchasing_plan_term where `status`=0 and everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
     </select>
 </mapper>

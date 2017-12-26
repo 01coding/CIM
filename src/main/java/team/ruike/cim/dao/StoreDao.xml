@@ -14,7 +14,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="password" property="password"/>
         <result column="status" property="status"/>
     </resultMap>
-    <insert id="add" parameterType="store">
+    <insert id="add" parameterType="store"  useGeneratedKeys="true" keyProperty="storeId">
         INSERT INTO store VALUES (DEFAULT,#{storeName},#{storeType},#{storeAddress},#{storePhone},0,#{storeNo},'123456',0)
     </insert>
 

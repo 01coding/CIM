@@ -1422,9 +1422,6 @@
                                                 <th>到期时间</th>
                                                 <th>所在区域</th>
                                                 <th>货架编号</th>
-
-
-
                                             </tr>
                                             </thead>
                                             <tfoot>
@@ -1434,7 +1431,6 @@
                                                 <th>到期时间</th>
                                                 <th>所在区域</th>
                                                 <th>货架编号</th>
-
                                             </tr>
                                             </tfoot>
                                             <tbody>

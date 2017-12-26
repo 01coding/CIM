@@ -11,19 +11,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result column="status" property="status"/>
         <association property="supplier" column="supplier_id" select="team.ruike.cim.dao.SupplierDao.selectById"/>
     </resultMap>
-    <insert id="add" parameterType="supplierContract">
-        INSERT  INTO supplier_contract VALUES (DEFAULT,#{supplierContractName},#{supplierContractDate},#{supplierContractImage},#{status},#{supplierId})
+    <insert id="add" parameterType="supplierContract" useGeneratedKeys="true" keyProperty="supplierContractId">
+        INSERT  INTO supplier_contract VALUES (DEFAULT,#{supplierContractName},
+        #{supplierContractDate},#{supplierContractImage},#{status},#{supplier.supplierId})
     </insert>
     <update id="update" parameterType="supplierContract">
           UPDATE supplier_contract SET
                 supplier_contract_name=#{supplierContractName},
                 supplier_contract_date=#{supplierContractDate},
                 supplier_contract_image=#{supplierContractImage},
-                status=#{status},
+                status=#{status}
+                WHERE
                 supplier_id=#{supplier.supplierId}
     </update>
 <sql id="sql">
-SELECT * FROM supplier_contract WHERE status=0
+  SELECT * FROM supplier_contract WHERE status=0
     <if test="supplierContract.supplierContractId!=null and supplierContract.supplierContractId>0">
     AND supplier_contract_id=#{supplierContract.supplierContractId}
     </if>
@@ -36,7 +38,7 @@ SELECT * FROM supplier_contract WHERE status=0
     <if test="supplierContract.supplierContractImage!=null and supplierContract.supplierContractImage!=''">
         AND supplier_contract_image#{supplierContract.supplierContractImage}
     </if>
-    <if test="supplierContract.supplier!=null and supplierContract.supplier.supplierId>0">
+    <if test="supplierContract.supplier!=null and supplierContract.supplier.supplierId!=null and supplierContract.supplier.supplierId>0">
         AND  supplier_id=#{supplierContract.supplier.supplierId}
     </if>
 
@@ -44,7 +46,7 @@ SELECT * FROM supplier_contract WHERE status=0
 </sql>
     <select id="select" resultMap="supplierContractMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="supplierContract">
         SELECT COUNT(1) FROM supplier_contract WHERE status=0
@@ -60,7 +62,7 @@ SELECT * FROM supplier_contract WHERE status=0
         <if test="supplierContractImage!=null and supplierContractImage!=''">
             AND supplier_contract_image#{supplierContractImage}
         </if>
-        <if test="supplier!=null and supplier.supplierId>0">
+        <if test="supplier!=null and supplier.supplierId!=null and supplier.supplierId>0">
             AND  supplier_id=#{supplier.supplierId}
         </if>
     </select>

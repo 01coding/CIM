@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>修改质检信息</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -389,7 +389,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" class="active">
+                <a href="javascript:void(0);">
                     <div class="pull-left"><i class="icon-home mr-20"></i><span
                             class="right-nav-text">主页</span></div>
                     <div class="pull-right"><span class="label label-warning">8</span></div>
@@ -399,7 +399,8 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#${j.jurisdictionId}">
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==7}"> class="active" </c:if>
+                           data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
                             </div>
@@ -407,11 +408,13 @@
                             <div class="clearfix"></div>
                         </a>
                             <%--在此处判断权限类型--%>
-                        <ul id="${j.jurisdictionId}" class="collapse collapse-level-1">
+                        <ul id="${j.jurisdictionId}"
+                            class="collapse <c:if test="${j.jurisdictionId==7}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
+                                        <a <c:if test="${f.functionId==52}"> class="active-page" </c:if>
+                                                href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
                             </c:forEach>
@@ -419,29 +422,6 @@
                     </li>
                 </c:forEach>
             </c:forEach>
-            <%--<li>--%>
-            <%--<a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">--%>
-            <%--<div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span--%>
-            <%--class="right-nav-text">研发管理</span>--%>
-            <%--</div>--%>
-            <%--<div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>--%>
-            <%--<div class="clearfix"></div>--%>
-            <%--</a>--%>
-            <%--<ul id="dashboard_dr" class="collapse collapse-level-1">--%>
-            <%--<li>--%>
-            <%--<a class="active-page" href="index.do">Analytical</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index2.html">Demographic</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="index3.html">Project</a>--%>
-            <%--</li>--%>
-            <%--<li>--%>
-            <%--<a href="profile.html">profile</a>--%>
-            <%--</li>--%>
-            <%--</ul>--%>
-            <%--</li>--%>
             <li>
                 <hr class="light-grey-hr mb-10"/>
             </li>
@@ -1047,8 +1027,7 @@
                                                 <div class="form-actions">
                                                     <button type="submit" id="butt" class="btn btn-success btn-icon left-icon mr-10 pull-left">
                                                         <i class="fa fa-check"></i> <span>保存修改</span></button>
-                                                    <button type="button" class="btn btn-warning pull-left">取消保存
-                                                    </button>
+                                                        <a href="standard.do"><button type="button" class="btn btn-warning pull-left">取消保存</button></a>
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>

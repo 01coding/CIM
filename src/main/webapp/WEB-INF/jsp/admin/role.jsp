@@ -390,478 +390,56 @@
     <div class="fixed-sidebar-left">
         <ul class="nav navbar-nav side-nav nicescroll-bar">
             <li class="navigation-header">
-                <span>Main</span>
+                <span>功能菜单</span>
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="dashboard_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="index.html">Analytical</a>
-                    </li>
-                    <li>
-                        <a href="index2.html">Demographic</a>
-                    </li>
-                    <li>
-                        <a href="index3.html">Project</a>
-                    </li>
-                    <li>
-                        <a href="profile.html">profile</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ecom_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-shopping-basket mr-20"></i><span class="right-nav-text">E-Commerce</span>
-                    </div>
-                    <div class="pull-right"><span class="label label-success">hot</span></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="ecom_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="e-commerce.html">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="product.html">Products</a>
-                    </li>
-                    <li>
-                        <a href="product-detail.html">Product Detail</a>
-                    </li>
-                    <li>
-                        <a href="add-products.html">Add Product</a>
-                    </li>
-                    <li>
-                        <a href="product-orders.html">Orders</a>
-                    </li>
-                    <li>
-                        <a href="product-cart.html">Cart</a>
-                    </li>
-                    <li>
-                        <a href="product-checkout.html">Checkout</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a class="active" href="javascript:void(0);" data-toggle="collapse" data-target="#app_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-apps mr-20"></i><span class="right-nav-text">Apps </span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="app_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="chats.html">chats</a>
-                    </li>
-                    <li>
-                        <a href="calendar.html">calendar</a>
-                    </li>
-                    <li>
-                        <a href="weather.html">weather</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#email_dr">Email
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="email_dr" class="collapse collapse-level-2">
-                            <li>
-                                <a href="inbox.html">inbox</a>
-                            </li>
-                            <li>
-                                <a href="inbox-detail.html">detail email</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a class="active-page" href="javascript:void(0);" data-toggle="collapse"
-                           data-target="#contact_dr">Contacts
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="contact_dr" class="collapse collapse-level-2">
-                            <li>
-                                <a class="active-page" href="添加合同订单.html">list</a>
-                            </li>
-                            <li>
-                                <a href="contact-card.html">cards</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="file-manager.html">File Manager</a>
-                    </li>
-                    <li>
-                        <a href="todo-tasklist.html">To Do/Tasklist</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="widgets.html">
-                    <div class="pull-left"><i class="zmdi zmdi-flag mr-20"></i><span
-                            class="right-nav-text">widgets</span></div>
+                <a href="javascript:void(0);">
+                    <div class="pull-left"><i class="icon-home mr-20"></i><span
+                            class="right-nav-text">主页</span></div>
                     <div class="pull-right"><span class="label label-warning">8</span></div>
                     <div class="clearfix"></div>
                 </a>
             </li>
+            <c:forEach items="${sessionScope.u.roles}" var="role">
+                <c:forEach items="${role.jurisdictions}" var="j">
+                    <li>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==10}"> class="active" </c:if>
+                           data-toggle="collapse" data-target="#${j.jurisdictionId}">
+                            <div class="pull-left"><i class="${j.icon} mr-20"></i><span
+                                    class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
+                            </div>
+                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
+                            <div class="clearfix"></div>
+                        </a>
+                            <%--在此处判断权限类型--%>
+                        <ul id="${j.jurisdictionId}"
+                            class="collapse <c:if test="${j.jurisdictionId==10}">in</c:if> collapse-level-1">
+                            <c:forEach items="${role.functions}" var="f">
+                                <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
+                                    <li>
+                                        <a <c:if test="${f.functionId==25}"> class="active-page" </c:if>
+                                                href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
+                                    </li>
+                                </c:if>
+                            </c:forEach>
+                        </ul>
+                    </li>
+                </c:forEach>
+            </c:forEach>
             <li>
                 <hr class="light-grey-hr mb-10"/>
             </li>
             <li class="navigation-header">
-                <span>component</span>
+                <span>系统</span>
                 <i class="zmdi zmdi-more"></i>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#ui_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-smartphone-setup mr-20"></i><span class="right-nav-text">UI Elements</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="ui_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="panels-wells.html">Panels & Wells</a>
-                    </li>
-                    <li>
-                        <a href="modals.html">Modals</a>
-                    </li>
-                    <li>
-                        <a href="sweetalert.html">Sweet Alerts</a>
-                    </li>
-                    <li>
-                        <a href="notifications.html">notifications</a>
-                    </li>
-                    <li>
-                        <a href="typography.html">Typography</a>
-                    </li>
-                    <li>
-                        <a href="buttons.html">Buttons</a>
-                    </li>
-                    <li>
-                        <a href="accordion-toggle.html">Accordion / Toggles</a>
-                    </li>
-                    <li>
-                        <a href="tabs.html">Tabs</a>
-                    </li>
-                    <li>
-                        <a href="progressbars.html">Progress bars</a>
-                    </li>
-                    <li>
-                        <a href="skills-counter.html">Skills & Counters</a>
-                    </li>
-                    <li>
-                        <a href="pricing.html">Pricing Tables</a>
-                    </li>
-                    <li>
-                        <a href="nestable.html">Nestables</a>
-                    </li>
-                    <li>
-                        <a href="dorpdown.html">Dropdowns</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-treeview.html">Tree View</a>
-                    </li>
-                    <li>
-                        <a href="carousel.html">Carousel</a>
-                    </li>
-                    <li>
-                        <a href="range-slider.html">Range Slider</a>
-                    </li>
-                    <li>
-                        <a href="grid-styles.html">Grid</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-ui.html">Bootstrap UI</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#form_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-edit mr-20"></i><span class="right-nav-text">Forms</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="form_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="form-element.html">Basic Forms</a>
-                    </li>
-                    <li>
-                        <a href="form-layout.html">form Layout</a>
-                    </li>
-                    <li>
-                        <a href="form-advanced.html">Form Advanced</a>
-                    </li>
-                    <li>
-                        <a href="form-mask.html">Form Mask</a>
-                    </li>
-                    <li>
-                        <a href="form-picker.html">Form Picker</a>
-                    </li>
-                    <li>
-                        <a href="form-validation.html">form Validation</a>
-                    </li>
-                    <li>
-                        <a href="form-wizard.html">Form Wizard</a>
-                    </li>
-                    <li>
-                        <a href="form-x-editable.html">X-Editable</a>
-                    </li>
-                    <li>
-                        <a href="cropperjs.html">Cropperjs</a>
-                    </li>
-                    <li>
-                        <a href="form-file-upload.html">File Upload</a>
-                    </li>
-                    <li>
-                        <a href="dropzone.html">Dropzone</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-wysihtml5.html">Bootstrap Wysihtml5</a>
-                    </li>
-                    <li>
-                        <a href="tinymce-wysihtml5.html">Tinymce Wysihtml5</a>
-                    </li>
-                    <li>
-                        <a href="summernote-wysihtml5.html">summernote</a>
-                    </li>
-                    <li>
-                        <a href="typeahead-js.html">typeahead</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="chart_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="flot-chart.html">Flot Chart</a>
-                    </li>
-                    <li>
-                        <a href="morris-chart.html">Morris Chart</a>
-                    </li>
-                    <li>
-                        <a href="chart.js.html">chartjs</a>
-                    </li>
-                    <li>
-                        <a href="chartist.html">chartist</a>
-                    </li>
-                    <li>
-                        <a href="easy-pie-chart.html">Easy Pie Chart</a>
-                    </li>
-                    <li>
-                        <a href="sparkline.html">Sparkline</a>
-                    </li>
-                    <li>
-                        <a href="peity-chart.html">Peity Chart</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="table_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a href="basic-table.html">Basic Table</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-table.html">Bootstrap Table</a>
-                    </li>
-                    <li>
-                        <a href="data-table.html">Data Table</a>
-                    </li>
-                    <li>
-                        <a href="合同订单.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
-                            Table</a>
-                    </li>
-                    <li>
-                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
-                            DataTable</a>
-                    </li>
-                    <li>
-                        <a href="responsive-table.html">Responsive Table</a>
-                    </li>
-                    <li>
-                        <a href="editable-table.html">Editable Table</a>
-                    </li>
-                    <li>
-                        <a href="foo-table.html">Foo Table</a>
-                    </li>
-                    <li>
-                        <a href="jsgrid-table.html">Jsgrid Table</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#icon_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-iridescent mr-20"></i><span
-                            class="right-nav-text">Icons</span></div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="icon_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="fontawesome.html">Fontawesome</a>
-                    </li>
-                    <li>
-                        <a href="themify.html">Themify</a>
-                    </li>
-                    <li>
-                        <a href="linea-icon.html">Linea</a>
-                    </li>
-                    <li>
-                        <a href="simple-line-icons.html">Simple Line</a>
-                    </li>
-                    <li>
-                        <a href="pe-icon-7.html">Pe-icon-7</a>
-                    </li>
-                    <li>
-                        <a href="glyphicons.html">Glyphicons</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#maps_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-map mr-20"></i><span class="right-nav-text">maps</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="maps_dr" class="collapse collapse-level-1">
-                    <li>
-                        <a href="vector-map.html">Vector Map</a>
-                    </li>
-                    <li>
-                        <a href="google-map.html">Google Map</a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <hr class="light-grey-hr mb-10"/>
-            </li>
-            <li class="navigation-header">
-                <span>featured</span>
-                <i class="zmdi zmdi-more"></i>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#pages_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-google-pages mr-20"></i><span class="right-nav-text">Special Pages</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="pages_dr" class="collapse collapse-level-1 two-col-list">
-                    <li>
-                        <a class="active" href="blank.html">Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#auth_dr">Authantication pages
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="auth_dr" class="collapse collapse-level-2">
-                            <li>
-                                <a href="login.html">Login</a>
-                            </li>
-                            <li>
-                                <a href="signup.html">Register</a>
-                            </li>
-                            <li>
-                                <a href="forgot-password.html">Recover Password</a>
-                            </li>
-                            <li>
-                                <a href="reset-password.html">reset Password</a>
-                            </li>
-                            <li>
-                                <a href="locked.html">Lock Screen</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#invoice_dr">Invoice
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="invoice_dr" class="collapse collapse-level-2">
-                            <li>
-                                <a href="invoice.html">Invoice</a>
-                            </li>
-                            <li>
-                                <a href="invoice-archive.html">Invoice Archive</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#error_dr">error pages
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="error_dr" class="collapse collapse-level-2">
-                            <li>
-                                <a href="404.html">Error 404</a>
-                            </li>
-                            <li>
-                                <a href="500.html">Error 500</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="gallery.html">Gallery</a>
-                    </li>
-                    <li>
-                        <a href="timeline.html">Timeline</a>
-                    </li>
-                    <li>
-                        <a href="faq.html">FAQ</a>
-                    </li>
-                </ul>
             </li>
             <li>
                 <a href="documentation.html">
-                    <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span>
+                    <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
                     </div>
                     <div class="clearfix"></div>
                 </a>
-            </li>
-            <li>
-                <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv1">
-                    <div class="pull-left"><i class="zmdi zmdi-filter-list mr-20"></i><span class="right-nav-text">multilevel</span>
-                    </div>
-                    <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                    <div class="clearfix"></div>
-                </a>
-                <ul id="dropdown_dr_lv1" class="collapse collapse-level-1">
-                    <li>
-                        <a href="#">Item level 1</a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0);" data-toggle="collapse" data-target="#dropdown_dr_lv2">Dropdown
-                            level 2
-                            <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
-                            <div class="clearfix"></div>
-                        </a>
-                        <ul id="dropdown_dr_lv2" class="collapse collapse-level-2">
-                            <li>
-                                <a href="#">Item level 2</a>
-                            </li>
-                            <li>
-                                <a href="#">Item level 2</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
             </li>
         </ul>
     </div>
@@ -1433,6 +1011,40 @@
                                                                 <tbody>
                                                                 <c:forEach items="${requestScope.pager.list}" var="ls">
                                                                     <tr>
+                                                                        <div aria-hidden="true" role="dialog" tabindex="-1" id="xModal${ls.roleId}"
+                                                                             class="modal fade" style="display: none;">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button" class="close" data-dismiss="modal"
+                                                                                                aria-hidden="true">×
+                                                                                        </button>
+                                                                                        <h4 class="modal-title">修改角色信息</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form class="form-horizontal form-material" id="xrole${ls.roleId}">
+                                                                                            <div class="form-group">
+                                                                                                <div class="col-md-12 mb-20">
+                                                                                                    <label class="control-label mb-10">角色名称</label>
+                                                                                                    <input id="roleName${ls.roleId}" type="text" name="roleName" class="form-control"
+                                                                                                           placeholder="请输入角色名称" value="${ls.roleName}"/>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button" flagId="${ls.roleId}" class="btn btn-info waves-effect updrole"
+                                                                                                data-dismiss="modal">保存
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-default waves-effect"
+                                                                                                data-dismiss="modal">取消
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
                                                                         <div id="myModal${ls.roleId}" class="modal fade"
                                                                              tabindex="-1" role="dialog"
                                                                              aria-labelledby="myModalLabel"
@@ -1501,19 +1113,20 @@
                                                                                 <!-- /.modal-content -->
                                                                             </div>
                                                                         </div>
-                                                                        <td>${ls.roleName}</td>
+                                                                        <td id="rroleName${ls.roleId}" >${ls.roleName}</td>
                                                                         <td>
                                                                             <button title="修改"
                                                                                     class="btn btn-default btn-icon-anim btn-circle"
-                                                                                    style="width: 30px;height: 30px">
+                                                                                    style="width: 30px;height: 30px" data-toggle="modal"
+                                                                                    data-target="#xModal${ls.roleId}">
                                                                                 <i class="fa fa-pencil"></i></button>
                                                                             <button title="权限设置" data-toggle="modal"
                                                                                     data-target="#myModal${ls.roleId}"
                                                                                     class="btn btn-danger btn-icon-anim btn-circle"
                                                                                     style="width: 30px;height: 30px">
                                                                                 <i class="icon-settings"></i></button>
-                                                                            <button title="删除"
-                                                                                    class="btn btn-info btn-icon-anim btn-circle"
+                                                                            <button title="删除" flagId="${ls.roleId}" flagName="${ls.roleName}"
+                                                                                    class="btn btn-info btn-icon-anim btn-circle delRole"
                                                                                     style="width: 30px;height: 30px">
                                                                                 <i class="icon-trash"></i></button>
                                                                         </td>
@@ -1633,11 +1246,69 @@
 <script src="../../../dist/js/modal-data.js"></script>
 <script>
     $(function () {
+        $(".delRole").click(function () {
+            var rid=$(this).attr("flagId");
+            var rName=$(this).attr("flagName");
+            var $tr=$(this).parent().parent();
+            swal({
+                title: "你确定要删除"+rName+"吗?",
+                text: "删除操作不可恢复！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function(isConfirm){
+                if (isConfirm) {
+                    $.ajax({
+                        url:"${pageContext.request.contextPath}/admin/delRole.do?roleId="+rid,
+                        cache: false,
+                        success:function(data){
+                            if(data == 1){
+                                swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
+                                $($tr).remove();
+                            }else if(data==0){
+                                swal("删除失败！！", "此角色拥有用户，请先删除用户！！", "error");
+                            }else {
+                                swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                        },
+                        error:function () {
+                            swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    });
+                }
+            });
+        });
+        $(".updrole").click(function () {
+            var rid=$(this).attr("flagId");
+            var data = $("#xrole"+rid).serialize();
+            var submitData = decodeURIComponent(data, true);
+            $.ajax({
+                url:'${pageContext.request.contextPath}/admin/updateRole.do?'+submitData+'&roleId='+rid,
+                cache:false,
+                success:function(data){
+                    if (data ==true) {
+                        swal({
+                            title: "修改成功！！!",
+                            type: "success",
+                            text: "此角色名称已发生改变！",
+                            confirmButtonColor: "#01c853",
+                        });
+                        $("#rroleName"+rid).html($("#roleName"+rid).val());
+                    }
+                },
+                error:function () {
+                    swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
+                }
+            });
+        });
         $(".save").click(function () {
             var roleId = $(this).attr("flag");
             var data = $("#save"+roleId).serialize();
             var submitData = decodeURIComponent(data, true);
-            alert(submitData);
             $.ajax({
                 type: 'post',
                 url: '${pageContext.request.contextPath}/admin/updateRoleJurisdiction.do?' + submitData+"&roleId="+roleId,
@@ -1651,8 +1322,11 @@
                             confirmButtonColor: "#01c853",
                         });
                     } else {
-                        swal("新增失败！！", "系统异常！请联系管理员处理。", "error");
+                        swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
                     }
+                },
+                error:function () {
+                    swal("修改失败！！", "系统异常！请联系管理员处理。", "error");
                 }
             });
         });

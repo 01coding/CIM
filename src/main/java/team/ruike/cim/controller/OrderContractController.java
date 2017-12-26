@@ -1,5 +1,6 @@
 package team.ruike.cim.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -82,16 +83,16 @@ public class OrderContractController {
     @RequestMapping("add.do")
     @ResponseBody
     public String add(OrderContract orderContract, @RequestParam("file") CommonsMultipartFile file, HttpServletRequest request) {
+
         String filePath = upload(file, request);
         orderContract.setOrderContractImage("");
-        if (filePath != null &&!filePath.equals("")) {
+        if (filePath != null && !filePath.equals("")) {
             orderContract.setOrderContractImage(filePath);
         }
-        orderContractService.addOrderContract(orderContract);
-        return "1";
+
+        OrderContract orderContract1 = orderContractService.addOrderContract(orderContract);
+        return JSON.toJSONString(orderContract1);
     }
-
-
 
 
     public String upload(CommonsMultipartFile file, HttpServletRequest request) {

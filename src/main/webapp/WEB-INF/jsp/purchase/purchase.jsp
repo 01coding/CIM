@@ -1,44 +1,63 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
+<%@ page import="team.ruike.cim.util.Pager" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
-  Date: 2017/11/28
-  Time: 10:48
+  Date: 2017/12/21
+  Time: 9:28
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>菜品流程</title>
+    <title>采购记录</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
     <meta name="author" content="hencework"/>
     <!-- Favicon -->
-    <link rel="shortcut icon" href="../../favicon.ico">
-    <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../../../favicon.ico">
+    <link rel="icon" href="../../../favicon.ico" type="image/x-icon">
+    <link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.datatables.net/rss.xml">
+    <!-- Data table CSS -->
+    <link href="../../../vendors/bower_components/datatables/media/css/jquery.dataTables.min.css" rel="stylesheet"
+          type="text/css"/>
+    <!-- vector map CSS -->
+    <link href="../../../vendors/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" type="text/css"/>
+    <!-- Footable CSS -->
+    <link href="../../../vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
+          type="text/css"/>
+
+    <!--alerts CSS -->
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
-    <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
+    <style>
+
+    </style>
+
 </head>
+
 <body>
-<!-- Preloader -->
+<!--Preloader-->
 <div class="preloader-it">
     <div class="la-anim-1"></div>
 </div>
-<!-- /Preloader -->
+<!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-red">
+
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
             <div class="nav-header pull-left">
                 <div class="logo-wrap">
-                    <a href="index.do">
-                        <img class="brand-img" src="../../dist/img/logo.png" alt="brand"/>
-                        <span class="brand-text">餐饮工业化</span>
+                    <a href="index.html">
+                        <img class="brand-img" src="../../../dist/img/logo.png" alt="brand"/>
+                        <span class="brand-text">Hound</span>
                     </a>
                 </div>
             </div>
@@ -123,16 +142,16 @@
                         <li class="product-nicescroll-bar row">
                             <ul class="pa-20">
                                 <li class="col-md-3 col-xs-6 col-menu-list">
-                                    <a href="javascript:void(0);" data-toggle="collapse" data-target="#xx">
+                                    <a href="javascript:void(0);">
                                         <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
-                                                class="right-nav-text">研发管理</span></div>
+                                                class="right-nav-text">Dashboard</span></div>
                                         <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                                         <div class="clearfix"></div>
                                     </a>
                                     <hr class="light-grey-hr ma-0"/>
-                                    <ul id="xx" class="collapse in collapse-level-1">
+                                    <ul>
                                         <li>
-                                            <a href="index.do">Analytical</a>
+                                            <a href="index.html">Analytical</a>
                                         </li>
                                         <li>
                                             <a href="index2.html">Demographic</a>
@@ -200,23 +219,23 @@
                                     <hr class="light-grey-hr ma-0"/>
                                     <div class="product-carousel owl-carousel owl-theme text-center">
                                         <a href="#">
-                                            <img src="../../dist/img/chair.jpg" alt="chair">
+                                            <img src="../../../dist/img/chair.jpg" alt="chair">
                                             <span>Circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../dist/img/chair3.jpg" alt="chair">
+                                            <img src="../../../dist/img/chair3.jpg" alt="chair">
                                             <span>semi circle chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../dist/img/chair4.jpg" alt="chair">
+                                            <img src="../../../dist/img/chair4.jpg" alt="chair">
                                             <span>wooden chair</span>
                                         </a>
                                         <a href="#">
-                                            <img src="../../dist/img/chair2.jpg" alt="chair">
+                                            <img src="../../../dist/img/chair2.jpg" alt="chair">
                                             <span>square chair</span>
                                         </a>
                                     </div>
@@ -289,7 +308,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -326,9 +346,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -390,7 +411,7 @@
             <c:forEach items="${sessionScope.u.roles}" var="role">
                 <c:forEach items="${role.jurisdictions}" var="j">
                     <li>
-                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==1}"> class="active" </c:if>
+                        <a href="javascript:void(0);" <c:if test="${j.jurisdictionId==4}"> class="active" </c:if>
                            data-toggle="collapse" data-target="#${j.jurisdictionId}">
                             <div class="pull-left"><i class="${j.icon} mr-20"></i><span
                                     class="right-nav-text" style="font-family: 微软雅黑;">${j.jurisdictionName}</span>
@@ -400,11 +421,11 @@
                         </a>
                             <%--在此处判断权限类型--%>
                         <ul id="${j.jurisdictionId}"
-                            class="collapse <c:if test="${j.jurisdictionId==1}">in</c:if> collapse-level-1">
+                            class="collapse <c:if test="${j.jurisdictionId==4}">in</c:if> collapse-level-1">
                             <c:forEach items="${role.functions}" var="f">
                                 <c:if test="${j.jurisdictionId==f.jurisdictionId&&f.type==0}">
                                     <li>
-                                        <a <c:if test="${f.functionId==1}"> class="active-page" </c:if>
+                                        <a <c:if test="${f.functionId==64}"> class="active-page" </c:if>
                                                 href="${pageContext.request.contextPath}/${f.functionUrl}">${f.functionName}</a>
                                     </li>
                                 </c:if>
@@ -421,7 +442,7 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="documentation.html">
+                <a href="/logOut.do">
                     <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
                     </div>
                     <div class="clearfix"></div>
@@ -462,9 +483,9 @@
                                             <input type="text" id="example-input1-group2" name="example-input1-group2"
                                                    class="form-control" placeholder="Search">
                                             <span class="input-group-btn">
-													<button type="button" class="btn  btn-default"><i
-                                                            class="zmdi zmdi-search"></i></button>
-													</span>
+												<button type="button" class="btn  btn-default"><i
+                                                        class="zmdi zmdi-search"></i></button>
+												</span>
                                         </div>
                                     </form>
                                     <div id="chat_list_scroll">
@@ -474,7 +495,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -487,7 +509,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
+                                                                     src="../../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Evie Ono</span>
                                                                     <span class="time block truncate txt-grey">Unity is strength</span>
@@ -499,7 +521,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
+                                                                     src="../../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Madalyn Rascon</span>
                                                                     <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
@@ -511,7 +533,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
+                                                                     src="../../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Mitsuko Heid</span>
                                                                     <span class="time block truncate txt-grey">I’m thankful.</span>
@@ -522,7 +544,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -535,7 +558,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
+                                                                     src="../../../dist/img/user1.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Jonnie Metoyer</span>
                                                                     <span class="time block truncate txt-grey">Genius is eternal patience.</span>
@@ -547,7 +570,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
+                                                                     src="../../../dist/img/user2.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Angelic Lauver</span>
                                                                     <span class="time block truncate txt-grey">Every burden is a blessing.</span>
@@ -559,7 +582,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
+                                                                     src="../../../dist/img/user3.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Priscila Shy</span>
                                                                     <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
@@ -571,7 +594,7 @@
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
-                                                                     src="../../dist/img/user4.png" alt="user"/>
+                                                                     src="../../../dist/img/user4.png" alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Linda Stack</span>
                                                                     <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
@@ -607,7 +630,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../dist/img/user.png" alt="user"/>
+                                                                     src="../../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Hello Jason, how are you, it's been a long time
                                                                         since we last met?</p>
@@ -642,7 +665,7 @@
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
-                                                                     src="../../dist/img/user.png" alt="user"/>
+                                                                     src="../../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
                                                                     <p>Not too bad.</p>
                                                                     <div class="msg-per-detail  text-right">
@@ -702,7 +725,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -718,7 +742,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -734,7 +759,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -750,7 +776,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -766,7 +793,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -782,7 +810,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -798,7 +827,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -899,135 +929,246 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">菜品加工流程</h5>
+                    <h5 class="txt-dark">实际采购</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
                         <li><a href="index.html">主页</a></li>
-                        <li><a href="#"><span>菜谱列表</span></a></li>
-                        <li class="active"><span>菜品流程</span></li>
+                        <li><a href="#"><span>采购管理</span></a></li>
+                        <li class="active"><span>每日实际采购</span></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
+
             <!-- Row -->
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <div class="panel panel-default card-view">
-                        <div class="panel-body">
-                            <ul class="timeline">
-                                <li>
-                                    <div class="timeline-badge bg-green">
-                                        <i class="glyphicon glyphicon-leaf"></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h4 class="mb-15">初加工</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h6 class="mb-15">所需子工序：</h6>
-                                            <c:forEach items="${requestScope.list[0]}" var="ls">
-                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
-                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
-                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
-                                            </c:forEach>
-                                            <%--<h4 class="mb-5">最长耗时子工序为：${maps["0"].menuMateriel.materiel.materielName}----${maps["0"].technology.technologyName}，耗时：${maps["0"].menuFlowHour} H</h4>--%>
-                                            <%--<p class="lead head-font mb-20">${maps["0"].menuFlowDescribe}</p>--%>
-                                            <%--<p>如需查看本工序加工步骤详情,请点击<a href="#">这里</a></p>--%>
-                                        </div>
-                                    </div>
-                                </li>
+                        <div class="panel-wrapper collapse in">
+                            <div class="panel-body">
 
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge bg-pink">
-                                        <i class="glyphicon glyphicon-scissors"></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h4 class="mb-15">精加工</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h6 class="mb-15">所需子工序：</h6>
-                                            <c:forEach items="${requestScope.list[1]}" var="ls">
-                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
-                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
-                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </li>
+                                <div class="table-wrap">
+                                    <div class="table-responsive">
 
-                                <li>
-                                    <div class="timeline-badge bg-red">
-                                        <i class="icon-fire"></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h4 class="mb-15">烹饪</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h6 class="mb-15">所需子工序：</h6>
-                                            <c:forEach items="${requestScope.list[2]}" var="ls">
-                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
-                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
-                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </li>
+                                        <table id="example" class="table table-hover display  pb-30">
 
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge bg-blue">
-                                        <i class="fa fa-asterisk"></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h4 class="mb-15">冷却</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h6 class="mb-15">所需子工序：</h6>
-                                            <c:forEach items="${requestScope.list[3]}" var="ls">
-                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
-                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
-                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </li>
+                                            <div style="width: 300px;float: right">
+                                                <form class="form-inline">
+                                                    <div class="form-group">
+                                                        <label class="sr-only">Search</label>
+                                                        <div class="input-group">
+                                                            <input type="text" class="form-control"
+                                                                   placeholder="Search">
+                                                            <div class="input-group-btn">
+                                                                <button type="button" class="btn btn-primary"
+                                                                        style="height:42px;">
+                                                                    <span class="fooicon fooicon-search"></span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
 
-                                <li>
-                                    <div class="timeline-badge bg-twitter">
-                                        <i class="glyphicon glyphicon-gift"></i>
-                                    </div>
-                                    <div class="timeline-panel pa-30">
-                                        <div class="timeline-heading">
-                                            <h4 class="mb-15">包装</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <h6 class="mb-15">所需子工序：</h6>
-                                            <c:forEach items="${requestScope.list[4]}" var="ls">
-                                                <p class="lead head-font mb-20" style="color:#000;">${ls.menuMateriel.materiel.materielName}----${ls.technology.technologyName}</p>
-                                                <p class="lead head-font mb-20">耗时：${ls.menuFlowHour}&nbsp;&nbsp;小时</p>
-                                                <p class="lead head-font mb-20">备注：${ls.menuFlowDescribe}</p>
-                                            </c:forEach>
-                                        </div>
-                                    </div>
-                                </li>
+                                            <thead>
+                                            <tr>
+                                                <th>采购批次</th>
+                                                <th>采购时间</th>
+                                                <th>采购人</th>
+                                                <th>备注</th>
+                                                <th>操作</th>
+                                            </tr>
+                                            </thead>
 
-                                <li class="clearfix no-float"></li>
-                            </ul>
+                                            <tbody>
+                                            <c:forEach items="${requestScope.pager.list}" var="ls">
+                                                <tr>
+                                                    <td>${ls.everydayPurchasingPlan.everydayPurchasingPlanNo}</td>
+                                                    <td><fmt:formatDate value="${ls.purchaseDate}" pattern="yyyy年MM月dd日"/></td>
+                                                    <td>${ls.user.userName}</td>
+                                                    <td>${ls.remarks}</td>
+                                                    <td class="footable-editing" style="display: table-cell;">
+                                                        <div class="row">
+                                                            <!--查看显示框-->
+                                                            <div class="col-md-6">
+                                                                <div class="modal fade"
+                                                                     id="exampleModalSelect${ls.purchaseId}"
+                                                                     tabindex="0" role="dialog"
+                                                                     aria-labelledby="exampleModalLabel1">
+                                                                    <!-- Row -->
+                                                                    <div class="row">
+                                                                        <div class="col-md-12">
+                                                                            <div class="panel panel-default card-view">
+                                                                                <div class="panel-heading">
+                                                                                    <div class="pull-left">
+                                                                                        <h6 class="panel-title txt-dark">
+                                                                                            采购项</h6>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                                <div class="panel-wrapper collapse in">
+                                                                                    <form class="form-horizontal">
+                                                                                        <div class="panel-body">
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-12">
+                                                                                                    <div class="form-wrap">
+                                                                                                        <div class="form-body">
+                                                                                                            <c:forEach
+                                                                                                                    items="${ls.purchaseItems}"
+                                                                                                                    var="lpts">
+                                                                                                                <hr class="light-grey-hr"/>
+                                                                                                                <div class="row">
+                                                                                                                    <!--订单项-->
+                                                                                                                    <div class="col-md-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label col-md-4">物料名称:</label>
+                                                                                                                            <div class="col-md-8">
+                                                                                                                                <p class="form-control-static">${lpts.materiel.materielName}</p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label col-md-3">数量:</label>
+                                                                                                                            <div class="col-md-9">
+                                                                                                                                <p class="form-control-static">
+                                                                                                                                        ${lpts.materielNumber} </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label col-md-5">采购单价:</label>
+                                                                                                                            <div class="col-md-5">
+                                                                                                                                <p class="form-control-static">
+                                                                                                                                        ${lpts.unitPrice} </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label col-md-4">供应商:</label>
+                                                                                                                            <div class="col-md-5">
+                                                                                                                                <p class="form-control-static">
+                                                                                                                                        ${lpts.supplier.supplierName} </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <div class="col-md-3">
+                                                                                                                        <div class="form-group">
+                                                                                                                            <label class="control-label col-md-3">备注:</label>
+                                                                                                                            <div class="col-md-9">
+                                                                                                                                <p class="form-control-static">
+                                                                                                                                        ${lpts.remarks} </p>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                    <hr class="light-grey-hr"/>
+                                                                                                                </div>
+                                                                                                            </c:forEach>
+                                                                                                        </div>
+                                                                                                        <div class="form-actions mt-10">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-md-10"></div>
+                                                                                                                <div class="col-md-2">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                                                                            <button type="button"
+                                                                                                                                    class="btn btn-default"
+                                                                                                                                    data-dismiss="modal">
+                                                                                                                                关闭
+                                                                                                                            </button>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </form>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <!-- /Row -->
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="btn-group btn-group-xs" role="group">
+                                                            <button type="button" class="btn btn-default footable-edit"
+                                                                    data-toggle="modal"
+                                                                    data-target="#exampleModalSelect${ls.purchaseId}">
+                                                                <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
+                                            </tbody>
+                                        </table>
+
+
+                                    </div>
+                                </div>
+
+
+                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <ul class="pagination pagination-split">
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage==1}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            Pager pager = (Pager) request.getAttribute("pager");
+                                                            if(pager.getCurrentPage()!=1){%>
+                                                                href="${pageContext.request.contextPath}/purchase/purchase.do?currentPage=${requestScope.pager.previousPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-left"></i></a></li>
+                                                    <c:forEach var="bar" items="${requestScope.pager.pageBar}">
+                                                        <li <c:if
+                                                                test="${bar==requestScope.pager.currentPage}"> class="active" </c:if> >
+                                                            <a href="${pageContext.request.contextPath}/purchase/purchase.do?currentPage=${bar}">${bar}</a>
+                                                        </li>
+                                                    </c:forEach>
+                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                    <li <c:if
+                                                            test="${requestScope.pager.currentPage>=requestScope.pager.totalPage}"> class="disabled" </c:if>>
+                                                        <a <%
+                                                            if(pager.getCurrentPage()<pager.getTotalPage()){%>
+                                                                href="${pageContext.request.contextPath}/purchase/purchase.do?currentPage=${requestScope.pager.nextPage}"
+                                                                <%
+                                                                }else {%>
+                                                                href="javascript:void(0);"
+                                                                <%}
+                                                                %>>
+                                                            <i class="fa fa-angle-right"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <!-- /Row -->
-
         </div>
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
@@ -1048,25 +1189,57 @@
 <!-- JavaScript -->
 
 <!-- jQuery -->
-<script src="../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
+<script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- Data table JavaScript -->
+<script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.flash.min.js"></script>
+<script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
+<script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
+
+
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
+<script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
+<script src="../../../dist/js/export-table-data.js"></script>
+<script src="../../../dist/js/dataTables-data.js"></script>
+
 
 <!-- Slimscroll JavaScript -->
-<script src="../../dist/js/jquery.slimscroll.js"></script>
+<script src="../../../dist/js/jquery.slimscroll.js"></script>
 
 <!-- Owl JavaScript -->
-<script src="../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+<script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
 
 <!-- Switchery JavaScript -->
-<script src="../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
 
 <!-- Fancy Dropdown JS -->
-<script src="../../dist/js/dropdown-bootstrap-extended.js"></script>
+<script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
 <!-- Init JavaScript -->
-<script src="../../dist/js/init.js"></script>
+<script src="../../../dist/js/init.js"></script>
 
+
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+
+<script src="../../../dist/js/sweetalert-data.js"></script>
+
+<script>
+    function sc() {
+        window.location.href = "javascript:window.scrollTo(0,0)";
+    }
+
+    function addContractOrderUrl() {
+        window.location.href = "添加周期采购.html";
+    }
+</script>
 </body>
+
 </html>
+

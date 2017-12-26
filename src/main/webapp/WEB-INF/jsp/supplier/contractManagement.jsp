@@ -1,3 +1,8 @@
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ page import="team.ruike.cim.util.Pager" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -5,13 +10,12 @@
   Time: 14:47
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>Hound I Fast build Admin dashboard for any platform</title>
+    <title>供应商合同管理</title>
     <meta name="description" content="Hound is a Dashboard & Admin Site Responsive Template by hencework."/>
     <meta name="keywords"
           content="admin, admin dashboard, admin template, cms, crm, Hound Admin, Houndadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application"/>
@@ -34,6 +38,13 @@
 
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+
+    <%--date--%>
+    <!-- Bootstrap Colorpicker CSS -->
+    <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
+    <!-- Bootstrap Datetimepicker CSS -->
+    <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
+
     <style>
         /*** guide ***/
         .guide {
@@ -1354,14 +1365,13 @@
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">Export</h5>
+                    <h5 class="txt-dark">供应商合同信息</h5>
                 </div>
                 <!-- Breadcrumb -->
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                     <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>table</span></a></li>
-                        <li class="active"><span>Export</span></li>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="#"><span>供应商合同信息</span></a></li>
                     </ol>
                 </div>
                 <!-- /Breadcrumb -->
@@ -1377,61 +1387,98 @@
 
                                 <div class="table-wrap">
                                     <div class="table-responsive">
+                                        <div style="position: relative;bottom: 10px;">
+                                            <form method="post"  action="/contractManagement.do">
+                                                <div class="form-group">
 
+
+                                                    <div class="input-group" style="width: 300px;float: right;">
+                                                        <label class="control-label mb-10">合同名称:</label>
+                                                        <input type="text" class="form-control" name="supplierContractName"
+                                                               placeholder="合同名称">
+                                                        <div class="input-group-btn"
+                                                             style=" position: relative; top: 16px;">
+                                                            <button type="submit" class="btn btn-primary"
+                                                                    style="height:42px;" >
+                                                                <span class="fooicon fooicon-search"></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
 
                                         <table id="example" class="table table-hover display  pb-30">
 
-                                            <div style="width: 300px;float: right">
-                                                <form class="form-inline">
-                                                    <div class="form-group">
-                                                        <label class="sr-only">Search</label>
-                                                        <div class="input-group">
-                                                            <input type="text" class="form-control"
-                                                                   placeholder="Search">
-                                                            <div class="input-group-btn">
-                                                                <button type="button" class="btn btn-primary"
-                                                                        style="height:42px;">
-                                                                    <span class="fooicon fooicon-search"></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
 
                                             <thead>
                                             <tr>
                                                 <th>合同号</th>
                                                 <th>合同名称</th>
-
                                                 <th>合同签订时间</th>
                                                 <th>供应商</th>
-
-                                                <th>操作</th>
                                             </tr>
                                             </thead>
 
                                             <tbody>
-                                            <tr>
-                                                <td>9001 0000001</td>
-                                                <td>三号店</td>
+                                            <c:forEach items="${requestScope.supplierContracts.list}" var="su">
+                                                <tr>
+                                                    <td>${su.supplier.supplierNo}</td>
+                                                    <td>${su.supplierContractName}</td>
+                                                    <td><fmt:formatDate value="${su.supplierContractDate}" pattern="yyyy-MM-dd" /></td>
+                                                    <td>${su.supplier.supplierName}</td>
+                                                </tr>
+                                            </c:forEach>
 
-                                                <td>2017/12/2</td>
-                                                <td>张三</td>
-
-                                                <td class="footable-editing" style="display: table-cell;">
-                                                    <div class="btn-group btn-group-xs" role="group">
-
-                                                        <button type="button" class="btn btn-default footable-edit" data-toggle="modal" data-target="#exampleModalUpdate">
-                                                            <span class="fooicon fooicon-pencil" aria-hidden="true"></span>
-                                                        </button>
-
-
-                                                    </div>
-                                                </td>
-                                            </tr>
                                             </tbody>
                                         </table>
+
+                                        <%--分页--%>
+                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.supplierContracts.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%  Pager pager = (Pager) request.getAttribute("supplierContracts");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${requestScope.supplierContracts.previousPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.supplierContracts.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.supplierContracts.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/contractManagement.do?currentPage=${bar}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.supplierContracts.currentPage>=requestScope.suppliers.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/supplier.do?currentPage=${requestScope.supplierContracts.nextPage}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="guide">
                                             <div class="guide-wrap">
@@ -1450,24 +1497,6 @@
                                 </div>
 
 
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </div>
@@ -1479,63 +1508,6 @@
 
         <div class="row">
 
-            <!--提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
-
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                        <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-
             <!--添加输入框-->
             <div class="col-md-6">
                 <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModal" class="modal fade" style="display: none;">
@@ -1546,41 +1518,41 @@
                                 <h4 class="modal-title">添加合同</h4>
                             </div>
                             <div class="modal-body">
-                                <form class="form-horizontal form-material">
+                                <form class="form-horizontal form-material" id="addSuContract">
                                     <div class="form-group">
                                         <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称">
+                                            <input type="text" id="supplierContractName" name="supplierContractName" class="form-control" placeholder="合同名称">
                                         </div>
 
                                         <div class="col-md-12 mb-20">
 
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control"
-                                                       name="contractOrderStartDate" placeholder="时间" />
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            </div>
+                                                <div class='input-group date' id='datetimepicker1s'>
+                                                    <input id="signDate" type='text' class="form-control"
+                                                           name="date" placeholder="时间" />
+                                                    <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
+                                                </div>
                                         </div>
                                         <div class="col-md-12 mb-20">
-                                            <select class="form-control">
-                                                <option selected>请选择供应商</option>
-                                                <option>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>Custom</option>
+                                            <select class="form-control" id="supplierId" name="supplier.supplierId">
+                                                <option selected value="0">请选择</option>
+                                                <c:forEach items="${requestScope.supplierList}" var="su">
+                                                    <option value="${su.supplierId}">${su.supplierName}</option>
+                                                </c:forEach>
+
+
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload">
+                                                <input type="file" class="upload" name="file">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" onclick="addSupplierContract()">保存</button>
+                                <button type="button" id="addmodal" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -1588,66 +1560,6 @@
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
-
-            <!--修改输入框-->
-            <div class="col-md-6">
-                <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModalUpdate" class="modal fade" style="display: none;">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title">修改合同</h4>
-                            </div>
-                            <div class="modal-body">
-                                <form class="form-horizontal form-material">
-                                    <div class="form-group">
-                                        <div class="col-md-12 mb-20">
-                                            <input type="text" class="form-control" placeholder="合同名称">
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-
-
-                                            <div class='input-group date' id='datetimepicker1'>
-                                                <input type='text' class="form-control"
-                                                       name="contractOrderStartDate" placeholder="时间" />
-                                                <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <select class="form-control">
-                                                <option selected>请选择供应商</option>
-                                                <option>10</option>
-                                                <option>20</option>
-                                                <option>30</option>
-                                                <option>40</option>
-                                                <option>Custom</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="col-md-12 mb-20">
-                                            <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload">
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal">保存</button>
-                                <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
-                            </div>
-                        </div>
-                        <!-- /.modal-content -->
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-
-
 
         </div>
 
@@ -1673,6 +1585,83 @@
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
+
+
+
+<script>
+
+    $(function () {
+        GetNowDate();
+    })
+
+
+    /*提示框*/
+    function bomb(message) {
+        swal({
+            title: message,
+            confirmButtonColor: "#2879ff",
+        });
+        return false;
+    }
+    /*添加合同*/
+    function addSupplierContract(){
+        var formobj =  document.getElementById("addSuContract");
+        var formData=new FormData(formobj);
+        $.ajax({
+            url: '/addSupplierContract.do',
+            type: 'POST',
+            cache: false,
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (data) {
+                if (null != data) {
+                    addSuCont(data);
+                    bomb("【"+data.supplierContractName+"】添加成功");
+                    /*添加成功退出弹框*/
+                    $("#addmodal").click();
+                    /*添加成功清空文本框*/
+                    document.getElementById("addSuContract").reset();
+
+                }else {
+                    bomb("添加失败");
+                }
+            }, error: function () {
+                alert("error");
+            }
+        })
+    }
+
+    function addSuCont(data) {
+        /*添加成功显示页面，一次*/
+        var store=$("#addSuContract select[name='supplier.supplierId'] option:selected").text();
+        var display="<tr>"
+            +"<td>"+data.supplier.supplierNo+"</td>"
+            +"<td>"+data.supplierContractName+"</td>"
+            +"<td>"+data.supplierContractDate+"</td>"
+            +"<td>"+store+"</td>"
+            +"</tr>";
+        $("tbody").append(display)
+    }
+    //获取当前日期给date控件赋值
+    function GetNowDate() {
+        var date = new Date();
+        var seperator1 = "-";
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        var currentdate = year + seperator1 + month + seperator1 + strDate;
+        $("#signDate").val(currentdate);
+    }
+
+
+</script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
@@ -1717,6 +1706,17 @@
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
 </script>
+
+<%--date--%>
+<!-- Moment JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
+<!-- Bootstrap Colorpicker JavaScript -->
+<script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<!-- Bootstrap Datetimepicker JavaScript -->
+<script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+
+<!-- Form Picker Init JavaScript -->
+<script src="../../../dist/js/form-picker-data.js"></script>
 </body>
 
 </html>

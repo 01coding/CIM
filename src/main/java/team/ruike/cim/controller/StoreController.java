@@ -1,9 +1,8 @@
 package team.ruike.cim.controller;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,6 +14,7 @@ import javax.annotation.Resource;
 
 /**
  * 门店
+ *
  * @author 甄立
  * @version 1.0
  */
@@ -29,17 +29,16 @@ public class StoreController {
     public String index(Store store, Pager<Store> pager, Model model) {
         storeService.queryStore(store, pager);
         model.addAttribute("pager", pager);
-        model.addAttribute("store",store);
+        model.addAttribute("store", store);
         return "order/store/index";
     }
-
 
 
     @RequestMapping("add.do")
     @ResponseBody
     public String add(Store store) {
-        storeService.addStore(store);
-        return "1";
+        Store storeNo = storeService.addStore(store);
+        return JSON.toJSONString(storeNo);
     }
 
     @RequestMapping("toEdit.cl")

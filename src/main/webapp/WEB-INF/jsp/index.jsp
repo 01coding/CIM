@@ -1,4 +1,4 @@
-<%--
+<%@ page import="team.ruike.cim.pojo.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/11/21
@@ -9,6 +9,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     if (session.getAttribute("u") == null) {
+        String userName="";
+        String password="";
+        Cookie[] cook=request.getCookies();
+        if(cook!=null){
+            for (Cookie cookie : cook) {
+                if(cookie.getName().equals("userName")){
+                    userName=cookie.getValue();
+                }else if(cookie.getName().equals("password")){
+                    password=cookie.getValue();
+                }
+            }
+            request.getRequestDispatcher("/signin.do?userName="+userName+"&password="+password+"").forward(request,response);
+            return;
+        }
         response.sendRedirect("login.do");
         return;
     }
@@ -461,8 +475,8 @@
                 <i class="zmdi zmdi-more"></i>
             </li>
             <li>
-                <a href="documentation.html">
-                    <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">退出</span>
+                <a href="/logOut.do">
+                    <div class="pull-left"><i class="fa fa-power-off mr-20"></i><span class="right-nav-text">注销</span>
                     </div>
                     <div class="clearfix"></div>
                 </a>
