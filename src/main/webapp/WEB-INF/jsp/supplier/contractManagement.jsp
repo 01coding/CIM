@@ -1545,15 +1545,15 @@
                                         </div>
                                         <div class="col-md-12 mb-20">
                                             <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传合同文件</span>
-                                                <input type="file" class="upload" name="file">
+                                                <input type="file" class="upload" name="file" onchange="Javascript:validate_img(this);">
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-info waves-effect" data-dismiss="modal" onclick="addSupplierContract()">保存</button>
-                                <button type="button" id="addmodal" class="btn btn-default waves-effect" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-info waves-effect add" onclick="addSupplierContract()">确认添加</button>
+                                <button type="button" id="addmodal" class="btn btn-default waves-effect " data-dismiss="modal">取消添加</button>
                             </div>
                         </div>
                         <!-- /.modal-content -->
@@ -1594,44 +1594,74 @@
     $(function () {
         GetNowDate();
     })
+    //限制上传文件的类型和大小
+     function validate_img(ele){
+            // 返回 KB，保留小数点后两位
+             //alert((ele.files[0].size/(1024*1024)).toFixed(2));
+             var file = ele.value;
 
+             if(!/.(gif|jpg|jpeg|png|GIF|JPG|bmp)$/.test(file)){
 
-    /*提示框*/
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
-    }
+                 swal("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
+                       return false;
+
+                  }else{
+
+                      //alert((ele.files[0].size).toFixed(2));
+                      //返回Byte(B),保留小数点后两位
+                     if(((ele.files[0].size).toFixed(2))>=(2*1024*1024)){
+
+                         swal("请上传小于2M的图片");
+                                  return false;
+                          }
+                  }
+         swal("图片通过");
+         }
+
     /*添加合同*/
     function addSupplierContract(){
-        var formobj =  document.getElementById("addSuContract");
-        var formData=new FormData(formobj);
-        $.ajax({
-            url: '/addSupplierContract.do',
-            type: 'POST',
-            cache: false,
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function (data) {
-                if (null != data) {
-                    addSuCont(data);
-                    bomb("【"+data.supplierContractName+"】添加成功");
-                    /*添加成功退出弹框*/
-                    $("#addmodal").click();
-                    /*添加成功清空文本框*/
-                    document.getElementById("addSuContract").reset();
 
-                }else {
-                    bomb("添加失败");
-                }
-            }, error: function () {
-                alert("error");
-            }
-        })
-    }
+        $(".add").click(function(){
+            var formobj =  document.getElementById("addSuContract");
+            var formData=new FormData(formobj);
+            swal({
+                    title: "你确定要添加?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true},
+                function(isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '/addSupplierContract.do',
+                            type: 'POST',
+                            cache: false,
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            success: function (data) {
+                                if (null != data) {
+                                    addSuCont(data);
+                                    swal("【" + data.supplierContractName + "】添加成功");
+                                    /*添加成功退出弹框*/
+                                    $("#addmodal").click();
+                                    /*添加成功清空文本框*/
+                                    document.getElementById("addSuContract").reset();
+
+                                } else {
+                                    swal("添加失败");
+                                }
+                            }, error: function () {
+                                swal("error");
+                            }
+                        });
+                    }
+                });
+            });
+        }
 
     function addSuCont(data) {
         /*添加成功显示页面，一次*/

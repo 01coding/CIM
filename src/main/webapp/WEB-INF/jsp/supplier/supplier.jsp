@@ -1621,8 +1621,8 @@
 
                             </div>
                             <div class="modal-footer">
-                                <button type="button" id="updateModal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary" onclick="updateSupplierMethod()">保存</button>
+                                <button type="button" id="updateModal" class="btn btn-default" data-dismiss="modal">取消修改</button>
+                                <button type="button" class="btn btn-primary update" onclick="updateSupplierMethod()">确定修改</button>
                             </div>
                         </div>
                     </div>
@@ -1647,7 +1647,7 @@
                                 <form id="addS" method="post">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" name="supplierName" class="form-control" >
+                                        <input type="text" flagName="supplierName" name="supplierName" class="form-control" >
                                     </div>
 
                                     <div class="form-group">
@@ -1683,18 +1683,18 @@
                                     </div>
                                     <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
-                                            <input type="file" name="photos" class="upload">
+                                            <input type="file" name="file" class="upload" onchange="Javascript:validate_img(this);">
                                         </div>
 
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
-                                            <input type="file" name="photos" class="upload">
+                                            <input type="file" name="img" class="upload" onchange="Javascript:validate_img(this);">
                                         </div>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                <button type="button" class="btn btn-primary" onclick="addSupplierMethod()">保存</button>
+                                <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消添加</button>
+                                <button type="button" class="btn btn-primary add" onclick="addSupplierMethod()">确认添加</button>
                             </div>
 
                         </div>
@@ -1861,15 +1861,29 @@
         GetNowDate();
     })
 
-    /*提示框*/
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
-    }
+    //限制上传文件的类型和大小
+    function validate_img(ele){
+        // 返回 KB，保留小数点后两位
+        //alert((ele.files[0].size/(1024*1024)).toFixed(2));
+        var file = ele.value;
 
+        if(!/.(gif|jpg|jpeg|png|GIF|JPG|bmp)$/.test(file)){
+
+            swal("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
+            return false;
+
+        }else{
+
+            //alert((ele.files[0].size).toFixed(2));
+            //返回Byte(B),保留小数点后两位
+            if(((ele.files[0].size).toFixed(2))>=(2*1024*1024)){
+
+                swal("请上传小于2M的图片");
+                return false;
+            }
+        }
+        swal("图片通过");
+    }
     /*根据id查询供应商，弹框显示*/
     function detailsSupplier(sid) {
         var datds={
@@ -1882,15 +1896,10 @@
             success: function (data) {
                 $("#supplierName1").html("<p id='supplierName1' class='form-control-static' style='margin-top: -8px'>"+data.supplierName+" </p>");
                }, error: function () {
-                alert("error");
+                swal("error");
             }
         })
     }
-
-
-
-
-
     /*根据id显示数据*/
     function supplierById(sid) {
         var datds={
@@ -1910,33 +1919,50 @@
                 $("#supplierRemarks").val(data.supplierRemarks);
 
             }, error: function () {
-                alert("error");
+                swal("error");
             }
         })
     }
 
     /*修改供应商*/
     function updateSupplierMethod(){
-        /*var formob =  document.getElementById("updateSu");*/
-        alert($("#updateSu").serialize())
-        $.ajax({
-            url: '/updateSupplier.do',
-            type: 'POST',
-            data: $('#updateSu').serialize(),
-            success: function (data) {
-                if (null != data) {
-                    if(data>0){
-                        bomb("修改成功");
-                        $("#updateModal").click();
-                        upp();
-                    }else {
-                        bomb("修改失败");
+        $(".update").click(function(){
+            var formobj =  document.getElementById("addS");
+            var formData=new FormData(formobj);
+            swal({
+                    title: "你确定要修改?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true},
+                function(isConfirm){
+                    if (isConfirm) {
+                        $.ajax({
+                            url: '/updateSupplier.do',
+                            type: 'POST',
+                            data: $('#updateSu').serialize(),
+                            success: function (data) {
+                                if (null != data) {
+                                    if (data > 0) {
+                                        swal("修改成功");
+                                        $("#updateModal").click();
+                                        upp();
+                                    } else {
+                                        swal("修改失败");
+                                    }
+                                }
+                            }, error: function () {
+                                swal("error");
+                            }
+
+                            })
                     }
-                }
-            }, error: function () {
-                alert("error");
-            }
-        })
+            });
+        });
+
     }
     /*修改成功,显示修改后的值*/
     function upp() {
@@ -1949,36 +1975,49 @@
     }
     /*添加供应商*/
      function addSupplierMethod(){
-         var formobj =  document.getElementById("addS");
-         var formData=new FormData(formobj);
-         $.ajax({
-             url: '${pageContext.request.contextPath}/addSupplier.do',
-             type: 'POST',
-             cache: false,
-             data: formData,
-             processData: false,
-             contentType: false,
+         $(".add").click(function(){
+             var formobj =  document.getElementById("addS");
+             var formData=new FormData(formobj);
+             swal({
+                 title: "你确定要添加?",
+                 type: "warning",
+                 showCancelButton: true,
+                 confirmButtonColor: "#fec107",
+                 confirmButtonText: "确定!",
+                 cancelButtonText: "取消!",
+                 closeOnConfirm: false,
+                 closeOnCancel: true},
+                 function(isConfirm){
+                     if (isConfirm) {
+                     $.ajax({
+                         url: '${pageContext.request.contextPath}/addSupplier.do',
+                         type: 'POST',
+                         cache: false,
+                         data: formData,
+                         processData: false,
+                         contentType: false,
+                         success: function (data) {
+                             if (null != data) {
+                                 addsupplier(data);
+                                 swal("【"+data.supplierName+"】添加成功");
+                                 /*添加成功退出弹框*/
+                                 $("#addmodal").click();
+                                 /*添加成功清空文本框*/
+                                 document.getElementById("addS").reset();
 
-             success: function (data) {
-                 if (null != data) {
-                     addsupplier(data);
-                         bomb("【"+data.supplierName+"】添加成功");
-                         /*添加成功退出弹框*/
-                         $("#addmodal").click();
-                         /*添加成功清空文本框*/
-                         document.getElementById("addS").reset();
+                             }else {
+                                 swal("添加失败");
 
-                     }else {
-                         bomb("添加失败");
+                             }
+                         }, error: function () {
+                             swal("error");
+                         }
 
-                 }
-             }, error: function () {
-                 alert("error");
-             }
-
-         })
-
-     }
+                     })
+                  }
+             });
+         });
+    }
 
 
      function addsupplier(data) {
@@ -1996,13 +2035,13 @@
           "<td><div class='btn-group btn-group-xs' role='group'>\n" +
              "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
              "\n" +
-             "     <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+             "     <span class='fooicon fooicon-pencil' style='color:#1aee20; aria-hidden='true'></span>\n" +
              "  </button>\n" +
              "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
              "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
              "  </button>\n" +
              "  <button type='button'  flagId='"+data.supplierId+"' flagName='"+data.supplierName+"'  class='btn btn-default footable-delete del' >\n" +
-             "      <span class='fooicon fooicon-trash' title='删除' onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
+             "      <span class='fooicon fooicon-trash' title='删除' style='color: red; onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
              "  </button>\n" +
              "</div></td>"
 

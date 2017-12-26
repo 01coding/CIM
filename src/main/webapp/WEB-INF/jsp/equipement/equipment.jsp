@@ -1333,7 +1333,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消</button>
-                                    <button type="button" class="btn btn-primary" onclick="add()" >保存</button>
+                                    <button type="button" class="btn btn-primary adds" onclick="add()" >保存</button>
                                 </div>
                             </div>
                         </div>
@@ -1360,14 +1360,7 @@
         dedd()
         addeqValidate();
     });
-    /*添加成功弹框*/
-    function bomb(message) {
-        swal({
-            title: message,
-            confirmButtonColor: "#2879ff",
-        });
-        return false;
-    }
+
     /*设备验证*/
     function addeqValidate() {
 
@@ -1400,31 +1393,43 @@
             return;
         }
 
-            var equis=$("#addeq").serializeArray();
 
-            $.ajax({
-                url: "/addEquipment.do",
-                method: "post",
-                data: equis,
-                dataType: "json",
-                success: function (data) {
-                    if (null != data) {
-                        if(data>0){
-                            bomb("添加成功");
-                            $("#addmodal").click();
-                            document.getElementById("addeq").reset();
-                        }else {
-                            bomb("添加失败");
-                        }
+        $(".adds").click(function() {
+            var equis = $("#addeq").serializeArray();
+            swal({
+                    title: "你确定要添加?",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#fec107",
+                    confirmButtonText: "确定!",
+                    cancelButtonText: "取消!",
+                    closeOnConfirm: false,
+                    closeOnCancel: true
+                },
+                function (isConfirm) {
+                    if (isConfirm) {
+                        $.ajax({
+                            url: "/addEquipment.do",
+                            method: "post",
+                            data: equis,
+                            dataType: "json",
+                            success: function (data) {
+                                if (null != data) {
+                                    if (data > 0) {
+                                        swal("添加成功");
+                                        $("#addmodal").click();
+                                        document.getElementById("addeq").reset();
+                                    } else {
+                                        swal("添加失败");
+                                    }
+                                }
+                            }, error: function () {
+                                swal("error");
+                            }
+                        });
                     }
-                }, error: function () {
-                    alert("error");
-                }
             });
-
-
-
-
+        });
     }
     /*删除*/
     function dedd() {

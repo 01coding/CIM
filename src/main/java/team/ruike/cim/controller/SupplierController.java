@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
@@ -24,6 +25,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.UUID;
 
 /**
  * 供应商管理控制器
@@ -65,6 +67,48 @@ public class SupplierController {
         return (num==1)+"";
     }
 
+    // 2个多个上传
+
+    public void uploads(HttpServletRequest request, @RequestParam MultipartFile[] file, @RequestParam MultipartFile[] img,Supplier supplier) {
+        try {
+            for (MultipartFile f : file) {
+                if (!f.isEmpty()) {
+                    String landing = UUID.randomUUID().toString();
+                    //文件名
+                    String fileName = landing + f.getOriginalFilename();
+                    // 文件保存路径
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+
+                    supplier.setSupplierImage(fileName);
+                    f.transferTo(new File(filePath));
+                } else {
+                    System.out.println("file====isempty");
+                }
+            }
+
+            for (MultipartFile f : img) {
+                if (!f.isEmpty()) {
+                    String landing = UUID.randomUUID().toString();
+                    //文件名
+                    String fileName = landing + f.getOriginalFilename();
+                    // 文件保存路径
+                    String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+
+                    f.transferTo(new File(filePath));
+
+                    supplier.setSupplierCharterImage(fileName);
+                } else {
+                    System.out.println("img====isempty");
+                }
+            }
+        }catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
+
+    }
+
+
     /**
      * 添加供应商
      * @param supplier 供应商对象
@@ -74,7 +118,11 @@ public class SupplierController {
      */
     @RequestMapping("/addSupplier.do")
     @ResponseBody
-    public String addSupplier(Supplier supplier, String date) throws IOException {
+    public String addSupplier(Supplier supplier, String date,HttpServletRequest request, @RequestParam MultipartFile[] file, @RequestParam MultipartFile[] img) throws IOException {
+
+        uploads(request,file,img,supplier);
+
+
         Date dates=null;
         try
         {
@@ -89,10 +137,6 @@ public class SupplierController {
         supplier.setCooperationStartDate(dates);
         //供应商状态，默认为1,
         supplier.setSupplierState(1);
-
-        supplier.setSupplierImage("1");
-        supplier.setSupplierCharterImage("1");
-
         //自动生成编号
         supplier.setSupplierNo(GenerateNumber.getGenerateNumber().getRandomFileName());
 
@@ -160,15 +204,11 @@ public class SupplierController {
     @RequestMapping("/addSupplierContract.do")
     @ResponseBody
     public String addSupplierContract(SupplierContract supplierContract,String date,@RequestParam("file") CommonsMultipartFile file, HttpServletRequest request){
-
-        String filePath = upload(file, request);
+        String filePath = upload(file, request,supplierContract);
         supplierContract.setSupplierContractImage("");
-        if (filePath != null && !filePath.equals("")) {/*
-            String pic_time = new  SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());*/
-
+        if (filePath != null && !filePath.equals("")) {
             supplierContract.setSupplierContractImage(filePath);
         }
-
         Date dates=null;
         try
         {
@@ -195,14 +235,17 @@ public class SupplierController {
      * @param request 转发
      * @return
      */
-    public String upload(CommonsMultipartFile file, HttpServletRequest request) {
+    public String upload(CommonsMultipartFile file, HttpServletRequest request,SupplierContract supplierContract) {
         // 判断文件是否为空
         if (!file.isEmpty()) {
             try {
+
+                String landing = UUID.randomUUID().toString();
+                //文件名
+                String fileName = landing +file.getOriginalFilename();
                 // 文件保存路径
-                String filePath = request.getSession().getServletContext().getResource("upload\\").getPath()
-                        + file.getOriginalFilename();
-                // 转存文件
+                String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
+                supplierContract.setSupplierContractImage(fileName);
                 file.transferTo(new File(filePath));
                 return filePath;
 
@@ -212,4 +255,6 @@ public class SupplierController {
         }
         return null;
     }
+
+
 }
