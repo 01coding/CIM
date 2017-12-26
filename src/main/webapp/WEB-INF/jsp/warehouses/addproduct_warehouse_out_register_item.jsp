@@ -1330,23 +1330,6 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
-            <!-- Title -->
-            <div class="row heading-bg">
-                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h5 class="txt-dark">add-products</h5>
-                </div>
-                <!-- Breadcrumb -->
-                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <ol class="breadcrumb">
-                        <li><a href="index.html">Dashboard</a></li>
-                        <li><a href="#"><span>e-commerce</span></a></li>
-                        <li class="active"><span>add-products</span></li>
-                    </ol>
-                </div>
-                <!-- /Breadcrumb -->
-            </div>
-            <!-- /Title -->
-
             <!-- Row -->
             <div class="row" style="text-align:center">
                 <div class="col-sm-12">
@@ -1359,7 +1342,7 @@
                                 <div class="form-wrap">
                                     <form action="#">
                                         <h6 class="txt-dark capitalize-font"><i
-                                                class="zmdi zmdi-calendar-note mr-10"></i>成品出库记录</h6>
+                                                class="zmdi zmdi-calendar-note mr-10"></i>物料出库记录</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="col-sm-12">
                                             <div class="row col-sm-12">

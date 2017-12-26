@@ -68,7 +68,7 @@ public class ProductWareHouSeregionController {
     }
 
     /**
-     * 天假成品货架
+     * 添加成品货架
      * @param productGoodsShelve 成品货架对象
      * @param printWriter  返回JSON对象
      */

@@ -1435,7 +1435,6 @@
                                                         </div>
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <input class="Rid" type="hidden" value="${was.warehouseRegionId}">
                                                     <div class="panel-wrapper collapse in biao">
                                                         <div class="panel-body row pa-0">
                                                             <table class="table table-hover mb-0 ss">
@@ -1454,6 +1453,7 @@
                                                                                 <i class="fa fa-plus-square"
                                                                                    title="添加货架"></i>
                                                                             </button>
+                                                                            <input class="Rid" type="hidden" value="${was.warehouseRegionId}">
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -1477,8 +1477,6 @@
                                         </c:forEach>
                                         <c:forEach var="waa" items="${productWarehouseRegions.list}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-                                                <input type="hidden" value="${waa.productWarehouseRegionId}"
-                                                       class="houseid"/>
                                                 <div class="panel panel-default card-view">
                                                     <div class="panel-heading">
                                                         <div class="pull-left">
@@ -1494,7 +1492,6 @@
                                                                 </div>
                                                             </h6>
                                                         </div>
-
                                                         <div class="clearfix"></div>
                                                     </div>
                                                     <div class="panel-wrapper collapse in">
@@ -1515,6 +1512,8 @@
                                                                                 <i class="fa fa-plus-square"
                                                                                    title="添加成品货架"></i>
                                                                             </button>
+                                                                            <input type="hidden" value="${waa.productWarehouseRegionId}"
+                                                                                   class="houseid"/>
                                                                         </div>
                                                                     </th>
                                                                 </tr>
@@ -1722,7 +1721,7 @@
         })
         $(".add").click(function () {
             var aaa = $(this);
-            var Rid = $(".Rid").val();
+            var Rid = aaa.next().val();
             swal({
                 title: "你确定要添加货架吗?",
                 text: "添加之后不可删除！!",
@@ -1758,7 +1757,7 @@
             var wid = $(".hid").val()
             var remarks = $("#remarks").val();
             swal({
-                title: "你确定要添区域吗?",
+                title: "你确定要添加物料区域吗?",
                 text: "添加之后不可删除！!",
                 type: "warning",
                 showCancelButton: true,
@@ -1775,15 +1774,15 @@
                         cache: false,
                         dataType: "json",
                         success: function (data) {
-                            if (data != "") {
-                                if (data != null) {
+                                if (data != "") {
                                     swal("添加成功", "添加成功！", "success");
-                                    $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
+                                    $(".lsitwar").append(" <div class=\"col-md-4 col-sm-4 col-xs-12\">\n" +
                                         "                                                <div class=\"panel panel-default card-view\">\n" +
                                         "                                                    <div class=\"panel-heading\">\n" +
                                         "                                                        <div class=\"pull-left\">\n" +
-                                        "                                                            <input type=\"hidden\" value=\"+" + wid + "+\" class=\"warehouseId\"/>\n" +
-                                        "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
+                                        "                                                            <input type=\"hidden\" value=\""+ +"\"\n" +
+                                        "                                                                   class=\"warehouseId\"/>\n" +
+                                        "                                                            <h6 class=\"panel-title txt-dark\">"+te+"【区域】\n" +
                                         "                                                                <div class=\"btn-group btn-group-xs \"\n" +
                                         "                                                                     role=\"group\">\n" +
                                         "                                                                    <button type=\"button\"\n" +
@@ -1796,25 +1795,42 @@
                                         "                                                                </div>\n" +
                                         "                                                            </h6>\n" +
                                         "                                                        </div>\n" +
-                                        "\n" +
                                         "                                                        <div class=\"clearfix\"></div>\n" +
                                         "                                                    </div>\n" +
-                                        "                                                    <div class=\"panel-wrapper collapse in\">\n" +
+                                        "                                                    <div class=\"panel-wrapper collapse in biao\">\n" +
                                         "                                                        <div class=\"panel-body row pa-0\">\n" +
-                                        "                                                            <table class=\"table table-hover mb-0\">\n" +
+                                        "                                                            <table class=\"table table-hover mb-0 ss\">\n" +
                                         "                                                                <thead>\n" +
                                         "                                                                <tr>\n" +
                                         "                                                                    <th>货架编号</th>\n" +
                                         "                                                                    <th>数量</th>\n" +
-                                        "                                                                    <th>物料</th>\n" +
-                                        "                                                                    <th>操作</th>\n" +
+                                        "                                                                    <th>物料\n" +
+                                        "                                                                        <div class=\"btn-group btn-group-xs \"\n" +
+                                        "                                                                             role=\"group\"\n" +
+                                        "                                                                             style=\"background-color: white\">\n" +
+                                        "                                                                            <button type=\"button\"\n" +
+                                        "                                                                                    class=\"btn btn-default footable-edit add\"\n" +
+                                        "                                                                                    style=\"background-color: white;border: 0px\"\n" +
+                                        "                                                                                    onclick=\"nucoll()\">\n" +
+                                        "                                                                                <i class=\"fa fa-plus-square\"\n" +
+                                        "                                                                                   title=\"添加货架\"></i>\n" +
+                                        "                                                                            </button>\n" +
+                                        "                                                                            <input class=\"Rid\" type=\"hidden\" value=\"$"+wid+"\">\n" +
+                                        "                                                                        </div>\n" +
+                                        "                                                                    </th>\n" +
                                         "                                                                </tr>\n" +
                                         "                                                                </thead>\n" +
-                                        "                                                               \n" +
-                                        "                                                                <tbody>\n" +
-                                        "                                                                    \n" + "\n" +
-                                        "                                                                </tbody>\n" +
+                                        "                                                                <tbody class=\"addGOd  ssssss\">\n" +
+                                        "                                                              " +
+                                        "                                                                    \n" +
+                                        "                                                                        <tr>\n" +
+                                        "                                                                            <td>\n" +
+                                        "                                                                            <td>\n" +
+                                        "                                                                            <td></td>\n" +
+                                        "                                                                        </tr>\n" +
+                                        "                                                                   \n" +
                                         "                                                                \n" +
+                                        "                                                                </tbody>\n" +
                                         "                                                            </table>\n" +
                                         "                                                        </div>\n" +
                                         "                                                    </div>\n" +
@@ -1825,7 +1841,6 @@
                                 }
                                 $(".ap1").html("");
                                 nucoll();
-                            }
                         }, error: function () {
                             nucoll();
                             swal("系统异常，请稍后重试！");
@@ -1933,7 +1948,7 @@
     });
     $(".addGod").click(function () {
         var aaa = $(this);
-        var Rid = $(".houseid").val();
+        var Rid = aaa.next().val();
         swal({
             title: "你确定要添加成品货架吗?",
             text: "添加之后不可删除！!",

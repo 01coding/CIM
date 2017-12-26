@@ -62,4 +62,11 @@ public interface GoodsShelveDao {
      */
     GoodsShelve selectById(Integer goodsShelveId);
 
+    /**
+     * 根据区域id查询空闲货架
+     * @param warehouseRegionId
+     * @return 空闲货架集合
+     */
+    List<GoodsShelve> selectByWarehouseRegionId(Integer warehouseRegionId);
+
 }

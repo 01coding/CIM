@@ -47,4 +47,16 @@ public class GoodsshelveServiceImpl implements GoodSShelveService {
         }
         return 0;
     }
+
+    /**
+     * 根据区域id查询空闲回家
+     * @param warehouseRegionId
+     * @return
+     */
+    public List<GoodsShelve> selectByWarehouseRegionId(Integer warehouseRegionId) {
+        if (warehouseRegionId != null && warehouseRegionId > 0) {
+            return goodsShelveDao.selectByWarehouseRegionId(warehouseRegionId);
+        }
+        return null;
+    }
 }

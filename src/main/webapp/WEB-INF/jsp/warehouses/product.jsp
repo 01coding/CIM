@@ -1378,7 +1378,7 @@
                                     <!--区域选择框-->
                                     <div class="table-responsive ">
                                         <div class="form-group col-sm-3">
-                                            <button type="submit" class="btn btn-primary" onclick="window.location.href='getProductOutRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${RuKuPage.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}'">出库记录</button>
+                                            <button type="submit" class="btn btn-primary" onclick="window.location.href='getProductOutRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${RuKuPage.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}'">查看出库记录</button>
                                         </div>
                                         <div class="form-group col-sm-3">
                                             <select class="form-control select2 select2-hidden-accessible"
@@ -1493,122 +1493,6 @@
             </div>
             <!-- /Row -->
         </div>
-
-
-        <div class="row">
-            <!--提示框-->
-            <div class="col-md-6">
-                <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true" style="display: none;">
-                    <div class="sweet-alert showSweetAlert visible" data-custom-class="" data-has-cancel-button="true"
-                         data-has-confirm-button="true" data-allow-outside-click="false" data-has-done-function="true"
-                         data-animation="pop" data-timer="null" style="display: block; margin-top: -167px;">
-                        <div class="sa-icon sa-error" style="display: none;">
-						  <span class="sa-x-mark">
-							<span class="sa-line sa-left"></span>
-							<span class="sa-line sa-right"></span>
-						  </span>
-                        </div>
-                        <div class="sa-icon sa-warning pulseWarning" style="display: block;">
-                            <span class="sa-body pulseWarningIns"></span>
-                            <span class="sa-dot pulseWarningIns"></span>
-                        </div>
-                        <div class="sa-icon sa-info" style="display: none;"></div>
-                        <div class="sa-icon sa-success" style="display: none;">
-                            <span class="sa-line sa-tip"></span>
-                            <span class="sa-line sa-long"></span>
-
-                            <div class="sa-placeholder"></div>
-                            <div class="sa-fix"></div>
-                        </div>
-                        <div class="sa-icon sa-custom" style="display: none;"></div>
-                        <h2>你确定？</h2>
-                        <p style="display: block;">你将无法恢复这个的数据！</p>
-                        <fieldset>
-                            <input type="text" tabindex="3" placeholder="">
-                            <div class="sa-input-error"></div>
-                        </fieldset>
-                        <div class="sa-error-container">
-                            <div class="icon">!</div>
-                            <p>Not valid!</p>
-                        </div>
-                        <div class="sa-button-container">
-                            <button class="cancel" tabindex="2" style="display: inline-block; box-shadow: none;"
-                                    data-dismiss="modal" aria-label="Close">不，取消！
-                            </button>
-                            <div class="sa-confirm-button-container">
-                                <button class="confirm" tabindex="1"
-                                        style="display: inline-block; background-color: rgb(254, 193, 7); box-shadow: rgba(254, 193, 7, 0.8) 0px 0px 2px, rgba(0, 0, 0, 0.05) 0px 0px 0px 1px inset;">
-                                    是的，删除它！
-                                </button>
-                                <div class="la-ball-fall">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.modal-dialog -->
-                </div>
-            </div>
-            <!--输入框-->
-            <div class="col-md-6">
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                     aria-labelledby="exampleModalLabel1">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
-                                        aria-hidden="true">&times;</span></button>
-                                <h5 class="modal-title" id="exampleModalLabel1">成品编辑</h5>
-                            </div>
-                            <div class="modal-body">
-                                <form>
-                                    <div class="form-group">
-                                        <select class="form-control select2 select2-hidden-accessible"
-                                                tabindex="-1" aria-hidden="true">
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">请选择菜品</font></font>
-                                            </option>
-                                            <option value="AK"><font
-                                                    style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                            </option>
-                                            <option value="HI"><font
-                                                    style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">夏威夷</font></font>
-                                            </option>
-                                        </select></div>
-                                    <div class="form-group">
-                                        <select class="form-control select2 select2-hidden-accessible"
-                                                tabindex="-1" aria-hidden="true">
-                                            <option><font style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">请选择货架</font></font>
-                                            </option>
-                                            <option value="AK"><font
-                                                    style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">阿拉斯加州</font></font>
-                                            </option>
-                                            <option value="HI"><font
-                                                    style="vertical-align: inherit;"><font
-                                                    style="vertical-align: inherit;">夏威夷</font></font>
-                                            </option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Send message</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">

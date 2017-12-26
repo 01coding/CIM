@@ -25,4 +25,6 @@ public interface GoodSShelveService {
      * @return
      */
      int updGoods_shelve(GoodsShelve goodsShelve);
+
+     List<GoodsShelve> selectByWarehouseRegionId(Integer warehouseRegionId);
 }

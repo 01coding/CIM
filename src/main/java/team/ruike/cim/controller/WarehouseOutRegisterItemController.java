@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 /**
- * 出库记录表项控制器
+ * 物料出库记录表项控制器
  */
 @Controller
 public class WarehouseOutRegisterItemController {
@@ -21,5 +21,9 @@ public class WarehouseOutRegisterItemController {
             warehouseOutRegisterItemService.getOutRegisterItemByWarehouseId(warehouseOutRegisterItem,pager);
         request.setAttribute("OutRegisterItemPage",pager);
         return "warehouses/materiel_Out_Register";
+    }
+    @RequestMapping("lodlodaddProductsOut.do")
+    public String lodlodaddProductsOut(){
+        return "warehouses/addproduct_warehouse_out_register_item";
     }
 }
