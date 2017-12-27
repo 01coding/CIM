@@ -1482,7 +1482,7 @@
 
     //将消息显示在网页上
     function setMessageInnerHTML(innerHTML) {
-        alert(innerHTML);
+        // alert(innerHTML);
     }
 
     //关闭WebSocket连接

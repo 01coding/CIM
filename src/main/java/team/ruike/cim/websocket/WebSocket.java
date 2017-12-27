@@ -22,7 +22,6 @@ public class WebSocket implements WebSocketHandler {
         User user = (User) Session.getAttributes().get("user");
         System.out.println("连接成功！！");
         webSockSession.put(user, Session);
-        sendMessageToUsers(new TextMessage("1111111111"));
     }
 
     /**
