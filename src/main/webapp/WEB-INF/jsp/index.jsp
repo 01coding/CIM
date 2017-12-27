@@ -1440,12 +1440,25 @@
 <script>
     var websocket = null;
     //判断当前浏览器是否支持WebSocket
+    // if ('WebSocket' in window) {
+    //     websocket = new WebSocket("ws://localhost:/echo");
+    // }
     if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:/websocket");
+        alert("WebSocket");
+        alert(window.location.host);
+        var url = 'ws://' + window.location.host + '/websocket.cl';
+        websocket = new WebSocket(url);
+        //websocket = new WebSocket("ws://127.0.0.1:8080/SSMTest/echo");
+    } else if ('MozWebSocket' in window) {
+        alert("MozWebSocket");
+        websocket = new MozWebSocket("ws://websocket.cl");
+    } else {
+        alert("SockJS");
+        websocket = new SockJS("http://127.0.0.1/sockjs/websocket.cl");
     }
-    else {
-        alert('当前浏览器 Not support websocket')
-    }
+    // else {
+    //     alert('当前浏览器 Not support websocket')
+    // }
     //连接发生错误的回调方法
     websocket.onerror = function () {
         setMessageInnerHTML("WebSocket连接发生错误");
