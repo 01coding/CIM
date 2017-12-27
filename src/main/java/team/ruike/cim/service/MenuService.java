@@ -89,4 +89,11 @@ public interface MenuService {
      */
     Menu selectById(Integer menuId);
 
+
+    /**
+     * 根据id删除菜谱
+     * @param menuId 菜谱id
+     */
+    void deleteById(Integer menuId);
+
 }

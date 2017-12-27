@@ -67,4 +67,7 @@ public interface MenuDao {
      * @return 菜谱集合
      */
     List<Menu> selectByMenuTypeId(@Param("menuTypeId") Integer menuTypeId);
+
+
+    void deleteById(Integer menuId);
 }
