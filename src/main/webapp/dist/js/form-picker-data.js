@@ -128,4 +128,104 @@ $(document).ready(function() {
             days: 6
         }
     });
+
+    $('#datetimepicker5').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker6').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker7').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker8').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker9').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker10').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+    $('#datetimepicker11').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker12').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+    $('#datetimepicker13').datetimepicker({
+        format: 'LT',
+        useCurrent: false,
+        icons: {
+            time: "fa fa-clock-o",
+            date: "fa fa-calendar",
+            up: "fa fa-arrow-up",
+            down: "fa fa-arrow-down"
+        },
+    }).data("DateTimePicker").date(moment());
+
+
 });

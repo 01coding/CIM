@@ -31,6 +31,9 @@
     <!-- Bootstrap Dropify CSS -->
     <link href="../../../vendors/bower_components/dropify/dist/css/dropify.min.css" rel="stylesheet" type="text/css"/>
 
+    <!--alerts CSS -->
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
     <style>
@@ -1873,7 +1876,9 @@
 <!-- Form Flie Upload Data JavaScript -->
 <script src="../../../dist/js/form-file-upload-data.js"></script>
 
-
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
 
@@ -2232,11 +2237,29 @@
             processData: false,
             contentType: false
         }).done(function(data) {
-            alert("添加成功");
+            addAlert(true);
         }).fail(function(res) {
-            alert("添加失败");
+            addAlert(false);
         });
     }
+
+        function addAlert(outcome) {
+            if(outcome){
+                swal({
+                    title: "保存成功",
+                    confirmButtonColor: "#01c853",
+                }, function(){
+                    location.href="/menulist.do";
+                });
+                return false;
+            }else{
+                swal({
+                    title: "保存失败",
+                    confirmButtonColor: "#01c853",
+                });
+                return false;
+            }
+        }
 
 
     
