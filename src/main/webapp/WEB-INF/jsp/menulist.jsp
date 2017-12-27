@@ -23,6 +23,9 @@
     <link rel="shortcut icon" href="../../favicon.ico">
     <link rel="icon" href="../../favicon.ico" type="image/x-icon">
 
+    <!--alerts CSS -->
+    <link href="../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+
     <!-- Custom CSS -->
     <link href="../../dist/css/style.css" rel="stylesheet" type="text/css">
 </head>
@@ -517,6 +520,16 @@
                                                                         <span>创建时间:<fmt:formatDate value="${menu.menuCreateDate}" pattern="yyyy年MM月dd日 HH:mm:ss"/></span>
                                                                     </div>
                                                                 </a>
+                                                                <div style="float: right;position: relative;top: 3px;">
+
+                                                                    <button type="button" class="btn " style="background-color: white;" onclick="toEdit(${menu.menuId})">
+                                                                        <i class="fa ti-pencil-alt" style="color: #2879ff;"></i>
+                                                                    </button>
+                                                                    <button type="button" class="btn" style="background-color: white;" data-menu="${menu.menuId}"  onclick="toDel(this)">
+                                                                        <i class="fa ti-trash" style="color: #2879ff;"></i>
+                                                                    </button>
+
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </c:forEach>
@@ -608,6 +621,9 @@
 
 <!-- Switchery JavaScript -->
 <script src="../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
+<!-- Sweet-Alert  -->
+<script src="../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../dist/js/sweetalert-data.js"></script>
 
 <!-- Init JavaScript -->
 <script src="../../dist/js/init.js"></script>
@@ -623,6 +639,43 @@
             $(this).css("border","1px solid #F8FEFF");
         });
     });
+
+    function toEdit(tid) {
+        location.href="/menu/toEdit.cl?menuId="+tid;
+    }
+
+    function toDel(thi) {
+        swal({
+            title: "是否删除?",
+            text: "你将无法恢复这个的数据!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#fec107",
+            confirmButtonText: "删除!",
+                cancelButtonText: "取消!",
+            closeOnConfirm: false
+        }, function(){
+            var menuId={
+                "menuId":$(thi).data("menu")
+            };
+
+          $.ajax({
+                url: "/menu/del.do",
+                method: "post",
+                data:menuId,
+                success: function (data) {
+                   $(thi).parent().parent().parent().remove();
+                    swal("删除!", "你的菜谱数据已被删除.", "success");
+                }, error: function () {
+                  swal("错误", "未知异常,删除失败", "error");
+                }
+            });
+
+
+        });
+        return false;
+    }
+
 </script>
 </body>
 </html>
