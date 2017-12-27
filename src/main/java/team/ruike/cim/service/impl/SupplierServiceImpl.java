@@ -5,6 +5,7 @@ package team.ruike.cim.service.impl;
  */
 
 import org.springframework.stereotype.Service;
+import team.ruike.cim.controller.SupplierController;
 import team.ruike.cim.dao.MaterielTypeLevelBDao;
 import team.ruike.cim.dao.SupplierContractDao;
 import team.ruike.cim.dao.SupplierDao;
@@ -155,4 +156,14 @@ public class SupplierServiceImpl implements SupplierService{
         return supplierDao.select(supplier,0,99);
     }
 
+    /**
+     * 根据ID查询所有
+     * @param id 合同ID
+     * @return
+     */
+    @Override
+    public SupplierContract getSupplierContractById(int id) {
+        SupplierContract supplierContract= supplierContractDao.selectById(id);
+        return supplierContract;
+    }
 }

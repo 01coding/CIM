@@ -4,6 +4,7 @@ package team.ruike.cim.service;
  * Created by Administrator on 2017/12/19.
  */
 
+import team.ruike.cim.controller.SupplierController;
 import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
 import team.ruike.cim.pojo.SupplierContract;
@@ -66,6 +67,12 @@ public interface SupplierService {
      */
     Supplier getSupplierById(int id);
 
+    /**
+     * 根据ID查
+     * @param id id
+     * @return
+     */
+    SupplierContract getSupplierContractById(int id);
     /**
      * 查询所有合同供应商
      * @param supplierContract

@@ -95,7 +95,6 @@ public class SupplierController {
                     String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
 
                     f.transferTo(new File(filePath));
-
                     supplier.setSupplierCharterImage(fileName);
                 } else {
                     System.out.println("img====isempty");
@@ -176,7 +175,17 @@ public class SupplierController {
         return JSON.toJSONString(supplier);
     }
 
-
+    /**
+     *根据ID查询所有合同
+     * @param id 合同id
+     * @return
+     */
+    @RequestMapping("/getSupplierContractById.do")
+    @ResponseBody
+    public String getSupplierContractById(@RequestParam(value = "id")int id){
+       SupplierContract supplierContract= supplierService.getSupplierContractById(id);
+        return JSON.toJSONString(supplierContract);
+    }
     /**
      * 跳转，合同管理页面，并加载数据
      * @param supplierContract 合同对象
@@ -204,11 +213,8 @@ public class SupplierController {
     @RequestMapping("/addSupplierContract.do")
     @ResponseBody
     public String addSupplierContract(SupplierContract supplierContract,String date,@RequestParam("file") CommonsMultipartFile file, HttpServletRequest request){
-        String filePath = upload(file, request,supplierContract);
-        supplierContract.setSupplierContractImage("");
-        if (filePath != null && !filePath.equals("")) {
-            supplierContract.setSupplierContractImage(filePath);
-        }
+        upload(file, request,supplierContract);
+
         Date dates=null;
         try
         {
@@ -242,11 +248,12 @@ public class SupplierController {
 
                 String landing = UUID.randomUUID().toString();
                 //文件名
-                String fileName = landing +file.getOriginalFilename();
+                String fileName = landing + file.getOriginalFilename();
                 // 文件保存路径
                 String filePath = request.getSession().getServletContext().getRealPath("/upload/") + fileName;
-                supplierContract.setSupplierContractImage(fileName);
                 file.transferTo(new File(filePath));
+                supplierContract.setSupplierContractImage(fileName);
+
                 return filePath;
 
             } catch (Exception e) {

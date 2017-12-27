@@ -32,19 +32,15 @@
     <!-- Footable CSS -->
     <link href="vendors/bower_components/FooTable/compiled/footable.bootstrap.min.css" rel="stylesheet"
           type="text/css"/>
-
     <!--alerts CSS -->
     <link href="vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
-
     <!-- Custom CSS -->
     <link href="dist/css/style.css" rel="stylesheet" type="text/css">
-
     <%--date--%>
     <!-- Bootstrap Colorpicker CSS -->
     <link href="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css"/>
     <!-- Bootstrap Datetimepicker CSS -->
     <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" rel="stylesheet" type="text/css"/>
-
     <style>
         /*** guide ***/
         .guide {
@@ -53,7 +49,6 @@
             right: 20px;
             z-index: 1000
         }
-
         .guide .btn-circle {
             width: 55px;
             height: 55px;
@@ -61,9 +56,7 @@
             box-shadow: 1px 1px 1px #888888;
         }
     </style>
-
 </head>
-
 <body>
 <!--Preloader-->
 <div class="preloader-it">
@@ -71,7 +64,6 @@
 </div>
 <!--/Preloader-->
 <div class="wrapper theme-1-active pimary-color-red">
-
     <!-- Top Menu Items -->
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="mobile-only-brand pull-left">
@@ -892,7 +884,6 @@
         </ul>
     </div>
     <!-- /Left Sidebar Menu -->
-
     <!-- Right Sidebar Menu -->
     <div class="fixed-sidebar-right">
         <ul class="right-sidebar">
@@ -1147,7 +1138,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div id="messages_tab" class="tab-pane fade" role="tabpanel">
                             <div class="message-box-wrap">
                                 <div class="msg-search">
@@ -1356,12 +1346,9 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
-
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -1377,7 +1364,6 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
@@ -1390,8 +1376,6 @@
                                         <div style="position: relative;bottom: 10px;">
                                             <form method="post"  action="/contractManagement.do">
                                                 <div class="form-group">
-
-
                                                     <div class="input-group" style="width: 300px;float: right;">
                                                         <label class="control-label mb-10">合同名称:</label>
                                                         <input type="text" class="form-control" name="supplierContractName"
@@ -1407,10 +1391,7 @@
                                                 </div>
                                             </form>
                                         </div>
-
                                         <table id="example" class="table table-hover display  pb-30">
-
-
                                             <thead>
                                             <tr>
                                                 <th>合同号</th>
@@ -1427,13 +1408,17 @@
                                                     <td>${su.supplierContractName}</td>
                                                     <td><fmt:formatDate value="${su.supplierContractDate}" pattern="yyyy-MM-dd" /></td>
                                                     <td>${su.supplier.supplierName}</td>
+                                                    <td class="footable-editing" style="display: table-cell;">
+                                                        <div class="btn-group btn-group-xs" role="group">
+                                                            <button type="button" title="详情" class="btn btn-default footable-edit" onclick="detailsSupplier(${su.supplierContractId})" data-toggle="modal" data-target="#exampleModalSelect">
+                                                                <i class="fa ti-search" style="color: #2879ff;"></i>
+                                                            </button>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             </c:forEach>
-
                                             </tbody>
                                         </table>
-
-
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
@@ -1445,10 +1430,7 @@
                                                 </button>
                                             </div>
                                         </div>
-
-
                                     </div>
-
                                     <%--分页--%>
                                     <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                         <div class="panel-body">
@@ -1496,8 +1478,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
@@ -1505,10 +1485,7 @@
             </div>
             <!-- /Row -->
         </div>
-
-
         <div class="row">
-
             <!--添加输入框-->
             <div class="col-md-6">
                 <div aria-hidden="true" role="dialog" tabindex="-1" id="exampleModal" class="modal fade" style="display: none;">
@@ -1524,7 +1501,6 @@
                                         <div class="col-md-12 mb-20">
                                             <input type="text" id="supplierContractName" name="supplierContractName" class="form-control" placeholder="合同名称">
                                         </div>
-
                                         <div class="col-md-12 mb-20">
 
                                                 <div class='input-group date' id='datetimepicker1s'>
@@ -1539,8 +1515,6 @@
                                                 <c:forEach items="${requestScope.supplierList}" var="su">
                                                     <option value="${su.supplierId}">${su.supplierName}</option>
                                                 </c:forEach>
-
-
                                             </select>
                                         </div>
                                         <div class="col-md-12 mb-20">
@@ -1561,10 +1535,71 @@
                     <!-- /.modal-dialog -->
                 </div>
             </div>
-
         </div>
 
-
+        <!--查看显示框-->
+        <div class="col-md-6">
+            <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
+                 aria-labelledby="exampleModalLabel1">
+                <!-- Row -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default card-view">
+                            <div class="panel-heading">
+                                <div class="pull-left">
+                                    <h6 class="panel-title txt-dark">门店信息</h6>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-wrap">
+                                                <form class="form-horizontal" role="form" method="post">
+                                                    <div class="form-body">
+                                                        <hr class="light-grey-hr"/>
+                                                        <div class="row">
+                                                            <!--门店-->
+                                                            <div class="col-md-6">
+                                                                <div >
+                                                                    <div class="form-group">
+                                                                        <div class="col-md-9"  >
+                                                                            <h4>合同证件</h4>
+                                                                            <img id="supplierContractImage" style="width: 300px;height: 250px">
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-actions mt-10">
+                                                        <div class="row">
+                                                            <div class="col-md-10"></div>
+                                                            <div class="col-md-2">
+                                                                <div class="row">
+                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                        <button type="button"
+                                                                                class="btn btn-default"
+                                                                                data-dismiss="modal">退出
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /Row -->
+            </div>
+        </div>
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1574,39 +1609,42 @@
             </div>
         </footer>
         <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
-
 </div>
 <!-- /#wrapper -->
-
 <!-- JavaScript -->
-
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
-
-
-
 <script>
-
     $(function () {
         GetNowDate();
     })
+    /*根据id查询供应商，弹框显示*/
+    function detailsSupplier(sid) {
+        var datds={
+            "id":sid
+        };
+        $.ajax({
+            url: '${pageContext.request.contextPath}/getSupplierContractById.do',
+            type: 'POST',
+            data: datds,
+            success: function (data) {
+                $("#supplierContractImage").attr("src","../../../upload/"+data.supplierContractImage);
+            }, error: function () {
+                swal("error");
+            }
+        })
+    }
     //限制上传文件的类型和大小
      function validate_img(ele){
             // 返回 KB，保留小数点后两位
              //alert((ele.files[0].size/(1024*1024)).toFixed(2));
              var file = ele.value;
-
              if(!/.(gif|jpg|jpeg|png|GIF|JPG|bmp)$/.test(file)){
-
                  swal("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
                        return false;
-
                   }else{
-
                       //alert((ele.files[0].size).toFixed(2));
                       //返回Byte(B),保留小数点后两位
                      if(((ele.files[0].size).toFixed(2))>=(2*1024*1024)){
@@ -1617,10 +1655,8 @@
                   }
          swal("图片通过");
          }
-
     /*添加合同*/
     function addSupplierContract(){
-
         $(".add").click(function(){
             var formobj =  document.getElementById("addSuContract");
             var formData=new FormData(formobj);
@@ -1650,7 +1686,6 @@
                                     $("#addmodal").click();
                                     /*添加成功清空文本框*/
                                     document.getElementById("addSuContract").reset();
-
                                 } else {
                                     swal("添加失败");
                                 }
@@ -1670,8 +1705,12 @@
             +"<td>"+data.supplier.supplierNo+"</td>"
             +"<td>"+data.supplierContractName+"</td>"
             +"<td>"+data.supplierContractDate+"</td>"
-            +"<td>"+store+"</td>"
-            +"</tr>";
+            +"<td>"+store+"</td>"+
+            "<td><div class='btn-group btn-group-xs' role='group'>\n" +
+            "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierContractId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
+            "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+            "  </button>\n" +
+            "</div></td>"
         $("tbody").append(display)
     }
     //获取当前日期给date控件赋值
@@ -1695,7 +1734,6 @@
 </script>
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -1703,41 +1741,28 @@
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-
-
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
 <script src="../../../dist/js/sweetalert-data.js"></script>
-
 <script>
     function sc() {
         window.location.href = "javascript:window.scrollTo(0,0)";
     }
 </script>
-
 <%--date--%>
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
@@ -1745,9 +1770,7 @@
 <script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
 <!-- Form Picker Init JavaScript -->
 <script src="../../../dist/js/form-picker-data.js"></script>
 </body>
-
 </html>
