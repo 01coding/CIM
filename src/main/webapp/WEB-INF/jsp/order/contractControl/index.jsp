@@ -1171,8 +1171,68 @@
                 <div class="modal fade" id="exampleModalSelect" tabindex="0" role="dialog"
                      aria-labelledby="exampleModalLabel1">
 
+                    <!-- Row -->
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="panel panel-default card-view">
+                                <div class="panel-heading">
+                                    <div class="pull-left">
+                                        <h6 class="panel-title txt-dark">合同图片</h6>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="panel-wrapper collapse in">
+
+                                    <hr class="light-grey-hr"/>
+
+                                    <div class="row">
+                                        <div class="col-md-2">
+
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <img id="contractImage" class="lg-object lg-image" src="" data-scale="1" style="transform: scale3d(1, 1, 1);">
+                                        </div>
+
+
+                                        <div class="col-md-2">
+
+                                        </div>
+                                    </div>
+
+                                    <hr class="light-grey-hr"/>
+
+                                    <div class="form-actions mt-10">
+                                                            <div class="row">
+                                                                <div class="col-md-10"></div>
+                                                                <div class="col-md-2">
+                                                                    <div class="row">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button"
+                                                                                    class="btn btn-default"
+                                                                                    data-dismiss="modal">关闭
+                                                                            </button>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /Row -->
+
+
+
                 </div>
             </div>
+
+
+
 
         </div>
 
@@ -1274,9 +1334,8 @@
     };
 
     function toView(id) {
-        var fd =new Array();
-        fd.push({name: "orderContractId", value: id});
-        appModule.open("/order/contract/toView.do",fd,"exampleModalSelect")
+        var img = document.getElementById("contractImage");
+        img.src = '/order/contract/toPreview.do?orderContractId='+id;
     };
 
     function toEdit(id,indx) {

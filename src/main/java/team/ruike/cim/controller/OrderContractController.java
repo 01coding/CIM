@@ -17,13 +17,19 @@ import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.UUID;
 
 /**
  * 订单合同
- *
+ *[
  * @author 甄立
  * @version 1.0
  */
@@ -60,13 +66,17 @@ public class OrderContractController {
         return "order/contractControl/edit";
     }
 
-    @RequestMapping("toView.do")
-    public String toView(@RequestParam(value = "orderContractId") Integer orderContractId, Model model) {
+    @RequestMapping("toPreview.do")
+    public void toPreview(@RequestParam(value = "orderContractId") Integer orderContractId, HttpServletResponse response,HttpServletRequest request) {
         OrderContract orderContract = orderContractService.queryOrderContractById(orderContractId);
-        ContractOrder contractOrder = contractOrderService.queryContractOrderByContractId(orderContract.getOrderContractId());
-        model.addAttribute("contractOrder", contractOrder);
-        model.addAttribute("orderContract", orderContract);
-        return "order/contractControl/view";
+        try {
+            OutputStream outputStream = response.getOutputStream();
+            String filePath = orderContract.getOrderContractImage();
+            Path file = Paths.get( request.getSession().getServletContext().getRealPath("/upload/")+filePath);
+            Files.copy(file, outputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @RequestMapping("edit.do")
