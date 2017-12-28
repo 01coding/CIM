@@ -25,7 +25,7 @@
           type="text/css"/>
 
     <!--alerts CSS -->
-    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
+    <link href="../../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 
     <!-- Custom CSS -->
     <link href="../../../dist/css/style.css" rel="stylesheet" type="text/css">
@@ -1234,7 +1234,6 @@
 
 <!-- Sweet-Alert  -->
 <script src="../../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
 <script src="../../../../dist/js/sweetalert-data.js"></script>
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>

@@ -116,6 +116,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="supplierMap">
-        SELECT  * FROM  supplier WHERE  status=0 AND supplier_id=#{supplierId}
+        SELECT  * FROM  supplier WHERE   supplier_id=#{supplierId}
     </select>
 </mapper>

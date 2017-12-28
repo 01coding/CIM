@@ -204,5 +204,20 @@ public class MenuServiceImpl implements MenuService{
         }
     }
 
+    /**
+     * 根据id删除菜谱
+     * @param menuId 菜谱id
+     */
+    public void deleteById(Integer menuId) {
+        menuDao.deleteById(menuId);
+        menuMaterielDao.selectByMenuId(menuId);
+        List<MenuMateriel>  menuMaterielList=  menuMaterielDao.selectByMenuId(menuId);
+        for (MenuMateriel menuMateriel : menuMaterielList) {
+            menuMaterielDao.deleteById(menuMateriel.getMenuMaterielId());
+            for (MenuFlow menuFlow : menuMateriel.getMenuFlow()) {
+                menuFlowDao.deleteById(menuFlow.getMenuFlowId());
+            }
+        }
+    }
 
 }

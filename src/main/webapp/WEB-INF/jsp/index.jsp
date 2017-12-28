@@ -492,11 +492,11 @@
                 <div class="tab-struct custom-tab-1">
                     <ul role="tablist" class="nav nav-tabs" id="right_sidebar_tab">
                         <li class="active" role="presentation"><a aria-expanded="true" data-toggle="tab" role="tab"
-                                                                  id="chat_tab_btn" href="#chat_tab">chat</a></li>
+                                                                  id="chat_tab_btn" href="#chat_tab">消息</a></li>
                         <li role="presentation" class=""><a data-toggle="tab" id="messages_tab_btn" role="tab"
-                                                            href="#messages_tab" aria-expanded="false">messages</a></li>
+                                                            href="#messages_tab" aria-expanded="false">管理员</a></li>
                         <li role="presentation" class=""><a data-toggle="tab" id="todo_tab_btn" role="tab"
-                                                            href="#todo_tab" aria-expanded="false">todo</a></li>
+                                                            href="#todo_tab" aria-expanded="false">通知</a></li>
                     </ul>
                     <div class="tab-content" id="right_sidebar_content">
                         <div id="chat_tab" class="tab-pane fade active in" role="tabpanel">
@@ -506,21 +506,11 @@
                                         <a href="javascript:void(0)" class="inline-block txt-grey">
                                             <i class="zmdi zmdi-more"></i>
                                         </a>
-                                        <span class="inline-block txt-dark">users</span>
+                                        <span class="inline-block txt-dark">消息</span>
                                         <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
                                                 class="zmdi zmdi-plus"></i></a>
                                         <div class="clearfix"></div>
                                     </div>
-                                    <form role="search" class="chat-search pl-15 pr-15 pb-15">
-                                        <div class="input-group">
-                                            <input type="text" id="example-input1-group2" name="example-input1-group2"
-                                                   class="form-control" placeholder="Search">
-                                            <span class="input-group-btn">
-												<button type="button" class="btn  btn-default"><i
-                                                        class="zmdi zmdi-search"></i></button>
-												</span>
-                                        </div>
-                                    </form>
                                     <div id="chat_list_scroll">
                                         <div class="nicescroll-bar">
                                             <ul class="chat-list-wrap">
@@ -532,107 +522,10 @@
                                                                      src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
-                                                                    <span class="name block capitalize-font">Clay Masse</span>
-                                                                    <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
+                                                                    <span class="name block capitalize-font">群聊</span>
+                                                                    <span class="time block truncate txt-grey">all</span>
                                                                 </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Evie Ono</span>
-                                                                    <span class="time block truncate txt-grey">Unity is strength</span>
-                                                                </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
-                                                                    <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Mitsuko Heid</span>
-                                                                    <span class="time block truncate txt-grey">I’m thankful.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user.png"
-                                                                     alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Ezequiel Merideth</span>
-                                                                    <span class="time block truncate txt-grey">Patience is bitter.</span>
-                                                                </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Jonnie Metoyer</span>
-                                                                    <span class="time block truncate txt-grey">Genius is eternal patience.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Angelic Lauver</span>
-                                                                    <span class="time block truncate txt-grey">Every burden is a blessing.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Priscila Shy</span>
-                                                                    <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user4.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Linda Stack</span>
-                                                                    <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
+                                                                <%--<div class="status away"></div>--%>
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
@@ -650,7 +543,7 @@
                                                    class="inline-block txt-grey">
                                                     <i class="zmdi zmdi-chevron-left"></i>
                                                 </a>
-                                                <span class="inline-block txt-dark">ryan</span>
+                                                <span class="inline-block txt-dark">群聊</span>
                                                 <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
                                                         class="zmdi zmdi-more"></i></a>
                                                 <div class="clearfix"></div>
@@ -659,14 +552,13 @@
                                         <div class="panel-wrapper collapse in">
                                             <div class="panel-body pa-0">
                                                 <div class="chat-content">
-                                                    <ul class="nicescroll-bar pt-20">
+                                                    <ul class="nicescroll-bar pt-20" id="mses">
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"
                                                                      src="../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
-                                                                    <p>Hello Jason, how are you, it's been a long time
-                                                                        since we last met?</p>
+                                                                    <p>你好傻逼</p>
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:30 PM</span>
                                                                     </div>
@@ -676,33 +568,9 @@
                                                         </li>
                                                         <li class="self mb-10">
                                                             <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have
-                                                                    got a new job now and is going great.
+                                                                <div class="msg block pull-right">你他妈的才傻逼
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="self">
-                                                            <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> How about you?
-                                                                    <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="friend">
-                                                            <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left"
-                                                                     src="../../dist/img/user.png" alt="user"/>
-                                                                <div class="msg pull-left">
-                                                                    <p>Not too bad.</p>
-                                                                    <div class="msg-per-detail  text-right">
-                                                                        <span class="msg-time txt-grey">2:35 pm</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -710,6 +578,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                <!--111-->
                                                 <div class="input-group">
                                                     <input type="text" id="input_msg_send" name="send-msg"
                                                            class="input-msg-send form-control"
@@ -748,13 +617,13 @@
                                     <a href="javascript:void(0)" class="inline-block txt-grey">
                                         <i class="zmdi zmdi-more"></i>
                                     </a>
-                                    <span class="inline-block txt-dark">messages</span>
+                                    <span class="inline-block txt-dark">在线管理员</span>
                                     <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i
                                             class="zmdi zmdi-search"></i></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="set-height-wrap">
-                                    <div class="streamline message-box nicescroll-bar">
+                                    <div class="streamline message-box nicescroll-bar" id="us">
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
@@ -762,113 +631,11 @@
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Clay Masse</span>
+                                                    <span class="inline-block capitalize-font   pull-left message-per">华中昊</span>
                                                     <span class="inline-block font-11  pull-right message-time">12:28 AM</span>
                                                     <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Themeforest message sent via your envato market profile</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsu messm quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user1.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Evie Ono</span>
-                                                    <span class="inline-block font-11  pull-right message-time">1 Feb</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Pogody theme support</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user2.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Madalyn Rascon</span>
-                                                    <span class="inline-block font-11  pull-right message-time">31 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Congratulations from design nominees</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item unread-message">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user3.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Ezequiel Merideth</span>
-                                                    <span class="inline-block font-11  pull-right message-time">29 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Themeforest item support message</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item unread-message">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user4.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Jonnie Metoyer</span>
-                                                    <span class="inline-block font-11  pull-right message-time">27 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Help with beavis contact form</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../dist/img/user.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Priscila Shy</span>
-                                                    <span class="inline-block font-11  pull-right message-time">19 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject">Your uploaded theme is been selected</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <a href="javascript:void(0)">
-                                            <div class="sl-item">
-                                                <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle"
-                                                         src="../../dist/img/user1.png"
-                                                         alt="avatar"/>
-                                                </div>
-                                                <div class="sl-content">
-                                                    <span class="inline-block capitalize-font   pull-left message-per">Linda Stack</span>
-                                                    <span class="inline-block font-11  pull-right message-time">13 Jan</span>
-                                                    <div class="clearfix"></div>
-                                                    <span class=" truncate message-subject"> A new rating has been received</span>
-                                                    <p class="txt-grey truncate">Neque porro quisquam est qui dolorem
-                                                        ipsum quia dolor sit amet, consectetur, adipisci velit</p>
+                                                    <span class=" truncate message-subject">超级管理员</span>
+                                                    <p class="txt-grey truncate"></p>
                                                 </div>
                                             </div>
                                         </a>
@@ -903,42 +670,6 @@
                                             <div class="checkbox checkbox-pink">
                                                 <input type="checkbox" id="checkbox02"/>
                                                 <label for="checkbox02">Prepare The Conference Schedule</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-warning">
-                                                <input type="checkbox" id="checkbox03" checked/>
-                                                <label for="checkbox03">Decide The Live Discussion Time</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-success">
-                                                <input type="checkbox" id="checkbox04" checked/>
-                                                <label for="checkbox04">Prepare For The Next Project</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-danger">
-                                                <input type="checkbox" id="checkbox05" checked/>
-                                                <label for="checkbox05">Finish Up AngularJs Tutorial</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <hr class="light-grey-hr"/>
-                                        </li>
-                                        <li class="todo-item">
-                                            <div class="checkbox checkbox-purple">
-                                                <input type="checkbox" id="checkbox06" checked/>
-                                                <label for="checkbox06">Finish Infinity Project</label>
                                             </div>
                                         </li>
                                         <li>
@@ -1437,45 +1168,9 @@
     var flag=${param.flag};
 </script>
 <script src="../../dist/js/dashboard-data.js" charset="utf-8" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/sockjs.min.js" charset="utf-8" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/websocket.js" charset="utf-8" type="text/javascript"></script>
 <script>
-    var websocket = null;
-    //判断当前浏览器是否支持WebSocket
-    if ('WebSocket' in window) {
-        websocket = new WebSocket("ws://localhost:/websocket");
-    }
-    else {
-        alert('当前浏览器 Not support websocket')
-    }
-    //连接发生错误的回调方法
-    websocket.onerror = function () {
-        setMessageInnerHTML("WebSocket连接发生错误");
-    };
-    //连接成功建立的回调方法
-    websocket.onopen = function () {
-        setMessageInnerHTML("WebSocket连接成功");
-    }
-    //接收到消息的回调方法
-    websocket.onmessage = function (event) {
-        setMessageInnerHTML(event.data);
-    }
-    //连接关闭的回调方法
-    websocket.onclose = function () {
-        setMessageInnerHTML("WebSocket连接关闭");
-    }
-    //监听窗口关闭事件，当窗口关闭时，主动去关闭websocket连接，防止连接还没断开就关闭窗口，server端会抛异常。
-    window.onbeforeunload = function () {
-        closeWebSocket();
-    }
-
-    //将消息显示在网页上
-    function setMessageInnerHTML(innerHTML) {
-        alert(innerHTML);
-    }
-
-    //关闭WebSocket连接
-    function closeWebSocket() {
-        websocket.close();
-    }
 </script>
 </body>
 </html>

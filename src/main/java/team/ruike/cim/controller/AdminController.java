@@ -43,13 +43,8 @@ public class AdminController {
     @ResponseBody
     @RequestMapping("updateRoleJurisdiction.do")
     public String updateRoleJurisdiction(Integer[] jurisdictionIds,Integer[] functionIds,Integer roleId){
-        boolean flag=false;
-        try {
             adminService.updateRoleJurisdiction(jurisdictionIds,functionIds,roleId);
-            flag=true;
-        }finally {
-            return flag+"";
-        }
+            return true+"";
     }
 
     /**

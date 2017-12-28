@@ -1290,7 +1290,7 @@
                 url:'${pageContext.request.contextPath}/admin/updateRole.do?'+submitData+'&roleId='+rid,
                 cache:false,
                 success:function(data){
-                    if (data ==true) {
+                    if (data==true) {
                         swal({
                             title: "修改成功！！!",
                             type: "success",

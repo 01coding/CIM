@@ -1359,12 +1359,9 @@
         </ul>
     </div>
     <!-- /Right Sidebar Menu -->
-
-
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
-
             <!-- Title -->
             <div class="row heading-bg">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -1380,23 +1377,17 @@
                 <!-- /Breadcrumb -->
             </div>
             <!-- /Title -->
-
             <!-- Row -->
             <div class="row">
                 <div class="col-sm-12">
                     <div class="panel panel-default card-view">
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
-
                                 <div class="table-wrap">
-
-
                                     <div class="table-responsive">
                                         <div style="position: relative;bottom: 10px;">
                                         <form method="post"  action="/supplier.do">
                                             <div class="form-group">
-
-
                                                 <div class="input-group" style="width: 300px;float: right;">
                                                     <label class="control-label mb-10">供应商编号:</label>
                                                     <input type="text" class="form-control" name="supplierNo"
@@ -1409,7 +1400,6 @@
                                                         </button>
                                                     </div>
                                                 </div>
-
                                                 <div class="input-group" style="width: 300px;float: right;">
                                                     <label class="control-label mb-10">供应商名称:</label>
                                                     <input type="text" class="form-control" name="supplierName"
@@ -1417,8 +1407,6 @@
                                                     <div class="input-group-btn"style=" position: relative; top: 16px;">
                                                     </div>
                                                 </div>
-
-
                                                 <div class="input-group"style="width: 300px;float: right;position: relative;right: 20px;">
                                                     <label class="control-label mb-10">供货类行:</label>
                                                     <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
@@ -1429,16 +1417,10 @@
 
                                                     </select>
                                                 </div>
-
-
                                             </div>
                                         </form>
                                     </div>
-
                                         <table id="example" class="table table-hover display  pb-30">
-
-
-
                                             <thead>
                                             <tr>
                                                 <th>供应商编号</th>
@@ -1451,12 +1433,8 @@
                                                 <th>操作</th>
                                             </tr>
                                             </thead>
-
                                             <tbody >
-
-
                                             <c:forEach items="${requestScope.suppliers.list}" var="s">
-
                                                 <tr id="tr">
                                                     <td>${s.supplierNo}</td>
                                                     <td>${s.supplierName}</td>
@@ -1485,15 +1463,9 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-
-
-
                                             </c:forEach>
-
                                             </tbody>
-
                                         </table>
-
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
@@ -1505,7 +1477,6 @@
                                             </div>
                                         </div>
                                     </div>
-
                                     <%--分页--%>
                                     <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
                                         <div class="panel-body">
@@ -1560,17 +1531,11 @@
             </div>
             <!-- /Row -->
         </div>
-
         <div class="row">
-
-
-
             <!--修改输入框-->
             <div class="col-md-6">
-
                 <div class="modal fade" id="exampleModalUpdate" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
-
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1580,16 +1545,14 @@
                             </div>
                             <div class="modal-body">
                                 <form id="updateSu" method="post">
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" id="supplierName" name="supplierName" class="form-control">
-                                        <input type="hidden" id="supplierId" name="supplierId">
+                                        <input type="text" id="supplierN" name="supplierName" class="form-control" value="">
+                                        <input type="hidden" id="supplierId" name="supplierId" value="">
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">供货类型:</label>
-                                        <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
+                                        <select class="form-control" id="materielTypeLevelBd" name="materielTypeLevelB.materielTypeLevelBId">
                                             <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
                                                 <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
                                                     <option id="s.materielTypeLevelB.materielTypeLevelBId" value="${m.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
@@ -1600,25 +1563,19 @@
                                             </c:forEach>
                                         </select>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
                                         <input type="text" id="supplierPhone" name="supplierPhone" class="form-control">
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">地址</label>
                                         <textarea class="form-control" id="supplierAddress" name="supplierAddress">${s.supplierAddress}</textarea>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">备注</label>
                                         <textarea class="form-control" id="supplierRemarks" name="supplierRemarks">${s.supplierRemarks}</textarea>
                                     </div>
-
-
                                 </form>
-
                             </div>
                             <div class="modal-footer">
                                 <button type="button" id="updateModal" class="btn btn-default" data-dismiss="modal">取消修改</button>
@@ -1626,16 +1583,12 @@
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <!--add输入框-->
             <div class="col-md-6">
-
                 <div class="modal fade" id="exampleModalAdd" tabindex="-1" role="dialog"
                      aria-labelledby="exampleModalLabel1">
-
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
@@ -1649,7 +1602,6 @@
                                         <label class="control-label mb-10">供应商名称:</label>
                                         <input type="text" flagName="supplierName" name="supplierName" class="form-control" >
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">供货类型:</label>
                                         <select name="materielTypeLevelB.materielTypeLevelBId" class="form-control">
@@ -1658,8 +1610,6 @@
                                             </c:forEach>
                                         </select>
                                     </div>
-
-
                                     <div  class="form-group" >
                                         <label class="control-label mb-10">合作开始时间:</label>
                                         <div class='input-group date' id='datetimepicker1s'>
@@ -1668,7 +1618,6 @@
                                             <span class="input-group-addon"><span class="fa fa-calendar"></span></span>
                                         </div>
                                     </div>
-
                                     <div class="form-group">
                                         <label class="control-label mb-10">电话:</label>
                                         <input type="text" name="supplierPhone" class="form-control">
@@ -1680,12 +1629,14 @@
                                     <div class="form-group">
                                         <label class="control-label mb-10">备注</label>
                                         <textarea class="form-control" name="supplierRemarks"></textarea>
+
                                     </div>
+
                                     <div class="form-group">
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传营业执照</span>
                                             <input type="file" name="file" class="upload" onchange="Javascript:validate_img(this);">
-                                        </div>
 
+                                        </div>
                                         <div class="fileupload btn btn-danger btn-rounded waves-effect waves-light"><span><i class="ion-upload m-r-5"></i>上传经营许可证</span>
                                             <input type="file" name="img" class="upload" onchange="Javascript:validate_img(this);">
                                         </div>
@@ -1696,11 +1647,8 @@
                                 <button type="button" id="addmodal" class="btn btn-default" data-dismiss="modal">取消添加</button>
                                 <button type="button" class="btn btn-primary add" onclick="addSupplierMethod()">确认添加</button>
                             </div>
-
                         </div>
                     </div>
-
-
                 </div>
             </div>
             <!--查看显示框-->
@@ -1730,27 +1678,24 @@
                                                                 <div class="col-md-6">
                                                                     <div >
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">特许经营许可:</label>
-                                                                            <div class="col-md-9">
-                                                                                <p class="form-control-static"> </p>
+                                                                            <div class="col-md-9"  >
+                                                                                <h4>特许经营许可证</h4>
+                                                                                <img id="supplierImage" style="width: 300px;height: 250px">
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
-                                                                    <div >
+                                                                    </div>
+                                                                    <div class="col-md-6">
                                                                         <div class="form-group">
-                                                                            <label class="control-label col-md-3">营业执照:</label>
                                                                             <div class="col-md-9">
-                                                                                <p class="form-control-static"> </p>
+                                                                                <h4>营业执照</h4>
+                                                                                <img id="supplierCharterImage" style="width: 300px;height: 250px">
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
-                                                                </div>
                                                             </div>
-
                                                         </div>
-
                                                         <div class="form-actions mt-10">
                                                             <div class="row">
                                                                 <div class="col-md-10"></div>
@@ -1766,7 +1711,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
                                                     </form>
                                                 </div>
                                             </div>
@@ -1779,10 +1723,7 @@
                     <!-- /Row -->
                 </div>
             </div>
-
         </div>
-
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1792,21 +1733,15 @@
             </div>
         </footer>
         <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
-
 </div>
 <!-- /#wrapper -->
-
 <!-- JavaScript -->
-
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Data table JavaScript -->
 <script src="../../../vendors/bower_components/datatables/media/js/jquery.dataTables_zl.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
@@ -1814,46 +1749,28 @@
 <script src="../../../vendors/bower_components/jszip/dist/jszip.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/pdfmake.min.js"></script>
 <script src="../../../vendors/bower_components/pdfmake/build/vfs_fonts.js"></script>
-
-
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.html5.js"></script>
 <script src="../../../vendors/bower_components/datatables.net-buttons/js/buttons.print.js"></script>
 <script src="../../../dist/js/export-table-data.js"></script>
 <script src="../../../dist/js/dataTables-data.js"></script>
-
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script>
-
-
-<!-- Sweet-Alert  -->
-<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
-<script src="../../../dist/js/sweetalert-data.js"></script>
-
-
-
 <!-- Sweet-Alert  -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../../dist/js/sweetalert-data.js"></script>
-
+<!-- Sweet-Alert  -->
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 <script src="../../../vendors/jquery.validate.js"></script>
 <script src="../../../vendors/messages_zh.js"></script>
-
-
-
 <script>
 
     $(function () {
@@ -1866,14 +1783,10 @@
         // 返回 KB，保留小数点后两位
         //alert((ele.files[0].size/(1024*1024)).toFixed(2));
         var file = ele.value;
-
         if(!/.(gif|jpg|jpeg|png|GIF|JPG|bmp)$/.test(file)){
-
             swal("图片类型必须是.gif,jpeg,jpg,png,bmp中的一种");
             return false;
-
         }else{
-
             //alert((ele.files[0].size).toFixed(2));
             //返回Byte(B),保留小数点后两位
             if(((ele.files[0].size).toFixed(2))>=(2*1024*1024)){
@@ -1893,8 +1806,10 @@
             url: '${pageContext.request.contextPath}/getSupplierById.do',
             type: 'POST',
             data: datds,
+            dataType: "json",
             success: function (data) {
-                $("#supplierName1").html("<p id='supplierName1' class='form-control-static' style='margin-top: -8px'>"+data.supplierName+" </p>");
+                $("#supplierImage").attr("src","../../../upload/"+data.supplierImage)
+                $("#supplierCharterImage").attr("src","../../../upload/"+data.supplierCharterImage)
                }, error: function () {
                 swal("error");
             }
@@ -1909,10 +1824,11 @@
             url: '${pageContext.request.contextPath}/getSupplierById.do',
             type: 'POST',
             data: datds,
+            dataType: "json",
             success: function (data) {
                  //id                      实体类属性
-                $("#supplierName").val(data.supplierName);
-                $("#materielTypeLevelB.materielTypeLevelBId").val(data.materielTypeLevelB.materielTypeLevelBId);
+                $("#supplierN").val(data.supplierName);
+                $("#materielTypeLevelBd").val(data.materielTypeLevelB.materielTypeLevelBId);
                 $("#supplierPhone").val(data.supplierPhone);
                 $("#supplierAddress").val(data.supplierAddress);
                 $("#supplierId").val(data.supplierId);
@@ -1923,7 +1839,6 @@
             }
         })
     }
-
     /*修改供应商*/
     function updateSupplierMethod(){
         $(".update").click(function(){
@@ -1944,9 +1859,10 @@
                             url: '/updateSupplier.do',
                             type: 'POST',
                             data: $('#updateSu').serialize(),
+                            dataType: "json",
                             success: function (data) {
                                 if (null != data) {
-                                    if (data > 0) {
+                                    if (data >"0") {
                                         swal("修改成功");
                                         $("#updateModal").click();
                                         upp();
@@ -1962,7 +1878,6 @@
                     }
             });
         });
-
     }
     /*修改成功,显示修改后的值*/
     function upp() {
@@ -1996,6 +1911,7 @@
                          data: formData,
                          processData: false,
                          contentType: false,
+                         dataType: "json",
                          success: function (data) {
                              if (null != data) {
                                  addsupplier(data);
@@ -2004,48 +1920,43 @@
                                  $("#addmodal").click();
                                  /*添加成功清空文本框*/
                                  document.getElementById("addS").reset();
-
                              }else {
                                  swal("添加失败");
-
                              }
                          }, error: function () {
                              swal("error");
                          }
-
                      })
                   }
              });
          });
     }
-
-
      function addsupplier(data) {
          /*添加成功显示页面，一次*/
          var materielTypeLevelBId=$("#addS select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
-         var display="<tr>"
-          +"<td>"+data.supplierNo+"</td>"
-          +"<td>"+data.supplierName+"</td>"
-          +"<td>"+materielTypeLevelBId+"</td>"
-          +"<td>"+data.supplierAddress+"</td>"
-          +"<td>"+data.supplierPhone+"</td>"
-          +"<td>"+data.cooperationStartDate+"</td>"
-          +"<td>"+data.supplierRemarks+"</td>" +
-
-          "<td><div class='btn-group btn-group-xs' role='group'>\n" +
-             "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
-             "\n" +
-             "     <span class='fooicon fooicon-pencil' style='color:#1aee20; aria-hidden='true'></span>\n" +
-             "  </button>\n" +
-             "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
-             "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
-             "  </button>\n" +
-             "  <button type='button'  flagId='"+data.supplierId+"' flagName='"+data.supplierName+"'  class='btn btn-default footable-delete del' >\n" +
-             "      <span class='fooicon fooicon-trash' title='删除' style='color: red; onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
-             "  </button>\n" +
-             "</div></td>"
-
-          $("tbody").append(display)
+         var row="<tr>\n" +
+             "    <td>"+data.supplierNo+"</td>\n" +
+             "    <td>"+data.supplierName+"</td>\n" +
+             "    <td>"+materielTypeLevelBId+"</td>\n" +
+             "    <td>"+data.supplierAddress+"</td>\n" +
+             "    <td>"+data.supplierPhone+"</td>\n" +
+             "    <td>"+data.cooperationStartDate+"</td>\n" +
+             "    <td>"+data.supplierRemarks+"</td>\n" +
+             "    <td class='footable-editing' style='display: table-cell;width: 100px'>\n" +
+             "        <div class='btn-group btn-group-xs' role='group'>\n" +
+             "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalUpdate' onclick='supplierById("+data.supplierId+")'>\n" +
+             "                <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+             "            </button>\n" +
+             "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalSelect' onclick='detailsSupplier("+data.supplierId+")'>\n" +
+             "                <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+             "            </button>\n" +
+             "            <button type='button' flagId='"+data.supplierId+"' flagName='"+data.supplierName+"' class='btn btn-default footable-delete del' data-storeid='"+data.supplierId+"' onclick='dedd(this)'>\n" +
+             "                <span class='fooicon fooicon-trash' aria-hidden='true'></span>\n" +
+             "            </button>\n" +
+             "        </div>\n" +
+             "    </td>\n" +
+             "</tr>"
+          $("tbody").append(row);
      }
     //获取当前日期给date控件赋值
     function GetNowDate() {
@@ -2086,7 +1997,7 @@
                         url:"${pageContext.request.contextPath}/delectSupplier.do?supplierId="+mid,
                         cache: false,
                         success:function(data){
-                            if(data == 1){
+                            if(data == "1"){
                                 swal("删除成功", "删除成功！", "success");
                                 $($tr).remove();
                             }else{
@@ -2098,7 +2009,6 @@
             });
         });
     }
-
 </script>
 <%--date--%>
 <!-- Moment JavaScript -->
@@ -2107,9 +2017,7 @@
 <script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
 <!-- Form Picker Init JavaScript -->
 <script src="../../../dist/js/form-picker-data.js"></script>
 </body>
-
 </html>

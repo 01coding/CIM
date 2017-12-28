@@ -77,6 +77,12 @@
         menu_type_id=#{menuType.menuTypeId}
         WHERE  menu_id=#{menuId}
     </update>
+
+    <update id="deleteById">
+        UPDATE menu SET status=1
+        WHERE  menu_id=#{menuId}
+    </update>
+
     <select id="select" resultMap="menus">
         SELECT * FROM (<include refid="sql"/> ) f
         limit #{pageNo},#{pageSize}
