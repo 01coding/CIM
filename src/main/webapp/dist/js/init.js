@@ -144,7 +144,6 @@ var hound = function(){
 	$(document).on('click', '#open_right_sidebar', function (e) {
 		$wrapper.toggleClass('open-right-sidebar').removeClass('open-setting-panel');
 		return false;
-	
 	});
 	
 	$(document).on('click','.product-carousel .owl-nav',function(e){
