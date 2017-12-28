@@ -100,7 +100,7 @@ public interface QualityService {
      * @param purchaseStandardRecord 采购标准记录
      * @return
      */
-    Integer addPurchaseStandardRecord(PurchaseStandardRecord purchaseStandardRecord);
+    Integer addPurchaseStandardRecord(PurchaseStandardRecord purchaseStandardRecord,Date dates);
 
     /**
      * 根据条件查询方法

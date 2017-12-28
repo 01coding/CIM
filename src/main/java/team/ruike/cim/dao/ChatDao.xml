@@ -14,9 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM chat WHERE status=0 ORDER BY chat_id DESC
     </select>
     <select id="selectByTop10" resultMap="chatMap">
-        SELECT * FROM chat WHERE status=0 ORDER BY chat_id DESC LIMIT 0,10
+        SELECT * FROM chat WHERE status=0 ORDER BY chat_id LIMIT 0,10
     </select>
     <insert id="add" parameterType="chat">
-        INSERT INTO chat VALUES(DEFAULT,#{user.userId},#{message},0,now())
+        INSERT INTO chat VALUES(DEFAULT,#{user.userId},#{message},0,#{date})
     </insert>
 </mapper>

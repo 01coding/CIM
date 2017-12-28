@@ -1,4 +1,5 @@
-<%@ page import="team.ruike.cim.util.Pager" %><%--
+<%@ page import="team.ruike.cim.util.Pager" %>
+<%@ page import="team.ruike.cim.pojo.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2017/12/8
@@ -1092,6 +1093,141 @@
                 </div>
             </div>
             <!-- /Row -->
+
+
+            <div class="row">
+
+                <div class="col-md-6">
+                    <button id="chatB"  data-toggle="modal" data-target="#chatModalSelect" style="display: none">
+                    </button>
+
+                    <div class="modal fade" id="chatModalSelect" tabindex="0" role="dialog"
+                         aria-labelledby="exampleModalLabel1">
+
+                        <div class="col-md-2"></div>
+
+                        <div class="col-md-8">
+                            <!-- Row -->
+                            <div class="row  mt-30">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default border-panel card-view pa-0">
+                                        <div class="panel-wrapper collapse in">
+                                            <div class="panel-body pa-0">
+                                                <div class="chat-cmplt-wrap chat-for-widgets-1">
+
+                                                    <div class="recent-chat-box-wrap" style="width:100%;">
+                                                        <div class="recent-chat-wrap">
+                                                            <div class="panel-heading ma-0 pt-15">
+                                                                <div class="goto-back">
+                                                                    <a  id="goto_back_widget_1" href="javascript:void(0)" class="inline-block txt-grey">
+                                                                        <i class="zmdi zmdi-account-add"></i>
+                                                                    </a>
+                                                                    <span class="inline-block txt-dark">消息</span>
+                                                                    <a href="javascript:void(0)" class="inline-block text-right txt-grey"><i class="zmdi zmdi-more"></i></a>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="panel-wrapper collapse in">
+                                                                <div class="panel-body pa-0">
+                                                                    <div class="chat-content">
+                                                                        <ul  class="chatapp-chat-nicescroll-bar pt-20">
+
+                                                                            <li class="friend">
+                                                                                <div class="friend-msg-wrap">
+                                                                                    <img class="user-img img-circle block pull-left"  src="dist/img/user.png" alt="user"/>
+                                                                                    <div class="msg pull-left">
+                                                                                        <p>Hello Jason, how are you, it's been a long time since we last met?</p>
+                                                                                        <div class="msg-per-detail text-right">
+                                                                                            <span class="msg-time txt-grey">2:30 PM</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                            </li>
+
+                                                                            <li class="self mb-10">
+                                                                                <div class="self-msg-wrap">
+                                                                                    <div class="msg block pull-right"> Oh, hi Sarah I'm have got a new job now and is going great.
+                                                                                        <div class="msg-per-detail text-right">
+                                                                                            <span class="msg-time txt-grey">2:31 pm</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                            </li>
+
+                                                                            <li class="self">
+                                                                                <div class="self-msg-wrap">
+                                                                                    <div class="msg block pull-right">  How about you?
+                                                                                        <div class="msg-per-detail text-right">
+                                                                                            <span class="msg-time txt-grey">2:31 pm</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                            </li>
+
+                                                                            <li class="friend">
+                                                                                <div class="friend-msg-wrap">
+                                                                                    <img class="user-img img-circle block pull-left"  src="dist/img/user.png" alt="user"/>
+                                                                                    <div class="msg pull-left">
+                                                                                        <p>Not too bad.</p>
+                                                                                        <div class="msg-per-detail  text-right">
+                                                                                            <span class="msg-time txt-grey">2:35 pm</span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="clearfix"></div>
+                                                                                </div>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+
+
+                                                                </div>
+
+                                                            </div>
+
+
+                                                            <div class="form-actions mt-10">
+                                                                <div class="row">
+                                                                    <div class="col-md-10"></div>
+                                                                    <div class="col-md-2">
+                                                                        <div class="row">
+                                                                            <div class="col-md-offset-3 col-md-9">
+                                                                                <button type="button"
+                                                                                        class="btn btn-default"
+                                                                                        data-dismiss="modal">关闭
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Row -->
+                        </div>
+
+                        <div class="col-md-2"> </div>
+
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+
+
+
         </div>
 
         <!-- Footer -->
@@ -1146,8 +1282,17 @@
 <script src="../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
 <script src="../../dist/js/jquery.slimscroll.js"></script>
 <script src="../../dist/js/init.js"></script>
+<%
+User user=(User)session.getAttribute("u");
+%>
 <script>
     $(function () {
+        $(".add-friend>a:first").click(function () {
+            selectChat();
+            $("#chatB").click();
+        });
+
+
         $(".del").click(function(){
             var mid=$(this).attr("flagid");
             var mname=$(this).attr("flagname");
@@ -1201,6 +1346,61 @@
             });
         });
     });
+    
+
+    function selectChat() {
+
+        $.ajax({
+            url: "chat.do",
+            method: "post",
+            dataType:"json",
+            success: function (data) {
+                var message="";
+
+                var thisUser="<%=user.getUserId()%>";
+                    for(var i in data){
+                         /*判断不是当前用户的消息*/
+                         if(data[i].user.userId!=thisUser.userId){
+                              message+="<li class='friend'>\n" +
+                                 "<div class='friend-msg-wrap'>\n" +
+                                 "<img class='user-img img-circle block pull-left'  src='dist/img/user.png' alt='user'/>\n" +
+                                 "<div class='msg pull-left'>\n" +
+                                 "<p>"+data[i].message+"</p>\n" +
+                                 "<div class='msg-per-detail text-right'>\n" +
+                                 "<span class='msg-time txt-grey'>"+data[i].date+"</span>\n" +
+                                 "</div>\n" +
+                                 "</div>\n" +
+                                 "<div class='clearfix'></div>\n" +
+                                 "</div>\n" +
+                                 "</li>\n";
+                         }else{
+                              message+="<li class='self'>\n" +
+                                 "<div class='self-msg-wrap'>\n" +
+                                 "    <div class='msg block pull-right'>"+data[i].message+"\n" +
+                                 "        <div class='msg-per-detail text-right'>\n" +
+                                 "            <span class='msg-time txt-grey'>"+data[i].date+"</span>\n" +
+                                 "        </div>\n" +
+                                 "    </div>\n" +
+                                 "    <div class='clearfix'></div>\n" +
+                                 "</div>\n" +
+                                 "</li>\n";
+                         }
+                    }
+                    $("#chatModalSelect .chatapp-chat-nicescroll-bar").empty().append(message);
+
+
+
+
+            }, error: function (data) {
+                swal({
+                    title: "消息加载异常",
+                    type: "error",
+                    confirmButtonColor: "#01c853",
+                });
+            }
+        });
+
+    }
 </script>
 </body>
 
