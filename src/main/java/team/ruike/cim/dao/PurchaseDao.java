@@ -3,6 +3,8 @@ package team.ruike.cim.dao;
 import org.apache.ibatis.annotations.Param;
 import team.ruike.cim.pojo.Purchase;
 
+import javax.xml.crypto.Data;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -61,7 +63,7 @@ public interface PurchaseDao {
 
     /**
      * 根据日期获取主键值
-     * @return
+     * @return 编号
      */
-    int getpurchaseNo();
+    int getpurchaseNo(Date dates);
 }

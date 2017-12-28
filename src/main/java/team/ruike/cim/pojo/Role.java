@@ -1,6 +1,8 @@
 package team.ruike.cim.pojo;
 
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -28,10 +30,12 @@ public class Role implements Serializable {
     /**
      * 功能集合(此角色有多少功能)
      */
+    @JSONField(serialize = false)
     private List<Function> functions;
     /**
      * 权限集合(此角色有多少权限)
      */
+    @JSONField(serialize = false)
     private List<Jurisdiction> jurisdictions;
 
     public List<Function> getFunctions() {

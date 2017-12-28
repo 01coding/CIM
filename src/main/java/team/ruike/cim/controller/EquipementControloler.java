@@ -79,7 +79,6 @@ public class EquipementControloler {
     /**
      * 修改设备信息
      * @param equipments 设备表
-     * @param request 转发
      * @return 是否成功
      */
     @RequestMapping("/updateMateriel.do")
@@ -130,7 +129,7 @@ public class EquipementControloler {
         }
         equipmentReport.setEndDate(dates);
         int num=equipementService.addEquipmentReport(equipmentReport);
-        if (num==1) {
+        if (num>0) {
             return "redirect:/equipment.do";
         }else {
             return "equipement/addequipmentreport";
@@ -146,7 +145,11 @@ public class EquipementControloler {
     @ResponseBody
     public String delMateriel(Integer equipmentId ){
         int num=equipementService.deleteEquipment(equipmentId);
-        return (num==1)+"";
+        if (num>0){
+            return "1";
+        }else {
+            return "0";
+        }
     }
 
     /**
@@ -159,8 +162,9 @@ public class EquipementControloler {
     @RequestMapping("/equipmentreport.do")
     public String equipmentreport(EquipmentReport equipmentReport,Pager<EquipmentReport> pager, HttpServletRequest request,User user){
         equipementService.getEquipmentReport(equipmentReport,pager);
-        request.setAttribute("users",equipementService.getUser(user));
         request.setAttribute("equipmentReports",pager);
+        request.setAttribute("users",equipementService.getUser(user));
+
         return "equipement/equipmentreport";
     }
 }

@@ -953,7 +953,7 @@
                                             <div class="col-sm-6">
                                                     <div  class="form-group col-lg-12">
                                                         <div class='input-group date' id='datetimepicker1'>
-                                                            <input id="dada" type="date" placeholder="请选择质检日期" style="width: 558px;height: 44px">
+                                                            <input id="dada" type="date" placeholder="请选择质检日期" style="width: 558px;height: 44px" value="${requestScope.dat}">
                                                         </div>
                                                     </div>
                                                 <div class="col-lg-12">
@@ -990,6 +990,7 @@
                                                             </div>
 
                                                             <div class="panel-body">
+                                                                <input type="hidden" name="date" value="${requestScope.dat}">
                                                                 <label class="control-label mb-10">三级物料</label>
                                                                 <select id="selectid" style="padding-left:20px;height: 40px;width: 220px; border: 1px  solid gainsboro ">
 
@@ -1007,7 +1008,7 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="form-actions" style="padding-left: 22px">
-                                                        <button type="button" onclick="ff()" class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
+                                                        <button id="b1" type="button" onclick="ff()" class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
                                                                 class="fa fa-check"></i> <span>保存</span></button>
                                                         <a href="/record.do"><button type="button" class="btn btn-warning pull-left">取消</button></a>
                                                         <div class="clearfix"></div>
@@ -1027,7 +1028,7 @@
                                                         <input type="text" disabled="disabled" class="form-control" placeholder="采购批次" value="${requestScope.num}">
                                                     </div>
                                                 </div>
-                                                <div  class="row">
+                                                <div id="r1"  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardAType==1}">
                                                                 <div class="form-group col-sm-6" style="margin-top: 10px">
@@ -1048,7 +1049,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div  class="row">
+                                                <div id="r2"  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardBType==1}">
@@ -1069,7 +1070,7 @@
                                                         </c:if>
                                                     </div>
                                                 </div>
-                                                <div  class="row">
+                                                <div id="r3"  class="row">
                                                     <div class="form-group col-sm-12" style="padding-left: 0px;text-align: left ">
                                                         <c:if test="${requestScope.pstd.standardCType==1}">
                                                             <div class="form-group col-sm-6" style="margin-top: 10px">
@@ -1131,16 +1132,18 @@
 <!-- jQuery -->
 <script src="vendors/bower_components/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript">
-
     function s() {
+
         $("#select1").change(function () {
             var zhi = $(this).find("option:selected").val()
+            var date =$("#dada").val()
             $.ajax({
                 type: "post",
                 url: "/picitypeB.cl",
-                data: {"materielTypeLevelAid": zhi},
+                data: {"materielTypeLevelAid": zhi,"date":date},
                 dataType: "json",
                 success: function (data) {
+
                     var str=""
                     $("#select2").html("");
                     $.each(data, function (i, item) {
@@ -1148,7 +1151,11 @@
                     })
                     $("#select2").append(str)
                     if(data[0].materielTypeLevelBId!=0){
+
                         select(data[0].materielTypeLevelBId)
+                    }
+                    if(data==null || data+""==0){
+
                     }
                 }, error: function () {
                     alert("系统异常，请稍后重试！");
@@ -1171,7 +1178,7 @@
             },
             success: function(data) {
                 if(data==1){
-                    alert($("#selectid").find("option:selected").css({"color":"red"}))
+                    $("#selectid").find("option:selected").css({"color":"red"})
                     $("#selectid").find("option:selected").attr("disabled",true)
                     clear();
                     alert("成功");
@@ -1191,18 +1198,22 @@
     }
 
     function select(zhi2) {
+
+        var date=$("#dada").val()
         $.ajax({
             type: "post",
             url: "/piciM.cl",
-            data: {"materielTypeLevelBid": zhi2},
+            data: {"materielTypeLevelBid": zhi2,"date":date},
             dataType: "json",
             success: function (data) {
+
                 var str=""
                 $("#selectid").html("");
                 $.each(data, function (i, item) {
                     str += "<option value='" + item.materielId + "'>" + item.materielName + "</option>";
                 })
                 $("#selectid").append(str)
+                tt()
             }, error: function () {
                 alert("系统异常，请稍后重试！");
             }
@@ -1214,7 +1225,8 @@
 
     function sss(){
         $("#selectid").change(function(){
-            var uu=$(this).find("option:selected").val();
+            tt()
+           /* var uu=$(this).find("option:selected").val();
             $("#aa").val(uu);
             var zhi = $("#selectid").find("option:selected").val();
             $.ajax({
@@ -1244,7 +1256,51 @@
                     alert("系统异常，请稍后重试！");
                 }
 
-            })
+            })*/
+
+        })
+    }
+
+    function tt() {
+        var uu=$("#selectid").find("option:selected").val();
+        $("#aa").val(uu);
+        var zhi = $("#selectid").find("option:selected").val();
+        $.ajax({
+            type: "post",
+            url: "/PStand.cl",
+            data: {"materielId": zhi},
+            dataType: "json",
+            success: function (data) {
+                if(data!=null){
+                    $("#r1").css({"display":"block"});
+                    $("#r2").css({"display":"block"});
+                    $("#r3").css({"display":"block"});
+                    $("#b1").attr('disabled',false);
+                }else {
+                    $("#r1").css({"display":"none"});
+                    $("#r2").css({"display":"none"});
+                    $("#r3").css({"display":"none"});
+                    $("#b1").attr('disabled',true);
+                }
+                var ss=eval(data)
+                if(data.standardAType==1){
+                    $("#p1").html(data.standardAName)
+                }else {
+                    $("#p2").attr('placeholder',data.standardAName+"(十分制)")
+                }
+                if(data.standardBType==1){
+                    $("#p3").html(data.standardBName)
+                }else {
+                    $("#p4").attr('placeholder',data.standardBName+"(十分制)")
+                }
+                if(data.standardCType==1){
+                    $("#p5").html(data.standardCName)
+                }else {
+                    $("#p6").attr('placeholder',data.standardCName+"(十分制)")
+                }
+            }, error: function () {
+                alert("系统异常，请稍后重试！");
+            }
 
         })
     }
@@ -1258,7 +1314,6 @@
 
     function ssss() {
         $("#dada").change(function () {
-            alert(2222222)
             var da=$("#dada").val()
             window.location.href="picitypeA.cl?date="+da
         })

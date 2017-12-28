@@ -65,6 +65,8 @@ public class MenuBranchController {
             menuFlowList.add((MenuFlow) (JSONObject.toBean(JSONObject.fromObject(o), MenuFlow.class)));
         }
 
+
+
         menu.setMenuImage(menuUpload(request));
         menuFlowUpload(menuFlowList, request);
         menuService.addMenu(menu, menuFlowList);
@@ -91,7 +93,7 @@ public class MenuBranchController {
     }
 
 
-    public String menuUpload(HttpServletRequest request) {
+    private String menuUpload(HttpServletRequest request) {
         MultipartHttpServletRequest murequest = (MultipartHttpServletRequest) request;
         //在文件上传请求中获取文件，根据file的name
         List<MultipartFile> files = murequest.getFiles("menuImageData");
@@ -114,7 +116,7 @@ public class MenuBranchController {
         return null;
     }
 
-    public void menuFlowUpload(List<MenuFlow> menuFlowList, HttpServletRequest request) {
+    private void menuFlowUpload(List<MenuFlow> menuFlowList, HttpServletRequest request) {
         MultipartHttpServletRequest murequest = (MultipartHttpServletRequest) request;
         try {
             for (String key : murequest.getFileMap().keySet()) {
@@ -181,7 +183,7 @@ public class MenuBranchController {
 
 
     @RequestMapping("toEdit.cl")
-    public String toEdit(@RequestParam(value = "menuId") Integer menuId, Model model, HttpServletRequest request) {
+    public String toEdit(@RequestParam(value = "menuId") Integer menuId, Model model) {
 
         Menu menu = menuService.selectById(menuId);
       /*  if (menu.getMenuImage() != null && !menu.getMenuImage().equals("")) {
@@ -201,7 +203,7 @@ public class MenuBranchController {
     }
 
 
-    public static String GetImageStr(String imgFilePath) {
+    private static String GetImageStr(String imgFilePath) {
         // 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
         byte[] data = null;
         // 读取图片字节数组
@@ -218,5 +220,12 @@ public class MenuBranchController {
         return encoder.encode(data);// 返回Base64编码过的字节数组字符串
     }
 
+
+    @RequestMapping("del.do")
+    @ResponseBody
+    public String del(@RequestParam(value = "menuId") Integer menuId) {
+        menuService.deleteById(menuId);
+        return "1";
+    }
 
 }

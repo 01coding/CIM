@@ -13,7 +13,25 @@
  "use strict"; 
 /*****Ready function start*****/
 $(document).ready(function(){
-	hound();
+    // 对Date的扩展，将 Date 转化为指定格式的String
+// 月(M)、日(d)、小时(h)、分(m)、秒(s)、季度(q) 可以用 1-2 个占位符，
+// 年(y)可以用 1-4 个占位符，毫秒(S)只能用 1 个占位符(是 1-3 位的数字)
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "H+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    }
+    hound();
 	$('.preloader-it > .la-anim-1').addClass('la-animate');
 });
 /*****Ready function end*****/
@@ -144,7 +162,6 @@ var hound = function(){
 	$(document).on('click', '#open_right_sidebar', function (e) {
 		$wrapper.toggleClass('open-right-sidebar').removeClass('open-setting-panel');
 		return false;
-	
 	});
 	
 	$(document).on('click','.product-carousel .owl-nav',function(e){
@@ -209,7 +226,10 @@ var hound = function(){
 	/*Chat*/
 	$(document).on("keypress","#input_msg_send",function (e) {
 		if ((e.which == 13)&&(!$(this).val().length == 0)) {
-			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">3:30 pm</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
+			var text="\""+$(this).val()+"\"";
+			var mes="{type:1,message:"+text+"}";
+			websocket.send(mes);
+			$('<li class="self mb-10"><div class="self-msg-wrap"><div class="msg block pull-right">' + $(this).val() + '<div class="msg-per-detail mt-5"><span class="msg-time txt-grey">'+new Date().Format("HH:mm:ss")+'</span></div></div></div><div class="clearfix"></div></li>').insertAfter(".fixed-sidebar-right .chat-content  ul li:last-child");
 			$(this).val('');
 		} else if(e.which == 13) {
 			alert('Please type somthing!');

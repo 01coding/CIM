@@ -5,6 +5,7 @@ package team.ruike.cim.service.impl;
  */
 
 import org.springframework.stereotype.Service;
+import team.ruike.cim.controller.SupplierController;
 import team.ruike.cim.dao.MaterielTypeLevelBDao;
 import team.ruike.cim.dao.SupplierContractDao;
 import team.ruike.cim.dao.SupplierDao;
@@ -12,6 +13,7 @@ import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.Supplier;
 import team.ruike.cim.pojo.SupplierContract;
 import team.ruike.cim.service.SupplierService;
+import team.ruike.cim.util.ArchivesLog;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -42,13 +44,13 @@ public class SupplierServiceImpl implements SupplierService{
         List<Supplier> supplierList=supplierDao.select(supplier,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
         pager.setList(supplierList);
     }
-
     /**
      * 删除供应商
      * @param supplierId 供应商id
      * @return
      */
     @Override
+    @ArchivesLog(operationType="删除操作",operationName="删除供应商信息")
     public int delectSupplier(int supplierId) {
         Supplier supplier=new Supplier();
         supplier.setSupplierId(supplierId);
@@ -57,8 +59,6 @@ public class SupplierServiceImpl implements SupplierService{
         supplier.setStatus(1);
         return supplierDao.update(supplier);
     }
-
-
     /**
      * 查询所有二级类型
      * @param materielTypeLevelB 二级类型
@@ -68,13 +68,13 @@ public class SupplierServiceImpl implements SupplierService{
     public List<MaterielTypeLevelB> getMaterielTypeLevelB(MaterielTypeLevelB materielTypeLevelB) {
         return materielTypeLevelBDao.select(materielTypeLevelB,0,99);
     }
-
     /**
      * 添加供应商
      * @param supplier 供应商
      * @return
      */
     @Override
+    @ArchivesLog(operationType="添加操作",operationName="添加供应商信息")
     public Supplier addSupplier(Supplier supplier) {
         supplier.setStatus(0);
         String supplierNo= GenerateNumber.getGenerateNumber().getRandomFileName();
@@ -82,17 +82,15 @@ public class SupplierServiceImpl implements SupplierService{
         supplierDao.add(supplier);
         return supplier;
     }
-
     /**
      * 修改供应商
      * @param supplier 供应商
      * @return
      */
     @Override
+    @ArchivesLog(operationType="修改操作",operationName="修改供应商信息")
     public int updateSupplier(Supplier supplier) {
-
         Supplier supplierById = getSupplierById(supplier.getSupplierId());
-
         //删除伪列
         supplier.setStatus(0);
         //时间
@@ -106,9 +104,7 @@ public class SupplierServiceImpl implements SupplierService{
         //状态
         supplier.setSupplierState(supplierById.getSupplierState());
         return supplierDao.update(supplier);
-
     }
-
     /**
      * 根据id查询信息
      * @param id 供应商id
@@ -118,7 +114,6 @@ public class SupplierServiceImpl implements SupplierService{
     public Supplier getSupplierById(int id) {
         return supplierDao.selectById(id);
     }
-
     /**
      * 查询所有合同信息
      * @param supplierContract 合同
@@ -130,21 +125,19 @@ public class SupplierServiceImpl implements SupplierService{
         List<SupplierContract>supplierContractList=supplierContractDao.select(supplierContract,(pager.getCurrentPage()- 1) * pager.getPageSize(), pager.getPageSize());
         pager.setList(supplierContractList);
     }
-
-
     /**
      * 添加合同
      * @param supplierContract 合同对象
      * @return
      */
     @Override
+    @ArchivesLog(operationType="添加操作",operationName="添加合同信息")
     public SupplierContract addSupplierContract(SupplierContract supplierContract) {
         String supplierContractNo= GenerateNumber.getGenerateNumber().getRandomFileName();
         supplierContract.getSupplier().setSupplierNo(supplierContractNo);
         supplierContractDao.add(supplierContract);
         return supplierContract;
     }
-
     /**
      * 获取所有供应商信息，放到合同
      * @param supplier 供应商
@@ -154,5 +147,14 @@ public class SupplierServiceImpl implements SupplierService{
     public List<Supplier> getSupplierList(Supplier supplier) {
         return supplierDao.select(supplier,0,99);
     }
-
+    /**
+     * 根据ID查询所有
+     * @param id 合同ID
+     * @return
+     */
+    @Override
+    public SupplierContract getSupplierContractById(int id) {
+        SupplierContract supplierContract= supplierContractDao.selectById(id);
+        return supplierContract;
+    }
 }

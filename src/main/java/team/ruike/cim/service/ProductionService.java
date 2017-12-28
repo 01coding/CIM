@@ -15,5 +15,5 @@ public interface ProductionService {
      */
     void generateContractProductionPlan() throws ParseException;
 
-//    void test() throws IOException;
+    void test() throws IOException;
 }

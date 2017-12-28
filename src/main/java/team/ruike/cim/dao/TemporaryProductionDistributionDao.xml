@@ -32,7 +32,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
                     next_working_number=#{nextWorkingNumber},
                     start_date=#{startDate},
                     end_date=#{endDate}
-                    WHERE temporary_production_distribution_id=#{temporaryProductionDistributionId},
+                    WHERE temporary_production_distribution_id=#{temporaryProductionDistributionId}
     </update>
     <sql id="sql">
         SELECT *  FROM temporary_production_distribution WHERE status=0
@@ -45,7 +45,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="temporaryProductionDistribution.working!=null and temporaryProductionDistribution.working.workingId>0">
             AND working_id=#{temporaryProductionDistribution.working.workingId}
         </if>
-        <if test="temporaryProductionDistribution.user!=null and temporaryProductionDistribution.user.userId>0">
+        <if test="temporaryProductionDistribution.user!=null and temporaryProductionDistribution.user.userId!=null and temporaryProductionDistribution.user.userId>0">
             AND user_id=#{temporaryProductionDistribution.user.userId}
         </if>
         <if test="temporaryProductionDistribution.peopleNumber!=null and temporaryProductionDistribution.peopleNumber>0">
@@ -69,10 +69,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </sql>
     <select id="select" resultMap="temporaryProductionDistributionMap">
         select * from (<include refid="sql"/>) f
-        limit #{begin},#{pagesize}
+        limit #{pageNo},#{pageSize}
     </select>
     <select id="selectCount" resultType="int" parameterType="temporaryProductionDistribution">
-    SELECT COUNT (1) FROM temporary_production_distribution WHERE status=0
+    SELECT COUNT(1) FROM temporary_production_distribution WHERE status=0
         <if test="temporaryProductionDistributionId!=null and temporaryProductionDistributionId>0">
             AND temporary_production_distribution_id=#{temporaryProductionDistributionId}
         </if>
@@ -82,7 +82,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <if test="working!=null and working.workingId>0">
             AND working_id=#{working.workingId}
         </if>
-        <if test="user!=null and user.userId>0">
+        <if test="user!=null and user.userId!=null and user.userId>0">
             AND user_id=#{user.userId}
         </if>
         <if test="peopleNumber!=null and peopleNumber>0">
