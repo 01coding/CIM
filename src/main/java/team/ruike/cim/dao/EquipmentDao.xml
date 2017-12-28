@@ -116,6 +116,8 @@
         where equipment_id=#{equipmentId}
     </update>
 
+
+
     <select id="select" resultMap="selectMap">
       select * from equipment
       where status=0
@@ -130,7 +132,7 @@
     </select>
 
     <select id="selectById" parameterType="int" resultMap="selectMap">
-      select * from equipment where `status`=0  and equipment_id=#{equipmentId}
+      select * from equipment where equipment_id=#{equipmentId}
     </select>
 
 </mapper>

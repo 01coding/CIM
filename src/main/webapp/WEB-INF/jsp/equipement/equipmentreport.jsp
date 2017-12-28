@@ -919,49 +919,51 @@
                                             </c:forEach>
                                             </tbody>
                                         </table>
-                                        <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                            <div class="panel-body">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <ul class="pagination pagination-split">
+
+                                    </div>
+                                    <%--分页--%>
+                                    <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="pagination pagination-split">
+                                                        <li <c:if
+                                                                test="${requestScope.equipmentReports.currentPage==1}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                Pager pager = (Pager) request.getAttribute("equipmentReports");
+                                                                if (pager.getCurrentPage() != 1) {%>
+                                                                    href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.previousPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <c:forEach var="bar"
+                                                                   items="${requestScope.equipmentReports.pageBar}">
                                                             <li <c:if
-                                                                    test="${requestScope.equipmentReports.currentPage==1}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    Pager pager = (Pager) request.getAttribute("equipmentReports");
-                                                                    if (pager.getCurrentPage() != 1) {%>
-                                                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.previousPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-left"></i></a>
+                                                                    test="${bar==requestScope.equipmentReports.currentPage}"> class="active" </c:if> >
+                                                                <a href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${bar}">${bar}</a>
                                                             </li>
-                                                            <c:forEach var="bar"
-                                                                       items="${requestScope.equipmentReports.pageBar}">
-                                                                <li <c:if
-                                                                        test="${bar==requestScope.equipmentReports.currentPage}"> class="active" </c:if> >
-                                                                    <a href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${bar}">${bar}</a>
-                                                                </li>
-                                                            </c:forEach>
-                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                            <%--<li class="active"><a href="#">2</a></li>--%>
-                                                            <li <c:if
-                                                                    test="${requestScope.equipmentReports.currentPage>=requestScope.equipmentReports.totalPage}"> class="disabled" </c:if>>
-                                                                <a <%
-                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                        href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.nextPage}"
-                                                                        <%
-                                                                        } else {%>
-                                                                        href="javascript:void(0);"
-                                                                        <%
-                                                                            }
-                                                                        %>>
-                                                                    <i class="fa fa-angle-right"></i></a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                                        </c:forEach>
+                                                        <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                        <%--<li class="active"><a href="#">2</a></li>--%>
+                                                        <li <c:if
+                                                                test="${requestScope.equipmentReports.currentPage>=requestScope.equipmentReports.totalPage}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                    href="${pageContext.request.contextPath}/equipmentreport.do?currentPage=${requestScope.equipmentReports.nextPage}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
                                                 </div>
                                             </div>
                                         </div>
