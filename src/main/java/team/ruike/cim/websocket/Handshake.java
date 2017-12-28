@@ -31,8 +31,6 @@ public class Handshake implements HandshakeInterceptor {
         if (request instanceof ServletServerHttpRequest) {
             HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
             User u = (User) servletRequest.getSession().getAttribute("u");
-            u.getRoles().get(0).setJurisdictions(new ArrayList<Jurisdiction>());
-            u.getRoles().get(0).setFunctions(new ArrayList<Function>());
             map.put("user", u);
         }
         return true;

@@ -2,6 +2,8 @@ package team.ruike.cim.websocket;
 
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.web.socket.*;
+import team.ruike.cim.pojo.Function;
+import team.ruike.cim.pojo.Jurisdiction;
 import team.ruike.cim.pojo.User;
 
 import java.io.IOException;
@@ -24,16 +26,23 @@ public class WebSocket implements WebSocketHandler {
         users.add(user);
         System.out.println("连接成功！！");
         webSockSession.put(user, Session);
-        //发送上线通知
+        OutPut();
+    }
+
+    /**
+     * 发送上下线通知
+     */
+    public void OutPut(){
+        //发送上下线通知
         MessageUtils messageUtils=new MessageUtils();
         messageUtils.setDate("3:50");
         messageUtils.setType(3);
         messageUtils.setUserId(0);
         messageUtils.setSenderUserId(0);
         messageUtils.setMessage(JSONArray.toJSONString(users));
+        System.out.println(JSONArray.toJSONString(users));
         sendMessageToUsers(new TextMessage(JSONArray.toJSONString(messageUtils)));
     }
-
     /**
      * 接收消息处理方法
      * @param webSocketSession Session客户端唯一
@@ -70,6 +79,7 @@ public class WebSocket implements WebSocketHandler {
         System.out.println("链接关闭......" + closeStatus.toString());
         User user = (User) webSocketSession.getAttributes().get("user");
         users.remove(user);
+        OutPut();
     }
 
     @Override
