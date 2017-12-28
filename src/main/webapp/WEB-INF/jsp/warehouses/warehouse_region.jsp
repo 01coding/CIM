@@ -1389,6 +1389,7 @@
                             <div class="panel-body">
                                 <div class="table-wrap">
                                     <div class="row lsitwar">
+
                                         <c:if test="${warehouseRegions.list!=null}">
                                             <c:if test="${warehouseRegions.list.size()<1}">
                                                 <div class="col-sm-12 ap1">
@@ -1435,7 +1436,11 @@
                                                         </div>
                                                         <div class="clearfix"></div>
                                                     </div>
-                                                    <div class="panel-wrapper collapse in biao">
+                                                    <div class="chat-cmplt-wrap chat-for-widgets-1" style="
+    height: 300px;
+">
+                                                        <div class="chatapp-nicescroll-bar" style="overflow: hidden; width: auto; height: 316px;" >
+
                                                         <div class="panel-body row pa-0">
                                                             <table class="table table-hover mb-0 ss">
                                                                 <thead>
@@ -1453,12 +1458,14 @@
                                                                                 <i class="fa fa-plus-square"
                                                                                    title="添加货架"></i>
                                                                             </button>
-                                                                            <input class="Rid" type="hidden" value="${was.warehouseRegionId}">
+                                                                            <input class="Rid" type="hidden"
+                                                                                   value="${was.warehouseRegionId}">
                                                                         </div>
                                                                     </th>
                                                                 </tr>
                                                                 </thead>
-                                                                <tbody class="addGOd  ssssss">
+
+                                                                <tbody class="addGOd  ssssss" >
                                                                 <c:forEach items="${goodsShelves}" var="gos">
                                                                     <c:if test="${was.warehouseRegionId==gos.warehouseRegion.warehouseRegionId}">
                                                                         <tr>
@@ -1469,12 +1476,20 @@
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 </tbody>
+
+
                                                             </table>
                                                         </div>
+
+                                                        </div>
+
+
+
                                                     </div>
                                                 </div>
                                             </div>
                                         </c:forEach>
+
                                         <c:forEach var="waa" items="${productWarehouseRegions.list}">
                                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                                 <div class="panel panel-default card-view">
@@ -1512,7 +1527,8 @@
                                                                                 <i class="fa fa-plus-square"
                                                                                    title="添加成品货架"></i>
                                                                             </button>
-                                                                            <input type="hidden" value="${waa.productWarehouseRegionId}"
+                                                                            <input type="hidden"
+                                                                                   value="${waa.productWarehouseRegionId}"
                                                                                    class="houseid"/>
                                                                         </div>
                                                                     </th>
@@ -1535,29 +1551,110 @@
                                                 </div>
                                             </div>
                                         </c:forEach>
+                                        <c:if test="${warehouseRegions.list!=null}">
+                                            <div class="panel-wrapper collapse in"
+                                                 style="margin:0 auto;text-align:center;">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <ul class="pagination pagination-split">
+                                                                <li <c:if
+                                                                        test="${requestScope.warehouseRegions.currentPage==1}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        Pager pager = (Pager) request.getAttribute("warehouseRegions");
+                                                                        if (pager.getCurrentPage() != 1) {%>
+                                                                            href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.previousPage}&warehouse.warehouseId=${hid}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-left"></i></a>
+                                                                </li>
+                                                                <c:forEach var="bar"
+                                                                           items="${requestScope.warehouseRegions.pageBar}">
+                                                                    <li <c:if
+                                                                            test="${bar==requestScope.warehouseRegions.currentPage}"> class="active" </c:if> >
+                                                                        <a href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${bar}&warehouse.warehouseId=${hid}">${bar}</a>
+                                                                    </li>
+                                                                </c:forEach>
+                                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                <li <c:if
+                                                                        test="${requestScope.warehouseRegions.currentPage>=requestScope.warehouseRegions.totalPage}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                            href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.nextPage}&warehouse.warehouseId=${hid}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-right"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:if>
+                                        <c:if test="${productWarehouseRegions.list!=null}">
+                                            <div class="panel-wrapper collapse in"
+                                                 style="margin:0 auto;text-align:center;">
+                                                <div class="panel-body">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <ul class="pagination pagination-split">
+                                                                <li <c:if
+                                                                        test="${requestScope.productWarehouseRegions.currentPage==1}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        Pager pager = (Pager) request.getAttribute("productWarehouseRegions");
+                                                                        if (pager.getCurrentPage() != 1) {%>
+                                                                            href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.previousPage}&productWarehouse.productWarehouseId=${Phid}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-left"></i></a>
+                                                                </li>
+                                                                <c:forEach var="bar"
+                                                                           items="${requestScope.productWarehouseRegions.pageBar}">
+                                                                    <li <c:if
+                                                                            test="${bar==requestScope.productWarehouseRegions.currentPage}"> class="active" </c:if> >
+                                                                        <a href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${bar}&productWarehouse.productWarehouseId=${Phid}">${bar}</a>
+                                                                    </li>
+                                                                </c:forEach>
+                                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                    <%--<li class="active"><a href="#">2</a></li>--%>
+                                                                <li <c:if
+                                                                        test="${requestScope.productWarehouseRegions.currentPage>=requestScope.productWarehouseRegions.totalPage}"> class="disabled" </c:if>>
+                                                                    <a <%
+                                                                        if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                            href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.nextPage}&productWarehouse.productWarehouseId=${Phid}"
+                                                                            <%
+                                                                            } else {%>
+                                                                            href="javascript:void(0);"
+                                                                            <%
+                                                                                }
+                                                                            %>>
+                                                                        <i class="fa fa-angle-right"></i></a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </c:if>
                                     </div>
                                     <div class="guide">
                                         <div class="guide-wrap">
                                             <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                 <i class="icon-rocket"></i>
                                             </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                <div class="panel-body">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <ul class="pagination pagination-split">
-                                                <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                <li class="disabled"><a href="#">1</a></li>
-                                                <li class="active"><a href="#">2</a></li>
-                                                <li><a href="#">3</a></li>
-                                                <li><a href="#">4</a></li>
-                                                <li><a href="#">5</a></li>
-                                                <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                            </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -1702,6 +1799,8 @@
 
 <script>
     $(function () {
+
+      $(".chatapp-nicescroll-bar").css({"height":"317px"})
         $(".wiliao").click(function () {
             $.ajax({
                 type: "post",
@@ -1774,73 +1873,63 @@
                         cache: false,
                         dataType: "json",
                         success: function (data) {
-                                if (data != "") {
-                                    swal("添加成功", "添加成功！", "success");
-                                    $(".lsitwar").append(" <div class=\"col-md-4 col-sm-4 col-xs-12\">\n" +
-                                        "                                                <div class=\"panel panel-default card-view\">\n" +
-                                        "                                                    <div class=\"panel-heading\">\n" +
-                                        "                                                        <div class=\"pull-left\">\n" +
-                                        "                                                            <input type=\"hidden\" value=\""+ +"\"\n" +
-                                        "                                                                   class=\"warehouseId\"/>\n" +
-                                        "                                                            <h6 class=\"panel-title txt-dark\">"+te+"【区域】\n" +
-                                        "                                                                <div class=\"btn-group btn-group-xs \"\n" +
-                                        "                                                                     role=\"group\">\n" +
-                                        "                                                                    <button type=\"button\"\n" +
-                                        "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
-                                        "                                                                            data-toggle=\"modal\"\n" +
-                                        "                                                                            data-target=\"#exampleModal1\">\n" +
-                                        "                                                                        <i class=\"fa fa-plus-square\"\n" +
-                                        "                                                                           title=\"添加区域\"></i>\n" +
-                                        "                                                                    </button>\n" +
-                                        "                                                                </div>\n" +
-                                        "                                                            </h6>\n" +
-                                        "                                                        </div>\n" +
-                                        "                                                        <div class=\"clearfix\"></div>\n" +
-                                        "                                                    </div>\n" +
-                                        "                                                    <div class=\"panel-wrapper collapse in biao\">\n" +
-                                        "                                                        <div class=\"panel-body row pa-0\">\n" +
-                                        "                                                            <table class=\"table table-hover mb-0 ss\">\n" +
-                                        "                                                                <thead>\n" +
-                                        "                                                                <tr>\n" +
-                                        "                                                                    <th>货架编号</th>\n" +
-                                        "                                                                    <th>数量</th>\n" +
-                                        "                                                                    <th>物料\n" +
-                                        "                                                                        <div class=\"btn-group btn-group-xs \"\n" +
-                                        "                                                                             role=\"group\"\n" +
-                                        "                                                                             style=\"background-color: white\">\n" +
-                                        "                                                                            <button type=\"button\"\n" +
-                                        "                                                                                    class=\"btn btn-default footable-edit add\"\n" +
-                                        "                                                                                    style=\"background-color: white;border: 0px\"\n" +
-                                        "                                                                                    onclick=\"nucoll()\">\n" +
-                                        "                                                                                <i class=\"fa fa-plus-square\"\n" +
-                                        "                                                                                   title=\"添加货架\"></i>\n" +
-                                        "                                                                            </button>\n" +
-                                        "                                                                            <input class=\"Rid\" type=\"hidden\" value=\"$"+wid+"\">\n" +
-                                        "                                                                        </div>\n" +
-                                        "                                                                    </th>\n" +
-                                        "                                                                </tr>\n" +
-                                        "                                                                </thead>\n" +
-                                        "                                                                <tbody class=\"addGOd  ssssss\">\n" +
-                                        "                                                              " +
-                                        "                                                                    \n" +
-                                        "                                                                        <tr>\n" +
-                                        "                                                                            <td>\n" +
-                                        "                                                                            <td>\n" +
-                                        "                                                                            <td></td>\n" +
-                                        "                                                                        </tr>\n" +
-                                        "                                                                   \n" +
-                                        "                                                                \n" +
-                                        "                                                                </tbody>\n" +
-                                        "                                                            </table>\n" +
-                                        "                                                        </div>\n" +
-                                        "                                                    </div>\n" +
-                                        "                                                </div>\n" +
-                                        "                                            </div>");
-                                } else {
-                                    swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
-                                }
-                                $(".ap1").html("");
-                                nucoll();
+                            if (data != "") {
+                                swal("添加成功", "添加成功！", "success");
+                                $(".lsitwar").append(" <div class=\"col-md-4 col-sm-4 col-xs-12\">\n" +
+                                    "                                                <div class=\"panel panel-default card-view\">\n" +
+                                    "                                                    <div class=\"panel-heading\">\n" +
+                                    "                                                        <div class=\"pull-left\">\n" +
+                                    "                                                            <input type=\"hidden\" value=\"" + +"\"\n" +
+                                    "                                                                   class=\"warehouseId\"/>\n" +
+                                    "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
+                                    "                                                                <div class=\"btn-group btn-group-xs \"\n" +
+                                    "                                                                     role=\"group\">\n" +
+                                    "                                                                    <button type=\"button\"\n" +
+                                    "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
+                                    "                                                                            data-toggle=\"modal\"\n" +
+                                    "                                                                            data-target=\"#exampleModal1\">\n" +
+                                    "                                                                        <i class=\"fa fa-plus-square\"\n" +
+                                    "                                                                           title=\"添加区域\"></i>\n" +
+                                    "                                                                    </button>\n" +
+                                    "                                                                </div>\n" +
+                                    "                                                            </h6>\n" +
+                                    "                                                        </div>\n" +
+                                    "                                                        <div class=\"clearfix\"></div>\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                    <div class=\"panel-wrapper collapse in biao\">\n" +
+                                    "                                                        <div class=\"panel-body row pa-0\">\n" +
+                                    "                                                            <table class=\"table table-hover mb-0 ss\">\n" +
+                                    "                                                                <thead>\n" +
+                                    "                                                                <tr>\n" +
+                                    "                                                                    <th>货架编号</th>\n" +
+                                    "                                                                    <th>数量</th>\n" +
+                                    "                                                                    <th>物料\n" +
+                                    "                                                                        <div class=\"btn-group btn-group-xs \"\n" +
+                                    "                                                                             role=\"group\"\n" +
+                                    "                                                                             style=\"background-color: white\">\n" +
+                                    "                                                                            <button type=\"button\"\n" +
+                                    "                                                                                    class=\"btn btn-default footable-edit add\"\n" +
+                                    "                                                                                    style=\"background-color: white;border: 0px\"\n" +
+                                    "                                                                                    onclick=\"nucoll()\">\n" +
+                                    "                                                                                <i class=\"fa fa-plus-square\"\n" +
+                                    "                                                                                   title=\"添加货架\"></i>\n" +
+                                    "                                                                            </button>\n" +
+                                    "                                                                            <input class=\"Rid\" type=\"hidden\" value=\"$" + wid + "\">\n" +
+                                    "                                                                        </div>\n" +
+                                    "                                                                    </th>\n" +
+                                    "                                                                </tr>\n" +
+                                    "                                                                </thead>\n" +
+                                    "                                                              \n" +
+                                    "                                                            </table>\n" +
+                                    "                                                        </div>\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                </div>\n" +
+                                    "                                            </div>");
+                            } else {
+                                swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                            }
+                            $(".ap1").html("");
+                            nucoll();
                         }, error: function () {
                             nucoll();
                             swal("系统异常，请稍后重试！");
@@ -1879,12 +1968,12 @@
                                     swal("添加成功", "添加成功！", "success");
                                     nucoll();
                                     $(".lsitwar").append("<div class=\"col-lg-4 col-md-4 col-sm-4 col-xs-12\">\n" +
-                                        "                                                <input type=\"hidden\" value=\""+wid+"\"\n" +
+                                        "                                                <input type=\"hidden\" value=\"" + wid + "\"\n" +
                                         "                                                       class=\"houseid\"/>\n" +
                                         "                                                <div class=\"panel panel-default card-view\">\n" +
                                         "                                                    <div class=\"panel-heading\">\n" +
                                         "                                                        <div class=\"pull-left\">\n" +
-                                        "                                                            <h6 class=\"panel-title txt-dark\">"+te+"【区域】\n" +
+                                        "                                                            <h6 class=\"panel-title txt-dark\">" + te + "【区域】\n" +
                                         "                                                                <div class=\"btn-group btn-group-xs \" role=\"group\">\n" +
                                         "                                                                    <button type=\"button\"\n" +
                                         "                                                                            class=\"btn btn-default footable-edit wiliao\"\n" +
@@ -1977,6 +2066,7 @@
             }
         });
     });
+
     function nucoll() {
         $("#remarks").val("");
         $("#premarks").val("");

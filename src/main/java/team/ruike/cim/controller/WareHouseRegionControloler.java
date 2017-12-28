@@ -8,7 +8,7 @@ import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.WarehouseRegion;
 import team.ruike.cim.service.GoodSShelveService;
 import team.ruike.cim.service.MaterielTypeLevelBService;
-import team.ruike.cim.service.WareHouSereGIonService;
+import team.ruike.cim.service.WarehouseRegionService;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -23,13 +23,13 @@ import java.util.List;
 @Controller
 public class WareHouseRegionControloler {
     @Resource
-    private WareHouSereGIonService warehouseregionServer;
+    private WarehouseRegionService warehouseregionServer;
     @Resource
     private GoodSShelveService goodsshelveService;
     @Resource
     private MaterielTypeLevelBService materielTypeLevelBService;
     /**
-     * 查询物物料区域和对应的货架
+     * 查询物料区域和对应的货架
      * @param warehouseRegion
      * @param goodsShelve
      * @param pager

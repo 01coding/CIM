@@ -11,7 +11,7 @@ import javax.annotation.Resource;
 /**
  * 物料出库记录
  */
-@Service("wareHouSereGISTerService")
+@Service("wareHouSereGISTerOutService")
 public class WareHouSereGISTerOutServiceImpl implements WareHouSereGISTerOutService {
     @Resource
     private WarehouseOutRegisterDao warehouseOutRegisterDao;

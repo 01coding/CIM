@@ -1671,58 +1671,73 @@
             var userId = $("#userid").find("option:selected");
             var id = $(userId).val();
             var uname = $(userId).text();
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/addwarehouse.do?warehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    if (data != "") {
-                        cloo();
-                        alert("添加成功");
-                        $(".lsitwar").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" + "<div class=\"panel panel-default card-view pa-0\">\n" +
-                            "                            <div class=\"panel-wrapper collapse in\">\n" +
-                            "                                <div class=\"panel-body pa-0\">\n" +
-                            "                                    <article class=\"col-item\">\n" +
-                            "                                        <form>\n" +
-                            "                                            <div class=\"photo\">\n" +
-                            "                                                <div class=\"options\">\n" +
-                            "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
-                            "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
-                            "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
-                            "                                                 \n" +
-                            "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
-                            "                                                       data-toggle=\"modal\"\n" +
-                            "                                                       data-target=\"#editor-modal4\"><i\n" +
-                            "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
-                            "                                                </div>\n" +
-                            "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=$" + data + "\">\n" +
-                            "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
-                            "                                                         class=\"img-responsive\"\n" +
-                            "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
-                            "                                                <div class=\"info\">\n" +
-                            "                                                    <h6>\n" +
-                            "                                                            " + name + "\n" +
-                            "                                                    </h6>\n" +
-                            "                                                    <div class=\"product-rating inline-block\">\n" +
-                            "                                                            " + remarks + "\n" +
-                            "                                                    </div>\n" +
-                            "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
-                            "                                                </div>\n" +
-                            "                                            </div>\n" +
-                            "                                        </form>\n" +
-                            "                                    </article>\n" +
-                            "                                </div>\n" +
-                            "                            </div>\n" +
-                            "                        </div>\n" +
-                            "                    </div>");
-                    }
+            swal({
+                title: "你确定要添加仓库吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/addwarehouse.do?warehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                cloo();
+                                swal("添加成功", "添加成功！", "success");
+                                $(".lsitwar").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" + "<div class=\"panel panel-default card-view pa-0\">\n" +
+                                    "                            <div class=\"panel-wrapper collapse in\">\n" +
+                                    "                                <div class=\"panel-body pa-0\">\n" +
+                                    "                                    <article class=\"col-item\">\n" +
+                                    "                                        <form>\n" +
+                                    "                                            <div class=\"photo\">\n" +
+                                    "                                                <div class=\"options\">\n" +
+                                    "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
+                                    "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
+                                    "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
+                                    "                                                 \n" +
+                                    "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
+                                    "                                                       data-toggle=\"modal\"\n" +
+                                    "                                                       data-target=\"#editor-modal4\"><i\n" +
+                                    "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
+                                    "                                                </div>\n" +
+                                    "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=$" + data + "\">\n" +
+                                    "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
+                                    "                                                         class=\"img-responsive\"\n" +
+                                    "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
+                                    "                                                <div class=\"info\">\n" +
+                                    "                                                    <h6>\n" +
+                                    "                                                            " + name + "\n" +
+                                    "                                                    </h6>\n" +
+                                    "                                                    <div class=\"product-rating inline-block\">\n" +
+                                    "                                                            " + remarks + "\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
+                                    "                                                </div>\n" +
+                                    "                                            </div>\n" +
+                                    "                                        </form>\n" +
+                                    "                                    </article>\n" +
+                                    "                                </div>\n" +
+                                    "                            </div>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>");
+                            }
 
-                }, error: function () {
-                    cloo();
-                    alert("系统异常，请稍后重试！");
+                        }, error: function () {
+                            cloo();
+                            swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    });
                 }
             });
+
         });
 
         $(".addPWareHouse").click(function () {
@@ -1731,58 +1746,73 @@
             var userId = $("#Pname").find("option:selected");
             var id = $(userId).val();
             var uname = $(userId).text();
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/addPWareHouse.do?productWarehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    if (data != "") {
-                        alert("添加成功");
-                        cloo();
-                        $(".addprs").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" +
-                            "                        <div class=\"panel panel-default card-view pa-0\">\n" +
-                            "                            <div class=\"panel-wrapper collapse in\">\n" +
-                            "                                <div class=\"panel-body pa-0\">\n" +
-                            "                                    <article class=\"col-item\">\n" +
-                            "                                        <form>\n" +
-                            "                                            <div class=\"photo\">\n" +
-                            "                                                <div class=\"options\">\n" +
-                            "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
-                            "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
-                            "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
-                            "                                                  \n" +
-                            "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
-                            "                                                       data-toggle=\"modal\"\n" +
-                            "                                                       data-target=\"#editor-modal4\"><i\n" +
-                            "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
-                            "                                                </div>\n" +
-                            "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=" + data + "\">\n" +
-                            "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
-                            "                                                         class=\"img-responsive\"\n" +
-                            "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
-                            "                                                <div class=\"info\">\n" +
-                            "                                                    <h6>\n" +
-                            "                                                            " + name + "\n" +
-                            "                                                    </h6>\n" +
-                            "                                                    <div class=\"product-rating inline-block\">\n" +
-                            "                                                           " + remarks + "\n" +
-                            "                                                    </div>\n" +
-                            "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
-                            "                                                </div>\n" +
-                            "                                            </div>\n" +
-                            "                                        </form>\n" +
-                            "                                    </article>\n" +
-                            "                                </div>\n" +
-                            "                            </div>\n" +
-                            "                        </div>\n" +
-                            "                    </div>");
-                    }
-                }, error: function () {
-                    cloo();
-                    alert("系统异常，请稍后重试！");
+            swal({
+                title: "你确定要添加仓库吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/addPWareHouse.do?productWarehouseName=" + name + "&remarks=" + remarks + "&user.userId=" + id + "",
+                        cache: false,
+                        dataType: "json",
+                        success: function (data) {
+                            if (data != "") {
+                                swal("添加成功", "添加成功！", "success");
+                                cloo();
+                                $(".addprs").append("<div class=\"col-lg-2 col-md-2 col-sm-4 col-xs-6\">\n" +
+                                    "                        <div class=\"panel panel-default card-view pa-0\">\n" +
+                                    "                            <div class=\"panel-wrapper collapse in\">\n" +
+                                    "                                <div class=\"panel-body pa-0\">\n" +
+                                    "                                    <article class=\"col-item\">\n" +
+                                    "                                        <form>\n" +
+                                    "                                            <div class=\"photo\">\n" +
+                                    "                                                <div class=\"options\">\n" +
+                                    "                                                    <a href=\"getProductWarehouseRegister.do\"\n" +
+                                    "                                                       class=\"font-18 txt-grey mr-10 pull-left\"><i\n" +
+                                    "                                                            class=\"zmdi zmdi-calendar-note mr-10\" title=\"查看记录\"></i></a>\n" +
+                                    "                                                  \n" +
+                                    "                                                    <a href=\"\" class=\"font-18 txt-grey mr-10 pull-left addWareouse\"\n" +
+                                    "                                                       data-toggle=\"modal\"\n" +
+                                    "                                                       data-target=\"#editor-modal4\"><i\n" +
+                                    "                                                            class=\"fa fa-plus-square \" title=\"添加仓库\"></i></a>\n" +
+                                    "                                                </div>\n" +
+                                    "                                                <a href=\"/getProductwarehouseregion.do?productWarehouse.productWarehouseId=" + data + "\">\n" +
+                                    "                                                    <img src=\"../../../images/menuimg/timg.jpg\"\n" +
+                                    "                                                         class=\"img-responsive\"\n" +
+                                    "                                                         alt=\"Product Image\" title=\"查看区域\"/> </a>\n" +
+                                    "                                                <div class=\"info\">\n" +
+                                    "                                                    <h6>\n" +
+                                    "                                                            " + name + "\n" +
+                                    "                                                    </h6>\n" +
+                                    "                                                    <div class=\"product-rating inline-block\">\n" +
+                                    "                                                           " + remarks + "\n" +
+                                    "                                                    </div>\n" +
+                                    "                                                    <span class=\"head-font block text-warning font-16\">管理员:【" + uname + "】</span>\n" +
+                                    "                                                </div>\n" +
+                                    "                                            </div>\n" +
+                                    "                                        </form>\n" +
+                                    "                                    </article>\n" +
+                                    "                                </div>\n" +
+                                    "                            </div>\n" +
+                                    "                        </div>\n" +
+                                    "                    </div>");
+                            }
+                        }, error: function () {
+                            cloo();
+                            swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                        }
+                    });
                 }
             });
+
         });
     });
 

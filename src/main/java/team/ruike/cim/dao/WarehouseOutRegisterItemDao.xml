@@ -85,5 +85,6 @@
         SELECT * from warehouse_out_register_item where goods_shelve_id in
         (select goods_shelve_id from goods_shelve where warehouse_region_id IN
         (SELECT warehouse_region_id FROM warehouse_region WHERE warehouse_id=#{warehouseOutRegisterItem.goodsShelve.warehouseRegion.warehouse.warehouseId}))
+        limit #{pageNo},#{pageSize}
     </select>
 </mapper>

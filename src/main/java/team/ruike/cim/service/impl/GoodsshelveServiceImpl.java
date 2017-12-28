@@ -29,7 +29,7 @@ public class GoodsshelveServiceImpl implements GoodSShelveService {
      * @return
      */
     public int addGoods_shelve(GoodsShelve goodsShelve) {
-        if (goodsShelve != null && goodsShelve.getWarehouseRegion().getWarehouseRegionId() > 0) {
+        if (goodsShelve != null) {
             return goodsShelveDao.add(goodsShelve);
         }
         return 0;
@@ -58,5 +58,16 @@ public class GoodsshelveServiceImpl implements GoodSShelveService {
             return goodsShelveDao.selectByWarehouseRegionId(warehouseRegionId);
         }
         return null;
+    }
+
+    /**
+     * 根据货架id 查询对应货架
+     *
+     * @param goodid
+     * @return
+     */
+    @Override
+    public GoodsShelve selectByGoodid(Integer goodid) {
+        return goodsShelveDao.selectById(goodid);
     }
 }

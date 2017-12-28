@@ -9,13 +9,16 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 import java.util.List;
 
+/**
+ * 成品仓库
+ */
 @Service("pwarehouseService")
 public class PwarehouseServiceImpl implements PwarehouseService {
     @Resource
     private ProductWarehouseDao productWarehouseDao;
 
     /**
-     * 新增产品出库
+     * 新增成品出库
      *
      * @param productWarehouse
      * @return

@@ -26,9 +26,9 @@
             AND user_id=#{warehouseRegister.user.userId}
         </if>
     </sql>
-    <insert id="add" parameterType="warehouseRegister">
+    <insert id="add" parameterType="warehouseRegister" useGeneratedKeys="true" keyProperty="warehouseRegisterId">
         INSERT INTO warehouse_register VALUES
-            (DEFAULT, #{everydayPurchasingPlan.everydayPurchasingPlanId}, #{warehouseRegisterDate}, #{user.userid}, 0)
+            (DEFAULT, #{everydayPurchasingPlan.everydayPurchasingPlanId}, #{warehouseRegisterDate}, #{user.userId}, 0)
     </insert>
     <update id="update" parameterType="warehouseRegister">
         UPDATE warehouse_register
@@ -52,7 +52,7 @@
             AND warehouse_register_date=#{warehouseRegisterDate}
         </if>
         <if test="everydayPurchasingPlan!=null and everydayPurchasingPlan.everydayPurchasingPlanId>0">
-            AND everyday_purchasing_plan_id=#{everydayPurchasingPlanId}
+            AND everyday_purchasing_plan_id=#{everydayPurchasingPlan.everydayPurchasingPlanId}
         </if>
         <if test="user!=null and user.userId>0">
             AND user_id=#{user.userId}

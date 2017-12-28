@@ -27,5 +27,10 @@ public interface WarehouseService {
      */
      int updWareHouse(Warehouse warehouse);
 
+    /**
+     * 查询所有用户
+     * @param user
+     * @return
+     */
      List<User> getUser(User user);
 }

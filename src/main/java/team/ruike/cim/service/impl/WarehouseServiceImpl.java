@@ -6,23 +6,27 @@ import team.ruike.cim.dao.WarehouseDao;
 import team.ruike.cim.pojo.User;
 import team.ruike.cim.pojo.Warehouse;
 import team.ruike.cim.service.WarehouseService;
-import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
 import java.util.List;
+
+/**
+ * 仓库业务实现
+ */
 @Service("warehouseService")
 public class WarehouseServiceImpl implements WarehouseService {
     @Resource
     private WarehouseDao warehouseDao;
     @Resource
     private UserDao userDao;
+
     /**
      * 查询所有物料仓库
      *
      * @return
      */
     public List<Warehouse> getWareHouses(Warehouse warehouse) {
-        List<Warehouse> Warehouses=warehouseDao.select(warehouse,0,99);
+        List<Warehouse> Warehouses = warehouseDao.select(warehouse, 0, 99);
         return Warehouses;
 
     }
@@ -54,6 +58,6 @@ public class WarehouseServiceImpl implements WarehouseService {
     }
 
     public List<User> getUser(User user) {
-        return userDao.select(user,0,99);
+        return userDao.select(user, 0, 99);
     }
 }
