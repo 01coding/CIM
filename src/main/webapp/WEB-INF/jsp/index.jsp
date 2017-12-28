@@ -532,107 +532,27 @@
                                                                      src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
-                                                                    <span class="name block capitalize-font">Clay Masse</span>
-                                                                    <span class="time block truncate txt-grey">No one saves us but ourselves.</span>
+                                                                    <span class="name block capitalize-font">华中昊</span>
+                                                                    <span class="time block truncate txt-grey">上线时间--1</span>
                                                                 </div>
-                                                                <div class="status away"></div>
+                                                                <%--<div class="status away"></div>--%>
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Evie Ono</span>
-                                                                    <span class="time block truncate txt-grey">Unity is strength</span>
-                                                                </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Madalyn Rascon</span>
-                                                                    <span class="time block truncate txt-grey">Respect yourself if you would have others respect you.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Mitsuko Heid</span>
-                                                                    <span class="time block truncate txt-grey">I’m thankful.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <li class="chat-list">
+                                                    <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
                                                                 <img class="user-img img-circle"
                                                                      src="../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
-                                                                    <span class="name block capitalize-font">Ezequiel Merideth</span>
-                                                                    <span class="time block truncate txt-grey">Patience is bitter.</span>
+                                                                    <span class="name block capitalize-font">华中昊</span>
+                                                                    <span class="time block truncate txt-grey">上线时间--1</span>
                                                                 </div>
-                                                                <div class="status offline"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user1.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Jonnie Metoyer</span>
-                                                                    <span class="time block truncate txt-grey">Genius is eternal patience.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user2.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Angelic Lauver</span>
-                                                                    <span class="time block truncate txt-grey">Every burden is a blessing.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user3.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Priscila Shy</span>
-                                                                    <span class="time block truncate txt-grey">Wise to resolve, and patient to perform.</span>
-                                                                </div>
-                                                                <div class="status online"></div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </a>
-                                                        <a href="javascript:void(0)">
-                                                            <div class="chat-data">
-                                                                <img class="user-img img-circle"
-                                                                     src="../../dist/img/user4.png" alt="user"/>
-                                                                <div class="user-data">
-                                                                    <span class="name block capitalize-font">Linda Stack</span>
-                                                                    <span class="time block truncate txt-grey">Our patience will achieve more than our force.</span>
-                                                                </div>
-                                                                <div class="status away"></div>
+                                                                <%--<div class="status away"></div>--%>
                                                                 <div class="clearfix"></div>
                                                             </div>
                                                         </a>
@@ -665,8 +585,7 @@
                                                                 <img class="user-img img-circle block pull-left"
                                                                      src="../../dist/img/user.png" alt="user"/>
                                                                 <div class="msg pull-left">
-                                                                    <p>Hello Jason, how are you, it's been a long time
-                                                                        since we last met?</p>
+                                                                    <p>你好傻逼</p>
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:30 PM</span>
                                                                     </div>
@@ -676,33 +595,9 @@
                                                         </li>
                                                         <li class="self mb-10">
                                                             <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> Oh, hi Sarah I'm have
-                                                                    got a new job now and is going great.
+                                                                <div class="msg block pull-right">你他妈的才傻逼
                                                                     <div class="msg-per-detail text-right">
                                                                         <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="self">
-                                                            <div class="self-msg-wrap">
-                                                                <div class="msg block pull-right"> How about you?
-                                                                    <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:31 pm</span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="clearfix"></div>
-                                                            </div>
-                                                        </li>
-                                                        <li class="friend">
-                                                            <div class="friend-msg-wrap">
-                                                                <img class="user-img img-circle block pull-left"
-                                                                     src="../../dist/img/user.png" alt="user"/>
-                                                                <div class="msg pull-left">
-                                                                    <p>Not too bad.</p>
-                                                                    <div class="msg-per-detail  text-right">
-                                                                        <span class="msg-time txt-grey">2:35 pm</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
@@ -710,6 +605,7 @@
                                                         </li>
                                                     </ul>
                                                 </div>
+                                                <!--111-->
                                                 <div class="input-group">
                                                     <input type="text" id="input_msg_send" name="send-msg"
                                                            class="input-msg-send form-control"
@@ -1444,21 +1340,14 @@
     //     websocket = new WebSocket("ws://localhost:/echo");
     // }
     if ('WebSocket' in window) {
-        alert("WebSocket");
-        alert(window.location.host);
         var url = 'ws://' + window.location.host + '/websocket.cl';
         websocket = new WebSocket(url);
         //websocket = new WebSocket("ws://127.0.0.1:8080/SSMTest/echo");
     } else if ('MozWebSocket' in window) {
-        alert("MozWebSocket");
         websocket = new MozWebSocket("ws://websocket.cl");
     } else {
-        alert("SockJS");
         websocket = new SockJS("http://127.0.0.1/sockjs/websocket.cl");
     }
-    // else {
-    //     alert('当前浏览器 Not support websocket')
-    // }
     //连接发生错误的回调方法
     websocket.onerror = function () {
         setMessageInnerHTML("WebSocket连接发生错误");
@@ -1469,7 +1358,11 @@
     }
     //接收到消息的回调方法
     websocket.onmessage = function (event) {
-        setMessageInnerHTML(event.data);
+        // setMessageInnerHTML(event.data);
+        var data=event.data;
+        var testJson = $.parseJSON(data);
+        var parseJSON = $.parseJSON(testJson.message);
+        alert(parseJSON[0].userName);
     }
     //连接关闭的回调方法
     websocket.onclose = function () {
@@ -1482,7 +1375,7 @@
 
     //将消息显示在网页上
     function setMessageInnerHTML(innerHTML) {
-        // alert(innerHTML);
+        alert(innerHTML);
     }
 
     //关闭WebSocket连接
