@@ -66,4 +66,8 @@ public interface MaterielTypeLevelBDao {
      * @return
      */
     List<MaterielTypeLevelB> getMaterielTypeLevelBByDate(@Param("materielTypeLevelAId") Integer materielTypeLevelAId,@Param("date")Date date);
+
+
+
+
 }

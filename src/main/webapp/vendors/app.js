@@ -25,8 +25,8 @@ var appModule = (function () {
                 if (null != success) {
                     success(data);
                 }
-            }, error: function () {
-                error("error");
+            }, error: function (data) {
+                alert("error");
             }
         });
     }

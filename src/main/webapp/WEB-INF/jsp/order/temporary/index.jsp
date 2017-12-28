@@ -644,7 +644,7 @@
                                                                     <p>Hello Jason, how are you, it's been a long time
                                                                         since we last met?</p>
                                                                     <div class="msg-per-detail text-right">
-                                                                        <span class="msg-time txt-grey">2:30 PM</span>
+                                                                        <span class="msg-time txt-grey">2:301221 PM</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="clearfix"></div>
