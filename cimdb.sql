@@ -11,11 +11,45 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 27/12/2017 16:46:07
+ Date: 28/12/2017 14:53:35
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for chat
+-- ----------------------------
+DROP TABLE IF EXISTS `chat`;
+CREATE TABLE `chat`  (
+  `chat_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `message` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0,
+  `date` datetime(0) NOT NULL,
+  PRIMARY KEY (`chat_id`) USING BTREE,
+  INDEX `chat_user_user_id_fk`(`user_id`) USING BTREE,
+  CONSTRAINT `chat_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of chat
+-- ----------------------------
+INSERT INTO `chat` VALUES (1, 1, 'safasdf', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (2, 2, 'adfasdf', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (3, 3, 'zxv', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (4, 4, 'sadfwer', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (5, 5, 'sadfxcz', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (6, 6, 'zxvsdf', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (7, 1, 'zxcvawer', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (8, 8, 'wer', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (9, 9, 'as', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (10, 10, '明白了', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (11, 11, '你认为呢', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (12, 1, '傻逼', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (13, 13, '测试1号', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (14, 14, '测试2号', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (15, 1, '测试3hao', 0, '2017-11-05 00:00:00');
 
 -- ----------------------------
 -- Table structure for contract_order
@@ -206,7 +240,7 @@ CREATE TABLE `equipment`  (
   CONSTRAINT `Fk_equipment_production_line` FOREIGN KEY (`production_line_id`) REFERENCES `production_line` (`production_line_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_equipment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_equipment_working` FOREIGN KEY (`working_id`) REFERENCES `working` (`working_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of equipment
@@ -215,6 +249,7 @@ INSERT INTO `equipment` VALUES (1, 1, 1, 1, '2017-12-08', 2, 1, 1, 'szxc', 0);
 INSERT INTO `equipment` VALUES (2, 2, 1, 2, '2017-12-18', 2, 1, 1, '受到广泛的', 0);
 INSERT INTO `equipment` VALUES (3, 1, 1, 1, '2017-12-20', 1, 1, 1, '阿斯蒂芬', 0);
 INSERT INTO `equipment` VALUES (4, 1, 1, 1, '2017-12-20', 2, 1, 1, '撒地方', 0);
+INSERT INTO `equipment` VALUES (5, 1, 1, 1, '2017-12-28', 1, 222, 328, '11', 1);
 
 -- ----------------------------
 -- Table structure for equipment_report
@@ -471,7 +506,7 @@ CREATE TABLE `materiel`  (
   INDEX `Fk_materiel_unit`(`materiel_unit_id`) USING BTREE,
   CONSTRAINT `Fk_materiel_type_level_b` FOREIGN KEY (`materiel_type_level_b_id`) REFERENCES `materiel_type_level_b` (`materiel_type_level_b_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_materiel_unit` FOREIGN KEY (`materiel_unit_id`) REFERENCES `materiel_unit` (`materiel_unit_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 22 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of materiel
@@ -495,6 +530,8 @@ INSERT INTO `materiel` VALUES (16, '雪菜', 7, 1, 0.2, 120, 120, '雪菜', 0);
 INSERT INTO `materiel` VALUES (17, '菠菜', 8, 1, 0.5, 120, 120, '阿萨德阿萨德', 0);
 INSERT INTO `materiel` VALUES (18, '鸡腿肉', 4, 1, 1, 120, 200, '鸡腿肉', 0);
 INSERT INTO `materiel` VALUES (19, '牛腿', 2, 1, 0.1, 1, 100, '大是大非', 0);
+INSERT INTO `materiel` VALUES (20, '111', 1, 1, 1, 1, 11, '11111111111', 1);
+INSERT INTO `materiel` VALUES (21, '1', 1, 1, 1, 1, 1, '11111111', 1);
 
 -- ----------------------------
 -- Table structure for materiel_type_level_a
@@ -1107,12 +1144,12 @@ CREATE TABLE `role`  (
   `role_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '名称',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`role_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role
 -- ----------------------------
-INSERT INTO `role` VALUES (1, '信息计划专员', 0);
+INSERT INTO `role` VALUES (1, '信息计划专员12', 0);
 INSERT INTO `role` VALUES (2, '订单专员', 0);
 INSERT INTO `role` VALUES (3, '设备主管', 0);
 INSERT INTO `role` VALUES (4, '研发主管', 0);
@@ -1126,6 +1163,7 @@ INSERT INTO `role` VALUES (11, '研发部专员', 0);
 INSERT INTO `role` VALUES (13, '生产主管', 0);
 INSERT INTO `role` VALUES (14, '工序主管', 0);
 INSERT INTO `role` VALUES (15, '1', 1);
+INSERT INTO `role` VALUES (16, 'ft', 1);
 
 -- ----------------------------
 -- Table structure for role_function
@@ -1141,71 +1179,71 @@ CREATE TABLE `role_function`  (
   INDEX `Fk_role_function_function`(`function_id`) USING BTREE,
   CONSTRAINT `Fk_role_function_function` FOREIGN KEY (`function_id`) REFERENCES `function` (`function_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_function_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 455 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 626 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_function
 -- ----------------------------
 INSERT INTO `role_function` VALUES (37, 11, 1, 0);
 INSERT INTO `role_function` VALUES (39, 3, 15, 0);
-INSERT INTO `role_function` VALUES (397, 1, 1, 0);
-INSERT INTO `role_function` VALUES (398, 1, 4, 0);
-INSERT INTO `role_function` VALUES (399, 1, 5, 0);
-INSERT INTO `role_function` VALUES (400, 1, 6, 0);
-INSERT INTO `role_function` VALUES (401, 1, 7, 0);
-INSERT INTO `role_function` VALUES (402, 1, 8, 0);
-INSERT INTO `role_function` VALUES (403, 1, 9, 0);
-INSERT INTO `role_function` VALUES (404, 1, 10, 0);
-INSERT INTO `role_function` VALUES (405, 1, 11, 0);
-INSERT INTO `role_function` VALUES (406, 1, 12, 0);
-INSERT INTO `role_function` VALUES (407, 1, 13, 0);
-INSERT INTO `role_function` VALUES (408, 1, 14, 0);
-INSERT INTO `role_function` VALUES (409, 1, 15, 0);
-INSERT INTO `role_function` VALUES (410, 1, 17, 0);
-INSERT INTO `role_function` VALUES (411, 1, 18, 0);
-INSERT INTO `role_function` VALUES (412, 1, 19, 0);
-INSERT INTO `role_function` VALUES (413, 1, 20, 0);
-INSERT INTO `role_function` VALUES (414, 1, 21, 0);
-INSERT INTO `role_function` VALUES (415, 1, 23, 0);
-INSERT INTO `role_function` VALUES (416, 1, 24, 0);
-INSERT INTO `role_function` VALUES (417, 1, 36, 0);
-INSERT INTO `role_function` VALUES (418, 1, 37, 0);
-INSERT INTO `role_function` VALUES (419, 1, 38, 0);
-INSERT INTO `role_function` VALUES (420, 1, 39, 0);
-INSERT INTO `role_function` VALUES (421, 1, 40, 0);
-INSERT INTO `role_function` VALUES (422, 1, 41, 0);
-INSERT INTO `role_function` VALUES (423, 1, 42, 0);
-INSERT INTO `role_function` VALUES (424, 1, 62, 0);
-INSERT INTO `role_function` VALUES (425, 1, 63, 0);
-INSERT INTO `role_function` VALUES (426, 1, 64, 0);
-INSERT INTO `role_function` VALUES (427, 1, 65, 0);
-INSERT INTO `role_function` VALUES (428, 1, 28, 0);
-INSERT INTO `role_function` VALUES (429, 1, 29, 0);
-INSERT INTO `role_function` VALUES (430, 1, 30, 0);
-INSERT INTO `role_function` VALUES (431, 1, 31, 0);
-INSERT INTO `role_function` VALUES (432, 1, 32, 0);
-INSERT INTO `role_function` VALUES (433, 1, 33, 0);
-INSERT INTO `role_function` VALUES (434, 1, 34, 0);
-INSERT INTO `role_function` VALUES (435, 1, 35, 0);
-INSERT INTO `role_function` VALUES (436, 1, 52, 0);
-INSERT INTO `role_function` VALUES (437, 1, 53, 0);
-INSERT INTO `role_function` VALUES (438, 1, 56, 0);
-INSERT INTO `role_function` VALUES (439, 1, 57, 0);
-INSERT INTO `role_function` VALUES (440, 1, 58, 0);
-INSERT INTO `role_function` VALUES (441, 1, 59, 0);
-INSERT INTO `role_function` VALUES (442, 1, 60, 0);
-INSERT INTO `role_function` VALUES (443, 1, 61, 0);
-INSERT INTO `role_function` VALUES (444, 1, 44, 0);
-INSERT INTO `role_function` VALUES (445, 1, 45, 0);
-INSERT INTO `role_function` VALUES (446, 1, 46, 0);
-INSERT INTO `role_function` VALUES (447, 1, 47, 0);
-INSERT INTO `role_function` VALUES (448, 1, 48, 0);
-INSERT INTO `role_function` VALUES (449, 1, 49, 0);
-INSERT INTO `role_function` VALUES (450, 1, 25, 0);
-INSERT INTO `role_function` VALUES (451, 1, 26, 0);
-INSERT INTO `role_function` VALUES (452, 1, 27, 0);
-INSERT INTO `role_function` VALUES (453, 1, 43, 0);
 INSERT INTO `role_function` VALUES (454, 2, 4, 0);
+INSERT INTO `role_function` VALUES (569, 1, 1, 0);
+INSERT INTO `role_function` VALUES (570, 1, 4, 0);
+INSERT INTO `role_function` VALUES (571, 1, 5, 0);
+INSERT INTO `role_function` VALUES (572, 1, 6, 0);
+INSERT INTO `role_function` VALUES (573, 1, 7, 0);
+INSERT INTO `role_function` VALUES (574, 1, 8, 0);
+INSERT INTO `role_function` VALUES (575, 1, 9, 0);
+INSERT INTO `role_function` VALUES (576, 1, 10, 0);
+INSERT INTO `role_function` VALUES (577, 1, 11, 0);
+INSERT INTO `role_function` VALUES (578, 1, 12, 0);
+INSERT INTO `role_function` VALUES (579, 1, 13, 0);
+INSERT INTO `role_function` VALUES (580, 1, 14, 0);
+INSERT INTO `role_function` VALUES (581, 1, 15, 0);
+INSERT INTO `role_function` VALUES (582, 1, 17, 0);
+INSERT INTO `role_function` VALUES (583, 1, 18, 0);
+INSERT INTO `role_function` VALUES (584, 1, 19, 0);
+INSERT INTO `role_function` VALUES (585, 1, 20, 0);
+INSERT INTO `role_function` VALUES (586, 1, 21, 0);
+INSERT INTO `role_function` VALUES (587, 1, 23, 0);
+INSERT INTO `role_function` VALUES (588, 1, 24, 0);
+INSERT INTO `role_function` VALUES (589, 1, 36, 0);
+INSERT INTO `role_function` VALUES (590, 1, 37, 0);
+INSERT INTO `role_function` VALUES (591, 1, 38, 0);
+INSERT INTO `role_function` VALUES (592, 1, 39, 0);
+INSERT INTO `role_function` VALUES (593, 1, 40, 0);
+INSERT INTO `role_function` VALUES (594, 1, 41, 0);
+INSERT INTO `role_function` VALUES (595, 1, 42, 0);
+INSERT INTO `role_function` VALUES (596, 1, 62, 0);
+INSERT INTO `role_function` VALUES (597, 1, 63, 0);
+INSERT INTO `role_function` VALUES (598, 1, 64, 0);
+INSERT INTO `role_function` VALUES (599, 1, 65, 0);
+INSERT INTO `role_function` VALUES (600, 1, 28, 0);
+INSERT INTO `role_function` VALUES (601, 1, 29, 0);
+INSERT INTO `role_function` VALUES (602, 1, 30, 0);
+INSERT INTO `role_function` VALUES (603, 1, 31, 0);
+INSERT INTO `role_function` VALUES (604, 1, 32, 0);
+INSERT INTO `role_function` VALUES (605, 1, 33, 0);
+INSERT INTO `role_function` VALUES (606, 1, 34, 0);
+INSERT INTO `role_function` VALUES (607, 1, 35, 0);
+INSERT INTO `role_function` VALUES (608, 1, 52, 0);
+INSERT INTO `role_function` VALUES (609, 1, 53, 0);
+INSERT INTO `role_function` VALUES (610, 1, 56, 0);
+INSERT INTO `role_function` VALUES (611, 1, 57, 0);
+INSERT INTO `role_function` VALUES (612, 1, 58, 0);
+INSERT INTO `role_function` VALUES (613, 1, 59, 0);
+INSERT INTO `role_function` VALUES (614, 1, 60, 0);
+INSERT INTO `role_function` VALUES (615, 1, 61, 0);
+INSERT INTO `role_function` VALUES (616, 1, 44, 0);
+INSERT INTO `role_function` VALUES (617, 1, 45, 0);
+INSERT INTO `role_function` VALUES (618, 1, 46, 0);
+INSERT INTO `role_function` VALUES (619, 1, 47, 0);
+INSERT INTO `role_function` VALUES (620, 1, 48, 0);
+INSERT INTO `role_function` VALUES (621, 1, 49, 0);
+INSERT INTO `role_function` VALUES (622, 1, 25, 0);
+INSERT INTO `role_function` VALUES (623, 1, 26, 0);
+INSERT INTO `role_function` VALUES (624, 1, 27, 0);
+INSERT INTO `role_function` VALUES (625, 1, 43, 0);
 
 -- ----------------------------
 -- Table structure for role_jurisdiction
@@ -1221,24 +1259,24 @@ CREATE TABLE `role_jurisdiction`  (
   INDEX `Fk_jurisdiction`(`jurisdiction_id`) USING BTREE,
   CONSTRAINT `Fk_jurisdiction` FOREIGN KEY (`jurisdiction_id`) REFERENCES `jurisdiction` (`jurisdiction_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_jurisdiction_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 137 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_jurisdiction
 -- ----------------------------
 INSERT INTO `role_jurisdiction` VALUES (14, 11, 1, 0);
 INSERT INTO `role_jurisdiction` VALUES (15, 3, 2, 0);
-INSERT INTO `role_jurisdiction` VALUES (96, 1, 1, 0);
-INSERT INTO `role_jurisdiction` VALUES (97, 1, 2, 0);
-INSERT INTO `role_jurisdiction` VALUES (98, 1, 3, 0);
-INSERT INTO `role_jurisdiction` VALUES (99, 1, 4, 0);
-INSERT INTO `role_jurisdiction` VALUES (100, 1, 5, 0);
-INSERT INTO `role_jurisdiction` VALUES (101, 1, 6, 0);
-INSERT INTO `role_jurisdiction` VALUES (102, 1, 7, 0);
-INSERT INTO `role_jurisdiction` VALUES (103, 1, 8, 0);
-INSERT INTO `role_jurisdiction` VALUES (104, 1, 9, 0);
-INSERT INTO `role_jurisdiction` VALUES (105, 1, 10, 0);
 INSERT INTO `role_jurisdiction` VALUES (106, 2, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (127, 1, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (128, 1, 2, 0);
+INSERT INTO `role_jurisdiction` VALUES (129, 1, 3, 0);
+INSERT INTO `role_jurisdiction` VALUES (130, 1, 4, 0);
+INSERT INTO `role_jurisdiction` VALUES (131, 1, 5, 0);
+INSERT INTO `role_jurisdiction` VALUES (132, 1, 6, 0);
+INSERT INTO `role_jurisdiction` VALUES (133, 1, 7, 0);
+INSERT INTO `role_jurisdiction` VALUES (134, 1, 8, 0);
+INSERT INTO `role_jurisdiction` VALUES (135, 1, 9, 0);
+INSERT INTO `role_jurisdiction` VALUES (136, 1, 10, 0);
 
 -- ----------------------------
 -- Table structure for stage_purchasing_plan
@@ -1285,7 +1323,7 @@ CREATE TABLE `stage_purchasing_plan_term`  (
   CONSTRAINT `Fk_stage_purchasing_plan_term_materiel` FOREIGN KEY (`materiel_id`) REFERENCES `materiel` (`materiel_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_stage_purchasing_plan_term_stage` FOREIGN KEY (`stage_purchasing_plan_id`) REFERENCES `stage_purchasing_plan` (`stage_purchasing_plan_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_stage_purchasing_plan_term_supplier` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`supplier_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 44 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 49 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of stage_purchasing_plan_term
@@ -1298,14 +1336,14 @@ INSERT INTO `stage_purchasing_plan_term` VALUES (8, 8, 14, 4, 1, 1, 'werwer', 3,
 INSERT INTO `stage_purchasing_plan_term` VALUES (9, 4, 54, 5, 1, 2, 'sdf', 3, 0);
 INSERT INTO `stage_purchasing_plan_term` VALUES (10, 1, 14, 6, 1, 1, 'rwer', 1, 0);
 INSERT INTO `stage_purchasing_plan_term` VALUES (12, 2, 14, 8, 1, 1, 'werwer', 3, 0);
-INSERT INTO `stage_purchasing_plan_term` VALUES (33, 4, 78, 45, 1, 1, 'ss', 2, 0);
-INSERT INTO `stage_purchasing_plan_term` VALUES (34, 5, 45, 7, 1, 2, 'sdsf', 2, 0);
-INSERT INTO `stage_purchasing_plan_term` VALUES (35, 6, 45, 8, 1, 1, 'werwsd', 2, 0);
-INSERT INTO `stage_purchasing_plan_term` VALUES (36, 1, 12, 7, 1, 2, 'ssdfw', 2, 0);
-INSERT INTO `stage_purchasing_plan_term` VALUES (37, 15, 11, 11, 3, 6, '111111111', 2, 0);
 INSERT INTO `stage_purchasing_plan_term` VALUES (41, 1, 1, 1, 1, 1, '1111111111111', 7, 0);
 INSERT INTO `stage_purchasing_plan_term` VALUES (42, 1, 1, 1, 1, 1, '1111111111111', 7, 0);
 INSERT INTO `stage_purchasing_plan_term` VALUES (43, 2, 1, 1, 2, 1, '1111111111111', 7, 0);
+INSERT INTO `stage_purchasing_plan_term` VALUES (44, 4, 78, 45, 1, 1, 'ss', 2, 0);
+INSERT INTO `stage_purchasing_plan_term` VALUES (45, 5, 45, 7, 1, 2, 'sdsf', 2, 0);
+INSERT INTO `stage_purchasing_plan_term` VALUES (46, 6, 45, 8, 1, 1, 'werwsd', 2, 0);
+INSERT INTO `stage_purchasing_plan_term` VALUES (47, 1, 12, 7, 1, 2, 'ssdfw', 2, 0);
+INSERT INTO `stage_purchasing_plan_term` VALUES (48, 15, 11, 11, 3, 6, '111111111', 2, 0);
 
 -- ----------------------------
 -- Table structure for store
@@ -1322,7 +1360,7 @@ CREATE TABLE `store`  (
   `password` varchar(16) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '密码',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`store_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of store
@@ -1339,6 +1377,7 @@ INSERT INTO `store` VALUES (9, '师范学院店', 2, '解放路186号', '1875210
 INSERT INTO `store` VALUES (10, '海云店', 1, '解放路186号', '18752105664', 0, '500', '10010', 0);
 INSERT INTO `store` VALUES (11, '000', 1, '12131564231345', '18905222325', 0, '52120171215', '123456', 1);
 INSERT INTO `store` VALUES (12, '多大点事', 2, '地方个地方', '18905222325', 0, '544020171218', '123456', 1);
+INSERT INTO `store` VALUES (13, '234', 1, '234', '12345678944', 0, '925920171228', '123456', 0);
 
 -- ----------------------------
 -- Table structure for supplier
@@ -1581,7 +1620,7 @@ CREATE TABLE `user`  (
   `user_phone` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '联系电话(登陆账号)',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   PRIMARY KEY (`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
@@ -1600,6 +1639,8 @@ INSERT INTO `user` VALUES (11, '索志文', '123', '18752105664', 0);
 INSERT INTO `user` VALUES (12, '张三', '123', '17756871234', 0);
 INSERT INTO `user` VALUES (13, '付雪艳', '123', '12345678901', 0);
 INSERT INTO `user` VALUES (14, '涨', '123', '12012012012', 0);
+INSERT INTO `user` VALUES (15, '1', '123', '1254678953', 0);
+INSERT INTO `user` VALUES (16, '1', '123', '1254678953', 0);
 
 -- ----------------------------
 -- Table structure for user_role
@@ -1615,14 +1656,14 @@ CREATE TABLE `user_role`  (
   INDEX `Fk_user_role_user`(`user_id`) USING BTREE,
   CONSTRAINT `Fk_user_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_user_role_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user_role
 -- ----------------------------
 INSERT INTO `user_role` VALUES (1, 1, 1, 0);
 INSERT INTO `user_role` VALUES (2, 2, 2, 0);
-INSERT INTO `user_role` VALUES (3, 3, 3, 0);
+INSERT INTO `user_role` VALUES (3, 1, 3, 0);
 INSERT INTO `user_role` VALUES (4, 4, 4, 0);
 INSERT INTO `user_role` VALUES (5, 5, 5, 0);
 INSERT INTO `user_role` VALUES (6, 6, 6, 0);
@@ -1633,6 +1674,8 @@ INSERT INTO `user_role` VALUES (10, 10, 10, 0);
 INSERT INTO `user_role` VALUES (11, 1, 12, 0);
 INSERT INTO `user_role` VALUES (12, 2, 13, 0);
 INSERT INTO `user_role` VALUES (13, 1, 14, 0);
+INSERT INTO `user_role` VALUES (14, 1, 15, 0);
+INSERT INTO `user_role` VALUES (15, 1, 15, 0);
 
 -- ----------------------------
 -- Table structure for warehouse
