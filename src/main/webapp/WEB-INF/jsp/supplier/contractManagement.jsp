@@ -1629,6 +1629,7 @@
             url: '${pageContext.request.contextPath}/getSupplierContractById.do',
             type: 'POST',
             data: datds,
+            dataType: "json",
             success: function (data) {
                 $("#supplierContractImage").attr("src","../../../upload/"+data.supplierContractImage);
             }, error: function () {
@@ -1678,6 +1679,7 @@
                             data: formData,
                             processData: false,
                             contentType: false,
+                            dataType: "json",
                             success: function (data) {
                                 if (null != data) {
                                     addSuCont(data);

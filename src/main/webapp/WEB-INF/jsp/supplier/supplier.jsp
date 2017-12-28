@@ -1547,12 +1547,12 @@
                                 <form id="updateSu" method="post">
                                     <div class="form-group">
                                         <label class="control-label mb-10">供应商名称:</label>
-                                        <input type="text" id="supplierName" name="supplierName" class="form-control">
-                                        <input type="hidden" id="supplierId" name="supplierId">
+                                        <input type="text" id="supplierN" name="supplierName" class="form-control" value="">
+                                        <input type="hidden" id="supplierId" name="supplierId" value="">
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label mb-10">供货类型:</label>
-                                        <select class="form-control" id="materielTypeLevelB.materielTypeLevelBId" name="materielTypeLevelB.materielTypeLevelBId">
+                                        <select class="form-control" id="materielTypeLevelBd" name="materielTypeLevelB.materielTypeLevelBId">
                                             <c:forEach var="m" items="${requestScope.MaterielTypeLevelBs}">
                                                 <c:if test="${m.materielTypeLevelBId == s.materielTypeLevelB.materielTypeLevelBId}">
                                                     <option id="s.materielTypeLevelB.materielTypeLevelBId" value="${m.materielTypeLevelBId}" selected="selected">${s.materielTypeLevelB.materielTypeLevelBName}</option>
@@ -1806,6 +1806,7 @@
             url: '${pageContext.request.contextPath}/getSupplierById.do',
             type: 'POST',
             data: datds,
+            dataType: "json",
             success: function (data) {
                 $("#supplierImage").attr("src","../../../upload/"+data.supplierImage)
                 $("#supplierCharterImage").attr("src","../../../upload/"+data.supplierCharterImage)
@@ -1823,10 +1824,11 @@
             url: '${pageContext.request.contextPath}/getSupplierById.do',
             type: 'POST',
             data: datds,
+            dataType: "json",
             success: function (data) {
                  //id                      实体类属性
-                $("#supplierName").val(data.supplierName);
-                $("#materielTypeLevelB.materielTypeLevelBId").val(data.materielTypeLevelB.materielTypeLevelBId);
+                $("#supplierN").val(data.supplierName);
+                $("#materielTypeLevelBd").val(data.materielTypeLevelB.materielTypeLevelBId);
                 $("#supplierPhone").val(data.supplierPhone);
                 $("#supplierAddress").val(data.supplierAddress);
                 $("#supplierId").val(data.supplierId);
@@ -1857,9 +1859,10 @@
                             url: '/updateSupplier.do',
                             type: 'POST',
                             data: $('#updateSu').serialize(),
+                            dataType: "json",
                             success: function (data) {
                                 if (null != data) {
-                                    if (data > 0) {
+                                    if (data >"0") {
                                         swal("修改成功");
                                         $("#updateModal").click();
                                         upp();
@@ -1908,6 +1911,7 @@
                          data: formData,
                          processData: false,
                          contentType: false,
+                         dataType: "json",
                          success: function (data) {
                              if (null != data) {
                                  addsupplier(data);
@@ -1916,10 +1920,8 @@
                                  $("#addmodal").click();
                                  /*添加成功清空文本框*/
                                  document.getElementById("addS").reset();
-
                              }else {
                                  swal("添加失败");
-
                              }
                          }, error: function () {
                              swal("error");
@@ -1932,28 +1934,29 @@
      function addsupplier(data) {
          /*添加成功显示页面，一次*/
          var materielTypeLevelBId=$("#addS select[name='materielTypeLevelB.materielTypeLevelBId'] option:selected").text();
-         var display="<tr>"
-          +"<td>"+data.supplierNo+"</td>"
-          +"<td>"+data.supplierName+"</td>"
-          +"<td>"+materielTypeLevelBId+"</td>"
-          +"<td>"+data.supplierAddress+"</td>"
-          +"<td>"+data.supplierPhone+"</td>"
-          +"<td>"+data.cooperationStartDate+"</td>"
-          +"<td>"+data.supplierRemarks+"</td>" +
-          "<td><div class='btn-group btn-group-xs' role='group'>\n" +
-             "  <button type='button' title='修改' class='btn btn-default footable-edit' onclick='supplierById("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalUpdate'>\n" +
-             "\n" +
-             "     <span class='fooicon fooicon-pencil' style='color:#1aee20; aria-hidden='true'></span>\n" +
-             "  </button>\n" +
-             "  <button type='button' title='详情' class='btn btn-default footable-edit' onclick='detailsSupplier("+data.supplierId+")' data-toggle='modal' data-target='#exampleModalSelect'>\n" +
-             "       <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
-             "  </button>\n" +
-             "  <button type='button'  flagId='"+data.supplierId+"' flagName='"+data.supplierName+"'  class='btn btn-default footable-delete del' >\n" +
-             "      <span class='fooicon fooicon-trash' title='删除' style='color: red; onclick='dedd("+data.supplierId+")' aria-hidden='true'></span>\n" +
-             "  </button>\n" +
-             "</div></td>"
-
-          $("tbody").append(display)
+         var row="<tr>\n" +
+             "    <td>"+data.supplierNo+"</td>\n" +
+             "    <td>"+data.supplierName+"</td>\n" +
+             "    <td>"+materielTypeLevelBId+"</td>\n" +
+             "    <td>"+data.supplierAddress+"</td>\n" +
+             "    <td>"+data.supplierPhone+"</td>\n" +
+             "    <td>"+data.cooperationStartDate+"</td>\n" +
+             "    <td>"+data.supplierRemarks+"</td>\n" +
+             "    <td class='footable-editing' style='display: table-cell;width: 100px'>\n" +
+             "        <div class='btn-group btn-group-xs' role='group'>\n" +
+             "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalUpdate' onclick='supplierById("+data.supplierId+")'>\n" +
+             "                <span class='fooicon fooicon-pencil' aria-hidden='true'></span>\n" +
+             "            </button>\n" +
+             "            <button type='button' class='btn btn-default footable-edit' data-toggle='modal' data-target='#exampleModalSelect' onclick='detailsSupplier("+data.supplierId+")'>\n" +
+             "                <i class='fa ti-search' style='color: #2879ff;'></i>\n" +
+             "            </button>\n" +
+             "            <button type='button' flagId='"+data.supplierId+"' flagName='"+data.supplierName+"' class='btn btn-default footable-delete del' data-storeid='"+data.supplierId+"' onclick='dedd(this)'>\n" +
+             "                <span class='fooicon fooicon-trash' aria-hidden='true'></span>\n" +
+             "            </button>\n" +
+             "        </div>\n" +
+             "    </td>\n" +
+             "</tr>"
+          $("tbody").append(row);
      }
     //获取当前日期给date控件赋值
     function GetNowDate() {
@@ -1994,7 +1997,7 @@
                         url:"${pageContext.request.contextPath}/delectSupplier.do?supplierId="+mid,
                         cache: false,
                         success:function(data){
-                            if(data == 1){
+                            if(data == "1"){
                                 swal("删除成功", "删除成功！", "success");
                                 $($tr).remove();
                             }else{

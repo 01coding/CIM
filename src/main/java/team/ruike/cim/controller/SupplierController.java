@@ -64,7 +64,11 @@ public class SupplierController {
     @ResponseBody
     public String delectSupplier(Integer supplierId){
         int num=supplierService.delectSupplier(supplierId);
-        return (num==1)+"";
+        if(num>0){
+            return "1";
+        }else {
+            return "0";
+        }
     }
 
     // 2个多个上传
@@ -159,7 +163,13 @@ public class SupplierController {
     @ResponseBody
     public String updateSupplier(Supplier supplier){
         int num= supplierService.updateSupplier(supplier);
-        return (num==1)+"";
+        if(num>0){
+            return  "1";
+        }else {
+            return  "0";
+        }
+
+
     }
 
     /**

@@ -1357,7 +1357,7 @@
 
 <script>
     $(function () {
-        dedd()
+        dedd();
         addeqValidate();
     });
 
@@ -1453,7 +1453,7 @@
                         url:"${pageContext.request.contextPath}/delequipment.do?equipmentId="+mid,
                         cache: false,
                         success:function(data){
-                            if(data == 1){
+                            if(data =="1"){
                                 swal("删除成功", "删除成功！", "success");
                                 $($tr).remove();
                             }else{
