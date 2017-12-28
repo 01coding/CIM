@@ -1,5 +1,7 @@
 package team.ruike.cim.pojo;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 import java.util.Date;
 
 /**
@@ -11,6 +13,14 @@ public class Chat {
   private String message;
   private Integer status;
   private Date date;
+  @JSONField(format="yyyy-MM-dd HH:mm:ss")
+  public Date getDate() {
+    return date;
+  }
+
+  public void setDate(Date date) {
+    this.date = date;
+  }
 
   public Integer getChatId() {
     return chatId;

@@ -552,7 +552,7 @@
                                         <div class="panel-wrapper collapse in">
                                             <div class="panel-body pa-0">
                                                 <div class="chat-content">
-                                                    <ul class="nicescroll-bar pt-20">
+                                                    <ul class="nicescroll-bar pt-20" id="mses">
                                                         <li class="friend">
                                                             <div class="friend-msg-wrap">
                                                                 <img class="user-img img-circle block pull-left"

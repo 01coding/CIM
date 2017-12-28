@@ -33,7 +33,7 @@ websocket.onmessage = function (event) {
             $chat.append($('<a href="javascript:void(0)">' +
                 '<div class="sl-item unread-message">' +
                 '<div class="sl-avatar avatar avatar-sm avatar-circle">' +
-                '<img class="img-responsive img-circle" src="../../dist/img/user.png"' +
+                '<img class="img-responsive img-circle" src="/dist/img/user.png"' +
                 'alt="avatar"/>' +
                 '</div>' +
                 '<div class="sl-content">' +
@@ -46,6 +46,29 @@ websocket.onmessage = function (event) {
         })
     }else if(testJson.type==4){
         var parseJSON = $.parseJSON(testJson.message);
+        var $mses = $("#mses");
+        $mses.html("");
+        $.each( parseJSON, function(index, content){
+            if(testJson.userId==content.user.userId){
+                $mses.append('<li class="self mb-10">' +
+                    '<div class="self-msg-wrap">' +
+                    '<div class="msg block pull-right">'+content.message+'' +
+                    '<div class="msg-per-detail text-right">' +
+                    '<span class="msg-time txt-grey">'+content.date+'</span>' +
+                    '</div>' +
+                    '</div><div class="clearfix"></div></div></li>');
+            }else{
+                $mses.append('<li class="friend">' +
+                    '<div class="friend-msg-wrap">' +
+                    '<img class="user-img img-circle block pull-left"' +
+                    'src="/dist/img/user.png" alt="user"/>' +
+                    '<div class="msg pull-left">' +
+                    '<p>'+content.message+'</p>' +
+                    '<div class="msg-per-detail text-right">' +
+                    '<span class="msg-time txt-grey">'+content.date+'</span>' +
+                    '</div></div><div class="clearfix"></div></div></li>');
+            }
+        })
     }
 }
 //连接关闭的回调方法

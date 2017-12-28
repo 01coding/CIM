@@ -37,9 +37,10 @@ public class WebSocket implements WebSocketHandler {
         MessageUtils messageUtils=new MessageUtils();
         messageUtils.setDate("3:50");
         messageUtils.setType(4);
-        messageUtils.setUserId(0);
+        messageUtils.setUserId(user.getUserId());
         messageUtils.setSenderUserId(0);
         messageUtils.setMessage(JSONArray.toJSONString(chatTop10));
+        System.out.println(JSONArray.toJSONString(chatTop10));
         sendMessageToUsers(new TextMessage(JSONArray.toJSONString(messageUtils)));
     }
 
