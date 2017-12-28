@@ -11,7 +11,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <association property="user" column="user_id" select="team.ruike.cim.dao.UserDao.selectById"/>
     </resultMap>
     <select id="select" resultMap="chatMap">
-        SELECT * FROM chat WHERE status=0
+      SELECT * FROM chat WHERE status=0  and date= DATE_FORMAT(now(),'%Y-%m-%d')
     </select>
     <select id="selectByTop10" resultMap="chatMap">
         SELECT * FROM chat WHERE status=0 ORDER BY chat_id LIMIT 0,10
