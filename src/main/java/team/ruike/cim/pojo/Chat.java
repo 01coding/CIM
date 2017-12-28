@@ -13,7 +13,7 @@ public class Chat {
   private String message;
   private Integer status;
   private Date date;
-  @JSONField(format="yyyy-MM-dd HH:mm:ss")
+  @JSONField(format="HH:mm:ss")
   public Date getDate() {
     return date;
   }

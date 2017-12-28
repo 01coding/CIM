@@ -13,4 +13,6 @@ public interface ChatService {
      * @return 记录
      */
     List<Chat> getChatTop10();
+
+    int add(Chat chat);
 }

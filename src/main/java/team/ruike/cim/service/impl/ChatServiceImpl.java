@@ -15,4 +15,9 @@ public class ChatServiceImpl implements ChatService{
     public List<Chat> getChatTop10() {
         return chatDao.selectByTop10();
     }
+
+    @Override
+    public int add(Chat chat) {
+        return chatDao.add(chat);
+    }
 }

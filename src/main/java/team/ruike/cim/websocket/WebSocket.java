@@ -1,6 +1,9 @@
 package team.ruike.cim.websocket;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+import net.sf.json.JSONObject;
 import org.springframework.web.socket.*;
 import team.ruike.cim.pojo.Chat;
 import team.ruike.cim.pojo.Function;
@@ -10,6 +13,7 @@ import team.ruike.cim.service.ChatService;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 public class WebSocket implements WebSocketHandler {
@@ -39,9 +43,8 @@ public class WebSocket implements WebSocketHandler {
         messageUtils.setType(4);
         messageUtils.setUserId(user.getUserId());
         messageUtils.setSenderUserId(0);
-        messageUtils.setMessage(JSONArray.toJSONString(chatTop10));
-        System.out.println(JSONArray.toJSONString(chatTop10));
-        sendMessageToUsers(new TextMessage(JSONArray.toJSONString(messageUtils)));
+        messageUtils.setMessage(JSONArray.toJSONString(chatTop10, SerializerFeature.DisableCircularReferenceDetect));
+        Session.sendMessage(new TextMessage(JSONArray.toJSONString(messageUtils,SerializerFeature.DisableCircularReferenceDetect)));
     }
 
     /**
@@ -66,6 +69,36 @@ public class WebSocket implements WebSocketHandler {
     @Override
     public void handleMessage(WebSocketSession webSocketSession, WebSocketMessage<?> webSocketMessage) throws Exception {
 //        sendMessageToUsers(new TextMessage(webSocketMessage.getPayload() + ""));
+        MessageUtils messageUtils=null;
+        JSONObject jsonObject=JSONObject.fromObject(webSocketMessage.getPayload() + "");
+        messageUtils= (MessageUtils) (JSONObject.toBean(jsonObject, MessageUtils.class));
+        if (messageUtils.getType()==1){
+            chat(messageUtils.getMessage(),webSocketSession);
+        }
+    }
+
+    /**
+     * 发送聊天消息
+     * @param mes 内容
+     */
+    private void chat(String mes,WebSocketSession webSocketSession) throws IOException {
+        User user = (User) webSocketSession.getAttributes().get("user");
+        //存入数据库
+        Chat chat=new Chat();
+        chat.setStatus(0);
+        chat.setMessage(mes);
+        chat.setUser(user);
+        chatService.add(chat);
+        SimpleDateFormat sdf =   new SimpleDateFormat( " HH:mm:ss " );
+        String text="{\"type\":1,\"user\":"+JSON.toJSONString(user)+",\"mes\":\""+mes+"\",\"date\":\""+sdf.format(new Date())+"\"}";
+        for (WebSocketSession socketSession : webSockSession.values()) {
+            User user1 = (User) socketSession.getAttributes().get("user");
+            if (user1.getUserId()!=user.getUserId()){
+                if (socketSession.isOpen()) {
+                    socketSession.sendMessage(new TextMessage(text));
+                }
+            }
+        }
     }
 
     /**

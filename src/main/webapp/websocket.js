@@ -48,27 +48,35 @@ websocket.onmessage = function (event) {
         var parseJSON = $.parseJSON(testJson.message);
         var $mses = $("#mses");
         $mses.html("");
-        $.each( parseJSON, function(index, content){
-            if(testJson.userId==content.user.userId){
+        for(var i=parseJSON.length-1;i>=0;i--){
+            if(testJson.userId==parseJSON[i].user.userId){
                 $mses.append('<li class="self mb-10">' +
                     '<div class="self-msg-wrap">' +
-                    '<div class="msg block pull-right">'+content.message+'' +
+                    '<div class="msg block pull-right">'+parseJSON[i].message+'' +
                     '<div class="msg-per-detail text-right">' +
-                    '<span class="msg-time txt-grey">'+content.date+'</span>' +
+                    '<span class="msg-time txt-grey">'+parseJSON[i].date+'</span>' +
                     '</div>' +
                     '</div><div class="clearfix"></div></div></li>');
             }else{
                 $mses.append('<li class="friend">' +
                     '<div class="friend-msg-wrap">' +
-                    '<img class="user-img img-circle block pull-left"' +
-                    'src="/dist/img/user.png" alt="user"/>' +
+                    '<p>'+parseJSON[i].user.userName+'</p>' +
                     '<div class="msg pull-left">' +
-                    '<p>'+content.message+'</p>' +
+                    '<p>'+parseJSON[i].message+'</p>' +
                     '<div class="msg-per-detail text-right">' +
-                    '<span class="msg-time txt-grey">'+content.date+'</span>' +
+                    '<span class="msg-time txt-grey">'+parseJSON[i].date+'</span>' +
                     '</div></div><div class="clearfix"></div></div></li>');
             }
-        })
+        }
+    }else if(testJson.type==1){
+        $("#mses").append('<li class="friend">' +
+            '<div class="friend-msg-wrap">' +
+            '<p>'+testJson.user.userName+'</p>' +
+            '<div class="msg pull-left">' +
+            '<p>'+testJson.mes+'</p>' +
+            '<div class="msg-per-detail text-right">' +
+            '<span class="msg-time txt-grey">'+testJson.date+'</span>' +
+            '</div></div><div class="clearfix"></div></div></li>');
     }
 }
 //连接关闭的回调方法
@@ -77,7 +85,7 @@ websocket.onclose = function () {
 }
 //将消息显示在网页上
 function setMessageInnerHTML(innerHTML) {
-    alert(innerHTML);
+    // alert(innerHTML);
 }
 
 //关闭WebSocket连接
