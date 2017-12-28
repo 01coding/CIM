@@ -68,6 +68,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         SELECT * FROM purchase WHERE status=0 AND   purchase_id=#{purchaseId}
     </select>
     <select id="getpurchaseNo" resultType="int">
-        SELECT purchase_id FROM purchase WHERE purchase_date=date_format(now(),'%y-%m-%d')
+        SELECT purchase_id FROM purchase WHERE purchase_date=#{dates}
     </select>
 </mapper>
