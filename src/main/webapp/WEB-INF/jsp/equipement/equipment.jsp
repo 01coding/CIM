@@ -966,8 +966,6 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body">
                                 <div class="table-wrap">
-
-
                                             <%--模糊查询--%>
                                             <div style="position: relative;bottom: 10px;">
                                                 <form class="form-inline" action="/equipment.do" method="post">
@@ -978,7 +976,6 @@
                                                                  <input id="date" type="date" class="form-control" name="SD">
                                                              </div>
                                                         </div>
-
                                                         <div class="form-group col-md-4 " style="width: 300px;">
                                                             <div class="input-group">
                                                                 <div><label class="control-label mb-10 text-left">负责人:</label></div>
@@ -990,7 +987,6 @@
                                                                 </select>
                                                             </div>
                                                         </div>
-
                                                         <div class="form-group col-md-4 " style="width: 300px;">
                                                                 <label class="control-label mb-10 text-left">设备名字:</label><div class="input-group">
                                                                 <input type="text" name="equipmentName" class="form-control">
@@ -1044,7 +1040,6 @@
                                                         </div>
                                                     </td>
                                                 </tr>
-
                                             <%--修改--%>
                                                 <div class="col-md-6">
                                                     <div class="modal fade" id="exampleModal${e.equipmentId}" tabindex="-1" role="dialog"
@@ -1168,7 +1163,6 @@
                                                                                                 <c:when test="${e.equipmentType.equipmentTypeId == equ.equipmentTypeId}">
                                                                                                     <option value="${e.equipmentType.equipmentTypeId}" selected="selected" >${e.equipmentType.equipmentTypeName}</option>
                                                                                                 </c:when>
-
                                                                                             </c:choose>
                                                                                         </c:forEach>
                                                                                     </select>
@@ -1262,16 +1256,13 @@
                                                     <button class="btn btn-info btn-icon-anim btn-circle"  data-toggle="modal" data-target="#exampleModal" title="添加数据">
                                                         <i class="fa ti-plus"></i>
                                                     </button>
-
                                             </div>
                                         </div>
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
             <div>
                 <!--添加输入框-->
                 <div class="col-md-6">
@@ -1290,7 +1281,6 @@
                                             <label class="control-label mb-10">设备名称:</label>
                                             <input type="text" class="form-control" id="equipmentName1" name="equipmentName">
                                         </div>
-
                                         <div class="form-group">
                                             <label class="control-label mb-10">保养周期:</label>
                                             <input class="form-control" type="number" min="1" id="maintenanceCycle1"  name="maintenanceCycle">
@@ -1299,7 +1289,6 @@
                                             <label class="control-label mb-10">检查周天:</label>
                                             <input class="form-control" type="number" min="1" id="inspectionCycle1"  name="inspectionCycle"/>
                                         </div>
-
                                         <div class="form-group">
                                             <label class="control-label mb-10">生产线:</label>
                                             <select class="form-control" name="productionLine.productionLineId">
@@ -1308,8 +1297,6 @@
                                                     </c:forEach>
                                             </select>
                                         </div>
-
-
                                         <div class="form-group">
                                             <label class="control-label mb-10">工序:</label>
                                             <select class="form-control" name="working.workingId" >
@@ -1318,8 +1305,6 @@
                                                     </c:forEach>
                                             </select>
                                         </div>
-
-
                                         <div class="form-group">
                                             <label class="control-label mb-10">负责人:</label>
                                             <select class="form-control" name="user.userId">
@@ -1328,7 +1313,6 @@
                                                     </c:forEach>
                                             </select>
                                         </div>
-
                                     </form>
                                 </div>
                                 <div class="modal-footer">
@@ -1339,22 +1323,15 @@
                         </div>
                     </div>
                 </div>
-
-
             </div>
-
-
         </div>
     </div>
 </div>
 
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
-
 <script src="../../../vendors/jquery.validate.js"></script>
 <script src="../../../vendors/messages_zh.js"></script>
-
-
 <script>
     $(function () {
         dedd();
@@ -1383,7 +1360,6 @@
             }
         });
     }
-
 /*添加设备*/
     function add() {
 
@@ -1392,8 +1368,6 @@
             //没有通过验证
             return;
         }
-
-
         $(".adds").click(function() {
             var equis = $("#addeq").serializeArray();
             swal({
@@ -1477,12 +1451,10 @@
                 $("#inspectionCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
-
             if(e==null || e==""){
                 $("#equipmentName").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
             }
-
             if(m==null || m==""){
                 $("#maintenanceCycle").attr("placeholder",no).css({color:"green",border:"solid 1px red","font-size":"16px"});
                 return false;
@@ -1490,43 +1462,30 @@
         })
     })
 </script>
-
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-
 <!-- Slimscroll JavaScript -->
 <script src="../../../dist/js/jquery.slimscroll.js"></script>
-
 <!-- Fancy Dropdown JS -->
 <script src="../../../dist/js/dropdown-bootstrap-extended.js"></script>
-
 <!-- Owl JavaScript -->
 <script src="../../../vendors/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../dist/js/init.js"></script><div id="goog-gt-tt" class="skiptranslate" dir="ltr">
-
 <!-- Moment JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/moment/min/moment-with-locales.min.js"></script>
-
 <!-- Bootstrap Colorpicker JavaScript -->
 <script src="../../../vendors/bower_components/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
-
 <!-- Bootstrap Datetimepicker JavaScript -->
 <script type="text/javascript" src="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
-
 <!-- Bootstrap Daterangepicker JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-
 <!-- Switchery JavaScript -->
 <script src="../../../vendors/bower_components/switchery/dist/switchery.min.js"></script>
-
 <!-- Init JavaScript -->
 <script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
-
 </body>
 </html>
 
