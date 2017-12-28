@@ -289,6 +289,7 @@ public class QualityController {
         request.setAttribute("piciM",materielList);
         request.setAttribute("num",number);
         request.setAttribute("pstd",purchaseStandard);
+        request.setAttribute("dat",dates);
         return  "quality/addrecord";
     }
 
@@ -298,11 +299,19 @@ public class QualityController {
      * @param materielTypeLevelAid 物料一级菜单Id
      */
     @RequestMapping("picitypeB.cl")
-    public void getPiciB(PrintWriter printWriter,Integer materielTypeLevelAid,Date date){
+    public void getPiciB(PrintWriter printWriter,Integer materielTypeLevelAid,String date){
+        Date date1=null;
         if (date==null){
-            date=new Date();
+            date1=new Date();
+        }else {
+            try {
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+                date1=sdf.parse(date);
+            } catch (ParseException e) {
+                System.out.println("滚");
+            }
         }
-        java.sql.Date dates = new java.sql.Date(date.getTime());
+        java.sql.Date dates = new java.sql.Date(date1.getTime());
         List<MaterielTypeLevelB> materielTypeLevelBS=qualityService.getMaterielTypeLevelBByDate(materielTypeLevelAid,dates);
         String jsonString=JSON.toJSONString(materielTypeLevelBS);
         printWriter.write(jsonString);
@@ -316,11 +325,19 @@ public class QualityController {
      * @param materielTypeLevelBid
      */
     @RequestMapping("piciM.cl")
-    public void getPiciM(PrintWriter printWriter,Integer materielTypeLevelBid,Date date){
-        if(date==null){
-            date=new Date();
+    public void getPiciM(PrintWriter printWriter,Integer materielTypeLevelBid,String date){
+        Date date1=null;
+        if (date==null){
+            date1=new Date();
+        }else {
+            try {
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+                date1=sdf.parse(date);
+            } catch (ParseException e) {
+                System.out.println("滚");
+            }
         }
-        java.sql.Date dates = new java.sql.Date(date.getTime());
+        java.sql.Date dates = new java.sql.Date(date1.getTime());
         List<Materiel> materiels=qualityService.getMaterielByDate(materielTypeLevelBid,dates);
         String jsonString=JSON.toJSONString(materiels);
         printWriter.write(jsonString);
@@ -337,8 +354,6 @@ public class QualityController {
     @RequestMapping("PStand.cl")
     public void getPurchaseStandard(PrintWriter printWriter,Integer materielId){
         PurchaseStandard purchaseStandard= qualityService.getpurchaseStandard(materielId);
-        System.out.println(purchaseStandard.getStandardAName());
-        System.out.println(purchaseStandard.getPurchaseStandardId());
         String jsonString =JSON.toJSONString(purchaseStandard);
         printWriter.write(jsonString);
         printWriter.flush();
@@ -351,8 +366,20 @@ public class QualityController {
      * @param printWriter
      */
     @RequestMapping("addpurchaseRecord.do")
-    public void insertPurchaseStandard(PurchaseStandardRecord purchaseStandardRecord,PrintWriter printWriter){
-        Integer result=qualityService.addPurchaseStandardRecord(purchaseStandardRecord);
+    public void insertPurchaseStandard(PurchaseStandardRecord purchaseStandardRecord,PrintWriter printWriter,String date){
+        Date date1=null;
+        if (date==null){
+            date1=new Date();
+        }else {
+            try {
+                SimpleDateFormat sdf =new SimpleDateFormat("yyyy-MM-dd");
+                date1=sdf.parse(date);
+            } catch (ParseException e) {
+                System.out.println("滚");
+            }
+        }
+        java.sql.Date dates = new java.sql.Date(date1.getTime());
+        Integer result=qualityService.addPurchaseStandardRecord(purchaseStandardRecord,dates);
         String jsonString=JSON.toJSONString(result);
         printWriter.write(jsonString);
         printWriter.flush();

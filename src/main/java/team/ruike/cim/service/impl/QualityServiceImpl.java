@@ -223,9 +223,10 @@ public class QualityServiceImpl implements QualityService {
         materiel.setMaterielId(materielId);
         purchaseStandard.setMateriel(materiel);
         List<PurchaseStandard> purchaseStandardList = purchaseStandardDao.select(purchaseStandard,0,99);
-
-        purchaseStandard=purchaseStandardList.get(0);
-
+        purchaseStandard=null;
+        if(purchaseStandardList!=null && purchaseStandardList.size()>0){
+            purchaseStandard=purchaseStandardList.get(0);
+        }
         return purchaseStandard;
     }
 
@@ -235,11 +236,13 @@ public class QualityServiceImpl implements QualityService {
      * @param purchaseStandardRecord 采购标准记录
      * @return
      */
-    public Integer addPurchaseStandardRecord(PurchaseStandardRecord purchaseStandardRecord) {
+    public Integer addPurchaseStandardRecord(PurchaseStandardRecord purchaseStandardRecord,Date dates) {
         Purchase purchase=new Purchase();
-        purchase.setPurchaseId(purchaseDao.getpurchaseNo());
+        purchase.setPurchaseId(purchaseDao.getpurchaseNo(dates));
         purchaseStandardRecord.setPurchase(purchase);
-        return purchaseStandardRecordDao.add(purchaseStandardRecord);
+        int a=0;
+        a=purchaseStandardRecordDao.add(purchaseStandardRecord);
+        return a;
     }
 
     /**

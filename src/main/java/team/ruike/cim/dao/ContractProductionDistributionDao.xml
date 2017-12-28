@@ -60,7 +60,7 @@
         <if test="working!=null and working.workingId!=null and working.workingId>0">
             AND working_id=#{working.workingId}
         </if>
-        <if test="user!=null and user.userId!=null user.userId>0">
+        <if test="user!=null and user.userId!=null and user.userId>0">
             AND user_id=#{user.userId}
         </if>
         <if test="startDate!=null">
