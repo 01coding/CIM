@@ -2,14 +2,19 @@ package team.ruike.cim.websocket;
 
 import com.alibaba.fastjson.JSONArray;
 import org.springframework.web.socket.*;
+import team.ruike.cim.pojo.Chat;
 import team.ruike.cim.pojo.Function;
 import team.ruike.cim.pojo.Jurisdiction;
 import team.ruike.cim.pojo.User;
+import team.ruike.cim.service.ChatService;
 
+import javax.annotation.Resource;
 import java.io.IOException;
 import java.util.*;
 
 public class WebSocket implements WebSocketHandler {
+    @Resource
+    private ChatService chatService;
     /**
      * 用来存储所有用户的连接
      */
@@ -27,6 +32,15 @@ public class WebSocket implements WebSocketHandler {
         System.out.println("连接成功！！");
         webSockSession.put(user, Session);
         OutPut();
+        //发送聊天记录
+        List<Chat> chatTop10 = chatService.getChatTop10();
+        MessageUtils messageUtils=new MessageUtils();
+        messageUtils.setDate("3:50");
+        messageUtils.setType(4);
+        messageUtils.setUserId(0);
+        messageUtils.setSenderUserId(0);
+        messageUtils.setMessage(JSONArray.toJSONString(chatTop10));
+        sendMessageToUsers(new TextMessage(JSONArray.toJSONString(messageUtils)));
     }
 
     /**
@@ -40,7 +54,6 @@ public class WebSocket implements WebSocketHandler {
         messageUtils.setUserId(0);
         messageUtils.setSenderUserId(0);
         messageUtils.setMessage(JSONArray.toJSONString(users));
-        System.out.println(JSONArray.toJSONString(users));
         sendMessageToUsers(new TextMessage(JSONArray.toJSONString(messageUtils)));
     }
     /**

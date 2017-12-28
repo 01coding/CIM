@@ -44,6 +44,8 @@ websocket.onmessage = function (event) {
                 '<p class="txt-grey truncate"></p>' +
                 '</div></div></a>'));
         })
+    }else if(testJson.type==4){
+        var parseJSON = $.parseJSON(testJson.message);
     }
 }
 //连接关闭的回调方法
