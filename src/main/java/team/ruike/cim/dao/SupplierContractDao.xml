@@ -67,9 +67,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
     </select>
     <select id="selectById" parameterType="int" resultMap="supplierContractMap">
-        SELECT * FROM supplier_contract WHERE status=0
-        <if test="supplierContractId!=null and supplierContractId>0">
-            AND supplier_contract_id=#{supplierContractId}
-        </if>
+        SELECT * FROM supplier_contract WHERE status=0 AND supplier_contract_id=#{supplierContractId}
     </select>
 </mapper>
