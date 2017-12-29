@@ -53,16 +53,7 @@ public class WarehouseOutRegisterItemController {
         return "warehouses/addproduct_warehouse_out_register_item";
     }
 
-    @RequestMapping("getContract_order.do")
-    public void getContract_order(PrintWriter printWriter, ContractOrder con) {
-        List<ContractOrder> contractOrders = warehouseOutRegisterItemService.getContractOrder(con);
-        String jsonString = JSON.toJSONString(contractOrders);
-        printWriter.write(jsonString);
-        printWriter.flush();
-        printWriter.close();
-    }
-
-    @RequestMapping("selectgods.do")
+    @RequestMapping("selectgods.cl")
     public void selectgods(PrintWriter printWriter, GoodsShelve goodsShelve) {
         List<GoodsShelve> goodsShelveList = warehouseOutRegisterItemService.getGoods(goodsShelve);
         String jsonString = JSON.toJSONString(goodsShelveList);

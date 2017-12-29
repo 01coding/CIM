@@ -1549,7 +1549,7 @@
             var timee = $(".dtimed").val();
             $.ajax({
                 type: "post",
-                url: "${pageContext.request.contextPath}/getPlan.do?dd=" + timee,
+                url: "${pageContext.request.contextPath}/getPlan.cl?dd=" + timee,
                 cache: false,
                 dataType: "json",
                 success: function (data) {
@@ -1601,7 +1601,7 @@
             } else {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/getQuyu.do?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
+                    url: "${pageContext.request.contextPath}/getQuyu.cl?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
                     cache: false,
                     dataType: "json",
                     success: function (data) {
@@ -1615,7 +1615,7 @@
 
                             $.ajax({
                                 type: "post",
-                                url: "${pageContext.request.contextPath}/getMateriel.do?materielTypeLevelB.materielTypeLevelBId=" + rid,
+                                url: "${pageContext.request.contextPath}/getMateriel.cl?materielTypeLevelB.materielTypeLevelBId=" + rid,
                                 cache: false,
                                 dataType: "json",
                                 success: function (data) {
@@ -1636,7 +1636,7 @@
                             //加载对应货架
                             $.ajax({
                                 type: "post",
-                                url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + daa[0].warehouseRegionId,
+                                url: "${pageContext.request.contextPath}/gethuojia.cl?warehouseRegionId=" + daa[0].warehouseRegionId,
                                 cache: false,
                                 dataType: "json",
                                 success: function (data) {
@@ -1673,7 +1673,7 @@
             //加载对应货架
             $.ajax({
                 type: "post",
-                url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + rid,
+                url: "${pageContext.request.contextPath}/gethuojia.cl?warehouseRegionId=" + rid,
                 cache: false,
                 dataType: "json",
                 success: function (data) {

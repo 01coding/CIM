@@ -1551,105 +1551,105 @@
                                                 </div>
                                             </div>
                                         </c:forEach>
-                                        <c:if test="${warehouseRegions.list!=null}">
-                                            <div class="panel-wrapper collapse in"
-                                                 style="margin:0 auto;text-align:center;">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <ul class="pagination pagination-split">
-                                                                <li <c:if
-                                                                        test="${requestScope.warehouseRegions.currentPage==1}"> class="disabled" </c:if>>
-                                                                    <a <%
-                                                                        Pager pager = (Pager) request.getAttribute("warehouseRegions");
-                                                                        if (pager.getCurrentPage() != 1) {%>
-                                                                            href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.previousPage}&warehouse.warehouseId=${hid}"
-                                                                            <%
-                                                                            } else {%>
-                                                                            href="javascript:void(0);"
-                                                                            <%
-                                                                                }
-                                                                            %>>
-                                                                        <i class="fa fa-angle-left"></i></a>
-                                                                </li>
-                                                                <c:forEach var="bar"
-                                                                           items="${requestScope.warehouseRegions.pageBar}">
-                                                                    <li <c:if
-                                                                            test="${bar==requestScope.warehouseRegions.currentPage}"> class="active" </c:if> >
-                                                                        <a href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${bar}&warehouse.warehouseId=${hid}">${bar}</a>
-                                                                    </li>
-                                                                </c:forEach>
-                                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                                    <%--<li class="active"><a href="#">2</a></li>--%>
-                                                                <li <c:if
-                                                                        test="${requestScope.warehouseRegions.currentPage>=requestScope.warehouseRegions.totalPage}"> class="disabled" </c:if>>
-                                                                    <a <%
-                                                                        if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                            href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.nextPage}&warehouse.warehouseId=${hid}"
-                                                                            <%
-                                                                            } else {%>
-                                                                            href="javascript:void(0);"
-                                                                            <%
-                                                                                }
-                                                                            %>>
-                                                                        <i class="fa fa-angle-right"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </c:if>
-                                        <c:if test="${productWarehouseRegions.list!=null}">
-                                            <div class="panel-wrapper collapse in"
-                                                 style="margin:0 auto;text-align:center;">
-                                                <div class="panel-body">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <ul class="pagination pagination-split">
-                                                                <li <c:if
-                                                                        test="${requestScope.productWarehouseRegions.currentPage==1}"> class="disabled" </c:if>>
-                                                                    <a <%
-                                                                        Pager pager = (Pager) request.getAttribute("productWarehouseRegions");
-                                                                        if (pager.getCurrentPage() != 1) {%>
-                                                                            href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.previousPage}&productWarehouse.productWarehouseId=${Phid}"
-                                                                            <%
-                                                                            } else {%>
-                                                                            href="javascript:void(0);"
-                                                                            <%
-                                                                                }
-                                                                            %>>
-                                                                        <i class="fa fa-angle-left"></i></a>
-                                                                </li>
-                                                                <c:forEach var="bar"
-                                                                           items="${requestScope.productWarehouseRegions.pageBar}">
-                                                                    <li <c:if
-                                                                            test="${bar==requestScope.productWarehouseRegions.currentPage}"> class="active" </c:if> >
-                                                                        <a href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${bar}&productWarehouse.productWarehouseId=${Phid}">${bar}</a>
-                                                                    </li>
-                                                                </c:forEach>
-                                                                    <%--<li class="disabled"><a href="#">1</a></li>--%>
-                                                                    <%--<li class="active"><a href="#">2</a></li>--%>
-                                                                <li <c:if
-                                                                        test="${requestScope.productWarehouseRegions.currentPage>=requestScope.productWarehouseRegions.totalPage}"> class="disabled" </c:if>>
-                                                                    <a <%
-                                                                        if (pager.getCurrentPage() < pager.getTotalPage()) {%>
-                                                                            href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.nextPage}&productWarehouse.productWarehouseId=${Phid}"
-                                                                            <%
-                                                                            } else {%>
-                                                                            href="javascript:void(0);"
-                                                                            <%
-                                                                                }
-                                                                            %>>
-                                                                        <i class="fa fa-angle-right"></i></a>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </c:if>
                                     </div>
+                                    <c:if test="${warehouseRegions.list!=null}">
+                                        <div class="panel-wrapper collapse in"
+                                             style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.warehouseRegions.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    Pager pager = (Pager) request.getAttribute("warehouseRegions");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.previousPage}&warehouse.warehouseId=${hid}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.warehouseRegions.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.warehouseRegions.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${bar}&warehouse.warehouseId=${hid}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                                <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.warehouseRegions.currentPage>=requestScope.warehouseRegions.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/getwarehouseregion.do?currentPage=${requestScope.warehouseRegions.nextPage}&warehouse.warehouseId=${hid}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                    <c:if test="${productWarehouseRegions.list!=null}">
+                                        <div class="panel-wrapper collapse in"
+                                             style="margin:0 auto;text-align:center;">
+                                            <div class="panel-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <ul class="pagination pagination-split">
+                                                            <li <c:if
+                                                                    test="${requestScope.productWarehouseRegions.currentPage==1}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    Pager pager = (Pager) request.getAttribute("productWarehouseRegions");
+                                                                    if (pager.getCurrentPage() != 1) {%>
+                                                                        href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.previousPage}&productWarehouse.productWarehouseId=${Phid}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-left"></i></a>
+                                                            </li>
+                                                            <c:forEach var="bar"
+                                                                       items="${requestScope.productWarehouseRegions.pageBar}">
+                                                                <li <c:if
+                                                                        test="${bar==requestScope.productWarehouseRegions.currentPage}"> class="active" </c:if> >
+                                                                    <a href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${bar}&productWarehouse.productWarehouseId=${Phid}">${bar}</a>
+                                                                </li>
+                                                            </c:forEach>
+                                                                <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                                <%--<li class="active"><a href="#">2</a></li>--%>
+                                                            <li <c:if
+                                                                    test="${requestScope.productWarehouseRegions.currentPage>=requestScope.productWarehouseRegions.totalPage}"> class="disabled" </c:if>>
+                                                                <a <%
+                                                                    if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                        href="${pageContext.request.contextPath}/getProductwarehouseregion.do?currentPage=${requestScope.productWarehouseRegions.nextPage}&productWarehouse.productWarehouseId=${Phid}"
+                                                                        <%
+                                                                        } else {%>
+                                                                        href="javascript:void(0);"
+                                                                        <%
+                                                                            }
+                                                                        %>>
+                                                                    <i class="fa fa-angle-right"></i></a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                     <div class="guide">
                                         <div class="guide-wrap">
                                             <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">

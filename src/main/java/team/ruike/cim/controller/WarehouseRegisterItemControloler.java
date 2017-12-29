@@ -71,7 +71,7 @@ public class WarehouseRegisterItemControloler {
      * @param warehouseRegion 区域
      * @param pager           分页辅助类
      */
-    @RequestMapping("getQuyu.do")
+    @RequestMapping("getQuyu.cl")
     public void getQuyu(WarehouseRegion warehouseRegion, Pager<WarehouseRegion> pager, PrintWriter printWriter) {
         warehouseregionServer.getWareHouSereGIonServer(warehouseRegion, pager);
         String Stringusers = JSON.toJSONString(pager.getList());
@@ -83,7 +83,7 @@ public class WarehouseRegisterItemControloler {
     /**
      * 通过区域id 查询可用空货架
      */
-    @RequestMapping("gethuojia.do")
+    @RequestMapping("gethuojia.cl")
     public void gethuojia(Integer warehouseRegionId, PrintWriter printWriter) {
         List<GoodsShelve> goodsShelveList = goodSShelveService.selectByWarehouseRegionId(warehouseRegionId);
         String joins = JSON.toJSONString(goodsShelveList);
@@ -95,7 +95,7 @@ public class WarehouseRegisterItemControloler {
     /**
      * 根据2级物料id获取三级物料列表
      */
-    @RequestMapping("/getMateriel.do")
+    @RequestMapping("/getMateriel.cl")
     public void getMateriel(PrintWriter printWriter, Materiel materiel, Pager<Materiel> pager) {
         materielService.getMaterielList(materiel, pager);
         List<Materiel> materiels = pager.getList();
@@ -111,7 +111,7 @@ public class WarehouseRegisterItemControloler {
      * @param printWriter 返回数据
      * @param dd          时间
      */
-    @RequestMapping("getPlan.do")
+    @RequestMapping("getPlan.cl")
     public void getPlan(PrintWriter printWriter, String dd) {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date = null;

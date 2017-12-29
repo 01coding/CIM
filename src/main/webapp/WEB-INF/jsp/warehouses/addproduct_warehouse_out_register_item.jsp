@@ -1571,7 +1571,7 @@
             } else {
                 $.ajax({
                     type: "post",
-                    url: "${pageContext.request.contextPath}/getQuyu.do?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
+                    url: "${pageContext.request.contextPath}/getQuyu.cl?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
                     cache: false,
                     dataType: "json",
                     success: function (data) {
@@ -1585,7 +1585,7 @@
 
                             $.ajax({
                                 type: "post",
-                                url: "${pageContext.request.contextPath}/getMateriel.do?materielTypeLevelB.materielTypeLevelBId=" + rid,
+                                url: "${pageContext.request.contextPath}/getMateriel.cl?materielTypeLevelB.materielTypeLevelBId=" + rid,
                                 cache: false,
                                 dataType: "json",
                                 success: function (data) {
@@ -1599,7 +1599,7 @@
                                         //加载对应货架
                                         $.ajax({
                                             type: "post",
-                                            url: "${pageContext.request.contextPath}/selectgods.do?warehouseRegion.warehouseRegionId=" + daa[0].warehouseRegionId + "&materiel.materielId=" + dd[0].materielId,
+                                            url: "${pageContext.request.contextPath}/selectgods.cl?warehouseRegion.warehouseRegionId=" + daa[0].warehouseRegionId + "&materiel.materielId=" + dd[0].materielId,
                                             cache: false,
                                             dataType: "json",
                                             success: function (data) {
@@ -1641,7 +1641,7 @@
             var ii = sjh.val();
             $.ajax({
                 type: "post",
-                url: "${pageContext.request.contextPath}/selectgods.do?warehouseRegion.warehouseRegionId=" + quyu.val() + "&materiel.materielId=" + ii,
+                url: "${pageContext.request.contextPath}/selectgods.cl?warehouseRegion.warehouseRegionId=" + quyu.val() + "&materiel.materielId=" + ii,
                 cache: false,
                 dataType: "json",
                 success: function (data) {
