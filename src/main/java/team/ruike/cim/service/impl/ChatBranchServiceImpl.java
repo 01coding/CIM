@@ -23,7 +23,7 @@ public class ChatBranchServiceImpl implements ChatBranchService {
     private ChatDao chatDao;
 
     @Override
-    public List<Chat> selectAllChat() {
+    public List<Chat> selectChatByNow() {
         return chatDao.select();
     }
 
