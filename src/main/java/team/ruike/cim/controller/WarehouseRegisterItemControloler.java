@@ -29,7 +29,7 @@ public class WarehouseRegisterItemControloler {
     @Resource
     private MaterielTypeLevelBServiceImpl materielTypeLevelBService;
     @Resource
-    private WarehouseRegionService warehouseregionServer;
+    private WareHouSereGIonService warehouseRegionService;
     @Resource
     private GoodSShelveService goodSShelveService;
     @Resource
@@ -73,7 +73,7 @@ public class WarehouseRegisterItemControloler {
      */
     @RequestMapping("getQuyu.cl")
     public void getQuyu(WarehouseRegion warehouseRegion, Pager<WarehouseRegion> pager, PrintWriter printWriter) {
-        warehouseregionServer.getWareHouSereGIonServer(warehouseRegion, pager);
+        warehouseRegionService.getWareHouSereGIonServer(warehouseRegion, pager);
         String Stringusers = JSON.toJSONString(pager.getList());
         printWriter.write(Stringusers);
         printWriter.flush();

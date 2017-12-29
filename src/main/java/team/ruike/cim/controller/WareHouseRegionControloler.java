@@ -8,7 +8,7 @@ import team.ruike.cim.pojo.MaterielTypeLevelB;
 import team.ruike.cim.pojo.WarehouseRegion;
 import team.ruike.cim.service.GoodSShelveService;
 import team.ruike.cim.service.MaterielTypeLevelBService;
-import team.ruike.cim.service.WarehouseRegionService;
+import team.ruike.cim.service.WareHouSereGIonService;
 import team.ruike.cim.util.GenerateNumber;
 import team.ruike.cim.util.Pager;
 
@@ -23,7 +23,7 @@ import java.util.List;
 @Controller
 public class WareHouseRegionControloler {
     @Resource
-    private WarehouseRegionService warehouseregionServer;
+    private WareHouSereGIonService warehouseRegionService;
     @Resource
     private GoodSShelveService goodsshelveService;
     @Resource
@@ -38,7 +38,7 @@ public class WareHouseRegionControloler {
      */
     @RequestMapping("/getwarehouseregion.do")
     public String getWarehouseregion(WarehouseRegion warehouseRegion, GoodsShelve goodsShelve,Pager<WarehouseRegion> pager, HttpServletRequest request){
-        warehouseregionServer.getWareHouSereGIonServer(warehouseRegion,pager);
+        warehouseRegionService.getWareHouSereGIonServer(warehouseRegion,pager);
         List<GoodsShelve> good= goodsshelveService.getGoodsshelve(goodsShelve);
         request.setAttribute("goodsShelves",good);
         request.setAttribute("warehouseRegions",pager);
@@ -54,7 +54,7 @@ public class WareHouseRegionControloler {
     @RequestMapping("addWarehouseRegion.do")
     public void addWarehouseRegion(PrintWriter printWriter,WarehouseRegion warehouseRegion){
         warehouseRegion.setWarehouseRegionNo(GenerateNumber.getGenerateNumber().getRandomFileName());
-        warehouseregionServer.addWareHouSereGIonServer(warehouseRegion);
+        warehouseRegionService.addWareHouSereGIonServer(warehouseRegion);
         if (warehouseRegion.getWarehouseRegionId()!=null&&warehouseRegion.getWarehouseRegionId()>0){
             String Stringusers= JSON.toJSONString(warehouseRegion.getWarehouseRegionId());
             printWriter.write(Stringusers);
