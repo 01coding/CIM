@@ -496,7 +496,12 @@
                                                     <div style="margin:0 auto;text-align:center;">
                                                         <button id="seb" class="btn btn-primary btn-rounded btn-icon left-icon">
                                                             <i class="fa fa-search"></i> <span>检索</span></button>
+
+                                                        <button onclick="toAddMenu()" class="btn btn-primary btn-rounded btn-icon left-icon">
+                                                            <span>添加菜谱</span>
+                                                        </button>
                                                     </div>
+
                                                     <div class="clearfix"></div>
                                                 </div>
                                             </div>
@@ -676,6 +681,9 @@
         return false;
     }
 
+    function toAddMenu() {
+        location.href="menu/toAdd.cl";
+    }
 </script>
 </body>
 </html>
