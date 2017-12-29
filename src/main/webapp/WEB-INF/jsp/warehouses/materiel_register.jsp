@@ -1,3 +1,4 @@
+<%@ page import="team.ruike.cim.util.Pager" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -1390,7 +1391,10 @@
                                     <!--区域选择框-->
                                     <div class="table-responsive ">
                                         <div class="form-group col-sm-3">
-                                                <button type="submit" class="btn btn-primary" onclick="window.location.href='getWarehouseOutRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${RegisterItemPager.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}'">查看出库记录</button>
+                                            <button type="submit" class="btn btn-primary"
+                                                    onclick="window.location.href='getWarehouseOutRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=${wid}'">
+                                                查看出库记录
+                                            </button>
                                         </div>
                                         <!--区域选择框-->
                                         <table id="example" class="table table-hover display  pb-30">
@@ -1422,15 +1426,6 @@
 
                                             </tr>
                                             </thead>
-                                            <tfoot>
-                                            <tr>
-                                                <th>物料名称</th>
-                                                <th>当前数量</th>
-                                                <th>到期时间</th>
-                                                <th>货架编号</th>
-                                                <th>送料人</th>
-                                            </tr>
-                                            </tfoot>
                                             <tbody>
                                             <c:forEach items="${RegisterItemPager.list}" var="itr">
                                                 <tr>
@@ -1445,38 +1440,68 @@
                                             </c:forEach>
                                             </tbody>
                                         </table>
-
                                         <div class="guide">
                                             <div class="guide-wrap">
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
-                                                        onclick="window.location.href='lodaddProducts.do?wid='+${RegisterItemPager.list[0].goodsShelve.warehouseRegion.warehouse.warehouseId}">
+                                                        onclick="window.location.href='lodaddProducts.do?wid='+${wid}">
                                                     <i class="fa ti-plus" title="新增入库记录"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="panel-wrapper collapse in" style="margin:0 auto;text-align:center;">
-                                    <div class="panel-body">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <ul class="pagination pagination-split">
-                                                    <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                                                    <li class="disabled"><a href="#">1</a></li>
-                                                    <li class="active"><a href="#">2</a></li>
-                                                    <li><a href="#">3</a></li>
-                                                    <li><a href="#">4</a></li>
-                                                    <li><a href="#">5</a></li>
-                                                    <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                                                </ul>
+                                <c:if test="${RegisterItemPager.list!=null}">
+                                    <div class="panel-wrapper collapse in"
+                                         style="margin:0 auto;text-align:center;">
+                                        <div class="panel-body">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <ul class="pagination pagination-split">
+                                                        <li <c:if
+                                                                test="${requestScope.RegisterItemPager.currentPage==1}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                Pager pager = (Pager) request.getAttribute("RegisterItemPager");
+                                                                if (pager.getCurrentPage() != 1) {%>
+                                                                    href="${pageContext.request.contextPath}/getWarehouseRegisterItem.do?currentPage=${requestScope.RegisterItemPager.previousPage}&goodsShelve.warehouseRegion.warehouse.warehouseId=${wid}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-left"></i></a>
+                                                        </li>
+                                                        <c:forEach var="bar"
+                                                                   items="${requestScope.RegisterItemPager.pageBar}">
+                                                            <li <c:if
+                                                                    test="${bar==requestScope.RegisterItemPager.currentPage}"> class="active" </c:if> >
+                                                                <a href="${pageContext.request.contextPath}/getWarehouseRegisterItem.do?currentPage=${bar}&goodsShelve.warehouseRegion.warehouse.warehouseId=${wid}">${bar}</a>
+                                                            </li>
+                                                        </c:forEach>
+                                                            <%--<li class="disabled"><a href="#">1</a></li>--%>
+                                                            <%--<li class="active"><a href="#">2</a></li>--%>
+                                                        <li <c:if
+                                                                test="${requestScope.RegisterItemPager.currentPage>=requestScope.RegisterItemPager.totalPage}"> class="disabled" </c:if>>
+                                                            <a <%
+                                                                if (pager.getCurrentPage() < pager.getTotalPage()) {%>
+                                                                    href="${pageContext.request.contextPath}/getWarehouseRegisterItem.do?currentPage=${requestScope.RegisterItemPager.nextPage}&goodsShelve.warehouseRegion.warehouse.warehouseId=${wid}"
+                                                                    <%
+                                                                    } else {%>
+                                                                    href="javascript:void(0);"
+                                                                    <%
+                                                                        }
+                                                                    %>>
+                                                                <i class="fa fa-angle-right"></i></a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </c:if>
                             </div>
                         </div>
                     </div>

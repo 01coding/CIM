@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lenovo
@@ -30,7 +31,7 @@
     <!-- Bootstrap Datetimepicker CSS -->
     <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
           rel="stylesheet" type="text/css"/>
-
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!--Preloader-->
@@ -299,7 +300,8 @@
                                 <div class="sl-item">
                                     <a href="javascript:void(0)">
                                         <div class="sl-avatar">
-                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg" alt="avatar"/>
+                                            <img class="img-responsive" src="../../../dist/img/avatar.jpg"
+                                                 alt="avatar"/>
                                         </div>
                                         <div class="sl-content">
                                             <span class="inline-block capitalize-font  pull-left truncate head-notifications">Sandy Doe</span>
@@ -336,9 +338,10 @@
                     </ul>
                 </li>
                 <li class="dropdown auth-drp">
-                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img src="../../../dist/img/user1.png"
-                                                                                         alt="user_auth"
-                                                                                         class="user-auth-img img-circle"/><span
+                    <a href="#" class="dropdown-toggle pr-0" data-toggle="dropdown"><img
+                            src="../../../dist/img/user1.png"
+                            alt="user_auth"
+                            class="user-auth-img img-circle"/><span
                             class="user-online-status"></span></a>
                     <ul class="dropdown-menu user-auth-dropdown" data-dropdown-in="flipInX"
                         data-dropdown-out="flipOutX">
@@ -391,7 +394,8 @@
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#dashboard_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span class="right-nav-text">Dashboard</span>
+                    <div class="pull-left"><i class="zmdi zmdi-landscape mr-20"></i><span
+                            class="right-nav-text">Dashboard</span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                     <div class="clearfix"></div>
@@ -631,7 +635,8 @@
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#chart_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span class="right-nav-text">Charts </span>
+                    <div class="pull-left"><i class="zmdi zmdi-chart-donut mr-20"></i><span
+                            class="right-nav-text">Charts </span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                     <div class="clearfix"></div>
@@ -662,7 +667,8 @@
             </li>
             <li>
                 <a href="javascript:void(0);" data-toggle="collapse" data-target="#table_dr">
-                    <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span class="right-nav-text">Tables</span>
+                    <div class="pull-left"><i class="zmdi zmdi-format-size mr-20"></i><span
+                            class="right-nav-text">Tables</span>
                     </div>
                     <div class="pull-right"><i class="zmdi zmdi-caret-down"></i></div>
                     <div class="clearfix"></div>
@@ -678,11 +684,13 @@
                         <a href="data-table.html">Data Table</a>
                     </li>
                     <li>
-                        <a href="export-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>Export
+                        <a href="export-table.html"><span class="pull-right"><span
+                                class="label label-danger">New</span></span>Export
                             Table</a>
                     </li>
                     <li>
-                        <a href="responsive-data-table.html"><span class="pull-right"><span class="label label-danger">New</span></span>RSPV
+                        <a href="responsive-data-table.html"><span class="pull-right"><span
+                                class="label label-danger">New</span></span>RSPV
                             DataTable</a>
                     </li>
                     <li>
@@ -825,7 +833,8 @@
             </li>
             <li>
                 <a href="documentation.html">
-                    <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span class="right-nav-text">documentation</span>
+                    <div class="pull-left"><i class="zmdi zmdi-book mr-20"></i><span
+                            class="right-nav-text">documentation</span>
                     </div>
                     <div class="clearfix"></div>
                 </a>
@@ -905,7 +914,8 @@
                                                     <div class="chat-body">
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Clay Masse</span>
@@ -953,7 +963,8 @@
                                                         </a>
                                                         <a href="javascript:void(0)">
                                                             <div class="chat-data">
-                                                                <img class="user-img img-circle" src="../../../dist/img/user.png"
+                                                                <img class="user-img img-circle"
+                                                                     src="../../../dist/img/user.png"
                                                                      alt="user"/>
                                                                 <div class="user-data">
                                                                     <span class="name block capitalize-font">Ezequiel Merideth</span>
@@ -1133,7 +1144,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1149,7 +1161,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1165,7 +1178,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user2.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user2.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1181,7 +1195,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user3.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user3.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1197,7 +1212,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item unread-message">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user4.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user4.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1213,7 +1229,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1229,7 +1246,8 @@
                                         <a href="javascript:void(0)">
                                             <div class="sl-item">
                                                 <div class="sl-avatar avatar avatar-sm avatar-circle">
-                                                    <img class="img-responsive img-circle" src="../../../dist/img/user1.png"
+                                                    <img class="img-responsive img-circle"
+                                                         src="../../../dist/img/user1.png"
                                                          alt="avatar"/>
                                                 </div>
                                                 <div class="sl-content">
@@ -1330,95 +1348,114 @@
     <!-- Main Content -->
     <div class="page-wrapper">
         <div class="container-fluid">
+            <!-- Title -->
+            <div class="row heading-bg">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h5 class="txt-dark">add-products</h5>
+                </div>
+                <!-- Breadcrumb -->
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                    <ol class="breadcrumb">
+                        <li><a href="index.html">Dashboard</a></li>
+                        <li><a href="#"><span>e-commerce</span></a></li>
+                        <li class="active"><span>add-products</span></li>
+                    </ol>
+                </div>
+                <!-- /Breadcrumb -->
+            </div>
+            <!-- /Title -->
+
             <!-- Row -->
             <div class="row" style="text-align:center">
                 <div class="col-sm-12">
-
-
                     <div class="panel panel-default card-view ">
                         <div class="panel-wrapper collapse in">
-
                             <div class="panel-body ">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <input id="wid" type="hidden" value="${whid}"/>
+                                    <form action="" id="fmm">
                                         <h6 class="txt-dark capitalize-font"><i
                                                 class="zmdi zmdi-calendar-note mr-10"></i>物料出库记录</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="col-sm-12">
                                             <div class="row col-sm-12">
-                                                <div class="form-group col-sm-2">
-                                                    <input type="text" class="form-control" placeholder="入库人">
+                                                <div class="form-group col-sm-3">
+                                                    <select class="form-control select2 userId select2-hidden-accessible"
+                                                            tabindex="-1" aria-hidden="true" name="materiel.materielId">
+                                                        <option selected="selected" value="0">请选择出库人</option>
+                                                        <c:forEach items="${outUser}" var="u">
+                                                            <option value="${u.userId}">
+                                                                    ${u.userName}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
                                             <div class="row col-sm-12 tempp">
-                                                <div class="form-group col-sm-3">
-                                                    <select class="form-control select2 select2-hidden-accessible"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option value="AZ" selected="selected"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">物料</font></font>
-                                                        </option>
-                                                        <option value="CO"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">科罗拉多州</font></font>
-                                                        </option>
+                                                <div class="form-group col-sm-2">
+                                                    <select class="form-control select2 mb select2-hidden-accessible"
+                                                            tabindex="-1" aria-hidden="true" name="materiel.materielId">
+                                                        <option selected="selected" value="0">请选择物料</option>
+                                                        <c:forEach items="${outMb}" var="mb">
+                                                            <option value="${mb.materielTypeLevelBId}">
+                                                                    ${mb.materielTypeLevelBName}
+                                                            </option>
+                                                        </c:forEach>
                                                     </select>
-
                                                 </div>
-                                                <div class="form-group col-sm-3">
-                                                    <select class="form-control select2 select2-hidden-accessible"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option value="AZ" selected="selected"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">区域</font></font>
-                                                        </option>
-                                                        <option value="CO"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">科罗拉多州</font></font>
+                                                <div class="form-group col-sm-2">
+                                                    <select class="form-control select2 select2-hidden-accessible selectmb"
+                                                            tabindex="-1" aria-hidden="true" placeholder="请选择区域">
+                                                        <option selected="selected" value="0">
+                                                            待选择
                                                         </option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2">
-                                                    <select class="form-control select2 select2-hidden-accessible"
-                                                            tabindex="-1" aria-hidden="true">
-                                                        <option value="AZ" selected="selected"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">区域</font></font>
-                                                        </option>
-                                                        <option value="CO"><font
-                                                                style="vertical-align: inherit;"><font
-                                                                style="vertical-align: inherit;">科罗拉多州</font></font>
+                                                    <select class="form-control select2 select2-hidden-accessible materielId"
+                                                            tabindex="-1" aria-hidden="true" placeholder="三级物料">
+                                                        <option selected="selected" value="0">
+                                                            待选择
                                                         </option>
                                                     </select>
                                                 </div>
-
+                                                <div class="form-group col-sm-2">
+                                                    <select class="form-control select2 select2-hidden-accessible selectgod goodsShelveId"
+                                                            tabindex="-1" aria-hidden="true" placeholder="货架">
+                                                        <option selected="selected" value="0">
+                                                            待选择
+                                                        </option>
+                                                    </select>
+                                                </div>
                                                 <div class="form-group col-sm-2">
                                                     <div class="col-sm-11">
-                                                        <input type="text" class="form-control col-sm-2"
+                                                        <input type="text" class="form-control col-sm-2 materielNumber"
                                                                placeholder="物料数量">
                                                     </div>
                                                 </div>
-                                                <div class=" col-sm-2">
-                                                    <div class="col-sm-8"  style="Float:left">
-                                                        <label for="checkbox06">可取数量：0</label>
-                                                    </div>
+                                                <div class="from-grop col-sm-2 hh">
+                                                    <h7 class="txt-dark capitalize-font ">可取数量：</h7>
+                                                    <hr class="light-grey-hr"/>
                                                 </div>
                                             </div>
                                             <div class="col-sm-3" id="t3">
-                                                <button class="btn btn-default btn-icon-anim btn-circle tt" type="button" id="t1"><i class="fa ti-plus "  title="加一项"></i></button>
-                                                <button class="btn btn-default btn-icon-anim btn-circle ff" type="button" id="t2"><i class="fa fa-minus "  title="减一项"></i></button>
+                                                <button class="btn btn-default btn-icon-anim btn-circle tt"
+                                                        type="button" id="t1"><i class="fa ti-plus " title="加一项"></i>
+                                                </button>
+                                                <button class="btn btn-default btn-icon-anim btn-circle ee"
+                                                        type="button" id="t2"><i class="fa fa-minus " title="减一项"></i>
+                                                </button>
                                             </div>
-
                                         </div>
                                         <div class="col-sm-3">
-
                                         </div>
                                         <div class="row form-group col-sm-12">
                                             <div class="col-lg-9"></div>
                                             <div class="form-actions col-lg-3">
-                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
-                                                        class="fa fa-check"></i> <span>save</span></button>
-                                                <button type="button" class="btn btn-warning pull-left">Cancel</button>
+                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left sizs"
+                                                        type="button"><i
+                                                        class="fa fa-check"></i> <span>保存</span></button>
+                                                <button type="button" class="btn btn-warning pull-left">取消</button>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -1431,7 +1468,6 @@
             </div>
             <!-- /Row -->
         </div>
-
         <!-- Footer -->
         <footer class="footer container-fluid pl-30 pr-30">
             <div class="row">
@@ -1441,10 +1477,8 @@
             </div>
         </footer>
         <!-- /Footer -->
-
     </div>
     <!-- /Main Content -->
-
 </div>
 <!-- /#wrapper -->
 
@@ -1453,31 +1487,6 @@
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-<script type="text/javascript">
-    var i = 2;
-    $(function () {
-        //点击-号
-        $("#t2").click(function () {
-            var size = $(".tempp").size();
-            if (size == 1) {
-                alert("至少一个！")
-            } else {
-                $("#t3").prev().remove();
-            }
-
-        })
-        //点击+号
-        $("#t1").click(function () {
-            //出现的新行克隆一个
-            var n = $(".tempp").eq(0).clone(true);
-            n.show();
-            n.prop("id", "");
-            n.find("input").prop("name", "1")
-
-            $("#t3").before(n);
-        })
-    })
-</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1514,11 +1523,208 @@
 
 <!-- Treeview JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
-
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 <!-- Treeview Init JavaScript -->
 <script src="../../../dist/js/treeview-data.js"></script>
+<script type="text/javascript">
+    var i = 2;
+    $(function () {
+        //点击-号
+        $("#t2").click(function () {
+            var size = $(".tempp").size();
+            if (size == 1) {
+                alert("至少一个！")
+            } else {
+                $("#t3").prev().remove();
+            }
 
+        })
+        //点击+号
+        $("#t1").click(function () {
+            //出现的新行克隆一个
+            var n = $(".tempp").eq(0).clone(false);
+            $(n).find("select").eq(1).html("");
+            $(n).find("select").eq(2).html("");
+            $(n).find("select").eq(3).html("");
+            n.show();
+            $("#t3").before(n);
+        })
+        var sjh;
+        var shul;
+        var quyu;
+        var huojia;
+        ////加载对应仓库区域
+        $("body").on("change", ".mb", function () {
+            var qu = $(this).parents(".tempp").find("select");
+            sjh = qu.eq(2);
+            quyu = qu.eq(1);
+            huojia = qu.eq(3);
+            shul = $(this).parents(".tempp").find(".hh").eq(0);
+            var rid = $(this).val();
+            var hid = $("#wid").val();
+            $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>待选择</font></font> </option>");
+            if (rid == 0) {
+                $(qu).eq(1).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择区域</font></font> </option>");
+                $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择物料</font></font> </option>");
+                $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择货架</font></font> </option>");
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "${pageContext.request.contextPath}/getQuyu.do?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            var daa = $(data)
+                            var str = "";
+                            $.each(daa, function (i, imt) {
+                                str += "<option value='" + imt.warehouseRegionId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.warehouseRegionNo + "</font></font> </option>";
+                            });
+                            $(qu).eq(1).html(str);
 
+                            $.ajax({
+                                type: "post",
+                                url: "${pageContext.request.contextPath}/getMateriel.do?materielTypeLevelB.materielTypeLevelBId=" + rid,
+                                cache: false,
+                                dataType: "json",
+                                success: function (data) {
+                                    str = "";
+                                    if (data != "") {
+                                        var dd = $(data)
+                                        $.each(dd, function (i, imt) {
+                                            str += "<option value='" + imt.materielId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.materielName + "</font></font> </option>";
+                                        });
+                                        $(qu).eq(2).html(str)
+                                        //加载对应货架
+                                        $.ajax({
+                                            type: "post",
+                                            url: "${pageContext.request.contextPath}/selectgods.do?warehouseRegion.warehouseRegionId=" + daa[0].warehouseRegionId + "&materiel.materielId=" + dd[0].materielId,
+                                            cache: false,
+                                            dataType: "json",
+                                            success: function (data) {
+                                                str = "";
+                                                if (data != "") {
+                                                    var dd = $(data)
+                                                    $.each(dd, function (i, imt) {
+                                                        str += "<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
+                                                    });
+                                                    $(qu).eq(3).html(str)
+                                                    shul.html("<h7 class=\"txt-dark capitalize-font \">可取数量："+dd[0].materielNumber+"</h7>\n" +
+                                                        "                                                    <hr class=\"light-grey-hr\"/>")
+                                                } else {
+                                                    $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                                                }
+                                            }, error: function () {
+                                                alert("系统异常，请稍后重试！");
+                                            }
+                                        });
+                                    } else {
+                                        $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无三级物料</font></font> </option>");
+                                    }
+                                }, error: function () {
+                                    alert("系统异常，请稍后重试！");
+                                }
+                            });
+                        } else {
+                            $(qu).eq(1).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该区域</font></font> </option>");
+                            $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该物料</font></font> </option>");
+                            $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                        }
+                    }, error: function () {
+                        alert("系统异常，请稍后重试！");
+                    }
+                })
+            }
+        });
+        $("body").on("change", ".materielId", function () {
+            var ii = sjh.val();
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/selectgods.do?warehouseRegion.warehouseRegionId=" + quyu.val() + "&materiel.materielId=" + ii,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    str = "";
+                    if (data != "") {
+                        var dd = $(data)
+                        $.each(dd, function (i, imt) {
+                            str += "<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
+                        });
+                        huojia.html(str);
+                        shul.html("<h7 class=\"txt-dark capitalize-font \">可取数量："+dd[0].materielNumber+"</h7>\n" +
+                            "                                                    <hr class=\"light-grey-hr\"/>")
+                    } else {
+                        huojia.html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                    }
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        });
+        //添加
+        $(".sizs").click(function () {
+            swal({
+                title: "你确定要添加入库吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    var WarehouseOutRegisterItems = new Array();
+                    $(".tempp").each(function (aa, bb) {
+                        WarehouseOutRegisterItems.push({
+                            materiel: {materielId: $(bb).find(".materielId").val()},
+                            goodsShelve: {goodsShelveId: $(bb).find(".goodsShelveId").val()},
+                            materielNumber: $(bb).find(".materielNumber").val()
+                        })
+                    });
+                    WarehouseOutRegisterItems = JSON.stringify(WarehouseOutRegisterItems);
+
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/aadWarehouseOutRegisterItem.do",
+                        data: {
+                            "WarehouseOutRegisterItems": WarehouseOutRegisterItems,
+                            "userId": $(".userId").val()
+                        },
+                        dataType: "json",
+                        success:
+                            function (data) {
+
+                                if (data != "") {
+                                    swal("添加成功", "3秒后返回入库记录页面！", "success");
+                                    var i = 3;
+
+                                    function remainTime() {
+                                        if (i == 0) {
+                                            location.href = '/getWarehouseRegisterItem.do?goodsShelve.warehouseRegion.warehouse.warehouseId=' + $("#wid").val();
+                                        }
+                                        document.getElementById('endtime').innerHTML = i--;
+                                        setTimeout("remainTime()", 1000);
+                                    }
+
+                                    remainTime();
+                                } else {
+                                    swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                            }
+                    })
+                }
+            });
+
+        })
+
+        function IFnull() {
+
+        }
+    })
+</script>
 <!-- Form Picker Init JavaScript -->
 <script src="../../../dist/js/form-picker-data.js"></script>
 

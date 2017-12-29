@@ -4,7 +4,7 @@ package team.ruike.cim.service.impl;
 import org.springframework.stereotype.Service;
 import team.ruike.cim.dao.WarehouseRegionDao;
 import team.ruike.cim.pojo.WarehouseRegion;
-import team.ruike.cim.service.WareHouSereGIonService;
+import team.ruike.cim.service.WarehouseRegionService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -12,8 +12,8 @@ import javax.annotation.Resource;
 /**
  * 物料区域
  */
-@Service("warehouseregionServer")
-public class WareHouSereGIonServerImpl implements WareHouSereGIonService {
+@Service("warehouseRegionService")
+public class WarehouseRegionServiceImpl implements WarehouseRegionService {
     @Resource
     private WarehouseRegionDao warehouseRegionDao;
 
@@ -25,6 +25,7 @@ public class WareHouSereGIonServerImpl implements WareHouSereGIonService {
      */
     public void getWareHouSereGIonServer(WarehouseRegion warehouseRegion, Pager<WarehouseRegion> pager) {
         pager.setTotalRecord(warehouseRegionDao.selectCount(warehouseRegion));
+        pager.setPageSize(3);
         pager.setList(warehouseRegionDao.select(warehouseRegion, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }
 

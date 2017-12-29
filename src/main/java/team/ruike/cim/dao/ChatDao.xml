@@ -19,4 +19,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <insert id="add" parameterType="chat">
         INSERT INTO chat VALUES(DEFAULT,#{user.userId},#{message},0,#{date})
     </insert>
+
+    <select id="selectChatByNow" resultMap="chatMap">
+        SELECT * FROM chat WHERE status=0  and date= DATE_FORMAT(now(),'%Y-%m-%d')
+    </select>
+
 </mapper>

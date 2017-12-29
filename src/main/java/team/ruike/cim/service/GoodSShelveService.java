@@ -26,5 +26,18 @@ public interface GoodSShelveService {
      */
      int updGoods_shelve(GoodsShelve goodsShelve);
 
+    /**
+     * 根据区域id 查询货架
+     * @param warehouseRegionId
+     * @return
+     */
      List<GoodsShelve> selectByWarehouseRegionId(Integer warehouseRegionId);
+
+    /**
+     * 根据货架id 查询对应货架
+     * @param goodid
+     * @return
+     */
+    GoodsShelve selectByGoodid(Integer goodid);
+
 }

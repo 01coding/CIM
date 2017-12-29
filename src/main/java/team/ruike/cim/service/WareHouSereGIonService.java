@@ -3,7 +3,7 @@ package team.ruike.cim.service;
 import team.ruike.cim.pojo.WarehouseRegion;
 import team.ruike.cim.util.Pager;
 
-public interface WareHouSereGIonService {
+public interface WarehouseRegionService {
     /**
      * 分页查询所有区域
      * @param warehouseRegion

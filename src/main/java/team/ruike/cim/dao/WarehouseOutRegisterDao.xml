@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
             AND  user_id=#{warehouseOutRegister.user.userId}
         </if>
     </sql>
-    <insert id="add" parameterType="warehouseOutRegister">
+    <insert id="add" parameterType="warehouseOutRegister" useGeneratedKeys="true" keyProperty="warehouseOutRegisterId">
       INSERT  INTO  warehouse_out_register VALUES(DEFAULT ,#{warehouseOutRegisterEndDate},#{user.userId},0)
     </insert>
     <update id="update" parameterType="warehouseOutRegister">

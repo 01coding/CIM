@@ -96,5 +96,9 @@
         WHERE materiel_number IS NULL
               AND warehouse_region_id = #{warehouseRegionId}
     </select>
-
+    <select id="selectgods" resultMap="goodsShelveMap">
+        SELECT *
+        FROM goods_shelve
+        WHERE materiel_number >0 AND materiel_id=#{materiel.materielId} AND warehouse_region_id = #{warehouseRegion.warehouseRegionId}
+    </select>
 </mapper>

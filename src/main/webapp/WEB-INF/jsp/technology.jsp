@@ -1360,7 +1360,7 @@ User user=(User)session.getAttribute("u");
                 var thisUser="<%=user.getUserId()%>";
                     for(var i in data){
                          /*判断不是当前用户的消息*/
-                         if(data[i].user.userId!=thisUser.userId){
+                         if(data[i].user.userId!=thisUser){
                               message+="<li class='friend'>\n" +
                                  "<div class='friend-msg-wrap'>\n" +
                                  "<img class='user-img img-circle block pull-left'  src='dist/img/user.png' alt='user'/>\n" +

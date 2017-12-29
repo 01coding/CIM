@@ -25,9 +25,8 @@ public class ChatController {
     @RequestMapping("chat.do")
     @ResponseBody
     public String chat() {
-        List<Chat> chatList = chatBranchService.selectAllChat();
-        String ch=JSON.toJSONString(chatList);
-        return ch;
+        List<Chat> chatList = chatBranchService.selectChatByNow();
+        return JSON.toJSONString(chatList);
     }
 
 

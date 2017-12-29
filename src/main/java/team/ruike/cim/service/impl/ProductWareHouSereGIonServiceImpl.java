@@ -9,7 +9,7 @@ import team.ruike.cim.util.Pager;
 import javax.annotation.Resource;
 
 /**
- * 成品仓库区域业务实现
+ * 成品区域业务实现
  */
 @Service("productWareHouSereGIonService")
 public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIonService {
@@ -25,7 +25,7 @@ public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIon
     public int addProductWareHouSereGIon(ProductWarehouseRegion productWarehouseRegion) {
         if (productWarehouseRegion.getProductWarehouseRegionNo() != null && productWarehouseRegion.getProductWarehouseRegionNo() != ""
                 && productWarehouseRegion.getMenuType() != null && productWarehouseRegion.getMenuType().getMenuTypeId() > 0
-                && productWarehouseRegion.getProductWarehouse() != null && productWarehouseRegion.getProductWarehouse().getProductWarehouseId() > 1) {
+                && productWarehouseRegion.getProductWarehouse() != null && productWarehouseRegion.getProductWarehouse().getProductWarehouseId() > 0) {
             return productWarehouseRegionDao.add(productWarehouseRegion);
         }
         return 0;
@@ -48,7 +48,7 @@ public class ProductWareHouSereGIonServiceImpl implements ProductWareHouSereGIon
      * @param pager
      */
     public void getProductWareHouSereGIon(ProductWarehouseRegion productWarehouseRegion, Pager<ProductWarehouseRegion> pager) {
-        pager.setPageSize(6);
+        pager.setPageSize(3);
         pager.setTotalRecord(productWarehouseRegionDao.selectCount(productWarehouseRegion));
         pager.setList(productWarehouseRegionDao.select(productWarehouseRegion, (pager.getCurrentPage() - 1) * pager.getPageSize(), pager.getPageSize()));
     }

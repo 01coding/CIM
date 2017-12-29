@@ -31,7 +31,7 @@
     <!-- Bootstrap Datetimepicker CSS -->
     <link href="../../../vendors/bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css"
           rel="stylesheet" type="text/css"/>
-
+    <link href="../../../vendors/bower_components/sweetalert/dist/sweetalert.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 <!--Preloader-->
@@ -1372,25 +1372,37 @@
                         <div class="panel-wrapper collapse in">
                             <div class="panel-body ">
                                 <div class="form-wrap">
-                                    <form action="#">
+                                    <input id="wid" type="hidden" value="${whid}"/>
+                                    <form action="" id="fmm">
                                         <h6 class="txt-dark capitalize-font"><i
                                                 class="zmdi zmdi-calendar-note mr-10"></i>物料入库记录</h6>
                                         <hr class="light-grey-hr"/>
                                         <div class="col-sm-12">
                                             <div class="row col-sm-12">
                                                 <div class="form-group col-sm-3">
-                                                    <input type="text" class="form-control" placeholder="入库人" name="">
+                                                    <select class="form-control select2 userId select2-hidden-accessible"
+                                                            tabindex="-1" aria-hidden="true" name="materiel.materielId">
+                                                        <option selected="selected" value="0">请选择入库人</option>
+                                                        <c:forEach items="${uu}" var="u">
+                                                            <option value="${u.userId}">
+                                                                    ${u.userName}
+                                                            </option>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                                 <div class="form-group col-sm-3">
-                                                <div class="input-group date" id="datetimepicker1" style="width: 250px;">
-                                                    <input type="date" class="dtimed"style="width: 250px;height: 40px" name="temporaryOrderStartDate" pattern="yyyy-MM-dd" placeholder="计划采购时间"/>
-
-                                                </div>
+                                                    <div class="input-group date" id="datetimepicker1"
+                                                         style="width: 250px;">
+                                                        <input type="date" class="dtimed"
+                                                               style="width: 250px;height: 40px"
+                                                               name="temporaryOrderStartDate" pattern="yyyy-MM-dd"
+                                                               placeholder="计划采购时间"/>
+                                                    </div>
                                                 </div>
                                                 <div class="form-group col-sm-3">
-                                                    <select class="form-control select2 select2-hidden-accessible selectmb"
-                                                            tabindex="-1" aria-hidden="true" placeholder="每日采购计划编号" name="">
-                                                        <option selected="selected">
+                                                    <select class="form-control select2 select2-hidden-accessible Plan everydayPurchasingPlan"
+                                                            tabindex="-1" aria-hidden="true" placeholder="每日采购计划编号">
+                                                        <option selected="selected" value="0">
                                                             每日采购计划编号
                                                         </option>
                                                     </select>
@@ -1398,7 +1410,6 @@
                                             </div>
                                             <div class="row col-sm-12 tempp">
                                                 <div class="form-group col-sm-2">
-                                                    <input id="wid" type="hidden" value="${whid}"/>
                                                     <select class="form-control select2 mb select2-hidden-accessible"
                                                             tabindex="-1" aria-hidden="true" name="materiel.materielId">
                                                         <option selected="selected" value="0">请选择物料</option>
@@ -1411,23 +1422,32 @@
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <select class="form-control select2 select2-hidden-accessible selectmb"
-                                                            tabindex="-1" aria-hidden="true" placeholder="请选择区域" name="">
+                                                            tabindex="-1" aria-hidden="true" placeholder="请选择区域">
+                                                        <option selected="selected" value="0">
+                                                            待选择
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2">
-                                                    <select class="form-control select2 select2-hidden-accessible selectmb"
-                                                            tabindex="-1" aria-hidden="true" placeholder="三级物料" name="materiel.materielId">
+                                                    <select class="form-control select2 select2-hidden-accessible materielId"
+                                                            tabindex="-1" aria-hidden="true" placeholder="三级物料">
+                                                        <option selected="selected" value="0">
+                                                            待选择
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2">
-                                                    <select class="form-control select2 select2-hidden-accessible selectgod"
-                                                            tabindex="-1" aria-hidden="true" placeholder="货架" name="goodsShelve.goodsShelveId">
+                                                    <select class="form-control select2 select2-hidden-accessible selectgod goodsShelveId"
+                                                            tabindex="-1" aria-hidden="true" placeholder="货架">
+                                                        <option selected="selected" value="0">
+                                                            待选择
+                                                        </option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-sm-2">
                                                     <div class="col-sm-11">
-                                                        <input type="text" class="form-control col-sm-2"
-                                                               placeholder="物料数量" name="">
+                                                        <input type="text" class="form-control col-sm-2 materielNumber"
+                                                               placeholder="物料数量">
                                                     </div>
                                                 </div>
                                             </div>
@@ -1445,9 +1465,10 @@
                                         <div class="row form-group col-sm-12">
                                             <div class="col-lg-9"></div>
                                             <div class="form-actions col-lg-3">
-                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left"><i
-                                                        class="fa fa-check"></i> <span>save</span></button>
-                                                <button type="button" class="btn btn-warning pull-left">Cancel</button>
+                                                <button class="btn btn-success btn-icon left-icon mr-10 pull-left sizs"
+                                                        type="button"><i
+                                                        class="fa fa-check"></i> <span>保存</span></button>
+                                                <button type="button" class="btn btn-warning pull-left">取消</button>
                                                 <div class="clearfix"></div>
                                             </div>
                                         </div>
@@ -1481,129 +1502,6 @@
 <!-- jQuery -->
 <script src="../../../vendors/bower_components/jquery/dist/jquery.min.js"></script>
 
-<script type="text/javascript">
-    var i = 2;
-    $(function () {
-        $(".dtimed").change(function () {
-               var time= $(".dtimed").val();
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + daa[0].warehouseRegionId,
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    str = "";
-                    if (data != "") {
-                        var dd = $(data)
-                        $.each(dd, function (i, imt) {
-                            str+="<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
-                        });
-                        $(qu).eq(3).html(str)
-                    } else {
-                        $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
-                    }
-                }, error: function () {
-                    alert("系统异常，请稍后重试！");
-                }
-            });
-        })
-
-        //点击-号
-        $("#t2").click(function () {
-            var size = $(".tempp").size();
-            if (size == 1) {
-                alert("至少一个！")
-            } else {
-                $("#t3").prev().remove();
-            }
-
-        })
-        //点击+号
-        $("#t1").click(function () {
-            //出现的新行克隆一个
-            var n = $(".tempp").eq(0).clone(false);
-            $(n).find("select").eq(1).html("");
-            $(n).find("select").eq(2).html("");
-            $(n).find("select").eq(3).html("");
-            n.show();
-            n.prop("id", "");
-            n.find("input").prop("name", "1")
-
-            $("#t3").before(n);
-        })
-        ////加载对应仓库区域
-        $("body").on("change",".mb",function () {
-            var qu= $(this).parents(".tempp").find("select");
-            var rid = $(this).val();
-            var hid = $("#wid").val();
-            $.ajax({
-                type: "post",
-                url: "${pageContext.request.contextPath}/getQuyu.do?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
-                cache: false,
-                dataType: "json",
-                success: function (data) {
-                    if (data != "") {
-                        var daa = $(data)
-                        var str = "";
-                        $.each(daa, function (i, imt) {
-                            str+="<option value='" + imt.warehouseRegionId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.warehouseRegionNo + "</font></font> </option>";
-                        });
-                        $(qu).eq(1).html(str);
-
-                        $.ajax({
-                            type: "post",
-                            url: "${pageContext.request.contextPath}/getMateriel.do?materielTypeLevelB.materielTypeLevelBId=" +rid,
-                            cache: false,
-                            dataType: "json",
-                            success: function (data) {
-                                str = "";
-                                if (data != "") {
-                                    var dd = $(data)
-                                    $.each(dd, function (i, imt) {
-                                        str+="<option value='" + imt.materielId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.materielName + "</font></font> </option>";
-                                    });
-                                    $(qu).eq(2).html(str)
-                                } else {
-                                    $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无三级物料</font></font> </option>");
-                                }
-                            }, error: function () {
-                                alert("系统异常，请稍后重试！");
-                            }
-                        });
-                        //加载对应货架
-                        $.ajax({
-                            type: "post",
-                            url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + daa[0].warehouseRegionId,
-                            cache: false,
-                            dataType: "json",
-                            success: function (data) {
-                                str = "";
-                                if (data != "") {
-                                    var dd = $(data)
-                                    $.each(dd, function (i, imt) {
-                                        str+="<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
-                                    });
-                                    $(qu).eq(3).html(str)
-                                } else {
-                                    $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
-                                }
-                            }, error: function () {
-                                alert("系统异常，请稍后重试！");
-                            }
-                        });
-
-                    } else {
-                        $(qu).eq(1).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该区域</font></font> </option>");
-                        $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该物料</font></font> </option>");
-                        $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
-                    }
-                }, error: function () {
-                    alert("系统异常，请稍后重试！");
-                }
-            })
-        })
-    })
-</script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -1640,11 +1538,207 @@
 
 <!-- Treeview JavaScript -->
 <script src="../../../vendors/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
-
+<script src="../../../vendors/bower_components/sweetalert/dist/sweetalert.min.js"></script>
+<script src="../../../dist/js/sweetalert-data.js"></script>
 <!-- Treeview Init JavaScript -->
 <script src="../../../dist/js/treeview-data.js"></script>
+<script type="text/javascript">
+    var i = 2;
+    $(function () {
+        $(".dtimed").change(function () {
+            var timee = $(".dtimed").val();
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/getPlan.do?dd=" + timee,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    str = "";
+                    if (data != "") {
+                        var dd = $(data)
+                        $.each(dd, function (i, imt) {
+                            str += "<option value='" + imt.everydayPurchasingPlanId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.everydayPurchasingPlanNo + "</font></font> </option>";
+                        });
+                        $(".Plan").html(str)
+                    } else {
+                        $(".Plan").html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无采购项</font></font> </option>");
+                    }
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        })
 
+        //点击-号
+        $("#t2").click(function () {
+            var size = $(".tempp").size();
+            if (size == 1) {
+                alert("至少一个！")
+            } else {
+                $("#t3").prev().remove();
+            }
 
+        })
+        //点击+号
+        $("#t1").click(function () {
+            //出现的新行克隆一个
+            var n = $(".tempp").eq(0).clone(false);
+            $(n).find("select").eq(1).html("");
+            $(n).find("select").eq(2).html("");
+            $(n).find("select").eq(3).html("");
+            n.show();
+            $("#t3").before(n);
+        })
+        ////加载对应仓库区域
+        $("body").on("change", ".mb", function () {
+            var qu = $(this).parents(".tempp").find("select");
+            var rid = $(this).val();
+            var hid = $("#wid").val();
+            if (rid == 0) {
+                $(qu).eq(1).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择区域</font></font> </option>");
+                $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择物料</font></font> </option>");
+                $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>请选择货架</font></font> </option>");
+            } else {
+                $.ajax({
+                    type: "post",
+                    url: "${pageContext.request.contextPath}/getQuyu.do?materielTypeLevelB.materielTypeLevelBId=" + rid + "&Warehouse.warehouseId=" + hid,
+                    cache: false,
+                    dataType: "json",
+                    success: function (data) {
+                        if (data != "") {
+                            var daa = $(data)
+                            var str = "";
+                            $.each(daa, function (i, imt) {
+                                str += "<option value='" + imt.warehouseRegionId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.warehouseRegionNo + "</font></font> </option>";
+                            });
+                            $(qu).eq(1).html(str);
+
+                            $.ajax({
+                                type: "post",
+                                url: "${pageContext.request.contextPath}/getMateriel.do?materielTypeLevelB.materielTypeLevelBId=" + rid,
+                                cache: false,
+                                dataType: "json",
+                                success: function (data) {
+                                    str = "";
+                                    if (data != "") {
+                                        var dd = $(data)
+                                        $.each(dd, function (i, imt) {
+                                            str += "<option value='" + imt.materielId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.materielName + "</font></font> </option>";
+                                        });
+                                        $(qu).eq(2).html(str)
+                                    } else {
+                                        $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无三级物料</font></font> </option>");
+                                    }
+                                }, error: function () {
+                                    alert("系统异常，请稍后重试！");
+                                }
+                            });
+                            //加载对应货架
+                            $.ajax({
+                                type: "post",
+                                url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + daa[0].warehouseRegionId,
+                                cache: false,
+                                dataType: "json",
+                                success: function (data) {
+                                    str = "";
+                                    if (data != "") {
+                                        var dd = $(data)
+                                        $.each(dd, function (i, imt) {
+                                            str += "<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
+                                        });
+                                        $(qu).eq(3).html(str)
+                                    } else {
+                                        $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                                    }
+                                }, error: function () {
+                                    alert("系统异常，请稍后重试！");
+                                }
+                            });
+
+                        } else {
+                            $(qu).eq(1).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该区域</font></font> </option>");
+                            $(qu).eq(2).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无该物料</font></font> </option>");
+                            $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                        }
+                    }, error: function () {
+                        alert("系统异常，请稍后重试！");
+                    }
+                })
+            }
+        })
+        $("body").on("change", ".selectmb", function () {
+            var qu = $(this).parents(".tempp").find("select");
+            var rid = $(this).val();
+            var hid = $("#wid").val();
+            //加载对应货架
+            $.ajax({
+                type: "post",
+                url: "${pageContext.request.contextPath}/gethuojia.do?warehouseRegionId=" + rid,
+                cache: false,
+                dataType: "json",
+                success: function (data) {
+                    str = "";
+                    if (data != "") {
+                        var dd = $(data)
+                        $.each(dd, function (i, imt) {
+                            str += "<option value='" + imt.goodsShelveId + "'><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>" + imt.goodsShelveNo + "</font></font> </option>";
+                        });
+                        $(qu).eq(3).html(str)
+                    } else {
+                        $(qu).eq(3).html("<option value=''><font style='vertical-align: inherit;'><fontstyle='vertical-align: inherit;'>暂无空闲货架</font></font> </option>");
+                    }
+                }, error: function () {
+                    alert("系统异常，请稍后重试！");
+                }
+            });
+        })
+        //添加
+        $(".sizs").click(function () {
+            swal({
+                title: "你确定要添加入库吗?",
+                text: "添加之后不可删除！!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#fec107",
+                confirmButtonText: "确定!",
+                cancelButtonText: "取消!",
+                closeOnConfirm: false,
+                closeOnCancel: true
+            }, function (isConfirm) {
+                if (isConfirm) {
+                    var WarehouseRegisterItems = new Array();
+                    $(".tempp").each(function (aa, bb) {
+                        WarehouseRegisterItems.push({
+                            materiel: {materielId: $(bb).find(".materielId").val()},
+                            goodsShelve: {goodsShelveId: $(bb).find(".goodsShelveId").val()},
+                            materielNumber: $(bb).find(".materielNumber").val()
+                        })
+                    });
+                    WarehouseRegisterItems = JSON.stringify(WarehouseRegisterItems);
+                    $.ajax({
+                        type: "post",
+                        url: "${pageContext.request.contextPath}/addWarehouseRegisterItem.do",
+                        data: {
+                            "WarehouseRegisterItems": WarehouseRegisterItems,
+                            "everydayPurchasingPlanNo": $(".everydayPurchasingPlan").val(),
+                            "userId": $(".userId").val()
+                        },
+                        dataType: "json",
+                        success:
+                            function (data) {
+                                if (data != "") {
+                                    swal("添加成功", "3秒后返回入库记录页面！", "success");
+                                }else {
+                                    swal("添加失败！！", "系统异常！请联系管理员处理！！", "error");
+                                }
+                            }
+                    })
+                }
+            });
+
+        });
+    })
+</script>
 <!-- Form Picker Init JavaScript -->
 <script src="../../../dist/js/form-picker-data.js"></script>
 

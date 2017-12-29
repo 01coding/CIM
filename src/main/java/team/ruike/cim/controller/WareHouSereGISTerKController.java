@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class WareHouSereGISTerKController {
     @Resource
-    private WareHouSereGISTerOutService wareHouSereGISTerService;
+    private WareHouSereGISTerOutService wareHouSereGISTerOutService;
     @RequestMapping("warehouseOutRegister.do")
     public String getWareHouSereGISTer(WarehouseOutRegister warehouseOutRegister, Pager<WarehouseOutRegister> pager,HttpServletRequest request){
-        wareHouSereGISTerService.getWarehouseOutRegister(warehouseOutRegister,pager);
+        wareHouSereGISTerOutService.getWarehouseOutRegister(warehouseOutRegister,pager);
         request.setAttribute("outRegisterPage",pager);
         return "warehouses/materiel_register";
     }
