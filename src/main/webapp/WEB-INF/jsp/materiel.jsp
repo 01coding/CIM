@@ -679,8 +679,14 @@
                                         <aside class="col-lg-2 col-md-4 pr-0">
                                             <!--选择门店 div-->
                                             <div class="mt-20 mb-20 ml-15 mr-15">
-                                                <a href="#myModal" data-toggle="modal" title="Compose"
-                                                   class="btn btn-danger btn-block">新增物料</a>
+                                                <c:forEach items="${sessionScope.u.roles}" var="ls">
+                                                    <c:forEach items="${ls.functions}" var="ps">
+                                                        <c:if test="${ps.functionId==7}">
+                                                            <a href="#myModal" data-toggle="modal" title="Compose"
+                                                               class="btn btn-danger btn-block">新增物料</a>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                </c:forEach>
                                                 <!-- Modal -->
                                                 <div aria-hidden="true" role="dialog" tabindex="-1" id="myModal"
                                                      class="modal fade" style="display: none;">

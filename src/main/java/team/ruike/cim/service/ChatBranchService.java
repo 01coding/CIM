@@ -14,5 +14,5 @@ public interface ChatBranchService {
      *
      * @return 记录
      */
-    List<Chat> selectAllChat();
+    List<Chat> selectChatByNow();
 }

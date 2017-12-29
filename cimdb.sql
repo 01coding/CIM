@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 28/12/2017 14:53:35
+ Date: 29/12/2017 13:52:33
 */
 
 SET NAMES utf8mb4;
@@ -30,7 +30,7 @@ CREATE TABLE `chat`  (
   PRIMARY KEY (`chat_id`) USING BTREE,
   INDEX `chat_user_user_id_fk`(`user_id`) USING BTREE,
   CONSTRAINT `chat_user_user_id_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 17 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of chat
@@ -46,10 +46,11 @@ INSERT INTO `chat` VALUES (8, 8, 'wer', 0, '2017-11-05 00:00:00');
 INSERT INTO `chat` VALUES (9, 9, 'as', 0, '2017-11-05 00:00:00');
 INSERT INTO `chat` VALUES (10, 10, '明白了', 0, '2017-11-05 00:00:00');
 INSERT INTO `chat` VALUES (11, 11, '你认为呢', 0, '2017-11-05 00:00:00');
-INSERT INTO `chat` VALUES (12, 1, '傻逼', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (12, 1, '傻逼', 0, '2017-11-06 00:00:00');
 INSERT INTO `chat` VALUES (13, 13, '测试1号', 0, '2017-11-05 00:00:00');
 INSERT INTO `chat` VALUES (14, 14, '测试2号', 0, '2017-11-05 00:00:00');
 INSERT INTO `chat` VALUES (15, 1, '测试3hao', 0, '2017-11-05 00:00:00');
+INSERT INTO `chat` VALUES (16, 12, '测试', 0, '2017-12-28 18:05:51');
 
 -- ----------------------------
 -- Table structure for contract_order
@@ -364,7 +365,7 @@ CREATE TABLE `function`  (
   PRIMARY KEY (`function_id`) USING BTREE,
   INDEX `Fk_function_jurisdiction`(`jurisdiction_id`) USING BTREE,
   CONSTRAINT `Fk_function_jurisdiction` FOREIGN KEY (`jurisdiction_id`) REFERENCES `jurisdiction` (`jurisdiction_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 77 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of function
@@ -426,6 +427,17 @@ INSERT INTO `function` VALUES (62, '周期采购计划管理', 'purchase/stagePu
 INSERT INTO `function` VALUES (63, '修改周期采购', 'purchase/updStagePurchasingPlan.do', 4, 0, 1);
 INSERT INTO `function` VALUES (64, '采购记录', 'purchase/purchase.do', 4, 0, 0);
 INSERT INTO `function` VALUES (65, '每日采购计划列表', 'purchase/getEverydayPurchasePlans.do', 4, 0, 0);
+INSERT INTO `function` VALUES (66, '供应商管理', 'supplier.do', 4, 0, 0);
+INSERT INTO `function` VALUES (67, '删除供应商', 'delectSupplier.do', 4, 0, 1);
+INSERT INTO `function` VALUES (68, '添加供应商', 'addSupplier.do', 4, 0, 1);
+INSERT INTO `function` VALUES (69, '修改供应商信息', 'updateSupplier.do', 4, 0, 1);
+INSERT INTO `function` VALUES (70, '查询供应商详情', 'getSupplierById.do', 4, 0, 1);
+INSERT INTO `function` VALUES (71, '供应商合同管理', 'contractManagement.do', 4, 0, 0);
+INSERT INTO `function` VALUES (72, '供应商合同详情', 'getSupplierContractById.do', 4, 0, 1);
+INSERT INTO `function` VALUES (73, '添加供应商详情', 'addSupplierContract.do', 4, 0, 1);
+INSERT INTO `function` VALUES (74, '添加菜谱', 'menu/add.do', 1, 0, 1);
+INSERT INTO `function` VALUES (75, '修改菜谱信息', 'menu/edit.do', 1, 0, 1);
+INSERT INTO `function` VALUES (76, '删除菜谱信息', 'menu/del.do', 1, 0, 1);
 
 -- ----------------------------
 -- Table structure for goods_shelve
@@ -630,7 +642,7 @@ CREATE TABLE `menu`  (
   `menu_shelf_life` int(11) NOT NULL COMMENT '保质期',
   `menu_create_date` datetime(0) NOT NULL COMMENT '创建时间',
   `menu_state_id` int(11) NOT NULL COMMENT '状态id外键',
-  `menu_release_date` datetime(0) NOT NULL COMMENT '发布时间',
+  `menu_release_date` datetime(0) NULL DEFAULT NULL COMMENT '发布时间',
   `status` int(11) NOT NULL COMMENT '删除伪列',
   `menu_remarks` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE,
@@ -1179,7 +1191,7 @@ CREATE TABLE `role_function`  (
   INDEX `Fk_role_function_function`(`function_id`) USING BTREE,
   CONSTRAINT `Fk_role_function_function` FOREIGN KEY (`function_id`) REFERENCES `function` (`function_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_function_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 626 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 738 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_function
@@ -1187,63 +1199,62 @@ CREATE TABLE `role_function`  (
 INSERT INTO `role_function` VALUES (37, 11, 1, 0);
 INSERT INTO `role_function` VALUES (39, 3, 15, 0);
 INSERT INTO `role_function` VALUES (454, 2, 4, 0);
-INSERT INTO `role_function` VALUES (569, 1, 1, 0);
-INSERT INTO `role_function` VALUES (570, 1, 4, 0);
-INSERT INTO `role_function` VALUES (571, 1, 5, 0);
-INSERT INTO `role_function` VALUES (572, 1, 6, 0);
-INSERT INTO `role_function` VALUES (573, 1, 7, 0);
-INSERT INTO `role_function` VALUES (574, 1, 8, 0);
-INSERT INTO `role_function` VALUES (575, 1, 9, 0);
-INSERT INTO `role_function` VALUES (576, 1, 10, 0);
-INSERT INTO `role_function` VALUES (577, 1, 11, 0);
-INSERT INTO `role_function` VALUES (578, 1, 12, 0);
-INSERT INTO `role_function` VALUES (579, 1, 13, 0);
-INSERT INTO `role_function` VALUES (580, 1, 14, 0);
-INSERT INTO `role_function` VALUES (581, 1, 15, 0);
-INSERT INTO `role_function` VALUES (582, 1, 17, 0);
-INSERT INTO `role_function` VALUES (583, 1, 18, 0);
-INSERT INTO `role_function` VALUES (584, 1, 19, 0);
-INSERT INTO `role_function` VALUES (585, 1, 20, 0);
-INSERT INTO `role_function` VALUES (586, 1, 21, 0);
-INSERT INTO `role_function` VALUES (587, 1, 23, 0);
-INSERT INTO `role_function` VALUES (588, 1, 24, 0);
-INSERT INTO `role_function` VALUES (589, 1, 36, 0);
-INSERT INTO `role_function` VALUES (590, 1, 37, 0);
-INSERT INTO `role_function` VALUES (591, 1, 38, 0);
-INSERT INTO `role_function` VALUES (592, 1, 39, 0);
-INSERT INTO `role_function` VALUES (593, 1, 40, 0);
-INSERT INTO `role_function` VALUES (594, 1, 41, 0);
-INSERT INTO `role_function` VALUES (595, 1, 42, 0);
-INSERT INTO `role_function` VALUES (596, 1, 62, 0);
-INSERT INTO `role_function` VALUES (597, 1, 63, 0);
-INSERT INTO `role_function` VALUES (598, 1, 64, 0);
-INSERT INTO `role_function` VALUES (599, 1, 65, 0);
-INSERT INTO `role_function` VALUES (600, 1, 28, 0);
-INSERT INTO `role_function` VALUES (601, 1, 29, 0);
-INSERT INTO `role_function` VALUES (602, 1, 30, 0);
-INSERT INTO `role_function` VALUES (603, 1, 31, 0);
-INSERT INTO `role_function` VALUES (604, 1, 32, 0);
-INSERT INTO `role_function` VALUES (605, 1, 33, 0);
-INSERT INTO `role_function` VALUES (606, 1, 34, 0);
-INSERT INTO `role_function` VALUES (607, 1, 35, 0);
-INSERT INTO `role_function` VALUES (608, 1, 52, 0);
-INSERT INTO `role_function` VALUES (609, 1, 53, 0);
-INSERT INTO `role_function` VALUES (610, 1, 56, 0);
-INSERT INTO `role_function` VALUES (611, 1, 57, 0);
-INSERT INTO `role_function` VALUES (612, 1, 58, 0);
-INSERT INTO `role_function` VALUES (613, 1, 59, 0);
-INSERT INTO `role_function` VALUES (614, 1, 60, 0);
-INSERT INTO `role_function` VALUES (615, 1, 61, 0);
-INSERT INTO `role_function` VALUES (616, 1, 44, 0);
-INSERT INTO `role_function` VALUES (617, 1, 45, 0);
-INSERT INTO `role_function` VALUES (618, 1, 46, 0);
-INSERT INTO `role_function` VALUES (619, 1, 47, 0);
-INSERT INTO `role_function` VALUES (620, 1, 48, 0);
-INSERT INTO `role_function` VALUES (621, 1, 49, 0);
-INSERT INTO `role_function` VALUES (622, 1, 25, 0);
-INSERT INTO `role_function` VALUES (623, 1, 26, 0);
-INSERT INTO `role_function` VALUES (624, 1, 27, 0);
-INSERT INTO `role_function` VALUES (625, 1, 43, 0);
+INSERT INTO `role_function` VALUES (682, 1, 1, 0);
+INSERT INTO `role_function` VALUES (683, 1, 4, 0);
+INSERT INTO `role_function` VALUES (684, 1, 5, 0);
+INSERT INTO `role_function` VALUES (685, 1, 6, 0);
+INSERT INTO `role_function` VALUES (686, 1, 8, 0);
+INSERT INTO `role_function` VALUES (687, 1, 9, 0);
+INSERT INTO `role_function` VALUES (688, 1, 10, 0);
+INSERT INTO `role_function` VALUES (689, 1, 11, 0);
+INSERT INTO `role_function` VALUES (690, 1, 12, 0);
+INSERT INTO `role_function` VALUES (691, 1, 13, 0);
+INSERT INTO `role_function` VALUES (692, 1, 14, 0);
+INSERT INTO `role_function` VALUES (693, 1, 15, 0);
+INSERT INTO `role_function` VALUES (694, 1, 17, 0);
+INSERT INTO `role_function` VALUES (695, 1, 18, 0);
+INSERT INTO `role_function` VALUES (696, 1, 19, 0);
+INSERT INTO `role_function` VALUES (697, 1, 20, 0);
+INSERT INTO `role_function` VALUES (698, 1, 21, 0);
+INSERT INTO `role_function` VALUES (699, 1, 23, 0);
+INSERT INTO `role_function` VALUES (700, 1, 24, 0);
+INSERT INTO `role_function` VALUES (701, 1, 36, 0);
+INSERT INTO `role_function` VALUES (702, 1, 37, 0);
+INSERT INTO `role_function` VALUES (703, 1, 38, 0);
+INSERT INTO `role_function` VALUES (704, 1, 39, 0);
+INSERT INTO `role_function` VALUES (705, 1, 40, 0);
+INSERT INTO `role_function` VALUES (706, 1, 41, 0);
+INSERT INTO `role_function` VALUES (707, 1, 42, 0);
+INSERT INTO `role_function` VALUES (708, 1, 62, 0);
+INSERT INTO `role_function` VALUES (709, 1, 63, 0);
+INSERT INTO `role_function` VALUES (710, 1, 64, 0);
+INSERT INTO `role_function` VALUES (711, 1, 65, 0);
+INSERT INTO `role_function` VALUES (712, 1, 28, 0);
+INSERT INTO `role_function` VALUES (713, 1, 29, 0);
+INSERT INTO `role_function` VALUES (714, 1, 30, 0);
+INSERT INTO `role_function` VALUES (715, 1, 31, 0);
+INSERT INTO `role_function` VALUES (716, 1, 32, 0);
+INSERT INTO `role_function` VALUES (717, 1, 33, 0);
+INSERT INTO `role_function` VALUES (718, 1, 34, 0);
+INSERT INTO `role_function` VALUES (719, 1, 35, 0);
+INSERT INTO `role_function` VALUES (720, 1, 52, 0);
+INSERT INTO `role_function` VALUES (721, 1, 53, 0);
+INSERT INTO `role_function` VALUES (722, 1, 56, 0);
+INSERT INTO `role_function` VALUES (723, 1, 57, 0);
+INSERT INTO `role_function` VALUES (724, 1, 58, 0);
+INSERT INTO `role_function` VALUES (725, 1, 59, 0);
+INSERT INTO `role_function` VALUES (726, 1, 60, 0);
+INSERT INTO `role_function` VALUES (727, 1, 61, 0);
+INSERT INTO `role_function` VALUES (728, 1, 44, 0);
+INSERT INTO `role_function` VALUES (729, 1, 45, 0);
+INSERT INTO `role_function` VALUES (730, 1, 46, 0);
+INSERT INTO `role_function` VALUES (731, 1, 47, 0);
+INSERT INTO `role_function` VALUES (732, 1, 48, 0);
+INSERT INTO `role_function` VALUES (733, 1, 49, 0);
+INSERT INTO `role_function` VALUES (734, 1, 25, 0);
+INSERT INTO `role_function` VALUES (735, 1, 26, 0);
+INSERT INTO `role_function` VALUES (736, 1, 27, 0);
+INSERT INTO `role_function` VALUES (737, 1, 43, 0);
 
 -- ----------------------------
 -- Table structure for role_jurisdiction
@@ -1259,7 +1270,7 @@ CREATE TABLE `role_jurisdiction`  (
   INDEX `Fk_jurisdiction`(`jurisdiction_id`) USING BTREE,
   CONSTRAINT `Fk_jurisdiction` FOREIGN KEY (`jurisdiction_id`) REFERENCES `jurisdiction` (`jurisdiction_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
   CONSTRAINT `Fk_role_jurisdiction_role` FOREIGN KEY (`role_id`) REFERENCES `role` (`role_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 137 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 157 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of role_jurisdiction
@@ -1267,16 +1278,16 @@ CREATE TABLE `role_jurisdiction`  (
 INSERT INTO `role_jurisdiction` VALUES (14, 11, 1, 0);
 INSERT INTO `role_jurisdiction` VALUES (15, 3, 2, 0);
 INSERT INTO `role_jurisdiction` VALUES (106, 2, 1, 0);
-INSERT INTO `role_jurisdiction` VALUES (127, 1, 1, 0);
-INSERT INTO `role_jurisdiction` VALUES (128, 1, 2, 0);
-INSERT INTO `role_jurisdiction` VALUES (129, 1, 3, 0);
-INSERT INTO `role_jurisdiction` VALUES (130, 1, 4, 0);
-INSERT INTO `role_jurisdiction` VALUES (131, 1, 5, 0);
-INSERT INTO `role_jurisdiction` VALUES (132, 1, 6, 0);
-INSERT INTO `role_jurisdiction` VALUES (133, 1, 7, 0);
-INSERT INTO `role_jurisdiction` VALUES (134, 1, 8, 0);
-INSERT INTO `role_jurisdiction` VALUES (135, 1, 9, 0);
-INSERT INTO `role_jurisdiction` VALUES (136, 1, 10, 0);
+INSERT INTO `role_jurisdiction` VALUES (147, 1, 1, 0);
+INSERT INTO `role_jurisdiction` VALUES (148, 1, 2, 0);
+INSERT INTO `role_jurisdiction` VALUES (149, 1, 3, 0);
+INSERT INTO `role_jurisdiction` VALUES (150, 1, 4, 0);
+INSERT INTO `role_jurisdiction` VALUES (151, 1, 5, 0);
+INSERT INTO `role_jurisdiction` VALUES (152, 1, 6, 0);
+INSERT INTO `role_jurisdiction` VALUES (153, 1, 7, 0);
+INSERT INTO `role_jurisdiction` VALUES (154, 1, 8, 0);
+INSERT INTO `role_jurisdiction` VALUES (155, 1, 9, 0);
+INSERT INTO `role_jurisdiction` VALUES (156, 1, 10, 0);
 
 -- ----------------------------
 -- Table structure for stage_purchasing_plan
