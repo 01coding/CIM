@@ -1086,7 +1086,7 @@
                 url: "${pageContext.request.contextPath}/purchase/addStagePurchasingPlan.do",
                 data: {"stagePurchasingPlans":JSON.stringify(stagePurchasingPlans),"stagePurchasingPlanTerms":JSON.stringify(stagePurchasingPlanTerms)},//将对象序列化成JSON字符串
                 success: function(data){
-                    if(data==true){
+                    if(data=='true'){
                         swal({
                             title: "新增成功！！!",
                             type: "success",

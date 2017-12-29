@@ -1288,7 +1288,7 @@
                     url:"${pageContext.request.contextPath}/purchase/delstagePurchasingPlan.do?stagePurchasingPlanId="+sid,
                     cache: false,
                     success:function(data){
-                        if(data == true){
+                        if(data == 'true'){
                             swal("删除成功", "删除成功，如需要恢复请再次添加！", "success");
                             $($tr).remove();
                         }else{

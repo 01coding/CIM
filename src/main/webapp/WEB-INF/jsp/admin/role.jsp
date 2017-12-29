@@ -1266,10 +1266,10 @@
                         url:"${pageContext.request.contextPath}/admin/delRole.do?roleId="+rid,
                         cache: false,
                         success:function(data){
-                            if(data == 1){
+                            if(data == "1"){
                                 swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
                                 $($tr).remove();
-                            }else if(data==0){
+                            }else if(data=="0"){
                                 swal("删除失败！！", "此角色拥有用户，请先删除用户！！", "error");
                             }else {
                                 swal("删除失败！！", "系统异常！请联系管理员处理！！", "error");
@@ -1290,7 +1290,7 @@
                 url:'${pageContext.request.contextPath}/admin/updateRole.do?'+submitData+'&roleId='+rid,
                 cache:false,
                 success:function(data){
-                    if (data==true) {
+                    if (data=='true') {
                         swal({
                             title: "修改成功！！!",
                             type: "success",
@@ -1314,7 +1314,7 @@
                 url: '${pageContext.request.contextPath}/admin/updateRoleJurisdiction.do?' + submitData+"&roleId="+roleId,
                 cache: false,
                 success: function (data) {
-                    if (data ==true) {
+                    if (data =='true') {
                         swal({
                             title: "修改成功！！!",
                             type: "success",
@@ -1339,7 +1339,7 @@
                 url: '${pageContext.request.contextPath}/admin/addRole.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if (data ==true) {
+                    if (data =='true') {
                         swal({
                             title: "新增成功！！!",
                             type: "success",

@@ -1309,7 +1309,7 @@ $(function () {
             url: "${pageContext.request.contextPath}/purchase/updStagePurchasingPlan.do?"+submitData,
             data: {"stagePurchasingPlanTerms":JSON.stringify(stagePurchasingPlanTerms)},//将对象序列化成JSON字符串
             success: function(data){
-                if(data==true){
+                if(data=='true'){
                     swal({
                         title: "修改成功！！!",
                         type: "success",

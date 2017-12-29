@@ -1313,7 +1313,7 @@ User user=(User)session.getAttribute("u");
                         url:"${pageContext.request.contextPath}/delTechnology.do?technologyId="+mid,
                         cache: false,
                         success:function(data){
-                            if(data == true){
+                            if(data == 'true'){
                                 swal("删除成功", "删除成功，如需要恢复请再次添加！", "success");
                                 $($tr).remove();
                             }else{
@@ -1332,7 +1332,7 @@ User user=(User)session.getAttribute("u");
                 url: '${pageContext.request.contextPath}/addTechnology.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if (data ==true) {
+                    if (data =='true') {
                         swal({
                             title: "新增成功！！!",
                             type: "success",

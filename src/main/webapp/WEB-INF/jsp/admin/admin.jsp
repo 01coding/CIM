@@ -1168,7 +1168,7 @@
                 url: '${pageContext.request.contextPath}/admin/addUser.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if (data ==true) {
+                    if (data =='true') {
                         swal({
                             title: "新增成功！！!",
                             type: "success",

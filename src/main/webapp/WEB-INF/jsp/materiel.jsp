@@ -999,7 +999,7 @@
                         url:"${pageContext.request.contextPath}/delmateriel.do?materielId="+mid,
                         cache: false,
                         success:function(data){
-                            if(data == true){
+                            if(data == 'true'){
                                 swal("删除成功", "删除成功，如需要回复请再次添加！", "success");
                                 $($tr).remove();
                             }else{
@@ -1042,7 +1042,7 @@
                 url: '${pageContext.request.contextPath}/addMateriel.do?' + submitData,
                 cache: false,
                 success: function (data) {
-                    if (data ==true) {
+                    if (data =='true') {
                         swal({
                             title: "新增成功！！!",
                             type: "success",
