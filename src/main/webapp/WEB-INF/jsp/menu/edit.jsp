@@ -1842,6 +1842,10 @@
 <script src="../../../dist/js/init.js"></script>
 
 
+<!-- Switchery JavaScript -->
+<script src="../../../vendors/app.js"></script>
+
+
 
 <script>
 
@@ -1849,7 +1853,51 @@
         queryMaterielByOneLevel();
         queryMaterielByTwoLevel();
         addMateriel();
+        init();
+
     });
+
+
+    function init() {
+        <c:forEach var="menuMateriel" items="${menu.menuMaterielList}">
+
+        var menuMaterielTypeNameInit="";
+        <c:choose>
+        <c:when test="${menuMateriel.menuMaterielType==0}">menuMaterielTypeNameInit="主";</c:when>
+        <c:when test="${menuMateriel.menuMaterielType==1}">menuMaterielTypeNameInit="辅";</c:when>
+        <c:when test="${menuMateriel.menuMaterielType==2}">menuMaterielTypeNameInit="配";</c:when>
+        <c:when test="${menuMateriel.menuMaterielType==3}">menuMaterielTypeNameInit="耗材";</c:when>
+        </c:choose>
+
+
+        var materielInit= {
+            "materielId": "${menuMateriel.materiel.materielId}",
+            "materielName": "${menuMateriel.materiel.materielName}",
+            "menuMaterielTypeId": "${menuMateriel.menuMaterielType}",
+            "menuMaterielTypeName": menuMaterielTypeNameInit
+        }
+
+        materielArray.push(materielInit);
+
+
+        var rowInit="<tr>\n" +
+            " <td>${menuMateriel.materiel.materielName}</td>\n" +
+            " <td>"+menuMaterielTypeNameInit+"</td>\n" +
+            " <td class='footable-editing' style='display: table-cell;'>\n" +
+            "     <div class='btn-group btn-group-xs' role='group'>\n" +
+            "       <button type='button' data-materielid='${menuMateriel.materiel.materielId}' class='btn btn-default footable-edit' onclick='delMateriel(this)' >\n" +
+            "           <i class='fa ti-close' style='color: #2879ff;'></i>\n" +
+            "       </button>\n" +
+            "    </div>\n" +
+            "  </td>\n" +
+            "</tr>";
+
+        $("#Materieltbody").append(rowInit);
+
+        </c:forEach>
+    }
+
+
 
     /*根据一物料级别查询物料*/
     function queryMaterielByOneLevel() {
@@ -1862,7 +1910,6 @@
                 var  option="<option value=''>请选择</option>";
                 $("#addMateriel").empty().append(option)
                 appModule.post("/menu/queryMaterielByOneLevel.cl",materielTypeLevelAData,function (data) {
-
                     for(var i in data){
                         option+="<option value='"+data[i].materielTypeLevelBId+"'>"+data[i].materielTypeLevelBName+"</option>"
                     }
@@ -2044,7 +2091,7 @@
     function toUppMenuFlow(th) {
         toUppMenuFlowThis=th;
         /*物料id*/
-        var materielFlowId= $(th).parents("tr").children("td").eq(3).attr("data-materielid");
+        var materielFlowId= $(th).parents("tr").children("td").eq(2).attr("data-materielid");
         var utechnologyId= $(th).parents("tr").children("td").eq(5).attr("data-technologyid");
         var menuFlowHour=$(th).parents("tr").children("td").eq(6).text();
         var menuFlowDescribe=$(th).parents("tr").children("td").eq(7).text();

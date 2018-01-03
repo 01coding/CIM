@@ -64,9 +64,6 @@ public class MenuBranchController {
         for (Object o : array) {
             menuFlowList.add((MenuFlow) (JSONObject.toBean(JSONObject.fromObject(o), MenuFlow.class)));
         }
-
-
-
         menu.setMenuImage(menuUpload(request));
         menuFlowUpload(menuFlowList, request);
         menuService.addMenu(menu, menuFlowList);
@@ -186,10 +183,6 @@ public class MenuBranchController {
     public String toEdit(@RequestParam(value = "menuId") Integer menuId, Model model) {
 
         Menu menu = menuService.selectById(menuId);
-      /*  if (menu.getMenuImage() != null && !menu.getMenuImage().equals("")) {
-            String path = request.getSession().getServletContext().getRealPath("/images/menuimg/") + menu.getMenuImage();
-            menu.setMenuImage(GetImageStr(path));
-        }*/
         model.addAttribute("menu", menu);
         List<MenuType> menuTypeList = menuService.getMenuTypeList();
         List<MenuState> menuStateList = menuService.getMenuStateList();

@@ -11,6 +11,7 @@ import team.ruike.cim.service.StoreService;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 门店
@@ -34,9 +35,10 @@ public class StoreController {
     }
 
 
-    @RequestMapping("add.do")
+    @RequestMapping(value = "add.do",produces="application/json;charset=UTF-8")
     @ResponseBody
-    public String add(Store store) {
+    public String add(Store store, HttpServletResponse response) {
+        response.addHeader("Content-Type1", "application/json;charset=UTF-8");
         Store storeNo = storeService.addStore(store);
         return JSON.toJSONString(storeNo);
     }

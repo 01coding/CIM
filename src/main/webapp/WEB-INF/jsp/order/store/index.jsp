@@ -1334,7 +1334,7 @@
     }
 
     function addSuccess(data) {
-        var pagesize= $(".pagination-split").data("pagesize");
+        var pagesize="${pager.pageSize}";
         var thisPagesize=$("tbody tr").size();
         if(thisPagesize<pagesize){
 

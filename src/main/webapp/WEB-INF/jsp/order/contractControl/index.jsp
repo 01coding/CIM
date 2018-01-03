@@ -1451,8 +1451,9 @@
 
     }
 
-    function addSuccess(data) {
-        var pagesize= $(".pagination-split").data("pagesize");
+    function addSuccess(d) {
+        var data=JSON.parse(d);
+        var pagesize= "${pager.pageSize}";
         var thisPagesize=$("tbody tr").size();
         if(thisPagesize<pagesize){
 

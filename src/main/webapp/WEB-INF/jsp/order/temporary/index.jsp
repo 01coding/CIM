@@ -85,7 +85,7 @@
                     <span class="input-group-btn">
 						<button type="button" class="btn  btn-default" data-target="#search_form" data-toggle="collapse"
                                 aria-label="Close" aria-expanded="true"><i class="zmdi zmdi-search"></i></button>
-						</span>
+					</span>
                 </div>
             </form>
         </div>

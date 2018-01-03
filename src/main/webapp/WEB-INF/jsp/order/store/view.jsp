@@ -89,15 +89,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div>
-                                                    <div class="form-group">
-                                                        <label class="control-label col-md-3">状态:</label>
-                                                        <div class="col-md-9">
-                                                            <p class="form-control-static">${store.status}</p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                
+
                                             </div>
                                         </div>
 
