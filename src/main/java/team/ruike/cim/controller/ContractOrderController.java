@@ -6,12 +6,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import team.ruike.cim.dao.MenuTypeDao;
 import team.ruike.cim.pojo.ContractOrder;
 import team.ruike.cim.pojo.MenuType;
 import team.ruike.cim.pojo.OrderContract;
 import team.ruike.cim.pojo.User;
 import team.ruike.cim.service.ContractOrderService;
+import team.ruike.cim.service.MenuTypeService;
 import team.ruike.cim.service.OrderContractService;
 import team.ruike.cim.util.Pager;
 
@@ -35,7 +35,7 @@ public class ContractOrderController {
     private OrderContractService orderContractService;
 
     @Resource
-    private MenuTypeDao menuTypeDao;//暂无业务类
+    private MenuTypeService menuTypeService;
 
 
     @RequestMapping("index.do")
@@ -48,10 +48,10 @@ public class ContractOrderController {
 
     @RequestMapping("toAdd.cl")
     public String toAdd(Model model) {
-        List<MenuType> menuTypeList = menuTypeDao.selectAll();
+        List<MenuType> menuTypeList = menuTypeService.selectAllMenuType();
         List<OrderContract> orderContractList = orderContractService.selectAllNoOrderInfoContract();
         model.addAttribute("menuTypeList", menuTypeList);
-        model.addAttribute("orderContractList",orderContractList);
+        model.addAttribute("orderContractList", orderContractList);
         return "order/contract/add";
     }
 
@@ -66,19 +66,18 @@ public class ContractOrderController {
     @RequestMapping("add.do")
     @ResponseBody
     public String add(ContractOrder contractOrder, HttpServletRequest request) {
-        User user=(User) request.getSession().getAttribute("u");
+        User user = (User) request.getSession().getAttribute("u");
         contractOrder.setUser(user);
         contractOrderService.addContractOrder(contractOrder.getOrderContract(), contractOrder, contractOrder.getContractOrderTerms());
         return "1";
     }
 
 
-    @RequestMapping(value ="contractInfo.cl",produces = "text/html;charset=UTF-8")
+    @RequestMapping(value = "contractInfo.cl", produces = "text/html;charset=UTF-8")
     @ResponseBody
-    public String selectAllNoOrderInfoContract(){
+    public String selectAllNoOrderInfoContract() {
         List<OrderContract> orderContractList = orderContractService.selectAllNoOrderInfoContract();
-        String  contractInfoJSON= JSON.toJSON(orderContractList).toString();
-        return contractInfoJSON;
+        return JSON.toJSONString(orderContractList);
     }
 
 }

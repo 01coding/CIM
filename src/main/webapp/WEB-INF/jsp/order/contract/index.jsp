@@ -1063,11 +1063,16 @@
                                                 </td>
                                                 <td class="footable-editing" style="display: table-cell;">
                                                     <div class="btn-group btn-group-xs" role="group">
-
+                                                        <c:forEach items="${sessionScope.u.roles}" var="ls">
+                                                        <c:forEach items="${ls.functions}" var="ps">
+                                                        <c:if test="${ps.functionId==38}">
                                                         <button type="button" class="btn btn-default footable-edit" onclick="toView(${contractOrder.contractOrderId})"
                                                                 data-toggle="modal" data-target="#exampleModalSelect">
                                                             <i class="fa ti-search" style="color: #2879ff;"></i>
                                                         </button>
+                                                        </c:if>
+                                                        </c:forEach>
+                                                        </c:forEach>
 
                                                     </div>
                                                 </td>
@@ -1083,10 +1088,16 @@
                                                 <button class="btn btn-warning btn-icon-anim btn-circle" onclick="sc()">
                                                     <i class="icon-rocket"></i>
                                                 </button>
+                                                <c:forEach items="${sessionScope.u.roles}" var="ls">
+                                                <c:forEach items="${ls.functions}" var="ps">
+                                                <c:if test="${ps.functionId==38}">
                                                 <button class="btn btn-info btn-icon-anim btn-circle"
                                                         onclick="addContractOrderUrl()">
                                                     <i class="fa ti-plus"></i>
                                                 </button>
+                                                </c:if>
+                                                </c:forEach>
+                                                </c:forEach>
                                             </div>
                                         </div>
 

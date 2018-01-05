@@ -5,12 +5,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import team.ruike.cim.dao.MenuTypeDao;
-import team.ruike.cim.dao.TemporaryOrderStateDao;
 import team.ruike.cim.pojo.*;
-import team.ruike.cim.service.MenuService;
-import team.ruike.cim.service.StoreService;
-import team.ruike.cim.service.TemporaryOrderService;
+import team.ruike.cim.service.*;
 import team.ruike.cim.util.Pager;
 
 import javax.annotation.Resource;
@@ -35,15 +31,15 @@ public class TemporaryOrderController {
     private MenuService menuService;
 
     @Resource
-    private MenuTypeDao menuTypeDao;//暂无业务类
+    private MenuTypeService menuTypeService;
 
     @Resource
-    private TemporaryOrderStateDao temporaryOrderStateDao;//暂无业务类
+    private TemporaryOrderStateService temporaryOrderStateService;
 
 
     @RequestMapping("index.do")
     public String index(TemporaryOrder temporaryOrder, Pager<TemporaryOrder> pager, Model model) {
-        List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
+        List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateService.selectAllTemporaryOrderState();
         temporaryOrderService.queryTemporaryOrder(temporaryOrder, pager);
         model.addAttribute("pager", pager);
         model.addAttribute("temporaryOrder", temporaryOrder);
@@ -55,7 +51,7 @@ public class TemporaryOrderController {
     @RequestMapping("toAdd.cl")
     public String toAdd(Model model) {
         List<Store> storeList = storeService.queryAllStore();
-        List<MenuType> menuTypeList = menuTypeDao.selectAll();
+        List<MenuType> menuTypeList = menuTypeService.selectAllMenuType();
         model.addAttribute("storeList", storeList);
         model.addAttribute("menuTypeList", menuTypeList);
         return "order/temporary/add";
@@ -74,7 +70,7 @@ public class TemporaryOrderController {
     @RequestMapping("toView.do")
     public String toView(@RequestParam(value = "temporaryOrderId", required = false) Integer temporaryOrderId, Model model) {
         TemporaryOrder temporaryOrder = temporaryOrderService.queryTemporaryOrderById(temporaryOrderId);
-        List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateDao.selectAll();
+        List<TemporaryOrderState> temporaryOrderStateList = temporaryOrderStateService.selectAllTemporaryOrderState();
         model.addAttribute("temporaryOrder", temporaryOrder);
         model.addAttribute("temporaryOrderStateList", temporaryOrderStateList);
         return "order/temporary/view";
